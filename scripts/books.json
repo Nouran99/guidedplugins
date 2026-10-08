@@ -1,0 +1,138 @@
+{
+  "marketplace": {
+    "name": "guided-plugins",
+    "owner": "Nouran Darwish",
+    "githubRepo": "Nouran99/guidedplugins",
+    "description": "Fourteen Claude Code plugins, one per classic software engineering book. Each ships 50+ skills, subagents and output styles built on the MIT-licensed rule sets from ciembor/agent-rules-books.",
+    "upstreamRepo": "https://github.com/ciembor/agent-rules-books",
+    "upstreamAuthor": "Maciej Ciemborowicz"
+  },
+  "books": [
+    {
+      "slug": "clean-code",
+      "upstream": "clean-code",
+      "title": "Clean Code",
+      "bookAuthor": "Robert C. Martin",
+      "category": "code-quality",
+      "usefulWhen": "Doing everyday coding and code review: naming, small functions, tests.",
+      "keywords": ["clean-code", "naming", "functions", "code-review", "readability", "unit-tests", "refactoring", "robert-martin"]
+    },
+    {
+      "slug": "philosophy-of-design",
+      "upstream": "a-philosophy-of-software-design",
+      "title": "A Philosophy of Software Design",
+      "bookAuthor": "John Ousterhout",
+      "category": "code-quality",
+      "usefulWhen": "Designing APIs or modules, or refactoring shallow abstractions.",
+      "keywords": ["software-design", "complexity", "deep-modules", "api-design", "information-hiding", "ousterhout", "code-review"]
+    },
+    {
+      "slug": "clean-architecture",
+      "upstream": "clean-architecture",
+      "title": "Clean Architecture",
+      "bookAuthor": "Robert C. Martin",
+      "category": "architecture",
+      "usefulWhen": "You need code that resists framework, database, and UI churn.",
+      "keywords": ["clean-architecture", "dependency-rule", "solid", "boundaries", "use-cases", "components", "robert-martin"]
+    },
+    {
+      "slug": "code-complete",
+      "upstream": "code-complete",
+      "title": "Code Complete",
+      "bookAuthor": "Steve McConnell",
+      "category": "code-quality",
+      "usefulWhen": "You need disciplined implementation decisions on routines, control flow, and testing.",
+      "keywords": ["code-complete", "construction", "routines", "defensive-programming", "testing", "debugging", "mcconnell"]
+    },
+    {
+      "slug": "data-intensive-apps",
+      "upstream": "designing-data-intensive-applications",
+      "title": "Designing Data-Intensive Applications",
+      "bookAuthor": "Martin Kleppmann",
+      "category": "architecture",
+      "usefulWhen": "Data ownership, event flows, or consistency semantics matter.",
+      "keywords": ["ddia", "distributed-systems", "replication", "partitioning", "transactions", "streams", "consistency", "kleppmann"]
+    },
+    {
+      "slug": "ddd",
+      "upstream": "domain-driven-design",
+      "title": "Domain-Driven Design",
+      "bookAuthor": "Eric Evans",
+      "category": "domain-modeling",
+      "usefulWhen": "You want to model the business domain rather than tables, controllers, or DTOs.",
+      "keywords": ["ddd", "domain-driven-design", "ubiquitous-language", "bounded-context", "aggregates", "strategic-design", "evans"]
+    },
+    {
+      "slug": "ddd-distilled",
+      "upstream": "domain-driven-design-distilled",
+      "title": "Domain-Driven Design Distilled",
+      "bookAuthor": "Vaughn Vernon",
+      "category": "domain-modeling",
+      "usefulWhen": "You want DDD benefits without heavy ceremony.",
+      "keywords": ["ddd", "ddd-distilled", "strategic-design", "context-mapping", "subdomains", "event-storming", "vernon"]
+    },
+    {
+      "slug": "ddd-implementing",
+      "upstream": "implementing-domain-driven-design",
+      "title": "Implementing Domain-Driven Design",
+      "bookAuthor": "Vaughn Vernon",
+      "category": "domain-modeling",
+      "usefulWhen": "You need implementation-level DDD: aggregates, events, and integrations.",
+      "keywords": ["ddd", "iddd", "aggregates", "domain-events", "repositories", "integration", "tactical-design", "vernon"]
+    },
+    {
+      "slug": "enterprise-patterns",
+      "upstream": "patterns-of-enterprise-application-architecture",
+      "title": "Patterns of Enterprise Application Architecture",
+      "bookAuthor": "Martin Fowler",
+      "category": "architecture",
+      "usefulWhen": "You need to choose an appropriate enterprise pattern instead of mixing responsibilities.",
+      "keywords": ["poeaa", "enterprise-patterns", "orm", "data-mapper", "service-layer", "unit-of-work", "web-presentation", "fowler"]
+    },
+    {
+      "slug": "refactoring",
+      "upstream": "refactoring",
+      "title": "Refactoring",
+      "bookAuthor": "Martin Fowler",
+      "category": "refactoring",
+      "usefulWhen": "You want small, test-backed structural changes kept separate from feature work.",
+      "keywords": ["refactoring", "code-smells", "safe-change", "characterization-tests", "preparatory-refactoring", "fowler"]
+    },
+    {
+      "slug": "refactoring-guru",
+      "upstream": "refactoring-guru",
+      "title": "Refactoring.Guru",
+      "bookAuthor": "Refactoring.Guru (website)",
+      "category": "refactoring",
+      "usefulWhen": "You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign.",
+      "keywords": ["refactoring-guru", "code-smells", "design-patterns", "refactoring-techniques", "smell-to-treatment"]
+    },
+    {
+      "slug": "release-it",
+      "upstream": "release-it",
+      "title": "Release It!",
+      "bookAuthor": "Michael T. Nygard",
+      "category": "reliability",
+      "usefulWhen": "You are building services, APIs, queues, or critical production paths.",
+      "keywords": ["release-it", "stability-patterns", "circuit-breaker", "bulkhead", "timeouts", "resilience", "production", "nygard"]
+    },
+    {
+      "slug": "pragmatic-programmer",
+      "upstream": "the-pragmatic-programmer",
+      "title": "The Pragmatic Programmer",
+      "bookAuthor": "Andrew Hunt, David Thomas",
+      "category": "engineering-practice",
+      "usefulWhen": "You want a general engineering layer: automation, feedback, orthogonality.",
+      "keywords": ["pragmatic-programmer", "dry", "orthogonality", "tracer-bullets", "automation", "debugging", "hunt-thomas"]
+    },
+    {
+      "slug": "legacy-code",
+      "upstream": "working-effectively-with-legacy-code",
+      "title": "Working Effectively with Legacy Code",
+      "bookAuthor": "Michael Feathers",
+      "category": "refactoring",
+      "usefulWhen": "You are changing poorly tested legacy code and need to regain control first.",
+      "keywords": ["legacy-code", "seams", "characterization-tests", "dependency-breaking", "test-harness", "feathers"]
+    }
+  ]
+}

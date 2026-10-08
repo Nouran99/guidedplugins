@@ -1,0 +1,41 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  structure:
+    name: Structure, counts, traceability
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate all plugins and the marketplace file
+        run: node scripts/validate-all.mjs --no-cli
+      - name: Generated files are committed
+        run: |
+          node scripts/gen-catalog.mjs
+          git diff --exit-code
+
+  official:
+    name: Official `claude plugin validate`
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install Claude Code CLI
+        run: npm install --global @anthropic-ai/claude-code
+      - name: Validate marketplace and plugins
+        run: |
+          claude plugin validate .
+          for d in plugins/*/; do claude plugin validate "$d"; done
