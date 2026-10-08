@@ -175,12 +175,16 @@ export function fullHeadings(fullText) {
   return { all: new Set(heads.map((h) => h.key)), coverage };
 }
 
-// The "## Source" section of a component body -> array of cited heading strings (backticked tokens).
+// The "## Source" section of a component body -> array of cited heading strings.
+// A citation is the first backticked token at the start of a bullet; text after it (notes) may contain anything.
 export function sourceCitations(body) {
   const m = body.match(/(?:^|\n)##\s+Source[^\n]*\n([\s\S]*?)(?=\n##\s|\s*$)/i);
   if (!m) return null;
   const out = [];
-  for (const t of m[1].matchAll(/`([^`\n]+)`/g)) out.push(t[1].trim());
+  for (const line of m[1].split('\n')) {
+    const t = line.match(/^\s*[-*]\s+`([^`\n]+)`/);
+    if (t) out.push(t[1].trim());
+  }
   return out;
 }
 

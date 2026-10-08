@@ -1,0 +1,57 @@
+---
+name: fix
+description: "Resolve given Clean Code findings with the smallest change per finding, run the tests after each, and report. Never commits."
+disable-model-invocation: true
+argument-hint: "[finding text | file:line | 'last review' | empty to ask]"
+allowed-tools: Bash(git diff *) Bash(git status *) Bash(git log *) Bash(git show *)
+---
+
+# Fix findings
+
+Arguments: `$ARGUMENTS`
+
+This skill edits files. It makes the smallest change that resolves each finding, runs the tests, and does not commit.
+
+## Scope
+
+1. If `$ARGUMENTS` contains finding text or a `file:line`, those are the findings to resolve.
+2. If it says `last review`, use the findings from the most recent `/clean-code:review` or reviewer output in this conversation. If there is none, say so and stop.
+3. If it is empty, ask which findings to resolve and stop. Do not go looking for things to fix; that is `/clean-code:boy-scout`.
+4. Touch only the files and functions the findings point at, plus their direct callers when a signature changes.
+
+## Steps
+
+1. Order the findings by severity: blocker, major, minor, nit. Resolve one at a time.
+2. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files). Run the relevant tests first and record the baseline. If the baseline fails, tell the user before changing anything. If no command exists, say so and proceed only with edits you can verify by reading.
+3. For each finding, choose the smallest change that resolves it, using the owning skill's procedure (for example `/clean-code:naming` for a rename, `/clean-code:function-contracts` for a flag). Prefer tool-assisted renames and extractions where available.
+4. Make the change, then run the relevant tests. If they fail and the cause is not obvious, revert that one edit by hand and report; do not stack more edits on a red state.
+5. Never delete, skip or weaken a failing test to get green. Never change a test expectation in a structural fix.
+6. If resolving the finding needs a behavior change, stop and ask; a behavior change needs its own test first (`/clean-code:tdd-discipline`).
+7. Do not fix other things you notice. List them under "Noticed, not changed".
+8. Review your own diff for readability, duplication and unnecessary complexity before reporting.
+
+## Output
+
+```
+Fixed: <n of m findings>
+ 1. <finding> -> <what changed, file:line>  (tests: <command> -> pass)
+ 2. ...
+Not fixed: <finding> -> <reason, for example needs a behavior decision>
+Tests: <commands run, before and after>   Not run: <what, and why>
+Noticed, not changed: <list or none>
+Risks and assumptions: <list or none>
+Conflicts with rules (if the user asked for something against a rule): <list or none>
+```
+
+## Stop conditions
+
+- Do not run `git commit`, `git push`, `git reset --hard`, `git clean`, force flags or any package installation.
+- Stop after the listed findings; do not widen scope.
+- If a finding is wrong (the code is fine), say so with evidence and leave it.
+
+## Source
+
+- `Change Process`
+- `Output Expectations`
+- `Refactoring rules`
+- `Hard rules`: only the rule not to silently broaden scope.

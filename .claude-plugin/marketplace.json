@@ -1,0 +1,31 @@
+{
+  "name": "guided-plugins",
+  "owner": {
+    "name": "Nouran Darwish"
+  },
+  "metadata": {
+    "description": "Fourteen Claude Code plugins, one per classic software engineering book. Each ships 50+ skills, subagents and output styles built on the MIT-licensed rule sets from ciembor/agent-rules-books.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "clean-code",
+      "source": "./plugins/clean-code",
+      "description": "Robert C. Martin's Clean Code as a Claude Code toolkit: skills, subagents and output styles for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code.",
+      "version": "1.0.0",
+      "category": "code-quality",
+      "tags": [
+        "clean-code",
+        "naming",
+        "functions",
+        "code-review",
+        "readability",
+        "unit-tests",
+        "refactoring",
+        "code-smells",
+        "boy-scout-rule",
+        "robert-martin"
+      ]
+    }
+  ]
+}

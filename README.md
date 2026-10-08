@@ -28,6 +28,10 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 
 <!-- CATALOG:START -->
 
+| Plugin | Book | Author | Components | Reach for it when |
+| --- | --- | --- | --- | --- |
+| [`clean-code`](plugins/clean-code/README.md) | Clean Code | Robert C. Martin | 59 (31 skills, 22 agents, 6 styles) | Doing everyday coding and code review: naming, small functions, tests. |
+
 <!-- CATALOG:END -->
 
 Each plugin README lists every component with its command, a usage walkthrough, a map from the book's sections to the components, and which other plugins it pairs well with.

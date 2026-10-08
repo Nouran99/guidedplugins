@@ -19,7 +19,9 @@ const KEBAB = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 const SEMVER = /^\d+\.\d+\.\d+$/;
 const RESERVED_PREFIX = ['claude-', 'anthropic-', 'anthropics-', 'cc-plugin-'];
 const RESERVED_NAME = new Set(['claude', 'anthropic', 'anthropics', 'claude-code', 'claude-mods']);
-const PLACEHOLDERS = /\bTBD\b|lorem ipsum|__[A-Z][A-Z0-9_]{2,}__|<placeholder>|\[INSERT[^\]]*\]|\{\{[^}]+\}\}/i;
+const PLACEHOLDER_WORDS = /\bTBD\b|lorem ipsum|<placeholder>|\[INSERT[^\]]*\]/i;
+const PLACEHOLDER_TOKEN = /__[A-Z][A-Z0-9_]{2,}__/; // case-sensitive so Python's __init__ is fine
+const hasPlaceholder = (t) => PLACEHOLDER_WORDS.test(t) || PLACEHOLDER_TOKEN.test(t);
 const REQUIRED = {
   skills: ['principles', 'review', 'audit', 'plan', 'explain-rule', 'checklist', 'fix'],
   agents: ['lead', 'final-gate'],
@@ -149,7 +151,7 @@ export function validatePlugin(dir, opts = {}) {
         else cited.add(k);
       }
     }
-    if (PLACEHOLDERS.test(comp.text)) err(where, 'contains placeholder text');
+    if (hasPlaceholder(comp.text)) err(where, 'contains placeholder text');
 
     // type-specific
     if (comp.kind === 'skill') {
@@ -266,7 +268,7 @@ export function validatePlugin(dir, opts = {}) {
       ['book mapping', /^#{1,3}\s+.*(how it maps|maps to|mapping|the book)/im], ['compatibility', /^#{1,3}\s+.*(works with|compatib|pairs well)/im],
       ['limitations', /^#{1,3}\s+.*(limitation|criticism|caveat)/im], ['attribution', /^#{1,3}\s+.*(attribution|license|credits)/im]];
     for (const [label, re] of need) if (!re.test(readme)) err('README.md', `missing a section on ${label}`);
-    if (PLACEHOLDERS.test(readme)) err('README.md', 'contains placeholder text');
+    if (hasPlaceholder(readme)) err('README.md', 'contains placeholder text');
     if (!readme.includes(README_START) || !readme.includes(README_END)) err('README.md', `needs ${README_START} ... ${README_END} markers`);
     else {
       const fresh = replaceReadmeBlock(readme, renderCatalogBlock(plugin));
@@ -287,7 +289,7 @@ export function validatePlugin(dir, opts = {}) {
       const p = path.join(d, e.name);
       if (e.isDirectory()) { if (!['references', 'node_modules', 'skills', 'agents', 'output-styles'].includes(e.name)) scan(p); } else if (/\.(md|json|sh)$/.test(e.name)) {
         const t = readIf(p) ?? '';
-        if (PLACEHOLDERS.test(t) && !/^README\.md$/.test(e.name)) err(rel(p), 'contains placeholder text');
+        if (hasPlaceholder(t) && !/^README\.md$/.test(e.name)) err(rel(p), 'contains placeholder text');
       }
     }
   };

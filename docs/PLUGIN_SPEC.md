@@ -98,8 +98,8 @@ Annotated skeletons live in `docs/templates/`. They show structure and voice wit
 
 - **Frontmatter is a strict subset of YAML**: `description` is always a double-quoted string on one line; no block scalars (`|`, `>`); lists use `- item` lines or `[a, b]`. The validator rejects anything else because Claude Code silently drops unparsable frontmatter.
 - **Voice**: second-person imperative, concrete and checkable ("Rename a boolean parameter that selects between two behaviors into two functions"), never vague ("write good code").
-- **Every component ends with `## Source`**: a bullet list of the upstream `##`/`###` headings it applies, each in backticks, exactly as spelled in `references/full.md`. Add a short note after a heading if only part of the section applies.
-- **No placeholders** (`TBD`, `lorem ipsum`, `__X__`, `{{x}}`), no emoji, no marketing language.
+- **Every component ends with `## Source`**: a bullet list with **one upstream `##`/`###` heading per bullet**, the heading first and in backticks, spelled exactly as in `references/full.md` (case-insensitive). A note may follow the heading on the same bullet when only part of the section applies (`- \`Naming rules\`: only the rule on magic numbers`); the note may contain anything.
+- **No placeholders** (`TBD`, `lorem ipsum`, `<placeholder>`, `[INSERT ...]`, `__UPPER_TOKEN__`), no emoji, no marketing language.
 - **Examples are original**, short, in a widely readable language (TypeScript, Python, Java or Go), and show a before/after or a decision. They never come from the book.
 - **Cross-reference by name**: point to sibling skills and agents with their invocation (`/<slug>:naming`, `<slug>:error-handling-reviewer`) so the toolkit reads as one system.
 
@@ -115,7 +115,7 @@ the modal convention; a **routing table** (situation -> exact skill / agent / ou
 ### 5.2 Topical skills (model-invocable, typically 14-18)
 
 One skill per rule cluster (usually one upstream section, or a coherent slice of a large section such as a long smell/pattern catalog).
-Claude loads them by description, so `description` is a trigger: "Use when ..." plus the concrete signals (file types, symptoms, user phrases). Target at most 300 characters.
+Claude loads them by description, so `description` is a trigger: "Use when ..." plus the concrete signals (file types, symptoms, user phrases). Aim for at most 300 characters (the validator warns above 300 and fails above 500; manual skills are not warned because they cost no context).
 
 Body outline (use these H2s, in this order): `When to use` · `Rules` (at least 8, numbered; each = what to do + why in one clause + how to check) ·
 `Procedure` (numbered steps to apply the rules to a diff or file) · `Example` (original fenced before/after; required) · `Anti-patterns` (named, with a detection hint) ·
@@ -140,7 +140,7 @@ define the scope from `$ARGUMENTS`, the method, and a result **no longer than 40
 Frontmatter, exactly these keys: `name`, `description`, `model`, `tools`, `maxTurns`, `color`, plus optional `disallowedTools`, `effort`, `skills`.
 Never use `permissionMode`, `hooks`, `mcpServers` (Claude Code ignores them for plugin agents), and never `memory` (it writes into the user's repo).
 
-- `description`: a role noun phrase, then when to delegate, containing "Use proactively when/after ..." or "Use when ...". At most 350 characters.
+- `description`: a role noun phrase, then when to delegate, containing "Use proactively when/after ..." or "Use when ...". Aim for at most 350 characters (the validator warns above 350 and fails above 600).
 - `model`: `sonnet` for reviewers; `opus` for `lead` and design-heavy planners; `haiku` only for mechanical scanners. `color`: vary across the set.
 - `tools`: least privilege. **Reviewers**: `Read, Grep, Glob, Bash` with `disallowedTools: Write, Edit` and instructions to use Bash only for `git diff|log|status|show` and read-only listing.
   **Implementers**: add `Edit, Write`. Never grant `WebFetch`/`WebSearch`.
