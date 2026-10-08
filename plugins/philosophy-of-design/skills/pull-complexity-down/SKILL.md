@@ -1,6 +1,6 @@
 ---
 name: pull-complexity-down
-description: "Use when the same setup, validation or special-handling lines are repeated at the call sites of one callee, when a module offloads decisions to its users, or when a simpler public contract would justify a more complex implementation."
+description: "Use when the same preparation, normalization or default-choosing lines are repeated at the call sites of one callee, or every caller must remember a rule to call it correctly. The fix is more work inside the callee. Repeated error handling is define-errors-away."
 ---
 
 # Pull complexity downward

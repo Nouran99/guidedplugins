@@ -20,9 +20,9 @@ Judges added complexity that claims a benefit: speed, scalability, or "modern pr
 2. **When performance matters, hide optimization details behind stable interfaces so callers do not inherit the complexity.** Check: callers do not pass hints, buffers or pre-sorted inputs to get the fast path.
 3. **Prefer measurements and targeted changes over broad speculative tuning.** Check: the change touches the measured hot spot, not every similar function.
 4. **Do not adopt a trend, paradigm, pattern or framework unless it reduces complexity in this codebase.** Check: you can name the files or callers that become simpler.
-5. **Measure first.** Check: the baseline is recorded before the change and compared after.
-6. **Keep the common path simple when adding an optimization or an exception path.** Check: the typical call reads the same as before.
-7. **Keep performance hacks out of the callers' dependencies.** Callers should not depend on implementation detail or performance tricks. Check: no caller code mentions the optimization.
+5. **Measure first.** Compact checklist rule: this wording comes from `references/mini.md`; `full.md` states it as rules 1 and 3 above. Check: the baseline is recorded before the change and compared after.
+6. **Keep the common path simple when adding an optimization or an exception path.** Compact checklist rule: it comes from `references/nano.md` and `references/mini.md`, not from a section of `full.md`. Check: the typical call reads the same as before.
+7. **Keep performance hacks out of the callers' dependencies.** Callers should not depend on implementation detail or performance tricks (the fourth rule under `Information Hiding Rules`). Check: no caller code mentions the optimization.
 8. **Added judgment: state the budget and who set it.** Check: the change names the number that matters (latency, memory, cost) and why that number matters to a user or an operator.
 9. **Added judgment: keep the evidence next to the code.** Put the measurement in a benchmark or in the pull-request text, and put only the stable invariant in a comment. Numbers in comments rot.
 10. **Added judgment: ask of any adoption, "which concrete complexity does this remove here?"** If the answer is only "it is the standard approach", the adoption has no evidence yet.
@@ -77,9 +77,9 @@ Decision: do not adopt yet. Revisit when a second consumer exists and its caller
 
 ## Trade-offs and exceptions
 
-- When performance is the product requirement (a latency budget, an embedded device), the evidence bar is met by the requirement and a measurement; the optimization still hides behind the interface.
+- When performance is the product requirement (a latency budget, an embedded device), the evidence bar is met by the requirement and a measurement; the optimization still hides behind the interface (Added judgment).
 - Some optimizations must be visible in the interface because callers control the cost (streaming versus buffering). Expose them as semantic choices, not mechanisms (Added judgment).
-- Following an established framework convention in an existing code base is not "adoption"; the rule targets new additions.
+- Following an established framework convention in an existing code base is not "adoption"; the rule targets new additions (Added judgment).
 - Reliability mechanisms such as timeouts and retries are a production-failure concern outside this rule set; use a release-engineering plugin for their policy.
 
 ## Verification
@@ -97,3 +97,4 @@ Decision: do not adopt yet. Revisit when a second consumer exists and its caller
 ## Source
 
 - `Performance, Trends, and Tests`: the rules on performance evidence and on adopting trends, patterns and frameworks.
+- `Information Hiding Rules`: only the rule that callers must not depend on performance hacks (rule 7).

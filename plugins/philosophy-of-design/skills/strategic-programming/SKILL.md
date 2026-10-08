@@ -1,6 +1,6 @@
 ---
 name: strategic-programming
-description: "Use when a change is a quick patch, a copy-paste to meet a deadline, one more exposed detail or flag, or when recurring friction suggests reshaping an abstraction. Sizes the design investment a change deserves."
+description: "Use when the change is a deadline patch or a copy-paste of existing code, the same workaround is about to appear a third time, or recurring friction suggests reshaping an abstraction. Sizes the design investment; it does not choose a signature shape."
 ---
 
 # Strategic programming

@@ -100,3 +100,4 @@ The split looked tidy and was wrong: the quote state is shared knowledge, so sep
 
 - `Combine or Separate Code`
 - `Function and Variable Rules`: only the rule against chains of tiny functions that readers must jump through.
+- `Performance, Trends, and Tests`: only the rule that test convenience must not force shallow or leaky interfaces (cited in Trade-offs).

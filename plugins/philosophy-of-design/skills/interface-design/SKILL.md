@@ -1,6 +1,6 @@
 ---
 name: interface-design
-description: "Use when shaping a single public function, method, class or API element: design it around what callers need to know, not how the implementation works. Narrow but meaningful, names that reveal the abstraction."
+description: "Use when shaping a single public function, method, class or API element as a whole: design it around what callers need to know, not how the implementation works. Narrow but meaningful, names that reveal the abstraction. Behavior-switching parameters are flags-and-knobs."
 ---
 
 # Interface design
@@ -24,7 +24,7 @@ Shapes one public element at a time: its operations, parameters, return values a
 6. **Prefer, as signs of a good interface: few methods, strong semantic guarantees, limited required context, and callers who need not understand the internals.** Check: a new teammate can use it from the contract comment alone.
 7. **Treat these as warnings, usually forbidden: many configuration flags, call-order traps, several setup methods required before use, and boolean or mode parameters that switch internal behavior.** Check: search the signature for `bool`, `mode`, `options` bags and `init`/`setup` methods.
 8. **Design the common call site first.** Added judgment: write the three most frequent callers as code before fixing the signature. Check: each is one line without setup.
-9. **Make the common case automatic and keep rare controls out of the common path.** Check: defaults serve the typical caller; rare options sit behind named parameters or a separate operation.
+9. **Make the common case automatic and keep rare controls out of the common path.** Compact checklist rule: it comes from the final checklist in `references/mini.md`, not from a section of `full.md`. Check: defaults serve the typical caller; rare options sit behind named parameters or a separate operation.
 
 ## Procedure
 

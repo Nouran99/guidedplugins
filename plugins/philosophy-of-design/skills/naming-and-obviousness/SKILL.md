@@ -23,7 +23,7 @@ Treats names, conventions and obviousness as design information. Prose in commen
 5. **Treat code that surprises a reader as complexity, even if it is short.** Check: a review question starting with "wait, does this also ...?"
 6. **When naming is vague, mechanism-focused, inconsistent or surprising, reconsider the abstraction boundary instead of accepting a near miss.** Check: if three candidate names are all poor, the unit probably does two things or hides nothing.
 7. **Use names and method shapes that reveal the abstraction (not the mechanism) at every public boundary.** Check: no public name contains a data structure, a protocol verb or a vendor name unless that is the abstraction.
-8. **Follow existing conventions unless new information justifies changing them.** Check: grep for how the repository already names this concept before inventing a term.
+8. **Follow existing conventions unless new information justifies changing them.** Compact checklist rule: it comes from the final checklist in `references/mini.md`, not from a section of `full.md`. Check: grep for how the repository already names this concept before inventing a term.
 9. **Added judgment: a name that needs `And`, `Or`, `Handle`, `Process` or `Manager` is a design signal.** It often means a function does two things or a module hides nothing. Check: try to name it as a noun-and-verb pair from the domain.
 10. **Added judgment: one concept, one term across the repository.** Check: search for synonyms (`fetch`, `get`, `load`, `find`) used for the same kind of lookup.
 
@@ -65,7 +65,7 @@ A reader who has seen `findUser` can predict `findOrder` without opening it; `pr
 
 ## Trade-offs and exceptions
 
-- Existing conventions win unless new information justifies a change; a consistent but imperfect name is better than a better name used in one place.
+- Existing conventions win unless new information justifies a change (rule 8, compact checklist); a consistent but imperfect name is better than a better name used in one place (Added judgment).
 - Domain terms may look mechanical (`checksum`, `index`) and still be the abstraction; the rule is about hiding mechanism callers do not care about.
 - Renaming a public name breaks callers; add the new name, deprecate the old.
 - Short loop variables and well-known idioms are fine; obviousness is judged by the reader, not by length.

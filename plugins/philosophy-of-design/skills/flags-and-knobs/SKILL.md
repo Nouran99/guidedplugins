@@ -1,6 +1,6 @@
 ---
 name: flags-and-knobs
-description: "Use when a function takes a boolean or mode parameter that switches behavior, an options bag keeps growing, or a flag or callback is proposed to avoid deciding something. Moves the decision inside or splits the operation by intent."
+description: "Use when the signature itself has a boolean or mode parameter that switches behavior, an options bag that keeps growing, or a callback added so one caller can override a step. Decides inside or splits by intent. Not for lines repeated at call sites."
 ---
 
 # Flags and knobs

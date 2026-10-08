@@ -9,7 +9,7 @@ Every section of the upstream *full* rule set (`skills/principles/references/ful
 | Primary Directive | `skill:complexity-symptoms`, `skill:deep-modules`, `skill:design-twice`, `skill:explain-rule`, `skill:principles`, `agent:lead`, `style:mentor`, `style:terse` |
 | Core Complexity Rules | `skill:audit`, `skill:complexity-symptoms`, `skill:explain-rule`, `skill:principles`, `skill:symptom-trace`, `agent:complexity-reviewer`, `style:complexity-ledger` |
 | Module Depth Rules | `skill:collapse-layer`, `skill:deep-modules`, `skill:depth-map`, `skill:explain-rule`, `skill:pass-through-layers`, `agent:depth-reviewer`, `agent:module-deepener`, `style:architect` |
-| Information Hiding Rules | `skill:explain-rule`, `skill:information-hiding`, `agent:leakage-reviewer` |
+| Information Hiding Rules | `skill:explain-rule`, `skill:information-hiding`, `skill:performance-and-trends`, `agent:leakage-reviewer` |
 | Interface Design Rules | `skill:explain-rule`, `skill:flags-and-knobs`, `skill:interface-design`, `skill:naming-and-obviousness`, `skill:temporal-decomposition`, `agent:interface-reviewer`, `agent:interface-simplifier` |
 | Strategic Programming over Tactical Programming | `skill:explain-rule`, `skill:fix`, `skill:plan`, `skill:strategic-programming`, `agent:tactical-patch-reviewer`, `style:pair` |
 | General-Purpose vs Special-Purpose Modules | `skill:explain-rule`, `skill:generality-and-special-cases`, `agent:special-case-isolator`, `agent:special-case-reviewer` |
@@ -22,11 +22,11 @@ Every section of the upstream *full* rule set (`skills/principles/references/ful
 | Combine or Separate Code | `skill:collapse-layer`, `skill:explain-rule`, `skill:generality-and-special-cases`, `skill:pass-through-layers`, `skill:split-or-merge`, `agent:module-deepener`, `agent:split-merge-reviewer`, `style:pair` |
 | Design Alternatives and Comments-First Design | `skill:comments-as-design`, `skill:comments-first`, `skill:design-alternatives`, `skill:design-twice`, `skill:explain-rule`, `skill:plan`, `agent:contract-writer`, `style:architect` |
 | Naming, Consistency, and Obviousness | `skill:explain-rule`, `skill:naming-and-obviousness`, `agent:naming-reviewer` |
-| Performance, Trends, and Tests | `skill:explain-rule`, `skill:performance-and-trends`, `skill:testing-through-interfaces`, `agent:evidence-reviewer` |
+| Performance, Trends, and Tests | `skill:explain-rule`, `skill:performance-and-trends`, `skill:split-or-merge`, `skill:testing-through-interfaces`, `agent:evidence-reviewer` |
 | Review Rules | `skill:audit`, `skill:fix`, `skill:review`, `skill:symptom-trace`, `agent:lead`, `style:strict-reviewer` |
 | Forbidden Patterns | `skill:audit`, `skill:explain-rule`, `skill:review`, `agent:final-gate`, `style:strict-reviewer` |
 | Code Generation Rules | `skill:interface-design`, `skill:pass-through-layers`, `skill:plan`, `skill:pull-complexity-down`, `agent:lead`, `style:architect` |
-| Testing Rules | `skill:explain-rule`, `skill:fix`, `skill:testing-through-interfaces`, `agent:test-contract-reviewer`, `agent:test-writer` |
+| Testing Rules | `skill:explain-rule`, `skill:fix`, `skill:testing-through-interfaces`, `agent:special-case-isolator`, `agent:test-contract-reviewer`, `agent:test-writer` |
 | Review Checklist | `skill:checklist`, `skill:principles`, `skill:review`, `agent:final-gate`, `style:complexity-ledger`, `style:mentor`, `style:strict-reviewer` |
 | Final Instruction | `skill:checklist`, `skill:principles`, `agent:final-gate`, `style:terse` |
 

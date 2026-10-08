@@ -76,7 +76,7 @@ class TtlCache<V> {
 }
 ```
 
-Four narrating comments disappeared into names; two comments appeared because they hold facts the code cannot show.
+Five narrating comments disappeared into names and structure; three comments remain because they hold facts the code cannot show (the scope of the cache, a storage decision, the contract of `get`).
 
 ## Anti-patterns
 
