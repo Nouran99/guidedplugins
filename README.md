@@ -31,6 +31,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | Plugin | Book | Author | Components | Reach for it when |
 | --- | --- | --- | --- | --- |
 | [`clean-code`](plugins/clean-code/README.md) | Clean Code | Robert C. Martin | 59 (31 skills, 22 agents, 6 styles) | Doing everyday coding and code review: naming, small functions, tests. |
+| [`philosophy-of-design`](plugins/philosophy-of-design/README.md) | A Philosophy of Software Design | John Ousterhout | 58 (30 skills, 22 agents, 6 styles) | Designing APIs or modules, or refactoring shallow abstractions. |
 
 <!-- CATALOG:END -->
 
