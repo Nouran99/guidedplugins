@@ -213,6 +213,16 @@ export function validatePlugin(dir, opts = {}) {
     }
   }
 
+  // every "<slug>:<name>" reference (slash command, @agent-, output-style, or bare delegate form) must resolve
+  const known = new Set(all.map((x) => x.data?.name ?? x.id));
+  const refRe = new RegExp(`(?<![\\w-])(?:/|@agent-)?${plugin.slug.replace(/[-]/g, '\\-')}:([a-z][a-z0-9]*(?:-[a-z0-9]+)*)`, 'g');
+  const checkRefs = (where, text) => {
+    const bad = new Set();
+    for (const t of text.matchAll(refRe)) if (!known.has(t[1])) bad.add(t[1]);
+    if (bad.size) err(where, `references unknown components: ${[...bad].map((b) => `${plugin.slug}:${b}`).join(', ')}`);
+  };
+  for (const comp of all) if (comp.text) checkRefs(rel(comp.file), comp.text);
+
   // unique names within type
   for (const group of [plugin.agents, plugin.styles]) {
     const seen = new Map();
@@ -269,6 +279,7 @@ export function validatePlugin(dir, opts = {}) {
       ['limitations', /^#{1,3}\s+.*(limitation|criticism|caveat)/im], ['attribution', /^#{1,3}\s+.*(attribution|license|credits)/im]];
     for (const [label, re] of need) if (!re.test(readme)) err('README.md', `missing a section on ${label}`);
     if (hasPlaceholder(readme)) err('README.md', 'contains placeholder text');
+    checkRefs('README.md', readme);
     if (!readme.includes(README_START) || !readme.includes(README_END)) err('README.md', `needs ${README_START} ... ${README_END} markers`);
     else {
       const fresh = replaceReadmeBlock(readme, renderCatalogBlock(plugin));

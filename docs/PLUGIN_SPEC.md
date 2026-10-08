@@ -101,7 +101,8 @@ Annotated skeletons live in `docs/templates/`. They show structure and voice wit
 - **Every component ends with `## Source`**: a bullet list with **one upstream `##`/`###` heading per bullet**, the heading first and in backticks, spelled exactly as in `references/full.md` (case-insensitive). A note may follow the heading on the same bullet when only part of the section applies (`- \`Naming rules\`: only the rule on magic numbers`); the note may contain anything.
 - **No placeholders** (`TBD`, `lorem ipsum`, `<placeholder>`, `[INSERT ...]`, `__UPPER_TOKEN__`), no emoji, no marketing language.
 - **Examples are original**, short, in a widely readable language (TypeScript, Python, Java or Go), and show a before/after or a decision. They never come from the book.
-- **Cross-reference by name**: point to sibling skills and agents with their invocation (`/<slug>:naming`, `<slug>:error-handling-reviewer`) so the toolkit reads as one system.
+- **Cross-reference by name**: point to sibling skills and agents with their invocation (`/<slug>:naming`, `<slug>:error-handling-reviewer`) so the toolkit reads as one system. Every `<slug>:<name>` you write (in components and the README) must resolve to a real component; the validator fails on typos and on references to components that do not exist.
+- **Other book plugins are named, never linked**: write `ddd` or `legacy-code` in backticks. Do not add relative links to sibling plugin folders (they may not be installed or even built yet) and do not reference their components by command.
 
 ### 5.1 Hub skill: `skills/principles/SKILL.md`
 
@@ -229,6 +230,7 @@ node scripts/validate-plugin.mjs plugins/<slug> --no-cli --quiet   # faster loop
 | `N/M upstream sections are not cited by any component` | Add the listed headings to the `## Source` of the component that really applies them, or create that component. |
 | `body is N chars, need at least M` | The component is too thin. Add decision content; do not pad. |
 | `near-duplicate components` | Merge, or differentiate purpose and content. |
+| `references unknown components: <slug>:x` | A `<slug>:<name>` reference does not match any skill, agent or output style in this plugin. Fix the spelling or add the component. |
 | `... is stale; run gen-catalog` | Run `node scripts/gen-catalog.mjs plugins/<slug>`. |
 | `model-invocable skills > 20` | Move workflow-style skills to `disable-model-invocation: true`. |
 
