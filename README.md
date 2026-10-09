@@ -32,6 +32,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | --- | --- | --- | --- | --- |
 | [`clean-code`](plugins/clean-code/README.md) | Clean Code | Robert C. Martin | 59 (31 skills, 22 agents, 6 styles) | Doing everyday coding and code review: naming, small functions, tests. |
 | [`philosophy-of-design`](plugins/philosophy-of-design/README.md) | A Philosophy of Software Design | John Ousterhout | 58 (30 skills, 22 agents, 6 styles) | Designing APIs or modules, or refactoring shallow abstractions. |
+| [`clean-architecture`](plugins/clean-architecture/README.md) | Clean Architecture | Robert C. Martin | 60 (32 skills, 22 agents, 6 styles) | You need code that resists framework, database, and UI churn. |
 
 <!-- CATALOG:END -->
 

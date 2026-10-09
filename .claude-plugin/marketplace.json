@@ -45,6 +45,24 @@
         "ousterhout",
         "code-review"
       ]
+    },
+    {
+      "name": "clean-architecture",
+      "source": "./plugins/clean-architecture",
+      "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
+      "version": "1.0.0",
+      "category": "architecture",
+      "tags": [
+        "clean-architecture",
+        "dependency-rule",
+        "boundaries",
+        "use-cases",
+        "ports-and-adapters",
+        "solid",
+        "components",
+        "architecture-review",
+        "robert-martin"
+      ]
     }
   ]
 }

@@ -1,0 +1,31 @@
+{
+  "name": "clean-architecture",
+  "displayName": "Clean Architecture",
+  "version": "1.0.0",
+  "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/clean-architecture",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "clean-architecture",
+    "dependency-rule",
+    "boundaries",
+    "use-cases",
+    "ports-and-adapters",
+    "solid",
+    "components",
+    "architecture-review",
+    "robert-martin"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Clean Architecture rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}
