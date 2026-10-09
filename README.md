@@ -34,6 +34,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | [`philosophy-of-design`](plugins/philosophy-of-design/README.md) | A Philosophy of Software Design | John Ousterhout | 58 (30 skills, 22 agents, 6 styles) | Designing APIs or modules, or refactoring shallow abstractions. |
 | [`clean-architecture`](plugins/clean-architecture/README.md) | Clean Architecture | Robert C. Martin | 60 (32 skills, 22 agents, 6 styles) | You need code that resists framework, database, and UI churn. |
 | [`code-complete`](plugins/code-complete/README.md) | Code Complete | Steve McConnell | 58 (30 skills, 22 agents, 6 styles) | You need disciplined implementation decisions on routines, control flow, and testing. |
+| [`data-intensive-apps`](plugins/data-intensive-apps/README.md) | Designing Data-Intensive Applications | Martin Kleppmann | 60 (32 skills, 22 agents, 6 styles) | Data ownership, event flows, or consistency semantics matter. |
 
 <!-- CATALOG:END -->
 
