@@ -211,5 +211,9 @@ export function componentInvocation(plugin, c) {
 
 export function oneLine(s, max = 160) {
   const t = String(s ?? '').replace(/\s+/g, ' ').trim();
-  return t.length > max ? `${t.slice(0, max - 1)}…` : t;
+  if (t.length <= max) return t;
+  // cut at a word boundary so a <slug>:<name> reference is never split mid-token
+  const cut = t.slice(0, max - 1);
+  const at = cut.lastIndexOf(' ');
+  return `${(at > max * 0.5 ? cut.slice(0, at) : cut).replace(/[\s,;:(\-]+$/, '')}…`;
 }
