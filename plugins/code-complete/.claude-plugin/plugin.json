@@ -1,0 +1,32 @@
+{
+  "name": "code-complete",
+  "displayName": "Code Complete",
+  "version": "1.0.0",
+  "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/code-complete",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "code-complete",
+    "construction",
+    "routines",
+    "defensive-programming",
+    "assertions",
+    "testing",
+    "debugging",
+    "code-review",
+    "performance-tuning",
+    "mcconnell"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Code Complete rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}

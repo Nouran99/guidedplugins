@@ -63,6 +63,25 @@
         "architecture-review",
         "robert-martin"
       ]
+    },
+    {
+      "name": "code-complete",
+      "source": "./plugins/code-complete",
+      "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+      "version": "1.0.0",
+      "category": "code-quality",
+      "tags": [
+        "code-complete",
+        "construction",
+        "routines",
+        "defensive-programming",
+        "assertions",
+        "testing",
+        "debugging",
+        "code-review",
+        "performance-tuning",
+        "mcconnell"
+      ]
     }
   ]
 }
