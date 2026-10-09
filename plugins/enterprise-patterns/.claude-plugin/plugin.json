@@ -1,0 +1,34 @@
+{
+  "name": "enterprise-patterns",
+  "displayName": "Patterns of Enterprise Application Architecture",
+  "version": "1.0.0",
+  "description": "Martin Fowler's enterprise application patterns as a Claude Code toolkit: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/enterprise-patterns",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "poeaa",
+    "enterprise-patterns",
+    "orm",
+    "data-mapper",
+    "service-layer",
+    "unit-of-work",
+    "web-presentation",
+    "fowler",
+    "domain-model",
+    "repository",
+    "transaction-script",
+    "optimistic-lock"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Patterns of Enterprise Application Architecture rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}
