@@ -1,0 +1,30 @@
+{
+  "name": "ddd-implementing",
+  "displayName": "Implementing Domain-Driven Design",
+  "version": "1.0.0",
+  "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-implementing",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddd",
+    "iddd",
+    "aggregates",
+    "domain-events",
+    "repositories",
+    "integration",
+    "tactical-design",
+    "vernon"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Implementing Domain-Driven Design rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}

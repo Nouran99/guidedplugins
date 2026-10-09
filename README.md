@@ -37,6 +37,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | [`data-intensive-apps`](plugins/data-intensive-apps/README.md) | Designing Data-Intensive Applications | Martin Kleppmann | 60 (32 skills, 22 agents, 6 styles) | Data ownership, event flows, or consistency semantics matter. |
 | [`ddd`](plugins/ddd/README.md) | Domain-Driven Design | Eric Evans | 60 (32 skills, 22 agents, 6 styles) | You want to model the business domain rather than tables, controllers, or DTOs. |
 | [`ddd-distilled`](plugins/ddd-distilled/README.md) | Domain-Driven Design Distilled | Vaughn Vernon | 59 (32 skills, 21 agents, 6 styles) | You want DDD benefits without heavy ceremony. |
+| [`ddd-implementing`](plugins/ddd-implementing/README.md) | Implementing Domain-Driven Design | Vaughn Vernon | 57 (30 skills, 21 agents, 6 styles) | You need implementation-level DDD: aggregates, events, and integrations. |
 
 <!-- CATALOG:END -->
 

@@ -141,6 +141,23 @@
         "event-storming",
         "vernon"
       ]
+    },
+    {
+      "name": "ddd-implementing",
+      "source": "./plugins/ddd-implementing",
+      "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+      "version": "1.0.0",
+      "category": "domain-modeling",
+      "tags": [
+        "ddd",
+        "iddd",
+        "aggregates",
+        "domain-events",
+        "repositories",
+        "integration",
+        "tactical-design",
+        "vernon"
+      ]
     }
   ]
 }
