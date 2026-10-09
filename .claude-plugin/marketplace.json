@@ -121,6 +121,26 @@
         "core-domain",
         "evans"
       ]
+    },
+    {
+      "name": "ddd-distilled",
+      "source": "./plugins/ddd-distilled",
+      "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+      "version": "1.0.0",
+      "category": "domain-modeling",
+      "tags": [
+        "ddd",
+        "ddd-distilled",
+        "strategic-design",
+        "context-mapping",
+        "subdomains",
+        "bounded-context",
+        "ubiquitous-language",
+        "aggregates",
+        "domain-events",
+        "event-storming",
+        "vernon"
+      ]
     }
   ]
 }

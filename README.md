@@ -36,6 +36,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | [`code-complete`](plugins/code-complete/README.md) | Code Complete | Steve McConnell | 58 (30 skills, 22 agents, 6 styles) | You need disciplined implementation decisions on routines, control flow, and testing. |
 | [`data-intensive-apps`](plugins/data-intensive-apps/README.md) | Designing Data-Intensive Applications | Martin Kleppmann | 60 (32 skills, 22 agents, 6 styles) | Data ownership, event flows, or consistency semantics matter. |
 | [`ddd`](plugins/ddd/README.md) | Domain-Driven Design | Eric Evans | 60 (32 skills, 22 agents, 6 styles) | You want to model the business domain rather than tables, controllers, or DTOs. |
+| [`ddd-distilled`](plugins/ddd-distilled/README.md) | Domain-Driven Design Distilled | Vaughn Vernon | 59 (32 skills, 21 agents, 6 styles) | You want DDD benefits without heavy ceremony. |
 
 <!-- CATALOG:END -->
 
