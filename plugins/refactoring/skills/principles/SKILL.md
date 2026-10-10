@@ -75,7 +75,7 @@ Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`,
 2. The repository's existing conventions, unless they are the problem being fixed.
 3. This book's rules.
 
-Keep cleanup within the scope of the change that justifies it. Do not widen scope to satisfy the rules.
+Keep cleanup within the scope of the change that justifies it: refactor the smell that blocks the current change, not every smell in sight (compact checklist). Do not widen scope to satisfy the rules.
 
 ## Final checklist
 

@@ -16,7 +16,7 @@ This skill edits test files only. It records what the code does today, without j
 
 1. If `$ARGUMENTS` names a file, function or module, characterize that code.
 2. If it is empty, run `git status` and `git diff` and characterize the changed production code that lacks tests; count untracked files listed by `git status` as changed, because `git diff` does not show new files. If there is none, say so and stop.
-3. Touch only test files (and a test-data fixture if the project keeps them). Do not edit production code; if it cannot be tested without a change, report the seam that is needed and stop.
+3. Touch only test files (and a test-data fixture if the project keeps them). Do not edit production code; if it cannot be tested without a change, report the seam that is needed and stop. The smallest structural move that makes the code testable is a separate step with its own verification (`/refactoring:safety-net`, rule 4), not part of this skill.
 
 ## Steps
 

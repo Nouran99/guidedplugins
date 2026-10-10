@@ -25,7 +25,7 @@ Refactor before and after a behavior change, around one specific change: make th
 7. **When fixing a bug in unclear code, characterize the current failure and refactor only enough to make the fix visible before changing behavior (compact checklist).** Check: a test reproduces the failure before any structural edit.
 8. **Use the simplest helpful refactoring; prefer local simplification before large-scale abstraction.** Check: the preparation touches only the path the change enters.
 9. **Added judgment: write the preparation as one sentence.** "To add X, first make Y separable from Z." If you cannot write it, you are not ready to prepare, you are exploring. Check: the sentence exists in your plan or commit message.
-10. **Added judgment: leave alone what the change does not enter.** Smells elsewhere in the file are noted, not fixed. Check: the preparation diff does not touch code paths the feature will not call.
+10. **Refactor the smell that blocks the current change, not every smell in sight (compact checklist).** Added judgment on how to apply it: leave alone what the change does not enter; smells elsewhere in the file are noted, not fixed. Check: the smell you named as blocking is the one the preparation removes, and the preparation diff does not touch code paths the feature will not call.
 
 ## Procedure
 

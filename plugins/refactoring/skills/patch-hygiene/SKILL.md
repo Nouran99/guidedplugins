@@ -18,7 +18,7 @@ How a change is cut for review: one intent per patch, structure apart from behav
 
 1. **Separate structural edits from behavior changes whenever practical.** A reviewer can approve a pure restructuring quickly and a behavior change carefully, but not both at once. Check: every patch is labelled structure or behavior, and no patch is both.
 2. **Group related refactorings together.** A reader follows one theme at a time. Check: each patch has a one-sentence theme ("extract shipping calculation"), not a list.
-3. **Avoid giant mixed commits that rename, move, redesign and change logic all at once (Avoid).** Check: no patch contains more than one of those four activities.
+3. **Avoid giant mixed commits that rename, move, redesign and change logic all at once (Avoid).** Check: no patch contains more than one of those four activities (Added judgment: the source rules out doing all four at once; one activity per patch is this plugin's stricter check).
 4. **Prefer reviewable sequences of transformations.** Check: each patch in the series builds and passes tests by itself, and can be reviewed without reading the later ones.
 5. **Do not mix feature work with huge unrelated renames (Do not).** The rename buries the feature. Check: a rename that touches files the feature does not touch is its own patch.
 6. **Do not hide behavior changes inside cleanup.** Check: the cleanup patch changes no test expectation and no output.

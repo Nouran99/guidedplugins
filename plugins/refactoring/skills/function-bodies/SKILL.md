@@ -13,6 +13,7 @@ Where to cut a long function and which moves reshape what is inside it. The boun
 - Parsing, validation, computation and I/O appear in one body.
 - A temporary variable is reassigned for different purposes, or an expression needs a comment to be understood.
 - Many local variables prevent extracting a block cleanly.
+- You are about to add more logic to a function that already mixes responsibilities, abstraction levels, phases or hidden side effects.
 
 ## Rules
 
@@ -28,6 +29,7 @@ Where to cut a long function and which moves reshape what is inside it. The boun
 10. **Remove Assignments to Parameters when mutation obscures what the input meant.** Check: parameters are read-only in the body; a working copy has its own name.
 11. **Use Replace Method with Method Object when local state prevents clean extraction, and Substitute Algorithm when a clearer algorithm can replace a tangled one without changing behavior.** Check: the second is backed by tests that cover the old algorithm's edge cases.
 12. **Added judgment: choose the extraction boundary at the first line where the reader must change abstraction level, and check what the fragment reads and writes.** A fragment that reads several locals and writes more than one is a method-object or phase-split candidate, not a plain extract. Check: the extracted function has few parameters and a single result.
+13. **When a function mixes responsibilities, abstraction levels, phases or hidden side effects, rename, extract, split phases or isolate side effects before adding more logic (compact checklist).** Check: the new logic lands in a function that does one coherent thing, or your notes say why the function was left as it is.
 
 ## Procedure
 
