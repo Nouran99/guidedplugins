@@ -179,6 +179,21 @@
         "transaction-script",
         "optimistic-lock"
       ]
+    },
+    {
+      "name": "refactoring",
+      "source": "./plugins/refactoring",
+      "description": "Refactoring by Martin Fowler as a Claude Code toolkit: skills, subagents and output styles for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy.",
+      "version": "1.0.0",
+      "category": "refactoring",
+      "tags": [
+        "refactoring",
+        "code-smells",
+        "safe-change",
+        "characterization-tests",
+        "preparatory-refactoring",
+        "fowler"
+      ]
     }
   ]
 }
