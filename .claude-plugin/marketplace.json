@@ -250,6 +250,22 @@
         "feedback-loops",
         "hunt-thomas"
       ]
+    },
+    {
+      "name": "legacy-code",
+      "source": "./plugins/legacy-code",
+      "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+      "version": "1.0.0",
+      "category": "refactoring",
+      "tags": [
+        "legacy-code",
+        "seams",
+        "characterization-tests",
+        "dependency-breaking",
+        "sprout-and-wrap",
+        "test-harness",
+        "feathers"
+      ]
     }
   ]
 }

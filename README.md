@@ -43,6 +43,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | [`refactoring-guru`](plugins/refactoring-guru/README.md) | Refactoring.Guru | Refactoring.Guru (website) | 58 (30 skills, 22 agents, 6 styles) | You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign. |
 | [`release-it`](plugins/release-it/README.md) | Release It! | Michael T. Nygard | 58 (31 skills, 21 agents, 6 styles) | You are building services, APIs, queues, or critical production paths. |
 | [`pragmatic-programmer`](plugins/pragmatic-programmer/README.md) | The Pragmatic Programmer | Andrew Hunt, David Thomas | 58 (32 skills, 20 agents, 6 styles) | You want a general engineering layer: automation, feedback, orthogonality. |
+| [`legacy-code`](plugins/legacy-code/README.md) | Working Effectively with Legacy Code | Michael Feathers | 55 (29 skills, 20 agents, 6 styles) | You are changing poorly tested legacy code and need to regain control first. |
 
 <!-- CATALOG:END -->
 
