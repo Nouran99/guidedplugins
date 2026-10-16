@@ -40,6 +40,7 @@ Try a plugin without installing it by pointing Claude Code at its folder: `claud
 | [`ddd-implementing`](plugins/ddd-implementing/README.md) | Implementing Domain-Driven Design | Vaughn Vernon | 57 (30 skills, 21 agents, 6 styles) | You need implementation-level DDD: aggregates, events, and integrations. |
 | [`enterprise-patterns`](plugins/enterprise-patterns/README.md) | Patterns of Enterprise Application Architecture | Martin Fowler | 59 (32 skills, 21 agents, 6 styles) | You need to choose an appropriate enterprise pattern instead of mixing responsibilities. |
 | [`refactoring`](plugins/refactoring/README.md) | Refactoring | Martin Fowler | 58 (30 skills, 22 agents, 6 styles) | You want small, test-backed structural changes kept separate from feature work. |
+| [`refactoring-guru`](plugins/refactoring-guru/README.md) | Refactoring.Guru | Refactoring.Guru (website) | 58 (30 skills, 22 agents, 6 styles) | You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign. |
 
 <!-- CATALOG:END -->
 

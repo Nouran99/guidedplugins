@@ -194,6 +194,21 @@
         "preparatory-refactoring",
         "fowler"
       ]
+    },
+    {
+      "name": "refactoring-guru",
+      "source": "./plugins/refactoring-guru",
+      "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+      "version": "1.0.0",
+      "category": "refactoring",
+      "tags": [
+        "refactoring-guru",
+        "code-smells",
+        "refactoring-techniques",
+        "smell-to-treatment",
+        "technical-debt",
+        "behavior-preserving"
+      ]
     }
   ]
 }

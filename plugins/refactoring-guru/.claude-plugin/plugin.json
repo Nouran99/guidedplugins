@@ -1,0 +1,28 @@
+{
+  "name": "refactoring-guru",
+  "displayName": "Refactoring.Guru",
+  "version": "1.0.0",
+  "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/refactoring-guru",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "refactoring-guru",
+    "code-smells",
+    "refactoring-techniques",
+    "smell-to-treatment",
+    "technical-debt",
+    "behavior-preserving"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Refactoring.Guru rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}
