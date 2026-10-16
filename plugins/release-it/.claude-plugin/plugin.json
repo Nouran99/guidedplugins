@@ -1,0 +1,34 @@
+{
+  "name": "release-it",
+  "displayName": "Release It!",
+  "version": "1.0.0",
+  "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/release-it",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "release-it",
+    "stability-patterns",
+    "circuit-breaker",
+    "bulkhead",
+    "timeouts",
+    "retries",
+    "back-pressure",
+    "resilience",
+    "observability",
+    "deployment-safety",
+    "production",
+    "nygard"
+  ],
+  "userConfig": {
+    "inject_rules": {
+      "type": "boolean",
+      "title": "Inject the compact rules at session start",
+      "description": "Adds the short Release It! rule set to every session as always-on context. Leave off when you use several book plugins; the skills load the rules on demand.",
+      "default": false
+    }
+  }
+}
