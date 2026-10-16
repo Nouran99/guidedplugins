@@ -230,6 +230,26 @@
         "production",
         "nygard"
       ]
+    },
+    {
+      "name": "pragmatic-programmer",
+      "source": "./plugins/pragmatic-programmer",
+      "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
+      "version": "1.0.0",
+      "category": "engineering-practice",
+      "tags": [
+        "pragmatic-programmer",
+        "dry",
+        "orthogonality",
+        "tracer-bullets",
+        "design-by-contract",
+        "debugging",
+        "automation",
+        "broken-windows",
+        "prototypes",
+        "feedback-loops",
+        "hunt-thomas"
+      ]
     }
   ]
 }
