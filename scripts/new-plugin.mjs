@@ -27,8 +27,12 @@ for (const f of Object.values(srcFiles)) if (!fs.existsSync(path.join(srcDir, f)
 let sha = 'unknown';
 try { sha = execFileSync('git', ['-C', path.resolve(up), 'rev-parse', 'HEAD'], { encoding: 'utf8' }).trim(); } catch { /* clone without git metadata */ }
 
+// With --force on an existing plugin, never overwrite files an author has written by hand.
+const existed = fs.existsSync(dir);
+const KEEP = new Set(['.claude-plugin/plugin.json', 'README.md', 'CHANGELOG.md', 'NOTICE.md']);
 const w = (rel, text, mode) => {
   const f = path.join(dir, rel);
+  if (existed && KEEP.has(rel) && fs.existsSync(f)) { console.log(`kept existing ${rel}`); return; }
   fs.mkdirSync(path.dirname(f), { recursive: true });
   fs.writeFileSync(f, text.endsWith('\n') ? text : `${text}\n`, mode ? { mode } : undefined);
 };
