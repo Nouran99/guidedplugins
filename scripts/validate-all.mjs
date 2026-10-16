@@ -4,7 +4,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
-import { ROOT, REGISTRY, listPluginDirs, readIf } from './lib.mjs';
+import { ROOT, REGISTRY, listDir, listPluginDirs, loadPlugin, readIf } from './lib.mjs';
 import { buildMarketplace } from './catalog-lib.mjs';
 import { validatePlugin } from './validate-plugin.mjs';
 
@@ -21,6 +21,32 @@ for (const dir of listPluginDirs()) {
   if (!quiet) for (const w of warnings) console.log(`WARN  ${plugin.slug}/${w}`);
   if (errors.length) failed++;
 }
+
+// repo-level docs: every <slug>:<name> reference and relative link must resolve
+const docErrors = [];
+{
+  const slugs = REGISTRY.books.map((b) => b.slug).sort((a, b) => b.length - a.length);
+  const names = new Map();
+  for (const dir of listPluginDirs()) {
+    const pl = loadPlugin(dir);
+    names.set(pl.slug, new Set([...pl.skills, ...pl.agents, ...pl.styles].map((c) => c.data?.name ?? c.id)));
+  }
+  const refRe = new RegExp(`(?<![\\w-])(?:/|@agent-)?(${slugs.map((x) => x.replace(/-/g, '\\-')).join('|')}):([a-z][a-z0-9]*(?:-[a-z0-9]+)*)`, 'g');
+  const files = ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', ...listDir(path.join(ROOT, 'docs')).filter((e) => e.isFile() && e.name.endsWith('.md')).map((e) => `docs/${e.name}`)];
+  for (const f of files) {
+    const text = readIf(path.join(ROOT, f));
+    if (text == null) continue;
+    for (const m of text.matchAll(refRe)) {
+      const set = names.get(m[1]);
+      if (set && !set.has(m[2])) docErrors.push(`${f}: reference ${m[1]}:${m[2]} does not exist`);
+    }
+    for (const m of text.matchAll(/\]\(((?!https?:|mailto:|#)[^)\s#]+)(?:#[^)]*)?\)/g)) {
+      if (!fs.existsSync(path.resolve(ROOT, path.dirname(f), m[1]))) docErrors.push(`${f}: broken relative link ${m[1]}`);
+    }
+  }
+}
+for (const e of [...new Set(docErrors)]) console.log(`ERROR docs/${e}`);
+if (docErrors.length) failed++;
 
 // marketplace file
 const mpErrors = [];
