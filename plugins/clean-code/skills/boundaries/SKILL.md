@@ -1,6 +1,6 @@
 ---
 name: boundaries
-description: "Use when core logic calls a third-party library, SDK or external service directly, when upgrading such a dependency, or when coding against an API that does not exist yet. Covers local adapters, narrow interfaces and learning tests."
+description: "Use when core logic calls a third-party library, SDK or service directly, when upgrading one, or when coding against an API that does not exist yet. Decides which vendor types and exceptions the core may see; wiring is /clean-code:system-construction, failure design /clean-code:error-handling."
 ---
 
 # Boundaries and external dependencies
@@ -21,10 +21,10 @@ Keeps code you do not own from shaping code you do. Who constructs objects and w
 3. **Create narrow interfaces around dependencies.** Expose only what the application uses, in the application's vocabulary. Check: the interface has the methods your code calls today and no more.
 4. **Add learning tests or focused integration tests for tricky external behavior.** Write small tests that call the real library the way you use it and record what it does. Check: for each surprising behavior you rely on, a test pins it, and it runs on upgrade.
 5. **When a dependency does not exist yet, define the interface from local needs, not guesses about future implementations.** Write the interface your code wants, and let the real implementation adapt to it. Check: the interface contains only operations a current caller needs.
-6. **Translate at the edge.** Convert vendor types, errors, nulls and units into your own at the adapter; do not let them travel inward. Check: no vendor exception type appears in a `catch` in core code.
-7. **Keep adapters free of business rules and core free of vendor types.** Check: the adapter has no branching that a domain expert would recognize as a rule.
-8. **Do not wrap what is stable and universal.** The language's standard types and the repository's own utilities rarely need an adapter; a wrapper that adds nothing is indirection. Check: you can name the change this wrapper protects against.
-9. **Keep vendor configuration and bootstrapping out of business behavior.** Check: core code never reads credentials or builds clients; see `/clean-code:system-construction`.
+6. **Prefer to translate at the edge.** Added judgment, following from rules 2 and 3: convert vendor types, errors, nulls and units into your own at the adapter instead of letting them travel inward. Check: no vendor exception type appears in a `catch` in core code.
+7. **Prefer adapters that hold no business rules.** Added judgment, following from keeping third-party details out of business behavior: an adapter translates and forwards, and a rule hidden in integration code is hard to find and to test. Check: the adapter has no branching that a domain expert would recognize as a rule.
+8. **Prefer not to wrap what is stable and universal.** Added judgment, following from the source's "when practical" in rule 1: the language's standard types and the repository's own utilities rarely need an adapter, and a wrapper that adds nothing is indirection. Check: you can name the change this wrapper protects against.
+9. **Keep vendor configuration and bootstrapping out of business behavior.** Added judgment, extending the construction rule that bootstrapping stays out of ordinary business behavior to credentials and client setup. Check: core code never reads credentials or builds clients; see `/clean-code:system-construction`.
 
 ## Procedure
 
@@ -39,11 +39,17 @@ Keeps code you do not own from shaping code you do. Who constructs objects and w
 ## Example
 
 ```go
+// Shared by both versions: Customer.Phone is a PhoneNumber and reminderText a string constant.
+// The twilio.* call shape is schematic; a real vendor client differs in detail.
+type PhoneNumber string
+
 // Before: core logic uses the vendor client and its types directly
 func (s *Reminder) Send(ctx context.Context, c Customer) error {
+	phone := string(c.Phone)
+	body := reminderText
 	_, err := s.twilio.Messages.Create(ctx, &twilio.CreateMessageParams{
-		To:   &c.Phone,
-		Body: &reminderText,
+		To:   &phone,
+		Body: &body,
 	})
 	return err
 }
@@ -108,3 +114,4 @@ A fake `TextSender` makes the reminder logic testable with no network, and a ven
 
 - `Boundaries and external dependencies`
 - `Objects, modules, and data structures`: only the rule that persistence, framework and third-party details must not obscure business behavior.
+- `System construction rules`: only the rule to keep framework bootstrapping out of ordinary business behavior.

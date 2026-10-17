@@ -1,6 +1,6 @@
 ---
 name: smells-redundancy
-description: "Use when code repeats itself, contains unused code, or has layers that only forward calls. Smell family for duplicated logic, dead code and unused abstractions, unnecessary indirection and accidental complexity, with detection recipes and treatments."
+description: "Use when code repeats itself, contains unused code, or has layers that only forward calls. Smell family for duplicated logic, dead code, unused abstractions and indirection, with detection recipes. Removes proven waste; choosing between designs is /clean-code:emergent-design."
 ---
 
 # Redundancy smells
@@ -25,7 +25,7 @@ The general-design family about things that can simply be removed: duplicated lo
 6. **Avoid unnecessary indirection.** Pass-through methods, wrappers that only delegate, and layers that rename without translating make readers jump with nothing gained. Check: the method body is a single call that forwards its arguments unchanged.
 7. **Avoid accidental complexity.** Complexity that comes from the tools or the author's cleverness rather than from the problem: custom frameworks for plain tasks, reimplementing standard functions, over-general code. Check: for each moving part, name the requirement that needs it.
 8. **Delete with evidence and in separate steps.** Before removing exported or reflective code, check external consumers, serialized names, dynamic lookups and docs. Keep deletions out of behavior-changing diffs. Check: the deletion diff contains only deletions and the tests still pass.
-9. **Do not replace duplication with a flag-laden super-function.** A merge that needs four booleans to describe the differences is worse than two clear copies. Check: the merged function has no parameter whose only job is to choose which copy it is.
+9. **Prefer two clear copies to a flag-laden super-function.** Added judgment, following from the rule against boolean flag parameters and from rule 3: a merge that needs several booleans to describe the differences usually joins code that is not one piece of knowledge, and it hides a mode switch behind a signature. Check: the merged function has no parameter whose only job is to choose which copy it is.
 
 ## Procedure
 

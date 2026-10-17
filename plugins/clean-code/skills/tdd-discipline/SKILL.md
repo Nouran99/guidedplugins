@@ -1,6 +1,6 @@
 ---
 name: tdd-discipline
-description: "Use when changing behavior, fixing a bug, finishing a refactor, or deciding how much to test. Covers failing-test-first, no unjustified production behavior, bug-fix tests, coverage as a signal, ignored tests, boundary cases and one-step builds."
+description: "Use when changing behavior, fixing a bug, or deciding how much to test. Covers failing-test-first, bug-fix tests, coverage as a signal, ignored tests and boundary cases. Decides whether and when tests exist; test quality is /clean-code:clean-tests, restructuring is /clean-code:refactoring-steps."
 ---
 
 # Test-first discipline and proportionate validation
@@ -11,22 +11,22 @@ Decides whether a change is protected by tests and in what order the tests and t
 
 - You are about to implement behavior that can be specified as an example.
 - You are fixing a bug.
-- A refactor touches code whose behavior is not pinned by any test.
+- A refactor touches code whose behavior is not pinned by any test (the sequence of moves is `/clean-code:refactoring-steps`).
 - You see `skip`, `@Ignore`, `xit`, `t.Skip` or a test marked flaky.
 - Running the build or the tests takes several manual steps.
 
 ## Rules
 
-1. **Prefer writing a failing test before production code when the behavior can be specified clearly.** The failing test is the specification and proves the test can fail. Check: you saw the new test fail, for the reason you expected, before making it pass.
-2. **Do not write production behavior beyond what a failing test or explicit requirement justifies.** Check: every new branch in the diff is reachable by a test or a stated requirement; speculative options are removed.
-3. **Keep tests small enough that a failure names one behavior or one concept.** Check: the failing test's name alone tells you what to look at.
-4. **Add or update tests for behavior changes, bug fixes and significant refactors.** Check: the diff includes test changes that correspond to each changed behavior.
-5. **When fixing a bug, add a test that would have caught it, when feasible.** Write it first and watch it fail on the unfixed code. Check: the regression test fails without the fix and passes with it.
-6. **Do not ship code changes without proportionate validation.** Proportionate means in line with the risk of the change; a rename needs less than a pricing change. Check: you ran the relevant tests or checks and can state the command and the result; if you could not run them, say so plainly.
-7. **Use coverage patterns to find untested risk, not as a substitute for meaningful assertions.** Check: a covered line has an assertion that would fail if the line were wrong; a coverage number is not offered as proof of quality.
-8. **Treat ignored, flaky or skipped tests as unresolved questions.** Either fix it, delete it with a recorded reason, or open a tracked follow-up. Check: no test is silently skipped in the touched area, and no flaky test is re-run until green without a cause.
+1. **Prefer to write a failing test first when the behavior can be stated clearly.** The failing test is the specification and proves the test can fail. Check: you saw the new test fail, for the reason you expected, before making it pass.
+2. **Do not add production behavior that no failing test or stated requirement calls for.** Check: every new branch in the diff is reachable by a test or a stated requirement; speculative options are removed.
+3. **Size tests so that one failure points at one behavior or concept.** Check: the failing test's name alone tells you what to look at.
+4. **Add or adjust tests whenever behavior changes, a bug is fixed or a refactor is significant.** Check: the diff includes test changes that correspond to each changed behavior.
+5. **For a bug fix, add a test that would have caught the bug, when that is feasible.** Write it first and watch it fail on the unfixed code. Check: the regression test fails without the fix and passes with it.
+6. **Do not ship a change without validation that fits its risk.** A rename needs less than a pricing change. Check: you ran the relevant tests or checks and can state the command and the result; if you could not run them, say so plainly.
+7. **Use coverage to locate untested risk, never as a replacement for meaningful assertions.** Check: a covered line has an assertion that would fail if the line were wrong; a coverage number is not offered as proof of quality.
+8. **Treat an ignored, flaky or skipped test as an open question, not a settled fact.** Either fix it, delete it with a recorded reason, or open a tracked follow-up. Check: no test is silently skipped in the touched area, and no flaky test is re-run until green without a cause.
 9. **Test the boundaries.** Cover empty, one, many, first, last, just under and just over limits, and absent values. Check: for each comparison or index in the changed code, a test sits on both sides of the edge.
-10. **Avoid tests and builds that require multiple manual steps.** Check: one documented command builds and runs the tests; if the diff adds a prerequisite step, it is automated or removed.
+10. **Avoid builds and test runs that need several manual steps.** Check: one documented command builds and runs the tests; if the diff adds a prerequisite step, it is automated or removed.
 11. **Run tests at the pace of the change.** Added judgment, following from rule 6: run the narrowest relevant test after each small step and the wider suite before you call the work done.
 
 ## Procedure

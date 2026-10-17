@@ -1,6 +1,6 @@
 ---
 name: system-construction
-description: "Use when business code creates its own collaborators, reads global configuration, wires dependencies mid-flow, or is cluttered by logging, transactions or retries. Separates building a system from using it and keeps wiring in one place."
+description: "Use when business code creates its own collaborators, reads global configuration, wires dependencies mid-flow, or is cluttered by logging, transactions or retries. Decides where objects are built and wired; which vendor types the core may see is /clean-code:boundaries."
 ---
 
 # System construction
@@ -17,15 +17,15 @@ Decides where objects are created and wired, and how cross-cutting concerns are 
 
 ## Rules
 
-1. **Separate constructing a system from using it.** Building objects and running them are different concerns with different reasons to change. Check: the code that decides what to build is not the code that runs the business rule.
-2. **Keep object graph assembly, dependency injection, factories and framework bootstrapping out of ordinary business behavior.** Check: business classes receive collaborators; they do not look them up or create them.
-3. **Put startup wiring in an explicit main or composition area.** One place shows how the pieces fit. Check: you can open one file and see the whole object graph for the application, or for a module.
-4. **Use factories when construction policy is meaningful or complex.** When what to build depends on a rule, name the factory for the rule. Check: the rule appears in exactly one place, not in each caller.
-5. **Do not let cross-cutting concerns obscure ordinary code flow.** Logging, authorization, transactions and retry policy should not bury the steps of the business operation. Check: the business function reads without them, or they are applied in one visible place around it.
-6. **Use standards, frameworks, proxies or AOP-style mechanisms only when they add demonstrable value.** Check: you can name the lines of code or the bugs the mechanism removes; if you cannot, plain code is cheaper.
-7. **Test-drive architectural decisions with executable slices, not only diagrams or configuration.** Added judgment: a thin end-to-end path that runs and is tested teaches more than a diagram. Check: the decision is exercised by a running test, not only documented.
-8. **Use domain-specific languages only when they make system intent clearer than general-purpose code.** Check: a domain expert can read the DSL, and its parser does not become a project of its own.
-9. **Avoid hidden construction.** Lazy initialization and static access in business methods make dependencies invisible. Added judgment: where lazy creation is needed for cost, put it behind the factory or provider, not in the business method. Check: no business method contains a construction expression for a service-like object.
+1. **Keep building the system apart from running it.** Assembling objects and running them are different concerns with different reasons to change. Check: the code that decides what to build is not the code that runs the business rule.
+2. **Keep object-graph assembly, injection, factories and framework startup out of everyday business logic.** Check: business classes receive collaborators; they do not look them up or create them.
+3. **Place startup wiring in one explicit main or composition area.** One place shows how the pieces fit. Check: you can open one file and see the whole object graph for the application, or for a module.
+4. **Introduce a factory when the choice of what to build follows a real rule or is complicated.** When what to build depends on a rule, name the factory for the rule. Check: the rule appears in exactly one place, not in each caller.
+5. **Do not let cross-cutting concerns hide the ordinary flow of the code.** Logging, authorization, transactions and retry policy should not bury the steps of the business operation. Check: the business function reads without them, or they are applied in one visible place around it.
+6. **Reach for a standard, framework, proxy or AOP-style mechanism only when it demonstrably pays for itself.** Check: you can name the lines of code or the bugs the mechanism removes; if you cannot, plain code is cheaper.
+7. **Prove architectural decisions with a thin executable slice, not with diagrams or configuration alone.** Added judgment: a thin end-to-end path that runs and is tested teaches more than a diagram. Check: the decision is exercised by a running test, not only documented.
+8. **Adopt a domain-specific language only when it states the system's intent more clearly than ordinary code would.** Check: a domain expert can read the DSL, and its parser does not become a project of its own.
+9. **Prefer visible construction.** Added judgment, following from rule 2: lazy initialization and static access in business methods make dependencies invisible, and where lazy creation is needed for cost it belongs behind the factory or provider, not in the business method. Check: no business method contains a construction expression for a service-like object.
 
 ## Procedure
 

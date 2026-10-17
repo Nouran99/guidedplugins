@@ -1,6 +1,6 @@
 ---
 name: class-design
-description: "Use when a class or module is growing, changes for several unrelated reasons, has fields used by only some methods, or is named Manager, Helper or Util. Covers single responsibility, cohesion, change locality, composition and constructors."
+description: "Use when a class or module is growing, changes for several unrelated reasons, has fields used by only some methods, or is named Manager, Helper or Util. Judges one class's responsibilities; exposed surface is /clean-code:data-and-objects, change spread across files is /clean-code:smells-coupling."
 ---
 
 # Class and module design
@@ -17,16 +17,16 @@ Judges the size and responsibility of a class or module. What its public surface
 
 ## Rules
 
-1. **Keep classes and modules small.** Size is measured in responsibilities, not lines alone. Check: you can list what the class is responsible for in one short sentence.
-2. **Give each class or module one primary responsibility.** Added judgment: if the description needs "and", "or", "if" or "but", the class probably has several. Check: ask who would request each kind of change; one answer per class.
-3. **Favor high cohesion.** Methods should use most of the fields. Check: draw the method-to-field usage; two disjoint clusters mean two classes in one.
-4. **Split classes that accumulate unrelated behavior.** Utility dumping grounds grow because they have no owner. Check: the module's functions share only a vague noun (`Utils`, `Helpers`, `Common`).
-5. **Organize code so likely changes remain local.** Think of the two or three changes the product will plausibly ask for next; each should touch one class, or one new class. Check: for each, list the files you would edit; more than a few is a finding.
-6. **Make public APIs small, obvious and hard to misuse.** Fewer public methods, names that tell the use, required order enforced by the types. Check: a caller cannot reach an invalid state through the public methods alone.
-7. **Prefer composition over complex inheritance unless inheritance is clearly the simpler and more stable model.** Check: no subclass overrides a method only to disable it; no hierarchy deeper than the domain needs.
-8. **Keep constructors and setup logic from overwhelming domain behavior.** A constructor assigns collaborators and validates; it does not call services, read files or start threads. Check: constructing the object in a test needs no environment.
-9. **Keep persistence, framework and third-party details from obscuring business behavior.** Mixed concerns are the most common reason a class grows. Check: removing the framework annotations and calls leaves a class that still reads as the business rule.
-10. **Do not hide a missing concept in a flag or a string.** Several methods that branch on the same field are a class waiting to be named. Check: grep for repeated `if (this.kind == ...)` in one class.
+1. **Keep each class and module small.** Size is measured in responsibilities, not lines alone. Check: you can list what the class is responsible for in one short sentence.
+2. **Give each class or module a single main responsibility.** Added judgment: if the description needs "and", "or", "if" or "but", the class probably has several. Check: ask who would request each kind of change; one answer per class.
+3. **Favor high cohesion: methods that work on the same data.** Methods should use most of the fields. Check: draw the method-to-field usage; two disjoint clusters mean two classes in one.
+4. **Split a class that has gathered unrelated behavior.** Utility dumping grounds grow because they have no owner. Check: the module's functions share only a vague noun (`Utils`, `Helpers`, `Common`).
+5. **Arrange code so that the changes you expect stay local.** Think of the two or three changes the product will plausibly ask for next; each should touch one class, or one new class. Check: for each, list the files you would edit; more than a few is a finding.
+6. **Make public APIs minimal, self-evident and hard to misuse.** Fewer public methods, names that tell the use, and a required call order enforced by the types (the order clause is compact checklist, `mini.md` only). Check: a caller cannot reach an invalid state through the public methods alone.
+7. **Prefer composition to elaborate inheritance, unless inheritance is plainly the simpler and steadier model.** Check: no subclass overrides a method only to disable it; no hierarchy deeper than the domain needs.
+8. **Keep constructors and setup code from crowding out domain behavior.** A constructor assigns collaborators and validates; it does not call services, read files or start threads. Check: constructing the object in a test needs no environment.
+9. **Keep persistence, framework and vendor concerns from clouding the business logic.** Mixed concerns are the most common reason a class grows. Check: removing the framework annotations and calls leaves a class that still reads as the business rule.
+10. **Prefer naming a missing concept to hiding it in a flag or a string.** Added judgment, following from the source's boolean-control-flag and polymorphic-conditional smells: several methods that branch on the same field are a class waiting to be named. Check: grep for repeated `if (this.kind == ...)` in one class.
 
 ## Procedure
 
@@ -103,5 +103,5 @@ A tax rule change now edits `InvoicePricing` only; a layout change edits `Invoic
 ## Source
 
 - `Class and module design`
-- `Smells to detect and eliminate`: only the oversized class or module smell.
+- `Smells to detect and eliminate`: only the oversized class or module, boolean control flag and excessive conditionals smells.
 - `Objects, modules, and data structures`: only the rule to keep persistence, framework and third-party details from obscuring business behavior.

@@ -1,6 +1,6 @@
 ---
 name: comments
-description: "Use when adding, reviewing or deleting comments, TODO notes or commented-out code, or when a comment explains what code does. Covers the five legitimate comment categories, noise removal, comment-heavy code and TODO policy."
+description: "Use when adding, reviewing or deleting comments, TODO notes or commented-out code, or when a comment explains what code does. Decides which text may stay once names and structure are as clear as they can be; fix those first with /clean-code:naming and /clean-code:function-shape."
 ---
 
 # Comments
@@ -16,16 +16,16 @@ Decides which text may stay in a source file after the code has been made as cle
 
 ## Rules
 
-1. **Do not use comments to compensate for bad naming or bad structure.** Check: delete the comment in your head; could a rename, a named predicate or an extracted function carry the same information?
-2. **Improve the code first, then decide whether a comment is still needed.** The order matters: writing the comment first anchors you to the weak code. Check: the diff shows the code change before any comment remains.
-3. **Prefer self-explanatory code.** Check: a reader who skips every comment still understands what the code does.
-4. **Use comments only for information the code cannot express well.** The legitimate categories are: legal or licensing requirements; non-obvious intent; important warnings or constraints; rationale for a surprising decision; clarification of external behavior or protocol assumptions. Check: you can assign every remaining comment to one of the five.
-5. **Remove redundant, obsolete, obvious, noisy and misleading comments.** Check: no comment merely repeats the next line, announces a section, records who changed what, or marks a closing brace. Delete commented-out code; version control remembers it.
-6. **Do not narrate the code line by line.** A comment per line means the code is not reading as a story. Check: more than one comment inside a short function is a prompt to extract and name.
-7. **Keep comments precise, and maintain them when the code changes.** Check: every identifier, unit and number in a comment still exists and still matches; a diff that changes the logic under a comment also touches or confirms the comment.
-8. **Avoid TODO comments unless they are actionable, specific and necessary.** Check: the TODO says what to do, why it cannot be done now, and what would trigger doing it; the repository has a convention for linking an issue.
-9. **Say why and under what constraint, not what.** Check: warnings state the consequence ("returns stale data for up to 60 seconds after a write"), and rationale states the alternative that was rejected.
-10. **Write the comment where the surprise is.** A constraint belongs next to the line that would be "fixed" by a well-meaning reader. Check: the comment is adjacent to the code it protects, not at the top of the file.
+1. **Do not lean on comments to cover for poor names or poor structure.** Check: delete the comment in your head; could a rename, a named predicate or an extracted function carry the same information?
+2. **Fix the code first, then ask whether any comment is still needed.** The order matters: writing the comment first anchors you to the weak code. Check: the diff shows the code change before any comment remains.
+3. **Prefer code that explains itself.** Check: a reader who skips every comment still understands what the code does.
+4. **Write a comment only for information the code cannot carry well.** The legitimate categories are: legal or licensing text; intent that is not obvious; warnings or limits that matter; the reason for a surprising choice; external behavior or protocol assumptions the reader must know. Check: you can assign every remaining comment to one of the five.
+5. **Delete comments that are redundant, outdated, obvious, noisy or misleading.** Check: no comment merely repeats the next line, announces a section, records who changed what, or marks a closing brace. Delete commented-out code; version control remembers it.
+6. **Do not retell the code line by line.** A comment per line means the code is not reading as a story. Check: more than one comment inside a short function is a prompt to extract and name.
+7. **Keep comments exact, and update them whenever the code changes.** Check: every identifier, unit and number in a comment still exists and still matches; a diff that changes the logic under a comment also touches or confirms the comment.
+8. **Avoid TODO comments unless each is actionable, specific and needed.** Check: the TODO says what to do, why it cannot be done now, and what would trigger doing it; the repository has a convention for linking an issue.
+9. **Say why and under what constraint, not what.** Added judgment, following from rule 4: a comment that survives the filter carries a reason, not a restatement. Check: warnings state the consequence ("returns stale data for up to 60 seconds after a write"), and rationale states the alternative that was rejected.
+10. **Write the comment where the surprise is.** Added judgment, following from rules 4 and 7: a constraint belongs next to the line that would be "fixed" by a well-meaning reader, where it is also most likely to be kept accurate. Check: the comment is adjacent to the code it protects, not at the top of the file.
 
 ## Procedure
 

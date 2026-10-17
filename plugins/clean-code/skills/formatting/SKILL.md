@@ -25,7 +25,7 @@ Governs how code is laid out so a reader can scan it: ordering of functions and 
 7. **Avoid excessive line length when it hurts readability.** Check: no horizontal scrolling in review; a long expression is broken at a meaningful boundary or given a name.
 8. **Avoid decorative alignment that is brittle during edits.** Aligned columns of assignments or comments make every later edit touch neighboring lines. Check: the diff of a one-line change is one line.
 9. **Preserve a layout that supports fast scanning.** Group declarations, then logic, then return; keep similar things in similar positions across files. Check: a reader new to the file can find the entry point in seconds.
-10. **Do not reformat code you were not asked to touch.** Formatting churn hides the real change. Added judgment: if the file is badly formatted and the formatter is not enforced, propose a formatting-only change separately from the behavior change.
+10. **Do not reformat code you were not asked to touch.** Added judgment, following from the Hard rule against silently broadening scope: formatting churn hides the real change. If the file is badly formatted and the formatter is not enforced, propose a formatting-only change separately from the behavior change.
 
 ## Procedure
 
@@ -41,7 +41,7 @@ Governs how code is laid out so a reader can scan it: ordering of functions and 
 ```go
 // Before: details first, story last, helper far from its caller
 func formatMoney(cents int64) string { return fmt.Sprintf("%d.%02d", cents/100, cents%100) }
-func lineTotal(l Line) int64            { return int64(l.Qty) * l.UnitCents }
+func lineTotal(l Line) int64 { return int64(l.Qty) * l.UnitCents }
 var taxRate = 0.2
 func (r Receipt) Render() string {
 	var b strings.Builder
@@ -62,13 +62,24 @@ func (r Receipt) Render() string {
 	return b.String()
 }
 
-func describe(l Line) string  { return fmt.Sprintf("%s %s\n", l.Name, formatMoney(lineTotal(l))) }
-func footer(r Receipt) string { return "Total " + formatMoney(total(r)) }
-func lineTotal(l Line) int64  { return int64(l.Qty) * l.UnitCents }
-func formatMoney(cents int64) string { return fmt.Sprintf("%d.%02d", cents/100, cents%100) }
+func describe(l Line) string {
+	return fmt.Sprintf("%-20s %s\n", l.Name, formatMoney(lineTotal(l)))
+}
+
+func footer(r Receipt) string {
+	return "Total " + formatMoney(total(r))
+}
+
+func lineTotal(l Line) int64 {
+	return int64(l.Qty) * l.UnitCents
+}
+
+func formatMoney(cents int64) string {
+	return fmt.Sprintf("%d.%02d", cents/100, cents%100)
+}
 ```
 
-The unused `taxRate` variable in the first version was a distraction; moving things also exposed it as dead code (`/clean-code:smells-redundancy`).
+The output of every function is unchanged, including the `%-20s` column padding in `describe`. The unused `taxRate` variable in the first version was a distraction; moving things exposed it as dead code, and deleting it is the only non-layout change (`/clean-code:smells-redundancy`).
 
 ## Anti-patterns
 
@@ -101,3 +112,4 @@ The unused `taxRate` variable in the first version was a distraction; moving thi
 ## Source
 
 - `Formatting and structure`
+- `Hard rules`: only the rule against silently broadening scope, which rule 10 builds on.

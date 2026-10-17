@@ -1,6 +1,6 @@
 ---
 name: function-shape
-description: "Use when a function is long, deeply nested, mixes levels of detail, or needs a comment to separate its phases. Covers function size, one thing per function, one abstraction level, top-down order, nesting, negative conditionals and the function-body smell catalog."
+description: "Use when a function is long, deeply nested, mixes levels of detail, or needs a comment to separate its phases. Judges the body: size, one abstraction level, nesting, negative conditionals. Signatures and effects are /clean-code:function-contracts; which comments may stay is /clean-code:comments."
 ---
 
 # Function shape
@@ -24,7 +24,7 @@ Judges the body of a function: how long it is, how many things it does, how deep
 6. **Refactor deep nesting into clearer structure.** Use guard clauses for preconditions, extract the inner block, or return early. Check: the happy path is not indented under a pyramid of `if`s.
 7. **Prefer straightforward control flow over clever control flow.** Avoid flag variables that steer later branches, `break`/`continue` mazes, nested ternaries and loops that mutate their own bounds. Check: you can trace one input through without keeping a state table.
 8. **Isolate conditions and state them positively.** Move a compound boolean into a named predicate (`isEligibleForRefund`) and avoid negative conditionals that obscure intent (`if (!isNotReady)`). Check: no `!` applied to a name that already contains "not", "no" or "un".
-9. **Split phases when a function mixes setup, validation, computation and side effects.** Check: each phase can be tested without running the others.
+9. **Split phases when a function mixes setup, validation, computation and side effects (compact checklist: `mini.md` only; the full rules ask for one thing per function and one level of abstraction).** Check: each phase can be tested without running the others.
 10. **Do not let error handling interleave with the main steps.** Move the `try` body into its own function so the steps read in order; the failure design itself is `/clean-code:error-handling`. Check: removing the `try`/`catch` leaves a readable sequence.
 
 ## Procedure

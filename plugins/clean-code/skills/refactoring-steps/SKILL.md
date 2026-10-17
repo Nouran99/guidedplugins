@@ -1,6 +1,6 @@
 ---
 name: refactoring-steps
-description: "Use when restructuring existing code, preparing for a change by cleaning first, or sequencing a cleanup. Covers small safe steps, behavior preservation, make-it-work-then-right, rename and extract and inline moves, and stopping when the change is safe."
+description: "Use when restructuring existing code without changing behavior, preparing for a change by cleaning first, or sequencing a cleanup. Covers small safe steps, make-it-work-then-right, rename, extract and inline moves, and stopping. Whether tests exist or come first is /clean-code:tdd-discipline."
 ---
 
 # Refactoring steps
@@ -31,7 +31,7 @@ The movement discipline: how to change structure without changing behavior, and 
 ## Procedure
 
 1. Run the relevant tests and record the baseline. A failing baseline is reported, not hidden.
-2. Choose one smell that most increases the cost of the requested change.
+2. Choose one smell that most increases the cost of the requested change (compact checklist, `mini.md`).
 3. Pick the smallest move that reduces it: rename, extract, inline, move, introduce parameter object, replace flag, remove dead code.
 4. Apply it, run the tests, and look at the diff.
 5. Repeat from step 2 until the requested change is easy to make.
@@ -42,11 +42,14 @@ The movement discipline: how to change structure without changing behavior, and 
 ## Example
 
 ```ts
-// Step log for one touched function
+// Step log for one private function (renames are tool-assisted, so every reference follows)
 // 1. Rename: p -> pendingRefunds, fn -> approveRefund        (tests green)
 // 2. Remove dead branch: `if (legacyMode)` is never true since v2.3 (tests green)
-// 3. Extract: isWithinRefundWindow(order, today)             (tests green)
+//    `legacyApprove` may now be unused; search before deleting it, in its own step
+// 3. Extract: isWithinRefundWindow(order), still reading Date.now() (tests green)
 // 4. Behavior change (separate step): refunds over 500 need a second approver (new test first)
+// Not done here: dropping the now-unused `legacyMode` parameter and injecting a clock both
+// change the signature, so each is its own caller-visible step with callers migrated.
 
 // Before
 function fn(o: Order, p: Refund[], legacyMode: boolean) {
@@ -54,11 +57,15 @@ function fn(o: Order, p: Refund[], legacyMode: boolean) {
   if ((Date.now() - o.paidAt) / 86_400_000 <= 30) { p.push(new Refund(o)); }
 }
 
-// After steps 1 to 3
-function approveRefund(order: Order, pendingRefunds: Refund[], now: Date) {
-  if (isWithinRefundWindow(order, now)) {
+// After steps 1 to 3: same parameters, same behavior
+function approveRefund(order: Order, pendingRefunds: Refund[], legacyMode: boolean) {
+  if (isWithinRefundWindow(order)) {
     pendingRefunds.push(new Refund(order));
   }
+}
+
+function isWithinRefundWindow(order: Order): boolean {
+  return (Date.now() - order.paidAt) / 86_400_000 <= 30;
 }
 ```
 
@@ -101,3 +108,4 @@ Step 4 is a different kind of change and gets its own test before it is written.
 - `Refactoring rules`
 - `Change Process`
 - `Priority and behavior`: only the rule to leave touched code cleaner and the instruction not to preserve bad structure merely because it exists.
+- `Emergent design and successive refinement`: only the rule not to start a grand redesign when incremental refinement can recover the design safely.

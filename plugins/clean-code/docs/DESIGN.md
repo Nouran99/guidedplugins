@@ -88,7 +88,7 @@ Every item in the upstream list `Smells to detect and eliminate` is owned by exa
 | `boy-scout` | no | yes | Leave touched code cleaner: one worthwhile cleanup per touched area, inside the touched code | Priority and behavior; Emergent design and successive refinement; Hard rules | `fix` and `refactorer` need findings or a target; `boy-scout` chooses the target from the diff and enforces the budget. |
 | `extract-till-you-drop` | no | yes | Decompose one long function into single-level functions, step by step, with tests | Function rules; Refactoring rules | `function-extractor` is the delegated agent for big jobs; this is the in-session loop with a stop rule against fragments. |
 | `successive-refinement` | no | yes | Draft until it works, then refine in named rounds with tests green | Emergent design and successive refinement; Refactoring rules | `plan` plans; this performs rounds on a working draft. |
-| `learning-tests` | no | yes | Pin down the behavior of a dependency already in the project with focused tests, then propose the adapter | Boundaries and external dependencies; Tests | `adapter-builder` builds the adapter; this writes the exploratory tests first. |
+| `learning-tests` | no | yes | Pin down the behavior of a dependency already in the project with focused tests, then propose the adapter interface | Boundaries and external dependencies; Tests | `adapter-builder` builds the adapter and reuses these tests; this writes the exploratory tests first and builds nothing else. |
 | `vocabulary-audit` | yes | no | Build the concept-to-term table, find synonym drift and overloaded words | Naming rules | `naming-reviewer` reviews names in a diff; this scans a tree for vocabulary conflicts. |
 
 ## Subagents (22)
@@ -97,8 +97,8 @@ Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed
 
 | Name | Model | Purpose | Skills preloaded | Upstream sections | Distinct from its nearest sibling because |
 | --- | --- | --- | --- | --- | --- |
-| `lead` | opus | Routes a task or diff to specialists and skills; does not review | principles | Priority and behavior; Review checklist | Only agent that does not read code for defects. |
-| `final-gate` | sonnet | Runs the final checklist on the working diff and returns PASS or FAIL | principles | Review checklist; Hard rules; Output Expectations | Binary gate with evidence; reviewers return ranked findings. |
+| `lead` | opus | Routes a task or diff to specialists and skills; does not review | principles (on purpose: the hub's routing table is the router's map) | Priority and behavior; Review checklist | Only agent that does not read code for defects. |
+| `final-gate` | sonnet | Runs the final checklist on the working diff and returns PASS or FAIL | none (the checklist and hard rules are listed in its own body, so the hub is not paid for on every gate run; it can Read `mini.md` when an item is in doubt) | Review checklist; Hard rules; Output Expectations | Binary gate with evidence; reviewers return ranked findings. |
 | `naming-reviewer` | sonnet | Names, vocabulary table, magic numbers | naming | Naming rules | Output is a vocabulary table; `comment-reviewer` owns comments. |
 | `function-reviewer` | sonnet | Size, levels, nesting, conditionals in function bodies | function-shape | Function rules | Judges bodies; `contract-reviewer` judges signatures and effects. |
 | `contract-reviewer` | sonnet | Parameters, flags, effects, command/query separation, surprises | function-contracts, smells-surprise | Function rules; Hard rules | Output is a signature ledger. |
@@ -114,11 +114,11 @@ Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed
 | `concurrency-reviewer` | sonnet | Shared state, lock scope, lifecycle, execution model | concurrency | Concurrency and async work | Output is a shared-state inventory. |
 | `simplicity-reviewer` | sonnet | Unearned abstraction, dependencies, duplication, speculation | emergent-design, smells-redundancy | Emergent design and successive refinement; Implementation preferences; Smells to detect and eliminate | Removes weight; `class-design-reviewer` rearranges it. |
 | `scope-guard` | sonnet | Classifies every hunk as required, enabling cleanup, opportunistic cleanup or out of scope | refactoring-steps | Priority and behavior; Hard rules; Refactoring rules | Output is a scope ledger; the only reviewer that compares the diff to the request. |
-| `smell-scanner` | haiku | Mechanical census: function lengths, parameter counts, nesting, flags, commented-out code, skipped tests | smells-redundancy | Smells to detect and eliminate | Reports numbers and locations only; makes no judgments. |
+| `smell-scanner` | haiku | Mechanical census: function lengths, parameter counts, nesting, flags, commented-out code, skipped tests | none (the searches are in its body; the family skills are judgment, which it does not do) | Smells to detect and eliminate | Reports numbers and locations only; makes no judgments. |
 | `refactorer` | sonnet | Behavior-preserving structural change in small steps | refactoring-steps | Refactoring rules; Change Process | Takes a finding list; `function-extractor` takes one function. |
 | `test-writer` | sonnet | Writes failing-first tests for changes and bug fixes | clean-tests, tdd-discipline | Tests; TDD and clean test rules | Writes tests only; never edits production code. |
 | `function-extractor` | sonnet | Decomposes one long function with the stop rule against fragments | function-shape | Function rules; Refactoring rules | One function in, a set of single-level functions out. |
-| `adapter-builder` | sonnet | Builds a narrow local adapter around a dependency and its learning tests | boundaries | Boundaries and external dependencies | Edits the boundary only; reviews nothing. |
+| `adapter-builder` | sonnet | Builds a narrow local adapter around a dependency, adopting the interface and tests from `learning-tests` when they exist and adding only the missing tests | boundaries | Boundaries and external dependencies | Edits the boundary and its callers only; reviews nothing; does not redo exploratory tests. |
 
 ## Output styles (6)
 
@@ -129,13 +129,13 @@ Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed
 | `pair` | Small steps, narrates intent, asks before anything larger than a few lines or touching public API | Change Process; Refactoring rules | Interaction rhythm. |
 | `terse` | Result first, a few lines, failing output still in full | Output Expectations | Brevity rules. |
 | `smell-first` | Before any edit names the smells in the touched code and ties each edit to a named smell | Smells to detect and eliminate; Change Process | Diagnosis ledger precedes every change. |
-| `boy-scout` | Finishes each task with a Campsite block: what was left cleaner, what was deliberately not touched | Priority and behavior; Emergent design and successive refinement; Hard rules | Report is about cleanup budget, not about diagnosis. |
+| `campsite` | Finishes each task with a Campsite block: what was left cleaner, what was deliberately not touched | Priority and behavior; Emergent design and successive refinement; Hard rules | Report is about cleanup budget, not about diagnosis. Named differently from the `boy-scout` skill on purpose: the style only changes the report format, the skill performs a cleanup on demand. |
 
 ## Coverage check against the upstream sections
 
 | Upstream section | Components that apply it |
 | --- | --- |
-| Priority and behavior | principles, plan, audit, explain-rule, boy-scout, scope-guard, lead, mentor, boy-scout (style) |
+| Priority and behavior | principles, plan, audit, explain-rule, boy-scout, scope-guard, lead, mentor, campsite |
 | Core clean code principles | principles, explain-rule, emergent-design, smells-surprise |
 | Naming rules | naming, vocabulary-audit, naming-reviewer |
 | Function rules | function-shape, function-contracts, error-handling, extract-till-you-drop, function-reviewer, contract-reviewer, function-extractor |
@@ -150,7 +150,7 @@ Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed
 | TDD and clean test rules | clean-tests, tdd-discipline, test-quality-reviewer, test-gap-reviewer, test-writer |
 | Concurrency and async work | concurrency, concurrency-reviewer |
 | Refactoring rules | refactoring-steps, smells-redundancy, fix, successive-refinement, extract-till-you-drop, refactorer, function-extractor, scope-guard, pair |
-| Emergent design and successive refinement | emergent-design, successive-refinement, boy-scout, simplicity-reviewer, boy-scout (style) |
+| Emergent design and successive refinement | emergent-design, successive-refinement, boy-scout, simplicity-reviewer, campsite |
 | Smells to detect and eliminate | every smell-family skill, smell-hunt, audit, smell-scanner, smell-first |
 | Change Process | plan, fix, refactoring-steps, tdd-discipline, refactorer, test-gap-reviewer, pair, smell-first |
 | Implementation preferences | emergent-design, smells-surprise, simplicity-reviewer |
@@ -158,17 +158,34 @@ Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed
 | Output Expectations | review, fix, final-gate, terse, mentor |
 | Hard rules | principles, review, checklist, function-contracts, boy-scout, scope-guard, final-gate, strict-reviewer |
 
+## Confusable pairs
+
+Model-invocable skills whose descriptions could match the same request. Both descriptions of each pair carry a clause that names the other (`... is /clean-code:<other>`), so Claude can pick by the discriminator instead of loading both.
+
+| Pair | A request that matches both | Discriminator |
+| --- | --- | --- |
+| `function-contracts` / `smells-surprise` | "This `getUser` also creates a record" or "this name lies" | `function-contracts` judges the signature and the effects it declares (parameters, flags, command/query, order); `smells-surprise` judges observed behavior against what the name and types promise (edge inputs, defaults, disabled checks). |
+| `clean-tests` / `tdd-discipline` | "Write a test for this bug" | `tdd-discipline` decides whether and when a test must exist (red first, bug-fix test, skipped tests); `clean-tests` judges how the test is written once it does. |
+| `emergent-design` / `smells-redundancy` | "Do we need this layer?" | `smells-redundancy` removes things proven redundant by search (duplicates, dead code, pass-through wrappers); `emergent-design` chooses between two designs or decides whether to add structure. |
+| `class-design` / `smells-coupling` / `data-and-objects` | "This class is a mess" | `class-design`: the responsibilities and cohesion of one class; `smells-coupling`: change that spreads across classes and files; `data-and-objects`: what the class exposes. |
+| `function-shape` / `comments` | "This function needs a comment to separate its phases" | `function-shape` restructures the body so the comment is unnecessary; `comments` decides which text may stay once the code is as clear as it can be. |
+| `function-shape` / `function-contracts` | "This function is long and takes a flag" | Body (size, levels, nesting) versus signature and effects. |
+| `naming` / `comments` | "This comment explains what the variable means" | Fix the name first (`naming`); only what survives is judged by `comments`. |
+| `boundaries` / `system-construction` | "The service builds its own SDK client" | Which vendor types the core may see (`boundaries`) versus where objects are created and wired (`system-construction`). |
+| `data-and-objects` / `class-design` | "This type has getters for everything" | Exposed surface versus size and responsibility. |
+| `tdd-discipline` / `refactoring-steps` | "I finished the refactor, is it covered?" or "restructure this safely" | `tdd-discipline` decides whether behavior is protected by tests and in what order tests and code are written; `refactoring-steps` is the sequence of behavior-preserving moves once a safety net exists. The trigger `finishing a refactor` was removed from `tdd-discipline`, and `refactoring-steps` now says it is for restructuring without behavior change. |
+| `concurrency` / `clean-tests` | "This test fails one run in twenty" | `concurrency` when the code under test uses threads, async tasks or timers; `clean-tests` when the flakiness comes from order, clock, shared files or the environment. |
+| `error-handling` / `boundaries` | "The payment SDK throws and we catch it everywhere" | `error-handling` designs failure inside your own code (types, messages, null, cleanup); `boundaries` decides which vendor exceptions and types the core may see and translates them at the adapter. |
+
 ## Overlap review
 
-Pairs that were close and how they were separated:
+Pairs among the other component types, and how they were separated:
 
-- `function-shape` and `function-contracts`: the first never talks about parameters or effects, the second never talks about length, nesting or abstraction levels.
-- `data-and-objects` and `class-design`: surface (what is exposed, what is chained) versus size and responsibility.
-- `boundaries` and `system-construction`: vendor visibility versus object creation. Wrapping a vendor client is `boundaries`; deciding who calls the constructor is `system-construction`.
-- `clean-tests` and `tdd-discipline`: quality of a test versus existence and order of tests.
-- `smells-redundancy` and `simplicity-reviewer`'s `emergent-design`: the former is a catalog of removable things with detection recipes, the latter is the decision rule for choosing between designs.
-- `boy-scout` (skill, style) and `scope-guard` (agent): the skill acts, the style reports, the agent audits whether the budget was respected.
+- `smells-redundancy` vs `emergent-design`: the former is a catalog of removable things with detection recipes, the latter is the decision rule for choosing between designs. `simplicity-reviewer` preloads both and reviews a diff against them.
+- `boy-scout` (skill), `campsite` (style) and `scope-guard` (agent): the skill acts, the style reports, the agent audits whether the budget was respected.
 - `checklist` and `final-gate`: interactive walk with next actions versus isolated PASS/FAIL with evidence.
 - `review` and `lead`: `review` produces findings; `lead` only decides who should.
+- `audit`, `smell-hunt` and `smell-scanner`: the same detection ideas (long functions, nesting, flags, skipped tests, forwarding wrappers) feed all three on purpose, because a scan that cannot be done from another file's text has to be self-contained (forked skills are the subagent's whole task). They differ in output: a health rating per cluster (`audit`), a smell-to-treatment table (`smell-hunt`), a raw census with no judgment (`smell-scanner`). When a recipe changes, change it in all three.
+- The final checklist is walked in four places on purpose: `checklist` (interactive, with next actions), `final-gate` (isolated PASS or FAIL), step 4 of `review` (one pass at the end of a findings review) and the `strict-reviewer` style (report format). They share the list, not the behavior.
 
 Upstream sections with no dedicated skill are covered as follows: `Output Expectations` and `Hard rules` are enforced by gates and workflows rather than a skill of their own, because they govern how work is reported and bounded, not how code is shaped.

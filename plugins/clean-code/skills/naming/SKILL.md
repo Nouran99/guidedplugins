@@ -1,6 +1,6 @@
 ---
 name: naming
-description: "Use when naming or renaming variables, functions, types or constants, or when a reader cannot tell what an identifier means. Covers intention-revealing names, one word per concept, searchable names, magic numbers and the name-smell catalog."
+description: "Use when naming or renaming variables, functions, types or constants, or when a reader cannot tell what an identifier means. Covers intention-revealing names, one word per concept, magic numbers and name smells. A comment that props up a weak name is fixed here first (/clean-code:comments)."
 ---
 
 # Naming

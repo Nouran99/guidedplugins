@@ -7,25 +7,25 @@
 
 | Command | Use it when |
 | --- | --- |
-| `/clean-code:boundaries` | Use when core logic calls a third-party library, SDK or external service directly, when upgrading such a dependency, or when coding against an API that does not exist yet. Covers local adapters, narrow interfaces and… |
-| `/clean-code:class-design` | Use when a class or module is growing, changes for several unrelated reasons, has fields used by only some methods, or is named Manager, Helper or Util. Covers single responsibility, cohesion, change locality… |
-| `/clean-code:clean-tests` | Use when writing, reviewing or refactoring unit and integration tests, or when tests are slow, fragile, order-dependent or hard to read. Covers one-idea tests, setup and assertions, test vocabulary, isolation… |
-| `/clean-code:comments` | Use when adding, reviewing or deleting comments, TODO notes or commented-out code, or when a comment explains what code does. Covers the five legitimate comment categories, noise removal, comment-heavy code and TODO… |
-| `/clean-code:concurrency` | Use when adding or changing threads, async tasks, locks, queues, background workers, shutdown or cancellation logic, or when a test fails intermittently. Decides whether concurrency is warranted and keeps shared state… |
-| `/clean-code:data-and-objects` | Use when designing or reviewing what a type exposes: getter and setter pairs, call chains through several objects, DTOs, or types that are half data and half behavior. Decides object versus data carrier and hides… |
-| `/clean-code:emergent-design` | Use when choosing between designs, deciding whether to add an abstraction, class, layer or dependency, or tempted to redesign. Applies the four-criteria tie-breaker, working-draft refinement, boring solutions and… |
-| `/clean-code:error-handling` | Use when writing or reviewing exceptions, error codes, null or absent returns, error messages, or cleanup and shutdown paths. Keeps the happy path readable and failures explicit and diagnosable. |
+| `/clean-code:boundaries` | Use when core logic calls a third-party library, SDK or service directly, when upgrading one, or when coding against an API that does not exist yet. Decides which vendor types and exceptions the core may see; wiring is… |
+| `/clean-code:class-design` | Use when a class or module is growing, changes for several unrelated reasons, has fields used by only some methods, or is named Manager, Helper or Util. Judges one class's responsibilities; exposed surface is… |
+| `/clean-code:clean-tests` | Use when writing, reviewing or refactoring unit and integration tests, or when tests are slow, fragile, order-dependent or hard to read. Judges how a test is written; whether one is needed or written first is… |
+| `/clean-code:comments` | Use when adding, reviewing or deleting comments, TODO notes or commented-out code, or when a comment explains what code does. Decides which text may stay once names and structure are as clear as they can be; fix those… |
+| `/clean-code:concurrency` | Use when adding or changing threads, async tasks, locks, queues, workers, shutdown or cancellation, or when a test of such code fails intermittently. Decides whether concurrency is warranted and keeps shared state in… |
+| `/clean-code:data-and-objects` | Use when designing or reviewing what a type exposes: getter and setter pairs, call chains through several objects, DTOs, or types that are half data and half behavior. Judges the public surface; class size and… |
+| `/clean-code:emergent-design` | Use when choosing between two designs, deciding whether to add an abstraction, class, layer or dependency, or tempted to redesign. Applies the four-criteria tie-breaker and boring solutions; removing duplication, dead… |
+| `/clean-code:error-handling` | Use when writing or reviewing exceptions, error codes, null or absent returns, error messages, or cleanup and shutdown paths in your own code. Keeps the happy path readable and failures explicit and diagnosable; vendor… |
 | `/clean-code:formatting` | Use when arranging a file, ordering functions, grouping related code, or reacting to formatting noise in a diff. Covers vertical ordering, proximity of related concepts, file size, line length, indentation, brittle… |
-| `/clean-code:function-contracts` | Use when a function takes many parameters, a boolean flag or an output argument, changes state while answering a question, or must be called in a hidden order. Covers argument design, command/query separation, hidden… |
-| `/clean-code:function-shape` | Use when a function is long, deeply nested, mixes levels of detail, or needs a comment to separate its phases. Covers function size, one thing per function, one abstraction level, top-down order, nesting, negative… |
-| `/clean-code:naming` | Use when naming or renaming variables, functions, types or constants, or when a reader cannot tell what an identifier means. Covers intention-revealing names, one word per concept, searchable names, magic numbers and… |
+| `/clean-code:function-contracts` | Use when a function takes many parameters, a boolean flag or an output argument, writes state while answering a question, or must be called in a hidden order. Judges signatures and declared effects, not the body… |
+| `/clean-code:function-shape` | Use when a function is long, deeply nested, mixes levels of detail, or needs a comment to separate its phases. Judges the body: size, one abstraction level, nesting, negative conditionals. Signatures and effects are… |
+| `/clean-code:naming` | Use when naming or renaming variables, functions, types or constants, or when a reader cannot tell what an identifier means. Covers intention-revealing names, one word per concept, magic numbers and name smells. A… |
 | `/clean-code:principles` | Applies the Clean Code rule set to everyday coding and review. Use for any task that writes, reviews or changes code where readability, names, function shape, side effects, comments, error handling, tests or cleanup of… |
-| `/clean-code:refactoring-steps` | Use when restructuring existing code, preparing for a change by cleaning first, or sequencing a cleanup. Covers small safe steps, behavior preservation, make-it-work-then-right, rename and extract and inline moves, and… |
-| `/clean-code:smells-coupling` | Use when one requirement edits many files, a base class mentions its subclasses, unrelated concepts share a type or constant, or the same type switch repeats. Smell family for coupling, placement and repeated… |
-| `/clean-code:smells-redundancy` | Use when code repeats itself, contains unused code, or has layers that only forward calls. Smell family for duplicated logic, dead code and unused abstractions, unnecessary indirection and accidental complexity, with… |
-| `/clean-code:smells-surprise` | Use when code does not do the obvious thing its name promises, edge inputs behave wrongly, checks are disabled or suppressed, or behavior depends on hidden defaults and magic. Smell family for surprising behavior… |
-| `/clean-code:system-construction` | Use when business code creates its own collaborators, reads global configuration, wires dependencies mid-flow, or is cluttered by logging, transactions or retries. Separates building a system from using it and keeps… |
-| `/clean-code:tdd-discipline` | Use when changing behavior, fixing a bug, finishing a refactor, or deciding how much to test. Covers failing-test-first, no unjustified production behavior, bug-fix tests, coverage as a signal, ignored tests, boundary… |
+| `/clean-code:refactoring-steps` | Use when restructuring existing code without changing behavior, preparing for a change by cleaning first, or sequencing a cleanup. Covers small safe steps, make-it-work-then-right, rename, extract and inline moves, and… |
+| `/clean-code:smells-coupling` | Use when one requirement edits many files, a base class mentions its subclasses, unrelated concepts share a type or constant, or the same type switch repeats. Judges dependencies between classes and files; one class's… |
+| `/clean-code:smells-redundancy` | Use when code repeats itself, contains unused code, or has layers that only forward calls. Smell family for duplicated logic, dead code, unused abstractions and indirection, with detection recipes. Removes proven… |
+| `/clean-code:smells-surprise` | Use when code does not do the obvious thing its name promises, edge inputs behave wrongly, checks are disabled or suppressed, or behavior depends on hidden defaults. Judges observed behavior against the name; signature… |
+| `/clean-code:system-construction` | Use when business code creates its own collaborators, reads global configuration, wires dependencies mid-flow, or is cluttered by logging, transactions or retries. Decides where objects are built and wired; which… |
+| `/clean-code:tdd-discipline` | Use when changing behavior, fixing a bug, or deciding how much to test. Covers failing-test-first, bug-fix tests, coverage as a signal, ignored tests and boundary cases. Decides whether and when tests exist; test… |
 
 ### Skills you run by name
 
@@ -48,7 +48,7 @@
 
 | Agent | Model | Access | Use it when |
 | --- | --- | --- | --- |
-| `@agent-clean-code:adapter-builder` | sonnet | can edit files | Implementer that wraps a third-party dependency behind a narrow interface in the core's vocabulary, adds learning tests, and migrates callers one at a time. Use when boundary findings call for an… |
+| `@agent-clean-code:adapter-builder` | sonnet | can edit files | Implementer that wraps a third-party dependency behind a narrow interface in the core's vocabulary, reuses existing learning tests and adds only missing ones, and migrates callers one at a time. Use… |
 | `@agent-clean-code:boundary-reviewer` | sonnet | read-only | Reviewer of third-party and external dependency use: vendor types in core code, wide interfaces, untranslated errors and unpinned behavior. Use proactively after edits that import an SDK, ORM or… |
 | `@agent-clean-code:class-design-reviewer` | sonnet | read-only | Reviewer of class and module responsibility, cohesion and change locality, including coupling smells. Use proactively after edits that grow a class, add a module, add a subclass, or make one change… |
 | `@agent-clean-code:comment-reviewer` | sonnet | read-only | Reviewer of comments and TODO notes. Use proactively after edits that add or change comments, leave commented-out code, add TODOs, or alter code that has comments attached. |
@@ -75,7 +75,7 @@
 
 | Style | What changes |
 | --- | --- |
-| `/output-style clean-code:boy-scout` | Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. |
+| `/output-style clean-code:campsite` | Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. A report format only; to run a cleanup on… |
 | `/output-style clean-code:mentor` | Teaches the Clean Code rule behind each decision, names it, and ends non-trivial answers with one short check-for-understanding question. |
 | `/output-style clean-code:pair` | Works in small narrated steps with tests between them and asks before any change larger than a few lines or one that touches public API. |
 | `/output-style clean-code:smell-first` | Names the smells in the code it is about to touch before any edit, ties each edit to a named smell and its treatment, and lists what remains afterwards. |

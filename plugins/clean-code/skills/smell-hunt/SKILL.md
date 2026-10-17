@@ -28,7 +28,7 @@ For each family, run the detection recipe, then read the hit to confirm it is re
 | names | vague or misleading names | identifiers like `data`, `info`, `tmp`, `x2`, `handle`, `process`; a name whose claimed type is false | `/clean-code:naming` |
 | names | name cannot be trusted without reading the algorithm | functions whose name does not predict their effect; read signature, then body | `/clean-code:naming` |
 | names | magic numbers | numeric or string literals inside conditions, indices, formulas | `/clean-code:naming` |
-| functions | oversized function | bodies longer than one screen; section comments; several blank-line blocks | `/clean-code:function-shape` |
+| functions | oversized function | bodies longer than one screen; section comments; several blank-line blocks | `/clean-code:function-shape`; apply with `/clean-code:extract-till-you-drop` |
 | functions | mixed abstraction levels | high-level call beside raw arithmetic, slicing or I/O | `/clean-code:function-shape` |
 | functions | deep nesting | indentation deeper than three levels | `/clean-code:function-shape` |
 | functions | negative conditionals | `!` applied to a negated name | `/clean-code:function-shape` |
@@ -51,7 +51,7 @@ For each family, run the detection recipe, then read the hit to confirm it is re
 | tests | ignored tests, insufficient boundary tests | `skip`, `xit`, `@Ignore`, `t.Skip`; no edge cases | `/clean-code:tdd-discipline` |
 | tests | build or tests need several manual steps | README with multi-step setup | `/clean-code:tdd-discipline` |
 
-The thresholds in the recipes (a screen, three levels, four parameters) are search aids for finding candidates, not rules of the book. Rank hits by cost of the next change: code that is changed often or sits in core logic outranks leaf utilities.
+The thresholds in the recipes (a screen, three levels, four parameters) are search aids for finding candidates, not rules of the book. Rank hits by cost of the next change (compact checklist ranking from `mini.md`): code that is changed often or sits in core logic outranks leaf utilities.
 
 ## Result (at most 40 lines)
 
@@ -64,7 +64,7 @@ Smell hunt: <family> in <scope>   (<N hits confirmed, M candidates dismissed>)
 
 Top 3 to treat first: 1, 4, 7   (smallest cleanups that unblock the most change)
 Not examined: <files or families skipped, and why>
-Next step: <one command, for example /clean-code:boy-scout or /clean-code:fix 1>
+Next step: <one command, for example /clean-code:extract-till-you-drop src/pay.ts:render for an oversized function, /clean-code:fix src/pay.ts:44 using a file:line from a row (fix cannot resolve row numbers), or /clean-code:boy-scout>
 ```
 
 ## Stop conditions

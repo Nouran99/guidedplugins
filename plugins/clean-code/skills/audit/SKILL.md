@@ -36,7 +36,7 @@ You are running in an isolated context. Everything you need is in this file. Do 
    - Redundancy and coupling: duplicated blocks, unused exports, pass-through wrappers, repeated type switches.
    The thresholds above (a screen, three levels, four parameters) are search aids for finding candidates, not rules of the book; read the code before counting a hit.
 4. Rate each cluster: **healthy** (no real instance found), **watch** (instances exist but are contained), **hot** (instances in several files or in core code).
-5. Rank hot spots by cost of the next change, not by count: core code and frequently changed files outrank leaf utilities.
+5. Rank hot spots by cost of the next change (compact checklist ranking from `mini.md`), not by count: core code and frequently changed files outrank leaf utilities.
 
 ## Result (at most 40 lines)
 

@@ -1,6 +1,6 @@
 ---
 name: clean-tests
-description: "Use when writing, reviewing or refactoring unit and integration tests, or when tests are slow, fragile, order-dependent or hard to read. Covers one-idea tests, setup and assertions, test vocabulary, isolation, determinism and the test-smell catalog."
+description: "Use when writing, reviewing or refactoring unit and integration tests, or when tests are slow, fragile, order-dependent or hard to read. Judges how a test is written; whether one is needed or written first is /clean-code:tdd-discipline, flakiness from threads or timers is /clean-code:concurrency."
 ---
 
 # Clean tests
@@ -87,7 +87,7 @@ def test_loan_is_due_fourteen_days_after_borrowing(library, clock):
 - Integration tests may legitimately use real files, ports or databases; keep them separate from the fast suite and make their requirements explicit.
 - Property-based and table-driven tests are clean when each case row is readable and failures name the row.
 - Do not rewrite a large untouched test file to satisfy this skill. Improve the tests you add or change.
-- Tests that pin current behavior of untested legacy code (characterization) may start ugly; the book's concern is that they get cleaned as they are kept.
+- Added judgment: tests that pin current behavior of untested legacy code (characterization) may start ugly; the source's rule that tests are production-quality code means they should be cleaned as they are kept.
 
 ## Verification
 

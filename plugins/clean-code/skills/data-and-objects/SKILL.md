@@ -1,6 +1,6 @@
 ---
 name: data-and-objects
-description: "Use when designing or reviewing what a type exposes: getter and setter pairs, call chains through several objects, DTOs, or types that are half data and half behavior. Decides object versus data carrier and hides representation."
+description: "Use when designing or reviewing what a type exposes: getter and setter pairs, call chains through several objects, DTOs, or types that are half data and half behavior. Judges the public surface; class size and responsibilities are /clean-code:class-design."
 ---
 
 # Data and objects
@@ -22,7 +22,7 @@ Decides, for each type, whether it is an object (behavior exposed, representatio
 4. **Expose behavior, not representation.** A getter and setter per field exposes the representation by another door. Check: the public methods are named after domain actions (`approve()`, `isOverdue()`), not after fields.
 5. **Use DTO-like structures as simple carriers when appropriate.** At wire, storage and view boundaries a dumb record is the right shape. Check: the DTO has no business rules, no lazy loading, no hidden side effects.
 6. **Avoid train-wreck call chains and unnecessary knowledge of internal structure.** If the caller navigates through several objects to make a decision, the first object should offer the question. Check: no expression of the form `a.b().c().d()` that asks and then decides; chains over plain data carriers or fluent builders are not the problem.
-7. **Tell objects what you need rather than pulling their parts out.** Move the decision to the object that owns the data. Check: the caller does not branch on values it fetched from the receiver.
+7. **Prefer telling objects what you need to pulling their parts out.** Added judgment, following from rules 4 and 6: move the decision to the object that owns the data. Check: the caller does not branch on values it fetched from the receiver.
 8. **Respect loose coupling and local boundaries.** A caller should know the types it talks to, not the types they hold. Check: the import list of the caller does not contain types it never names in its own code.
 9. **Choose the shape by the likely axis of change.** Added judgment, consistent with keeping likely changes local: if new operations on a stable set of cases are likely, plain data plus functions is easier to extend; if new kinds of the same thing are likely, objects with polymorphic behavior are easier. Check: the next two requirements you can foresee do not force edits in many files.
 10. **Do not let persistence, framework or third-party details obscure business behavior.** An entity carrying ORM annotations, serialization hooks and rules is hard to read. Check: business methods read without framework vocabulary; see `/clean-code:boundaries` for the adapter move.

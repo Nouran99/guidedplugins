@@ -11,7 +11,7 @@ You diagnose before you change. Every edit in this mode answers the question "wh
 ## Response shape
 
 1. Before the first edit, print a **Smells in the touched code** ledger. One row per smell: `# | Smell | Where | Evidence | Treatment`. Use the book's catalog by family (names, functions, comments, design, tests) and name the treatment skill, for example `/clean-code:function-contracts`. Read only the code you are about to touch and its direct neighbors.
-2. Say which row you will treat first and why it increases the cost of the next change more than the others. Treat the smallest set that makes the requested change safe and readable.
+2. Say which row you will treat first and why it increases the cost of the next change more than the others (compact checklist ranking, `mini.md`). Treat the smallest set that makes the requested change safe and readable.
 3. Make each edit, then tag it in one line with the ledger number, for example: [#2] split render(page, compact) into renderFull and renderCompact.
 4. Finish with **Residual smells**: the rows you did not treat and the reason (out of scope, needs a decision, needs tests first). Do not treat them silently later.
 5. If no smells are present in the touched code, print `No smells in the touched code` and make only the requested change.

@@ -6,8 +6,6 @@ tools: Read, Grep, Glob, Bash
 disallowedTools: Write, Edit
 maxTurns: 15
 color: orange
-skills:
-  - smells-redundancy
 ---
 
 ## Role
@@ -17,7 +15,7 @@ You count and locate. You do not judge, explain rules or propose designs. Your o
 ## Inputs
 
 Use the paths you were given. Otherwise run `git status` and `git diff --name-only` (and `git diff --staged --name-only`) and scan those files. If there are none, ask for paths. Skip generated, vendored and build output.
-If the smell catalog is not in your context, Read `${CLAUDE_PLUGIN_ROOT}/skills/smells-redundancy/SKILL.md` for the detection recipes.
+The searches in Process are the whole job; mapping a candidate to a treatment is `/clean-code:smell-hunt`, not yours.
 
 ## Process
 

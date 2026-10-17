@@ -1,6 +1,6 @@
 ---
 name: function-contracts
-description: "Use when a function takes many parameters, a boolean flag or an output argument, changes state while answering a question, or must be called in a hidden order. Covers argument design, command/query separation, hidden side effects and call-order dependencies."
+description: "Use when a function takes many parameters, a boolean flag or an output argument, writes state while answering a question, or must be called in a hidden order. Judges signatures and declared effects, not the body (/clean-code:function-shape) or behavior against the name (/clean-code:smells-surprise)."
 ---
 
 # Function contracts
@@ -19,13 +19,13 @@ Judges what crosses a function boundary: what goes in, what comes out, and what 
 1. **Minimize the number of parameters.** Fewer arguments mean fewer call-site mistakes and easier tests. Check: count them; if three or more travel together through several signatures, they are a concept without a name. Added judgment: zero to two is the comfortable range, three needs a reason.
 2. **Avoid boolean flag parameters; split the behavior into separate functions.** A flag announces that the function does two things. Check: call sites pass literal `true` or `false`, or the body starts with `if (flag) {...} else {...}`.
 3. **Avoid output parameters unless language conventions make them necessary.** Results go out through the return value. Check: no argument is assigned or mutated inside the callee for the caller's benefit. Conventions such as a `TryParse`-style `out` or a Go `(value, ok)` pair are part of the language, not output parameters in this sense.
-4. **Model grab-bag argument lists as a concept.** When the same group of values appears in several signatures, give the group a type with a name and, if it has rules, validation. Check: the same three parameter names recur in two or more signatures.
+4. **Model grab-bag argument lists as a concept (compact checklist: `mini.md` only; the full rules say only to minimize the number of parameters).** When the same group of values appears in several signatures, give the group a type with a name and, if it has rules, validation. Check: the same three parameter names recur in two or more signatures.
 5. **Eliminate hidden side effects.** What a function changes must be visible from its name and signature. Check: search the body for writes to fields, globals, caches, files, the clock or the network that the name does not mention.
 6. **Separate commands from queries.** A function either changes state or answers a question, not both. A function that answers should not also mutate state. Check: every function can be labeled "command" or "query"; a function that needs both labels is a finding.
 7. **Do not mix querying with mutation without a strong reason.** Strong reasons exist and should be written down: an atomic compare-and-set, `INSERT ... RETURNING`, or a pop on a concurrent queue cannot be split without a race. Check: the function has a comment naming the atomicity or concurrency reason.
 8. **Make logical dependencies on call order explicit.** If `finalize()` is only valid after `load()`, make the second take the output of the first, or have one function own both. Check: no call sequence exists that compiles but fails at runtime.
 9. **Name the effect when it cannot be removed.** A function that may create what it asks for is `getOrCreateSession`, not `getSession`. Check: the verb in the name matches every effect found in the body.
-10. **Prefer returning a new value to mutating an input.** Check: parameters are treated as read-only in the body; collections passed in are copied before change.
+10. **Prefer returning a new value to mutating an input.** Added judgment, following from rules 3 and 5: a changed argument is a side effect the signature does not show. Check: parameters are treated as read-only in the body; collections passed in are copied before change.
 
 ## Procedure
 

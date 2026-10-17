@@ -1,6 +1,6 @@
 ---
 name: smells-coupling
-description: "Use when one requirement edits many files, a base class mentions its subclasses, unrelated concepts share a type or constant, or the same type switch repeats. Smell family for coupling, placement and repeated conditionals, with detection recipes."
+description: "Use when one requirement edits many files, a base class mentions its subclasses, unrelated concepts share a type or constant, or the same type switch repeats. Judges dependencies between classes and files; one class's size or cohesion is /clean-code:class-design."
 ---
 
 # Coupling smells
@@ -57,7 +57,7 @@ function shippingLabel(s: Shipment): string {
 function trackingUrl(s: Shipment): string { switch (s.carrier) { /* ... */ } }
 function maxWeightKg(s: Shipment): number { switch (s.carrier) { /* ... */ } }
 
-// After: one place per carrier; one switch remains, at the point of construction
+// After: one place per carrier; one lookup remains, at the point of selection
 interface Carrier {
   label(s: Shipment): string;
   trackingUrl(s: Shipment): string;
@@ -77,7 +77,7 @@ A new carrier is one more entry. The table is also a data-driven alternative to 
 | Smell | Detect | Treat |
 | --- | --- | --- |
 | Shotgun change | One requirement touches many files | Move the scattered rule to one owner |
-| Repeated type switch | Same discriminator in several functions | Polymorphism or lookup table; keep one creating switch |
+| Repeated type switch | Same discriminator in several functions | Polymorphism or lookup table; keep one selection point (a creating switch or a table lookup) |
 | God constants | One file of constants imported everywhere | Move each constant beside its users |
 | Base knows children | Base file names subclasses or tests runtime type | Move the behavior down; use an abstract method |
 | Misplaced detail | A base or high-level type contains a rule only one subtype uses | Push down |
@@ -87,7 +87,7 @@ A new carrier is one more entry. The table is also a data-driven alternative to 
 
 ## Trade-offs and exceptions
 
-- A single switch that creates the right object is acceptable: the conditional is isolated at the edge and hidden behind polymorphism.
+- A single switch or table lookup that selects or creates the right object is acceptable: the conditional is isolated at the edge and hidden behind polymorphism.
 - Some coupling is the design: a feature module is allowed to know its own helpers.
 - Polymorphism has a cost in navigation; for two or three small cases a table or a plain `if` may be clearer. Weigh reading cost against the chance of new kinds.
 - A software-design plugin may prefer fewer, deeper modules over extra types for each case; keep the table or the type only if it localizes change.

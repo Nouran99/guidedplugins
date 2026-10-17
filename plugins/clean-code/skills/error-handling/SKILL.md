@@ -1,6 +1,6 @@
 ---
 name: error-handling
-description: "Use when writing or reviewing exceptions, error codes, null or absent returns, error messages, or cleanup and shutdown paths. Keeps the happy path readable and failures explicit and diagnosable."
+description: "Use when writing or reviewing exceptions, error codes, null or absent returns, error messages, or cleanup and shutdown paths in your own code. Keeps the happy path readable and failures explicit and diagnosable; vendor exceptions caught at the edge are /clean-code:boundaries."
 ---
 
 # Error handling
@@ -16,16 +16,16 @@ Designs how failure is expressed and handled inside your own code: what fails, w
 
 ## Rules
 
-1. **Design error handling deliberately.** For each operation, decide what counts as failure, which failures are expected, and who handles them. Check: for every `throw` or error return there is a named caller that reacts to it.
-2. **Keep the happy path easy to read.** The success flow reads top to bottom with failure handling at the edges. Check: removing every `catch` leaves a readable sequence of steps.
-3. **Isolate error handling from main logic.** Put the work in one function and the `try`/`catch` policy in a thin wrapper, so neither obscures the other. Check: no function mixes more than a few lines of handling with business steps.
-4. **Provide enough context in error messages for diagnosis.** Name the operation, the entity and the reason, without secrets or full payloads. Check: reading only the log line, you can tell what was attempted and why it failed.
-5. **Use error types that support caller decisions.** Define a type per distinct reaction (retry, show to user, abort), not per throw site. Check: no caller parses message text to decide what to do.
-6. **Prefer exceptions or explicit result types over ad hoc error codes**, following the language's norms. Check: magic return values (`-1`, `""`, `0`) do not mean failure.
-7. **Do not return `null` or equivalent absence sentinels when a safer model exists.** Return an empty collection, a special-case object, an explicit optional or an error. Check: callers do not need a null check before using the result.
-8. **Do not pass `null` or equivalent invalid states unless the API explicitly models that case.** Check: the signature or type says whether absence is allowed; otherwise the callee rejects it at the boundary.
-9. **Prefer exceptions, special cases, empty objects or explicit optionality according to the language and conventions of the codebase.** Check: the choice matches what neighboring code does.
-10. **Make resource cleanup and shutdown paths correct and visible.** Use the language's scoped-cleanup construct (`finally`, `defer`, `with`, `using`, try-with-resources). Check: every acquire has a release on every exit path, including exceptions and cancellation.
+1. **Decide how failures are handled on purpose, not by accident.** For each operation, decide what counts as failure, which failures are expected, and who handles them. Check: for every `throw` or error return there is a named caller that reacts to it.
+2. **Keep the main success flow easy to follow.** The success flow reads top to bottom with failure handling at the edges. Check: removing every `catch` leaves a readable sequence of steps.
+3. **Keep failure handling apart from the main logic.** Put the work in one function and the `try`/`catch` policy in a thin wrapper, so neither obscures the other. Check: no function mixes more than a few lines of handling with business steps.
+4. **Put enough context in each error message to diagnose the failure.** Name the operation, the entity and the reason, without secrets or full payloads. Check: reading only the log line, you can tell what was attempted and why it failed.
+5. **Choose error types that let callers decide what to do.** Define a type per distinct reaction (retry, show to user, abort), not per throw site. Check: no caller parses message text to decide what to do.
+6. **Prefer exceptions or explicit result types to improvised error codes**, as the language's norms suggest. Check: magic return values (`-1`, `""`, `0`) do not mean failure.
+7. **Do not return `null` or another absence marker when a safer representation exists.** Return an empty collection, a special-case object, an explicit optional or an error. Check: callers do not need a null check before using the result.
+8. **Do not pass `null` or another invalid state unless the API deliberately models that case.** Check: the signature or type says whether absence is allowed; otherwise the callee rejects it at the boundary.
+9. **Prefer exceptions, special-case objects, empty objects or explicit optionals, whichever the language and codebase conventions favor.** Check: the choice matches what neighboring code does.
+10. **Make cleanup and shutdown paths correct, and make them easy to see.** Use the language's scoped-cleanup construct (`finally`, `defer`, `with`, `using`, try-with-resources). Check: every acquire has a release on every exit path, including exceptions and cancellation.
 11. **Do not swallow failures.** Added judgment, following from rules 1 and 4: an empty `catch`, or a `catch` that logs and continues as if the operation succeeded, hides a failure from the one who could decide. Check: each catch either handles, translates with the cause preserved, or rethrows.
 
 ## Procedure

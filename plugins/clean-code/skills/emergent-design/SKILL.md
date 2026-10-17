@@ -1,6 +1,6 @@
 ---
 name: emergent-design
-description: "Use when choosing between designs, deciding whether to add an abstraction, class, layer or dependency, or tempted to redesign. Applies the four-criteria tie-breaker, working-draft refinement, boring solutions and evidence-only optimization."
+description: "Use when choosing between two designs, deciding whether to add an abstraction, class, layer or dependency, or tempted to redesign. Applies the four-criteria tie-breaker and boring solutions; removing duplication, dead code or pass-through layers is /clean-code:smells-redundancy."
 ---
 
 # Emergent design
@@ -17,23 +17,23 @@ How to choose the shape of code without designing it all up front: let tests, du
 
 ## Rules
 
-1. **Prefer designs that run all relevant tests, remove duplication, express intent and use the fewest necessary classes and methods.** Apply them as a tie-breaker in this order. Check: if two designs differ, the one that fails an earlier criterion loses regardless of the later ones.
-2. **Refine code through working drafts rather than expecting the first version to be clean.** A rough draft that works and is tested is a good start. Check: the first commit-sized state passes tests; cleanliness comes in later rounds.
-3. **When code starts rough, keep improving names, structure and tests until intent is clear.** Check: after each round, reading the code takes less effort than before.
-4. **Do not start a grand redesign when incremental refinement can recover the design safely.** Check: you can list the small steps that reach the better shape; if you can, take them.
-5. **Use the Boy Scout Rule on touched code, but keep cleanup proportional to the task.** Check: the cleanup is on code the change reads or modifies, and it is smaller than the change.
-6. **Prefer explicit, boring, maintainable solutions.** Check: a new teammate could modify it without learning a technique.
-7. **Prefer the standard library and existing project patterns over new dependencies. Do not add a dependency unless it clearly reduces overall complexity.** Check: you can state what code the dependency removes and what it costs in upgrade burden and surface area.
-8. **Reuse established project conventions unless they conflict with the rules or the user asks otherwise.** Check: new code looks like its neighbors.
-9. **Keep interfaces small and state transitions obvious.** Check: the public surface lists what callers need today; every state change is a named operation.
-10. **Avoid premature optimization; optimize only when there is evidence or a known requirement.** Check: a measurement or a stated requirement exists, and the optimized code is isolated and commented with the reason.
-11. **Reduce technical debt instead of moving it around.** Added judgment: moving a conditional into a config file, a plugin registry or a framework annotation does not remove it. Check: the complexity went down for the reader, not just out of sight.
-12. **Introduce an abstraction when a second real use or a clarity gain appears, not before.** Added judgment, consistent with "fewest necessary classes": Check: you can point at two uses, or at a concrete comprehension win.
+1. **Prefer the design that passes every relevant test, carries no duplication, shows its intent and needs the fewest classes and methods.** Check: a design that fails a relevant test loses; between designs that pass, prefer the one that satisfies more of the remaining criteria. Added judgment: the source lists the four criteria without ranking them, so when they split, use the conventional order of the simple-design rules (tests, duplication, intent, size) as a tie-breaker, not as a strict lexicographic rule.
+2. **Reach clean code by refining working drafts; do not expect the first version to be clean.** A rough draft that works and is tested is a good start. Check: the first commit-sized state passes tests; cleanliness comes in later rounds.
+3. **If a draft starts out rough, keep improving its names, structure and tests until the intent is plain.** Check: after each round, reading the code takes less effort than before.
+4. **Do not launch a grand redesign if small refinements can safely restore the design.** Check: you can list the small steps that reach the better shape; if you can, take them.
+5. **Apply the Boy Scout Rule to code you touch, with cleanup sized to the task.** Check: the cleanup is on code the change reads or modifies. Added judgment: it is also smaller than the change itself; the source says only "proportional".
+6. **Prefer plain, explicit solutions that are easy to maintain.** Check: a new teammate could modify it without learning a technique.
+7. **Prefer the standard library and patterns the project already uses over a new dependency. Do not add a dependency unless it clearly lowers total complexity.** Check: you can state what code the dependency removes and what it costs in upgrade burden and surface area.
+8. **Follow the project's established conventions unless they conflict with these rules or the user asks for something else.** Check: new code looks like its neighbors.
+9. **Keep interfaces narrow and make every state transition easy to see.** Check: the public surface lists what callers need today; every state change is a named operation.
+10. **Avoid optimizing early; tune only with measurements or a known requirement in hand.** Check: a measurement or a stated requirement exists, and the optimized code is isolated and commented with the reason.
+11. **Pay technical debt down rather than relocating it.** Added judgment, elaborating on that rule: moving a conditional into a config file, a plugin registry or a framework annotation does not remove it. Check: the complexity went down for the reader, not just out of sight.
+12. **Introduce an abstraction when a second real use or a clarity gain appears, not before.** Added judgment, consistent with the fewest-classes criterion. Check: you can point at two uses, or at a concrete comprehension win.
 
 ## Procedure
 
 1. List the candidate designs, including "leave it plain".
-2. Score each against the four criteria in order: tests pass, duplication gone, intent clear, fewest classes and methods. The first criterion that separates them decides.
+2. Score each against the four criteria: tests pass, duplication gone, intent clear, fewest classes and methods. If they split, apply the conventional order from rule 1 as a tie-breaker (Added judgment) and state it.
 3. If both are equal, pick the one that matches existing conventions and adds fewer concepts.
 4. For a dependency, write the removed code and the new surface area side by side.
 5. For a performance idea, find or request the measurement. Without one, defer and note it.
@@ -79,7 +79,7 @@ When SMS arrives, the function gains a parameter or a second function, and the t
 
 ## Trade-offs and exceptions
 
-- The four criteria are a tie-breaker, not a procedure. Judgment about what "expresses intent" still matters.
+- The four criteria are a tie-breaker, not a procedure, and their order is Added judgment. Judgment about what "expresses intent" still matters.
 - Sometimes an abstraction is required by a framework, a public contract or a test seam; that is a stated reason, not speculation.
 - Known requirements justify design earlier than the code demands (for example, a second channel is on this sprint's board).
 - When a user asks for a specific design, follow it and mention the conflict; the user's instruction ranks above this skill.

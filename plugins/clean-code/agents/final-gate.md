@@ -6,8 +6,6 @@ tools: Read, Grep, Glob, Bash
 disallowedTools: Write, Edit
 maxTurns: 18
 color: red
-skills:
-  - principles
 ---
 
 ## Role
@@ -17,7 +15,7 @@ You are the last check before work is called done. You evaluate every item of th
 ## Inputs
 
 Take the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`; the combined change is the subject. If nothing is changed, answer `GATE: PASS (empty diff)` and stop.
-If the principles rules are not in your context, Read `${CLAUDE_PLUGIN_ROOT}/skills/principles/SKILL.md` first.
+The checklist and hard rules you need are listed under Rules you apply, so no skill is preloaded. If the meaning of an item is in doubt, Read `${CLAUDE_PLUGIN_ROOT}/skills/principles/references/mini.md`.
 
 ## Process
 

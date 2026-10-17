@@ -1,6 +1,6 @@
 ---
 name: concurrency
-description: "Use when adding or changing threads, async tasks, locks, queues, background workers, shutdown or cancellation logic, or when a test fails intermittently. Decides whether concurrency is warranted and keeps shared state, lifecycle and tests under control."
+description: "Use when adding or changing threads, async tasks, locks, queues, workers, shutdown or cancellation, or when a test of such code fails intermittently. Decides whether concurrency is warranted and keeps shared state in check; a flaky test with no concurrency is /clean-code:clean-tests."
 ---
 
 # Concurrency and async work
@@ -12,24 +12,24 @@ Treats timing as an input to correctness. It decides whether concurrency belongs
 - You are about to add a thread, goroutine, async task, executor, timer or background loop.
 - Code shares mutable state between callers that may run at the same time.
 - Something must stop cleanly: shutdown, cancellation, timeouts, in-flight work.
-- A test fails one run in twenty, or only on CI.
+- A test of threaded, async or timer-driven code fails one run in twenty, or only on CI. A flaky test whose code under test has no concurrency is order, clock or environment dependence: `/clean-code:clean-tests`.
 - You change code you did not write and do not know how it is scheduled.
 
 ## Rules
 
-1. **Do not introduce concurrency unless it provides a real benefit.** Name the benefit (latency hidden, throughput required, a blocking call that must not freeze the caller). Check: you can state the benefit and how you would notice if it were not realized.
-2. **Prefer simpler sequential code when it is sufficient.** Check: you tried, or reasoned about, the sequential version first.
-3. **Minimize shared mutable state.** What is not shared cannot race. Check: list every variable reachable from more than one concurrent path; shrink the list.
-4. **Prefer immutability, message passing or clear ownership boundaries.** Each piece of mutable data has exactly one owner at a time. Check: for each shared datum, you can name who may write it and how others get a view.
-5. **Keep synchronized or locked sections as small as possible.** Do the slow work outside the lock and keep invariants inside it. Check: no I/O, callback or foreign call executes while holding a lock.
-6. **Be explicit about shutdown, cancellation, timeouts and cleanup.** Every started task has an owner who stops it and waits for it; every wait has an upper bound or a cancellation path. Check: you can say what happens to in-flight work when the process is asked to stop.
-7. **Test concurrent behavior carefully where it matters.** Use controllable schedulers, latches, fake clocks and deterministic hand-offs, not `sleep`. Check: the test would fail if the lock were removed.
-8. **Know the execution model before changing concurrent code.** Which thread, loop or pool runs this callback? Can it block? Is this object shared? Check: you can answer these questions for the code you edit, or you read until you can.
-9. **Avoid dependencies between synchronized methods.** Two individually safe calls are not safe as a sequence (check-then-act). Check: invariants that span several calls are protected by one operation or one lock scope.
-10. **Get non-concurrent behavior correct before adding threading.** Keep the logic testable without threads, and keep threading policy separate from logic. Check: the core algorithm has tests that run on one thread.
-11. **Make threaded code pluggable and tunable when its policy or concurrency level may vary.** Pool size, executor and scheduling are injected or configured. Check: you can run the logic with a synchronous executor in tests.
-12. **Run concurrency-sensitive tests under varied thread counts, schedules and platforms where practical.** Check: repeated runs, stress with different parallelism, and the race detector or equivalent where the platform provides one.
-13. **Treat spurious failures as possible concurrency defects until evidence says otherwise.** Do not rerun until green. Check: every intermittent failure has either a root cause or an open question recorded.
+1. **Do not add concurrency without a real benefit.** Name the benefit (latency hidden, throughput required, a blocking call that must not freeze the caller). Check: you can state the benefit and how you would notice if it were not realized.
+2. **Prefer plain sequential code when it does the job.** Check: you tried, or reasoned about, the sequential version first.
+3. **Keep as little mutable state shared as possible.** What is not shared cannot race. Check: list every variable reachable from more than one concurrent path; shrink the list.
+4. **Prefer immutable data, message passing or one clear owner for each piece of state.** Each piece of mutable data has exactly one owner at a time. Check: for each shared datum, you can name who may write it and how others get a view.
+5. **Keep every locked or synchronized region as small as it can be.** Do the slow work outside the lock and keep invariants inside it. Check: no I/O, callback or foreign call executes while holding a lock.
+6. **State shutdown, cancellation, timeout and cleanup behavior openly.** Every started task has an owner who stops it and waits for it; every wait has an upper bound or a cancellation path. Check: you can say what happens to in-flight work when the process is asked to stop.
+7. **Give concurrent behavior careful tests wherever it matters.** Use controllable schedulers, latches, fake clocks and deterministic hand-offs, not `sleep`. Check: the test would fail if the lock were removed.
+8. **Understand the execution model before you change concurrent code.** Which thread, loop or pool runs this callback? Can it block? Is this object shared? Check: you can answer these questions for the code you edit, or you read until you can.
+9. **Avoid letting one synchronized method rely on another.** Two individually safe calls are not safe as a sequence (check-then-act). Check: invariants that span several calls are protected by one operation or one lock scope.
+10. **Make single-threaded behavior correct before introducing threads.** Keep the logic testable without threads, and keep threading policy separate from logic. Check: the core algorithm has tests that run on one thread.
+11. **Make threaded code configurable, with swappable policy, when its policy or degree of concurrency may change.** Pool size, executor and scheduling are injected or configured. Check: you can run the logic with a synchronous executor in tests.
+12. **Where practical, exercise timing-sensitive tests with different thread counts, schedules and platforms.** Check: repeated runs, stress with different parallelism, and the race detector or equivalent where the platform provides one.
+13. **Assume an unexplained failure may be a concurrency defect until evidence shows it is not.** Do not rerun until green. Check: every intermittent failure has either a root cause or an open question recorded.
 
 ## Procedure
 

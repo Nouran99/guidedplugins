@@ -25,7 +25,7 @@ An agent asked to add behavior tends to stop when the test passes. The names it 
 2. Read `${CLAUDE_SKILL_DIR}/references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
 3. `${CLAUDE_SKILL_DIR}/references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
 
-Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source.
+Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source. Text marked "compact checklist" comes from `mini.md` only and is not in `full.md`. Examples are splitting a function by phase (`/clean-code:function-shape`), modelling a grab-bag argument list as a concept (`/clean-code:function-contracts`), enforcing call order through types (`/clean-code:class-design`) and the ranking rule: when touching code, remove the smell that most increases the cost of the next change. `/clean-code:boy-scout`, `/clean-code:smell-hunt`, `/clean-code:audit` and `/output-style clean-code:smell-first` use the ranking rule to choose and order work.
 
 ## Routing table
 
@@ -65,9 +65,11 @@ Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`,
 | Session-long behavior: small narrated steps | `/output-style clean-code:pair` |
 | Session-long behavior: result first, few lines | `/output-style clean-code:terse` |
 | Session-long behavior: name the smell before every edit | `/output-style clean-code:smell-first` |
-| Session-long behavior: report what was left cleaner and what was not touched | `/output-style clean-code:boy-scout` |
+| Session-long behavior: report what was left cleaner and what was not touched | `/output-style clean-code:campsite` |
 
 ## Priority
+
+The source says to follow the user and mention the conflict, and to reuse project conventions unless they conflict with its rules or the user asks otherwise. Placing conventions above the book's rules is Added judgment on top of that, which is why item 2 carries an exception.
 
 1. Explicit user instruction. If a request conflicts with a rule, follow the request and say which rule it conflicts with.
 2. The repository's existing conventions, unless they are the problem being fixed.

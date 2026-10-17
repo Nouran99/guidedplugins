@@ -5,7 +5,7 @@ Every section of the upstream *full* rule set (`skills/principles/references/ful
 
 | Upstream section | Components |
 | --- | --- |
-| Priority and behavior | `skill:audit`, `skill:boy-scout`, `skill:explain-rule`, `skill:plan`, `skill:principles`, `skill:refactoring-steps`, `skill:review`, `agent:lead`, `agent:scope-guard`, `style:boy-scout`, `style:mentor`, `style:pair`, `style:terse` |
+| Priority and behavior | `skill:audit`, `skill:boy-scout`, `skill:explain-rule`, `skill:plan`, `skill:principles`, `skill:refactoring-steps`, `skill:review`, `agent:lead`, `agent:scope-guard`, `style:campsite`, `style:mentor`, `style:pair`, `style:terse` |
 | Core clean code principles | `skill:emergent-design`, `skill:explain-rule`, `skill:principles`, `skill:smells-surprise`, `style:mentor` |
 | Naming rules | `skill:naming`, `skill:vocabulary-audit`, `agent:naming-reviewer` |
 | Function rules | `skill:error-handling`, `skill:extract-till-you-drop`, `skill:function-contracts`, `skill:function-shape`, `agent:contract-reviewer`, `agent:error-handling-reviewer`, `agent:function-extractor`, `agent:function-reviewer` |
@@ -15,17 +15,17 @@ Every section of the upstream *full* rule set (`skills/principles/references/ful
 | Class and module design | `skill:class-design`, `skill:data-and-objects`, `skill:smells-coupling`, `agent:class-design-reviewer` |
 | Error handling | `skill:concurrency`, `skill:error-handling`, `agent:concurrency-reviewer`, `agent:error-handling-reviewer` |
 | Boundaries and external dependencies | `skill:boundaries`, `skill:learning-tests`, `agent:adapter-builder`, `agent:boundary-reviewer` |
-| System construction rules | `skill:system-construction`, `agent:construction-reviewer` |
+| System construction rules | `skill:boundaries`, `skill:system-construction`, `agent:construction-reviewer` |
 | Tests | `skill:clean-tests`, `skill:learning-tests`, `skill:plan`, `skill:tdd-discipline`, `agent:test-gap-reviewer`, `agent:test-quality-reviewer`, `agent:test-writer` |
 | TDD and clean test rules | `skill:clean-tests`, `skill:successive-refinement`, `skill:tdd-discipline`, `agent:test-gap-reviewer`, `agent:test-quality-reviewer`, `agent:test-writer` |
 | Concurrency and async work | `skill:concurrency`, `agent:concurrency-reviewer` |
 | Refactoring rules | `skill:boy-scout`, `skill:emergent-design`, `skill:extract-till-you-drop`, `skill:fix`, `skill:naming`, `skill:refactoring-steps`, `skill:smell-hunt`, `skill:smells-redundancy`, `skill:successive-refinement`, `agent:function-extractor`, `agent:refactorer`, `agent:scope-guard`, `style:pair`, `style:smell-first` |
-| Emergent design and successive refinement | `skill:boy-scout`, `skill:emergent-design`, `skill:plan`, `skill:successive-refinement`, `agent:simplicity-reviewer`, `style:boy-scout` |
+| Emergent design and successive refinement | `skill:boy-scout`, `skill:emergent-design`, `skill:plan`, `skill:refactoring-steps`, `skill:successive-refinement`, `agent:simplicity-reviewer`, `style:campsite` |
 | Smells to detect and eliminate | `skill:audit`, `skill:boy-scout`, `skill:class-design`, `skill:clean-tests`, `skill:comments`, `skill:data-and-objects`, `skill:function-contracts`, `skill:function-shape`, `skill:naming`, `skill:smell-hunt`, `skill:smells-coupling`, `skill:smells-redundancy`, `skill:smells-surprise`, `skill:tdd-discipline`, `agent:class-design-reviewer`, `agent:comment-reviewer`, `agent:contract-reviewer`, `agent:function-reviewer`, `agent:naming-reviewer`, `agent:object-design-reviewer`, `agent:simplicity-reviewer`, `agent:smell-scanner`, `agent:test-gap-reviewer`, `agent:test-quality-reviewer`, `style:smell-first` |
 | Change Process | `skill:fix`, `skill:plan`, `skill:principles`, `skill:refactoring-steps`, `skill:tdd-discipline`, `agent:lead`, `agent:refactorer`, `agent:test-gap-reviewer`, `style:pair`, `style:smell-first` |
 | Implementation preferences | `skill:emergent-design`, `skill:smells-surprise`, `agent:simplicity-reviewer` |
 | Review checklist | `skill:audit`, `skill:checklist`, `skill:principles`, `skill:review`, `agent:final-gate`, `agent:lead`, `style:strict-reviewer` |
 | Output Expectations | `skill:checklist`, `skill:fix`, `skill:principles`, `skill:review`, `agent:final-gate`, `style:mentor`, `style:strict-reviewer`, `style:terse` |
-| Hard rules | `skill:boy-scout`, `skill:checklist`, `skill:comments`, `skill:explain-rule`, `skill:fix`, `skill:function-contracts`, `skill:principles`, `skill:review`, `skill:smells-redundancy`, `agent:comment-reviewer`, `agent:contract-reviewer`, `agent:final-gate`, `agent:refactorer`, `agent:scope-guard`, `style:boy-scout`, `style:strict-reviewer` |
+| Hard rules | `skill:boy-scout`, `skill:checklist`, `skill:comments`, `skill:explain-rule`, `skill:fix`, `skill:formatting`, `skill:function-contracts`, `skill:principles`, `skill:review`, `skill:smells-redundancy`, `skill:smells-surprise`, `agent:comment-reviewer`, `agent:contract-reviewer`, `agent:final-gate`, `agent:refactorer`, `agent:scope-guard`, `style:campsite`, `style:strict-reviewer` |
 
 Coverage: 22/22 sections.
