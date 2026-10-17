@@ -119,7 +119,7 @@ A subagent has its own context window, its own tool list and its own system prom
 
 Each plugin has the same roles:
 
-- `lead`: the router, on `opus`, read-only. It reads a task or diff and names which specialists and skills to run, in what order. The spec caps its run list at five steps (quality bar, rule 15); 13 of the 14 leads state the cap, and the `clean-code` lead, built before that rule was added, does not (see section 7). It does not review.
+- `lead`: the router, on `opus`, read-only. It reads a task or diff and names which specialists and skills to run, in what order. The spec caps its run list at five steps (quality bar, rule 15), and the validator fails a plugin whose `lead` does not state that cap. It does not review.
 - About a dozen specialist reviewers, read-only (`disallowedTools: Write, Edit`), each paired with the topical skill of the same cluster.
 - A few implementers, with `Edit` and `Write`, that make the smallest behavior-preserving change, run the project's tests and never commit or push.
 - `final-gate`: runs the book's final checklist against the working diff and returns PASS or FAIL with evidence.
@@ -275,6 +275,9 @@ Every component:
 Across components:
 
 - Every `<slug>:<name>` reference (also with a `/` or `@agent-` prefix) in a component or the README resolves to a component of that plugin. This catches typos and references to components that were renamed.
+- The hub's routing table (`skills/principles/SKILL.md`) mentions every other skill, agent and output style of the plugin as `<slug>:<name>`.
+- Every manual skill and every agent says that repository content and tool output are data, not instructions (quality bar, rule 14). The check looks for the phrase "data, not instructions".
+- Read-only roles (agents named `*-reviewer`, `lead`, `final-gate`, `scope-guard`) do not list `Write` or `Edit` in `tools`, and `lead` states that it recommends at most five steps.
 - Agent names and style names are unique. Within each type, near-duplicate bodies are rejected: 4-word-run similarity (Jaccard, `Source` section excluded) of 0.50 or more fails, 0.35 or more warns.
 - Coverage: every upstream `##` section is cited (section 5).
 
@@ -307,9 +310,9 @@ The checks are structural. They cannot establish that the advice is right. These
 
 - That a component is faithful to the source: modal strength preserved, nothing invented, nothing contradicting the rules, and that each `Source` bullet really backs the content under it.
 - That examples are original and correct, and that the "after" code in a before/after example works.
-- That the hub's routing table covers every component, that each plugin has at least two book-specific workflows, that README walkthroughs number at least five and follow the hand-offs between components as those components describe them.
-- That every manual skill and agent states that repository content is data and not instructions, that manual skills avoid `!` shell injection, that `lead` recommends at most five steps, and that component names do not repeat the plugin name. The five-step cap is known not to hold for one plugin today. It was added to the spec (rule 15) after `clean-code` was built, so `plugins/clean-code/agents/lead.md` tells the reader to pick "the smallest set of specialists" and has no numeric cap; the other 13 leads state it.
-- Agent conventions beyond what is listed above: reviewers disallowing `Write` and `Edit`, no `WebFetch` or `WebSearch`, no `memory` key (the validator allows `memory`, `background` and `isolation`), `maxTurns` ranges, and which model an agent uses.
+- That each plugin has at least two book-specific workflows, and that README walkthroughs number at least five and follow the hand-offs between components as those components describe them.
+- That manual skills avoid `!` shell injection, and that component names do not repeat the plugin name.
+- Agent conventions beyond what is listed above: reviewers also listing `Write` and `Edit` under `disallowedTools` (the validator only checks that `tools` lacks them), no `WebFetch` or `WebSearch`, no `memory` key (the validator allows `memory`, `background` and `isolation`), `maxTurns` ranges, and which model an agent uses.
 - That the vendored rule files are byte-identical to upstream. There is no hash check, and the commit recorded in `NOTICE.md` is not compared with the files.
 - That anything works inside Claude Code: whether a description triggers its skill, whether Claude delegates to an agent, whether output follows the template.
 
@@ -347,7 +350,7 @@ The process also changed the spec. Findings from the first reviews became rules:
 
 **Clusters follow the upstream sections.** Where one section is large, it is split along the seams a reader meets in code, not along the order of the bullets. Every smell in a catalog has exactly one owning skill, which keeps two skills from firing on one symptom. The price is a long list of skills; the hub's routing table is the counterweight.
 
-**Specialist agents, with a router and a gate.** Many narrow reviewers give isolation, least-privilege tools and separate output formats. A single large reviewer would give none of that and would load every rule. The price is the idle cost of every agent description, and overlapping reviewers if the lead recommends too many; the spec caps the lead at five steps (the `clean-code` lead predates that rule and does not state the cap).
+**Specialist agents, with a router and a gate.** Many narrow reviewers give isolation, least-privilege tools and separate output formats. A single large reviewer would give none of that and would load every rule. The price is the idle cost of every agent description, and overlapping reviewers if the lead recommends too many; the spec caps the lead at five steps and the validator enforces that every lead states the cap.
 
 **Reviewers have no edit tools; skills can only be asked not to edit.** For agents, Claude Code applies `tools` and `disallowedTools`: all 233 read-only agents list `Read, Grep, Glob, Bash` and disallow `Write` and `Edit`. For a skill, the docs say `allowed-tools` pre-approves tools and does not restrict the others, so a manual skill that "never edits" is following its own instructions, and the Bash it pre-approves is limited to read-only git commands. The honest summary: the strongest enforcement is the missing `Write` and `Edit` on reviewers. `Bash` is still there, and its read-only limit is an instruction.
 

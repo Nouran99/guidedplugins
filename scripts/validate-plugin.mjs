@@ -223,6 +223,22 @@ export function validatePlugin(dir, opts = {}) {
   };
   for (const comp of all) if (comp.text) checkRefs(rel(comp.file), comp.text);
 
+  // hub routing table must cover every component (spec 5.1)
+  const hub = plugin.skills.find((x) => x.id === 'principles');
+  if (hub?.text) {
+    const missing = all.filter((c) => c.id !== 'principles' && !hub.text.includes(`${plugin.slug}:${c.data?.name ?? c.id}`)).map((c) => `${c.kind}:${c.id}`);
+    if (missing.length) err('skills/principles/SKILL.md', `routing table does not mention ${missing.length} component(s): ${missing.slice(0, 8).join(', ')}${missing.length > 8 ? ', ...' : ''}`);
+  }
+  // untrusted-input line in every manual skill and agent (spec 6, item 14)
+  for (const c of [...plugin.skills.filter(isManual), ...plugin.agents]) {
+    if (c.body && !/data,? (and )?not (as )?instructions/i.test(c.body)) err(rel(c.file), 'needs the untrusted-input line ("... data, not instructions")');
+  }
+  // read-only roles never get Write/Edit (spec 5.5), and lead states its five-step cap (spec 6, item 15)
+  for (const a of plugin.agents) {
+    if (/(-reviewer|^lead|^final-gate|^scope-guard)$/.test(a.id) && toList(a.data?.tools).some((t) => /^(Write|Edit)$/.test(t))) err(rel(a.file), 'read-only role must not have Write or Edit in tools');
+    if (a.id === 'lead' && a.body && !/(at most|no more than|maximum of|up to) (five|5)\b/i.test(a.body)) err(rel(a.file), 'lead must state its limit of five steps');
+  }
+
   // unique names within type
   for (const group of [plugin.agents, plugin.styles]) {
     const seen = new Map();
