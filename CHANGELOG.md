@@ -3,6 +3,26 @@
 All notable changes are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 each plugin also keeps its own `CHANGELOG.md` and is versioned independently with [Semantic Versioning](https://semver.org/).
 
+## [1.1.0] - 2026-10-18
+
+The 14 toolkits now also work in other coding agents. The Claude Code plugins are unchanged.
+
+### Added
+
+- **`dist/` builds generated from `plugins/`** by `scripts/build-targets.mjs`, with a shared rewrite engine and one module per agent:
+  - `agent-skills`: 517 skills and modes in the open Agent Skills format, named `<plugin>-<name>` so flat-namespace agents do not collide (the `skills` installer found only 317 of 433 before). All 517 pass the `skills-ref` validator.
+  - `codex`: a Codex plugin per book (served from `.agents/plugins/marketplace.json`, which Codex prefers), manual workflows hidden from the model catalog, and 300 subagent roles as TOML with `scripts/install-codex-agents.mjs`.
+  - `opencode`: skills, 300 subagents with an enforced read-only permission map, and each output style as a primary agent; `scripts/install-opencode.mjs`.
+  - `gemini`: one extension per book with skills and subagents that match Gemini's strict agent schema.
+  - `cursor` and `copilot` (experimental, not run), `rules` (`AGENTS.md` snippets and `scripts/compose-rules.mjs`).
+  - `mcp`: a catalog of all 817 guides and a dependency-free MCP server (`scripts/mcp-server.mjs`, also `npx github:Nouran99/guidedplugins`) with four tools, resources and 542 prompts.
+- **`docs/AGENTS_SUPPORT.md`**: install steps, what maps to what, costs, differences and exactly what was verified, per agent.
+- **`scripts/validate-targets.mjs`**, run by `validate-all.mjs`, plus CI steps that rebuild `dist/`, parse the Codex roles as TOML and run the MCP self-test.
+
+### Verified with the real tools (isolated homes, no live model session)
+
+Codex 0.162, OpenCode 1.19 and 2.0, Gemini CLI 0.64, `npx skills` 1.7.2, `skills-ref`, the MCP Inspector, Claude Code and Codex as MCP clients.
+
 ## [1.0.0] - 2026-10-16
 
 First release of the `guided-plugins` marketplace: 14 plugins, each at version 1.0.0, with 817 components in total (433 skills, 300 subagents, 84 output styles).

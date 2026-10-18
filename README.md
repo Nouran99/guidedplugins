@@ -1,6 +1,6 @@
-# Guided Plugins: classic engineering books as Claude Code toolkits
+# Guided Plugins: classic engineering books as toolkits for coding agents
 
-Fourteen [Claude Code](https://code.claude.com) plugins: one for each of 13 software engineering books and one for the Refactoring.Guru website.
+Fourteen toolkits, built as [Claude Code](https://code.claude.com) plugins and also generated for Codex, OpenCode, Gemini CLI, Cursor, Copilot, any agent that reads Agent Skills or `AGENTS.md`, and any MCP client. One toolkit for each of 13 software engineering books and one for the Refactoring.Guru website.
 Each plugin turns its source's working rules into 55 to 60 components (skills, subagents and output styles) that instruct Claude to apply those rules while it reviews, plans, changes, audits and teaches.
 
 They are built on the MIT-licensed rule sets in [ciembor/agent-rules-books](https://github.com/ciembor/agent-rules-books) by Maciej Ciemborowicz.
@@ -48,6 +48,23 @@ Then open Claude Code in your own project and try the plugin on your current cha
 
 Try a plugin without installing it by pointing Claude Code at its folder in a clone of this repository, run from the clone's root: `claude --plugin-dir ./plugins/clean-code`.
 Installing, updating, the `inject_rules` option and troubleshooting are covered in [docs/USAGE.md](docs/USAGE.md).
+
+## Other coding agents
+
+The Claude Code plugins in `plugins/` are the source. `dist/` holds committed builds for other agents, generated from them and checked against what each agent accepts.
+[docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md) has the install steps, what changes on each agent, the costs, and exactly what was verified.
+
+| Agent | Install | Status |
+| --- | --- | --- |
+| Codex CLI | `codex plugin marketplace add Nouran99/guidedplugins`, then `codex plugin add clean-code@guided-plugins` | Verified with codex-cli 0.162 |
+| OpenCode | `node scripts/install-opencode.mjs clean-code` | Verified with OpenCode 1.19 and 2.0 |
+| Gemini CLI | `gemini extensions install ./dist/gemini/clean-code` | Verified: installs and loads (no live session) |
+| Any Agent Skills agent (about 75) | `npx skills add Nouran99/guidedplugins/dist/agent-skills/clean-code` | Format and installer verified |
+| Any `AGENTS.md` agent | `node scripts/compose-rules.mjs clean-code --size nano --out AGENTS.md` | Verified |
+| Any MCP client | `node scripts/mcp-server.mjs --plugins clean-code` | Verified with the MCP Inspector, Claude Code and Codex |
+| GitHub Copilot, Cursor | see the guide | Experimental, not run |
+
+Codex subagents need a separate step (`node scripts/install-codex-agents.mjs clean-code`), and only OpenCode can enforce that a reviewer is read-only; the guide explains why.
 
 ## The plugins
 
@@ -142,6 +159,7 @@ Turn `inject_rules` on for `clean-code` only (in a session: `/plugin configure c
 
 | Document | What it covers |
 | --- | --- |
+| [docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md) | Using the toolkits with Codex, OpenCode, Gemini CLI, Copilot, Cursor, Agent Skills agents, `AGENTS.md` and MCP: install steps, what maps to what, costs, differences, what was verified |
 | [docs/USAGE.md](docs/USAGE.md) | Installing, updating and removing plugins; turning on `inject_rules`; invoking skills, agents and styles; ten recipes with real commands; context cost; troubleshooting; FAQ |
 | [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) | All 91 pairs with verdicts and scores, the groups that compete, the pairs to be careful with, seven bundles |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | How the repository and each plugin are put together, the cost model, the opt-in hook, validation and CI, how the plugins were built and reviewed, known limitations |
@@ -192,6 +210,8 @@ Running a component costs more than having it installed. Using one adds its body
 **How do they relate to the upstream project?** They are built on [ciembor/agent-rules-books](https://github.com/ciembor/agent-rules-books). Each plugin copies that project's `full`, `mini` and `nano` rule files for its book unmodified and records the upstream commit in its `NOTICE.md`. The skills, subagents, output styles, hook and documentation around those files are this project's own work.
 This project is not affiliated with or endorsed by the upstream maintainer. If you only want the rule files, for use in other tools, use the upstream project directly.
 
+**Does it work with Codex, OpenCode or my other agent?** Yes, in different degrees; see [Other coding agents](#other-coding-agents) and [docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md). Skills travel everywhere. Subagents, modes and always-on rules need a per-agent build, which `dist/` provides, and some features have no equivalent elsewhere (Claude Code's output styles become persona skills). The Codex, OpenCode, Gemini and MCP builds were installed and loaded in the real tools; no live model session was run in any of them.
+
 **Can I use just one plugin?** Yes. Each plugin is self-contained: it carries its own copy of its rule files, and no plugin calls another. Add the marketplace once and install the one you want. Plugins mention other books by name in their text but never invoke their components.
 
 **What is the license?** This repository is MIT-licensed ([LICENSE](LICENSE)). The upstream rule sets are MIT-licensed too; their notice is in [NOTICE.md](NOTICE.md). The books and the Refactoring.Guru website belong to their authors and publishers. The plugins paraphrase working rules and use original examples; they do not reproduce book text and are no substitute for the books. This project has not had a legal review.
@@ -199,10 +219,15 @@ This project is not affiliated with or endorsed by the upstream maintainer. If y
 ## Repository layout
 
 ```text
-.claude-plugin/marketplace.json   generated from scripts/books.json and the plugin manifests
-plugins/<slug>/                   one plugin per book (see docs/PLUGIN_SPEC.md for the anatomy)
-docs/                             usage, compatibility, architecture, spec and component templates
-scripts/                          validator, catalog generator, plugin scaffolder, book registry
+.claude-plugin/marketplace.json   Claude Code marketplace, generated from scripts/books.json and the plugin manifests
+.agents/plugins/marketplace.json   Codex marketplace (generated; points at dist/codex)
+.cursor-plugin/marketplace.json    Cursor marketplace (generated; experimental)
+plugins/<slug>/                   one Claude Code plugin per book: the source of everything (see docs/PLUGIN_SPEC.md)
+dist/                             generated builds for other agents (never edit by hand): agent-skills, codex, opencode,
+                                  gemini, cursor, copilot, rules, mcp
+docs/                             usage, agents support, compatibility, architecture, spec and component templates
+scripts/                          validators, generators, installers, the MCP server, plugin scaffolder, book registry
+package.json                      lets `npx github:Nouran99/guidedplugins` run the MCP server
 .github/                          CI and issue/PR templates
 ```
 
@@ -215,6 +240,9 @@ node scripts/validate-all.mjs          # every plugin: structure, counts, tracea
 node scripts/validate-all.mjs --no-cli # the same without the official CLI check (what CI's blocking job runs)
 node scripts/gen-catalog.mjs           # regenerate catalogs, traceability tables and marketplace.json
 node scripts/new-plugin.mjs <slug> --upstream <clone of agent-rules-books>   # scaffold a new plugin
+node scripts/build-targets.mjs         # regenerate dist/ for the other agents after any change to plugins/
+node scripts/validate-targets.mjs      # check dist/ against each agent's constraints (validate-all runs it too)
+node scripts/mcp-selftest.mjs          # MCP server protocol checks
 ```
 
 The contract for a plugin is [docs/PLUGIN_SPEC.md](docs/PLUGIN_SPEC.md). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).

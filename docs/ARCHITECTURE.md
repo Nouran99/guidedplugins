@@ -19,6 +19,7 @@ Statements about Claude Code come from the official documentation at code.claude
 9. [Design decisions and trade-offs](#9-design-decisions-and-trade-offs)
 10. [Adding a book and updating the upstream rule sets](#10-adding-a-book-and-updating-the-upstream-rule-sets)
 11. [Known limitations](#11-known-limitations)
+12. [Builds for other coding agents](#12-builds-for-other-coding-agents)
 
 ## 1. Repository anatomy
 
@@ -38,7 +39,12 @@ guidedplugins/
 │   ├── gen-catalog.mjs               regenerates every derived file
 │   ├── new-plugin.mjs                scaffolds the mechanical parts of a plugin
 │   ├── validate-plugin.mjs           validates one plugin
-│   └── validate-all.mjs              validates every plugin, the repo-level docs and marketplace.json
+│   ├── validate-all.mjs              validates every plugin, dist/, the repo-level docs and marketplace.json
+│   ├── build-targets.mjs             generates dist/ for the other agents (section 12)
+│   ├── targets/                      core rewrite engine and one module per target agent
+│   ├── validate-targets.mjs          checks dist/ against each agent's constraints
+│   ├── mcp-server.mjs, mcp-selftest.mjs   the MCP server and its protocol checks
+│   └── install-*.mjs, compose-rules.mjs   installers for Codex roles and OpenCode, rules composer
 ├── .github/                          workflows/validate.yml (CI), issue templates, pull request template
 ├── .upstream/                        gitignored local clone of ciembor/agent-rules-books (read-only input)
 └── README.md CONTRIBUTING.md CHANGELOG.md NOTICE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md
@@ -52,7 +58,7 @@ Every file in the repository falls into one of three groups:
 
 | Group | Files | Who edits them |
 | --- | --- | --- |
-| Generated | `.claude-plugin/marketplace.json`; the plugin table in the root `README.md` (between the `CATALOG` markers); in each plugin `docs/COMPONENTS.md`, `docs/TRACEABILITY.md` and the `COMPONENTS` block of `README.md` | `node scripts/gen-catalog.mjs`. Do not edit by hand. |
+| Generated | `dist/` and the Codex and Cursor marketplace files (`.agents/plugins/marketplace.json`, `.cursor-plugin/marketplace.json`) via `node scripts/build-targets.mjs`; `.claude-plugin/marketplace.json`; the plugin table in the root `README.md` (between the `CATALOG` markers); in each plugin `docs/COMPONENTS.md`, `docs/TRACEABILITY.md` and the `COMPONENTS` block of `README.md` | `node scripts/gen-catalog.mjs`. Do not edit by hand. |
 | Scaffolded once | in each plugin `.claude-plugin/plugin.json`, `LICENSE`, `NOTICE.md`, `CHANGELOG.md`, `hooks/hooks.json`, `scripts/session-context.sh`, `skills/principles/references/{full,mini,nano}.md`, and a README stub | `node scripts/new-plugin.mjs`. After that, only `description` and `keywords` in `plugin.json`, `version`, and `CHANGELOG.md` are edited by hand, plus the commit hash in `NOTICE.md` when the vendored rules are refreshed (section 10). The vendored rule files stay byte-for-byte upstream. |
 | Hand-written | skills, agents, output styles, the README prose, `docs/DESIGN.md`, everything in `scripts/` and `docs/` at the repository root | Maintainers, within the rules in the spec. |
 
@@ -419,3 +425,38 @@ There is no update script. The procedure is manual, and the validator does the d
 - **The idle-cost estimate is an estimate.** It comes from `claude plugin details`, which counts manual skills that the skills docs say cost nothing, and the numbers will move with Claude Code versions.
 - **Marketplace metadata.** `metadata.version` in `marketplace.json` is a constant (`1.0.0`) in `buildMarketplace()`; only each plugin's own `version` changes.
 - **Legal and attribution.** The plugins paraphrase rule sets and use original examples. The vendored upstream files are MIT-licensed and credited in each `NOTICE.md`. The upstream project lists legal review among its unresolved items, and this project has not had one either.
+
+## 12. Builds for other coding agents
+
+`plugins/` is written for Claude Code and stays the only hand-written source. `scripts/build-targets.mjs` turns it into `dist/`, with one module per
+target under `scripts/targets/`. The full per-agent guide is [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md); this section explains how the build is put together.
+
+**One rewrite engine, one dialect per target.** Components use a small, regular set of Claude-specific constructs (counted across all 817: about 3,700
+`/plugin:skill` references, 1,560 `plugin:agent` references, 520 `${CLAUDE_PLUGIN_ROOT}` and 40 `${CLAUDE_SKILL_DIR}` paths, 322 `$ARGUMENTS`, 104
+`/output-style` references). The syntax of each reference decides what it points at: `/output-style p:x` is a mode, `/p:x` a skill, a bare `p:x` an agent
+(or, in 38 places, a skill). `core.mjs` rewrites them in one pass per text, so a result is never rescanned, and each target supplies a dialect that says how
+that agent spells a skill, an agent, a mode, and a path from a skill or from an agent (an agent has no fixed install folder, so it is told to "load the skill").
+After rewriting, the validator fails any file in which a `${CLAUDE_*}` variable, `$ARGUMENTS`, `/output-style` or an unresolved `plugin:name` survived.
+
+**Names.** Skills keep their meaning but not their namespace: 317 distinct directory names cover 433 skills, and 7 workflow names repeat in all 14 plugins. Agents
+that keep one flat list (the Agent Skills installer, OpenCode, Gemini, Copilot, Cursor) get `<plugin>-<name>`; Codex namespaces plugin skills itself, so its skills keep their
+names and its roles, which are global, get the prefix. An output style becomes `<plugin>-mode-<name>` (Codex: `mode-<name>`) because `boy-scout` is both a skill and a style in `clean-code`.
+
+**Trees only where a format needs one.** The universal Agent Skills folders are spec-clean (`name`, `description`, `license`, `metadata` only; `skills-ref` accepts all 517).
+OpenCode, Gemini, Cursor and Copilot reuse those folders byte for byte, and the validator enforces that, so git stores one copy of each (the working tree is 61 MB, git about 22 MB).
+Codex gets its own tree because it namespaces by plugin, hides manual skills through `agents/openai.yaml`, and ships roles as TOML.
+
+**Features without an equivalent.** Output styles become persona skills, OpenCode primary agents or Copilot agents. The opt-in hook becomes `AGENTS.md` snippets (`dist/rules`),
+because only one book should be always on and a file every agent reads needs no hook. Per-agent tool lists, model names, colors, turn limits and skill preloading are dropped
+where the target rejects them (Codex rejects a role file with any unknown key; OpenCode 1.x refuses to start on a Claude-style `tools:` line) and replaced by what the target does have: OpenCode permission
+maps, Gemini tool lists, and plain instructions elsewhere.
+
+**MCP.** `dist/mcp/catalog.json` indexes all 817 guides and `scripts/mcp-server.mjs` serves them over stdio with no dependencies: four tools, every guide and rule file as a resource, and the
+workflows, modes and subagent roles as prompts. `--plugins` limits what it exposes, since a harness pays for what it lists.
+
+**Checks.** `validate-targets.mjs` enforces each agent's constraints (skill names and sizes, Codex role keys, OpenCode forbidden keys and read-only permissions, Gemini's strict agent schema and tool names,
+byte-identical flat targets, resolvable relative paths, catalog completeness). CI rebuilds `dist/` and fails on any difference, parses all Codex roles with a real TOML parser and runs the MCP self-test.
+What is not checked in CI: the real agents themselves. They were run once by hand (versions and results in [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md#what-was-verified)), and a live model session was run in none of them.
+
+**Limits specific to this build.** Read-only roles are enforced only by OpenCode. Codex and Gemini rely on instructions. The Cursor and Copilot builds follow the vendors' documents but were not run.
+Gemini loads every skill name into one tool schema, and whether the API accepts all 517 at once was not tested. Codex's skill catalog and role list have a context budget that makes installing all 14 plugins impractical.

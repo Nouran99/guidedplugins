@@ -501,6 +501,8 @@ The complete list of checks is in [ARCHITECTURE.md](ARCHITECTURE.md#7-validation
 
 ## 9. FAQ
 
+**Can I use these in Codex, OpenCode, Gemini CLI or another agent?** Yes: see [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md) for installs, differences and costs.
+
 **Do the plugins make my code better?** Nobody has measured it, and this project does not claim it. The plugins apply a book's rules consistently and every piece of advice cites the upstream section it comes from, so you can check it. Treat the findings as informed review comments.
 
 **Are they official?** No. They are not affiliated with or endorsed by the books' authors or publishers, or by the upstream rule-set maintainer. See [NOTICE.md](../NOTICE.md).

@@ -16,10 +16,11 @@ Thanks for helping. The goal is plugins whose advice is specific, faithful to th
 git checkout -b improve-<plugin>-<topic>
 # edit plugins/<slug>/...
 node scripts/gen-catalog.mjs
+node scripts/build-targets.mjs     # regenerates dist/ for Codex, OpenCode, Gemini, MCP and the rest
 node scripts/validate-all.mjs
 ```
 
-Both commands must succeed before you open a pull request. CI repeats them and fails if generated files are not committed.
+All three commands must succeed before you open a pull request. CI repeats them and fails if generated files, including `dist/`, are not committed. Never edit `dist/` by hand: change `plugins/` and rebuild.
 
 ## Changing a component
 
