@@ -5,23 +5,35 @@ each plugin also keeps its own `CHANGELOG.md` and is versioned independently wit
 
 ## [1.1.0] - 2026-10-18
 
-The 14 toolkits now also work in other coding agents. The Claude Code plugins are unchanged.
+The 14 toolkits now also work in other coding agents. The Claude Code plugins are unchanged since 1.0.0, except for a wording pass on `clean-code` made on 2026-10-17, after the 1.0.0 date: its output style `boy-scout` was renamed `campsite` (the skill `boy-scout` keeps its name) and its `lead` now states the five-step cap. The repository has no remote yet, so nothing had been published when that was done and the plugin stays at 1.0.0. CONTRIBUTING.md asks for a major bump and a plugin changelog line for a rename once anyone depends on the name; that line is in `plugins/clean-code/CHANGELOG.md`.
 
 ### Added
 
 - **`dist/` builds generated from `plugins/`** by `scripts/build-targets.mjs`, with a shared rewrite engine and one module per agent:
   - `agent-skills`: 517 skills and modes in the open Agent Skills format, named `<plugin>-<name>` so flat-namespace agents do not collide (the `skills` installer found only 317 of 433 before). All 517 pass the `skills-ref` validator.
   - `codex`: a Codex plugin per book (served from `.agents/plugins/marketplace.json`, which Codex prefers), manual workflows hidden from the model catalog, and 300 subagent roles as TOML with `scripts/install-codex-agents.mjs`.
-  - `opencode`: skills, 300 subagents with an enforced read-only permission map, and each output style as a primary agent; `scripts/install-opencode.mjs`.
+  - `opencode`: skills, 300 subagents (read-only roles get the edit tools and web fetch denied and a shell allowlist with deny rules for redirection and write flags; a guard rail, not a sandbox) and each output style as a primary agent; `scripts/install-opencode.mjs`.
   - `gemini`: one extension per book with skills and subagents that match Gemini's strict agent schema.
   - `cursor` and `copilot` (experimental, not run), `rules` (`AGENTS.md` snippets and `scripts/compose-rules.mjs`).
-  - `mcp`: a catalog of all 817 guides and a dependency-free MCP server (`scripts/mcp-server.mjs`, also `npx github:Nouran99/guidedplugins`) with four tools, resources and 542 prompts.
+  - `mcp`: a catalog of all 817 guides and a dependency-free MCP server (`scripts/mcp-server.mjs`, also `npx github:Nouran99/guidedplugins` once the repository is published) with four tools, resources and 542 prompts.
 - **`docs/AGENTS_SUPPORT.md`**: install steps, what maps to what, costs, differences and exactly what was verified, per agent.
 - **`scripts/validate-targets.mjs`**, run by `validate-all.mjs`, plus CI steps that rebuild `dist/`, parse the Codex roles as TOML and run the MCP self-test.
 
+### Fixed in the review of the builds (also 2026-10-18, before publication)
+
+- **Role installer.** `install-codex-agents.mjs` chose roles by name prefix, so `ddd` installed 64 roles (22 of `ddd` plus the roles of `ddd-distilled` and `ddd-implementing`), `refactoring` installed 44, `all` reported 364 for 300 files, and `--uninstall ddd` deleted the sibling plugins' roles. Roles are now selected by the plugin named in each file; `validate-targets.mjs` checks it.
+- **Output templates.** `/clean-code:<skill>` and `clean-code:<agent>` inside output templates were left in Claude syntax in 353 generated files. They are rewritten to each target's syntax and the validator fails on any that survive.
+- **Claims that were false outside Claude Code.** "in a forked context" and "You are running in an isolated context" (38 skills), the SessionStart hook sentence in every hub, "the default style" in every mode, `Claude Code toolkit` in the Codex, Gemini, Cursor and Copilot manifests and marketplaces, and "use proactively" in the Codex role descriptions.
+- **Mis-rewrites.** The directory name `use-cases` in `clean-architecture`'s `layer-map` was rewritten as a skill; one-word sibling skills in descriptions, skill lists and "Skill" table columns were left unprefixed; "Load the skill" was capitalised after a comma in about 300 files. The maintainers' component map is shipped only for `refactoring-guru`, the one plugin whose skill points at it.
+- **OpenCode.** The shell allowlist used prefix globs (`git diff*`, `ls*`, `rg*`), so `git diff --output=f`, `ls > f` and `rg --pre cmd` matched. The rules are now exact commands with deny rules after them, and `find` and `git branch --show-current`, which the role texts promise, are allowed. Mode agents carry a line saying they change style only.
+- **Gemini.** Roles now name every skill by its `SKILL.md` path (a Gemini subagent cannot activate skills). **MCP:** agent prompts point at `get_rules` instead of a file. **Copilot:** mode agents are hidden from model delegation. **Cursor:** the rule description says when to apply it, and the marketplace version follows `package.json`.
+- **MCP server.** A response larger than the pipe buffer was cut off when stdin closed; `get_rules` with a size such as `constructor`, null `params` or `arguments`, and a missing `uri` returned an internal error; an unknown tool was not a `-32602` error; malformed JSON-RPC (an empty batch, a non-object message) got no `-32600` reply; an unsupported protocol version was answered with an older one; tools had no `readOnlyHint`. `--plugins=x` was ignored, and a missing value, an unknown `--kinds` value or a mistyped option served every book without a word. All fixed and covered by `mcp-selftest.mjs`.
+- **Installers and rules.** `install-opencode.mjs` counts only what it removes, deletes the folders it leaves empty and copies each plugin's `LICENSE` and `NOTICE.md`. `compose-rules.mjs` states the precedence in visible text, includes a repeated book once and rejects `--out` without a value.
+- **Documentation.** The OpenCode "enforced" and "cannot modify your files" claims, the Codex catalog numbers (re-measured), the delegation claim, the install examples (which installed into the checkout), the Cursor plan requirement, the role-less Agent Skills build, the Gemini estimates and the sizes in `docs/ARCHITECTURE.md`.
+
 ### Verified with the real tools (isolated homes, no live model session)
 
-Codex 0.162, OpenCode 1.19 and 2.0, Gemini CLI 0.64, `npx skills` 1.7.2, `skills-ref`, the MCP Inspector, Claude Code and Codex as MCP clients.
+Codex 0.162, OpenCode 1.19 and 2.0, Gemini CLI 0.64, `npx skills` 1.7.2, `skills-ref`, the MCP Inspector, Claude Code and Codex as MCP clients (2026-10-17). After the fixes above, Codex 0.162.1 (install, catalog, role files), the installers and the MCP self-test were re-run; the others were not. Details are in `docs/AGENTS_SUPPORT.md`.
 
 ## [1.0.0] - 2026-10-16
 
@@ -69,4 +81,4 @@ First release of the `guided-plugins` marketplace: 14 plugins, each at version 1
 - The plugins are unofficial and are not affiliated with or endorsed by the books' authors or publishers.
 - No effect on code quality has been measured, and this release makes no such claim; the upstream project says the same about its rule sets. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#11-known-limitations).
 - The install path `Nouran99/guidedplugins` is valid once the repository is published there.
-- The `lead` agent of `clean-code` does not state the five-step cap that rule 15 of the plugin spec sets, because that plugin was built before the rule was added. The other 13 leads state it, and the validator does not check it. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#3-the-four-component-types).
+- The `lead` agent of `clean-code` did not state the five-step cap that rule 15 of the plugin spec sets when 1.0.0 was dated, because that plugin was built before the rule was added; the wording pass of 2026-10-17 added it, and the validator now checks it for all 14 leads. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md#3-the-four-component-types).

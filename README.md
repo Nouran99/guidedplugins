@@ -1,10 +1,11 @@
 # Guided Plugins: classic engineering books as toolkits for coding agents
 
-Fourteen toolkits, built as [Claude Code](https://code.claude.com) plugins and also generated for Codex, OpenCode, Gemini CLI, Cursor, Copilot, any agent that reads Agent Skills or `AGENTS.md`, and any MCP client. One toolkit for each of 13 software engineering books and one for the Refactoring.Guru website.
+Fourteen toolkits, built as [Claude Code](https://code.claude.com) plugins and also generated for Codex, OpenCode, Gemini CLI, Cursor (experimental, not run), Copilot (experimental, not run), any agent that reads Agent Skills or `AGENTS.md`, and any MCP client. One toolkit for each of 13 software engineering books and one for the Refactoring.Guru website.
 Each plugin turns its source's working rules into 55 to 60 components (skills, subagents and output styles) that instruct Claude to apply those rules while it reviews, plans, changes, audits and teaches.
 
 They are built on the MIT-licensed rule sets in [ciembor/agent-rules-books](https://github.com/ciembor/agent-rules-books) by Maciej Ciemborowicz.
 The plugins are **unofficial**: not affiliated with or endorsed by the books' authors or publishers. See [NOTICE.md](NOTICE.md).
+The names Claude Code, Codex, OpenCode, Gemini CLI, Cursor and GitHub Copilot belong to their owners; this project is independent and is not affiliated with or endorsed by any of them.
 
 What they do and do not claim: each plugin applies one book's upstream rules consistently, and every component cites the upstream section it comes from.
 Nobody has measured whether that improves code quality, and the upstream project says the same about its rule sets, so this project does not claim it.
@@ -56,15 +57,17 @@ The Claude Code plugins in `plugins/` are the source. `dist/` holds committed bu
 
 | Agent | Install | Status |
 | --- | --- | --- |
-| Codex CLI | `codex plugin marketplace add Nouran99/guidedplugins`, then `codex plugin add clean-code@guided-plugins` | Verified with codex-cli 0.162 |
-| OpenCode | `node scripts/install-opencode.mjs clean-code` | Verified with OpenCode 1.19 and 2.0 |
+| Codex CLI | `codex plugin marketplace add /path/to/guidedplugins`, then `codex plugin add clean-code@guided-plugins` (the GitHub form `Nouran99/guidedplugins` works once the repository is published) | Verified with codex-cli 0.162 (local path) |
+| OpenCode | `node scripts/install-opencode.mjs clean-code` (run from a clone, installs into the current directory's `.opencode`) | Verified with OpenCode 1.19 and 2.0; see the guide for what was re-checked |
 | Gemini CLI | `gemini extensions install ./dist/gemini/clean-code` | Verified: installs and loads (no live session) |
-| Any Agent Skills agent (about 75) | `npx skills add Nouran99/guidedplugins/dist/agent-skills/clean-code` | Format and installer verified |
+| Any Agent Skills agent (about 75) | `npx skills add ./dist/agent-skills/clean-code` from a clone (`Nouran99/guidedplugins/dist/agent-skills/clean-code` once published) | Format and installer verified |
 | Any `AGENTS.md` agent | `node scripts/compose-rules.mjs clean-code --size nano --out AGENTS.md` | Verified |
 | Any MCP client | `node scripts/mcp-server.mjs --plugins clean-code` | Verified with the MCP Inspector, Claude Code and Codex |
-| GitHub Copilot, Cursor | see the guide | Experimental, not run |
+| GitHub Copilot, Cursor | see the guide (Cursor team marketplaces need a Teams or Enterprise plan) | Experimental, not run |
 
-Codex subagents need a separate step (`node scripts/install-codex-agents.mjs clean-code`), and only OpenCode can enforce that a reviewer is read-only; the guide explains why.
+The `Nouran99/guidedplugins` forms need the repository to be published there; it has no remote yet, so use a clone and the local forms. The scripts need Node 20 or later and are run from the clone.
+
+Codex subagents need a separate step (`node scripts/install-codex-agents.mjs clean-code`). Read-only reviewers are not a guarantee outside Claude Code: OpenCode denies them the edit tools and limits their shell to an allowlist (a guard rail, not a sandbox), Gemini applies a tool list but cannot restrict the shell, and Codex restricts neither; the guide explains.
 
 ## The plugins
 

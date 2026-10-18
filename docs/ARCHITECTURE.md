@@ -26,11 +26,16 @@ Statements about Claude Code come from the official documentation at code.claude
 ```text
 guidedplugins/
 ├── .claude-plugin/marketplace.json   generated: marketplace "guided-plugins", one entry per plugin
+├── .agents/plugins/marketplace.json  generated: the same plugins for Codex (section 12)
+├── .cursor-plugin/marketplace.json   generated: the same plugins for Cursor team marketplaces
 ├── plugins/<slug>/                   one plugin per book (14 today); anatomy in section 2
+├── dist/                             generated builds for the other agents (section 12): agent-skills, codex, opencode, gemini, cursor, copilot, rules, mcp
 ├── docs/
 │   ├── PLUGIN_SPEC.md                the contract each plugin is built and validated against
 │   ├── ARCHITECTURE.md               this file
 │   ├── USAGE.md                      installing and using the plugins
+│   ├── AGENTS_SUPPORT.md             installing and using the builds for other agents, with costs and what was verified
+│   ├── COMPATIBILITY.md              verdicts for every pair of plugins
 │   └── templates/                    annotated skeletons for each component type
 ├── scripts/
 │   ├── books.json                    registry: slug, upstream folder, title, author, category, keywords
@@ -47,7 +52,7 @@ guidedplugins/
 │   └── install-*.mjs, compose-rules.mjs   installers for Codex roles and OpenCode, rules composer
 ├── .github/                          workflows/validate.yml (CI), issue templates, pull request template
 ├── .upstream/                        gitignored local clone of ciembor/agent-rules-books (read-only input)
-└── README.md CONTRIBUTING.md CHANGELOG.md NOTICE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md
+└── package.json README.md CONTRIBUTING.md CHANGELOG.md NOTICE.md LICENSE SECURITY.md CODE_OF_CONDUCT.md
 ```
 
 The scripts have no dependencies. `scripts/lib.mjs` says so on purpose: the repository must validate with a bare Node install. The README asks for Node 20 or later; CI uses Node 22.
@@ -242,6 +247,9 @@ The validator also checks that `hooks.json` parses, that its `SessionStart` comm
 node scripts/validate-plugin.mjs plugins/<slug> [--no-cli] [--quiet]   # one plugin
 node scripts/validate-all.mjs [--no-cli] [--quiet]                     # everything
 node scripts/gen-catalog.mjs [plugins/<slug>]                          # regenerate derived files
+node scripts/build-targets.mjs [--target <id>]                         # regenerate dist/ and the Codex and Cursor marketplace files (section 12)
+node scripts/validate-targets.mjs                                      # check dist/ against each agent's constraints (also run by validate-all.mjs)
+node scripts/mcp-selftest.mjs                                          # protocol checks of the MCP server
 ```
 
 Errors fail the run (exit code 1). Warnings never do. `--no-cli` skips the call to the official `claude plugin validate`; without the flag the call is made, and it is skipped with a warning if the `claude` binary is not found.
@@ -432,18 +440,20 @@ There is no update script. The procedure is manual, and the validator does the d
 target under `scripts/targets/`. The full per-agent guide is [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md); this section explains how the build is put together.
 
 **One rewrite engine, one dialect per target.** Components use a small, regular set of Claude-specific constructs (counted across all 817: about 3,700
-`/plugin:skill` references, 1,560 `plugin:agent` references, 520 `${CLAUDE_PLUGIN_ROOT}` and 40 `${CLAUDE_SKILL_DIR}` paths, 322 `$ARGUMENTS`, 104
+`/plugin:skill` references, 1,560 `plugin:agent` references, 517 `${CLAUDE_PLUGIN_ROOT}` and 42 `${CLAUDE_SKILL_DIR}` paths, 322 `$ARGUMENTS`, 104
 `/output-style` references). The syntax of each reference decides what it points at: `/output-style p:x` is a mode, `/p:x` a skill, a bare `p:x` an agent
 (or, in 38 places, a skill). `core.mjs` rewrites them in one pass per text, so a result is never rescanned, and each target supplies a dialect that says how
 that agent spells a skill, an agent, a mode, and a path from a skill or from an agent (an agent has no fixed install folder, so it is told to "load the skill").
-After rewriting, the validator fails any file in which a `${CLAUDE_*}` variable, `$ARGUMENTS`, `/output-style` or an unresolved `plugin:name` survived.
+After rewriting, the validator fails any file in which a `${CLAUDE_*}` variable, `$ARGUMENTS`, `/output-style`, an unresolved `plugin:name` (placeholders such as `plugin:<skill>` included) or a Claude-only claim (a forked or isolated context, the SessionStart hook, "the default style") survived.
 
-**Names.** Skills keep their meaning but not their namespace: 317 distinct directory names cover 433 skills, and 7 workflow names repeat in all 14 plugins. Agents
+The rewrite also decides which backticked names are references. An agent name always is. A skill name is, when hyphenated, unless it sits in a list of other words (the directory names `application`, `use-cases`, `usecases` stay as written); a one-word skill name is only when it is certain: in a description, in a list with another component, or alone in a table cell under a "Skill" or "Agent" column. Verbs are lower-cased after a comma ("..., load the skill first"). Text that has no meaning outside Claude Code is replaced for every target: skills with `context: fork` are described as running in the current session, the hook sentence in each hub points at `dist/rules`, and "the default style" becomes "your default behavior". The maintainers' component map (`docs/DESIGN.md`) is shipped only where a skill refers to it.
+
+**Names.** Skills keep their meaning but not their namespace: 317 distinct directory names cover 433 skills, and 7 skill names (the `principles` hub and six workflows) repeat in all 14 plugins. Agents
 that keep one flat list (the Agent Skills installer, OpenCode, Gemini, Copilot, Cursor) get `<plugin>-<name>`; Codex namespaces plugin skills itself, so its skills keep their
-names and its roles, which are global, get the prefix. An output style becomes `<plugin>-mode-<name>` (Codex: `mode-<name>`) because `boy-scout` is both a skill and a style in `clean-code`.
+names and its roles, which are global, get the prefix. An output style becomes `<plugin>-mode-<name>` (Codex: `mode-<name>`) so that it can never collide with a skill of the same name; at the time of writing no plugin has such a pair.
 
 **Trees only where a format needs one.** The universal Agent Skills folders are spec-clean (`name`, `description`, `license`, `metadata` only; `skills-ref` accepts all 517).
-OpenCode, Gemini, Cursor and Copilot reuse those folders byte for byte, and the validator enforces that, so git stores one copy of each (the working tree is 61 MB, git about 22 MB).
+OpenCode, Gemini, Cursor and Copilot reuse those folders byte for byte, and the validator enforces that, so git stores one copy of each (at the time of writing `dist/` is about 30 MB of file content, and the committed history packs to about 6 MB).
 Codex gets its own tree because it namespaces by plugin, hides manual skills through `agents/openai.yaml`, and ships roles as TOML.
 
 **Features without an equivalent.** Output styles become persona skills, OpenCode primary agents or Copilot agents. The opt-in hook becomes `AGENTS.md` snippets (`dist/rules`),
@@ -454,9 +464,9 @@ maps, Gemini tool lists, and plain instructions elsewhere.
 **MCP.** `dist/mcp/catalog.json` indexes all 817 guides and `scripts/mcp-server.mjs` serves them over stdio with no dependencies: four tools, every guide and rule file as a resource, and the
 workflows, modes and subagent roles as prompts. `--plugins` limits what it exposes, since a harness pays for what it lists.
 
-**Checks.** `validate-targets.mjs` enforces each agent's constraints (skill names and sizes, Codex role keys, OpenCode forbidden keys and read-only permissions, Gemini's strict agent schema and tool names,
-byte-identical flat targets, resolvable relative paths, catalog completeness). CI rebuilds `dist/` and fails on any difference, parses all Codex roles with a real TOML parser and runs the MCP self-test.
+**Checks.** `validate-targets.mjs` enforces each agent's constraints (skill names and sizes, Codex role keys, OpenCode forbidden keys and the read-only shell rules (checked against probe commands, and against the commands each role's text allows), Gemini's strict agent schema and tool names,
+byte-identical flat targets, resolvable relative paths, catalog completeness, and that each plugin's Codex roles are selected by the plugin that owns them, not by a name prefix). CI rebuilds `dist/` and fails on any difference, parses all Codex roles with a real TOML parser and runs the MCP self-test.
 What is not checked in CI: the real agents themselves. They were run once by hand (versions and results in [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md#what-was-verified)), and a live model session was run in none of them.
 
-**Limits specific to this build.** Read-only roles are enforced only by OpenCode. Codex and Gemini rely on instructions. The Cursor and Copilot builds follow the vendors' documents but were not run.
+**Limits specific to this build.** Read-only roles are only as strong as each agent allows: OpenCode denies the edit tools and limits the shell to an allowlist (a guard rail that matches command text, not a sandbox), Gemini applies a tool list but not a shell restriction, and Codex relies on instructions. The Cursor and Copilot builds follow the vendors' documents but were not run.
 Gemini loads every skill name into one tool schema, and whether the API accepts all 517 at once was not tested. Codex's skill catalog and role list have a context budget that makes installing all 14 plugins impractical.

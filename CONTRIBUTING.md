@@ -24,7 +24,7 @@ All three commands must succeed before you open a pull request. CI repeats them 
 
 ## Changing a component
 
-- Edit the component, then regenerate: `node scripts/gen-catalog.mjs plugins/<slug>`.
+- Edit the component, then regenerate: `node scripts/gen-catalog.mjs plugins/<slug>` and `node scripts/build-targets.mjs` (the build for the other agents; `validate-all.mjs` does not notice a stale `dist/`, but CI rebuilds it and fails on any difference).
 - Bump the plugin `version` in `.claude-plugin/plugin.json` (patch for wording, minor for new components, major for renamed or removed ones) and add a line to the plugin `CHANGELOG.md`.
 - Keep `docs/DESIGN.md` in step if you add, remove or merge components.
 
@@ -33,7 +33,7 @@ All three commands must succeed before you open a pull request. CI repeats them 
 1. Add an entry to `scripts/books.json`.
 2. `node scripts/new-plugin.mjs <slug> --upstream <clone of ciembor/agent-rules-books>`
 3. Follow [docs/PLUGIN_SPEC.md](docs/PLUGIN_SPEC.md) section by section; the templates are in [docs/templates](docs/templates).
-4. `node scripts/gen-catalog.mjs && node scripts/validate-all.mjs`
+4. `node scripts/gen-catalog.mjs && node scripts/build-targets.mjs && node scripts/validate-all.mjs`
 
 ## Reporting inaccuracies
 
