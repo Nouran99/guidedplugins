@@ -1,0 +1,6 @@
+interface:
+  display_name: "Choose Pattern"
+  short_description: "Turn a feature or code situation into forces, then recommend the smallest fitting enterprise pattern per decision (business logic, data access, transactions, presentation, remote, session), with rejected alternatives and an escalation trigger."
+  default_prompt: "Use $enterprise-patterns:choose-pattern on situation or feature | file | empty to ask."
+policy:
+  allow_implicit_invocation: false

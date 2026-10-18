@@ -1,0 +1,6 @@
+interface:
+  display_name: "Effect Sketch"
+  short_description: "Trace the effects of a change outward from its change point in a forked context and return a sketch with test points, interception points and pinch points in at most 40 lines."
+  default_prompt: "Use $legacy-code:effect-sketch on function | class | file:line | planned change in a sentence."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Responds with a ranked findings table against the enterprise pattern rules, treats forbidden patterns as blockers, and does not rewrite code unless asked."
+  default_prompt: "Use $enterprise-patterns:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

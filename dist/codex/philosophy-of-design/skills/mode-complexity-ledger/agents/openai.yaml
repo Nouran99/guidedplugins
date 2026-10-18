@@ -1,0 +1,6 @@
+interface:
+  display_name: "Complexity Ledger mode"
+  short_description: "Ends every code answer with a short complexity ledger: facts a reader must hold, files a similar future change touches, special cases at call sites, public surface and net direction, before and after."
+  default_prompt: "Use $philosophy-of-design:mode-complexity-ledger."
+policy:
+  allow_implicit_invocation: false

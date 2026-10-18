@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context First mode"
+  short_description: "Opens every substantive answer with a context card (subdomain class, bounded context, local terms, foreign terms to translate) before any design or code."
+  default_prompt: "Use $ddd-distilled:mode-context-first."
+policy:
+  allow_implicit_invocation: false

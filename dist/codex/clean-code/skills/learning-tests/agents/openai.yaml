@@ -1,0 +1,6 @@
+interface:
+  display_name: "Learning Tests"
+  short_description: "Pin down how a third-party library already in the project behaves with small tests that call it the way you will, then propose the narrow local interface around it."
+  default_prompt: "Use $clean-code:learning-tests on library or API | file where it is used | empty to find vendor usage in the diff."
+policy:
+  allow_implicit_invocation: false

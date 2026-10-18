@@ -1,0 +1,41 @@
+{
+  "name": "code-complete",
+  "version": "1.0.0",
+  "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/code-complete",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "code-complete",
+    "construction",
+    "routines",
+    "defensive-programming",
+    "assertions",
+    "testing",
+    "debugging",
+    "code-review",
+    "performance-tuning",
+    "mcconnell"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Code Complete",
+    "shortDescription": "You need disciplined implementation decisions on routines, control flow, and testing.",
+    "longDescription": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/code-complete",
+    "defaultPrompt": [
+      "Review my changes with $code-complete:review",
+      "Plan this change with $code-complete:plan",
+      "Explain a rule with $code-complete:explain-rule"
+    ]
+  }
+}

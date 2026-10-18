@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mentor mode"
+  short_description: "Teaches the legacy-code rule behind each decision, names its strength and the loop step it belongs to, and checks understanding with one question."
+  default_prompt: "Use $legacy-code:mode-mentor."
+policy:
+  allow_implicit_invocation: false

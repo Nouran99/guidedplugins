@@ -1,0 +1,6 @@
+interface:
+  display_name: "Characterize"
+  short_description: "Pin the current behavior of unclear code with characterization tests before refactoring it. Writes or edits test files only; never touches production code."
+  default_prompt: "Use $refactoring:characterize on file | function | module | empty to use the files in the current diff."
+policy:
+  allow_implicit_invocation: false

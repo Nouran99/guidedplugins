@@ -1,0 +1,6 @@
+interface:
+  display_name: "Invariant First mode"
+  short_description: "Before any change to an aggregate, a transaction or an event, prints the invariants, the boundary decision and the transaction scope, then makes the change."
+  default_prompt: "Use $ddd-implementing:mode-invariant-first."
+policy:
+  allow_implicit_invocation: false

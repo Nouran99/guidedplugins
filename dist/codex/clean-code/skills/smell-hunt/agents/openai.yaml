@@ -1,0 +1,6 @@
+interface:
+  display_name: "Smell Hunt"
+  short_description: "Hunt the Clean Code smell catalog by family (names, functions, comments, design, tests) in a forked context and map each hit to its treatment skill, in at most 40 lines."
+  default_prompt: "Use $clean-code:smell-hunt on names|functions|comments|design|tests|all] [paths | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

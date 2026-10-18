@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mentor mode"
+  short_description: "Teaches the Domain-Driven Design rule behind each decision, names its strength, and ends non-trivial answers with one question that checks understanding."
+  default_prompt: "Use $ddd:mode-mentor."
+policy:
+  allow_implicit_invocation: false

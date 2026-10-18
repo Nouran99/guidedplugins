@@ -1,0 +1,23 @@
+{
+  "name": "philosophy-of-design",
+  "description": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/philosophy-of-design",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "software-design",
+    "complexity",
+    "deep-modules",
+    "api-design",
+    "information-hiding",
+    "module-design",
+    "interface-design",
+    "strategic-programming",
+    "ousterhout",
+    "code-review"
+  ]
+}

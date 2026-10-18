@@ -1,0 +1,6 @@
+interface:
+  display_name: "Explain Rule"
+  short_description: "Explain one Domain-Driven Design Distilled rule: its strength, the reason behind it, how to check it in code, an original example and the exception the book allows."
+  default_prompt: "Use $ddd-distilled:explain-rule on rule name | section heading | question about a rule | empty to list the sections."
+policy:
+  allow_implicit_invocation: false

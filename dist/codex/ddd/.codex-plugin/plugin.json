@@ -1,0 +1,41 @@
+{
+  "name": "ddd",
+  "version": "1.0.0",
+  "description": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddd",
+    "domain-driven-design",
+    "ubiquitous-language",
+    "bounded-context",
+    "context-mapping",
+    "aggregates",
+    "value-objects",
+    "strategic-design",
+    "core-domain",
+    "evans"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Domain-Driven Design",
+    "shortDescription": "You want to model the business domain rather than tables, controllers, or DTOs.",
+    "longDescription": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd",
+    "defaultPrompt": [
+      "Review my changes with $ddd:review",
+      "Plan this change with $ddd:plan",
+      "Explain a rule with $ddd:explain-rule"
+    ]
+  }
+}

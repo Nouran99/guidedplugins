@@ -1,0 +1,42 @@
+{
+  "name": "data-intensive-apps",
+  "version": "1.0.0",
+  "description": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/data-intensive-apps",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddia",
+    "distributed-systems",
+    "replication",
+    "partitioning",
+    "transactions",
+    "streams",
+    "consistency",
+    "kleppmann",
+    "idempotency",
+    "schema-evolution",
+    "event-driven"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Designing Data-Intensive Applications",
+    "shortDescription": "Data ownership, event flows, or consistency semantics matter.",
+    "longDescription": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/data-intensive-apps",
+    "defaultPrompt": [
+      "Review my changes with $data-intensive-apps:review",
+      "Plan this change with $data-intensive-apps:plan",
+      "Explain a rule with $data-intensive-apps:explain-rule"
+    ]
+  }
+}

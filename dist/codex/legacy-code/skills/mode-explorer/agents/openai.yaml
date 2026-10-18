@@ -1,0 +1,6 @@
+interface:
+  display_name: "Explorer mode"
+  short_description: "Read-only understanding mode for unfamiliar legacy code: effect sketch, responsibility groups, open questions, candidate test points and seams, and one next safe move. Produces no patch."
+  default_prompt: "Use $legacy-code:mode-explorer."
+policy:
+  allow_implicit_invocation: false

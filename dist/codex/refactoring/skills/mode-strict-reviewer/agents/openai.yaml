@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Answers as a ranked findings table against the Refactoring rules, never rewrites code unless asked, and says No findings explicitly when clean."
+  default_prompt: "Use $refactoring:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

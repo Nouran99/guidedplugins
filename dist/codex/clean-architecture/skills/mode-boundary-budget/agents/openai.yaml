@@ -1,0 +1,6 @@
+interface:
+  display_name: "Boundary Budget mode"
+  short_description: "Justifies every proposed port, layer, package or service with a one-line cost versus option value entry and the lighter alternative, and tallies built, skipped and compromised boundaries."
+  default_prompt: "Use $clean-architecture:mode-boundary-budget."
+policy:
+  allow_implicit_invocation: false

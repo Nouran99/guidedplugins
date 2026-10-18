@@ -1,0 +1,5 @@
+{
+  "name": "pragmatic-programmer",
+  "version": "1.0.0",
+  "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result."
+}

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Assumptions First mode"
+  short_description: "Lists the inputs, trust boundaries and assumptions before writing or changing code, then shows where each is validated, asserted or tested when the change is done."
+  default_prompt: "Use $code-complete:mode-assumptions-first."
+policy:
+  allow_implicit_invocation: false

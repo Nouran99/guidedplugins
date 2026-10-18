@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tracer First mode"
+  short_description: "Before building a new capability, states the thinnest real end-to-end path and its proving command, builds and runs that first, then widens in steps ordered by risk."
+  default_prompt: "Use $pragmatic-programmer:mode-tracer-first."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Incident Review"
+  short_description: "Turn an incident, outage or capacity problem into a failure chain, missing defenses, detection gaps and ranked design changes, using only the evidence provided. Not a blame exercise."
+  default_prompt: "Use $release-it:incident-review on incident description | path to postmortem, log or metrics export | empty to ask."
+policy:
+  allow_implicit_invocation: false

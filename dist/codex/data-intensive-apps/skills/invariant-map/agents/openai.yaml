@@ -1,0 +1,6 @@
+interface:
+  display_name: "Invariant Map"
+  short_description: "List the business invariants in a scope, the mechanism that enforces each, the isolation in effect and the anomaly still possible (lost update, write skew, phantom), in a forked context and at most 40 lines."
+  default_prompt: "Use $data-intensive-apps:invariant-map on module | feature | invariant in words | empty for the repository root."
+policy:
+  allow_implicit_invocation: false

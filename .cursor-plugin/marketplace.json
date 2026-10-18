@@ -1,0 +1,82 @@
+{
+  "name": "guided-plugins",
+  "owner": {
+    "name": "Nouran Darwish"
+  },
+  "metadata": {
+    "description": "Fourteen Claude Code plugins, one per classic software engineering book. Each ships 50+ skills, subagents and output styles built on the MIT-licensed rule sets from ciembor/agent-rules-books.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "clean-code",
+      "source": "./dist/cursor/clean-code",
+      "description": "Robert C. Martin's Clean Code as a Claude Code toolkit: skills, subagents and output styles for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code."
+    },
+    {
+      "name": "philosophy-of-design",
+      "source": "./dist/cursor/philosophy-of-design",
+      "description": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design."
+    },
+    {
+      "name": "clean-architecture",
+      "source": "./dist/cursor/clean-architecture",
+      "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases."
+    },
+    {
+      "name": "code-complete",
+      "source": "./dist/cursor/code-complete",
+      "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning."
+    },
+    {
+      "name": "data-intensive-apps",
+      "source": "./dist/cursor/data-intensive-apps",
+      "description": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams."
+    },
+    {
+      "name": "ddd",
+      "source": "./dist/cursor/ddd",
+      "description": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus."
+    },
+    {
+      "name": "ddd-distilled",
+      "source": "./dist/cursor/ddd-distilled",
+      "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony."
+    },
+    {
+      "name": "ddd-implementing",
+      "source": "./dist/cursor/ddd-implementing",
+      "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers."
+    },
+    {
+      "name": "enterprise-patterns",
+      "source": "./dist/cursor/enterprise-patterns",
+      "description": "Martin Fowler's enterprise application patterns as a Claude Code toolkit: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial."
+    },
+    {
+      "name": "refactoring",
+      "source": "./dist/cursor/refactoring",
+      "description": "Refactoring by Martin Fowler as a Claude Code toolkit: skills, subagents and output styles for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy."
+    },
+    {
+      "name": "refactoring-guru",
+      "source": "./dist/cursor/refactoring-guru",
+      "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents."
+    },
+    {
+      "name": "release-it",
+      "source": "./dist/cursor/release-it",
+      "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues."
+    },
+    {
+      "name": "pragmatic-programmer",
+      "source": "./dist/cursor/pragmatic-programmer",
+      "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result."
+    },
+    {
+      "name": "legacy-code",
+      "source": "./dist/cursor/legacy-code",
+      "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps."
+    }
+  ]
+}

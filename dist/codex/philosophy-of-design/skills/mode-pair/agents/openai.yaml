@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pair mode"
+  short_description: "Works in small narrated steps, says what complexity each step removes, and asks before any change larger than a few lines, a new module or layer, or anything touching public API."
+  default_prompt: "Use $philosophy-of-design:mode-pair."
+policy:
+  allow_implicit_invocation: false

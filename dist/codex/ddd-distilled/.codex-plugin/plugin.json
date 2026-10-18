@@ -1,0 +1,42 @@
+{
+  "name": "ddd-distilled",
+  "version": "1.0.0",
+  "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-distilled",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddd",
+    "ddd-distilled",
+    "strategic-design",
+    "context-mapping",
+    "subdomains",
+    "bounded-context",
+    "ubiquitous-language",
+    "aggregates",
+    "domain-events",
+    "event-storming",
+    "vernon"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Domain-Driven Design Distilled",
+    "shortDescription": "You want DDD benefits without heavy ceremony.",
+    "longDescription": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-distilled",
+    "defaultPrompt": [
+      "Review my changes with $ddd-distilled:review",
+      "Plan this change with $ddd-distilled:plan",
+      "Explain a rule with $ddd-distilled:explain-rule"
+    ]
+  }
+}

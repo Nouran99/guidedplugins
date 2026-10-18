@@ -1,0 +1,6 @@
+interface:
+  display_name: "Successive Refinement"
+  short_description: "Take a working but rough draft and refine it in named rounds (names, shape, duplication, contracts, tests) with the tests green after each, until the four design criteria hold."
+  default_prompt: "Use $clean-code:successive-refinement on feature description | file path | empty to refine the draft in the current diff."
+policy:
+  allow_implicit_invocation: false

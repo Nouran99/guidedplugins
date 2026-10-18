@@ -1,0 +1,6 @@
+interface:
+  display_name: "Write Path Trace"
+  short_description: "Follow one write step by step and record what is durable and visible after each step, what a crash or timeout there leaves behind, how a retry behaves and how the state is repaired."
+  default_prompt: "Use $data-intensive-apps:write-path-trace on handler | endpoint | file:function | empty to trace the write path in the current diff."
+policy:
+  allow_implicit_invocation: false

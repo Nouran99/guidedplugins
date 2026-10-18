@@ -1,0 +1,6 @@
+interface:
+  display_name: "Failure First mode"
+  short_description: "Before any design or edit, prints a failure ledger for each boundary the task touches (slow, down, wrong, what protects it, the gap), tags each edit with a ledger row, and lists the failure modes left open."
+  default_prompt: "Use $release-it:mode-failure-first."
+policy:
+  allow_implicit_invocation: false

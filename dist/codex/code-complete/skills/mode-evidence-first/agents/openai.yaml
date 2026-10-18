@@ -1,0 +1,6 @@
+interface:
+  display_name: "Evidence First mode"
+  short_description: "Claims no cause, fix, refactoring safety or speedup without an evidence line: a reproduction, a test result or a measurement; unproven claims are labelled and never stated as fact."
+  default_prompt: "Use $code-complete:mode-evidence-first."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Boy Scout"
+  short_description: "Leave the code you touched cleaner than you found it: one worthwhile cleanup per touched area, inside the touched code, with tests. Reports what was left alone."
+  default_prompt: "Use $clean-code:boy-scout on paths | empty for the files in the current diff."
+policy:
+  allow_implicit_invocation: false

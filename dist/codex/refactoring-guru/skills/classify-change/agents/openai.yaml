@@ -1,0 +1,6 @@
+interface:
+  display_name: "Classify Change"
+  short_description: "Label each hunk of a diff as refactoring, feature, bug fix or mixed, and propose an order and a split so structure and behavior are reviewed separately."
+  default_prompt: "Use $refactoring-guru:classify-change on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

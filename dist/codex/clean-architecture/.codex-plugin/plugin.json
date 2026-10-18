@@ -1,0 +1,40 @@
+{
+  "name": "clean-architecture",
+  "version": "1.0.0",
+  "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/clean-architecture",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "clean-architecture",
+    "dependency-rule",
+    "boundaries",
+    "use-cases",
+    "ports-and-adapters",
+    "solid",
+    "components",
+    "architecture-review",
+    "robert-martin"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Clean Architecture",
+    "shortDescription": "You need code that resists framework, database, and UI churn.",
+    "longDescription": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/clean-architecture",
+    "defaultPrompt": [
+      "Review my changes with $clean-architecture:review",
+      "Plan this change with $clean-architecture:plan",
+      "Explain a rule with $clean-architecture:explain-rule"
+    ]
+  }
+}

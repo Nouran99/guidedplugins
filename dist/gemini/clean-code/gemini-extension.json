@@ -1,0 +1,5 @@
+{
+  "name": "clean-code",
+  "version": "1.0.0",
+  "description": "Robert C. Martin's Clean Code as a Claude Code toolkit: skills, subagents and output styles for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code."
+}

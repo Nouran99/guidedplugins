@@ -1,0 +1,6 @@
+interface:
+  display_name: "Build Feature"
+  short_description: "Implement a new enterprise use case slice by slice in the book's generation order (pattern, service, domain, persistence, transaction, boundary DTOs, presentation) with tests at each responsibility. Runs the tests and never commits."
+  default_prompt: "Use $enterprise-patterns:build-feature on use case description | plan reference | empty to ask."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Terse mode"
+  short_description: "Result first and brief: what changed, which technique, which check ran, what was left; failing output still shown in full."
+  default_prompt: "Use $refactoring-guru:mode-terse."
+policy:
+  allow_implicit_invocation: false

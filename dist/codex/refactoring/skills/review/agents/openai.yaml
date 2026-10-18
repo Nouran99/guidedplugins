@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a diff or paths against the Refactoring rules and report ranked findings, starting with whether the change keeps behavior, one intent and a safety net."
+  default_prompt: "Use $refactoring:review on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

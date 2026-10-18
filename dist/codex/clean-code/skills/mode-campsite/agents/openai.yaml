@@ -1,0 +1,6 @@
+interface:
+  display_name: "Campsite mode"
+  short_description: "Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. A report format only; to run a cleanup on demand use $clean-code:boy-scout."
+  default_prompt: "Use $clean-code:mode-campsite."
+policy:
+  allow_implicit_invocation: false

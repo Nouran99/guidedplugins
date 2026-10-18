@@ -1,0 +1,6 @@
+interface:
+  display_name: "Terse mode"
+  short_description: "Gives the result first with no preamble, in at most a few lines unless more is asked, while still showing failing test output in full."
+  default_prompt: "Use $refactoring:mode-terse."
+policy:
+  allow_implicit_invocation: false

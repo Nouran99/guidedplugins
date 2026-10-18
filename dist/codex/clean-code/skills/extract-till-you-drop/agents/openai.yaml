@@ -1,0 +1,6 @@
+interface:
+  display_name: "Extract Till You Drop"
+  short_description: "Decompose one long function into single-level functions by extracting step by step with tests after each, and stop before the pieces become named fragments."
+  default_prompt: "Use $clean-code:extract-till-you-drop on file:function | function name | empty for the longest function in the current diff."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan"
+  short_description: "Plan a non-trivial change with the book's generation sequence: concept, narrowest interface, hidden details, caller impact, special cases, alternatives and scope. Does not edit."
+  default_prompt: "Use $philosophy-of-design:plan on task description | issue text | paths | empty to plan from the current diff."
+policy:
+  allow_implicit_invocation: false

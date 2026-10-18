@@ -1,0 +1,25 @@
+{
+  "name": "release-it",
+  "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/release-it",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "release-it",
+    "stability-patterns",
+    "circuit-breaker",
+    "bulkhead",
+    "timeouts",
+    "retries",
+    "back-pressure",
+    "resilience",
+    "observability",
+    "deployment-safety",
+    "production",
+    "nygard"
+  ]
+}

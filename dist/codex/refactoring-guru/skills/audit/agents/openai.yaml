@@ -1,0 +1,6 @@
+interface:
+  display_name: "Audit"
+  short_description: "Scan a directory or repository for smells in the source's scan order, in a forked context, and return ranked hot spots in at most 40 lines."
+  default_prompt: "Use $refactoring-guru:audit on directory | glob | empty for the repository root."
+policy:
+  allow_implicit_invocation: false

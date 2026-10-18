@@ -1,0 +1,6 @@
+interface:
+  display_name: "Model First"
+  short_description: "Produce a short model brief before writing new domain behavior: capability, subdomain, context, local terms, concept kinds, smallest patterns, boundaries and scenarios, following the Domain-Driven Design Distilled generation order."
+  default_prompt: "Use $ddd-distilled:model-first on feature or behavior to build | empty to ask."
+policy:
+  allow_implicit_invocation: false

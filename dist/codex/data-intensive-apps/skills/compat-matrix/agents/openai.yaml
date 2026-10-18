@@ -1,0 +1,6 @@
+interface:
+  display_name: "Compat Matrix"
+  short_description: "Build the old-and-new compatibility matrix for one schema, API, message or enum change and order the rollout so no reader meets a form it cannot read."
+  default_prompt: "Use $data-intensive-apps:compat-matrix on change description | migration or schema path | empty to use the contract files in the current diff."
+policy:
+  allow_implicit_invocation: false

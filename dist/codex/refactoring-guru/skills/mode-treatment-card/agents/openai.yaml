@@ -1,0 +1,6 @@
+interface:
+  display_name: "Treatment Card mode"
+  short_description: "Prints a smell, cost, technique, check and stop card before every edit and a one-line result after it, so no change happens without a diagnosis."
+  default_prompt: "Use $refactoring-guru:mode-treatment-card."
+policy:
+  allow_implicit_invocation: false

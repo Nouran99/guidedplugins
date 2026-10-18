@@ -1,0 +1,38 @@
+{
+  "name": "legacy-code",
+  "version": "1.0.0",
+  "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/legacy-code",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "legacy-code",
+    "seams",
+    "characterization-tests",
+    "dependency-breaking",
+    "sprout-and-wrap",
+    "test-harness",
+    "feathers"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Working Effectively with Legacy Code",
+    "shortDescription": "You are changing poorly tested legacy code and need to regain control first.",
+    "longDescription": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/legacy-code",
+    "defaultPrompt": [
+      "Review my changes with $legacy-code:review",
+      "Plan this change with $legacy-code:plan",
+      "Explain a rule with $legacy-code:explain-rule"
+    ]
+  }
+}

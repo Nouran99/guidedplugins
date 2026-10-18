@@ -1,0 +1,21 @@
+{
+  "name": "ddd-implementing",
+  "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-implementing",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddd",
+    "iddd",
+    "aggregates",
+    "domain-events",
+    "repositories",
+    "integration",
+    "tactical-design",
+    "vernon"
+  ]
+}

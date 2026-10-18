@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pair mode"
+  short_description: "Works in small narrated steps and asks before changing an aggregate boundary, a transaction scope, a published contract or anything past a few lines."
+  default_prompt: "Use $ddd-implementing:mode-pair."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Terse mode"
+  short_description: "Result first, no preamble, a few lines unless asked, with failing output still in full. Brevity applies to prose, never to the clarity of the design."
+  default_prompt: "Use $philosophy-of-design:mode-terse."
+policy:
+  allow_implicit_invocation: false

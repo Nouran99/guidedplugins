@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prep First mode"
+  short_description: "Runs every change task in the book's order and reports it as a fixed sequence: friction, safety net, preparation, change, follow-up cleanup, and the reason it stopped."
+  default_prompt: "Use $refactoring:mode-prep-first."
+policy:
+  allow_implicit_invocation: false

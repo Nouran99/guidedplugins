@@ -1,0 +1,6 @@
+interface:
+  display_name: "Test Matrix"
+  short_description: "Derive the normal, boundary, invalid and defensive-check test cases for one routine from its contract, as a table, before any test is written. Does not edit."
+  default_prompt: "Use $code-complete:test-matrix on file:routine | routine name | empty to use the routine in the current diff."
+policy:
+  allow_implicit_invocation: false

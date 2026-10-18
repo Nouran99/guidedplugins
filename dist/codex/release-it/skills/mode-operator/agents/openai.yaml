@@ -1,0 +1,6 @@
+interface:
+  display_name: "Operator mode"
+  short_description: "Ends each non-trivial change with an operations note addressed to whoever runs the system: what to watch, how to stop it, how to undo it, and what users see when it degrades."
+  default_prompt: "Use $release-it:mode-operator."
+policy:
+  allow_implicit_invocation: false

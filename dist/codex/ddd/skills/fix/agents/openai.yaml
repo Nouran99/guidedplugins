@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fix"
+  short_description: "Resolve named Domain-Driven Design findings with the smallest change each, in the rule set's refactoring order, running the tests and never committing."
+  default_prompt: "Use $ddd:fix on findings text | review output | finding numbers | empty to use findings from this session."
+policy:
+  allow_implicit_invocation: false

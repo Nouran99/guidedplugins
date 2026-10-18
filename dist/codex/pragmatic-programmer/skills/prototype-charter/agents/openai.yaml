@@ -1,0 +1,6 @@
+interface:
+  display_name: "Prototype Charter"
+  short_description: "Write the charter for a prototype (question, what it proves and does not, shortcuts, isolation, stop condition, fate), or review a prototype before promotion and say what must be hardened or discarded. Plans and reports only."
+  default_prompt: "Use $pragmatic-programmer:prototype-charter on experiment description | 'promote <path>' | empty to ask."
+policy:
+  allow_implicit_invocation: false

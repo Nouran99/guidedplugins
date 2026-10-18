@@ -1,0 +1,39 @@
+{
+  "name": "ddd-implementing",
+  "version": "1.0.0",
+  "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-implementing",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "ddd",
+    "iddd",
+    "aggregates",
+    "domain-events",
+    "repositories",
+    "integration",
+    "tactical-design",
+    "vernon"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Implementing Domain-Driven Design",
+    "shortDescription": "You need implementation-level DDD: aggregates, events, and integrations.",
+    "longDescription": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/ddd-implementing",
+    "defaultPrompt": [
+      "Review my changes with $ddd-implementing:review",
+      "Plan this change with $ddd-implementing:plan",
+      "Explain a rule with $ddd-implementing:explain-rule"
+    ]
+  }
+}

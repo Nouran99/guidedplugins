@@ -1,0 +1,6 @@
+interface:
+  display_name: "Two Hats mode"
+  short_description: "Tags every edit as STRUCTURE or BEHAVIOR, never both in one step, and announces each switch of hat so structural changes and behavior changes stay separable."
+  default_prompt: "Use $refactoring:mode-two-hats."
+policy:
+  allow_implicit_invocation: false

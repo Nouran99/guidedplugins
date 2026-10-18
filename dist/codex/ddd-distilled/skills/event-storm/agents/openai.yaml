@@ -1,0 +1,6 @@
+interface:
+  display_name: "Event Storm"
+  short_description: "Run a timeboxed, text-based event storming session with the user for one business process and end with a timeline, glossary entries, candidate boundaries, scenarios and a spike list."
+  default_prompt: "Use $ddd-distilled:event-storm on process or workflow to explore | path to notes | empty to ask."
+policy:
+  allow_implicit_invocation: false

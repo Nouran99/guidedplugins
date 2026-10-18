@@ -1,0 +1,6 @@
+interface:
+  display_name: "Failure Mode Scan"
+  short_description: "Walk one flow's boundaries through the source's six stability assumptions in a forked context and return a table of what happens when each is slow, down or wrong, the gaps and the owning skills, in at most 40 lines."
+  default_prompt: "Use $release-it:failure-mode-scan on flow, endpoint, job or path | empty for the flows touched by the current diff."
+policy:
+  allow_implicit_invocation: false

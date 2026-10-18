@@ -1,0 +1,5 @@
+{
+  "name": "data-intensive-apps",
+  "version": "1.0.0",
+  "description": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams."
+}

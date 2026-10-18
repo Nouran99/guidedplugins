@@ -1,0 +1,6 @@
+interface:
+  display_name: "Failure First mode"
+  short_description: "After proposing any change that writes data, handles messages, keeps a copy or changes a contract, shows a failure walk of scenarios, outcomes and guards before the code."
+  default_prompt: "Use $data-intensive-apps:mode-failure-first."
+policy:
+  allow_implicit_invocation: false

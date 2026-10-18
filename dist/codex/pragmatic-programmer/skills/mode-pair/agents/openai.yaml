@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pair mode"
+  short_description: "Works in small narrated steps with a check after each, and asks before any change larger than a few lines, before touching a public API, and before choosing a quality bar."
+  default_prompt: "Use $pragmatic-programmer:mode-pair."
+policy:
+  allow_implicit_invocation: false

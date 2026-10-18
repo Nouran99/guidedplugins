@@ -1,0 +1,25 @@
+{
+  "name": "enterprise-patterns",
+  "description": "Martin Fowler's enterprise application patterns as a Claude Code toolkit: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/enterprise-patterns",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "poeaa",
+    "enterprise-patterns",
+    "orm",
+    "data-mapper",
+    "service-layer",
+    "unit-of-work",
+    "web-presentation",
+    "fowler",
+    "domain-model",
+    "repository",
+    "transaction-script",
+    "optimistic-lock"
+  ]
+}

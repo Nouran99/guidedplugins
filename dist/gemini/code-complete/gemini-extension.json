@@ -1,0 +1,5 @@
+{
+  "name": "code-complete",
+  "version": "1.0.0",
+  "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning."
+}

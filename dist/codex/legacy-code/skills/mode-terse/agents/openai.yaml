@@ -1,0 +1,6 @@
+interface:
+  display_name: "Terse mode"
+  short_description: "Result first, no preamble, a few lines unless asked, while still stating protection and showing failing output in full."
+  default_prompt: "Use $legacy-code:mode-terse."
+policy:
+  allow_implicit_invocation: false

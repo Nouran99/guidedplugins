@@ -1,0 +1,6 @@
+interface:
+  display_name: "Characterize First mode"
+  short_description: "Before any edit to code without trustworthy tests, prints a safety preamble and writes the pin first; after the change prints a loop trace of what was pinned, seamed and left unprotected."
+  default_prompt: "Use $legacy-code:mode-characterize-first."
+policy:
+  allow_implicit_invocation: false

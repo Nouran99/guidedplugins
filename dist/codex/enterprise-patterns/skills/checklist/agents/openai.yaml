@@ -1,0 +1,6 @@
+interface:
+  display_name: "Checklist"
+  short_description: "Walk the Patterns of Enterprise Application Architecture review checklist against the current work, answering yes, no or not applicable with evidence and a next step for each no. Interactive and read-only."
+  default_prompt: "Use $enterprise-patterns:checklist on paths | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

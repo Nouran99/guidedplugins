@@ -1,0 +1,6 @@
+interface:
+  display_name: "Architect mode"
+  short_description: "Designs before coding: states the abstraction, the narrowest interface, what it hides and what callers no longer need to know, and compares two designs for non-trivial choices."
+  default_prompt: "Use $philosophy-of-design:mode-architect."
+policy:
+  allow_implicit_invocation: false

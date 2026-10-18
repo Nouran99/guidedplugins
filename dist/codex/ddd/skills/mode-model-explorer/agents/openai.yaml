@@ -1,0 +1,6 @@
+interface:
+  display_name: "Model Explorer mode"
+  short_description: "Runs a discovery conversation about the model: asks domain questions, offers two or three candidate model shapes, walks a scenario through each, and writes no code until a shape is chosen."
+  default_prompt: "Use $ddd:mode-model-explorer."
+policy:
+  allow_implicit_invocation: false

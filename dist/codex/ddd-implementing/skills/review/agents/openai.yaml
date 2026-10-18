@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a diff or paths against the Implementing Domain-Driven Design rules and report ranked findings, each mapped to the skill that treats it."
+  default_prompt: "Use $ddd-implementing:review on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

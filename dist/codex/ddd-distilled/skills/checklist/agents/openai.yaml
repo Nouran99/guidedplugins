@@ -1,0 +1,6 @@
+interface:
+  display_name: "Checklist"
+  short_description: "Walk the Domain-Driven Design Distilled final checklist against your current work, answering yes, no or not applicable with evidence and a next action for every no."
+  default_prompt: "Use $ddd-distilled:checklist on paths | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

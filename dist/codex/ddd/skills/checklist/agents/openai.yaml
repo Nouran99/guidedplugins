@@ -1,0 +1,6 @@
+interface:
+  display_name: "Checklist"
+  short_description: "Walk the Domain-Driven Design review checklist against the current work, answer yes, no or not applicable with evidence, and give a next step for each no."
+  default_prompt: "Use $ddd:checklist on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

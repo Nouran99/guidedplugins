@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a diff or paths against the Patterns of Enterprise Application Architecture rules and report ranked findings, with forbidden patterns as blockers."
+  default_prompt: "Use $enterprise-patterns:review on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

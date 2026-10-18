@@ -1,0 +1,6 @@
+interface:
+  display_name: "Checklist"
+  short_description: "Walk the final Refactoring checklist against the current work in the session and give a concrete next action for every item that is not yet a yes."
+  default_prompt: "Use $refactoring:checklist on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

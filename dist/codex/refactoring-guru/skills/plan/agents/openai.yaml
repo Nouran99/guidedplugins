@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan"
+  short_description: "Plan a non-trivial change before editing: primary smell, cost, smallest refactoring, cleaner end state, stop condition, checks and ordering against feature work."
+  default_prompt: "Use $refactoring-guru:plan on goal or ticket text | paths | empty to plan from the current diff."
+policy:
+  allow_implicit_invocation: false

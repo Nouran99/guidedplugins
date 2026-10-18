@@ -1,0 +1,6 @@
+interface:
+  display_name: "Plan"
+  short_description: "Plan a change to existing code in small increments with the Domain-Driven Design Distilled order: subdomain, context, language, smallest pattern, boundaries, scenarios, spikes and deferred debt."
+  default_prompt: "Use $ddd-distilled:plan on task description | issue text | path | empty to plan the work in the current diff."
+policy:
+  allow_implicit_invocation: false

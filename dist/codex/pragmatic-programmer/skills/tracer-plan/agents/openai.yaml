@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tracer Plan"
+  short_description: "Define the thinnest real end-to-end slice for a new capability: what it proves, what is real and what is trivial, the one proving command, and the increments after it, ordered by risk. Produces a plan only."
+  default_prompt: "Use $pragmatic-programmer:tracer-plan on capability to build | empty to ask."
+policy:
+  allow_implicit_invocation: false

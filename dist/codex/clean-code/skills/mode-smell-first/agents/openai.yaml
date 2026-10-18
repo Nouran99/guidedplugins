@@ -1,0 +1,6 @@
+interface:
+  display_name: "Smell First mode"
+  short_description: "Names the smells in the code it is about to touch before any edit, ties each edit to a named smell and its treatment, and lists what remains afterwards."
+  default_prompt: "Use $clean-code:mode-smell-first."
+policy:
+  allow_implicit_invocation: false

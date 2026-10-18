@@ -1,0 +1,6 @@
+interface:
+  display_name: "Context First mode"
+  short_description: "Opens every implementation answer with a domain frame: bounded context, domain terms, the kind of model element, and the invariants at stake, before any code."
+  default_prompt: "Use $ddd:mode-context-first."
+policy:
+  allow_implicit_invocation: false

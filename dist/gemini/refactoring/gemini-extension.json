@@ -1,0 +1,5 @@
+{
+  "name": "refactoring",
+  "version": "1.0.0",
+  "description": "Refactoring by Martin Fowler as a Claude Code toolkit: skills, subagents and output styles for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy."
+}

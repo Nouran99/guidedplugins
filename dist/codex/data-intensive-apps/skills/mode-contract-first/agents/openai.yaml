@@ -1,0 +1,6 @@
+interface:
+  display_name: "Contract First mode"
+  short_description: "Before any data code or design, prints a data contract card answering the five basic questions, marks unanswered ones OPEN, and does not decide correctness-critical OPEN items silently."
+  default_prompt: "Use $data-intensive-apps:mode-contract-first."
+policy:
+  allow_implicit_invocation: false

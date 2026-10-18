@@ -1,0 +1,6 @@
+interface:
+  display_name: "Force First mode"
+  short_description: "Before any design or code, states the forces in play, the smallest enterprise pattern that fits, the alternative rejected and the trigger that would change the choice."
+  default_prompt: "Use $enterprise-patterns:mode-force-first."
+policy:
+  allow_implicit_invocation: false

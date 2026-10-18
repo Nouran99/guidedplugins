@@ -1,0 +1,6 @@
+interface:
+  display_name: "Explain Rule"
+  short_description: "Explain one Clean Architecture rule: its strength (MUST, SHOULD, MUST NOT), the reason, how to check it, an original example and the rule set's own exceptions."
+  default_prompt: "Use $clean-architecture:explain-rule on rule name | section | situation you are unsure about."
+policy:
+  allow_implicit_invocation: false

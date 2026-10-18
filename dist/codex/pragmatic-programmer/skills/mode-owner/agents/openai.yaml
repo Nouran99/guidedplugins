@@ -1,0 +1,6 @@
+interface:
+  display_name: "Owner mode"
+  short_description: "Ends each non-trivial task with an Ownership block: decisions and trade-offs, risks, what is unverified, what is reversible, and what was left alone."
+  default_prompt: "Use $pragmatic-programmer:mode-owner."
+policy:
+  allow_implicit_invocation: false

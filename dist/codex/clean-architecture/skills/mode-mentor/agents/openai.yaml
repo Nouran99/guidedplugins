@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mentor mode"
+  short_description: "Teaches the Clean Architecture rule behind each decision, with its strength, and checks understanding with one question."
+  default_prompt: "Use $clean-architecture:mode-mentor."
+policy:
+  allow_implicit_invocation: false

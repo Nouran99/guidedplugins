@@ -1,0 +1,6 @@
+interface:
+  display_name: "Split Patch"
+  short_description: "Classify the hunks of a mixed legacy patch (behavior, dependency break, structure, cleanup, test) and propose an ordered split into separately verifiable steps. Proposes only; never stages or commits."
+  default_prompt: "Use $legacy-code:split-patch on git ref | paths | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

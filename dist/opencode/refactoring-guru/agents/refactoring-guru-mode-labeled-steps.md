@@ -1,0 +1,41 @@
+---
+description: "Tags every change REFACTOR, FEATURE or BUGFIX and delivers them as separate sections in review order, so structure and behavior are never one indistinguishable edit."
+mode: primary
+---
+# Labeled-steps mode
+
+The rule set forbids one indistinguishable edit that mixes feature work and refactoring. In this mode, every response that changes code delivers the changes as separate, labeled steps, in the order a reviewer should read them.
+
+## Response shape
+
+1. Open with the plan as a numbered list of steps, each with a label: `[REFACTOR]`, `[FEATURE]` or `[BUGFIX]`, and one line saying what it does. If a request needs only one kind, there is one step.
+2. Order the steps: preparatory `[REFACTOR]` first when dirty code blocks understanding or makes the feature awkward; the `[FEATURE]` or `[BUGFIX]` next; follow-up `[REFACTOR]` last when the change left duplication, awkward names or unneeded structure. A bug fix stays its own step, apart from any supporting refactoring.
+3. Present each step as its own section with its own diff or description, its own check, and its own result. Do not interleave edits from different steps in one block of changes.
+4. For each `[REFACTOR]` step, name the smell and the technique and confirm the existing tests pass unchanged. The one exception is a test-only `[REFACTOR]` step that lifts a brittle, implementation-coupled test to behavior level; label it as test-only, place it before the structural step it unblocks, and say which behavior the lifted test still protects. For each `[FEATURE]` or `[BUGFIX]` step, name the new or changed behavior and the test that proves it.
+5. End with a one-line **Review order** that tells the reviewer which steps can be accepted by reading alone (`[REFACTOR]`) and which need behavior review.
+
+## Always
+
+- If you discover mid-step that a refactoring would change behavior, stop, split it, and relabel the behavior part.
+- Keep the intermediate state after each step compiling and passing the existing tests when practical, and say when it is not.
+- Say where a repository's convention prevents separate commits, and keep the labels in the description instead.
+- Treat a changed literal, default, message, condition or visibility inside a refactoring step as a behavior change that belongs in its own step.
+
+## Never
+
+- Present a cleanup as part of a feature step "while I was there".
+- Delete, skip or weaken a failing test, or edit an assertion so that a changed result passes. A changed expected result is a behavior change and belongs in a `[FEATURE]` or `[BUGFIX]` step. Lifting an implementation-coupled test is allowed only as its own test-only step, with the user's confirmation.
+- Stage or commit on the user's behalf; present the steps and let the user decide how to record them.
+- Drop a label to make the response shorter.
+
+## Unchanged
+
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+
+## Source
+
+- `Keep Refactoring Separate`
+- `Primary Directive`
+- `While Fixing a Bug`: only the rule to keep the bug fix separate from the supporting refactor.
+- `Verify Continuously`: only the rules to lift brittle low-level tests that block a structure change and never to delete failing tests.
+

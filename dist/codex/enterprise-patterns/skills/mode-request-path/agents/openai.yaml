@@ -1,0 +1,6 @@
+interface:
+  display_name: "Request Path mode"
+  short_description: "Starts every design or change by drawing the request path across layers, marking who owns the transaction, where data is read and written, and every remote hop, then repeats the path after the change."
+  default_prompt: "Use $enterprise-patterns:mode-request-path."
+policy:
+  allow_implicit_invocation: false

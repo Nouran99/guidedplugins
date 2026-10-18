@@ -1,0 +1,6 @@
+interface:
+  display_name: "Labeled Steps mode"
+  short_description: "Tags every change REFACTOR, FEATURE or BUGFIX and delivers them as separate sections in review order, so structure and behavior are never one indistinguishable edit."
+  default_prompt: "Use $refactoring-guru:mode-labeled-steps."
+policy:
+  allow_implicit_invocation: false

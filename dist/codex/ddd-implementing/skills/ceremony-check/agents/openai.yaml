@@ -1,0 +1,6 @@
+interface:
+  display_name: "Ceremony Check"
+  short_description: "Plan, for named areas (paths, contexts or subdomain names), what to keep, trim or extract so the modeling matches the complexity there, with evidence per signal. Reads whole areas, not a diff; reviewing a diff is the ddd-implementing-modeling-effort-reviewer agent."
+  default_prompt: "Use $ddd-implementing:ceremony-check on areas: paths, contexts or subdomain names | empty for the areas in the current diff."
+policy:
+  allow_implicit_invocation: false

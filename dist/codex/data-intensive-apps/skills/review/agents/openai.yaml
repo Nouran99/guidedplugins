@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a diff or paths against the Designing Data-Intensive Applications rules and report ranked findings by data concern."
+  default_prompt: "Use $data-intensive-apps:review on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

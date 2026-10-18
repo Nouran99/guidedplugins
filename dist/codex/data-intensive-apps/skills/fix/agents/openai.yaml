@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fix"
+  short_description: "Resolve named data-contract findings with the smallest change per finding, run the tests, never commit, and stop to ask before any contract or stored-data change."
+  default_prompt: "Use $data-intensive-apps:fix on findings text | path to a findings file | finding numbers from the last review."
+policy:
+  allow_implicit_invocation: false

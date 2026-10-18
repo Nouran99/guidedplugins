@@ -1,0 +1,20 @@
+{
+  "name": "legacy-code",
+  "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/legacy-code",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "legacy-code",
+    "seams",
+    "characterization-tests",
+    "dependency-breaking",
+    "sprout-and-wrap",
+    "test-harness",
+    "feathers"
+  ]
+}

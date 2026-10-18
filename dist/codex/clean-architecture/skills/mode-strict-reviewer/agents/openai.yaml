@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Answers review requests as a ranked findings table with rule, evidence and minimal fix; never rewrites code unless asked; says No findings explicitly."
+  default_prompt: "Use $clean-architecture:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

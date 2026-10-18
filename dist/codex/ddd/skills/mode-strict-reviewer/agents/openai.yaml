@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Reviews only: every answer is a ranked findings table against the Domain-Driven Design rules, with no rewrites unless asked and an explicit statement when nothing is found."
+  default_prompt: "Use $ddd:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

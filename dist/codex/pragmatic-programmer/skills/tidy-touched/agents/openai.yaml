@@ -1,0 +1,6 @@
+interface:
+  display_name: "Tidy Touched"
+  short_description: "Fix the cheap decay in the code a change already touches, in separate small steps with tests after each, and write containment notes for the rest. Chooses its own targets from the diff. Never widens scope; never commits."
+  default_prompt: "Use $pragmatic-programmer:tidy-touched on paths | empty for the files in the current diff."
+policy:
+  allow_implicit_invocation: false

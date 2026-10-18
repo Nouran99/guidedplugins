@@ -1,0 +1,6 @@
+interface:
+  display_name: "Vocabulary Audit"
+  short_description: "Build the concept-to-term table for a directory in a forked context: synonyms used for one concept and words used for two, with a recommended single term for each."
+  default_prompt: "Use $clean-code:vocabulary-audit on directory | glob | empty for the repository root."
+policy:
+  allow_implicit_invocation: false

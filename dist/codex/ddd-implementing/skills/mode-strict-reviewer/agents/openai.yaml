@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Answers as a ranked findings table against the Implementing Domain-Driven Design rules, does not rewrite code unless asked, and says No findings explicitly."
+  default_prompt: "Use $ddd-implementing:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

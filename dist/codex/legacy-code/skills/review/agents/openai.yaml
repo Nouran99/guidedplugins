@@ -1,0 +1,6 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a diff or paths against the Working Effectively with Legacy Code rules and report ranked findings, each with the owning skill and the implementer that can fix it. Reads only; never edits."
+  default_prompt: "Use $legacy-code:review on paths | git ref | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

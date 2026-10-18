@@ -1,0 +1,42 @@
+{
+  "name": "pragmatic-programmer",
+  "version": "1.0.0",
+  "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/pragmatic-programmer",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "pragmatic-programmer",
+    "dry",
+    "orthogonality",
+    "tracer-bullets",
+    "design-by-contract",
+    "debugging",
+    "automation",
+    "broken-windows",
+    "prototypes",
+    "feedback-loops",
+    "hunt-thomas"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "The Pragmatic Programmer",
+    "shortDescription": "You want a general engineering layer: automation, feedback, orthogonality.",
+    "longDescription": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/pragmatic-programmer",
+    "defaultPrompt": [
+      "Review my changes with $pragmatic-programmer:review",
+      "Plan this change with $pragmatic-programmer:plan",
+      "Explain a rule with $pragmatic-programmer:explain-rule"
+    ]
+  }
+}

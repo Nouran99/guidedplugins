@@ -1,0 +1,5 @@
+{
+  "name": "ddd-distilled",
+  "version": "1.0.0",
+  "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony."
+}

@@ -1,0 +1,37 @@
+{
+  "name": "refactoring-guru",
+  "version": "1.0.0",
+  "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/refactoring-guru",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "refactoring-guru",
+    "code-smells",
+    "refactoring-techniques",
+    "smell-to-treatment",
+    "technical-debt",
+    "behavior-preserving"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Refactoring.Guru",
+    "shortDescription": "You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign.",
+    "longDescription": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+    "developerName": "Nouran Darwish",
+    "category": "Developer Tools",
+    "capabilities": [
+      "Read",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/refactoring-guru",
+    "defaultPrompt": [
+      "Review my changes with $refactoring-guru:review",
+      "Plan this change with $refactoring-guru:plan",
+      "Explain a rule with $refactoring-guru:explain-rule"
+    ]
+  }
+}

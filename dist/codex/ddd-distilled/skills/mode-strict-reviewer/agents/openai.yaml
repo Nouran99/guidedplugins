@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Answers as a ranked findings table against the Domain-Driven Design Distilled review rules, never rewrites code unless asked, and says No findings explicitly."
+  default_prompt: "Use $ddd-distilled:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

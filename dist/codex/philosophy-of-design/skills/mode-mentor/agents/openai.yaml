@@ -1,0 +1,6 @@
+interface:
+  display_name: "Mentor mode"
+  short_description: "Teaches the design principle behind each decision, names it, shows what it costs a reader, and checks understanding with one short question."
+  default_prompt: "Use $philosophy-of-design:mode-mentor."
+policy:
+  allow_implicit_invocation: false

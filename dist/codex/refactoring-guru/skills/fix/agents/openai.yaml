@@ -1,0 +1,6 @@
+interface:
+  display_name: "Fix"
+  short_description: "Resolve named refactoring findings one technique at a time with the smallest change, run the tests after each step, and never commit."
+  default_prompt: "Use $refactoring-guru:fix on findings text | file:line | 'last review' | empty to ask."
+policy:
+  allow_implicit_invocation: false

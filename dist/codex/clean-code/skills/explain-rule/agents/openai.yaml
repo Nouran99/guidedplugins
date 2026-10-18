@@ -1,0 +1,6 @@
+interface:
+  display_name: "Explain Rule"
+  short_description: "Explain one Clean Code rule: its strength (must, should, must not), the reason, how to check it, an original example and the book's own exceptions."
+  default_prompt: "Use $clean-code:explain-rule on rule name | section | situation you are unsure about."
+policy:
+  allow_implicit_invocation: false

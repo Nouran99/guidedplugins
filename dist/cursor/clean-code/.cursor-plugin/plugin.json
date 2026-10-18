@@ -1,0 +1,23 @@
+{
+  "name": "clean-code",
+  "description": "Robert C. Martin's Clean Code as a Claude Code toolkit: skills, subagents and output styles for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code.",
+  "version": "1.0.0",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/plugins/clean-code",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "clean-code",
+    "naming",
+    "functions",
+    "code-review",
+    "readability",
+    "unit-tests",
+    "refactoring",
+    "code-smells",
+    "boy-scout-rule",
+    "robert-martin"
+  ]
+}

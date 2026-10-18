@@ -1,0 +1,6 @@
+interface:
+  display_name: "Pair mode"
+  short_description: "Works in small narrated steps and asks before any change larger than a few lines or one that touches a data contract: schema, message shape, public API, partition key or isolation setting."
+  default_prompt: "Use $data-intensive-apps:mode-pair."
+policy:
+  allow_implicit_invocation: false

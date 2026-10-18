@@ -1,0 +1,209 @@
+# Refactoring.Guru plugin: component map
+
+This file is the plan the components were built from. It lists every component with its purpose, the upstream sections it applies, and the one-sentence reason it is not a duplicate of its nearest sibling.
+Upstream sections are the `##` and `###` headings of `skills/principles/references/full.md`; the validator checks coverage against the twenty `##` headings.
+
+## Design decisions
+
+1. **The rule set has two catalogs, so the plugin has two kinds of topical skill.** The 23 smells of the upstream file are the diagnosis side; the 66 named techniques (six families, counting each of Pull Up and Push Down for Field and Method separately, plus their safety rules) are the execution side. A *smell skill* says how to recognize the smell, what it costs, which treatment comes first, which one is a fallback, which one is risky, and when to leave the smell alone. A *technique skill* says, for each named technique of one family, when to use it, when not to, the safe steps and the verification. Every smell and every technique has exactly one owner (tables below). Other components point to the owner.
+2. **Smell skills are grouped by the decision they share, not by the upstream category.** Where the upstream category and the decision differ, the skill follows the decision and cites the exact smell headings: Temporary Field sits with the size smells (state that one algorithm needs), Parallel Inheritance Hierarchies sits with the hierarchy smells, Duplicate Code sits with the change-locality smells, Data Class sits with the ownership smells. `docs/TRACEABILITY.md` shows the result.
+3. **Restraint is part of the rule set, not an add-on.** The source spends as many words on when not to treat (coincidental similarity, simple honest conditionals, useful comments, small extension points, boundary-keeping middle men) as on treatments. Every smell skill carries those exceptions, `refactoring-guru-treatment-choice` and `refactoring-guru-stop-and-defer` own the general brake, and `refactoring-guru-scope-guard` audits it.
+4. **Model-invocable skills are at the cap of 20.** All of them are rule clusters with disjoint triggers (see Confusable pairs). Everything that is a procedure with arguments is a manual skill.
+5. **Reviewers own one concern and have their own output shape.** An intent reviewer prints a per-hunk intent ledger, a safety-net reviewer an evidence map, a type-switch reviewer a branch-site inventory, a coupling reviewer a data-use ledger, a method-body reviewer an evaluation ledger, a compatibility reviewer a surface-change table, and so on. No two reviewers print the same table.
+6. **Rules that are not in `references/full.md` are labelled.** Rules that exist only in `mini.md` or `nano.md` carry "compact checklist". Detection recipes, thresholds, procedures and evidence ladders that this plugin adds carry "Added judgment". The only numbers that come from the source are the warning of ten lines for a method (explicitly "not a mechanical limit"), "more than three or four parameters", "one or two" missing library operations for a foreign method, and the third occurrence of the Rule of Three.
+7. **The scan order of the source is kept.** The upstream smell scan runs bloaters, object-orientation abusers, change preventers, dispensables, couplers, then library gaps. `audit` and `refactoring-guru-smell-to-treatment` walk that order even though the skills are grouped by decision.
+8. **Three components work on reachability, with different jobs.** `refactoring-guru-public-compatibility` holds the rules, `refactoring-guru-reachability-check` answers "can I change or delete this symbol" for one symbol before any edit, `refactoring-guru-compatibility-reviewer` judges a diff that already changed or removed things, and `refactoring-guru-dead-code-remover` acts only after evidence exists.
+9. **Technique skills never restate the smell skills.** `refactoring-guru-size-smells` says a long method should be extracted and which fallback applies when locals block it; `refactoring-guru-composing-methods` says how to extract safely. A reader who is about to type the technique name needs the second; a reader who sees a symptom needs the first.
+10. **Only `refactoring-guru-lead` preloads the hub skill.** Agents preload topical skills. `refactoring-guru-lead` is the exception because the routing table in `principles` is its map. `refactoring-guru-final-gate` carries the ten review questions in its own body, so it preloads nothing and reads the hub only when it needs the checklist wording; this keeps the routing table out of its context.
+11. **Test handling is identical wherever it appears.** A failing test that is coupled to implementation details may be lifted to behavior level, as its own test-only step with the user's confirmation (`SHOULD`); a failing test is never deleted, skipped or weakened, and an assertion is never edited to make a behavior change pass (`MUST NOT`). `fix`, `refactoring-guru-refactorer`, `labeled-steps` and `refactoring-guru-safety-net-reviewer` say the same thing.
+
+## Smell ownership
+
+Every smell heading of the upstream file has one owning skill (diagnosis, cost, treatment priority, exceptions) and one owning reviewer, where a reviewer exists.
+
+| Upstream category | Smell | Owner skill | Owner reviewer |
+| --- | --- | --- | --- |
+| Bloaters | Long Method | `refactoring-guru-size-smells` | `refactoring-guru-bloat-reviewer` |
+| Bloaters | Large Class | `refactoring-guru-size-smells` | `refactoring-guru-bloat-reviewer` |
+| Bloaters | Primitive Obsession | `refactoring-guru-data-smells` | `refactoring-guru-data-modeling-reviewer` |
+| Bloaters | Long Parameter List | `refactoring-guru-data-smells` | `refactoring-guru-data-modeling-reviewer` |
+| Bloaters | Data Clumps | `refactoring-guru-data-smells` | `refactoring-guru-data-modeling-reviewer` |
+| Object-Orientation Abusers | Switch Statements | `refactoring-guru-type-codes-and-switches` | `refactoring-guru-type-switch-reviewer` |
+| Object-Orientation Abusers | Temporary Field | `refactoring-guru-size-smells` | `refactoring-guru-bloat-reviewer` |
+| Object-Orientation Abusers | Refused Bequest | `hierarchies` | `refactoring-guru-hierarchy-reviewer` |
+| Object-Orientation Abusers | Alternative Classes with Different Interfaces | `hierarchies` | `refactoring-guru-hierarchy-reviewer` |
+| Change Preventers | Divergent Change | `refactoring-guru-change-locality` | `refactoring-guru-change-locality-reviewer` |
+| Change Preventers | Shotgun Surgery | `refactoring-guru-change-locality` | `refactoring-guru-change-locality-reviewer` |
+| Change Preventers | Parallel Inheritance Hierarchies | `hierarchies` | `refactoring-guru-hierarchy-reviewer` |
+| Dispensables | Comments | `refactoring-guru-explanatory-comments` | `refactoring-guru-comment-reviewer` |
+| Dispensables | Duplicate Code | `refactoring-guru-change-locality` | `refactoring-guru-change-locality-reviewer` |
+| Dispensables | Lazy Class | `refactoring-guru-dead-weight` | `refactoring-guru-dead-weight-reviewer` |
+| Dispensables | Data Class | `refactoring-guru-behavior-ownership` | `refactoring-guru-coupling-reviewer` |
+| Dispensables | Dead Code | `refactoring-guru-dead-weight` | `refactoring-guru-dead-weight-reviewer` |
+| Dispensables | Speculative Generality | `refactoring-guru-dead-weight` | `refactoring-guru-dead-weight-reviewer` |
+| Couplers | Feature Envy | `refactoring-guru-behavior-ownership` | `refactoring-guru-coupling-reviewer` |
+| Couplers | Inappropriate Intimacy | `refactoring-guru-behavior-ownership` | `refactoring-guru-coupling-reviewer` |
+| Couplers | Message Chains | `refactoring-guru-delegation-and-gaps` | `refactoring-guru-coupling-reviewer` |
+| Couplers | Middle Man | `refactoring-guru-delegation-and-gaps` | `refactoring-guru-coupling-reviewer` |
+| Couplers (library gaps in the scan order) | Incomplete Library Class | `refactoring-guru-delegation-and-gaps` | `refactoring-guru-coupling-reviewer` |
+
+## Technique ownership
+
+Every technique named in `Technique Selection Rules` and `Technique Playbook` has one owning skill. The family skill carries the playbook entries (symptom, use, avoid, safe steps, verification) and the matching safety section.
+
+| Family | Techniques | Owner skill | Safety section applied |
+| --- | --- | --- | --- |
+| Composing Methods | Extract Method, Inline Method, Extract Variable, Inline Temp, Replace Temp with Query, Split Temporary Variable, Remove Assignments to Parameters, Replace Method with Method Object, Substitute Algorithm | `refactoring-guru-composing-methods` | Extraction Safety, Inlining Safety (method) |
+| Moving Features Between Objects | Move Method, Move Field, Extract Class, Inline Class, Hide Delegate, Remove Middle Man, Introduce Foreign Method, Introduce Local Extension | `refactoring-guru-moving-features` | Moving Safety, Inlining Safety (class) |
+| Organizing Data (value, reference, encapsulation) | Self Encapsulate Field, Replace Data Value with Object, Change Value to Reference, Change Reference to Value, Replace Array with Object, Duplicate Observed Data, both association-direction changes, Replace Magic Number with Symbolic Constant, Encapsulate Field, Encapsulate Collection | `refactoring-guru-organizing-data` | Data Reorganization Safety, Encapsulation Safety |
+| Organizing Data (type codes) and conditional polymorphism | Replace Type Code with Class, with Subclasses, with State/Strategy; Replace Subclass with Fields; Replace Conditional with Polymorphism; Introduce Null Object | `refactoring-guru-type-codes-and-switches` | Conditional Safety (the polymorphism and stability rules) |
+| Simplifying Conditional Expressions (local) | Decompose Conditional, Consolidate Conditional Expression, Consolidate Duplicate Conditional Fragments, Remove Control Flag, Replace Nested Conditional with Guard Clauses, Introduce Assertion | `refactoring-guru-conditional-moves` | Conditional Safety (the side-effect and order rules) |
+| Simplifying Method Calls | Rename Method, Add Parameter, Remove Parameter, Separate Query from Modifier, Parameterize Method, Replace Parameter with Explicit Methods, Preserve Whole Object, Replace Parameter with Method Call, Introduce Parameter Object, Remove Setting Method, Hide Method, Replace Constructor with Factory Method, Replace Error Code with Exception, Replace Exception with Test | `refactoring-guru-method-call-moves` | Method Call Safety |
+| Dealing With Generalization | Pull Up Field/Method/Constructor Body, Push Down Field/Method, Extract Subclass, Extract Superclass, Extract Interface, Collapse Hierarchy, Form Template Method, Replace Inheritance with Delegation, Replace Delegation with Inheritance | `hierarchies` | Generalization Safety |
+
+## Skills: model-invocable (20)
+
+| Name | Purpose | Upstream sections | Distinct from its nearest sibling because |
+| --- | --- | --- | --- |
+| `principles` | Hub: bias, loading order, modal convention, routing table to every component, priorities, final checklist | Source and Scope; Purpose; Primary Directive; Refactoring Workflow for Agents; Review Checklist | It decides which other component to use; it holds no cluster rules itself. |
+| `refactoring-guru-refactoring-process` | How to carry a refactoring out: keep it separate from feature and bug work, small steps, choose and run checks, judge whether the area got cleaner | Primary Directive; Refactoring Process; Keep Refactoring Separate; Work in Small Steps; Verify Continuously; Keep the Result Cleaner; Purpose | `refactoring-guru-when-to-refactor` decides whether to start; this governs how the work is shaped once started. |
+| `refactoring-guru-when-to-refactor` | Timing: third occurrence, before or after a feature, during a bug fix or review, and technical debt priority | When to Refactor; Rule of Three; While Adding a Feature; While Fixing a Bug; During Code Review; Technical Debt Rules | It never discusses technique or steps; `refactoring-guru-refactoring-process` never discusses whether to start. |
+| `refactoring-guru-stop-and-defer` | Stop conditions, not chasing new smells, deliberate non-treatment, recording deferred smells | Diagnose, Treat, Verify, Stop; Smell Exception Rules; Smell Detection Process; Keep the Result Cleaner; Work in Small Steps; Refactoring Workflow for Agents | `refactoring-guru-treatment-choice` decides what to do; this decides when to stop doing it and what to write down. |
+| `refactoring-guru-treatment-choice` | Pick the smallest treatment: preferred, fallback and risky ladder, the tradeoff rules, the decision anti-patterns | Smell-to-Treatment Priority Map; Safety and Tradeoff Rules; Decision Anti-Patterns; Technique Selection Rules; Diagnose, Treat, Verify, Stop | The smell skills hold the per-smell rows; this holds the cross-smell ladder and the list of mechanical choices to reject. |
+| `refactoring-guru-public-compatibility` | Reachability checks and transition paths before changing anything others may reach | Safety and Tradeoff Rules; Dead Code; Speculative Generality; Decision Anti-Patterns; Method Call Safety; Inlining Safety; Moving Safety; Generalization Safety; Conditional and Method Call Playbook | `refactoring-guru-dead-weight` decides what looks unused; this decides whether it is safe to touch. |
+| `refactoring-guru-size-smells` | Long Method, Large Class, Temporary Field: diagnosis and treatment priority | Bloaters; Long Method; Large Class; Temporary Field; Smell-to-Treatment Priority Map; Smell Exception Rules; Extraction Safety | `refactoring-guru-composing-methods` and `refactoring-guru-moving-features` hold the mechanics. |
+| `refactoring-guru-data-smells` | Primitive Obsession, Long Parameter List, Data Clumps: diagnosis and treatment priority | Bloaters; Primitive Obsession; Long Parameter List; Data Clumps; Smell-to-Treatment Priority Map; Decision Anti-Patterns | `refactoring-guru-organizing-data` and `refactoring-guru-method-call-moves` hold the mechanics; this decides whether a concept exists at all. |
+| `refactoring-guru-change-locality` | Divergent Change, Shotgun Surgery, Duplicate Code: where knowledge lives and how many edit sites a change needs | Change Preventers; Divergent Change; Shotgun Surgery; Dispensables; Duplicate Code; Rule of Three; Smell-to-Treatment Priority Map; Decision Anti-Patterns; Generalization Safety | `refactoring-guru-behavior-ownership` is about which class a method belongs to; this is about how many places one change touches. |
+| `refactoring-guru-dead-weight` | Lazy Class, Dead Code, Speculative Generality: delete or inline what does not earn its cost | Dispensables; Lazy Class; Dead Code; Speculative Generality; Smell-to-Treatment Priority Map; Safety and Tradeoff Rules | `refactoring-guru-public-compatibility` checks reach; this finds candidates and picks delete, inline or keep. |
+| `refactoring-guru-explanatory-comments` | Comments as deodorant: rename, extract variable or method, assert, or keep for rationale | Dispensables; Comments; Smell-to-Treatment Priority Map; Smell Exception Rules; Long Method; Safety and Tradeoff Rules; Composing Methods Playbook; Conditional and Method Call Playbook; Decision Anti-Patterns | `refactoring-guru-composing-methods` performs the extraction; this decides whether a comment should exist. |
+| `refactoring-guru-behavior-ownership` | Data Class, Feature Envy, Inappropriate Intimacy: where behavior and internals belong | Couplers; Feature Envy; Inappropriate Intimacy; Dispensables; Data Class; Smell-to-Treatment Priority Map; Moving Safety; Encapsulation Safety; Safety and Tradeoff Rules; Decision Anti-Patterns | `refactoring-guru-delegation-and-gaps` is about paths between objects; this is about who owns the logic. |
+| `refactoring-guru-delegation-and-gaps` | Message Chains, Middle Man, Incomplete Library Class: hide a delegate or remove a pass-through; foreign method or local extension | Couplers; Message Chains; Middle Man; Incomplete Library Class; Smell-to-Treatment Priority Map; Moving Features Playbook; Decision Anti-Patterns | `refactoring-guru-behavior-ownership` moves logic to its data; this manages the layers between objects and the edge to a library. |
+| `refactoring-guru-type-codes-and-switches` | Switch Statements and their treatments: type codes, state, strategy, polymorphism, null object | Object-Orientation Abusers; Switch Statements; Organizing Data; Organizing Data Playbook; Conditional and Method Call Playbook; Conditional Safety; Smell-to-Treatment Priority Map; Decision Anti-Patterns | `refactoring-guru-conditional-moves` simplifies a conditional in place; this decides when a conditional should become a type. |
+| `hierarchies` | Refused Bequest, Alternative Classes, Parallel Hierarchies plus all generalization techniques | Object-Orientation Abusers; Change Preventers; Refused Bequest; Alternative Classes with Different Interfaces; Parallel Inheritance Hierarchies; Dealing With Generalization; Generalization Playbook; Generalization Safety; Smell-to-Treatment Priority Map | The only skill about inheritance structure; `refactoring-guru-type-codes-and-switches` only creates a hierarchy as one option. |
+| `refactoring-guru-composing-methods` | Mechanics and safety of the nine method-body techniques | Composing Methods; Composing Methods Playbook; Technique Playbook; Extraction Safety; Inlining Safety; Long Method; Decision Anti-Patterns; Smell-to-Treatment Priority Map | `refactoring-guru-conditional-moves` changes conditions; this changes statements and temporaries. |
+| `refactoring-guru-moving-features` | Mechanics and safety of moving, extracting, inlining classes and delegates | Moving Features Between Objects; Moving Features Playbook; Moving Safety; Inlining Safety | `refactoring-guru-organizing-data` changes how data is represented; this changes where it lives. |
+| `refactoring-guru-organizing-data` | Mechanics and safety of value, reference, association, array and encapsulation changes | Organizing Data; Organizing Data Playbook; Data Reorganization Safety; Encapsulation Safety; Safety and Tradeoff Rules | `refactoring-guru-type-codes-and-switches` owns the type-code half of the same family. |
+| `refactoring-guru-conditional-moves` | Mechanics and safety of local conditional simplification and assertions | Simplifying Conditional Expressions; Conditional and Method Call Playbook; Conditional Safety; Decision Anti-Patterns | `refactoring-guru-type-codes-and-switches` owns polymorphism and null objects. |
+| `refactoring-guru-method-call-moves` | Mechanics and safety of signature and call-shape changes | Simplifying Method Calls; Conditional and Method Call Playbook; Method Call Safety; Decision Anti-Patterns | `refactoring-guru-data-smells` decides whether a parameter group is a concept; this performs the signature change. |
+
+## Skills: manual workflows (10)
+
+| Name | Fork | Edits | Purpose | Upstream sections | Distinct from its nearest sibling because |
+| --- | --- | --- | --- | --- | --- |
+| `review` | no | no | Review a diff or paths against the rules; ranked findings and deferred smells | Review Checklist; During Code Review; Refactoring Workflow for Agents; Decision Anti-Patterns; Smell Detection Process; Smell Exception Rules | `audit` scans a tree; `review` judges a change. |
+| `audit` | yes | no | Repository or directory scan in the source's six-stop order, ranked by cost of the next change, at most 40 lines | Smell Detection Process; Bloaters; Object-Orientation Abusers; Change Preventers; Dispensables; Couplers; Technical Debt Rules | `refactoring-guru-smell-to-treatment` treats one smell; `audit` finds where to look. |
+| `plan` | no | no | The "before editing" plan: goal, primary smell, cost, smallest refactoring, end state, stop condition, checks, ordering against feature work | Refactoring Workflow for Agents; Diagnose, Treat, Verify, Stop; When to Refactor; Keep Refactoring Separate; Smell-to-Treatment Priority Map | `refactoring-guru-smell-to-treatment` is the card for one smell; `plan` sequences a whole change. |
+| `refactoring-guru-explain-rule` | no | no | Explain one rule, smell or technique: modal strength, reason, check, exception | Source and Scope; Technique Playbook; Smell Exception Rules; Smell-to-Treatment Priority Map | The only manual skill that explains instead of producing findings or edits. |
+| `checklist` | no | no | Walk the ten review questions interactively with a next action per "no" | Review Checklist; Refactoring Workflow for Agents | `refactoring-guru-final-gate` is the isolated PASS or FAIL gate; `checklist` is the in-session walk. |
+| `fix` | no | yes | Resolve named findings one technique at a time, tests after each, no commit | Refactoring Workflow for Agents; Work in Small Steps; Verify Continuously; Technique Execution Safety | `refactoring-guru-refactorer` is the delegated implementer for larger jobs; `fix` is the in-session loop. |
+| `refactoring-guru-smell-to-treatment` | no | no | Turn one smell (named or found in the diff) into a diagnose, treat, verify, stop card with preferred, fallback and risky options | Smell Detection Process; Diagnose, Treat, Verify, Stop; Smell-to-Treatment Priority Map; Smell Exception Rules | It is the only component that starts from a smell name and ends at a card. |
+| `refactoring-guru-classify-change` | no | no | Label each hunk refactoring, feature, bug fix or mixed and propose a split order | Keep Refactoring Separate; Primary Directive; While Fixing a Bug | `review` judges quality; this judges only intent and ordering. |
+| `refactoring-guru-reachability-check` | yes | no | For one symbol or parameter, search every way other code may reach it and give a verdict, at most 40 lines | Dead Code; Speculative Generality; Safety and Tradeoff Rules; Decision Anti-Patterns | `refactoring-guru-compatibility-reviewer` reviews a finished diff; this answers the question before the edit. |
+| `refactoring-guru-debt-triage` | no | no | Rank known debt by effect on current change speed, correctness and understanding; absorb now or schedule | Technical Debt Rules; When to Refactor | `audit` discovers; `refactoring-guru-debt-triage` prioritizes what is already known. |
+
+## Subagents (22)
+
+Reviewers are read-only (`Read, Grep, Glob, Bash`, `Write` and `Edit` disallowed). Implementers also have `Edit` and `Write`. Skills named are preloaded.
+
+| Name | Model | Purpose | Skills preloaded | Upstream sections | Distinct from its nearest sibling because |
+| --- | --- | --- | --- | --- | --- |
+| `refactoring-guru-lead` | opus | Routes a task or diff to at most five steps; does not review | principles | Refactoring Workflow for Agents; Smell Detection Process; Review Checklist | Only agent that does not read code for defects. |
+| `refactoring-guru-final-gate` | sonnet | Runs the review checklist on the working diff and returns PASS or FAIL | none (reads `principles` only on demand) | Review Checklist; Refactoring Workflow for Agents | Binary gate with evidence; reviewers return ranked findings. |
+| `refactoring-guru-intent-reviewer` | sonnet | Per-hunk intent ledger: refactoring, feature, bug fix, mixed | refactoring-process | Keep Refactoring Separate; Primary Directive; While Fixing a Bug | Judges only what each hunk is for; `refactoring-guru-scope-guard` judges whether it exceeds the diagnosed smell. |
+| `refactoring-guru-safety-net-reviewer` | sonnet | Evidence map: which check protects each risky step, weakened or deleted tests | refactoring-process | Verify Continuously; Work in Small Steps; Diagnose, Treat, Verify, Stop | Looks at checks and step size, never at design. |
+| `refactoring-guru-bloat-reviewer` | sonnet | Long methods, large classes, temporary fields | size-smells | Long Method; Large Class; Temporary Field; Bloaters | Output is a size census with split candidates. |
+| `refactoring-guru-data-modeling-reviewer` | sonnet | Primitive obsession, parameter lists, clumps, and the semantic decisions of any new value type | data-smells, organizing-data | Primitive Obsession; Long Parameter List; Data Clumps; Data Reorganization Safety | Output is a concept ledger; `refactoring-guru-call-contract-reviewer` judges the shape of calls. |
+| `refactoring-guru-type-switch-reviewer` | sonnet | Branch sites on the same discriminator, stable or volatile variation | type-codes-and-switches | Switch Statements; Conditional Safety; Organizing Data Playbook | Output is a branch-site inventory. |
+| `refactoring-guru-hierarchy-reviewer` | sonnet | Inheritance that refuses, mirrors or duplicates | hierarchies | Refused Bequest; Alternative Classes with Different Interfaces; Parallel Inheritance Hierarchies; Generalization Safety | Output is a substitutability table. |
+| `refactoring-guru-change-locality-reviewer` | sonnet | Edit-site map for one change, responsibilities per class, duplicate clusters | change-locality | Divergent Change; Shotgun Surgery; Duplicate Code; Rule of Three | Output is an edit-site map. |
+| `refactoring-guru-dead-weight-reviewer` | sonnet | Removable structure with the evidence still missing | dead-weight | Lazy Class; Dead Code; Speculative Generality | Lists what remains and could go; `refactoring-guru-compatibility-reviewer` judges what the diff already removed. |
+| `refactoring-guru-coupling-reviewer` | sonnet | Who knows what about whom: envy, intimacy, chains, pass-throughs, data-only classes, library workarounds | behavior-ownership, delegation-and-gaps | Feature Envy; Inappropriate Intimacy; Data Class; Message Chains; Middle Man; Incomplete Library Class; Couplers | Output is a data-use and path ledger. |
+| `refactoring-guru-comment-reviewer` | sonnet | Every comment gets a disposition: keep, rename, extract, assert | explanatory-comments | Comments; Smell-to-Treatment Priority Map; Decision Anti-Patterns | Output is a comment ledger. |
+| `refactoring-guru-compatibility-reviewer` | sonnet | Surface changes in a diff that other code may depend on | public-compatibility | Safety and Tradeoff Rules; Method Call Safety; Inlining Safety; Dead Code; Moving Safety; Generalization Safety; Decision Anti-Patterns | Output is a surface-change table with transition status. |
+| `refactoring-guru-method-body-reviewer` | sonnet | Extractions, inlinings and rewritten conditions inside a body: reads, writes, effects, order | composing-methods, conditional-moves | Extraction Safety; Inlining Safety; Conditional Safety; Composing Methods Playbook | Output is an evaluation ledger; it never judges design. |
+| `refactoring-guru-call-contract-reviewer` | sonnet | Query vs modifier, flags, setters, error codes, factories, parameter changes | method-call-moves | Method Call Safety; Simplifying Method Calls; Conditional and Method Call Playbook; Decision Anti-Patterns | Output is a signature ledger. |
+| `refactoring-guru-scope-guard` | sonnet | Classifies each hunk as treatment of the diagnosed smell, enabling step, extra smell chased, or abstraction without evidence | stop-and-defer, treatment-choice | Diagnose, Treat, Verify, Stop; Decision Anti-Patterns; Smell Exception Rules; Smell-to-Treatment Priority Map | The only reviewer that compares the diff with the named smell and stop condition. |
+| `refactoring-guru-refactorer` | sonnet | Carries out a list of findings, one named technique per step | treatment-choice, refactoring-process | Refactoring Workflow for Agents; Work in Small Steps; Verify Continuously; Smell-to-Treatment Priority Map; Technique Selection Rules; Safety and Tradeoff Rules | Takes a finding list; the other implementers each own one kind of move. |
+| `refactoring-guru-method-extractor` | sonnet | Extracts one fragment at a time with full variable accounting | composing-methods | Extraction Safety; Composing Methods Playbook; Long Method | One fragment in, one named method out, with an inputs, outputs and mutations table. |
+| `refactoring-guru-responsibility-mover` | sonnet | Extract Class, Move Method, Move Field with temporary delegation | moving-features | Moving Safety; Moving Features Playbook; Large Class; Feature Envy; Inlining Safety | Moves code between types; never changes a body. |
+| `refactoring-guru-type-introducer` | sonnet | Introduces a value type, parameter object or array replacement after the semantic decisions are written | organizing-data, data-smells | Data Reorganization Safety; Organizing Data Playbook; Primitive Obsession | Creates new types; `refactoring-guru-responsibility-mover` relocates existing members. |
+| `refactoring-guru-dead-code-remover` | sonnet | Deletes or inlines code after reachability evidence is present | dead-weight, public-compatibility | Dead Code; Lazy Class; Speculative Generality; Inlining Safety; Decision Anti-Patterns | Only removes; refuses without evidence. |
+| `refactoring-guru-characterizer` | sonnet | Writes tests that pin current behavior before a risky refactoring; never edits production code | refactoring-process | Verify Continuously; Diagnose, Treat, Verify, Stop | Writes tests only; every other implementer edits production code. |
+
+## Output styles (6)
+
+| Name | Observable behavior | Upstream sections | Distinct because |
+| --- | --- | --- | --- |
+| `mentor` | Names the smell or technique behind each choice, ends non-trivial answers with one check question | Purpose; Diagnose, Treat, Verify, Stop; Smell Exception Rules | Teaching is the only goal. |
+| `strict-reviewer` | Output is a ranked findings table, no rewrites unless asked, explicit "No findings" | Review Checklist; Decision Anti-Patterns; Smell Exception Rules | Never changes code. |
+| `pair` | Small steps, narrates intent, asks before anything larger than a few lines or touching public API | Work in Small Steps; Refactoring Workflow for Agents | Interaction rhythm. |
+| `terse` | Result first, a few lines, failing output still in full | Refactoring Workflow for Agents | Brevity rules. |
+| `treatment-card` | Prints a Smell, Cost, Technique, Check, Stop card before every edit and the result after it | Diagnose, Treat, Verify, Stop; Smell Detection Process; Smell-to-Treatment Priority Map; Smell Exception Rules | Diagnosis is written down per edit; no edit without a card. |
+| `labeled-steps` | Every change is tagged REFACTOR, FEATURE or BUGFIX and delivered in separate sections, refactoring first when it enables the feature | Keep Refactoring Separate; Primary Directive; While Fixing a Bug; Verify Continuously | Organizes the delivery by intent, not by diagnosis. |
+
+## Confusable pairs
+
+Descriptions of the model-invocable skills contain a discriminating clause for each pair.
+
+| Pair | How the descriptions separate them |
+| --- | --- |
+| `refactoring-guru-size-smells` and `refactoring-guru-composing-methods` | Symptom ("needs scrolling, comments") versus intent to perform a named technique. |
+| `refactoring-guru-data-smells` and `refactoring-guru-organizing-data` | Primitives or parameter groups standing in for a concept versus performing a value, reference or encapsulation change. |
+| `refactoring-guru-data-smells` and `refactoring-guru-method-call-moves` | Whether a parameter group is a concept versus performing a signature change. |
+| `refactoring-guru-behavior-ownership` and `refactoring-guru-moving-features` | Logic that sits with the wrong data versus performing a move or extraction. |
+| `refactoring-guru-delegation-and-gaps` and `refactoring-guru-moving-features` | Chains, pass-through layers and library gaps versus the Hide Delegate, Remove Middle Man and extension mechanics. |
+| `refactoring-guru-type-codes-and-switches` and `refactoring-guru-conditional-moves` | A branch on a type, mode or status versus rewriting a local condition. |
+| `refactoring-guru-type-codes-and-switches` and `hierarchies` | Behavior chosen by a code versus the shape of an existing inheritance structure. |
+| `refactoring-guru-refactoring-process` and `refactoring-guru-when-to-refactor` | How to carry out the work versus whether or when to start. |
+| `refactoring-guru-treatment-choice` and `refactoring-guru-stop-and-defer` | Choosing the smallest treatment versus deciding to stop or defer. |
+| `refactoring-guru-public-compatibility` and `refactoring-guru-dead-weight` | Is it safe to touch versus does it look unused. |
+| `refactoring-guru-explanatory-comments` and `refactoring-guru-composing-methods` | Whether a comment should exist versus extracting a variable or method. |
+| `refactoring-guru-change-locality` and `refactoring-guru-when-to-refactor` | How to treat repeated logic and scattered change versus whether the third occurrence has arrived. |
+| `refactoring-guru-behavior-ownership` and `refactoring-guru-change-locality` | Which class owns logic versus how many places one change touches. |
+
+## Coverage check against the upstream sections
+
+Generated from the `## Source` sections of the components. A citation of a `###` heading counts for its `##` parent.
+
+| Upstream section | Components that cite it or one of its subsections |
+| --- | --- |
+| Source and Scope | explain-rule, principles |
+| Purpose | mentor, principles, refactoring-process |
+| Primary Directive | classify-change, refactoring-guru-intent-reviewer, labeled-steps, principles, refactoring-process |
+| Refactoring Process | characterizer, classify-change, fix, refactoring-guru-intent-reviewer, labeled-steps, pair, plan, refactorer, refactoring-process, refactoring-guru-safety-net-reviewer, stop-and-defer |
+| When to Refactor | change-locality, refactoring-guru-change-locality-reviewer, classify-change, debt-triage, refactoring-guru-intent-reviewer, labeled-steps, plan, review, when-to-refactor |
+| Technical Debt Rules | audit, debt-triage, when-to-refactor |
+| Smell Detection Process | audit, characterizer, explain-rule, explanatory-comments, lead, mentor, plan, review, refactoring-guru-safety-net-reviewer, refactoring-guru-scope-guard, size-smells, smell-to-treatment, stop-and-defer, strict-reviewer, treatment-card, treatment-choice |
+| Bloaters | audit, refactoring-guru-bloat-reviewer, composing-methods, refactoring-guru-data-modeling-reviewer, data-smells, explanatory-comments, refactoring-guru-method-extractor, refactoring-guru-responsibility-mover, size-smells, refactoring-guru-type-introducer |
+| Object-Orientation Abusers | audit, refactoring-guru-bloat-reviewer, hierarchies, refactoring-guru-hierarchy-reviewer, size-smells, type-codes-and-switches, refactoring-guru-type-switch-reviewer |
+| Change Preventers | audit, change-locality, refactoring-guru-change-locality-reviewer, hierarchies, refactoring-guru-hierarchy-reviewer |
+| Dispensables | audit, behavior-ownership, change-locality, refactoring-guru-change-locality-reviewer, refactoring-guru-comment-reviewer, refactoring-guru-compatibility-reviewer, refactoring-guru-coupling-reviewer, refactoring-guru-dead-code-remover, dead-weight, refactoring-guru-dead-weight-reviewer, explanatory-comments, public-compatibility, reachability-check |
+| Couplers | audit, behavior-ownership, refactoring-guru-coupling-reviewer, delegation-and-gaps, refactoring-guru-responsibility-mover |
+| Technique Selection Rules | refactoring-guru-call-contract-reviewer, composing-methods, conditional-moves, hierarchies, method-call-moves, moving-features, organizing-data, refactorer, treatment-choice, type-codes-and-switches |
+| Smell-to-Treatment Priority Map | behavior-ownership, change-locality, refactoring-guru-comment-reviewer, composing-methods, data-smells, dead-weight, delegation-and-gaps, explain-rule, explanatory-comments, hierarchies, plan, refactorer, refactoring-guru-scope-guard, size-smells, smell-to-treatment, treatment-card, treatment-choice, type-codes-and-switches |
+| Technique Playbook | refactoring-guru-call-contract-reviewer, composing-methods, conditional-moves, delegation-and-gaps, explain-rule, explanatory-comments, hierarchies, refactoring-guru-method-body-reviewer, method-call-moves, refactoring-guru-method-extractor, moving-features, organizing-data, public-compatibility, refactoring-guru-responsibility-mover, type-codes-and-switches, refactoring-guru-type-introducer, refactoring-guru-type-switch-reviewer |
+| Decision Anti-Patterns | behavior-ownership, refactoring-guru-call-contract-reviewer, change-locality, refactoring-guru-comment-reviewer, refactoring-guru-compatibility-reviewer, composing-methods, conditional-moves, data-smells, refactoring-guru-dead-code-remover, delegation-and-gaps, explanatory-comments, method-call-moves, public-compatibility, reachability-check, review, refactoring-guru-scope-guard, strict-reviewer, treatment-choice, type-codes-and-switches |
+| Technique Execution Safety | behavior-ownership, refactoring-guru-call-contract-reviewer, change-locality, refactoring-guru-compatibility-reviewer, composing-methods, conditional-moves, refactoring-guru-data-modeling-reviewer, refactoring-guru-dead-code-remover, fix, hierarchies, refactoring-guru-hierarchy-reviewer, refactoring-guru-method-body-reviewer, method-call-moves, refactoring-guru-method-extractor, moving-features, organizing-data, public-compatibility, refactoring-guru-responsibility-mover, size-smells, type-codes-and-switches, refactoring-guru-type-introducer, refactoring-guru-type-switch-reviewer |
+| Safety and Tradeoff Rules | behavior-ownership, refactoring-guru-compatibility-reviewer, dead-weight, explanatory-comments, organizing-data, public-compatibility, reachability-check, refactorer, treatment-choice |
+| Refactoring Workflow for Agents | checklist, refactoring-guru-final-gate, fix, lead, pair, plan, principles, refactorer, review, stop-and-defer, terse |
+| Review Checklist | checklist, refactoring-guru-final-gate, lead, principles, review, strict-reviewer |
+
+## Overlap review
+
+Pairs that were close and how they were separated:
+
+- `refactoring-guru-intent-reviewer` and `refactoring-guru-scope-guard`: the first labels each hunk by purpose (refactoring, feature, bug fix); the second asks whether each refactoring hunk belongs to the named smell, uses the smallest treatment, and stops where the stop condition says.
+- `refactoring-guru-safety-net-reviewer` and `refactoring-guru-characterizer`: the first reports on evidence that exists; the second creates evidence and writes nothing else.
+- `refactoring-guru-dead-weight-reviewer`, `refactoring-guru-compatibility-reviewer`, `refactoring-guru-reachability-check` and `refactoring-guru-dead-code-remover`: candidates still in the tree, changes already in the diff, a question about one symbol, and an action after proof. Four roles, four outputs.
+- `refactoring-guru-method-body-reviewer` and `refactoring-guru-method-extractor`: the reviewer checks finished work with an evaluation ledger; the implementer produces the extraction with a variable table. The reviewer never proposes design changes.
+- `refactoring-guru-data-modeling-reviewer` and `refactoring-guru-call-contract-reviewer`: concepts that deserve a type versus the shape of calls that are already typed.
+- `refactoring-guru-responsibility-mover` and `refactoring-guru-type-introducer`: the first relocates existing members between types; the second creates a new type.
+- `checklist` and `refactoring-guru-final-gate`: interactive walk with next actions versus isolated PASS or FAIL with evidence.
+- `plan` and `refactoring-guru-smell-to-treatment`: sequencing a whole change versus one smell's card.
+- `review` and `refactoring-guru-lead`: `review` produces findings; `refactoring-guru-lead` only decides who should.
+- `refactoring-guru-classify-change` and `refactoring-guru-intent-reviewer`: both label hunks refactoring, feature, bug fix or mixed, and both look inside refactoring hunks for behavior edits. `refactoring-guru-classify-change` is the in-session skill that uses that look only to settle each label and then proposes an order and a split; it neither reads the author's stated intent nor ranks anything. `refactoring-guru-intent-reviewer` is the isolated read-only agent that compares the declared intent with the observed label per hunk and returns a ranked ledger with the consequence of each leak.
+- `refactoring-guru-smell-to-treatment` and `treatment-card`: both print a Smell, Cost, Technique, Check, Stop card. `refactoring-guru-smell-to-treatment` is a one-shot manual skill that writes up to three cards on request, adds the exceptions to weigh and the mechanics skill, and edits nothing. `treatment-card` is a session-wide output style that prints a card before every edit, makes the edit, prints a result line and ends with a Not treated list.
+- `review`, `refactoring-guru-scope-guard` and `refactoring-guru-final-gate`: all three read a finished diff and can mention a missing stop condition or an unneeded abstraction. `review` is the in-session skill that finds and ranks defects by smell and rule, with a disposition for each. `refactoring-guru-scope-guard` looks only at proportion: it classifies each hunk against the diagnosed smell, the technique ladder and the stop condition, and needs the plan to do so. `refactoring-guru-final-gate` finds nothing new: it returns PASS or FAIL on the ten review questions, each with evidence. For a large diff `review` delegates to `refactoring-guru-scope-guard`, and `refactoring-guru-final-gate` runs last.
+- `audit` and `refactoring-guru-debt-triage`: finding hot spots in a tree versus prioritizing debt that is already known.
+
+Upstream sections with no skill of their own: `Source and Scope` and `Purpose` frame the others and are applied by the hub and by `refactoring-guru-refactoring-process`; `Review Checklist` and `Refactoring Workflow for Agents` are enforced by workflows and gates (`checklist`, `plan`, `refactoring-guru-final-gate`) because they govern how work is reported and bounded, not how code is shaped.

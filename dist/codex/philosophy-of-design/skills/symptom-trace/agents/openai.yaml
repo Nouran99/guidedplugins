@@ -1,0 +1,6 @@
+interface:
+  display_name: "Symptom Trace"
+  short_description: "Trace a complaint such as 'this change touched too many files' or 'I cannot follow this' from the symptom to its likely cause with history evidence, and name the skill that treats it."
+  default_prompt: "Use $philosophy-of-design:symptom-trace on complaint text | paths | git ref | empty to look for co-changing files in recent history."
+policy:
+  allow_implicit_invocation: false

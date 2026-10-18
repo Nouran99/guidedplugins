@@ -1,0 +1,6 @@
+interface:
+  display_name: "Design Twice"
+  short_description: "Write two or more designs for an interface or module as call sites, score them on the rule set's four criteria, choose one and record the price. Does not edit."
+  default_prompt: "Use $philosophy-of-design:design-twice on problem statement | paths | empty to compare the design in the current diff."
+policy:
+  allow_implicit_invocation: false

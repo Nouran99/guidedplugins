@@ -1,0 +1,6 @@
+interface:
+  display_name: "Responsibility Map"
+  short_description: "Map who owns each of the seven enterprise responsibilities (presentation, workflow, domain, data access, transactions, concurrency, integration) for a use case or package in a forked context, and list collisions in at most 40 lines."
+  default_prompt: "Use $enterprise-patterns:responsibility-map on use case | file | directory | empty for the current diff."
+policy:
+  allow_implicit_invocation: false

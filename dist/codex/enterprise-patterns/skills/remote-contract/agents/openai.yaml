@@ -1,0 +1,6 @@
+interface:
+  display_name: "Remote Contract"
+  short_description: "Design a coarse remote operation for a consumer need: the single call, request and response DTOs, the domain-to-DTO translation, versioning rule, failure behavior and a before-and-after call count. Produces a contract; no edits."
+  default_prompt: "Use $enterprise-patterns:remote-contract on consumer need or screen | endpoint file | empty to ask."
+policy:
+  allow_implicit_invocation: false

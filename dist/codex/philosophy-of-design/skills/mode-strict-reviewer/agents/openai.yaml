@@ -1,0 +1,6 @@
+interface:
+  display_name: "Strict Reviewer mode"
+  short_description: "Answers as a ranked findings table with the complexity cost of each finding, rewrites no code unless asked, and says No findings explicitly."
+  default_prompt: "Use $philosophy-of-design:mode-strict-reviewer."
+policy:
+  allow_implicit_invocation: false

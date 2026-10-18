@@ -1,0 +1,6 @@
+interface:
+  display_name: "Scenario Walkthrough"
+  short_description: "Walk a real business scenario through the model and code and report where it turns procedural, awkward or leaky, with the model pressure it reveals."
+  default_prompt: "Use $ddd:scenario-walkthrough on scenario in one or two sentences | ticket text | empty to derive one from the current diff."
+policy:
+  allow_implicit_invocation: false

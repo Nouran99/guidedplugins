@@ -1,0 +1,6 @@
+interface:
+  display_name: "Earned Pattern mode"
+  short_description: "Tags every tactical pattern it introduces with the reason it earns its cost, defaults to plain code, and lists the patterns considered and rejected."
+  default_prompt: "Use $ddd-distilled:mode-earned-pattern."
+policy:
+  allow_implicit_invocation: false
