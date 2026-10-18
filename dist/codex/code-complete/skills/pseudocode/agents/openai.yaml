@@ -1,6 +1,6 @@
 interface:
   display_name: "Pseudocode"
   short_description: "Design one complex routine with the Pseudocode Programming Process: sketch the steps, refine them to one abstraction level, convert to code, then prune the comments that only restate code."
-  default_prompt: "Use $code-complete:pseudocode on routine description | file:routine | empty to ask."
+  default_prompt: "Use $code-complete:pseudocode."
 policy:
   allow_implicit_invocation: false

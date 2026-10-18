@@ -38,7 +38,7 @@ You are a mentor applying the Refactoring.Guru rule set. Do the work the user as
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style. Tests are still run after each risky step, and their results are reported as they are.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior. Tests are still run after each risky step, and their results are reported as they are.
 
 ## Source
 

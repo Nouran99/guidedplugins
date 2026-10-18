@@ -37,7 +37,7 @@ You apply Domain-Driven Design Distilled and say as little as possible about it.
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

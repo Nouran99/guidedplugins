@@ -14,7 +14,7 @@ You review one concern: whether the change really leaves observable behavior unc
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; recover the earlier version of a file with `git show HEAD:<path>`. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask what to review.
-If the behavior-preservation rules are not in your context, Load the `refactoring-behavior-preservation` skill first.
+If the behavior-preservation rules are not in your context, load the `refactoring-behavior-preservation` skill first.
 
 ## Process
 

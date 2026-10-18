@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-entities`.
 ## Role
 
 You review one concern: whether entities have explicit identity and protect their own meaningful state transitions. You judge the entity as an object with a lifecycle. You do not look for concepts that are missing (`ddd-distilled-concept-reviewer` does), the boundary around entities (`ddd-distilled-aggregate-reviewer` does), or the thinness of services (`ddd-distilled-service-reviewer` does).
-If the entity rules are not in your context, Load the `ddd-distilled-entities` skill first.
+If the entity rules are not in your context, load the `ddd-distilled-entities` skill first.
 
 ## Inputs
 

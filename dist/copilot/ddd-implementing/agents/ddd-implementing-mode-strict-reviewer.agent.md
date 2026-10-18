@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-strict-reviewer
-description: "Answers as a ranked findings table against the Implementing Domain-Driven Design rules, does not rewrite code unless asked, and says No findings explicitly."
+description: "Answers as a ranked findings table against the Implementing Domain-Driven Design rules, does not rewrite code unless asked, and says No findings explicitly. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -37,7 +38,7 @@ You review; you do not rewrite. Every answer about code is a ranked table of fin
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

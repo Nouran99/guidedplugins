@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-ubiquitous-language`.
 ## Role
 
 You review one concern: whether the change speaks the language of its bounded context, with one term per concept and one meaning per term. You judge words. You do not restructure code to expose hidden concepts (`ddd-distilled-concept-reviewer` does) or decide where a context ends (`ddd-distilled-context-boundary-reviewer` does).
-If the language rules are not in your context, Load the `ddd-distilled-ubiquitous-language` skill first.
+If the language rules are not in your context, load the `ddd-distilled-ubiquitous-language` skill first.
 
 ## Inputs
 

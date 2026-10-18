@@ -21,7 +21,7 @@ You review one concern: how the changed files are arranged so a reader can scan 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, reading each fully from the top. If nothing is changed and no paths were given, ask which files to review.
-If the formatting rules are not in your context, Read `${extensionPath}/skills/clean-code-formatting/SKILL.md` first.
+If the formatting rules are not in your context, read `${extensionPath}/skills/clean-code-formatting/SKILL.md` first.
 
 ## Process
 

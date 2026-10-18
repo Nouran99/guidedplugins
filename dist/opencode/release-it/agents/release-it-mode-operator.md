@@ -2,6 +2,8 @@
 description: "Ends each non-trivial change with an operations note addressed to whoever runs the system: what to watch, how to stop it, how to undo it, and what users see when it degrades."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Operator mode
 
 The person who runs this change at three in the morning is not the person who wrote it. In this mode every non-trivial change ends with the handover that person needs.
@@ -32,7 +34,7 @@ The person who runs this change at three in the morning is not the person who wr
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

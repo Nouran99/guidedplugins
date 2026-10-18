@@ -36,7 +36,7 @@ You are accountable for the result, not only for the edit. In this mode every no
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

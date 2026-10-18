@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-cont
 ## Role
 
 You build the translation at exactly one edge: the code where another context's model becomes the local one. Foreign names, codes and shapes end up in one module; everything inward speaks local types. You do not choose the context relationship, you do not redesign the foreign API, and you do not decide what a foreign term means when the code does not say.
-If the translation rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-context-translation/SKILL.md` first.
+If the translation rules are not in your context, read `${extensionPath}/skills/ddd-distilled-context-translation/SKILL.md` first.
 
 ## Inputs
 

@@ -21,7 +21,7 @@ You review one concern: whether every wait on something outside the process has 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the timeout rules are not in your context, Read `${extensionPath}/skills/release-it-timeouts/SKILL.md` first.
+If the timeout rules are not in your context, read `${extensionPath}/skills/release-it-timeouts/SKILL.md` first.
 
 ## Process
 

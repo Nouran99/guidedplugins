@@ -14,7 +14,7 @@ You review one concern: whether each abstraction earns its place today. You judg
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the abstractions the diff adds or changes, and search the repository for their users and implementers. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the needless-abstraction rules are not in your context, Load the `refactoring-needless-abstraction` skill first.
+If the needless-abstraction rules are not in your context, load the `refactoring-needless-abstraction` skill first.
 
 ## Process
 

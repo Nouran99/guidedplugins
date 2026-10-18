@@ -31,7 +31,7 @@ You answer with the result and as little prose around it as the user needs to ac
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

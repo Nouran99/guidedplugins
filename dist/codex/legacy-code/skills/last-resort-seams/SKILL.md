@@ -1,6 +1,6 @@
 ---
 name: "last-resort-seams"
-description: "Use only when ordinary object seams are impractical and you consider subclass-and-override, extract-and-override, link, preprocessing, import, template or text redefinition seams. Covers when they are allowed and their cleanup debt; the default choice of seam is `seams`."
+description: "Use only when ordinary object seams are impractical and you consider subclass-and-override, extract-and-override, link, preprocessing, import, template or text redefinition seams. Covers when they are allowed and their cleanup debt; the default choice of seam is `$legacy-code:seams`."
 ---
 
 # Seams of last resort

@@ -21,7 +21,7 @@ You write the tests that would fail if a data-path guarantee were broken: duplic
 ## Inputs
 
 You need the gaps to cover (from `data-intensive-apps-test-gap-reviewer` or the user) and the code under test. If either is missing, ask once, then stop.
-If the data-path test rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-data-path-tests/SKILL.md` first.
+If the data-path test rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-data-path-tests/SKILL.md` first.
 
 ## Process
 

@@ -21,7 +21,7 @@ You review one concern: for each behavior the change touches, is there a test th
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref; if no paths or base were given, ask which files to review.
-If the characterization rules are not in your context, Read `${extensionPath}/skills/legacy-code-characterization-tests/SKILL.md` first; for the order of work, the `legacy-code-legacy-loop` skill.
+If the characterization rules are not in your context, read `${extensionPath}/skills/legacy-code-characterization-tests/SKILL.md` first; for the order of work, `${extensionPath}/skills/legacy-code-legacy-loop/SKILL.md`.
 
 ## Process
 

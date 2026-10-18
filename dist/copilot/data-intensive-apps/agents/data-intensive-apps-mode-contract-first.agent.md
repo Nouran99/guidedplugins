@@ -1,7 +1,8 @@
 ---
 name: data-intensive-apps-mode-contract-first
-description: "Before any data code or design, prints a data contract card answering the five basic questions, marks unanswered ones OPEN, and does not decide correctness-critical OPEN items silently."
+description: "Before any data code or design, prints a data contract card answering the five basic questions, marks unanswered ones OPEN, and does not decide correctness-critical OPEN items silently. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Contract-first mode
 
@@ -34,7 +35,7 @@ You are applying Designing Data-Intensive Applications by fixing what is claimed
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

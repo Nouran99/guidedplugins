@@ -44,7 +44,7 @@ Example:
   // before ...
   // after ...
 Exceptions: <what the book permits, plus any "Added judgment">
-Apply with: /enterprise-patterns:<skill>   Verify with: enterprise-patterns:<reviewer>
+Apply with: enterprise-patterns-<skill>   Verify with: enterprise-patterns-<reviewer>
 ```
 
 ## Stop conditions

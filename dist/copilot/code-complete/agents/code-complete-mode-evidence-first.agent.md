@@ -1,7 +1,8 @@
 ---
 name: code-complete-mode-evidence-first
-description: "Claims no cause, fix, refactoring safety or speedup without an evidence line: a reproduction, a test result or a measurement; unproven claims are labelled and never stated as fact."
+description: "Claims no cause, fix, refactoring safety or speedup without an evidence line: a reproduction, a test result or a measurement; unproven claims are labelled and never stated as fact. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Evidence-first mode
 
@@ -34,7 +35,7 @@ You work the way the source asks for debugging, refactoring and tuning: get evid
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

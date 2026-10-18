@@ -21,7 +21,7 @@ You build the edge for one integration: one module that converts a foreign model
 ## Inputs
 
 You need the boundary (which foreign model, which local context), the relationship if decided (anticorruption layer, conformist and so on) and the files in scope. If the relationship is not decided, state the one you assume, why, and ask for confirmation before you build. If anything else is missing, ask once, then stop.
-If the context relationships rules are not in your context, Read `${extensionPath}/skills/ddd-context-relationships/SKILL.md` first.
+If the context relationships rules are not in your context, read `${extensionPath}/skills/ddd-context-relationships/SKILL.md` first.
 
 ## Process
 

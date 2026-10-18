@@ -21,7 +21,7 @@ You review one concern: whether conditionals and variation are handled in propor
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed functions, then search the repository for other places that switch on the same discriminators. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the rules are not in your context, Read `${extensionPath}/skills/refactoring-conditionals/SKILL.md` and the `refactoring-variation-and-state` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/refactoring-conditionals/SKILL.md` and `${extensionPath}/skills/refactoring-variation-and-state/SKILL.md` first.
 
 ## Process
 

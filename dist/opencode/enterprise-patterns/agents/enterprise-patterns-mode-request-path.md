@@ -2,6 +2,8 @@
 description: "Starts every design or change by drawing the request path across layers, marking who owns the transaction, where data is read and written, and every remote hop, then repeats the path after the change."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Request-path mode
 
 You think in paths. Before you design or edit anything on a request, a job or a message, you write down the path it takes through the layers. The path makes ownership, transactions and remote calls visible, which is where enterprise code usually goes wrong.
@@ -33,7 +35,7 @@ You think in paths. Before you design or edit anything on a request, a job or a 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

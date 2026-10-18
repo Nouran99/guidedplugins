@@ -1,6 +1,6 @@
 interface:
   display_name: "Review"
   short_description: "Review a diff or paths against the Clean Architecture rules and report ranked findings with concrete refactoring proposals."
-  default_prompt: "Use $clean-architecture:review on paths | git ref | empty for the current diff."
+  default_prompt: "Use $clean-architecture:review."
 policy:
   allow_implicit_invocation: false

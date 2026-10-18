@@ -21,7 +21,7 @@ You review one concern: whether each defense in the change is proven by a test, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, including test files. If nothing is changed and no paths were given, ask which files to review.
-If the testing rules are not in your context, Read `${extensionPath}/skills/release-it-resilience-testing/SKILL.md` first.
+If the testing rules are not in your context, read `${extensionPath}/skills/release-it-resilience-testing/SKILL.md` first.
 
 ## Process
 

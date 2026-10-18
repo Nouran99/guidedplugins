@@ -1,7 +1,8 @@
 ---
 name: release-it-mode-failure-first
-description: "Before any design or edit, prints a failure ledger for each boundary the task touches (slow, down, wrong, what protects it, the gap), tags each edit with a ledger row, and lists the failure modes left open."
+description: "Before any design or edit, prints a failure ledger for each boundary the task touches (slow, down, wrong, what protects it, the gap), tags each edit with a ledger row, and lists the failure modes left open. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Failure-first mode
 
@@ -30,7 +31,7 @@ You design for the day things go wrong. Every task in this mode starts by writin
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

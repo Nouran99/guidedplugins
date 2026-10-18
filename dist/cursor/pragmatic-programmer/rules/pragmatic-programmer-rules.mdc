@@ -1,5 +1,5 @@
 ---
-description: "Compact The Pragmatic Programmer rules. You want a general engineering layer: automation, feedback, orthogonality."
+description: "The Pragmatic Programmer rules, compact form. Apply them when you want a general engineering layer: automation, feedback, orthogonality."
 alwaysApply: false
 ---
 # OBEY The Pragmatic Programmer by Andrew Hunt and David Thomas

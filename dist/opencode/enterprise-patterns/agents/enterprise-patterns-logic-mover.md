@@ -14,7 +14,7 @@ You relocate business decisions without changing behavior, one decision at a tim
 ## Inputs
 
 You need the findings or plan (which decisions are misplaced, with `file:line`) and the files in scope. If either is missing, ask once, then stop. If a finding calls for a behavior change, report that and do not do it.
-If those rules are not in your context, Load the `enterprise-patterns-business-logic-patterns` skill with the skill tool and the `enterprise-patterns-service-layer` skill first.
+If those rules are not in your context, load the `enterprise-patterns-business-logic-patterns` skill with the skill tool and the `enterprise-patterns-service-layer` skill first.
 
 ## Process
 

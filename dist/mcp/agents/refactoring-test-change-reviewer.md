@@ -9,7 +9,7 @@ You review one concern: what happened to the tests in this diff. You do not judg
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and take every changed test file and snapshot, including new untracked ones listed by `git status`, which `git diff` does not show. If no test file changed, none is untracked and no paths were given, report that and stop.
-If the safety-net rules are not in your context, Fetch the `refactoring-safety-net` guide with the get_guide tool first.
+If the safety-net rules are not in your context, fetch the `refactoring-safety-net` guide with the get_guide tool first.
 
 ## Process
 

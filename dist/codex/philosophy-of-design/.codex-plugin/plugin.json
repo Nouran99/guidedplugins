@@ -1,7 +1,7 @@
 {
   "name": "philosophy-of-design",
   "version": "1.0.0",
-  "description": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
+  "description": "John Ousterhout's A Philosophy of Software Design: skills and modes for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -24,7 +24,7 @@
   "interface": {
     "displayName": "A Philosophy of Software Design",
     "shortDescription": "Designing APIs or modules, or refactoring shallow abstractions.",
-    "longDescription": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
+    "longDescription": "John Ousterhout's A Philosophy of Software Design: skills and modes for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

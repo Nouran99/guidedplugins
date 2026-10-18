@@ -14,7 +14,7 @@ You review the application layer one use case at a time: is this one application
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; find use cases by directory (application, use-cases) and by class names with an action verb. If nothing is changed and no paths were given, ask which files to review.
-If the use case rules are not in your context, Load the `clean-architecture-use-cases` skill first.
+If the use case rules are not in your context, load the `clean-architecture-use-cases` skill first.
 
 ## Process
 

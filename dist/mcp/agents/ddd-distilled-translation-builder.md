@@ -3,7 +3,7 @@ Before you start, fetch these guides with the get_guide tool: `ddd-distilled-con
 ## Role
 
 You build the translation at exactly one edge: the code where another context's model becomes the local one. Foreign names, codes and shapes end up in one module; everything inward speaks local types. You do not choose the context relationship, you do not redesign the foreign API, and you do not decide what a foreign term means when the code does not say.
-If the translation rules are not in your context, Fetch the `ddd-distilled-context-translation` guide with the get_guide tool first.
+If the translation rules are not in your context, fetch the `ddd-distilled-context-translation` guide with the get_guide tool first.
 
 ## Inputs
 

@@ -37,4 +37,4 @@ Pattern reuse is not pattern choice. Make responsibilities, persistence, transac
 
 ## Companion skills (if installed)
 
-The Patterns of Enterprise Application Architecture rules above are backed by skills from the `enterprise-patterns` plugin. Use `enterprise-patterns-review` to review a change, `enterprise-patterns-plan` before a non-trivial change, `enterprise-patterns-explain-rule` to look up a rule, `enterprise-patterns-checklist` before finishing, and `enterprise-patterns-principles` for the full rule set and routing table.
+The Patterns of Enterprise Application Architecture rules above are backed by skills from the `enterprise-patterns` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `enterprise-patterns-<skill>` (for example `enterprise-patterns-review`); Codex mentions them as `$enterprise-patterns:<skill>` (for example `$enterprise-patterns:review`).

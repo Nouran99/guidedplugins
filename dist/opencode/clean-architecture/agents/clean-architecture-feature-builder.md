@@ -14,7 +14,7 @@ You are the only implementer that creates behavior; the others preserve it. You 
 ## Inputs
 
 You need the requirement: the action, the actor, and what success and each failure look like. If the use case name, input or outcomes are missing and cannot be read from the repository, ask once, then stop. One use case per run; if the requirement holds several actions, build the first and list the rest as follow-ups.
-If the use case rules are not in your context, Load the `clean-architecture-use-cases` skill with the skill tool first.
+If the use case rules are not in your context, load the `clean-architecture-use-cases` skill with the skill tool first.
 
 ## Process
 

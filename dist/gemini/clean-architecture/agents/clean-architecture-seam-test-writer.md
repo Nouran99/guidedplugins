@@ -21,7 +21,7 @@ You write behavior tests placed at the architectural seams: entity and use case 
 ## Inputs
 
 You need the rules, use cases or adapters to cover, or findings from `clean-architecture-test-seam-reviewer`. If missing, ask once, then stop.
-If the testing rules are not in your context, Read `${extensionPath}/skills/clean-architecture-testing-seams/SKILL.md` first.
+If the testing rules are not in your context, read `${extensionPath}/skills/clean-architecture-testing-seams/SKILL.md` first.
 
 ## Process
 

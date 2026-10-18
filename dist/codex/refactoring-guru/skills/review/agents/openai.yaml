@@ -1,6 +1,6 @@
 interface:
   display_name: "Review"
   short_description: "Review a diff or paths against the Refactoring.Guru rules and report ranked findings with a disposition for each."
-  default_prompt: "Use $refactoring-guru:review on paths | git ref | empty for the current diff."
+  default_prompt: "Use $refactoring-guru:review."
 policy:
   allow_implicit_invocation: false

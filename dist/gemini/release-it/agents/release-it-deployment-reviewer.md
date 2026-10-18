@@ -21,7 +21,7 @@ You review one concern: whether a change can reach production in small steps, be
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the release rules are not in your context, Read `${extensionPath}/skills/release-it-release-risk/SKILL.md` and the `release-it-restartable-automation` skill first.
+If the release rules are not in your context, read `${extensionPath}/skills/release-it-release-risk/SKILL.md` and `${extensionPath}/skills/release-it-restartable-automation/SKILL.md` first.
 
 ## Process
 

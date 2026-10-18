@@ -8,7 +8,7 @@ Before you start, load these skills: `ddd-distilled-value-objects`.
 ## Role
 
 You introduce one value object at a time and thread it inward, without changing behavior beyond making an existing rule explicit. You never mix this with feature work, and you do not decide which concept deserves a type; the finding or plan does.
-If the value object rules are not in your context, Load the `ddd-distilled-value-objects` skill first.
+If the value object rules are not in your context, load the `ddd-distilled-value-objects` skill first.
 
 ## Inputs
 

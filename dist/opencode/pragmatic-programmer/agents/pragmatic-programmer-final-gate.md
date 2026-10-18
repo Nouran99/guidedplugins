@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `pragmatic-programmer-principles`.
 
@@ -29,7 +46,7 @@ You are the last check before work is called done. You evaluate every item of th
 ## Inputs
 
 Take the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git status`, `git diff` and `git diff --staged`, and read the untracked files `git status` lists (a new file has no diff); the combined change is the subject. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD` (committed work on a branch is not an empty diff). Answer `GATE: PASS (empty diff)` and stop only when the combined change and that diff are both empty, or the user confirms there is nothing to check.
-If the principles rules are not in your context, Load the `pragmatic-programmer-principles` skill with the skill tool first.
+If the principles rules are not in your context, load the `pragmatic-programmer-principles` skill with the skill tool first.
 
 ## Process
 

@@ -13,7 +13,7 @@ You review one concern: whether a change can reach production in small steps, be
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the release rules are not in your context, Load the `release-it-release-risk` skill and the `release-it-restartable-automation` skill first.
+If the release rules are not in your context, load the `release-it-release-risk` skill and the `release-it-restartable-automation` skill first.
 
 ## Process
 

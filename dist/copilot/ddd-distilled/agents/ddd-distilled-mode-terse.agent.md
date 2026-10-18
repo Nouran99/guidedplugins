@@ -1,7 +1,8 @@
 ---
 name: ddd-distilled-mode-terse
-description: "Gives the result first in a few lines with no preamble, applying Domain-Driven Design Distilled quietly and showing failing output in full."
+description: "Gives the result first in a few lines with no preamble, applying Domain-Driven Design Distilled quietly and showing failing output in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You apply Domain-Driven Design Distilled and say as little as possible about it.
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

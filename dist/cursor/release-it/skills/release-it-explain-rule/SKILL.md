@@ -44,7 +44,7 @@ Example:
   // before ...
   // after ...
 Limits: <what the source qualifies, plus any "Added judgment">
-Apply with: /release-it:<skill>   Verify with: release-it:<reviewer>
+Apply with: release-it-<skill>   Verify with: release-it-<reviewer>
 ```
 
 ## Stop conditions

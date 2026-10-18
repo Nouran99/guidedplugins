@@ -1,6 +1,6 @@
 interface:
   display_name: "Plan"
   short_description: "Plan a non-trivial change before editing: the real need, who owns each fact, the first slice, reversible versus committed choices, contracts, feedback, automation, cleanup budget and risks. Produces a plan only."
-  default_prompt: "Use $pragmatic-programmer:plan on change description | empty to plan the follow-up to the current diff."
+  default_prompt: "Use $pragmatic-programmer:plan."
 policy:
   allow_implicit_invocation: false

@@ -14,7 +14,7 @@ You review one concern: whether the tests in the change are clean, trustworthy a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed and added test files, reading each changed test in full with its fixtures and helpers. If nothing is changed and no paths were given, ask which files to review.
-If the clean-tests rules are not in your context, Load the `clean-code-clean-tests` skill first.
+If the clean-tests rules are not in your context, load the `clean-code-clean-tests` skill first.
 
 ## Process
 

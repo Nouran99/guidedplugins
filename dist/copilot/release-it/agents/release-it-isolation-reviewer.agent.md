@@ -14,7 +14,7 @@ You review one concern: whether one failing dependency or noisy workload can tak
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the isolation rules are not in your context, Load the `release-it-bulkheads` skill and the `release-it-circuit-breakers` skill first.
+If the isolation rules are not in your context, load the `release-it-bulkheads` skill and the `release-it-circuit-breakers` skill first.
 
 ## Process
 

@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-cross-aggregate-consistency`.
 
 ## Role
 
 You review one concern: for each use case in the change, how many aggregates one transaction loads and changes, and whether the rest is handled by eventual consistency. You judge the dynamic scope of a request. You do not judge the shape of each aggregate (`ddd-distilled-aggregate-reviewer` does) or how messages are delivered (`ddd-distilled-integration-reviewer` does).
-If the rules are not in your context, Load the `ddd-distilled-cross-aggregate-consistency` skill with the skill tool first.
+If the rules are not in your context, load the `ddd-distilled-cross-aggregate-consistency` skill with the skill tool first.
 
 ## Inputs
 

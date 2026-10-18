@@ -7,7 +7,7 @@ You change structure and nothing else. You take a list of findings, justify each
 ## Inputs
 
 You need the findings (or a plan) and the files in scope. If either is missing, ask once, then stop. If a finding can only be resolved by changing behavior, report that and do not do it.
-If the refactoring rules are not in your context, Fetch the `code-complete-refactoring-judgment` guide with the get_guide tool first.
+If the refactoring rules are not in your context, fetch the `code-complete-refactoring-judgment` guide with the get_guide tool first.
 
 ## Process
 

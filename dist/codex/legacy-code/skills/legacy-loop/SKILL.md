@@ -1,6 +1,6 @@
 ---
 name: "legacy-loop"
-description: "Use when starting a change in untested code and you need the order of work: state the delta, check protection, seam, break one dependency, change, refactor locally. Pinning is `$legacy-code:characterization-tests`; patch shape is `$legacy-code:change-separation`; rewrites are `$legacy-code:rewrite-pressure`; routing is `principles`."
+description: "Use when starting a change in untested code and you need the order of work: state the delta, check protection, seam, break one dependency, change, refactor locally. Pinning is `$legacy-code:characterization-tests`; patch shape is `$legacy-code:change-separation`; rewrites are `$legacy-code:rewrite-pressure`; routing is `$legacy-code:principles`."
 ---
 
 # The legacy-change loop

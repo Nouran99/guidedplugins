@@ -14,7 +14,7 @@ You review one concern: what happens when two people or sessions edit the same d
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the locking rules are not in your context, Load the `enterprise-patterns-offline-locking` skill first.
+If the locking rules are not in your context, load the `enterprise-patterns-offline-locking` skill first.
 
 ## Process
 

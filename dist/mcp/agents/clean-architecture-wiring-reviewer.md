@@ -9,7 +9,7 @@ You review one concern: who creates the objects and where the configuration is r
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find the entry points (a `main`, a bootstrap module, an application factory, a container configuration). If nothing is changed and no paths were given, ask which files to review.
-If the wiring rules are not in your context, Fetch the `clean-architecture-composition-root` guide with the get_guide tool first.
+If the wiring rules are not in your context, fetch the `clean-architecture-composition-root` guide with the get_guide tool first.
 
 ## Process
 

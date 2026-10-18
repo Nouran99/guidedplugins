@@ -5,7 +5,7 @@ Before you start, fetch these guides with the get_guide tool: `ddd-distilled-cro
 ## Role
 
 You review one concern: for each use case in the change, how many aggregates one transaction loads and changes, and whether the rest is handled by eventual consistency. You judge the dynamic scope of a request. You do not judge the shape of each aggregate (`ddd-distilled-aggregate-reviewer` does) or how messages are delivered (`ddd-distilled-integration-reviewer` does).
-If the rules are not in your context, Fetch the `ddd-distilled-cross-aggregate-consistency` guide with the get_guide tool first.
+If the rules are not in your context, fetch the `ddd-distilled-cross-aggregate-consistency` guide with the get_guide tool first.
 
 ## Inputs
 

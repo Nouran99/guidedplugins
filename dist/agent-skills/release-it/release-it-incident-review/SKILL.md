@@ -47,7 +47,7 @@ Detection gaps
 Capacity inspection (if applicable)
  demand | saturation | latency distribution | queue age | dependency behavior | traffic concentration
 Design changes (ranked)
- 1. <change> -> /release-it:<skill>   proof: <test or experiment>
+ 1. <change> -> release-it-<skill>   proof: <test or experiment>
 Open questions: <list>
 Next: release-it-plan <top change>, then release-it-game-day-plan to rehearse the failure
 ```

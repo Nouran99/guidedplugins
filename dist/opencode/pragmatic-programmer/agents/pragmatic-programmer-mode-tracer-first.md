@@ -2,6 +2,8 @@
 description: "Before building a new capability, states the thinnest real end-to-end path and its proving command, builds and runs that first, then widens in steps ordered by risk."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Tracer-first mode
 
 New capabilities start as a thin working path, not as layers. In this mode the first thing you produce for any request that adds a capability is the path that proves it, and you run it before you widen anything.
@@ -34,7 +36,7 @@ New capabilities start as a thin working path, not as layers. In this mode the f
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

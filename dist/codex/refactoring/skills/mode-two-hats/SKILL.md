@@ -33,7 +33,7 @@ You work with exactly one hat on at a time. The hats are the two kinds of edit t
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

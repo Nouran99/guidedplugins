@@ -2,9 +2,9 @@
 // Copilot also reads this repository's Claude marketplace as-is; this build is the variant with rewritten text and Copilot agents.
 //   copilot plugin install Nouran99/guidedplugins:dist/copilot/<plugin>
 import {
-  DIST, agentBodyFor, bt, cleanDir, copyFile, flat, modeName, path, rewrite, writeFile, yaml,
+  DIST, agentBodyFor, bt, cleanDir, copyFile, flat, modeName, neutralText, path, rewrite, rewriteDescription, writeFile, yaml,
 } from './core.mjs';
-import { emitFlatSkills, flatDialect } from './agent-skills.mjs';
+import { emitFlatSkills, flatDialect, skillDescription } from './agent-skills.mjs';
 
 const TOOL = { Read: 'read', Grep: 'search', Glob: 'search', Bash: 'execute', Edit: 'edit', Write: 'edit' };
 const dialect = () => flatDialect({ agentRead: (p, n) => `Load the ${bt(flat(p.slug, n))} skill` });
@@ -12,7 +12,8 @@ const dialect = () => flatDialect({ agentRead: (p, n) => `Load the ${bt(flat(p.s
 function agentMd({ name, description, tools, body, userInvocable }) {
   const l = ['---', `name: ${name}`, `description: ${yaml(description)}`];
   if (tools) l.push(`tools: [${tools.join(', ')}]`);
-  if (userInvocable) l.push('user-invocable: true');
+  // a mode is a persona the user picks with /agent; it must never be chosen for delegation by its description
+  if (userInvocable) l.push('user-invocable: true', 'disable-model-invocation: true');
   l.push('---', '');
   return `${l.join('\n')}${body}\n`;
 }
@@ -30,20 +31,20 @@ export function buildCopilot(model) {
       const tools = [...new Set(a.tools.map((t) => TOOL[t]).filter(Boolean))];
       writeFile(path.join(root, 'agents', `${flat(plugin.slug, a.name)}.agent.md`), agentMd({
         name: flat(plugin.slug, a.name),
-        description: rewrite(a.fm.description, plugin, d, { from: 'agent' }),
+        description: rewriteDescription(a.fm.description, plugin, d, { from: 'agent' }),
         tools, body: agentBodyFor(plugin, a, d, { preloadLine, readOnlyNote: roNote }),
       }));
     }
     for (const m of plugin.styles) {
       const name = flat(plugin.slug, modeName(m.name));
       writeFile(path.join(root, 'agents', `${name}.agent.md`), agentMd({
-        name, description: rewrite(m.fm.description, plugin, d, { from: 'agent' }), userInvocable: true,
+        name, description: skillDescription(rewriteDescription(m.fm.description, plugin, d, { from: 'agent' }), true), userInvocable: true,
         body: rewrite(m.body.replace(/^\s+/, ''), plugin, d, { from: 'agent' }),
       }));
     }
     writeFile(path.join(root, 'plugin.json'), JSON.stringify({
       name: plugin.slug,
-      description: plugin.manifest.description,
+      description: neutralText(plugin.manifest.description),
       version: plugin.manifest.version,
       author: plugin.manifest.author,
       homepage: plugin.manifest.homepage,

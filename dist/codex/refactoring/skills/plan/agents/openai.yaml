@@ -1,6 +1,6 @@
 interface:
   display_name: "Plan"
   short_description: "Plan a change to existing code in the book's order: friction, safety net, preparatory refactoring, the behavior change, follow-up cleanup and a stop condition. Plans only; edits nothing."
-  default_prompt: "Use $refactoring:plan on change request | ticket text | file:function | empty to infer from the current diff."
+  default_prompt: "Use $refactoring:plan."
 policy:
   allow_implicit_invocation: false

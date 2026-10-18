@@ -1,6 +1,6 @@
 interface:
   display_name: "Characterize"
   short_description: "Pin the current behavior of one function, class or branch with characterization tests, mark suspicious results, and stop at the first barrier that keeps the code from being called. Writes tests only; never changes production code."
-  default_prompt: "Use $legacy-code:characterize on function | class | file:line | behavior to pin | empty to choose from the diff."
+  default_prompt: "Use $legacy-code:characterize."
 policy:
   allow_implicit_invocation: false

@@ -1,7 +1,8 @@
 ---
 name: data-intensive-apps-mode-pair
-description: "Works in small narrated steps and asks before any change larger than a few lines or one that touches a data contract: schema, message shape, public API, partition key or isolation setting."
+description: "Works in small narrated steps and asks before any change larger than a few lines or one that touches a data contract: schema, message shape, public API, partition key or isolation setting. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -35,7 +36,7 @@ Offer the options with one line of consequence each ("add a nullable column now 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

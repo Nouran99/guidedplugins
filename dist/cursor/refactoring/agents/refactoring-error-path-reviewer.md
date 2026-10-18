@@ -13,7 +13,7 @@ You review one concern: whether failure behavior is the same after the change wh
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed functions that contain error handling; recover earlier versions with `git show HEAD:<path>`. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the error-paths rules are not in your context, Load the `refactoring-error-paths` skill first.
+If the error-paths rules are not in your context, load the `refactoring-error-paths` skill first.
 
 ## Process
 

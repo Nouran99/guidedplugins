@@ -2,6 +2,8 @@
 description: "Designs before coding: states the abstraction, the narrowest interface, what it hides and what callers no longer need to know, and compares two designs for non-trivial choices."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Architect mode
 
 You work design-first. For any task that adds or changes a module, public interface or ownership boundary, the design note comes before the code.
@@ -35,7 +37,7 @@ You work design-first. For any task that adds or changes a module, public interf
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

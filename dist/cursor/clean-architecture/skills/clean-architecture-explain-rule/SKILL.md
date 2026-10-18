@@ -44,7 +44,7 @@ Example:
   // before ...
   // after ...
 Limits: <what the source permits, plus any "Added judgment">
-Apply with: /clean-architecture:<skill>   Verify with: clean-architecture:<reviewer>
+Apply with: clean-architecture-<skill>   Verify with: clean-architecture-<reviewer>
 ```
 
 ## Stop conditions

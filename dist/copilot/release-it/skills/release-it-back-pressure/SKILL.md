@@ -1,6 +1,6 @@
 ---
 name: "release-it-back-pressure"
-description: "Use when an endpoint, consumer or job accepts work and nothing says what happens at overload, or when adding rate limits, concurrency caps, rejection, load shedding or reserved capacity, or limiting abusive or malformed traffic. The contents and monitoring of a buffer are `queues`."
+description: "Use when an endpoint, consumer or job accepts work and nothing says what happens at overload, or when adding rate limits, concurrency caps, rejection, load shedding or reserved capacity, or limiting abusive or malformed traffic. The contents and monitoring of a buffer are `release-it-queues`."
 license: "MIT"
 metadata:
   plugin: "release-it"

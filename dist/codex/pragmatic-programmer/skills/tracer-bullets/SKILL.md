@@ -1,6 +1,6 @@
 ---
 name: "tracer-bullets"
-description: "Use when starting a new capability, sizing or sequencing work, or when many layers are being built before anything runs end to end. Covers thin end-to-end slices, small increments and honest estimates. A throwaway experiment is `prototypes`; the need itself is `requirements`."
+description: "Use when starting a new capability, sizing or sequencing work, or when many layers are being built before anything runs end to end. Covers thin end-to-end slices, small increments and honest estimates. A throwaway experiment is `$pragmatic-programmer:prototypes`; the need itself is `$pragmatic-programmer:requirements`."
 ---
 
 # Tracer bullets

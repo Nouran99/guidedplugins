@@ -76,10 +76,73 @@ const fl = await filtered.call('tools/call', { name: 'get_guide', arguments: { i
 check(fl.result.isError === true, 'a filtered-out plugin is not served');
 filtered.close();
 
-const bad = spawn(process.execPath, [server, '--plugins', 'no-such-book'], { stdio: ['ignore', 'ignore', 'pipe'] });
-let err = ''; bad.stderr.on('data', (d) => { err += d; });
-const code = await new Promise((r) => bad.on('close', r));
-check(code === 1 && /unknown plugin/.test(err), 'an unknown --plugins value fails fast with a clear message');
+// Runs the server on raw input lines and returns its parsed output lines. `slowRead` lets the stdout pipe fill up first.
+async function raw(lines, args = [], { slowRead = false, env = {} } = {}) {
+  const child = spawn(process.execPath, [server, ...args], { stdio: ['pipe', 'pipe', 'pipe'], env: { ...process.env, ...env } });
+  child.stdin.end(lines.map((l) => (typeof l === 'string' ? l : JSON.stringify(l))).join('\n') + '\n');
+  if (slowRead) await new Promise((r) => setTimeout(r, 400));
+  let out = ''; for await (const c of child.stdout) out += c;
+  const code = await new Promise((r) => (child.exitCode !== null ? r(child.exitCode) : child.on('close', r)));
+  return { replies: out.split('\n').filter(Boolean).map((l) => JSON.parse(l)), code, bytes: Buffer.byteLength(out) };
+}
+// Runs the server with arguments and no input; returns the exit code and what it wrote to stderr.
+async function startup(args, env = {}) {
+  const child = spawn(process.execPath, [server, ...args], { stdio: ['ignore', 'ignore', 'pipe'], env: { ...process.env, ...env } });
+  let err = ''; child.stderr.on('data', (d) => { err += d; });
+  return { code: await new Promise((r) => child.on('close', r)), err };
+}
+
+const bad = await startup(['--plugins', 'no-such-book']);
+check(bad.code === 1 && /unknown plugin/.test(bad.err), 'an unknown --plugins value fails fast with a clear message');
+
+// --- robustness: the cases that used to crash, truncate or stay silent
+const big = await raw([{ jsonrpc: '2.0', id: 1, method: 'resources/list' }], [], { slowRead: true });
+check(big.replies.length === 1 && big.replies[0].result?.resources?.length > 800 && big.bytes > 65536, `a response larger than the pipe buffer arrives whole when stdin closes (${big.bytes} bytes)`);
+
+const edge = await raw([
+  { jsonrpc: '2.0', id: 1, method: 'tools/call', params: { name: 'get_rules', arguments: { plugin: 'clean-code', size: 'constructor' } } },
+  { jsonrpc: '2.0', id: 2, method: 'tools/call', params: null },
+  { jsonrpc: '2.0', id: 3, method: 'tools/call', params: { name: 'get_guide', arguments: null } },
+  { jsonrpc: '2.0', id: 4, method: 'tools/call', params: { name: 'no_such_tool', arguments: {} } },
+  '[]', '42', '"str"', 'null', '[1]',
+  { jsonrpc: '2.0', id: 9, result: {} },
+  { jsonrpc: '2.0', id: 10, method: 'resources/read' },
+  { jsonrpc: '2.0', id: 11, method: 'initialize', params: { protocolVersion: '1999-01-01' } },
+  { jsonrpc: '2.0', id: 12, method: 'prompts/get', params: null },
+  { jsonrpc: '2.0', id: 13, method: 'tools/call', params: { name: 'get_rules', arguments: { plugin: 'clean-code', size: 'design' } } },
+  { jsonrpc: '2.0', id: 14, method: 'tools/call', params: { name: 'get_rules', arguments: { plugin: 'refactoring-guru', size: 'design' } } },
+  { jsonrpc: '2.0', id: 15, method: 'tools/list' },
+  { jsonrpc: '2.0', id: 16, method: 'ping' },
+]);
+const by = (id) => edge.replies.find((r) => r.id === id);
+check(by(1)?.result?.isError === true, 'get_rules with size "constructor" is a tool error, not an internal error');
+check(by(2)?.error?.code === -32602 && by(3)?.result?.isError === true, 'null params and null arguments are handled (no -32603)');
+check(by(4)?.error?.code === -32602, 'an unknown tool is a -32602 protocol error');
+const nullIds = edge.replies.filter((r) => r.id === null);
+const batchOfJunk = edge.replies.find((r) => Array.isArray(r));
+check(nullIds.length === 4 && nullIds.every((r) => r.error?.code === -32600) && batchOfJunk?.length === 1 && batchOfJunk[0].error?.code === -32600,
+  'an empty batch and non-object messages each get a -32600 reply with id null');
+check(by(9) === undefined, 'a stray response message from the client is ignored');
+check(by(10)?.error?.code === -32602, 'resources/read without a uri is -32602');
+check(by(11)?.result?.protocolVersion === '2025-11-25', 'an unsupported client protocol version gets the newest supported one');
+check(by(12)?.error?.code === -32602, 'prompts/get with null params is -32602');
+check(by(13)?.result?.isError === true && by(14)?.result?.content?.[0]?.text.includes('component map'), 'get_rules design exists only for plugins whose skills refer to it');
+check(by(15)?.result?.tools?.length === 4 && by(15).result.tools.every((t) => t.annotations?.readOnlyHint === true), 'every tool is annotated readOnlyHint');
+check(by(16) && Object.keys(by(16).result).length === 0, 'the server keeps answering after the malformed input');
+
+// --- options
+const eq = await raw([{ jsonrpc: '2.0', id: 1, method: 'prompts/list' }], ['--plugins=clean-code']);
+check(eq.replies[0]?.result?.prompts?.length > 0 && eq.replies[0].result.prompts.every((p) => p.name.startsWith('clean-code-')), '--plugins=name works like --plugins name');
+const noValue = await startup(['--plugins']);
+check(noValue.code === 1 && /needs a value/.test(noValue.err), '--plugins without a value fails fast');
+const emptyValue = await startup(['--plugins=']);
+check(emptyValue.code === 1, '--plugins= with an empty value fails fast');
+const badKind = await startup(['--kinds', 'agnt']);
+check(badKind.code === 1 && /unknown kind/.test(badKind.err), 'an unknown --kinds value fails fast');
+const typo = await startup(['--plugin', 'clean-code']);
+check(typo.code === 1 && /unknown argument/.test(typo.err), 'a mistyped option fails instead of serving every book');
+const envList = await raw([{ jsonrpc: '2.0', id: 1, method: 'prompts/list' }], [], { env: { GUIDED_PLUGINS: 'ddd' } });
+check(envList.replies[0].result.prompts.every((p) => /^ddd-/.test(p.name) && !/^ddd-(distilled|implementing)-/.test(p.name)), 'GUIDED_PLUGINS limits the surface to exactly that book');
 
 console.log(failures ? `\n${failures} FAILED` : '\nall passed');
 process.exit(failures ? 1 : 0);

@@ -14,7 +14,7 @@ You review one concern: whether each piece of behavior sits with the concept tha
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed classes and modules. Use `git log` on the touched files for change history. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the ownership rules are not in your context, Load the `refactoring-ownership` skill first.
+If the ownership rules are not in your context, load the `refactoring-ownership` skill first.
 
 ## Process
 

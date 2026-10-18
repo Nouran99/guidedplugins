@@ -21,7 +21,7 @@ You review whether the interfaces that protect policy from volatile details are 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find every interface, abstract class, implementation and type switch they touch. If nothing is changed and no paths were given, ask which files to review.
-If the design rules are not in your context, Read `${extensionPath}/skills/clean-architecture-solid-design/SKILL.md` first.
+If the design rules are not in your context, read `${extensionPath}/skills/clean-architecture-solid-design/SKILL.md` first.
 
 ## Process
 

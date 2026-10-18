@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `clean-architecture-service-sprawl`, `clean-architecture-shared-code-coupling`.
 
@@ -29,7 +46,7 @@ You review where code piles up: classes that have become the home of every opera
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files, and add any class or module in the diff whose name ends in Service, Manager, Helper, Processor, Handler or Util, and any file under a `common`, `shared`, `utils`, `base` or `core` directory. If nothing is changed and no paths were given, ask which files to review.
-If the sprawl rules are not in your context, Load the `clean-architecture-service-sprawl` skill with the skill tool first.
+If the sprawl rules are not in your context, load the `clean-architecture-service-sprawl` skill with the skill tool first.
 
 ## Process
 

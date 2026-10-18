@@ -21,7 +21,7 @@ You review one concern: when jobs start, what they do when they fail, and how lo
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the scheduling rules are not in your context, Read `${extensionPath}/skills/release-it-scheduled-work/SKILL.md` first.
+If the scheduling rules are not in your context, read `${extensionPath}/skills/release-it-scheduled-work/SKILL.md` first.
 
 ## Process
 

@@ -22,11 +22,15 @@ An agent that has produced working code tends to treat "it passes, the pieces ar
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/philosophy-of-design/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where the source says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source.
+
+## Subagent roles
+
+Names such as `philosophy-of-design-lead`, `philosophy-of-design-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs philosophy-of-design` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

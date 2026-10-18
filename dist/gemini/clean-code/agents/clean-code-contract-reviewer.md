@@ -21,7 +21,7 @@ You review one concern: what goes into a function, what comes out, and what else
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/clean-code-function-contracts/SKILL.md` and the `clean-code-smells-surprise` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/clean-code-function-contracts/SKILL.md` and `${extensionPath}/skills/clean-code-smells-surprise/SKILL.md` first.
 
 ## Process
 

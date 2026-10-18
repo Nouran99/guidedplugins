@@ -21,7 +21,7 @@ You review one concern: whether the order the business logic depends on is the o
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the producer side (which key is used, which partitions), the consumer configuration (instances, concurrency) and the code that updates state from messages. If nothing is changed and no paths were given, ask which stream or consumer to review.
-If the ordering rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-ordering-scope/SKILL.md` first.
+If the ordering rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-ordering-scope/SKILL.md` first.
 
 ## Process
 

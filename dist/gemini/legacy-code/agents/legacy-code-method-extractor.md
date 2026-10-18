@@ -21,7 +21,7 @@ You reshape existing code in the order the source gives: pure computation first,
 ## Inputs
 
 You need the method, class or handler, the change that will follow (so you know which branch matters), and the finding that asked for the extraction (from `legacy-code-large-method-reviewer`, `legacy-code-policy-mechanism-reviewer` or `legacy-code-find-seam`). They must be in your prompt: you cannot see the conversation that delegated to you. If any is missing, ask once, then stop.
-If the rules are not in your context, Read `${extensionPath}/skills/legacy-code-large-methods/SKILL.md` and the `legacy-code-policy-vs-mechanism` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/legacy-code-large-methods/SKILL.md` and `${extensionPath}/skills/legacy-code-policy-vs-mechanism/SKILL.md` first.
 
 ## Process
 

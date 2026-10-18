@@ -21,7 +21,7 @@ You review one concern: whether the tools that can change production are authori
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the control rules are not in your context, Read `${extensionPath}/skills/release-it-operational-controls/SKILL.md` first.
+If the control rules are not in your context, read `${extensionPath}/skills/release-it-operational-controls/SKILL.md` first.
 
 ## Process
 

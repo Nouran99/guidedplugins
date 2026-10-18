@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `clean-architecture-dependency-rule`.
 
@@ -29,7 +46,7 @@ You produce numbers and locations, nothing else. You never call an import a viol
 ## Inputs
 
 Use the directory or paths you were given. Otherwise scan the source roots of the repository (skip `node_modules`, `vendor`, `dist`, `build`, `target`, `.git`, lock files, minified and generated code). Leave test directories out of the main counts and tally them separately. If the repository has no source files, say so and stop.
-If the dependency rule vocabulary is not in your context, Load the `clean-architecture-dependency-rule` skill with the skill tool first.
+If the dependency rule vocabulary is not in your context, load the `clean-architecture-dependency-rule` skill with the skill tool first.
 
 ## Process
 

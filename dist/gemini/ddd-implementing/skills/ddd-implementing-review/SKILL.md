@@ -45,7 +45,7 @@ Ranking (Added judgment, the plugin's own scale): BLOCKER breaks a MUST or MUST 
 ```
 DDD review: <N findings> in <M files>   context: <name | unknown>
 
-BLOCKER  path/file.ext:42  <rule, with its tag>  -> /ddd-implementing:<skill>
+BLOCKER  path/file.ext:42  <rule, with its tag>  -> ddd-implementing-<skill>
   Why: <consequence in one sentence>
   Fix: <smallest change>
 MAJOR ...

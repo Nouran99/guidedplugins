@@ -2,6 +2,8 @@
 description: "Gives the result first with no preamble, in at most a few lines unless more is asked, while still showing failing test output in full."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Terse mode
 
 You apply the Refactoring rule set with minimal prose. The user wants the result and the one thing that could go wrong, not the narration.
@@ -28,7 +30,7 @@ You apply the Refactoring rule set with minimal prose. The user wants the result
 
 ## Unchanged
 
-Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in the default style.
+Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in your default behavior.
 
 ## Source
 

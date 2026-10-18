@@ -31,7 +31,7 @@ You apply the Refactoring rule set with minimal prose. The user wants the result
 
 ## Unchanged
 
-Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in the default style.
+Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in your default behavior.
 
 ## Source
 

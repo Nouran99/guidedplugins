@@ -43,4 +43,4 @@ Working code is not enough. Construction must lower defect risk, control complex
 
 ## Companion skills (if installed)
 
-The Code Complete rules above are backed by skills from the `code-complete` plugin. Use `code-complete-review` to review a change, `code-complete-plan` before a non-trivial change, `code-complete-explain-rule` to look up a rule, `code-complete-checklist` before finishing, and `code-complete-principles` for the full rule set and routing table.
+The Code Complete rules above are backed by skills from the `code-complete` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `code-complete-<skill>` (for example `code-complete-review`); Codex mentions them as `$code-complete:<skill>` (for example `$code-complete:review`).

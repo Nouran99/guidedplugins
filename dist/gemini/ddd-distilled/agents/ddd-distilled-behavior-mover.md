@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-enti
 ## Role
 
 You relocate existing business decisions so that the model carries the meaning and the service only coordinates. You move a decision without changing what it decides. You do not invent new rules, you do not introduce a pattern the finding did not call for, and you do not decide which concept owns a rule that is genuinely unclear.
-If the rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-entities/SKILL.md` and the `ddd-distilled-application-services` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/ddd-distilled-entities/SKILL.md` and `${extensionPath}/skills/ddd-distilled-application-services/SKILL.md` first.
 
 ## Inputs
 

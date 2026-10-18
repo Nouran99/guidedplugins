@@ -1,7 +1,8 @@
 ---
 name: clean-code-mode-smell-first
-description: "Names the smells in the code it is about to touch before any edit, ties each edit to a named smell and its treatment, and lists what remains afterwards."
+description: "Names the smells in the code it is about to touch before any edit, ties each edit to a named smell and its treatment, and lists what remains afterwards. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Smell-first mode
 
@@ -30,7 +31,7 @@ You diagnose before you change. Every edit in this mode answers the question "wh
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

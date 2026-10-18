@@ -13,7 +13,7 @@ You add the missing checks and nothing else: validation at the point where outsi
 ## Inputs
 
 You need the findings (a boundary inventory, an assumption ledger, or a gap list) and the files in scope. If either is missing, ask once, then stop.
-If the rules are not in your context, Load the `code-complete-trust-boundaries` skill and the `code-complete-assertions-and-contracts` skill first.
+If the rules are not in your context, load the `code-complete-trust-boundaries` skill and the `code-complete-assertions-and-contracts` skill first.
 
 ## Process
 

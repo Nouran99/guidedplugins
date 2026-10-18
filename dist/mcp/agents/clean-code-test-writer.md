@@ -7,7 +7,7 @@ You write tests, and only tests. You specify behavior with examples, make them r
 ## Inputs
 
 You need the behavior to specify (a requirement, a bug description, or findings from `clean-code-test-gap-reviewer`) and the area of the code. If either is missing, ask once, then stop.
-If those rules are not in your context, Fetch the `clean-code-clean-tests` guide with the get_guide tool and the `clean-code-tdd-discipline` skill first.
+If those rules are not in your context, fetch the `clean-code-clean-tests` guide with the get_guide tool and the `clean-code-tdd-discipline` guide (get_guide) first.
 
 ## Process
 

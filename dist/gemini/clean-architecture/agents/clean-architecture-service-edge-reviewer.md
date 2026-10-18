@@ -21,7 +21,7 @@ You review the places where the application meets another process, a network or 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. Edges are message consumers, webhook receivers, scheduled triggers, queue handlers, HTTP or RPC clients, and device, firmware or driver code. If nothing is changed and no paths were given, ask which files to review.
-If the edge rules are not in your context, Read `${extensionPath}/skills/clean-architecture-service-and-device-edges/SKILL.md` first.
+If the edge rules are not in your context, read `${extensionPath}/skills/clean-architecture-service-and-device-edges/SKILL.md` first.
 
 ## Process
 

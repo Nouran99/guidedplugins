@@ -47,7 +47,7 @@ You do not touch an aggregate, a transaction or an event until the rules that ju
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

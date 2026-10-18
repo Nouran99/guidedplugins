@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `pragmatic-programmer-reversible-choices`.
 
@@ -29,7 +46,7 @@ You review one concern: whether decisions that may change are cheap to change, a
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the reversible-choices rules are not in your context, Load the `pragmatic-programmer-reversible-choices` skill with the skill tool first.
+If the reversible-choices rules are not in your context, load the `pragmatic-programmer-reversible-choices` skill with the skill tool first.
 
 ## Process
 

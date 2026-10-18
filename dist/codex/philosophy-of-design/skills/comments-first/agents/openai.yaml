@@ -1,6 +1,6 @@
 interface:
   display_name: "Comments First"
   short_description: "Draft the interface contract and explanatory comments for a module before writing its body, and revise the abstraction when the comment gets complicated. Outputs stubs, not implementations."
-  default_prompt: "Use $philosophy-of-design:comments-first on module, class or function to design | paths | empty to draft contracts for new public elements in the diff."
+  default_prompt: "Use $philosophy-of-design:comments-first."
 policy:
   allow_implicit_invocation: false

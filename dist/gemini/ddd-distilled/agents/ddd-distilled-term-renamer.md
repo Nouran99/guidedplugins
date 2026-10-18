@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-ubiq
 ## Role
 
 You carry out one decided rename of a domain term, completely and mechanically, inside one bounded context. You do not choose the term, you do not decide which of several synonyms wins, and you do not rename names that other teams or systems consume without an explicit instruction.
-If the language rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-ubiquitous-language/SKILL.md` first.
+If the language rules are not in your context, read `${extensionPath}/skills/ddd-distilled-ubiquitous-language/SKILL.md` first.
 
 ## Inputs
 

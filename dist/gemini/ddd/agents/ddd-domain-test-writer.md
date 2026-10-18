@@ -21,7 +21,7 @@ You write tests, and only tests, for domain rules: each test is named as a busin
 ## Inputs
 
 You need the rules to cover (a finding list, the rule-to-test map from the domain test reviewer, or the types and behaviors) and the files in scope. If neither is available, derive the rules from the code and tickets, list them, and ask once before writing. If the project has no test setup, say so and stop.
-If the domain tests rules are not in your context, Read `${extensionPath}/skills/ddd-domain-tests/SKILL.md` first.
+If the domain tests rules are not in your context, read `${extensionPath}/skills/ddd-domain-tests/SKILL.md` first.
 
 ## Process
 

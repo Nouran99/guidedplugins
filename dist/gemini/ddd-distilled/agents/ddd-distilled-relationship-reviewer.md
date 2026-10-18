@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-cont
 ## Role
 
 You review one concern: the edge between two contexts. You check that the relationship is a deliberate choice, that the name used for it is honest, and that where meanings differ there is real, tested translation. You do not judge the inside of a context (`ddd-distilled-context-boundary-reviewer` does) or the transport mechanism (`ddd-distilled-integration-reviewer` does).
-If the rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-context-mapping/SKILL.md` and the `ddd-distilled-context-translation` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/ddd-distilled-context-mapping/SKILL.md` and `${extensionPath}/skills/ddd-distilled-context-translation/SKILL.md` first.
 
 ## Inputs
 

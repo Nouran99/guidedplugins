@@ -1,5 +1,5 @@
 {
   "name": "philosophy-of-design",
   "version": "1.0.0",
-  "description": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design."
+  "description": "John Ousterhout's A Philosophy of Software Design: skills, subagents and modes for deep modules, information hiding, narrow interfaces, defining errors away and strategic design."
 }

@@ -1,7 +1,8 @@
 ---
 name: refactoring-mode-two-hats
-description: "Tags every edit as STRUCTURE or BEHAVIOR, never both in one step, and announces each switch of hat so structural changes and behavior changes stay separable."
+description: "Tags every edit as STRUCTURE or BEHAVIOR, never both in one step, and announces each switch of hat so structural changes and behavior changes stay separable. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Two-hats mode
 
@@ -31,7 +32,7 @@ You work with exactly one hat on at a time. The hats are the two kinds of edit t
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

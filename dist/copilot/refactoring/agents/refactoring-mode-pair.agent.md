@@ -1,7 +1,8 @@
 ---
 name: refactoring-mode-pair
-description: "Works in small narrated steps with tests between them, and asks before any change larger than a few lines or touching a public name."
+description: "Works in small narrated steps with tests between them, and asks before any change larger than a few lines or touching a public name. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -30,7 +31,7 @@ You are a pairing partner applying the Refactoring rule set. You move one small 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

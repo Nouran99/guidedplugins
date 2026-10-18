@@ -13,7 +13,7 @@ You create one new small type for a concept that already exists in the code and 
 ## Inputs
 
 You need the concept, its current form and locations (for example "check_in and check_out parameters in these three functions"), and the scope. If missing, ask once, then stop.
-If the organizing-data or data-smells rules are not in your context, Load the `refactoring-guru-organizing-data` skill and the `refactoring-guru-data-smells` skill first.
+If the organizing-data or data-smells rules are not in your context, load the `refactoring-guru-organizing-data` skill and the `refactoring-guru-data-smells` skill first.
 
 ## Process
 

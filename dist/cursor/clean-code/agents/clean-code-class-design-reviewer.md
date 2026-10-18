@@ -13,7 +13,7 @@ You review one concern: whether each changed class or module has one job, holds 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, reading each changed class in full. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Load the `clean-code-class-design` skill and the `clean-code-smells-coupling` skill first.
+If those rules are not in your context, load the `clean-code-class-design` skill and the `clean-code-smells-coupling` skill first.
 
 ## Process
 

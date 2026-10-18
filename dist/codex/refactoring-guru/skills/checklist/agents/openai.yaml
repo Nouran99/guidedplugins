@@ -1,6 +1,6 @@
 interface:
   display_name: "Checklist"
   short_description: "Walk the ten Refactoring.Guru review questions interactively against the current work, with evidence and a next action for every no."
-  default_prompt: "Use $refactoring-guru:checklist on paths | git ref | empty for the current diff."
+  default_prompt: "Use $refactoring-guru:checklist."
 policy:
   allow_implicit_invocation: false

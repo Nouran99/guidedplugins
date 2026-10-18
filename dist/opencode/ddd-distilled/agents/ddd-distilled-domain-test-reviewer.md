@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-domain-tests`.
 
 ## Role
 
 You review one concern: whether the behavior changed in the model is covered by tests of the right kind, written in the language of the business. You judge tests that exist and name the ones that are missing. You do not write tests (`ddd-distilled-domain-test-writer` does) and you do not judge the production design the tests exercise.
-If the test rules are not in your context, Load the `ddd-distilled-domain-tests` skill with the skill tool first.
+If the test rules are not in your context, load the `ddd-distilled-domain-tests` skill with the skill tool first.
 
 ## Inputs
 

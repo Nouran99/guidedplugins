@@ -21,7 +21,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Read `${extensionPath}/skills/ddd-principles/SKILL.md` first; its routing table is your map.
+If the principles rules are not in your context, read `${extensionPath}/skills/ddd-principles/SKILL.md` first; its routing table is your map.
 
 ## Process
 
@@ -45,8 +45,8 @@ If the principles rules are not in your context, Read `${extensionPath}/skills/d
 Context: <name or unknown>   Area: core | supporting | generic   Tier: 0-3   Change: feature | bug fix | refactor | tests | integration | other
 Touched clusters: <list>
 Run, in order (at most 5):
-1. ddd:<agent> - <why, one line>
-2. /ddd:<skill> - <why, one line>
+1. ddd-<agent> - <why, one line>
+2. ddd-<skill> - <why, one line>
 3. ...
 Second round (only if five steps are not enough): <specialists or skills> - <which part of the work they cover>
 Skip: <cluster> - <why it is not touched>, ...

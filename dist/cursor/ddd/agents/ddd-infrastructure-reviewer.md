@@ -13,7 +13,7 @@ You review one concern: whether the system's own persistence, transport and fram
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the infrastructure rules are not in your context, Load the `ddd-infrastructure` skill first.
+If the infrastructure rules are not in your context, load the `ddd-infrastructure` skill first.
 
 ## Process
 

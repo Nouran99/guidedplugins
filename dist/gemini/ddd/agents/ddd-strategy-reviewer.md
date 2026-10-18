@@ -21,7 +21,7 @@ You review one concern: whether the strategic shape of the work is right. Is the
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files plus the top-level layout. If nothing is changed and no paths were given, ask which area to review.
-If the distillation rules are not in your context, Read `${extensionPath}/skills/ddd-distillation/SKILL.md` first.
+If the distillation rules are not in your context, read `${extensionPath}/skills/ddd-distillation/SKILL.md` first.
 
 ## Process
 

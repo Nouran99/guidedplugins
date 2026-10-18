@@ -8,5 +8,7 @@ Install from a checkout of the repository (Gemini installs one extension per rep
 gemini extensions install ./dist/gemini/data-intensive-apps
 ```
 
-- 38 skills (including 6 mode skills), each also a slash command `/data-intensive-apps:data-intensive-apps-<name>`.
+Gemini asks you to confirm before it installs (trust and consent prompts).
+
+- 38 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/data-intensive-apps:data-intensive-apps-<name>`; that was not exercised in a live session here.
 - 22 subagents, started with `@data-intensive-apps-<name> <task>`.

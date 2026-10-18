@@ -38,7 +38,7 @@ Example:
   // before ...
   // after ...
 Limits: <what the source qualifies, plus any "Added judgment">
-Apply with: /pragmatic-programmer:<skill>   Verify with: pragmatic-programmer:<reviewer>
+Apply with: $pragmatic-programmer:<skill>   Verify with: pragmatic-programmer-<reviewer>
 ```
 
 ## Stop conditions

@@ -21,7 +21,7 @@ You review one concern: whether the changed components are independent, and whet
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/pragmatic-programmer-orthogonality/SKILL.md` and the `pragmatic-programmer-shy-code` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/pragmatic-programmer-orthogonality/SKILL.md` and `${extensionPath}/skills/pragmatic-programmer-shy-code/SKILL.md` first.
 
 ## Process
 

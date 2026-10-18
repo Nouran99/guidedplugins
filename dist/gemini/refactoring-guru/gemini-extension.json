@@ -1,5 +1,5 @@
 {
   "name": "refactoring-guru",
   "version": "1.0.0",
-  "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents."
+  "description": "Refactoring.Guru's smell and technique catalog: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and modes built on a paraphrased rule set for coding agents."
 }

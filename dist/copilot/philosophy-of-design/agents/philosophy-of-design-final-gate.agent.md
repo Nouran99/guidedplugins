@@ -14,7 +14,7 @@ You are the last check before work is declared done. You evaluate the source's r
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and evaluate the working changes. If there is no diff, say there is nothing to gate and stop.
-If the principles rules are not in your context, Load the `philosophy-of-design-principles` skill first; its final checklist is the list you evaluate.
+If the principles rules are not in your context, load the `philosophy-of-design-principles` skill first; its final checklist is the list you evaluate.
 
 ## Process
 

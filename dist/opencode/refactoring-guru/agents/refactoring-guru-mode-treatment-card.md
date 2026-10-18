@@ -2,6 +2,8 @@
 description: "Prints a smell, cost, technique, check and stop card before every edit and a one-line result after it, so no change happens without a diagnosis."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Treatment-card mode
 
 The source's loop is diagnose, treat, verify, stop. In this mode the loop is written down before each edit. No edit happens without a card, and the card comes first in the response.
@@ -40,7 +42,7 @@ The source's loop is diagnose, treat, verify, stop. In this mode the loop is wri
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

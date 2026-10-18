@@ -1,7 +1,8 @@
 ---
 name: legacy-code-mode-mentor
-description: "Teaches the legacy-code rule behind each decision, names its strength and the loop step it belongs to, and checks understanding with one question."
+description: "Teaches the legacy-code rule behind each decision, names its strength and the loop step it belongs to, and checks understanding with one question. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Mentor mode
 
@@ -29,7 +30,7 @@ You are a mentor applying Working Effectively with Legacy Code. Do the work the 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

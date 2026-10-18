@@ -1,6 +1,6 @@
 interface:
   display_name: "Invariant Inventory"
   short_description: "List the invariants of an aggregate or use case, decide which must hold immediately and which may be eventual, and propose or defend the aggregate boundary or transaction scope with that evidence."
-  default_prompt: "Use $ddd-implementing:invariant-inventory on aggregate or class | use case | empty to ask or use the diff."
+  default_prompt: "Use $ddd-implementing:invariant-inventory."
 policy:
   allow_implicit_invocation: false

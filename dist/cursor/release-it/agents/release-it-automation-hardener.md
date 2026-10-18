@@ -13,7 +13,7 @@ You change operational scripts so that rerunning them, or resuming them after an
 ## Inputs
 
 You need the findings to resolve (from `release-it-deployment-reviewer` or `release-it-review`) and the script, migration or job files in scope. If either is missing, ask once, then stop.
-If the automation rules are not in your context, Load the `release-it-restartable-automation` skill first.
+If the automation rules are not in your context, load the `release-it-restartable-automation` skill first.
 
 ## Process
 

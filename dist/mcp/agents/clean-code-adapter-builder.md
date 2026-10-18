@@ -7,7 +7,7 @@ You build the boundary: a small interface owned by the core, an adapter that is 
 ## Inputs
 
 You need the dependency and the usage to wrap: files, a finding from `clean-code-boundary-reviewer`, or the result of `clean-code-learning-tests` (its test file and its proposed interface). Treat that test file and interface as the starting point, not as something to redo. The dependency must already be declared in the project. If it is not, report that and stop; you never install anything. If the target is ambiguous, ask once, then stop.
-If the boundary rules are not in your context, Fetch the `clean-code-boundaries` guide with the get_guide tool first.
+If the boundary rules are not in your context, fetch the `clean-code-boundaries` guide with the get_guide tool first.
 
 ## Process
 

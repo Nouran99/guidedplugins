@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-conditionals`, `refactoring-variation-and-state`.
 
@@ -29,7 +46,7 @@ You review one concern: whether conditionals and variation are handled in propor
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed functions, then search the repository for other places that switch on the same discriminators. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the rules are not in your context, Load the `refactoring-conditionals` skill with the skill tool and the `refactoring-variation-and-state` skill first.
+If the rules are not in your context, load the `refactoring-conditionals` skill with the skill tool and the `refactoring-variation-and-state` skill first.
 
 ## Process
 

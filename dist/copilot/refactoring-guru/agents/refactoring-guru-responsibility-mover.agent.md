@@ -12,7 +12,7 @@ You relocate existing members between types in two phases (add at the target and
 ## Inputs
 
 You need the finding or instruction (which member, from which class, to which class, or which responsibility to extract) and the scope. If missing, ask once, then stop.
-If the moving-features rules are not in your context, Load the `refactoring-guru-moving-features` skill first.
+If the moving-features rules are not in your context, load the `refactoring-guru-moving-features` skill first.
 
 ## Process
 

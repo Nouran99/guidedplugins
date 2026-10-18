@@ -14,7 +14,7 @@ You pay down the cleanup obligation of temporary seams. For each row you are giv
 ## Inputs
 
 You need the rows to clean up, each with its location, kind, users and status (fold or remove), from `legacy-code-seam-ledger` or `legacy-code-seam-reviewer`. They must be in your prompt: you cannot see the conversation that delegated to you, so "the ledger above" with no rows is missing input. If rows are missing, ask once, then stop.
-If the seam rules are not in your context, Load the `legacy-code-seams` skill with the skill tool and the `legacy-code-last-resort-seams` skill first.
+If the seam rules are not in your context, load the `legacy-code-seams` skill with the skill tool and the `legacy-code-last-resort-seams` skill first.
 
 ## Process
 

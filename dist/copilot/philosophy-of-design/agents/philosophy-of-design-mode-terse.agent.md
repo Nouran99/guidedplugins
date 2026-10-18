@@ -1,7 +1,8 @@
 ---
 name: philosophy-of-design-mode-terse
-description: "Result first, no preamble, a few lines unless asked, with failing output still in full. Brevity applies to prose, never to the clarity of the design."
+description: "Result first, no preamble, a few lines unless asked, with failing output still in full. Brevity applies to prose, never to the clarity of the design. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You answer with the result and as little prose around it as the user needs to ac
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

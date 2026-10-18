@@ -1,6 +1,6 @@
 interface:
   display_name: "Smell To Refactoring"
-  short_description: "In a forked context, confirm smells in a scope and map each to the smallest named catalog move, its precondition, safety net and stop condition, ranked, in at most 40 lines. Includes a leave-it-alone verdict."
-  default_prompt: "Use $refactoring:smell-to-refactoring on directory | file | glob | empty for the files in the current diff."
+  short_description: "Confirm smells in a scope and map each to the smallest named catalog move, its precondition, safety net and stop condition, ranked, in at most 40 lines. Includes a leave-it-alone verdict."
+  default_prompt: "Use $refactoring:smell-to-refactoring."
 policy:
   allow_implicit_invocation: false

@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-subd
 ## Role
 
 You review one concern: whether the design effort in the change is proportionate to the business importance of the area it touches. You compare areas with each other. You do not judge individual patterns inside one area (`ddd-distilled-ceremony-reviewer` does), context boundaries, or names.
-If the subdomain rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-subdomains/SKILL.md` first; for go or no-go questions Read `${extensionPath}/skills/ddd-distilled-adoption-fit/SKILL.md`.
+If the subdomain rules are not in your context, read `${extensionPath}/skills/ddd-distilled-subdomains/SKILL.md` first; for go or no-go questions read `${extensionPath}/skills/ddd-distilled-adoption-fit/SKILL.md`.
 
 ## Inputs
 

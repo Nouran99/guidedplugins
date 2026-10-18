@@ -21,7 +21,7 @@ You review one concern: whether every source dependency points inward, and wheth
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then widen to the inner-layer files that the changed interfaces touch. If nothing is changed and no paths were given, ask which files to review.
-If the dependency rules are not in your context, Read `${extensionPath}/skills/clean-architecture-dependency-rule/SKILL.md` first.
+If the dependency rules are not in your context, read `${extensionPath}/skills/clean-architecture-dependency-rule/SKILL.md` first.
 
 ## Process
 

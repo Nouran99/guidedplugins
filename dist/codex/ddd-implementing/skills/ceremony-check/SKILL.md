@@ -44,7 +44,7 @@ Evidence
   lending/loans: src/lending/loan_service.ts:40-96 branches on status for 5 rules; no model object owns them
   ...
 Plan (in order, tests green between steps)
-1. <area>: <trim | extract> <what> -> /ddd-implementing:<skill>
+1. <area>: <trim | extract> <what> -> $ddd-implementing:<skill>
 2. ...
 Needs a decision: <questions for the business or the team>
 ```

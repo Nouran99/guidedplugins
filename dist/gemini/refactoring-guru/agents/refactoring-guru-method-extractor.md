@@ -21,7 +21,7 @@ You perform Extract Method, and the temp-handling techniques that make it possib
 ## Inputs
 
 You need the method (file and name) and either the fragment (line range) or an instruction to extract the phases. If missing, ask once, then stop.
-If the composing-methods rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-composing-methods/SKILL.md` first.
+If the composing-methods rules are not in your context, read `${extensionPath}/skills/refactoring-guru-composing-methods/SKILL.md` first.
 
 ## Process
 

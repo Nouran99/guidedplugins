@@ -33,7 +33,7 @@ How to check it: <a question or search you can run on real code>
 Example (original):
   <before / after, or a decision, in a few lines>
 The source's own limits: <when the rule bends: "do not" clauses, "only when" conditions>
-Related: <the owning skill as a slash command>, <the reviewer agent for it>, and $refactoring:mode-mentor to learn by working
+Related: <the owning skill>, <the reviewer agent for it>, and $refactoring:mode-mentor to learn by working
 ```
 
 ## Stop conditions

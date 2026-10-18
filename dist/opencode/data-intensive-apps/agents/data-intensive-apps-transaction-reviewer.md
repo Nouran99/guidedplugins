@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `data-intensive-apps-transactions-and-isolation`.
 
@@ -29,7 +46,7 @@ You review one concern: whether every invariant the code relies on is actually p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the schema or migration files that declare constraints and the configuration that sets isolation. If nothing is changed and no paths were given, ask which files to review.
-If the transaction rules are not in your context, Load the `data-intensive-apps-transactions-and-isolation` skill with the skill tool first.
+If the transaction rules are not in your context, load the `data-intensive-apps-transactions-and-isolation` skill with the skill tool first.
 
 ## Process
 

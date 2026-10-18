@@ -1,6 +1,6 @@
 interface:
   display_name: "Prepare"
   short_description: "Do only the preparatory refactoring for a stated change: at most five verified behavior-preserving steps that make the change straightforward, then hand back before the behavior change."
-  default_prompt: "Use $refactoring:prepare on the change you are about to make | ticket text | empty to ask."
+  default_prompt: "Use $refactoring:prepare."
 policy:
   allow_implicit_invocation: false

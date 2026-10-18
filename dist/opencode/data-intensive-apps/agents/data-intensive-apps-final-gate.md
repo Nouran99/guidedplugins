@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `data-intensive-apps-principles`.
 
@@ -29,7 +46,7 @@ You are a strict, binary gate. You evaluate the working change against the ten c
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and work from the changed files, plus the schema, migration, consumer and configuration files they depend on. If there is no change, say so and stop.
-If the principles rules are not in your context, Load the `data-intensive-apps-principles` skill with the skill tool first.
+If the principles rules are not in your context, load the `data-intensive-apps-principles` skill with the skill tool first.
 
 ## Process
 

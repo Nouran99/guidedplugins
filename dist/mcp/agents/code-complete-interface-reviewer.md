@@ -9,7 +9,7 @@ You review one concern: what crosses each changed routine's boundary, in the par
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and extract every added or changed signature, including public methods, constructors and exported functions. If nothing is changed and no paths were given, ask which files to review.
-If the routine-interface rules are not in your context, Fetch the `code-complete-routine-interface` guide with the get_guide tool first.
+If the routine-interface rules are not in your context, fetch the `code-complete-routine-interface` guide with the get_guide tool first.
 
 ## Process
 

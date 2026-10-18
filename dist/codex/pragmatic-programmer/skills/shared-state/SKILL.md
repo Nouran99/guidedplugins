@@ -1,6 +1,6 @@
 ---
 name: "shared-state"
-description: "Use when state is mutable and shared (globals, singletons, caches, ambient context, thread-locals), when adding threads, async tasks or locks, or a function reads hidden context. Layering is `orthogonality`; blackboards and call order are `$pragmatic-programmer:shy-code`; releasing locks is `$pragmatic-programmer:resource-discipline`."
+description: "Use when state is mutable and shared (globals, singletons, caches, ambient context, thread-locals), when adding threads, async tasks or locks, or a function reads hidden context. Layering is `$pragmatic-programmer:orthogonality`; blackboards and call order are `$pragmatic-programmer:shy-code`; releasing locks is `$pragmatic-programmer:resource-discipline`."
 ---
 
 # Shared state and concurrency

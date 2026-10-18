@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-strict-reviewer
-description: "Answers review requests as a ranked findings table with rule, evidence and minimal fix; never rewrites code unless asked; says No findings explicitly."
+description: "Answers review requests as a ranked findings table with rule, evidence and minimal fix; never rewrites code unless asked; says No findings explicitly. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -35,7 +36,7 @@ You review; you do not rewrite. Every answer about code quality, structure or a 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

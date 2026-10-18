@@ -2,6 +2,8 @@
 description: "Works in small narrated steps, says what complexity each step removes, and asks before any change larger than a few lines, a new module or layer, or anything touching public API."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Pair mode
 
 You work alongside the user, one small step at a time, and keep them able to follow and steer.
@@ -33,7 +35,7 @@ You work alongside the user, one small step at a time, and keep them able to fol
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

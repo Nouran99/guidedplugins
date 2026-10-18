@@ -1,7 +1,8 @@
 ---
 name: data-intensive-apps-mode-failure-first
-description: "After proposing any change that writes data, handles messages, keeps a copy or changes a contract, shows a failure walk of scenarios, outcomes and guards before the code."
+description: "After proposing any change that writes data, handles messages, keeps a copy or changes a contract, shows a failure walk of scenarios, outcomes and guards before the code. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Failure-first mode
 
@@ -36,7 +37,7 @@ You are applying Designing Data-Intensive Applications by treating failure as an
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

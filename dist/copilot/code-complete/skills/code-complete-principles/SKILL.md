@@ -27,15 +27,19 @@ An agent asked for a feature tends to stop at the first thing that works. It sta
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/code-complete/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention. The source declares that `MUST` is binding, `SHOULD` is a strong default and `MUST NOT` is forbidden. This plugin reads the rule lists as follows: an imperative with no qualifier is binding; `should`, `prefer`, `favor` and the qualifiers "as practical", "when possible" and "where appropriate" make a strong default; `avoid`, `do not` and every entry under "Anti-patterns (MUST NOT)" and "Forbidden Patterns" are prohibitions. Skills in this plugin keep that strength and keep the source's own escape clauses ("unless they are clearer", "when the mapping is stable").
 
 Labels used in this plugin. A rule with no label is stated in `references/full.md`. **Compact rule** marks guidance found only in `mini.md` or `nano.md`. **Added judgment** marks this plugin's own heuristic, threshold or technique; it is not a rule of the source. The source gives no numeric limits, so every number in this plugin is Added judgment and is a search aid, not a verdict.
 
 Tie-breaker. When two options both satisfy the request and you are uncertain, choose the one that, in this order, lowers defect probability, is easier to inspect and reason about, reduces control-flow complexity, uses data and routines clearly, and protects the program against invalid states and misuse.
+
+## Subagent roles
+
+Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

@@ -1,6 +1,6 @@
 interface:
   display_name: "Debt Triage"
   short_description: "Rank known technical debt by its effect on current change speed, correctness and team understanding, and decide absorb now, schedule or accept for each item."
-  default_prompt: "Use $refactoring-guru:debt-triage on list of debt items | file | empty to use deferred smells and TODOs in the current diff."
+  default_prompt: "Use $refactoring-guru:debt-triage."
 policy:
   allow_implicit_invocation: false

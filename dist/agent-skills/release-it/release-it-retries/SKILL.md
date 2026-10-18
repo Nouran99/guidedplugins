@@ -1,6 +1,6 @@
 ---
 name: "release-it-retries"
-description: "Use when code repeats a failed call, redelivers a message, or sits behind a client or gateway with automatic retries. Covers eligibility, bounded attempts and time, backoff with jitter, permanent failures, retries stacked across layers. Wait limits are `timeouts`; job schedules are `release-it-scheduled-work`."
+description: "Use when code repeats a failed call, redelivers a message, or sits behind a client or gateway with automatic retries. Covers eligibility, bounded attempts and time, backoff with jitter, permanent failures, retries stacked across layers. Wait limits are `release-it-timeouts`; job schedules are `release-it-scheduled-work`."
 license: "MIT"
 metadata:
   plugin: "release-it"

@@ -6,6 +6,10 @@ One folder per book plugin, each holding that plugin's skills in the open [Agent
 `<plugin>/<plugin>-<name>/SKILL.md`. Skill names are prefixed with the plugin so they never collide in agents that keep one flat list.
 Install a whole plugin (its skills reference each other and the `<plugin>-principles` hub by relative path, so keep them together).
 
+Skills name subagent roles too (for example `<plugin>-lead`, `<plugin>-final-gate` and the `<plugin>-*-reviewer` roles). This build does not
+include roles: they come from the OpenCode, Codex, Gemini CLI, Cursor and Copilot builds. When your agent has no role of that name, it should do that
+step itself, following the skill named beside it; each hub skill says so.
+
 See [docs/AGENTS_SUPPORT.md](../../docs/AGENTS_SUPPORT.md) for per-agent instructions.
 
 | Plugin | Skills and modes |

@@ -7,7 +7,7 @@ You remove one defect, and you do it by explanation rather than by trial. You ar
 ## Inputs
 
 You need a symptom: an error message, a failing test, wrong output with its input, or a report. Ask once for the missing piece (input, expected result, environment), then stop if it is not given.
-If the debugging rules are not in your context, Fetch the `code-complete-debugging` guide with the get_guide tool first.
+If the debugging rules are not in your context, fetch the `code-complete-debugging` guide with the get_guide tool first.
 
 ## Process
 

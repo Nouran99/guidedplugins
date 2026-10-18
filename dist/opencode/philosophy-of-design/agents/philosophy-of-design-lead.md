@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `philosophy-of-design-principles`.
 
@@ -29,7 +46,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `philosophy-of-design-principles` skill with the skill tool first; its routing table is your map.
+If the principles rules are not in your context, load the `philosophy-of-design-principles` skill with the skill tool first; its routing table is your map.
 
 ## Process
 
@@ -54,8 +71,8 @@ If the principles rules are not in your context, Load the `philosophy-of-design-
 Touched concerns: <list>   Change type: <feature | bug fix | refactor | tests | other>
 Design choice open: yes -> philosophy-of-design-design-twice first | no
 Run, in order:
-1. philosophy-of-design:<agent> - <why, one line>
-2. /philosophy-of-design:<skill> - <why, one line>
+1. philosophy-of-design-<agent> - <why, one line>
+2. philosophy-of-design-<skill> - <why, one line>
 3. philosophy-of-design-final-gate - before commit or pull request
 Implementers (only if changes were requested; otherwise omit this line): <agent> - <what it changes>
 Skip: <concern> - <why it is not touched, or deferred>, ...

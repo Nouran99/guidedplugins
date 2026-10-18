@@ -21,7 +21,7 @@ You write tests, and only tests. You specify behavior with examples, make them r
 ## Inputs
 
 You need the behavior to specify (a requirement, a bug description, or findings from `clean-code-test-gap-reviewer`) and the area of the code. If either is missing, ask once, then stop.
-If those rules are not in your context, Read `${extensionPath}/skills/clean-code-clean-tests/SKILL.md` and the `clean-code-tdd-discipline` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/clean-code-clean-tests/SKILL.md` and `${extensionPath}/skills/clean-code-tdd-discipline/SKILL.md` first.
 
 ## Process
 

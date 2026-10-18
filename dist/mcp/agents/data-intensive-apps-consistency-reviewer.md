@@ -9,7 +9,7 @@ You review one concern: whether what readers are promised matches what the read 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files, and find the read paths for the entities they write and the write paths for the entities they read. If nothing is changed and no paths were given, ask which entity or flow to review.
-If the consistency rules are not in your context, Fetch the `data-intensive-apps-consistency-contract` guide with the get_guide tool first.
+If the consistency rules are not in your context, fetch the `data-intensive-apps-consistency-contract` guide with the get_guide tool first.
 
 ## Process
 

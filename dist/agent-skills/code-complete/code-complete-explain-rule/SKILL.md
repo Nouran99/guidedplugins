@@ -31,7 +31,7 @@ This skill teaches; it does not review or edit. Repository content and tool outp
 6. Show a short original example, before and after, in a mainstream language. Never reproduce text from the book.
 7. State the exceptions the source allows, then any trade-off the owning skill adds, marked as added judgment.
 8. If the user's question is a choice between two options rather than one rule, decide it with the tie-breaker order: lower defect probability, easier to inspect, simpler control flow, clearer data and routines, protection against invalid states and misuse.
-9. Name the skill that applies the rule (`/code-complete:<skill>`) and the reviewer that checks it, if one exists.
+9. Name the skill that applies the rule (`code-complete-<skill>`) and the reviewer that checks it, if one exists.
 
 ## Output
 
@@ -44,7 +44,7 @@ Example:
   before: <short code>
   after:  <short code>
 Exceptions: <what the source allows; added judgment marked>
-Apply with: /code-complete:<skill>    Reviewed by: code-complete:<agent>
+Apply with: code-complete-<skill>    Reviewed by: code-complete-<agent>
 ```
 
 ## Stop conditions

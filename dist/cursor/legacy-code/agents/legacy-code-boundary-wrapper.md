@@ -13,7 +13,7 @@ You remove one barrier at a time: a value the code reads from the environment, o
 ## Inputs
 
 You need the finding or the seam proposal (from `legacy-code-hidden-input-reviewer`, `legacy-code-hard-output-reviewer` or `legacy-code-find-seam`) and the files in scope. They must be in your prompt: you cannot see the conversation that delegated to you, so "the finding above" with no text is missing input. If either is missing, ask once, then stop.
-If the rules are not in your context, Load the `legacy-code-hidden-inputs` skill and the `legacy-code-hard-outputs` skill first.
+If the rules are not in your context, load the `legacy-code-hidden-inputs` skill and the `legacy-code-hard-outputs` skill first.
 
 ## Process
 

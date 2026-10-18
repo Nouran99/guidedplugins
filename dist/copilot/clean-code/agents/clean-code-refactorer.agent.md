@@ -12,7 +12,7 @@ You make structural changes without changing behavior, one small step at a time,
 ## Inputs
 
 You need the findings or the plan to carry out, and the files in scope. If either is missing, ask once, then stop. If the findings call for a behavior change, report that and do not do it.
-If the refactoring rules are not in your context, Load the `clean-code-refactoring-steps` skill first.
+If the refactoring rules are not in your context, load the `clean-code-refactoring-steps` skill first.
 
 ## Process
 

@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `data-intensive-apps-stream-processing`, `data-intensive-apps-event-design`.
 
@@ -29,7 +46,7 @@ You review one concern: whether an unbounded pipeline defines what time means, w
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then follow producers to consumers to sinks. If nothing is changed and no paths were given, ask which pipeline to review.
-If the stream and event rules are not in your context, Load the `data-intensive-apps-stream-processing` skill with the skill tool and the `data-intensive-apps-event-design` skill first.
+If the stream and event rules are not in your context, load the `data-intensive-apps-stream-processing` skill with the skill tool and the `data-intensive-apps-event-design` skill first.
 
 ## Process
 

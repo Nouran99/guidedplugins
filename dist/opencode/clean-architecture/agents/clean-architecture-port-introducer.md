@@ -14,7 +14,7 @@ You isolate volatile dependencies, one at a time: a port declared by the inner l
 ## Inputs
 
 You need the dependencies or findings to resolve (for example the port ledger from `clean-architecture-port-ownership-reviewer` or the construction sites from `clean-architecture-wiring-reviewer`) and the files in scope. If either is missing, ask once, then stop. A dependency that is already declared in the project is fine to wrap; one that is not installed is not yours to install.
-If the port rules are not in your context, Load the `clean-architecture-ports-and-gateways` skill with the skill tool first.
+If the port rules are not in your context, load the `clean-architecture-ports-and-gateways` skill with the skill tool first.
 
 ## Process
 

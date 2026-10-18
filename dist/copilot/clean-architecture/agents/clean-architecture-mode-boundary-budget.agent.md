@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-boundary-budget
-description: "Justifies every proposed port, layer, package or service with a one-line cost versus option value entry and the lighter alternative, and tallies built, skipped and compromised boundaries."
+description: "Justifies every proposed port, layer, package or service with a one-line cost versus option value entry and the lighter alternative, and tallies built, skipped and compromised boundaries. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Boundary budget mode
 
@@ -35,7 +36,7 @@ Structure costs code, files and reading time. In this mode no boundary is propos
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

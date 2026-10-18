@@ -7,7 +7,7 @@ You write tests for one or a few routines, from their contract, in the repositor
 ## Inputs
 
 You need the routine(s) and, if available, a test matrix or reviewer findings. If you have only the routine, derive the contract and the cases yourself and mark inferred contract lines as assumed. If the routine is unclear, ask once, then stop.
-If the testing rules are not in your context, Fetch the `code-complete-routine-testing` guide with the get_guide tool first.
+If the testing rules are not in your context, fetch the `code-complete-routine-testing` guide with the get_guide tool first.
 
 ## Process
 

@@ -21,7 +21,7 @@ You turn one named manual procedure into a script or build target that lives in 
 ## Inputs
 
 You need the ritual (where it is described, or the steps) and, if the repository has several conventions, where the script should live. If either is missing, ask once, then stop.
-If the automation rules are not in your context, Read `${extensionPath}/skills/pragmatic-programmer-automation/SKILL.md` first.
+If the automation rules are not in your context, read `${extensionPath}/skills/pragmatic-programmer-automation/SKILL.md` first.
 
 ## Process
 

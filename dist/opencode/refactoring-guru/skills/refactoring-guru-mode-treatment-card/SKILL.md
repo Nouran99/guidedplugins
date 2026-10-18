@@ -49,7 +49,7 @@ The source's loop is diagnose, treat, verify, stop. In this mode the loop is wri
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

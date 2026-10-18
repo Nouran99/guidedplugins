@@ -9,7 +9,7 @@ You are the last check before work is called done. You evaluate every item of th
 ## Inputs
 
 Take the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git status`, `git diff` and `git diff --staged`, and read the untracked files `git status` lists (a new file has no diff); the combined change is the subject. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD` (committed work on a branch is not an empty diff). Answer `GATE: PASS (empty diff)` and stop only when the combined change and that diff are both empty, or the user confirms there is nothing to check.
-If the principles rules are not in your context, Fetch the `pragmatic-programmer-principles` guide with the get_guide tool first.
+If the principles rules are not in your context, fetch the `pragmatic-programmer-principles` guide with the get_guide tool first.
 
 ## Process
 

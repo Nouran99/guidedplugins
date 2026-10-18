@@ -12,7 +12,7 @@ You add new behavior without reshaping the old code. The new behavior lives in i
 ## Inputs
 
 You need the new behavior (one sentence plus its inputs and expected results), the legacy function or class it enters, and, if known, the insertion point. They must be in your prompt: you cannot see the conversation that delegated to you. If any is missing, ask once, then stop.
-If the sprout and wrap rules are not in your context, Load the `legacy-code-sprout-and-wrap` skill first.
+If the sprout and wrap rules are not in your context, load the `legacy-code-sprout-and-wrap` skill first.
 
 ## Process
 

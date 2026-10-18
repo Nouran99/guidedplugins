@@ -41,7 +41,7 @@ Arguments: the text the user typed after the skill name (empty if none)
 
 ## Steps
 
-1. Read `../philosophy-of-design-principles/references/mini.md`. If the rule is not there, Read the named section of `../philosophy-of-design-principles/references/full.md`.
+1. Read `../philosophy-of-design-principles/references/mini.md`. If the rule is not there, read the named section of `../philosophy-of-design-principles/references/full.md`.
 2. Find the rule's modal strength from the source's convention: unqualified is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT. Say which word in the source sets it.
 3. Read the matching skill in this plugin to see how the rule is applied and which lines are Added judgment.
 4. Explain in your own words. Do not quote the source at length and never reproduce book text.

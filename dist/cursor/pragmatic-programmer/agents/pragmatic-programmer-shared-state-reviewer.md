@@ -13,7 +13,7 @@ You review one concern: what state is shared and mutable in the changed code, wh
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the shared-state rules are not in your context, Load the `pragmatic-programmer-shared-state` skill first.
+If the shared-state rules are not in your context, load the `pragmatic-programmer-shared-state` skill first.
 
 ## Process
 

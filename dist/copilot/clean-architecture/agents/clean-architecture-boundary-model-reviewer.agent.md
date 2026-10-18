@@ -14,7 +14,7 @@ You review signatures, not bodies: what goes into and comes out of the core, and
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files and extract the public signatures of use cases, entity methods and domain services, plus the mappers and model classes next to them. If nothing is changed and no paths were given, ask which files to review.
-If the model rules are not in your context, Load the `clean-architecture-boundary-models` skill first.
+If the model rules are not in your context, load the `clean-architecture-boundary-models` skill first.
 
 ## Process
 

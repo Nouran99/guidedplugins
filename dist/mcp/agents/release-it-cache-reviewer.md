@@ -9,7 +9,7 @@ You review one concern: what the cache does to the source of truth, and to corre
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the cache rules are not in your context, Fetch the `release-it-caching` guide with the get_guide tool first.
+If the cache rules are not in your context, fetch the `release-it-caching` guide with the get_guide tool first.
 
 ## Process
 

@@ -13,7 +13,7 @@ You review one concern: whether each risky structural step had a check, whether 
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files, including test files. Ask for the test command and its reported results if they are not in the task text or the pull-request text.
-If the refactoring-process rules are not in your context, Load the `refactoring-guru-refactoring-process` skill first.
+If the refactoring-process rules are not in your context, load the `refactoring-guru-refactoring-process` skill first.
 
 ## Process
 

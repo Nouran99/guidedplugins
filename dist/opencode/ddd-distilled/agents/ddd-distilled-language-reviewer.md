@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-ubiquitous-language`.
 
 ## Role
 
 You review one concern: whether the change speaks the language of its bounded context, with one term per concept and one meaning per term. You judge words. You do not restructure code to expose hidden concepts (`ddd-distilled-concept-reviewer` does) or decide where a context ends (`ddd-distilled-context-boundary-reviewer` does).
-If the language rules are not in your context, Load the `ddd-distilled-ubiquitous-language` skill with the skill tool first.
+If the language rules are not in your context, load the `ddd-distilled-ubiquitous-language` skill with the skill tool first.
 
 ## Inputs
 

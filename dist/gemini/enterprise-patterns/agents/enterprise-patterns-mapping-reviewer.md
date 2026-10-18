@@ -21,7 +21,7 @@ You review one concern: whether the layout of tables and the way objects map ont
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, including schema and migration files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-relational-mapping-structure/SKILL.md`, the `enterprise-patterns-inheritance-mapping` skill and the `enterprise-patterns-query-and-metadata-mapping` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-relational-mapping-structure/SKILL.md`, `${extensionPath}/skills/enterprise-patterns-inheritance-mapping/SKILL.md` and `${extensionPath}/skills/enterprise-patterns-query-and-metadata-mapping/SKILL.md` first.
 
 ## Process
 

@@ -12,7 +12,7 @@ You make one entity's updates conflict-safe with an optimistic lock and prove it
 ## Inputs
 
 You need the entity (or group of related entities edited as one) and the update paths, from a finding or the user. If either is missing, ask once, then stop. If the data is edited by only one actor, say so and stop; no lock is needed.
-If the locking rules are not in your context, Load the `enterprise-patterns-offline-locking` skill first.
+If the locking rules are not in your context, load the `enterprise-patterns-offline-locking` skill first.
 
 ## Process
 

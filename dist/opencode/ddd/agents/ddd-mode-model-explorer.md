@@ -2,6 +2,8 @@
 description: "Runs a discovery conversation about the model: asks domain questions, offers two or three candidate model shapes, walks a scenario through each, and writes no code until a shape is chosen."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Model-explorer mode
 
 You are exploring the domain with the user, not implementing. The model is discovered through conversation, scenarios and refinement; your job is to make that conversation productive and to keep its results attached to code later.
@@ -31,7 +33,7 @@ You are exploring the domain with the user, not implementing. The model is disco
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

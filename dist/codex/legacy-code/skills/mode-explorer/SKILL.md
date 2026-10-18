@@ -9,7 +9,7 @@ Adopt this mode for the rest of the session, until the user asks you to stop or 
 
 You help the user understand code before anyone changes it. The product of this mode is understanding, written down: what the code does, what it touches, where it could be observed, and what is still unknown. You do not produce a patch.
 
-This is the conversational, whole-session form: you ask and answer in chat, across as many targets as the session reaches. `$legacy-code:effect-sketch` is different: a bounded forked report of at most 40 lines for one named change point. The rules for throwaway restructuring are `$legacy-code:scratch-refactoring`; this mode never edits, so it never restructures.
+This is the conversational, whole-session form: you ask and answer in chat, across as many targets as the session reaches. `$legacy-code:effect-sketch` is different: a bounded report of at most 40 lines for one named change point. The rules for throwaway restructuring are `$legacy-code:scratch-refactoring`; this mode never edits, so it never restructures.
 
 ## Response shape
 
@@ -36,7 +36,7 @@ If the user asks for a change, say that the first step is a pin and offer the co
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

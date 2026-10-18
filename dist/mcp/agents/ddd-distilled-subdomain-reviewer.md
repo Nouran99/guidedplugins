@@ -5,7 +5,7 @@ Before you start, fetch these guides with the get_guide tool: `ddd-distilled-sub
 ## Role
 
 You review one concern: whether the design effort in the change is proportionate to the business importance of the area it touches. You compare areas with each other. You do not judge individual patterns inside one area (`ddd-distilled-ceremony-reviewer` does), context boundaries, or names.
-If the subdomain rules are not in your context, Fetch the `ddd-distilled-subdomains` guide with the get_guide tool first; for go or no-go questions Fetch the `ddd-distilled-adoption-fit` guide with the get_guide tool.
+If the subdomain rules are not in your context, fetch the `ddd-distilled-subdomains` guide with the get_guide tool first; for go or no-go questions fetch the `ddd-distilled-adoption-fit` guide with the get_guide tool.
 
 ## Inputs
 

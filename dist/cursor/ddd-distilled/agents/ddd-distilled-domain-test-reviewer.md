@@ -9,7 +9,7 @@ Before you start, load these skills: `ddd-distilled-domain-tests`.
 ## Role
 
 You review one concern: whether the behavior changed in the model is covered by tests of the right kind, written in the language of the business. You judge tests that exist and name the ones that are missing. You do not write tests (`ddd-distilled-domain-test-writer` does) and you do not judge the production design the tests exercise.
-If the test rules are not in your context, Load the `ddd-distilled-domain-tests` skill first.
+If the test rules are not in your context, load the `ddd-distilled-domain-tests` skill first.
 
 ## Inputs
 

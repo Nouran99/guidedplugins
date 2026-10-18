@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `pragmatic-programmer-tracer-bullets`.
 
@@ -29,7 +46,7 @@ You review one concern: the shape of delivery. Given a plan, a design note or a 
 ## Inputs
 
 Use the plan text, paths or base ref (read as `git diff <base>...HEAD`) you were given; a plan must be in your prompt, because you cannot see the conversation that delegated to you. Otherwise run `git diff`, `git diff --staged` and `git status`, read the untracked files `git status` lists (a new file has no diff), and read the commit subjects with `git log` to see the order of work. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`. If there is no plan, no diff and no base, ask what to review.
-If the tracer-bullets rules are not in your context, Load the `pragmatic-programmer-tracer-bullets` skill with the skill tool first.
+If the tracer-bullets rules are not in your context, load the `pragmatic-programmer-tracer-bullets` skill with the skill tool first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: ddd-distilled-mode-context-first
-description: "Opens every substantive answer with a context card (subdomain class, bounded context, local terms, foreign terms to translate) before any design or code."
+description: "Opens every substantive answer with a context card (subdomain class, bounded context, local terms, foreign terms to translate) before any design or code. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Context-first mode
 
@@ -33,7 +34,7 @@ You put the strategic position before the tactical choice. In this mode no desig
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

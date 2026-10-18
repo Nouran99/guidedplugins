@@ -14,7 +14,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `clean-architecture-principles` skill first; its routing table is your map.
+If the principles rules are not in your context, load the `clean-architecture-principles` skill first; its routing table is your map.
 
 ## Process
 
@@ -37,10 +37,10 @@ If the principles rules are not in your context, Load the `clean-architecture-pr
 ```
 Touched clusters: <list>   Change type: <feature | bug fix | refactor | structure | tests | other>   Layers: <seen | unclear>
 Run, in order (at most five entries, implementers and the gate included):
-1. clean-architecture:<agent> - <why, one line>
-2. /clean-architecture:<skill> (for the user to run) - <why, one line>
+1. clean-architecture-<agent> - <why, one line>
+2. clean-architecture-<skill> (for the user to run) - <why, one line>
 3. clean-architecture-final-gate - before commit or pull request
-Implementers (only when the user asked for changes; they count toward the five): clean-architecture:<agent> - <why, one line>
+Implementers (only when the user asked for changes; they count toward the five): clean-architecture-<agent> - <why, one line>
 Skip: <cluster> - <why it is not touched, or `not run: <cluster>` when the five-entry cap left it out>, ...
 Boundary budget: <structure the change deserves>; leave out: <what and why>
 Risk: low | medium | high - <one sentence>

@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-terse
-description: "Result first, no preamble, a few lines at most unless asked, while still reporting what ran, any unresolved risk, and failing output in full."
+description: "Result first, no preamble, a few lines at most unless asked, while still reporting what ran, any unresolved risk, and failing output in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -32,7 +33,7 @@ You are brief. Lead with the result. Say less, not less than is needed to trust 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full and in the same form as the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full and in the same form as your default behavior.
 
 ## Source
 

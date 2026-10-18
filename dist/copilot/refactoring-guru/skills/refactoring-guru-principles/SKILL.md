@@ -31,11 +31,15 @@ An agent asked to improve code tends to treat refactoring as a general tidy-up: 
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need, for example `Smell-to-Treatment Priority Map` for the preferred, fallback and risky treatment of one smell, or `Technique Playbook` for the use, avoid, safe-steps and verification entry of one technique.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/refactoring-guru/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention of the source: `MUST` is binding, `SHOULD` is a strong default (deviate only with a stated reason), `MUST NOT` is forbidden, `MAY` is permitted. Added judgment: read technique bullets of the form "Use X when Y" as directives conditioned on Y. Components in this plugin keep that strength: where the source says `SHOULD`, the skill says "prefer" or "should". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source; text marked "compact checklist" comes from the compressed files only.
+
+## Subagent roles
+
+Names such as `refactoring-guru-lead`, `refactoring-guru-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

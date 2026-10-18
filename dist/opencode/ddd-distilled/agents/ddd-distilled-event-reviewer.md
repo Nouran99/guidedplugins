@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-domain-events`.
 
 ## Role
 
 You review one concern: whether each domain event is a meaningful, past-tense business fact with a clear payload decision, raised where the fact becomes true. You judge what an event is, including its payload shape and the carry-data or query-back decision; you are the only reviewer who owns those. You do not judge how events are delivered or consumed (`ddd-distilled-integration-reviewer` does) or the transaction scope around them (`ddd-distilled-consistency-reviewer` does).
-If the event rules are not in your context, Load the `ddd-distilled-domain-events` skill with the skill tool first.
+If the event rules are not in your context, load the `ddd-distilled-domain-events` skill with the skill tool first.
 
 ## Inputs
 

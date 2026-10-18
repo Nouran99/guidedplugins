@@ -9,7 +9,7 @@ You review one concern: how many places one change needs, how many reasons one c
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files. Use `git log --stat -n 30` on those files to see how earlier changes of the same kind were spread.
-If the change-locality rules are not in your context, Fetch the `refactoring-guru-change-locality` guide with the get_guide tool first.
+If the change-locality rules are not in your context, fetch the `refactoring-guru-change-locality` guide with the get_guide tool first.
 
 ## Process
 

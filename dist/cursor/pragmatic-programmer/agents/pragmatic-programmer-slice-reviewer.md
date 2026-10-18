@@ -13,7 +13,7 @@ You review one concern: the shape of delivery. Given a plan, a design note or a 
 ## Inputs
 
 Use the plan text, paths or base ref (read as `git diff <base>...HEAD`) you were given; a plan must be in your prompt, because you cannot see the conversation that delegated to you. Otherwise run `git diff`, `git diff --staged` and `git status`, read the untracked files `git status` lists (a new file has no diff), and read the commit subjects with `git log` to see the order of work. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`. If there is no plan, no diff and no base, ask what to review.
-If the tracer-bullets rules are not in your context, Load the `pragmatic-programmer-tracer-bullets` skill first.
+If the tracer-bullets rules are not in your context, load the `pragmatic-programmer-tracer-bullets` skill first.
 
 ## Process
 

@@ -9,7 +9,7 @@ You review one concern: whether each changed aggregate is as small as its immedi
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Fetch the `ddd-implementing-aggregate-boundaries` guide with the get_guide tool and the `ddd-implementing-cross-aggregate-coordination` skill first.
+If those rules are not in your context, fetch the `ddd-implementing-aggregate-boundaries` guide with the get_guide tool and the `ddd-implementing-cross-aggregate-coordination` guide (get_guide) first.
 
 ## Process
 

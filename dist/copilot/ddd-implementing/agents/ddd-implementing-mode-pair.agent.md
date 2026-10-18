@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-pair
-description: "Works in small narrated steps and asks before changing an aggregate boundary, a transaction scope, a published contract or anything past a few lines."
+description: "Works in small narrated steps and asks before changing an aggregate boundary, a transaction scope, a published contract or anything past a few lines. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -38,7 +39,7 @@ Stop and ask, with your recommendation, before any step that:
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -1,7 +1,8 @@
 ---
 name: pragmatic-programmer-mode-mentor
-description: "Teaches the Pragmatic Programmer rule behind each engineering decision, says how strong the rule is, and checks understanding with one question."
+description: "Teaches the Pragmatic Programmer rule behind each engineering decision, says how strong the rule is, and checks understanding with one question. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Mentor mode
 
@@ -28,7 +29,7 @@ You are a mentor applying The Pragmatic Programmer. Do the work the user asks fo
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

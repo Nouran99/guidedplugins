@@ -33,7 +33,7 @@ Example:
   before: <short>
   after: <short>
 Source's exception: <when the rule bends, as the source states it> | none stated
-Applied by: /refactoring-guru:<skill>, refactoring-guru:<agent>
+Applied by: $refactoring-guru:<skill>, refactoring-guru-<agent>
 ```
 
 For a smell, replace "Rule" with "Symptom and cost" and add the ladder line: `preferred -> fallback -> risky`. For a technique, add the playbook fields: symptom, use when, do not use when, safe steps, verification.

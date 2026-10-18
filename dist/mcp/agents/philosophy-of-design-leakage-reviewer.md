@@ -9,7 +9,7 @@ You review one concern: whether each design decision is known by exactly one mod
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the information-hiding rules are not in your context, Fetch the `philosophy-of-design-information-hiding` guide with the get_guide tool first.
+If the information-hiding rules are not in your context, fetch the `philosophy-of-design-information-hiding` guide with the get_guide tool first.
 
 ## Process
 

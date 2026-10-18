@@ -1,6 +1,6 @@
 interface:
   display_name: "Fix"
   short_description: "Resolve given refactoring findings with the smallest named move per finding, run the tests after each, and report. Never commits."
-  default_prompt: "Use $refactoring:fix on finding text | file:line | row numbers | 'last review' | empty to ask."
+  default_prompt: "Use $refactoring:fix."
 policy:
   allow_implicit_invocation: false

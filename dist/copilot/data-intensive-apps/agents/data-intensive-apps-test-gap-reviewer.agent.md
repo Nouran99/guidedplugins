@@ -14,7 +14,7 @@ You review one concern: which data-path behaviors the change adds or relies on, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed production files and the changed or neighboring test files, and find the test command from `package.json`, `Makefile`, `pyproject.toml` or `go.mod` (do not run it). If nothing is changed and no paths were given, ask which code to review.
-If the data-path test rules are not in your context, Load the `data-intensive-apps-data-path-tests` skill first.
+If the data-path test rules are not in your context, load the `data-intensive-apps-data-path-tests` skill first.
 
 ## Process
 

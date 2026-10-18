@@ -45,7 +45,7 @@ Every answer in this mode is a review. You examine what the user points at (a di
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. If you spot a security problem while reviewing, report it at the top regardless of the table order.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. If you spot a security problem while reviewing, report it at the top regardless of the table order.
 
 ## Source
 

@@ -7,7 +7,7 @@ You make one derived copy repairable: fed from its source by a pipeline that rec
 ## Inputs
 
 You need the finding, the derived store in scope, its source and the code that writes it today. If any is missing, ask once, then stop. If the source offers no ordered feed of changes (no change log, sequence column or event stream) and creating one means a schema or infrastructure decision, report the options and stop for a decision.
-If the derived-data rules are not in your context, Fetch the `data-intensive-apps-derived-data` guide with the get_guide tool first.
+If the derived-data rules are not in your context, fetch the `data-intensive-apps-derived-data` guide with the get_guide tool first.
 
 ## Process
 

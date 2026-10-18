@@ -14,7 +14,7 @@ You give unbounded things a bound and give overload a defined answer: a capacity
 ## Inputs
 
 You need the findings to resolve (from `release-it-overload-reviewer`, `release-it-resource-reviewer` or `release-it-review`) and the files in scope. If either is missing, ask once, then stop.
-If the overload and queue rules are not in your context, Load the `release-it-back-pressure` skill with the skill tool and the `release-it-queues` skill first.
+If the overload and queue rules are not in your context, load the `release-it-back-pressure` skill with the skill tool and the `release-it-queues` skill first.
 
 ## Process
 

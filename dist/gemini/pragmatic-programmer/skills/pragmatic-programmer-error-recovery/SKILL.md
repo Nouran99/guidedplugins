@@ -1,6 +1,6 @@
 ---
 name: "pragmatic-programmer-error-recovery"
-description: "Use when writing or reviewing how failures travel: where an error is detected, what context survives, whether callers can tell retryable, recoverable and permanent failures apart, and where it stops. Expectations are `contracts`; cleanup is `pragmatic-programmer-resource-discipline`; a defect's cause is `debugging`."
+description: "Use when writing or reviewing how failures travel: where an error is detected, what context survives, whether callers can tell retryable, recoverable and permanent failures apart, and where it stops. Expectations are `pragmatic-programmer-contracts`; cleanup is `pragmatic-programmer-resource-discipline`; a defect's cause is `pragmatic-programmer-debugging`."
 license: "MIT"
 metadata:
   plugin: "pragmatic-programmer"

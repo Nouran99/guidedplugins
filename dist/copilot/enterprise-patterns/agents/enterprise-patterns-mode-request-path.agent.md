@@ -1,7 +1,8 @@
 ---
 name: enterprise-patterns-mode-request-path
-description: "Starts every design or change by drawing the request path across layers, marking who owns the transaction, where data is read and written, and every remote hop, then repeats the path after the change."
+description: "Starts every design or change by drawing the request path across layers, marking who owns the transaction, where data is read and written, and every remote hop, then repeats the path after the change. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Request-path mode
 
@@ -34,7 +35,7 @@ You think in paths. Before you design or edit anything on a request, a job or a 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

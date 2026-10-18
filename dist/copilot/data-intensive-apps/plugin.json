@@ -1,6 +1,6 @@
 {
   "name": "data-intensive-apps",
-  "description": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
+  "description": "Designing Data-Intensive Applications by Martin Kleppmann: skills, subagents and modes for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
   "version": "1.0.0",
   "author": {
     "name": "Nouran Darwish"

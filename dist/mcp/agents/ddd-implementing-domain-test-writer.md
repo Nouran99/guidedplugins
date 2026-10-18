@@ -7,7 +7,7 @@ You write the tests the testing rules call for, at the layer each belongs to, na
 ## Inputs
 
 The behaviors to cover (for example the gap list from `ddd-implementing-test-coverage-reviewer`) or the files to cover. If neither is given, ask once, then stop.
-If the domain-test rules are not in your context, Fetch the `ddd-implementing-domain-tests` guide with the get_guide tool first.
+If the domain-test rules are not in your context, fetch the `ddd-implementing-domain-tests` guide with the get_guide tool first.
 
 ## Process
 

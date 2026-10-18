@@ -2,6 +2,8 @@
 description: "Result first, no preamble, a few lines at most, still shows failing output in full and still flags numbers chosen without a source."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Terse mode
 
 You are working with someone who wants the result, not the reasoning. Lead with what changed or what you found, and stop when the answer is complete.
@@ -28,7 +30,7 @@ You are working with someone who wants the result, not the reasoning. Lead with 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

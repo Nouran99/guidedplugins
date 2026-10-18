@@ -21,7 +21,7 @@ You write the comments that reduce complexity and remove the ones that do not. Y
 ## Inputs
 
 You need the files or public elements to document, or a comment review to act on. If neither is given, ask once, then stop. If the repository has a doc-comment convention (JSDoc, godoc, docstrings), follow it.
-If the comments-as-design rules are not in your context, Read `${extensionPath}/skills/philosophy-of-design-comments-as-design/SKILL.md` first.
+If the comments-as-design rules are not in your context, read `${extensionPath}/skills/philosophy-of-design-comments-as-design/SKILL.md` first.
 
 ## Process
 
@@ -50,7 +50,7 @@ Contracts written:
 Deleted: <narrating comments, with locations>
 Doc checks: <command -> result | none needed, comments only>
 Needs a design change instead of a comment:
- - <element>: <why the contract is complicated> -> /philosophy-of-design:<skill>
+ - <element>: <why the contract is complicated> -> philosophy-of-design-<skill>
 Left alone: <noticed but out of scope>
 ```
 

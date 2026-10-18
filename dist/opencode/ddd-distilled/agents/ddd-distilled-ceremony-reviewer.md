@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-pattern-economy`.
 
 ## Role
 
 You review one concern: whether each tactical pattern in the change is earned, and whether any concept that needs a pattern lacks one. You judge patterns concept by concept inside an area, and you refer a primitive or flag that hides a rule to `ddd-distilled-concept-reviewer` instead of designing its replacement. You do not compare areas by importance (`ddd-distilled-subdomain-reviewer` does), and you do not review how well a pattern is implemented; sibling reviewers own that.
-If the pattern rules are not in your context, Load the `ddd-distilled-pattern-economy` skill with the skill tool first.
+If the pattern rules are not in your context, load the `ddd-distilled-pattern-economy` skill with the skill tool first.
 
 ## Inputs
 

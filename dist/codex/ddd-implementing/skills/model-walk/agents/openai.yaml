@@ -1,6 +1,6 @@
 interface:
   display_name: "Model Walk"
   short_description: "Walk a new domain concept through the nine code-generation steps and produce a model sheet before any code: context, terms, tactical types, aggregate boundary, references, invariants, repositories, services, translations."
-  default_prompt: "Use $ddd-implementing:model-walk on concept or feature description | issue text | empty to ask."
+  default_prompt: "Use $ddd-implementing:model-walk."
 policy:
   allow_implicit_invocation: false

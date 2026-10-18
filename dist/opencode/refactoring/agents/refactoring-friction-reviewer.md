@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-stopping-rules`, `refactoring-preparatory-steps`.
 
@@ -29,7 +46,7 @@ You review one concern: whether the change removed a real source of friction and
 ## Inputs
 
 Use the paths or ref you were given, plus the stated request. Otherwise run `git status` and `git diff`, and read `git log` for messages. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If you cannot find what change the work was for, ask once, then stop.
-If the stopping-rules or preparatory-steps rules are not in your context, Load the `refactoring-stopping-rules` skill with the skill tool and the `refactoring-preparatory-steps` skill first.
+If the stopping-rules or preparatory-steps rules are not in your context, load the `refactoring-stopping-rules` skill with the skill tool and the `refactoring-preparatory-steps` skill first.
 
 ## Process
 

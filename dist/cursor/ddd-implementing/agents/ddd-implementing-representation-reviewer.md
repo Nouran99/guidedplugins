@@ -13,7 +13,7 @@ You review one concern: the boundary between the application and its clients (UI
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the client-representation rules are not in your context, Load the `ddd-implementing-client-representations` skill first.
+If the client-representation rules are not in your context, load the `ddd-implementing-client-representations` skill first.
 
 ## Process
 

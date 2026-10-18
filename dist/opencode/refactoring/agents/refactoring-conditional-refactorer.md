@@ -14,7 +14,7 @@ You choose and carry out the right mechanism for branching that repeats by kind:
 ## Inputs
 
 You need the discriminator (type code, status, mode) and the files in scope, or the review finding that names them. If missing, ask once, then stop. If tests do not cover the branches, say so and recommend `refactoring-characterize` first.
-If the conditionals or variation-and-state rules are not in your context, Load the `refactoring-conditionals` skill with the skill tool and the `refactoring-variation-and-state` skill first.
+If the conditionals or variation-and-state rules are not in your context, load the `refactoring-conditionals` skill with the skill tool and the `refactoring-variation-and-state` skill first.
 
 ## Process
 

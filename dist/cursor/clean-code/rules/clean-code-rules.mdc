@@ -1,5 +1,5 @@
 ---
-description: "Compact Clean Code rules. Doing everyday coding and code review: naming, small functions, tests."
+description: "Clean Code rules, compact form. Apply them when doing everyday coding and code review: naming, small functions, tests."
 alwaysApply: false
 ---
 # OBEY Clean Code by Robert C. Martin

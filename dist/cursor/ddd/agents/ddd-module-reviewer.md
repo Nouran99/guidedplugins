@@ -13,7 +13,7 @@ You review one concern: whether the layout of the model communicates domain conc
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the modules and associations rules are not in your context, Load the `ddd-modules-and-associations` skill first.
+If the modules and associations rules are not in your context, load the `ddd-modules-and-associations` skill first.
 
 ## Process
 

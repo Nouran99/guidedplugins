@@ -13,7 +13,7 @@ You review one concern: what each hunk is for, and whether any behavior changed 
 ## Inputs
 
 Use the paths or ref you were given, plus any stated goal. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the refactoring-process rules are not in your context, Load the `refactoring-guru-refactoring-process` skill first.
+If the refactoring-process rules are not in your context, load the `refactoring-guru-refactoring-process` skill first.
 
 ## Process
 

@@ -22,7 +22,7 @@ You review one concern: whether the patch is the right shape for a change in cod
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
 You need the request the change serves. Take it from the user's message, the branch name or `git log` messages; if you cannot tell, say so and judge only the internal shape.
-If the change-separation rules are not in your context, Read `${extensionPath}/skills/legacy-code-change-separation/SKILL.md` first, and the `legacy-code-rewrite-pressure` skill when a replacement or sweep appears.
+If the change-separation rules are not in your context, read `${extensionPath}/skills/legacy-code-change-separation/SKILL.md` first, and `${extensionPath}/skills/legacy-code-rewrite-pressure/SKILL.md` when a replacement or sweep appears.
 
 ## Process
 

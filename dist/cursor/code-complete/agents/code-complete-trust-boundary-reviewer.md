@@ -13,7 +13,7 @@ You review one concern: whether each point where outside data enters the changed
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the trust-boundary rules are not in your context, Load the `code-complete-trust-boundaries` skill first.
+If the trust-boundary rules are not in your context, load the `code-complete-trust-boundaries` skill first.
 
 ## Process
 

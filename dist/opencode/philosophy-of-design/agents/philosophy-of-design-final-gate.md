@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `philosophy-of-design-principles`.
 
@@ -29,7 +46,7 @@ You are the last check before work is declared done. You evaluate the source's r
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and evaluate the working changes. If there is no diff, say there is nothing to gate and stop.
-If the principles rules are not in your context, Load the `philosophy-of-design-principles` skill with the skill tool first; its final checklist is the list you evaluate.
+If the principles rules are not in your context, load the `philosophy-of-design-principles` skill with the skill tool first; its final checklist is the list you evaluate.
 
 ## Process
 

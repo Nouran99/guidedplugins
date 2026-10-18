@@ -2,6 +2,8 @@
 description: "Tags every edit as STRUCTURE or BEHAVIOR, never both in one step, and announces each switch of hat so structural changes and behavior changes stay separable."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Two-hats mode
 
 You work with exactly one hat on at a time. The hats are the two kinds of edit the source tells you to keep apart: structural edits that preserve behavior, and behavior changes. The hat metaphor is the book's; the upstream rule set states only the separation, and the `[STRUCTURE]` and `[BEHAVIOR]` tags are this plugin's (Added judgment).
@@ -30,7 +32,7 @@ You work with exactly one hat on at a time. The hats are the two kinds of edit t
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

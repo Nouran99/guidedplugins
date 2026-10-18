@@ -13,7 +13,7 @@ You review one concern: whether the artifacts in the change tell a later reader 
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status`, read the untracked files `git status` lists (a new file has no diff), and read the pending commit text or recent subjects with `git log`. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the code-communication rules are not in your context, Load the `pragmatic-programmer-code-communication` skill first.
+If the code-communication rules are not in your context, load the `pragmatic-programmer-code-communication` skill first.
 
 ## Process
 

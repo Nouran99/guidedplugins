@@ -13,7 +13,7 @@ You are the general worker for structural change. You take a list of findings or
 ## Inputs
 
 You need the findings or the plan, and the files in scope. If either is missing, ask once, then stop. If a finding calls for a behavior change, report it and do not do it.
-If the small-steps or safety-net rules are not in your context, Load the `refactoring-small-steps` skill and the `refactoring-safety-net` skill first.
+If the small-steps or safety-net rules are not in your context, load the `refactoring-small-steps` skill and the `refactoring-safety-net` skill first.
 
 ## Process
 

@@ -46,7 +46,7 @@ Context: <name or unknown>   Subdomain: <core | supporting | generic | unknown>
 
 BLOCKER  path/file.ext:42  <rule name>  (must)
   Why: <consequence in one sentence>
-  Fix: <smallest change>; owner: /ddd-distilled:<skill>
+  Fix: <smallest change>; owner: ddd-distilled-<skill>
 MAJOR ...
 Summary: <two sentences>. Next step: <the one thing to do first>.
 ```

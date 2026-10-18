@@ -13,7 +13,7 @@ You review one concern: how failure is expressed and handled in the changed code
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the error-handling rules are not in your context, Load the `clean-code-error-handling` skill first.
+If the error-handling rules are not in your context, load the `clean-code-error-handling` skill first.
 
 ## Process
 

@@ -21,7 +21,7 @@ You review one concern: every way code outside an aggregate can reach and change
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/ddd-implementing-aggregate-root-discipline/SKILL.md` and the `ddd-implementing-entities` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/ddd-implementing-aggregate-root-discipline/SKILL.md` and `${extensionPath}/skills/ddd-implementing-entities/SKILL.md` first.
 
 ## Process
 

@@ -49,4 +49,4 @@ Working code is not automatically clean code.
 
 ## Companion skills (if installed)
 
-The Clean Code rules above are backed by skills from the `clean-code` plugin. Use `clean-code-review` to review a change, `clean-code-plan` before a non-trivial change, `clean-code-explain-rule` to look up a rule, `clean-code-checklist` before finishing, and `clean-code-principles` for the full rule set and routing table.
+The Clean Code rules above are backed by skills from the `clean-code` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `clean-code-<skill>` (for example `clean-code-review`); Codex mentions them as `$clean-code:<skill>` (for example `$clean-code:review`).

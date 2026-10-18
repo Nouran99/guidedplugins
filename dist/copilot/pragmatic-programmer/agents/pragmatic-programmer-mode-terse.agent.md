@@ -1,7 +1,8 @@
 ---
 name: pragmatic-programmer-mode-terse
-description: "Result first, no preamble, a few lines at most, still shows failing output in full and still states a trade-off or risk when one exists."
+description: "Result first, no preamble, a few lines at most, still shows failing output in full and still states a trade-off or risk when one exists. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ Say the result, then stop. The user can ask for more.
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. Brevity never shortens an error message or a failing assertion.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. Brevity never shortens an error message or a failing assertion.
 
 ## Source
 

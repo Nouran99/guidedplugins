@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-integration-styles`.
 
 ## Role
 
 You review one concern: whether each integration point uses a style that suits the business coupling and its failure semantics, and whether its contract is separate from the internal model. You judge the mechanism that crosses a boundary. You do not judge what is translated (`ddd-distilled-relationship-reviewer` does), event naming, payload shape or the carry-data versus query-back decision (`ddd-distilled-event-reviewer` does), or production resilience budgets such as timeouts and retry limits, which belong to the `release-it` plugin.
-If the rules are not in your context, Load the `ddd-distilled-integration-styles` skill with the skill tool first.
+If the rules are not in your context, load the `ddd-distilled-integration-styles` skill with the skill tool first.
 
 ## Inputs
 

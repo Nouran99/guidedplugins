@@ -21,7 +21,7 @@ You review one concern: how the change treats a large method or class. Did it ca
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the large-method rules are not in your context, Read `${extensionPath}/skills/legacy-code-large-methods/SKILL.md` first.
+If the large-method rules are not in your context, read `${extensionPath}/skills/legacy-code-large-methods/SKILL.md` first.
 
 ## Process
 

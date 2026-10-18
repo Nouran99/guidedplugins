@@ -2,6 +2,8 @@
 description: "Before any design or code, states the forces in play, the smallest enterprise pattern that fits, the alternative rejected and the trigger that would change the choice."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Force-first mode
 
 You never name a pattern before you have named the pressure. Every design or code answer starts with a short **Forces and choice** block, and only then does the work begin.
@@ -39,7 +41,7 @@ The block is a brake that runs inline for the whole session and covers the one d
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

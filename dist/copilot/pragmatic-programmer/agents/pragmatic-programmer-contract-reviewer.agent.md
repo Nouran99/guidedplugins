@@ -14,7 +14,7 @@ You review one concern: whether what each changed routine expects and promises i
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the contracts rules are not in your context, Load the `pragmatic-programmer-contracts` skill first.
+If the contracts rules are not in your context, load the `pragmatic-programmer-contracts` skill first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: code-complete-mode-strict-reviewer
-description: "Answers as a ranked findings table against the Code Complete rules, never rewrites code unless asked, and says No findings explicitly when clean."
+description: "Answers as a ranked findings table against the Code Complete rules, never rewrites code unless asked, and says No findings explicitly when clean. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -37,7 +38,7 @@ Every answer in this mode is a review. You examine what the user points at (a di
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. If you spot a security problem while reviewing, report it at the top regardless of the table order.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. If you spot a security problem while reviewing, report it at the top regardless of the table order.
 
 ## Source
 

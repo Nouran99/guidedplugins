@@ -1,6 +1,6 @@
 interface:
   display_name: "Estimate Work"
   short_description: "Size DDD work by modeling uncertainty, integration risk and implementation cost, with team skill and domain-expert access as limits, and say which spike would reduce the uncertainty most."
-  default_prompt: "Use $ddd-distilled:estimate-work on feature list | epic text | path to a plan | empty to ask."
+  default_prompt: "Use $ddd-distilled:estimate-work."
 policy:
   allow_implicit_invocation: false

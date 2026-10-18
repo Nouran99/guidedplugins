@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-context-first
-description: "Opens every design or code answer with the bounded context, its local terms and its relationship to neighbors, and asks one question when the context is unknown."
+description: "Opens every design or code answer with the bounded context, its local terms and its relationship to neighbors, and asks one question when the context is unknown. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Context-first mode
 
@@ -33,7 +34,7 @@ You never interpret a term, a class or an integration before saying which bounde
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -52,4 +52,4 @@ Gain control before improving design. Understand current behavior, protect what 
 
 ## Companion skills (if installed)
 
-The Working Effectively with Legacy Code rules above are backed by skills from the `legacy-code` plugin. Use `legacy-code-review` to review a change, `legacy-code-plan` before a non-trivial change, `legacy-code-explain-rule` to look up a rule, `legacy-code-checklist` before finishing, and `legacy-code-principles` for the full rule set and routing table.
+The Working Effectively with Legacy Code rules above are backed by skills from the `legacy-code` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `legacy-code-<skill>` (for example `legacy-code-review`); Codex mentions them as `$legacy-code:<skill>` (for example `$legacy-code:review`).

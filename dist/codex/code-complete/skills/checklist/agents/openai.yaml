@@ -1,6 +1,6 @@
 interface:
   display_name: "Checklist"
   short_description: "Walk the Code Complete review checklist against your current change with yes, no or n/a per question and a next action for each no."
-  default_prompt: "Use $code-complete:checklist on paths | empty for the current diff."
+  default_prompt: "Use $code-complete:checklist."
 policy:
   allow_implicit_invocation: false

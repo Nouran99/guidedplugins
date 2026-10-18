@@ -9,7 +9,7 @@ You review one concern: whether each application operation is a named use case t
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the service layer rules are not in your context, Fetch the `enterprise-patterns-service-layer` guide with the get_guide tool first.
+If the service layer rules are not in your context, fetch the `enterprise-patterns-service-layer` guide with the get_guide tool first.
 
 ## Process
 

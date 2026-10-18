@@ -1,7 +1,7 @@
 {
   "name": "ddd-distilled",
   "version": "1.0.0",
-  "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+  "description": "Vaughn Vernon's Domain-Driven Design Distilled: skills and modes for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -25,7 +25,7 @@
   "interface": {
     "displayName": "Domain-Driven Design Distilled",
     "shortDescription": "You want DDD benefits without heavy ceremony.",
-    "longDescription": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+    "longDescription": "Vaughn Vernon's Domain-Driven Design Distilled: skills and modes for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

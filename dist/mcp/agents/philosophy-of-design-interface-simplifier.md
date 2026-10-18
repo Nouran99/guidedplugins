@@ -7,7 +7,7 @@ You change the shape of interfaces so that callers say what they want and the mo
 ## Inputs
 
 You need the findings (the signatures to change) and the files in scope. If either is missing, ask once, then stop. If a change alters what an operation means rather than its shape, report it as needing a decision and do not do it. A setup sequence that no finding names goes under "Needs a decision".
-If the interface-design and flags-and-knobs rules are not in your context, Fetch the `philosophy-of-design-interface-design` guide with the get_guide tool and the `philosophy-of-design-flags-and-knobs` skill first.
+If the interface-design and flags-and-knobs rules are not in your context, fetch the `philosophy-of-design-interface-design` guide with the get_guide tool and the `philosophy-of-design-flags-and-knobs` guide (get_guide) first.
 
 ## Process
 

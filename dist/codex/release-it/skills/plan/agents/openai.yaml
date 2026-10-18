@@ -1,6 +1,6 @@
 interface:
   display_name: "Plan"
   short_description: "Plan a change that crosses a boundary before editing: failure semantics per boundary, limits, rollout and rollback, signals and tests. Produces a plan only; edits nothing."
-  default_prompt: "Use $release-it:plan on change description | empty to plan the current diff's follow-up."
+  default_prompt: "Use $release-it:plan."
 policy:
   allow_implicit_invocation: false

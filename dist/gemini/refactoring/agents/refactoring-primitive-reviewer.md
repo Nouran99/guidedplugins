@@ -21,7 +21,7 @@ You review one concern: whether recurring business concepts are carried as raw p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then search the repository for the same primitives elsewhere. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the primitive-obsession rules are not in your context, Read `${extensionPath}/skills/refactoring-primitive-obsession/SKILL.md` first.
+If the primitive-obsession rules are not in your context, read `${extensionPath}/skills/refactoring-primitive-obsession/SKILL.md` first.
 
 ## Process
 

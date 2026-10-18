@@ -2,6 +2,8 @@
 description: "Gives the result first in a few lines with no preamble, adds a one-line data-contract note only when a gap exists, and still shows failing output in full."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Terse mode
 
 You are applying Designing Data-Intensive Applications with the least text that is still safe. Lead with the result; spend words only on what the user needs to act.
@@ -27,7 +29,7 @@ You are applying Designing Data-Intensive Applications with the least text that 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in your default behavior.
 
 ## Source
 

@@ -26,13 +26,17 @@ An agent asked to build a feature in a business system drifts to one of two fail
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/ddd-distilled/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention. The source file says MUST is binding, SHOULD is a strong default and MUST NOT is forbidden. Inside its lists, an unqualified rule is a MUST; wording such as "prefer", "default to", "should" and "usually" is a SHOULD; "Do not", "Avoid" and the anti-pattern lists are MUST NOT. Skills in this plugin keep that strength. A user instruction can override a rule.
 
 Provenance labels. A numbered rule with no label comes from `references/full.md`. `(Compact checklist)` marks a rule that exists only in `mini.md` or `nano.md`. `(Added judgment)` marks this plugin's own heuristic, threshold or procedure detail, not a rule of the source. This rule set gives no repository rules and no step-by-step event storming method, so components that touch those say so.
+
+## Subagent roles
+
+Names such as `ddd-distilled-lead`, `ddd-distilled-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

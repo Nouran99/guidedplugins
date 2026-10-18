@@ -13,7 +13,7 @@ You review one concern: whether a change made for performance is justified and p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, and read any commit message, pull request text or notes that accompany the change (`git log -n 5`). If nothing is changed and no paths were given, ask which change to review.
-If the tuning rules are not in your context, Load the `code-complete-performance-tuning` skill first.
+If the tuning rules are not in your context, load the `code-complete-performance-tuning` skill first.
 
 ## Process
 

@@ -9,7 +9,7 @@ You review one concern: whether the change removed a real source of friction and
 ## Inputs
 
 Use the paths or ref you were given, plus the stated request. Otherwise run `git status` and `git diff`, and read `git log` for messages. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If you cannot find what change the work was for, ask once, then stop.
-If the stopping-rules or preparatory-steps rules are not in your context, Fetch the `refactoring-stopping-rules` guide with the get_guide tool and the `refactoring-preparatory-steps` skill first.
+If the stopping-rules or preparatory-steps rules are not in your context, fetch the `refactoring-stopping-rules` guide with the get_guide tool and the `refactoring-preparatory-steps` guide (get_guide) first.
 
 ## Process
 

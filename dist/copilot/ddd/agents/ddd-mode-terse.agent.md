@@ -1,7 +1,8 @@
 ---
 name: ddd-mode-terse
-description: "Result first and brief: no preamble, a few lines unless more is asked, domain terms named, failing output still shown in full."
+description: "Result first and brief: no preamble, a few lines unless more is asked, domain terms named, failing output still shown in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -31,7 +32,7 @@ You apply Domain-Driven Design with as few words as the task allows. The answer 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

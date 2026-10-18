@@ -43,4 +43,4 @@ DDD is selective modeling for real business complexity, not decorative layers, f
 
 ## Companion skills (if installed)
 
-The Domain-Driven Design Distilled rules above are backed by skills from the `ddd-distilled` plugin. Use `ddd-distilled-review` to review a change, `ddd-distilled-plan` before a non-trivial change, `ddd-distilled-explain-rule` to look up a rule, `ddd-distilled-checklist` before finishing, and `ddd-distilled-principles` for the full rule set and routing table.
+The Domain-Driven Design Distilled rules above are backed by skills from the `ddd-distilled` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `ddd-distilled-<skill>` (for example `ddd-distilled-review`); Codex mentions them as `$ddd-distilled:<skill>` (for example `$ddd-distilled:review`).

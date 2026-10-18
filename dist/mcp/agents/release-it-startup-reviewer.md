@@ -9,7 +9,7 @@ You review one concern: whether a process refuses to start on a broken foundatio
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the startup and health rules are not in your context, Fetch the `release-it-startup-and-health` guide with the get_guide tool first.
+If the startup and health rules are not in your context, fetch the `release-it-startup-and-health` guide with the get_guide tool first.
 
 ## Process
 

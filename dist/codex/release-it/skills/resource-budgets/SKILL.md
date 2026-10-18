@@ -1,6 +1,6 @@
 ---
 name: "resource-budgets"
-description: "Use when code takes threads, database connections, sockets, file descriptors, memory or CPU worker slots, holds a lock or connection across a slow call, or loads or returns large collections. Covers budgets, release, streaming, pagination. Splitting capacity by workload is `bulkheads`."
+description: "Use when code takes threads, database connections, sockets, file descriptors, memory or CPU worker slots, holds a lock or connection across a slow call, or loads or returns large collections. Covers budgets, release, streaming, pagination. Splitting capacity by workload is `$release-it:bulkheads`."
 ---
 
 # Resource budgets

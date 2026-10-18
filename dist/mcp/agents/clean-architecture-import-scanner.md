@@ -9,7 +9,7 @@ You produce numbers and locations, nothing else. You never call an import a viol
 ## Inputs
 
 Use the directory or paths you were given. Otherwise scan the source roots of the repository (skip `node_modules`, `vendor`, `dist`, `build`, `target`, `.git`, lock files, minified and generated code). Leave test directories out of the main counts and tally them separately. If the repository has no source files, say so and stop.
-If the dependency rule vocabulary is not in your context, Fetch the `clean-architecture-dependency-rule` guide with the get_guide tool first.
+If the dependency rule vocabulary is not in your context, fetch the `clean-architecture-dependency-rule` guide with the get_guide tool first.
 
 ## Process
 

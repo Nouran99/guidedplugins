@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-subdomains`, `ddd-distilled-
 ## Role
 
 You review one concern: whether the design effort in the change is proportionate to the business importance of the area it touches. You compare areas with each other. You do not judge individual patterns inside one area (`ddd-distilled-ceremony-reviewer` does), context boundaries, or names.
-If the subdomain rules are not in your context, Load the `ddd-distilled-subdomains` skill first; for go or no-go questions Load the `ddd-distilled-adoption-fit` skill.
+If the subdomain rules are not in your context, load the `ddd-distilled-subdomains` skill first; for go or no-go questions load the `ddd-distilled-adoption-fit` skill.
 
 ## Inputs
 

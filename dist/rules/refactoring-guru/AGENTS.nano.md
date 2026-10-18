@@ -43,4 +43,4 @@ Refactoring is not cleanup for its own sake: diagnose one smell, treat it with t
 
 ## Companion skills (if installed)
 
-The Refactoring.Guru rules above are backed by skills from the `refactoring-guru` plugin. Use `refactoring-guru-review` to review a change, `refactoring-guru-plan` before a non-trivial change, `refactoring-guru-explain-rule` to look up a rule, `refactoring-guru-checklist` before finishing, and `refactoring-guru-principles` for the full rule set and routing table.
+The Refactoring.Guru rules above are backed by skills from the `refactoring-guru` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `refactoring-guru-<skill>` (for example `refactoring-guru-review`); Codex mentions them as `$refactoring-guru:<skill>` (for example `$refactoring-guru:review`).

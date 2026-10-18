@@ -33,7 +33,7 @@ Plan: <goal in one sentence>
 
 Behavior affected:   <list>   Must not change: <list>
 Simplest change:     <what> (alternative considered: <what>, rejected because <why>)
-Rules in play:       /clean-code:<skill>, /clean-code:<skill>
+Rules in play:       $clean-code:<skill>, $clean-code:<skill>
 Steps:
  1. <rename / preparatory step>  (tests: <which>)
  2. <failing test>

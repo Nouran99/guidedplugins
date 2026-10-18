@@ -13,7 +13,7 @@ You review one concern: whether the assumptions your own routines make about eac
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed routines and types. If nothing is changed and no paths were given, ask which files to review.
-If the contracts rules are not in your context, Load the `code-complete-assertions-and-contracts` skill first.
+If the contracts rules are not in your context, load the `code-complete-assertions-and-contracts` skill first.
 
 ## Process
 

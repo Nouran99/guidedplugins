@@ -21,7 +21,7 @@ You review test placement, not test style. For each piece of policy in the chang
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed production and test files, and find the tests that import or exercise them. If nothing is changed and no paths were given, ask which files to review.
-If the testing rules are not in your context, Read `${extensionPath}/skills/clean-architecture-testing-seams/SKILL.md` first.
+If the testing rules are not in your context, read `${extensionPath}/skills/clean-architecture-testing-seams/SKILL.md` first.
 
 ## Process
 

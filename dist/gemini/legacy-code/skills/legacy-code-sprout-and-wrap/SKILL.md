@@ -1,6 +1,6 @@
 ---
 name: "legacy-code-sprout-and-wrap"
-description: "Use when new behavior must go into fragile code you cannot yet test: sprout method, sprout class, wrap method, wrap class, insert-beside-and-redirect. Reshaping existing code is `legacy-code-large-methods`; removing dependencies from it is the barrier skills (start at `seams`)."
+description: "Use when new behavior must go into fragile code you cannot yet test: sprout method, sprout class, wrap method, wrap class, insert-beside-and-redirect. Reshaping existing code is `legacy-code-large-methods`; removing dependencies from it is the barrier skills (start at `legacy-code-seams`)."
 license: "MIT"
 metadata:
   plugin: "legacy-code"

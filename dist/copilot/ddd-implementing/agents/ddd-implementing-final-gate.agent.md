@@ -14,7 +14,7 @@ You are the last check before work is called done. You answer every checklist qu
 ## Inputs
 
 Take the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`; the combined change is the subject. If nothing is changed, answer `GATE: PASS (empty diff)` and stop.
-If the principles rules are not in your context, Load the `ddd-implementing-principles` skill first.
+If the principles rules are not in your context, load the `ddd-implementing-principles` skill first.
 
 ## Process
 

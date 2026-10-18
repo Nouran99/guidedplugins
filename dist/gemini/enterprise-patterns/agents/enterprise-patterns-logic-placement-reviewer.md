@@ -21,7 +21,7 @@ You review one concern: for every business decision in the change, is it in the 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the business logic rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-business-logic-patterns/SKILL.md` first.
+If the business logic rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-business-logic-patterns/SKILL.md` first.
 
 ## Process
 

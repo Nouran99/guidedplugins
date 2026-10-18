@@ -1,5 +1,5 @@
 ---
-description: "Compact Release It! rules. You are building services, APIs, queues, or critical production paths."
+description: "Release It! rules, compact form. Apply them when you are building services, APIs, queues, or critical production paths."
 alwaysApply: false
 ---
 # OBEY Release It! by Michael T. Nygard

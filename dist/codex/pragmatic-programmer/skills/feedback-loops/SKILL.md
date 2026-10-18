@@ -1,6 +1,6 @@
 ---
 name: "feedback-loops"
-description: "Use when tests or checks are slow, flaky, environment-dependent or run too late, when failures are hard to see, or before declaring work done. Covers the speed and visibility of the signal. Which tests a change needs is `$pragmatic-programmer:test-portfolio`; scripting repeated manual steps is `automation`."
+description: "Use when tests or checks are slow, flaky, environment-dependent or run too late, when failures are hard to see, or before declaring work done. Covers the speed and visibility of the signal. Which tests a change needs is `$pragmatic-programmer:test-portfolio`; scripting repeated manual steps is `$pragmatic-programmer:automation`."
 ---
 
 # Feedback loops

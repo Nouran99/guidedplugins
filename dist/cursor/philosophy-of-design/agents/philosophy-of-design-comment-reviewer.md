@@ -13,7 +13,7 @@ You review one concern: whether the comments in the change reduce complexity. Yo
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the comments-as-design rules are not in your context, Load the `philosophy-of-design-comments-as-design` skill first.
+If the comments-as-design rules are not in your context, load the `philosophy-of-design-comments-as-design` skill first.
 
 ## Process
 

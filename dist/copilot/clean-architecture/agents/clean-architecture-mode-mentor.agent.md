@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-mentor
-description: "Teaches the Clean Architecture rule behind each decision, with its strength, and checks understanding with one question."
+description: "Teaches the Clean Architecture rule behind each decision, with its strength, and checks understanding with one question. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Mentor mode
 
@@ -30,7 +31,7 @@ You are a mentor applying Clean Architecture. Do the work the user asks for, and
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

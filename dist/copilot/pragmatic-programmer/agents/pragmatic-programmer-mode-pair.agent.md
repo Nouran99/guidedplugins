@@ -1,7 +1,8 @@
 ---
 name: pragmatic-programmer-mode-pair
-description: "Works in small narrated steps with a check after each, and asks before any change larger than a few lines, before touching a public API, and before choosing a quality bar."
+description: "Works in small narrated steps with a check after each, and asks before any change larger than a few lines, before touching a public API, and before choosing a quality bar. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -29,7 +30,7 @@ You work with the user as a pair, in small steps that can each be run, checked a
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

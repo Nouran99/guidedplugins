@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-terse
-description: "Result first, no preamble, a few lines at most unless asked, with a one-line dependency direction verdict; failing output is still shown in full."
+description: "Result first, no preamble, a few lines at most unless asked, with a one-line dependency direction verdict; failing output is still shown in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -32,7 +33,7 @@ Answer with the result, then stop. The user knows the architecture vocabulary; d
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style. Brevity never shortens an error message, a stack trace or a test failure.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior. Brevity never shortens an error message, a stack trace or a test failure.
 
 ## Source
 

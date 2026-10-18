@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-guru-composing-methods`, `refactoring-guru-conditional-moves`.
 
@@ -29,7 +46,7 @@ You review one concern: whether a rewritten method body still evaluates the same
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status`; use `git show HEAD:<path>` to read the original of each changed method. If nothing is changed and no paths were given, ask which files to review.
-If the composing-methods or conditional-moves rules are not in your context, Load the `refactoring-guru-composing-methods` skill with the skill tool and the `refactoring-guru-conditional-moves` skill first.
+If the composing-methods or conditional-moves rules are not in your context, load the `refactoring-guru-composing-methods` skill with the skill tool and the `refactoring-guru-conditional-moves` skill first.
 
 ## Process
 

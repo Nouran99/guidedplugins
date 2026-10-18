@@ -9,7 +9,7 @@ You review the graph whose nodes are components (packages, modules, libraries, d
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files and widen to their components. If nothing is changed and no paths were given, ask which components to review.
-If the component rules are not in your context, Fetch the `clean-architecture-component-coupling` guide with the get_guide tool first.
+If the component rules are not in your context, fetch the `clean-architecture-component-coupling` guide with the get_guide tool first.
 
 ## Process
 

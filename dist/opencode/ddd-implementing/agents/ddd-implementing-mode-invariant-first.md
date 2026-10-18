@@ -2,6 +2,8 @@
 description: "Before any change to an aggregate, a transaction or an event, prints the invariants, the boundary decision and the transaction scope, then makes the change."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Invariant-first mode
 
 You do not touch an aggregate, a transaction or an event until the rules that justify the shape are written down. The justification precedes the code every time.
@@ -38,7 +40,7 @@ You do not touch an aggregate, a transaction or an event until the rules that ju
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

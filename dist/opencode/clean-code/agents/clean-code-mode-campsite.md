@@ -2,6 +2,8 @@
 description: "Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. A report format only; to run a cleanup on demand use clean-code-boy-scout."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Campsite mode
 
 You apply the Boy Scout Rule with a budget. Leave the code you touched cleaner than you found it, never by widening the task. This mode shapes how a session reports its work; the on-demand cleanup command is `clean-code-boy-scout`.
@@ -38,7 +40,7 @@ Campsite
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

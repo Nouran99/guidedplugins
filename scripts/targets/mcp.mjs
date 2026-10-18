@@ -3,14 +3,21 @@
 //   dist/mcp/catalog.json          index of skills, modes, agents and rule files with their source paths under dist/
 //   dist/mcp/agents/<id>.md        subagent prompts rewritten for MCP ("fetch the guide with get_guide")
 import {
-  DIST, REGISTRY, agentBodyFor, bt, cleanDir, flat, modeName, path, rewrite, writeFile,
+  DIST, REGISTRY, VERSION, agentBodyFor, bt, cleanDir, flat, modeName, path, referencesDesign, rewriteDescription, writeFile,
 } from './core.mjs';
 import { flatDialect, skillDescription } from './agent-skills.mjs';
 
 export function buildMcp(model) {
   const out = path.join(DIST, 'mcp');
   cleanDir(out);
-  const d = flatDialect({ agentRead: (p, n) => `Fetch the ${bt(flat(p.slug, n))} guide with the get_guide tool` });
+  // An MCP client has no file paths: a guide is fetched with get_guide and a rule file with get_rules.
+  const d = flatDialect({
+    agentRead: (p, n) => `Fetch the ${bt(flat(p.slug, n))} guide with the get_guide tool`,
+    agentSkill: (p, n) => ({ phrase: `the ${bt(flat(p.slug, n))} guide (get_guide)` }),
+    agentSkillsDir: (p) => ({ phrase: `the guides of the ${bt(p.slug)} plugin (list_guides)` }),
+    agentRefFile: (p, r) => ({ phrase: `the ${r} rules of the ${bt(p.slug)} plugin (get_rules with plugin "${p.slug}" and size "${r}")` }),
+    agentDesignFile: (p) => ({ phrase: `the component map of the ${bt(p.slug)} plugin (get_rules with plugin "${p.slug}" and size "design")` }),
+  });
   const entries = [];
   const books = [];
   const roNote = 'Operating constraint: this is a read-only role. Never create, edit, move or delete files; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report.';
@@ -21,7 +28,7 @@ export function buildMcp(model) {
       const id = flat(plugin.slug, s.name);
       entries.push({
         id, kind: 'skill', plugin: plugin.slug, name: s.name, manual: s.manual,
-        description: skillDescription(rewrite(s.fm.description, plugin, d, { from: 'skill', skill: s.name }), false),
+        description: skillDescription(rewriteDescription(s.fm.description, plugin, d, { from: 'skill', skill: s.name }), false),
         argumentHint: s.fm['argument-hint'] ?? null, file: skillDir(id),
       });
     }
@@ -29,7 +36,7 @@ export function buildMcp(model) {
       const id = flat(plugin.slug, modeName(m.name));
       entries.push({
         id, kind: 'mode', plugin: plugin.slug, name: modeName(m.name), manual: true,
-        description: rewrite(m.fm.description, plugin, d, { from: 'skill', skill: modeName(m.name) }), argumentHint: null, file: skillDir(id),
+        description: rewriteDescription(m.fm.description, plugin, d, { from: 'skill', skill: modeName(m.name) }), argumentHint: null, file: skillDir(id),
       });
     }
     for (const a of plugin.agents) {
@@ -38,18 +45,21 @@ export function buildMcp(model) {
       writeFile(path.join(out, 'agents', `${id}.md`), agentBodyFor(plugin, a, d, { preloadLine, readOnlyNote: roNote }));
       entries.push({
         id, kind: 'agent', plugin: plugin.slug, name: a.name, manual: false, readOnly: a.readOnly,
-        description: rewrite(a.fm.description, plugin, d, { from: 'agent' }), argumentHint: null, file: `mcp/agents/${id}.md`,
+        description: rewriteDescription(a.fm.description, plugin, d, { from: 'agent' }), argumentHint: null, file: `mcp/agents/${id}.md`,
       });
     }
     const hub = flat(plugin.slug, 'principles');
     books.push({
       slug: plugin.slug, title: plugin.book.title, author: plugin.book.bookAuthor, usefulWhen: plugin.book.usefulWhen,
       counts: { skills: plugin.skills.length, modes: plugin.styles.length, agents: plugin.agents.length },
-      rules: { nano: `rules/${plugin.slug}/AGENTS.nano.md`, mini: `rules/${plugin.slug}/AGENTS.mini.md`, full: `agent-skills/${plugin.slug}/${hub}/references/full.md`, design: `agent-skills/${plugin.slug}/${hub}/references/design.md` },
+      rules: {
+        nano: `rules/${plugin.slug}/AGENTS.nano.md`, mini: `rules/${plugin.slug}/AGENTS.mini.md`, full: `agent-skills/${plugin.slug}/${hub}/references/full.md`,
+        ...(referencesDesign(plugin) ? { design: `agent-skills/${plugin.slug}/${hub}/references/design.md` } : {}),
+      },
     });
   }
   writeFile(path.join(out, 'catalog.json'), JSON.stringify({
-    name: REGISTRY.marketplace.name, version: '1.1.0', generator: 'scripts/build-targets.mjs', books, entries,
+    name: REGISTRY.marketplace.name, version: VERSION, generator: 'scripts/build-targets.mjs', books, entries,
   }));
   writeFile(path.join(out, 'README.md'), `# MCP build
 

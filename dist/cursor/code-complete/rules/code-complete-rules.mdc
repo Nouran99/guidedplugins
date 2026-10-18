@@ -1,5 +1,5 @@
 ---
-description: "Compact Code Complete rules. You need disciplined implementation decisions on routines, control flow, and testing."
+description: "Code Complete rules, compact form. Apply them when you need disciplined implementation decisions on routines, control flow, and testing."
 alwaysApply: false
 ---
 # OBEY Code Complete by Steve McConnell

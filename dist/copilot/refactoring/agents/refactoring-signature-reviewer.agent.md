@@ -14,7 +14,7 @@ You review one concern: how a call looks and what it asks of callers. You judge 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed signatures, then search the repository for their callers. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the call-signatures rules are not in your context, Load the `refactoring-call-signatures` skill first.
+If the call-signatures rules are not in your context, load the `refactoring-call-signatures` skill first.
 
 ## Process
 

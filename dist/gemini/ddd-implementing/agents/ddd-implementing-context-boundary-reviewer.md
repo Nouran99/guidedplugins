@@ -21,7 +21,7 @@ You review one concern: whether the changed code has a clear owning bounded cont
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/ddd-implementing-bounded-context/SKILL.md` and the `ddd-implementing-module-structure` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/ddd-implementing-bounded-context/SKILL.md` and `${extensionPath}/skills/ddd-implementing-module-structure/SKILL.md` first.
 
 ## Process
 

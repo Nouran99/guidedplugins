@@ -1,7 +1,8 @@
 ---
 name: pragmatic-programmer-mode-tracer-first
-description: "Before building a new capability, states the thinnest real end-to-end path and its proving command, builds and runs that first, then widens in steps ordered by risk."
+description: "Before building a new capability, states the thinnest real end-to-end path and its proving command, builds and runs that first, then widens in steps ordered by risk. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Tracer-first mode
 
@@ -35,7 +36,7 @@ New capabilities start as a thin working path, not as layers. In this mode the f
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-expl
 ## Role
 
 You review one concern: business ideas that exist in the code only as primitives, flags, status codes, enums, booleans or helper methods. You propose the named concept that should carry each one. You look for missing structure. You do not judge existing entities (`ddd-distilled-entity-reviewer` does), existing words (`ddd-distilled-language-reviewer` does), or whether a pattern is worth its cost overall (`ddd-distilled-ceremony-reviewer` does).
-If the rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-explicit-concepts/SKILL.md` and the `ddd-distilled-value-objects` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/ddd-distilled-explicit-concepts/SKILL.md` and `${extensionPath}/skills/ddd-distilled-value-objects/SKILL.md` first.
 
 ## Inputs
 

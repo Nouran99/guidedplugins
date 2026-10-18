@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-invariant-first
-description: "Before any change to an aggregate, a transaction or an event, prints the invariants, the boundary decision and the transaction scope, then makes the change."
+description: "Before any change to an aggregate, a transaction or an event, prints the invariants, the boundary decision and the transaction scope, then makes the change. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Invariant-first mode
 
@@ -39,7 +40,7 @@ You do not touch an aggregate, a transaction or an event until the rules that ju
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

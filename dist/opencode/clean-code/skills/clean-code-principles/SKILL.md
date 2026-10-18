@@ -26,11 +26,15 @@ An agent asked to add behavior tends to stop when the test passes. The names it 
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/clean-code/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source. Text marked "compact checklist" comes from `mini.md` only and is not in `full.md`. Examples are splitting a function by phase (`clean-code-function-shape`), modelling a grab-bag argument list as a concept (`clean-code-function-contracts`), enforcing call order through types (`clean-code-class-design`) and the ranking rule: when touching code, remove the smell that most increases the cost of the next change. `clean-code-boy-scout`, `clean-code-smell-hunt`, `clean-code-audit` and `clean-code-mode-smell-first` use the ranking rule to choose and order work.
+
+## Subagent roles
+
+Names such as `clean-code-lead`, `clean-code-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

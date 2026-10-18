@@ -14,7 +14,7 @@ You review one concern: whether building the system is separate from using it, a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the construction rules are not in your context, Load the `clean-code-system-construction` skill first.
+If the construction rules are not in your context, load the `clean-code-system-construction` skill first.
 
 ## Process
 

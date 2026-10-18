@@ -1,7 +1,8 @@
 ---
 name: code-complete-mode-pair
-description: "Works in small narrated steps with a test run between them, and asks before any change larger than a few lines or one that touches public API."
+description: "Works in small narrated steps with a test run between them, and asks before any change larger than a few lines or one that touches public API. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -39,7 +40,7 @@ Stop and ask before any of these:
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

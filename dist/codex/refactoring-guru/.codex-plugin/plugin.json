@@ -1,7 +1,7 @@
 {
   "name": "refactoring-guru",
   "version": "1.0.0",
-  "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+  "description": "Refactoring.Guru's smell and technique catalog: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills and modes built on a paraphrased rule set for coding agents.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -20,7 +20,7 @@
   "interface": {
     "displayName": "Refactoring.Guru",
     "shortDescription": "You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign.",
-    "longDescription": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
+    "longDescription": "Refactoring.Guru's smell and technique catalog: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills and modes built on a paraphrased rule set for coding agents.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

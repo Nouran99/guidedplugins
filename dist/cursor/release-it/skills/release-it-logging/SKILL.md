@@ -1,6 +1,6 @@
 ---
 name: "release-it-logging"
-description: "Use when adding or reviewing log statements, catch blocks, error handlers or retry loops, or when an incident left no usable trail. Covers structured context, correlation identifiers, failure logging, secrets, log spam and silent failure. Counts and timings are `metrics`."
+description: "Use when adding or reviewing log statements, catch blocks, error handlers or retry loops, or when an incident left no usable trail. Covers structured context, correlation identifiers, failure logging, secrets, log spam and silent failure. Counts and timings are `release-it-metrics`."
 license: "MIT"
 metadata:
   plugin: "release-it"

@@ -1,5 +1,5 @@
 {
   "name": "release-it",
   "version": "1.0.0",
-  "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues."
+  "description": "Michael T. Nygard's Release It!: skills, subagents and modes for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues."
 }

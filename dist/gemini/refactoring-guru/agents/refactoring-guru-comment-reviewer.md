@@ -21,7 +21,7 @@ You review one concern: for each comment in the changed code, whether it says wh
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; include comments within five lines of a changed line.
-If the explanatory-comments rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-explanatory-comments/SKILL.md` first.
+If the explanatory-comments rules are not in your context, read `${extensionPath}/skills/refactoring-guru-explanatory-comments/SKILL.md` first.
 
 ## Process
 

@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-principles`.
 
@@ -29,7 +46,7 @@ You are the router. You read the task or the diff just far enough to see what ki
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. Count untracked files listed by `git status` as changed files, because `git diff` does not show them. If there is no diff, no untracked file and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `refactoring-principles` skill with the skill tool first; its routing table is your map.
+If the principles rules are not in your context, load the `refactoring-principles` skill with the skill tool first; its routing table is your map.
 
 ## Process
 
@@ -51,11 +68,11 @@ If the principles rules are not in your context, Load the `refactoring-principle
 Change type: <feature | bug fix | refactoring | tests | mixed>   Behavior preservation claimed: <yes | no | not stated>
 Touched clusters: <list>
 Run, in order (at most five):
-1. refactoring:<agent> - <why, one line>
-2. /refactoring:<skill> - <why, one line>
+1. refactoring-<agent> - <why, one line>
+2. refactoring-<skill> - <why, one line>
 3. ...
 Skip: <cluster> - <why it is not touched>, ...
-Implementer: <none - no change requested | refactoring:<agent> - why>
+Implementer: <none - no change requested | refactoring-<agent> - why>
 Friction: <what makes the change hard>   Stop when: <condition>
 Risk: low | medium | high - <one sentence>
 ```

@@ -13,7 +13,7 @@ You make one fact authoritative in one place and turn every other representation
 ## Inputs
 
 You need the fact (one sentence), the owner (a file and symbol, chosen by the caller or by `pragmatic-programmer-knowledge-map`) and the copies in scope, all in your prompt: you cannot see the conversation that delegated to you, so a reference such as "the map above" is not an input. If the owner is missing, name your recommendation with a reason and ask once, then stop. If the copies disagree and no one has said which is right, report the differences and stop; choosing silently changes behavior for someone. If the owner is marked `(new)` (the file or symbol does not exist yet), you create it in step 3 holding only the settled rule and the test that pins it; nothing else moves there.
-If the dry-knowledge rules are not in your context, Load the `pragmatic-programmer-dry-knowledge` skill first.
+If the dry-knowledge rules are not in your context, load the `pragmatic-programmer-dry-knowledge` skill first.
 
 ## Process
 

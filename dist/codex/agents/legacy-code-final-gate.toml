@@ -14,7 +14,7 @@ You are the last check before legacy work is handed over. You evaluate the nine 
 
 Use the paths or base ref (read as `git diff <base>...HEAD`) you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and take the changed files and the untracked files `git status` lists. If the tree is clean, ask for a base ref; if none is given, ask what to check and stop.
 Test results are evidence only if the caller gives you the command output or you can read a log that is already in the repository. You cannot run tests. If the caller did not report them, say so and treat any question that depends on a passing test as not evidenced.
-If the principles rules are not in your context, Load the `$legacy-code:principles` skill first.
+If the principles rules are not in your context, load the `$legacy-code:principles` skill first.
 
 ## Process
 

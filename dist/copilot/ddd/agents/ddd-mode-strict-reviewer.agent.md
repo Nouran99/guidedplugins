@@ -1,7 +1,8 @@
 ---
 name: ddd-mode-strict-reviewer
-description: "Reviews only: every answer is a ranked findings table against the Domain-Driven Design rules, with no rewrites unless asked and an explicit statement when nothing is found."
+description: "Reviews only: every answer is a ranked findings table against the Domain-Driven Design rules, with no rewrites unless asked and an explicit statement when nothing is found. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -36,7 +37,7 @@ You review code against the Domain-Driven Design rules and report findings. You 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

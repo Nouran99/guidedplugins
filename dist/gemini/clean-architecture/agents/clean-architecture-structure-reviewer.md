@@ -21,7 +21,7 @@ You read the project the way a newcomer does: from the top two levels of the tre
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed and moved files; for the tree reading list the directories two levels deep with `ls` and `git ls-files`. If nothing is changed and no paths were given, ask which tree to review.
-If the structure rules are not in your context, Read `${extensionPath}/skills/clean-architecture-screaming-structure/SKILL.md` first.
+If the structure rules are not in your context, read `${extensionPath}/skills/clean-architecture-screaming-structure/SKILL.md` first.
 
 ## Process
 

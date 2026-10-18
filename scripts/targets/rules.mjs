@@ -4,8 +4,8 @@
 import { DIST, cleanDir, flat, path, writeFile } from './core.mjs';
 
 export function companionSection(plugin) {
-  const f = (n) => `\`${flat(plugin.slug, n)}\``;
-  return `\n## Companion skills (if installed)\n\nThe ${plugin.book.title} rules above are backed by skills from the \`${plugin.slug}\` plugin. Use ${f('review')} to review a change, ${f('plan')} before a non-trivial change, ${f('explain-rule')} to look up a rule, ${f('checklist')} before finishing, and ${f('principles')} for the full rule set and routing table.\n`;
+  const f = (n) => `\`${n}\``;
+  return `\n## Companion skills (if installed)\n\nThe ${plugin.book.title} rules above are backed by skills from the \`${plugin.slug}\` plugin. Use ${f('review')} to review a change, ${f('plan')} before a non-trivial change, ${f('explain-rule')} to look up a rule, ${f('checklist')} before finishing, and ${f('principles')} for the full rule set and routing table. Most agents name them \`${plugin.slug}-<skill>\` (for example \`${flat(plugin.slug, 'review')}\`); Codex mentions them as \`$${plugin.slug}:<skill>\` (for example \`$${plugin.slug}:review\`).\n`;
 }
 
 export function buildRules(model) {

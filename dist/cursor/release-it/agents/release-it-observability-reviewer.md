@@ -13,7 +13,7 @@ You review one concern: when the code fails in production, will an operator be a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the logging and metrics rules are not in your context, Load the `release-it-logging` skill and the `release-it-metrics` skill first.
+If the logging and metrics rules are not in your context, load the `release-it-logging` skill and the `release-it-metrics` skill first.
 
 ## Process
 

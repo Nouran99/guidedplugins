@@ -22,13 +22,17 @@ An agent asked to change old code reads it, forms a theory, edits, and trusts th
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/legacy-code/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: the source says `MUST` is binding, `SHOULD` is a strong default and `MUST NOT` is forbidden. An unqualified imperative is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid`, `Never` and the forbidden-pattern lists are MUST NOT (one exception: the items under the "Preferred avoidance" heading of `Code Generation Rules` are a SHOULD, because the heading says preferred), and qualifiers such as "where possible", "when useful" or "only when" stay attached: a qualifier narrows when the rule applies and never lowers its strength. The technique index writes entries as "USE X when Y"; this plugin reads such an entry as a SHOULD that applies when Y holds, and reads "only when" entries as restrictions. Rules in this plugin's skills carry a tag: `[MUST]`, `[SHOULD]`, `[MUST NOT]` follow the source; `[Added judgment]` is this plugin's own heuristic, mechanic or language caveat (the source names most techniques but does not describe their mechanics and gives no thresholds); `[Compact checklist]` is phrasing found only in `mini.md` or `nano.md`. The Procedure, Example and Anti-patterns sections of a skill are working method and illustration unless a rule number is cited.
 
 Terms used across the plugin: the **change point** is where the requested edit goes; a **test point** is where an effect can be observed with useful precision; a **seam** is a place where behavior can be changed without editing the surrounding code directly; a seam serves **sensing** (observe what the code computes or does), **separation** (get the code into a test at all) or both; a **barrier** is the first real obstacle between you and a test; **protection** means a trusted test would fail if the behavior broke.
+
+## Subagent roles
+
+Names such as `legacy-code-lead`, `legacy-code-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs legacy-code` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

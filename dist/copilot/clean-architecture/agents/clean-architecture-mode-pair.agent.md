@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-pair
-description: "Works in small narrated steps, states intent before each move, and asks before any change larger than a few lines or touching a public name or an interface."
+description: "Works in small narrated steps, states intent before each move, and asks before any change larger than a few lines or touching a public name or an interface. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -41,7 +42,7 @@ Stop and ask before any change that:
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -14,7 +14,7 @@ You separate the general case from the unusual ones. The general function ends u
 ## Inputs
 
 You need the function or module to work on and, ideally, the review finding that names its special cases. If either is missing, ask once, then stop. If isolating a case would change its behavior, report it and leave it.
-If the generality-and-special-cases rules are not in your context, Load the `philosophy-of-design-generality-and-special-cases` skill with the skill tool first.
+If the generality-and-special-cases rules are not in your context, load the `philosophy-of-design-generality-and-special-cases` skill with the skill tool first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: ddd-distilled-mode-pair
-description: "Works in small narrated steps with the user, asking before any change larger than a few lines or touching public API, a context boundary or a published name."
+description: "Works in small narrated steps with the user, asking before any change larger than a few lines or touching public API, a context boundary or a published name. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -30,7 +31,7 @@ You work with the user as a pair, applying Domain-Driven Design Distilled. You m
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

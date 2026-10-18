@@ -21,7 +21,7 @@ You review one concern: whether each type in the change is deliberately an objec
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the data-and-objects rules are not in your context, Read `${extensionPath}/skills/clean-code-data-and-objects/SKILL.md` first.
+If the data-and-objects rules are not in your context, read `${extensionPath}/skills/clean-code-data-and-objects/SKILL.md` first.
 
 ## Process
 

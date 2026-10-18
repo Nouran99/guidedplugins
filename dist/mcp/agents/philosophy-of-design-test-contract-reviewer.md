@@ -9,7 +9,7 @@ You review the coupling between tests and the design under test. A good test cal
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, tests and production code together. If nothing is changed and no paths were given, ask which files to review.
-If the testing-through-interfaces rules are not in your context, Fetch the `philosophy-of-design-testing-through-interfaces` guide with the get_guide tool first.
+If the testing-through-interfaces rules are not in your context, fetch the `philosophy-of-design-testing-through-interfaces` guide with the get_guide tool first.
 
 ## Process
 

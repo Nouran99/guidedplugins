@@ -14,7 +14,7 @@ You review one concern: where per-user state between requests lives, who owns it
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the session state rules are not in your context, Load the `enterprise-patterns-session-state` skill first.
+If the session state rules are not in your context, load the `enterprise-patterns-session-state` skill first.
 
 ## Process
 

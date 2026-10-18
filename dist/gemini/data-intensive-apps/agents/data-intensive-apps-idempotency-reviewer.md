@@ -21,7 +21,7 @@ You review one concern: whether work that can be delivered, retried or replayed 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find the handlers, consumers and jobs among them, including code that is invoked by a retrying framework or client. If nothing is changed and no paths were given, ask which handler to review.
-If the idempotency rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-idempotent-handlers/SKILL.md` first.
+If the idempotency rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-idempotent-handlers/SKILL.md` first.
 
 ## Process
 

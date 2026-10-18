@@ -13,7 +13,7 @@ You review one concern: whether the names in the change say what things are and 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the naming rules are not in your context, Load the `clean-code-naming` skill first.
+If the naming rules are not in your context, load the `clean-code-naming` skill first.
 
 ## Process
 

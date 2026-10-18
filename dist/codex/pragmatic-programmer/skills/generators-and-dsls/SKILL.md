@@ -1,6 +1,6 @@
 ---
 name: "generators-and-dsls"
-description: "Use when code is generated, scaffolded or produced by a tool or macro, when a small domain language or rules file is proposed, or when metaprogramming hides behavior. Existing copies of a rule are `$pragmatic-programmer:dry-knowledge`; scripts for repeated work are `automation`; throwaway code is `prototypes`."
+description: "Use when code is generated, scaffolded or produced by a tool or macro, when a small domain language or rules file is proposed, or when metaprogramming hides behavior. Existing copies of a rule are `$pragmatic-programmer:dry-knowledge`; scripts for repeated work are `$pragmatic-programmer:automation`; throwaway code is `$pragmatic-programmer:prototypes`."
 ---
 
 # Generators, domain languages and metaprogramming

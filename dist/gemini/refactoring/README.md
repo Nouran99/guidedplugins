@@ -8,5 +8,7 @@ Install from a checkout of the repository (Gemini installs one extension per rep
 gemini extensions install ./dist/gemini/refactoring
 ```
 
-- 36 skills (including 6 mode skills), each also a slash command `/refactoring:refactoring-<name>`.
+Gemini asks you to confirm before it installs (trust and consent prompts).
+
+- 36 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/refactoring:refactoring-<name>`; that was not exercised in a live session here.
 - 22 subagents, started with `@refactoring-<name> <task>`.

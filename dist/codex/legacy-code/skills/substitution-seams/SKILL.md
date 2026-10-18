@@ -1,6 +1,6 @@
 ---
 name: "substitution-seams"
-description: "Use when a concrete or oversized dependency blocks compiling or substituting it: narrow interfaces, adapters for framework objects, extracted implementers, parameterized methods, primitive parameters. Constructors are `$legacy-code:construction-barriers`; choosing any seam is `seams`."
+description: "Use when a concrete or oversized dependency blocks compiling or substituting it: narrow interfaces, adapters for framework objects, extracted implementers, parameterized methods, primitive parameters. Constructors are `$legacy-code:construction-barriers`; choosing any seam is `$legacy-code:seams`."
 ---
 
 # Substitution seams

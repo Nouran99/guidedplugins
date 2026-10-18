@@ -14,7 +14,7 @@ You review one concern: coupling between objects, in both directions, from logic
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then read the classes those files talk to.
-If the rules are not in your context, Load the `refactoring-guru-behavior-ownership` skill and the `refactoring-guru-delegation-and-gaps` skill first.
+If the rules are not in your context, load the `refactoring-guru-behavior-ownership` skill and the `refactoring-guru-delegation-and-gaps` skill first.
 
 ## Process
 

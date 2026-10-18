@@ -3,13 +3,40 @@
 // docs/AGENTS_SUPPORT.md). Fast and dependency-free; the real-tool checks live in the CI workflow.
 //   node scripts/validate-targets.mjs
 import crypto from 'node:crypto';
+import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { REGISTRY, ROOT, listDir, parseFrontmatter, readIf } from './lib.mjs';
-import { loadModel, leftovers } from './targets/core.mjs';
+import { REGISTRY, ROOT, VERSION, listDir, parseFrontmatter, readIf } from './lib.mjs';
+import { loadModel, leftovers, flat, modeName, referencesDesign, READ_ONLY_ALLOW, READ_ONLY_DENY } from './targets/core.mjs';
+import { codexRolesOf } from './install-lib.mjs';
+
+// OpenCode's wildcard: "*" matches anything; a trailing " *" also matches the bare command; the LAST matching rule wins.
+function opencodeDecision(rules, command) {
+  let verdict = 'ask';
+  for (const [pattern, action] of rules) {
+    let re = pattern.replace(/[.+^${}()|[\]\\]/g, '\\$&').replace(/\*/g, '.*').replace(/\?/g, '.');
+    if (re.endsWith(' .*')) re = `${re.slice(0, -3)}( .*)?`;
+    if (new RegExp(`^${re}$`, 's').test(command)) verdict = action;
+  }
+  return verdict;
+}
+// "Bash only for `git diff|log|show|status`, `ls` and `grep`." -> ["git diff", "git log", "git show", "git status", "ls", "grep"]
+function commandsNamedIn(text) {
+  const line = text.split('\n').find((l) => /Bash only for/.test(l));
+  if (!line) return [];
+  const sentence = line.slice(line.indexOf('Bash only for')).split(/\.(?:\s|$)/)[0];
+  const out = [];
+  for (const [, tok] of sentence.matchAll(/`([^`]+)`/g)) {
+    const m = tok.match(/^(git) ([a-z-]+(?:\|[a-z-]+)+)$/);
+    if (m) out.push(...m[2].split('|').map((a) => `git ${a}`)); else out.push(tok);
+  }
+  return out;
+}
 
 const DIST = path.join(ROOT, 'dist');
+const CAPITALISED_VERB = /[,;] (?:Read|Load|Fetch) (?:the |`)/;
 
 export function validateTargets() {
   const errors = [];
@@ -32,6 +59,10 @@ export function validateTargets() {
   const SPEC_KEYS = new Set(['name', 'description', 'license', 'compatibility', 'metadata', 'allowed-tools']);
 
   // ---------------------------------------------------------------- universal Agent Skills
+  const expectedSkillNames = (slug) => {
+    const m = model.find((p) => p.slug === slug);
+    return new Set([...m.skills.map((x) => flat(slug, x.name)), ...m.styles.map((x) => flat(slug, modeName(x.name)))]);
+  };
   const universalHash = new Map(); // "<plugin>/<skill>" -> sha of SKILL.md
   const allNames = new Set();
   let universalCount = 0;
@@ -47,12 +78,13 @@ export function validateTargets() {
       if (!data) continue;
       if (data.name !== e.name) err(rel(file), `name "${data.name}" must equal the folder "${e.name}"`);
       if (!kebab.test(e.name) || e.name.length > 64) err(rel(file), 'name must be lowercase kebab-case, at most 64 characters');
-      if (!e.name.startsWith(`${slug}-`)) err(rel(file), `name must start with the plugin slug "${slug}-"`);
+      if (!expectedSkillNames(slug).has(e.name)) err(rel(file), `"${e.name}" is not a skill or mode of the plugin "${slug}"`);
       if (allNames.has(e.name)) err(rel(file), `duplicate skill name ${e.name} across plugins`);
       allNames.add(e.name);
       if (!data.description || data.description.length > 1024) err(rel(file), 'description must be 1-1024 characters');
       for (const k of Object.keys(data)) if (!SPEC_KEYS.has(k)) err(rel(file), `frontmatter key "${k}" is not part of the Agent Skills spec`);
       noLeftovers(file, text);
+      if (CAPITALISED_VERB.test(text)) err(rel(file), `capitalised verb in mid-sentence: "${text.match(CAPITALISED_VERB)[0]}"`);
       universalHash.set(`${slug}/${e.name}`, sha(file));
       // relative links to sibling skills and reference files must resolve
       for (const m of text.matchAll(/(?:\.\.\/[a-z0-9-]+\/SKILL\.md|(?:\.\.\/[a-z0-9-]+\/)?references\/(?:full|mini|nano|design)\.md)/g)) {
@@ -124,6 +156,25 @@ export function validateTargets() {
     for (const k of keys) if (!['name', 'description', 'developer_instructions'].includes(k)) err(rel(path.join(agentDir, e.name)), `key "${k}" would make Codex reject the file`);
     noLeftovers(path.join(agentDir, e.name), text, { mentions: true });
   }
+  // A plugin's roles are selected by the plugin named in each file, never by a name prefix ("ddd" prefixes "ddd-distilled").
+  const claimed = new Set();
+  for (const m of model) {
+    const want = m.agents.map((a) => `${flat(m.slug, a.name)}.toml`).sort();
+    const got = codexRolesOf(m.slug).sort();
+    if (JSON.stringify(want) !== JSON.stringify(got)) err('scripts/install-codex-agents.mjs', `selects ${got.length} role files for "${m.slug}", expected exactly its ${want.length}`);
+    got.forEach((f) => claimed.add(f));
+  }
+  if (claimed.size !== tomls.length) err(rel(agentDir), `${claimed.size} of ${tomls.length} role files belong to exactly one plugin`);
+  for (const e of tomls) if (/^description = ".*\bUse proactively\b/m.test(readIf(path.join(agentDir, e.name)) ?? '')) err(rel(path.join(agentDir, e.name)), 'description promises proactive use, which Codex does not do');
+  for (const slug of slugs) {
+    const man = readIf(path.join(DIST, 'codex', slug, '.codex-plugin', 'plugin.json')) ?? '';
+    if (/Claude Code/.test(man)) err(`dist/codex/${slug}/.codex-plugin/plugin.json`, 'describes the plugin as a Claude Code toolkit');
+    for (const e of listDir(path.join(DIST, 'codex', slug, 'skills')).filter((x) => x.isDirectory())) {
+      const y = readIf(path.join(DIST, 'codex', slug, 'skills', e.name, 'agents', 'openai.yaml'));
+      const prompt = y?.match(/^  default_prompt: (".*")$/m)?.[1];
+      if (prompt && !/^"Use \$[a-z0-9-]+:[a-z0-9-]+\.?"$/.test(prompt)) err(`dist/codex/${slug}/skills/${e.name}/agents/openai.yaml`, `default_prompt should be "Use $plugin:skill.", got ${prompt}`);
+    }
+  }
   const cm = readIf(path.join(ROOT, '.agents', 'plugins', 'marketplace.json'));
   try {
     const m = JSON.parse(cm);
@@ -133,11 +184,20 @@ export function validateTargets() {
   } catch (e) { err('.agents/plugins/marketplace.json', e.message); }
 
   // ---------------------------------------------------------------- OpenCode
+  // The read-only roles get a shell allowlist. It is a guard rail, not a sandbox, but it must at least refuse the obvious ways of writing.
+  const expectedRules = [['*', 'deny'], ...READ_ONLY_ALLOW.map((c) => [c, 'allow']), ...READ_ONLY_DENY.map((c) => [c, 'deny'])];
+  const SHOULD_ALLOW = ['git diff', 'git diff --stat', 'git diff HEAD~1 -- src', 'git log -n 5', 'git show HEAD', 'git status', 'git branch --show-current', 'git ls-files', 'ls', 'ls -la src',
+    'grep -rn foo src', 'rg foo', 'wc -l a.txt', 'head -n 5 a.txt', 'tail -n 5 a.txt', 'find . -name "*.ts"', 'git blame a.txt'];
+  const SHOULD_DENY = ['git diff --output=victim.txt', 'git diff --output victim.txt', 'git log -p --output=v.txt', 'git diff --ext-diff', 'ls > notes.txt', 'ls >> notes.txt', 'grep foo > f', 'git diff > src/app.ts',
+    'rg --pre ./evil.sh x', 'find . -delete', 'find . -exec rm {} ;', 'find . -fprint out.txt', 'lsblk', 'git push', 'git branch -D x', 'git checkout .', 'git -c core.pager=sh log', 'rm -rf x', 'cat a.txt', 'sed -i s/a/b/ f'];
+  for (const c of SHOULD_ALLOW) if (opencodeDecision(expectedRules, c) !== 'allow') err('scripts/targets/core.mjs', `read-only shell rules must allow "${c}"`);
+  for (const c of SHOULD_DENY) if (opencodeDecision(expectedRules, c) !== 'deny') err('scripts/targets/core.mjs', `read-only shell rules must deny "${c}"`);
   const FORBIDDEN_OC = ['tools', 'color', 'model', 'maxTurns', 'disallowedTools', 'skills', 'hooks', 'mcpServers', 'permissionMode'];
   for (const slug of slugs) {
     const dir = path.join(DIST, 'opencode', slug, 'agents');
     const m1 = model.find((p) => p.slug === slug);
     const files = listDir(dir).filter((e) => e.name.endsWith('.md'));
+    const expectedAgentIds = new Set([...m1.agents.map((a) => `${flat(slug, a.name)}.md`), ...m1.styles.map((x) => `${flat(slug, modeName(x.name))}.md`)]);
     if (files.length !== m1.agents.length + m1.styles.length) err(rel(dir), `expected ${m1.agents.length + m1.styles.length} agent files, found ${files.length}`);
     for (const e of files) {
       const file = path.join(dir, e.name);
@@ -151,10 +211,15 @@ export function validateTargets() {
       if (!keys.includes('description') || !['subagent', 'primary'].includes(mode)) err(rel(file), 'needs description and mode subagent|primary');
       for (const k of FORBIDDEN_OC) if (keys.includes(k)) err(rel(file), `"${k}" breaks OpenCode V1 config validation`);
       if (!/^[a-z0-9]+(-[a-z0-9]+)*\.md$/.test(e.name)) err(rel(file), 'agent id (file name) must be kebab-case');
-      if (!e.name.startsWith(`${slug}-`)) err(rel(file), 'agent id must start with the plugin slug');
+      if (!expectedAgentIds.has(e.name)) err(rel(file), `"${e.name}" is not an agent or mode of the plugin "${slug}"`);
       noLeftovers(file, text);
       const m = m1.agents.find((a) => `${slug}-${a.name}.md` === e.name);
       if (m?.readOnly && !/edit: deny/.test(text)) err(rel(file), 'read-only role must deny edit');
+      if (m?.readOnly) {
+        const rules = [...text.matchAll(/^    "((?:[^"\\]|\\.)*)": (allow|deny)$/gm)].map((x) => [JSON.parse(`"${x[1]}"`), x[2]]);
+        if (JSON.stringify(rules) !== JSON.stringify(expectedRules)) err(rel(file), 'bash permission rules differ from the generated read-only rules');
+        for (const c of commandsNamedIn(text)) if (opencodeDecision(rules, `${c} x`) !== 'allow') err(rel(file), `the text lets the role use \`${c}\` but its permission map denies it`);
+      }
       if (data.mode === 'subagent' && !/webfetch: deny/.test(text)) err(rel(file), 'must deny webfetch');
     }
   }
@@ -182,6 +247,7 @@ export function validateTargets() {
       const m1 = model.find((p) => p.slug === slug).agents.find((a) => `${slug}-${a.name}` === data.name);
       if (m1?.readOnly && data.tools?.some((t) => ['write_file', 'replace'].includes(t))) err(rel(file), 'read-only role must not list write tools');
       noLeftovers(file, text.replace(/\$\{extensionPath\}/g, ''));
+      if (/the `[a-z0-9-]+` skill\b/.test(text)) err(rel(file), 'names a skill without a path; a Gemini subagent cannot activate skills, so it needs the SKILL.md path');
     }
   }
 
@@ -197,12 +263,21 @@ export function validateTargets() {
         for (const p of problems) err(rel(file), `frontmatter: ${p}`);
         if (!data?.description) err(rel(file), 'description required');
         for (const k of ['maxTurns', 'color', 'disallowedTools', 'skills']) if (data && k in data) err(rel(file), `"${k}" is Claude-only`);
+        if (t === 'copilot' && /-mode-[a-z0-9-]+\.agent\.md$/.test(e.name) && !(data?.['user-invocable'] === true && data?.['disable-model-invocation'] === true)) err(rel(file), 'a mode agent must be user-invocable and hidden from model delegation');
         noLeftovers(file, text);
       }
+      if (/Claude Code/.test(readIf(path.join(root, manifest)) ?? '')) err(rel(path.join(root, manifest)), 'describes the plugin as a Claude Code toolkit');
     }
+    const rule = readIf(path.join(DIST, 'cursor', slug, 'rules', `${slug}-rules.mdc`)) ?? '';
+    if (!/^description: ".*Apply them when /m.test(rule)) err(`dist/cursor/${slug}/rules/${slug}-rules.mdc`, 'the rule description must say when to apply the rule');
   }
   for (const f of ['.cursor-plugin/marketplace.json']) {
-    try { const m = JSON.parse(readIf(path.join(ROOT, f))); for (const p of m.plugins) if (!exists(path.join(ROOT, p.source))) err(f, `missing source ${p.source}`); } catch (e) { err(f, e.message); }
+    try {
+      const m = JSON.parse(readIf(path.join(ROOT, f)));
+      for (const p of m.plugins) if (!exists(path.join(ROOT, p.source))) err(f, `missing source ${p.source}`);
+      if (/Claude Code/.test(JSON.stringify(m))) err(f, 'describes the plugins as Claude Code plugins');
+      if (m.metadata?.version !== VERSION) err(f, `metadata.version ${m.metadata?.version} must equal the repository version ${VERSION}`);
+    } catch (e) { err(f, e.message); }
   }
 
   // ---------------------------------------------------------------- rules and MCP catalog
@@ -212,7 +287,7 @@ export function validateTargets() {
       const text = readIf(file);
       if (!text) { err(rel(file), 'missing'); continue; }
       if (Buffer.byteLength(text) > 16 * 1024) err(rel(file), 'over 16 KiB; too large for an always-on rules file');
-      noLeftovers(file, text);
+      noLeftovers(file, text, { mentions: true }); // the companion section names skills in both the flat and the Codex ("$plugin:skill") syntax
     }
   }
   try {
@@ -225,8 +300,85 @@ export function validateTargets() {
     }
     if (cat.entries.length !== totalSkills + totalAgents) err('dist/mcp/catalog.json', `${cat.entries.length} entries, expected ${totalSkills + totalAgents}`);
     for (const b of cat.books) for (const f of Object.values(b.rules)) if (!exists(path.join(DIST, f))) err('dist/mcp/catalog.json', `missing rules file ${f}`);
+    for (const b of cat.books) if (('design' in b.rules) !== referencesDesign(model.find((p) => p.slug === b.slug))) err('dist/mcp/catalog.json', `${b.slug}: the design map is listed only for plugins whose skills refer to it`);
+    if (cat.version !== VERSION) err('dist/mcp/catalog.json', `version ${cat.version} must equal the repository version ${VERSION}`);
   } catch (e) { err('dist/mcp/catalog.json', e.message); }
   for (const e of listDir(path.join(DIST, 'mcp', 'agents')).filter((x) => x.name.endsWith('.md'))) noLeftovers(path.join(DIST, 'mcp', 'agents', e.name), readIf(path.join(DIST, 'mcp', 'agents', e.name)) ?? '');
+
+  // ---------------------------------------------------------------- cross-target rules that each cost a reviewer round
+  // The maintainers' component map is shipped only where a skill sends the reader to it.
+  for (const m of model) {
+    const want = referencesDesign(m);
+    for (const f of [path.join(DIST, 'agent-skills', m.slug, flat(m.slug, 'principles'), 'references', 'design.md'), path.join(DIST, 'codex', m.slug, 'skills', 'principles', 'references', 'design.md')]) {
+      if (exists(f) !== want) err(rel(f), want ? 'a skill refers to the component map but it is not shipped' : 'the maintainers\' component map is shipped although no skill refers to it');
+    }
+  }
+  // Fixed rewrites that must not come back.
+  const mustInclude = [
+    ['dist/agent-skills/clean-architecture/clean-architecture-layer-map/SKILL.md', '`use-cases`, `usecases`', 'a list of directory names was rewritten as a skill reference'],
+    ['dist/codex/clean-architecture/skills/layer-map/SKILL.md', '`use-cases`, `usecases`', 'a list of directory names was rewritten as a skill reference'],
+    ['dist/agent-skills/release-it/release-it-timeouts/SKILL.md', '`release-it-retries`', 'a one-word sibling named in a description was not prefixed'],
+    ['dist/codex/release-it/skills/timeouts/SKILL.md', '`$release-it:retries`', 'a one-word sibling named in a description was not rewritten'],
+    ['dist/agent-skills/refactoring-guru/refactoring-guru-review/SKILL.md', '`refactoring-guru-hierarchies`', 'a one-word skill in a list of skills was not prefixed'],
+    ['dist/agent-skills/refactoring/refactoring-smell-to-refactoring/SKILL.md', '`refactoring-duplication`', 'a one-word skill in a "Skill" table column was not prefixed'],
+    ['dist/codex/clean-code/skills/audit/SKILL.md', '$clean-code:<skill>', 'the placeholder reference in an output template lost its Codex syntax'],
+    ['dist/agent-skills/clean-code/clean-code-audit/SKILL.md', 'clean-code-<skill>', 'the placeholder reference in an output template was not rewritten'],
+  ];
+  for (const [f, needle, why] of mustInclude) if (!(readIf(path.join(ROOT, f)) ?? '').includes(needle)) err(f, `expected ${needle}: ${why}`);
+  // "Load", "Fetch" and "Read" start a sentence; after a comma or semicolon they are lower case.
+  const allAgentFiles = [
+    ...listDir(path.join(DIST, 'codex', 'agents')).map((e) => path.join(DIST, 'codex', 'agents', e.name)),
+    ...['opencode', 'gemini', 'cursor', 'copilot'].flatMap((t) => slugs.flatMap((slug) => listDir(path.join(DIST, t, slug, 'agents')).map((e) => path.join(DIST, t, slug, 'agents', e.name)))),
+    ...listDir(path.join(DIST, 'mcp', 'agents')).map((e) => path.join(DIST, 'mcp', 'agents', e.name)),
+  ];
+  for (const f of allAgentFiles) {
+    const text = readIf(f) ?? '';
+    const bad = text.match(CAPITALISED_VERB);
+    if (bad) err(rel(f), `capitalised verb in mid-sentence: "${bad[0]}"`);
+  }
+
+  // The MCP client has no files: an agent prompt must point at get_rules, not at a references/ path.
+  for (const e of listDir(path.join(DIST, 'mcp', 'agents')).filter((x) => x.name.endsWith('.md'))) {
+    if (/`references\/(?:full|mini|nano|design)\.md`/.test(readIf(path.join(DIST, 'mcp', 'agents', e.name)) ?? '')) err(`dist/mcp/agents/${e.name}`, 'points at a rule file path; an MCP client can only call get_rules');
+  }
+  // Each hub says what to do when a named subagent role does not exist.
+  for (const m of model) {
+    for (const f of [path.join(DIST, 'agent-skills', m.slug, flat(m.slug, 'principles'), 'SKILL.md'), path.join(DIST, 'codex', m.slug, 'skills', 'principles', 'SKILL.md')]) {
+      if (!/^## Subagent roles$/m.test(readIf(f) ?? '')) err(rel(f), 'the hub must explain that subagent roles are optional');
+    }
+  }
+
+  // ---------------------------------------------------------------- installers and the rules composer, run into a throwaway folder
+  const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'guided-validate-'));
+  try {
+    const run = (script, args) => spawnSync(process.execPath, [path.join(ROOT, 'scripts', script), ...args], { encoding: 'utf8' });
+    const dir = (n) => path.join(tmp, n);
+    const count = (d) => (fs.existsSync(d) ? fs.readdirSync(d).length : 0);
+    const ddd = model.find((p) => p.slug === 'ddd');
+    // Codex roles: the plugin "ddd" must not drag in "ddd-distilled" and "ddd-implementing"
+    let r = run('install-codex-agents.mjs', ['ddd', '--dest', dir('roles')]);
+    if (count(dir('roles')) !== ddd.agents.length || !r.stdout.includes(`installed ${ddd.agents.length} role`)) err('scripts/install-codex-agents.mjs', `installing "ddd" must copy exactly its ${ddd.agents.length} roles (got ${count(dir('roles'))})`);
+    run('install-codex-agents.mjs', ['ddd-distilled', '--dest', dir('roles')]);
+    run('install-codex-agents.mjs', ['ddd', '--uninstall', '--dest', dir('roles')]);
+    if (count(dir('roles')) !== model.find((p) => p.slug === 'ddd-distilled').agents.length) err('scripts/install-codex-agents.mjs', 'uninstalling "ddd" must leave the roles of "ddd-distilled"');
+    r = run('install-codex-agents.mjs', ['all', '--dest', dir('all-roles')]);
+    if (count(dir('all-roles')) !== totalAgents || !r.stdout.includes(`installed ${totalAgents} role`)) err('scripts/install-codex-agents.mjs', `"all" must install exactly ${totalAgents} roles`);
+    // OpenCode: install, leave a user's own files alone, uninstall counts only what exists and leaves nothing behind
+    fs.mkdirSync(path.join(dir('oc'), 'agents'), { recursive: true });
+    fs.writeFileSync(path.join(dir('oc'), 'agents', 'mine.md'), 'mine');
+    run('install-opencode.mjs', ['clean-code', '--dest', dir('oc')]);
+    for (const f of ['LICENSE', 'NOTICE.md']) if (!fs.existsSync(path.join(dir('oc'), 'guided-plugins', 'clean-code', f))) err('scripts/install-opencode.mjs', `${f} of the plugin must be copied`);
+    r = run('install-opencode.mjs', ['clean-code', '--uninstall', '--dest', dir('oc')]);
+    const cc = model.find((p) => p.slug === 'clean-code');
+    if (!r.stdout.includes(`removed ${cc.skills.length + cc.styles.length} skill folder(s) and ${cc.agents.length + cc.styles.length} agent file(s)`)) err('scripts/install-opencode.mjs', `uninstall must report what it removed: ${r.stdout.trim()}`);
+    if (fs.readdirSync(dir('oc')).join() !== 'agents' || fs.readdirSync(path.join(dir('oc'), 'agents')).join() !== 'mine.md') err('scripts/install-opencode.mjs', 'uninstall must leave the user\'s own files and no empty folders');
+    r = run('install-opencode.mjs', ['clean-code', '--uninstall', '--dest', dir('nothing')]);
+    if (!r.stdout.includes('removed 0 skill folder(s) and 0 agent file(s)')) err('scripts/install-opencode.mjs', 'uninstalling what was never installed must report 0');
+    // rules composer
+    r = run('compose-rules.mjs', ['clean-code', 'clean-code', 'refactoring']);
+    if ((r.stdout.match(/OBEY Clean Code/g) ?? []).length !== 1 || !/Precedence: this is the PRIMARY rule set/.test(r.stdout)) err('scripts/compose-rules.mjs', 'a repeated book must appear once and the precedence must be visible text');
+    if (run('compose-rules.mjs', ['clean-code', '--out']).status !== 2) err('scripts/compose-rules.mjs', '--out without a file name must be a usage error');
+  } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 
   return errors;
 }

@@ -9,7 +9,7 @@ You review one concern: whether the layout of tables and the way objects map ont
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, including schema and migration files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Fetch the `enterprise-patterns-relational-mapping-structure` guide with the get_guide tool, the `enterprise-patterns-inheritance-mapping` skill and the `enterprise-patterns-query-and-metadata-mapping` skill first.
+If those rules are not in your context, fetch the `enterprise-patterns-relational-mapping-structure` guide with the get_guide tool, the `enterprise-patterns-inheritance-mapping` guide (get_guide) and the `enterprise-patterns-query-and-metadata-mapping` guide (get_guide) first.
 
 ## Process
 

@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `legacy-code-principles`.
 
@@ -30,7 +47,7 @@ You are the last check before legacy work is handed over. You evaluate the nine 
 
 Use the paths or base ref (read as `git diff <base>...HEAD`) you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and take the changed files and the untracked files `git status` lists. If the tree is clean, ask for a base ref; if none is given, ask what to check and stop.
 Test results are evidence only if the caller gives you the command output or you can read a log that is already in the repository. You cannot run tests. If the caller did not report them, say so and treat any question that depends on a passing test as not evidenced.
-If the principles rules are not in your context, Load the `legacy-code-principles` skill with the skill tool first.
+If the principles rules are not in your context, load the `legacy-code-principles` skill with the skill tool first.
 
 ## Process
 

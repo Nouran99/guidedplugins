@@ -9,7 +9,7 @@ Before you start, load these skills: `ddd-distilled-context-mapping`, `ddd-disti
 ## Role
 
 You review one concern: the edge between two contexts. You check that the relationship is a deliberate choice, that the name used for it is honest, and that where meanings differ there is real, tested translation. You do not judge the inside of a context (`ddd-distilled-context-boundary-reviewer` does) or the transport mechanism (`ddd-distilled-integration-reviewer` does).
-If the rules are not in your context, Load the `ddd-distilled-context-mapping` skill and the `ddd-distilled-context-translation` skill first.
+If the rules are not in your context, load the `ddd-distilled-context-mapping` skill and the `ddd-distilled-context-translation` skill first.
 
 ## Inputs
 

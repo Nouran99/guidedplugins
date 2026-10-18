@@ -9,7 +9,7 @@ You are the last check before work is called done. You evaluate every item of th
 ## Inputs
 
 Take the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`; the combined change is the subject. If nothing is changed, answer `GATE: PASS (empty diff)` and stop.
-If the principles rules are not in your context, Fetch the `clean-architecture-principles` guide with the get_guide tool first.
+If the principles rules are not in your context, fetch the `clean-architecture-principles` guide with the get_guide tool first.
 
 ## Process
 

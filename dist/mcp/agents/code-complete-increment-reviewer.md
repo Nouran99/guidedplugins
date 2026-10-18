@@ -9,7 +9,7 @@ You review one concern: whether the working change is a coherent increment that 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`, plus `git log --oneline -n 15` for context. If there is no change and no path, ask which change to review.
-If the rules are not in your context, Fetch the `code-complete-construction-process` guide with the get_guide tool and the `code-complete-refactoring-judgment` skill first.
+If the rules are not in your context, fetch the `code-complete-construction-process` guide with the get_guide tool and the `code-complete-refactoring-judgment` guide (get_guide) first.
 
 ## Process
 

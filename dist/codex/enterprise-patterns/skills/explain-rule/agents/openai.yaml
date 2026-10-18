@@ -1,6 +1,6 @@
 interface:
   display_name: "Explain Rule"
   short_description: "Explain one Patterns of Enterprise Application Architecture rule or pattern: its strength (must, should, must not), the force behind it, how to check it, an original example and the book's own exceptions."
-  default_prompt: "Use $enterprise-patterns:explain-rule on rule or pattern name | section | situation you are unsure about."
+  default_prompt: "Use $enterprise-patterns:explain-rule."
 policy:
   allow_implicit_invocation: false

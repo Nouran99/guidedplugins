@@ -13,7 +13,7 @@ You review one concern: who may change what. You list the writable surface of ea
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed classes and modules, then search the repository for writers of their fields. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the mutation-control rules are not in your context, Load the `refactoring-mutation-control` skill first.
+If the mutation-control rules are not in your context, load the `refactoring-mutation-control` skill first.
 
 ## Process
 

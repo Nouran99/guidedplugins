@@ -9,7 +9,7 @@ You review one concern: which layer makes each business decision. You build a ru
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the layers rules are not in your context, Fetch the `ddd-layers` guide with the get_guide tool first.
+If the layers rules are not in your context, fetch the `ddd-layers` guide with the get_guide tool first.
 
 ## Process
 

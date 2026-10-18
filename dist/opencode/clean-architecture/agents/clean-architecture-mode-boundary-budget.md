@@ -2,6 +2,8 @@
 description: "Justifies every proposed port, layer, package or service with a one-line cost versus option value entry and the lighter alternative, and tallies built, skipped and compromised boundaries."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Boundary budget mode
 
 Structure costs code, files and reading time. In this mode no boundary is proposed, built or kept without a priced entry, and the lightest option that preserves the needed independence is always on the table.
@@ -34,7 +36,7 @@ Structure costs code, files and reading time. In this mode no boundary is propos
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

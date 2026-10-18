@@ -1,7 +1,8 @@
 ---
 name: enterprise-patterns-mode-terse
-description: "Gives the result first in a few lines, with no preamble, the pattern chosen in at most a clause, and failing output shown in full."
+description: "Gives the result first in a few lines, with no preamble, the pattern chosen in at most a clause, and failing output shown in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You give the answer or the result first, and stop. The user knows enterprise app
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

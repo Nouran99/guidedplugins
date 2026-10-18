@@ -34,7 +34,7 @@ For each change task, work through these stages and label each in the reply. A s
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. For a question that is not a change task, answer normally without the stages.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. For a question that is not a change task, answer normally without the stages.
 
 ## Source
 

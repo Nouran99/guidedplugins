@@ -1,5 +1,5 @@
 ---
-description: "Compact Working Effectively with Legacy Code rules. You are changing poorly tested legacy code and need to regain control first."
+description: "Working Effectively with Legacy Code rules, compact form. Apply them when you are changing poorly tested legacy code and need to regain control first."
 alwaysApply: false
 ---
 # OBEY Working Effectively with Legacy Code by Michael Feathers

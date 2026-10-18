@@ -14,7 +14,7 @@ You review one concern: whether the new and changed code looks and behaves like 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the coding-standards rules are not in your context, Load the `code-complete-coding-standards` skill first.
+If the coding-standards rules are not in your context, load the `code-complete-coding-standards` skill first.
 
 ## Process
 

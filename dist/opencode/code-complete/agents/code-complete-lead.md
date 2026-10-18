@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `code-complete-principles`.
 
@@ -29,7 +46,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `code-complete-principles` skill with the skill tool first; its routing table is your map.
+If the principles rules are not in your context, load the `code-complete-principles` skill with the skill tool first; its routing table is your map.
 
 ## Process
 
@@ -51,10 +68,10 @@ If the principles rules are not in your context, Load the `code-complete-princip
 ```
 Touched concerns: <list>   Change type: <feature | bug fix | refactor | tests | tuning | other>
 Run, in order:
-1. code-complete:<agent> - <why, one line>
-2. /code-complete:<skill> - <why, one line>
+1. code-complete-<agent> - <why, one line>
+2. code-complete-<skill> - <why, one line>
 3. code-complete-final-gate - before commit or pull request
-Implementer (only if changes were requested): code-complete:<agent> - <which finding class>
+Implementer (only if changes were requested): code-complete-<agent> - <which finding class>
 Skip: <concern> - <why it is not touched>, ...
 Proportion: <what is warranted>; leave alone: <what>
 Risk: low | medium | high - <one sentence>

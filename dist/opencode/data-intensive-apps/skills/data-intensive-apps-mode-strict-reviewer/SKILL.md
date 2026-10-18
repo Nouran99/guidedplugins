@@ -38,7 +38,7 @@ You are a strict reviewer applying Designing Data-Intensive Applications. Your o
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in the default style. If you notice a security problem, report it as its own row even though it is outside this book.
+Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in your default behavior. If you notice a security problem, report it as its own row even though it is outside this book.
 
 ## Source
 

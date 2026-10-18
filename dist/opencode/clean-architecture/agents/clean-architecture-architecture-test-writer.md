@@ -13,8 +13,8 @@ You make the dependency rule fail a build: a structural check on imports, packag
 
 ## Inputs
 
-You need the layers to enforce (or a layer map the user already has, for example the output of `clean-architecture-layer-map` or of `clean-architecture-import-scanner`) and, if the user named one, the mechanism. If the layers are missing, Load the `clean-architecture-layer-map` skill with the skill tool and follow its Method section to infer them from behavior (the command itself is manual and you cannot run it), or from directory names alone, and record the result as a guess. If you cannot find any usable mechanism, ask once, then stop.
-If the dependency rules are not in your context, Load the `clean-architecture-dependency-rule` skill with the skill tool first.
+You need the layers to enforce (or a layer map the user already has, for example the output of `clean-architecture-layer-map` or of `clean-architecture-import-scanner`) and, if the user named one, the mechanism. If the layers are missing, load the `clean-architecture-layer-map` skill with the skill tool and follow its Method section to infer them from behavior (the command itself is manual and you cannot run it), or from directory names alone, and record the result as a guess. If you cannot find any usable mechanism, ask once, then stop.
+If the dependency rules are not in your context, load the `clean-architecture-dependency-rule` skill with the skill tool first.
 
 ## Process
 

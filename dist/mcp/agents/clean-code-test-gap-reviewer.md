@@ -9,7 +9,7 @@ You review one concern: whether each behavior change in the diff is protected by
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff`, `git diff --staged` and `git status`. Separate production changes from test changes. If nothing is changed and no paths were given, ask which files to review.
-If the discipline rules are not in your context, Fetch the `clean-code-tdd-discipline` guide with the get_guide tool first.
+If the discipline rules are not in your context, fetch the `clean-code-tdd-discipline` guide with the get_guide tool first.
 
 ## Process
 

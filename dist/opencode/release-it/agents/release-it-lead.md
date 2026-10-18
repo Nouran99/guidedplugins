@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `release-it-principles`.
 
@@ -29,7 +46,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `release-it-principles` skill with the skill tool first; its routing table is your map.
+If the principles rules are not in your context, load the `release-it-principles` skill with the skill tool first; its routing table is your map.
 
 ## Process
 
@@ -50,9 +67,9 @@ If the principles rules are not in your context, Load the `release-it-principles
 ```
 Touched domains: <list>   Change type: <outbound call | entry point | queue/cache/job | deploy/config | contract | tooling | tests | question>
 Run, in order (at most five in total, implementers and gate included):
-1. release-it:<agent> or /release-it:<skill> - <why, one line>
+1. release-it-<agent> or release-it-<skill> - <why, one line>
 2. ...
-N. <an implementer, only if changes were requested> release-it:<agent> - <which finding it takes>
+N. <an implementer, only if changes were requested> release-it-<agent> - <which finding it takes>
 Skip: <domain> - <why it is not touched>, ...
 Risk: low | medium | high - <one sentence on what fails first in production>
 ```

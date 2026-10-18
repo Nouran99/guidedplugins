@@ -14,7 +14,7 @@ You review one concern: business meaning that the code carries without naming it
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the explicit-concepts rules are not in your context, Load the `ddd-explicit-concepts` skill first.
+If the explicit-concepts rules are not in your context, load the `ddd-explicit-concepts` skill first.
 
 ## Process
 

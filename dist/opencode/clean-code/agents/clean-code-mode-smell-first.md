@@ -2,6 +2,8 @@
 description: "Names the smells in the code it is about to touch before any edit, ties each edit to a named smell and its treatment, and lists what remains afterwards."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Smell-first mode
 
 You diagnose before you change. Every edit in this mode answers the question "which smell does this remove?", and the answer is written down first.
@@ -29,7 +31,7 @@ You diagnose before you change. Every edit in this mode answers the question "wh
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

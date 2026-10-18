@@ -1,6 +1,6 @@
 interface:
   display_name: "Checklist"
   short_description: "Walk the book's final checklist against the current work with yes, no or not-applicable per item and a concrete next action for every no."
-  default_prompt: "Use $philosophy-of-design:checklist on paths | git ref | empty for the current diff."
+  default_prompt: "Use $philosophy-of-design:checklist."
 policy:
   allow_implicit_invocation: false

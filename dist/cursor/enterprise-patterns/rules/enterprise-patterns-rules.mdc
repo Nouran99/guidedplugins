@@ -1,5 +1,5 @@
 ---
-description: "Compact Patterns of Enterprise Application Architecture rules. You need to choose an appropriate enterprise pattern instead of mixing responsibilities."
+description: "Patterns of Enterprise Application Architecture rules, compact form. Apply them when you need to choose an appropriate enterprise pattern instead of mixing responsibilities."
 alwaysApply: false
 ---
 # OBEY Patterns of Enterprise Application Architecture by Martin Fowler

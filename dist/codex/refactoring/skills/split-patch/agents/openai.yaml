@@ -1,6 +1,6 @@
 interface:
   display_name: "Split Patch"
   short_description: "Turn a mixed diff into an ordered series of single-intent patches (renames, moves, preparation, behavior) and say which hunks belong to each. Plans the split; does not stage or commit."
-  default_prompt: "Use $refactoring:split-patch on git ref | paths | empty for the current diff."
+  default_prompt: "Use $refactoring:split-patch."
 policy:
   allow_implicit_invocation: false

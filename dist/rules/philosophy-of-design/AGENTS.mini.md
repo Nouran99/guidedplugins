@@ -48,4 +48,4 @@ Working code, small pieces, familiar patterns, flags, wrappers, and extra docume
 
 ## Companion skills (if installed)
 
-The A Philosophy of Software Design rules above are backed by skills from the `philosophy-of-design` plugin. Use `philosophy-of-design-review` to review a change, `philosophy-of-design-plan` before a non-trivial change, `philosophy-of-design-explain-rule` to look up a rule, `philosophy-of-design-checklist` before finishing, and `philosophy-of-design-principles` for the full rule set and routing table.
+The A Philosophy of Software Design rules above are backed by skills from the `philosophy-of-design` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `philosophy-of-design-<skill>` (for example `philosophy-of-design-review`); Codex mentions them as `$philosophy-of-design:<skill>` (for example `$philosophy-of-design:review`).

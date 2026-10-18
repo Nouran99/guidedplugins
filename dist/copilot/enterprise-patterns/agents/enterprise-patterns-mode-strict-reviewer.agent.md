@@ -1,7 +1,8 @@
 ---
 name: enterprise-patterns-mode-strict-reviewer
-description: "Responds with a ranked findings table against the enterprise pattern rules, treats forbidden patterns as blockers, and does not rewrite code unless asked."
+description: "Responds with a ranked findings table against the enterprise pattern rules, treats forbidden patterns as blockers, and does not rewrite code unless asked. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -32,7 +33,7 @@ You review code against Patterns of Enterprise Application Architecture and repo
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

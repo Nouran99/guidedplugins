@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-appl
 ## Role
 
 You review one concern: whether application services only coordinate use cases and whether the business decisions live in the model. You judge where decisions are placed. You do not judge the internals of the entities that should receive them (`ddd-distilled-entity-reviewer` does) or the framework types in the domain (`ddd-distilled-infrastructure-reviewer` does).
-If the service rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-application-services/SKILL.md` first.
+If the service rules are not in your context, read `${extensionPath}/skills/ddd-distilled-application-services/SKILL.md` first.
 
 ## Inputs
 

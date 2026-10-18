@@ -14,7 +14,7 @@ You turn one transaction over several aggregates into one transaction per aggreg
 ## Inputs
 
 You need three things: the use case to change; the list of immediate invariants for it (from `ddd-implementing-invariant-inventory` or the user) showing that none spans the aggregates; and the user's statement that the other aggregates may be updated shortly after. If any is missing, ask once, then stop. Do not decide for the business that a delay is fine.
-If those rules are not in your context, Load the `ddd-implementing-cross-aggregate-coordination` skill with the skill tool and the `ddd-implementing-domain-events` skill first.
+If those rules are not in your context, load the `ddd-implementing-cross-aggregate-coordination` skill with the skill tool and the `ddd-implementing-domain-events` skill first.
 
 ## Process
 

@@ -14,7 +14,7 @@ You review one concern: whether a bounded job can be run again, killed halfway, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find the scheduler or workflow definitions that run them. If nothing is changed and no paths were given, ask which job to review.
-If the batch rules are not in your context, Load the `data-intensive-apps-batch-jobs` skill first.
+If the batch rules are not in your context, load the `data-intensive-apps-batch-jobs` skill first.
 
 ## Process
 

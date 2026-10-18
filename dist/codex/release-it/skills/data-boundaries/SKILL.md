@@ -1,6 +1,6 @@
 ---
 name: "data-boundaries"
-description: "Use when code accepts external input or reads a dependency's response (bodies, messages, files) and decides what to trust. Covers status, shape and plausibility checks, parse versus domain errors, validating before caching or enqueueing. Dead-lettering is `queues`; your contract is `$release-it:api-contracts`."
+description: "Use when code accepts external input or reads a dependency's response (bodies, messages, files) and decides what to trust. Covers status, shape and plausibility checks, parse versus domain errors, validating before caching or enqueueing. Dead-lettering is `$release-it:queues`; your contract is `$release-it:api-contracts`."
 ---
 
 # Data boundaries

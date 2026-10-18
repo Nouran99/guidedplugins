@@ -1,6 +1,6 @@
 interface:
   display_name: "Smell Hunt"
   short_description: "Walk the forbidden-pattern families over a scope and map every hit to a treatment skill and an order of treatment."
-  default_prompt: "Use $ddd:smell-hunt on family | all] [path]   families: passive-model, smart-ui, persistence-driven, primitive-obsession, shared-model, god-service, invalid-construction, fake-ddd, context-blindness, pattern-obscurity."
+  default_prompt: "Use $ddd:smell-hunt."
 policy:
   allow_implicit_invocation: false

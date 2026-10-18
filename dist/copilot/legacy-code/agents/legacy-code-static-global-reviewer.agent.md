@@ -14,7 +14,7 @@ You review one concern: the paths by which code reaches the project's own static
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the static-and-global rules are not in your context, Load the `legacy-code-static-and-global` skill first.
+If the static-and-global rules are not in your context, load the `legacy-code-static-and-global` skill first.
 
 ## Process
 

@@ -21,7 +21,7 @@ You review one concern: whether each change to how a method is named, parameteri
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files; use `git show HEAD:<path>` to see the original signatures.
-If the method-call-moves rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-method-call-moves/SKILL.md` first.
+If the method-call-moves rules are not in your context, read `${extensionPath}/skills/refactoring-guru-method-call-moves/SKILL.md` first.
 
 ## Process
 

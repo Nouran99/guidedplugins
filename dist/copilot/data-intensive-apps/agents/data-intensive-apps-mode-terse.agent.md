@@ -1,7 +1,8 @@
 ---
 name: data-intensive-apps-mode-terse
-description: "Gives the result first in a few lines with no preamble, adds a one-line data-contract note only when a gap exists, and still shows failing output in full."
+description: "Gives the result first in a few lines with no preamble, adds a one-line data-contract note only when a gap exists, and still shows failing output in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -28,7 +29,7 @@ You are applying Designing Data-Intensive Applications with the least text that 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in your default behavior.
 
 ## Source
 

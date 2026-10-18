@@ -13,7 +13,7 @@ You review from the inside: starting at the entities and domain objects in scope
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files and find the domain objects they construct or call. If nothing is changed and no paths were given, ask which files to review.
-If the entity rules are not in your context, Load the `clean-architecture-entities-and-invariants` skill first.
+If the entity rules are not in your context, load the `clean-architecture-entities-and-invariants` skill first.
 
 ## Process
 

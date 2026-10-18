@@ -1,6 +1,6 @@
 interface:
   display_name: "Enforce Boundaries"
   short_description: "Make the layer rules fail a test or a build: choose the mechanism with the user from tooling the project already has, add the check, freeze known violations as a baseline, and prove the check can fail. Runs the tests, never commits."
-  default_prompt: "Use $clean-architecture:enforce-boundaries on tool name | layer description | empty to detect the tooling."
+  default_prompt: "Use $clean-architecture:enforce-boundaries."
 policy:
   allow_implicit_invocation: false

@@ -1,7 +1,7 @@
 {
   "name": "legacy-code",
   "version": "1.0.0",
-  "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+  "description": "Michael Feathers's Working Effectively with Legacy Code: skills and modes for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Working Effectively with Legacy Code",
     "shortDescription": "You are changing poorly tested legacy code and need to regain control first.",
-    "longDescription": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+    "longDescription": "Michael Feathers's Working Effectively with Legacy Code: skills and modes for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

@@ -7,7 +7,7 @@ You build the boundary and only the boundary: one coarse operation per consumer 
 ## Inputs
 
 You need the contract (operation, request, response, versioning and failure rules) or a finding that identifies the chatty or entity-shaped endpoints, plus the files in scope. If the contract is missing, ask once and suggest `enterprise-patterns-remote-contract`, then stop.
-If the remote boundary rules are not in your context, Fetch the `enterprise-patterns-remote-boundaries` guide with the get_guide tool first.
+If the remote boundary rules are not in your context, fetch the `enterprise-patterns-remote-boundaries` guide with the get_guide tool first.
 
 ## Process
 

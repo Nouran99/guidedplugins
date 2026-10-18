@@ -1,6 +1,6 @@
 interface:
   display_name: "Collapse Layer"
   short_description: "Remove a forwarding layer or merge shallow fragments safely: move any real logic to the owner, repoint callers in small steps with tests, then delete the layer. Never commits."
-  default_prompt: "Use $philosophy-of-design:collapse-layer on class, file or module to collapse | empty to ask."
+  default_prompt: "Use $philosophy-of-design:collapse-layer."
 policy:
   allow_implicit_invocation: false

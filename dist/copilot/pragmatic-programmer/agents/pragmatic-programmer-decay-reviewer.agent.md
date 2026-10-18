@@ -14,7 +14,7 @@ You review one concern: small decay in the code the change touched, and whether 
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status`, and read in full the untracked files `git status` lists (a new file has no diff). The touched area is the changed files and the functions that contain changed lines. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the broken-windows rules are not in your context, Load the `pragmatic-programmer-broken-windows` skill first.
+If the broken-windows rules are not in your context, load the `pragmatic-programmer-broken-windows` skill first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: clean-architecture-mode-architect
-description: "States the use case and a placement table before writing code, lists the arrows of every new dependency, and ends each change with a dependency direction check."
+description: "States the use case and a placement table before writing code, lists the arrows of every new dependency, and ends each change with a dependency direction check. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Architect mode
 
@@ -37,7 +38,7 @@ You design before you build. Nothing is written until the use case is stated, ev
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

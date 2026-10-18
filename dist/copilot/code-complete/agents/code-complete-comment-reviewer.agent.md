@@ -14,7 +14,7 @@ You review one concern: whether every comment in the changed area earns its plac
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; include comments near changed lines even if the comment lines themselves are untouched. If nothing is changed and no paths were given, ask which files to review.
-If the comments rules are not in your context, Load the `code-complete-comments` skill first.
+If the comments rules are not in your context, load the `code-complete-comments` skill first.
 
 ## Process
 

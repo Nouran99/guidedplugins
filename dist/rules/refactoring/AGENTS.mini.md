@@ -51,4 +51,4 @@ Refactoring is behavior-preserving design work in small steps. Do not turn clean
 
 ## Companion skills (if installed)
 
-The Refactoring rules above are backed by skills from the `refactoring` plugin. Use `refactoring-review` to review a change, `refactoring-plan` before a non-trivial change, `refactoring-explain-rule` to look up a rule, `refactoring-checklist` before finishing, and `refactoring-principles` for the full rule set and routing table.
+The Refactoring rules above are backed by skills from the `refactoring` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `refactoring-<skill>` (for example `refactoring-review`); Codex mentions them as `$refactoring:<skill>` (for example `$refactoring:review`).

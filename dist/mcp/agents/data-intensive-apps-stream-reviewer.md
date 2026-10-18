@@ -9,7 +9,7 @@ You review one concern: whether an unbounded pipeline defines what time means, w
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then follow producers to consumers to sinks. If nothing is changed and no paths were given, ask which pipeline to review.
-If the stream and event rules are not in your context, Fetch the `data-intensive-apps-stream-processing` guide with the get_guide tool and the `data-intensive-apps-event-design` skill first.
+If the stream and event rules are not in your context, fetch the `data-intensive-apps-stream-processing` guide with the get_guide tool and the `data-intensive-apps-event-design` guide (get_guide) first.
 
 ## Process
 

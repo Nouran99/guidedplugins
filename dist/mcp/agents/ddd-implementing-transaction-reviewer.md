@@ -9,7 +9,7 @@ You review one concern: the transaction boundary of each use case in the changed
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Fetch the `ddd-implementing-cross-aggregate-coordination` guide with the get_guide tool and the `ddd-implementing-application-services` skill first.
+If those rules are not in your context, fetch the `ddd-implementing-cross-aggregate-coordination` guide with the get_guide tool and the `ddd-implementing-application-services` guide (get_guide) first.
 
 ## Process
 

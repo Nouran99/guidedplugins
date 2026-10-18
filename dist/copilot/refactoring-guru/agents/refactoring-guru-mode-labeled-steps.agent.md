@@ -1,7 +1,8 @@
 ---
 name: refactoring-guru-mode-labeled-steps
-description: "Tags every change REFACTOR, FEATURE or BUGFIX and delivers them as separate sections in review order, so structure and behavior are never one indistinguishable edit."
+description: "Tags every change REFACTOR, FEATURE or BUGFIX and delivers them as separate sections in review order, so structure and behavior are never one indistinguishable edit. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Labeled-steps mode
 
@@ -31,7 +32,7 @@ The rule set forbids one indistinguishable edit that mixes feature work and refa
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

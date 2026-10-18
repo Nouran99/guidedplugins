@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-implementing-principles`.
 
@@ -29,7 +46,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `ddd-implementing-principles` skill with the skill tool first; its routing table is your map.
+If the principles rules are not in your context, load the `ddd-implementing-principles` skill with the skill tool first; its routing table is your map.
 
 ## Process
 
@@ -53,8 +70,8 @@ Print only the fenced template below: no preamble before it and no text after it
 ```
 Context: <name | unknown>   Area: <modeled | plain>   Change type: <feature | bug fix | refactor | integration | tests | other>
 Run, in order (at most five):
-1. ddd-implementing:<agent> - <why, one line>
-2. /ddd-implementing:<skill> - <why, one line>
+1. ddd-implementing-<agent> - <why, one line>
+2. ddd-implementing-<skill> - <why, one line>
 3. ddd-implementing-final-gate - before commit or pull request
 Skip: <cluster> - <not touched | deferred until step N findings are in>, ...
 Proportion: <what level of structure is warranted>; leave alone: <what>

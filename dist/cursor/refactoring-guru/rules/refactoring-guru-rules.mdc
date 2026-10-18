@@ -1,5 +1,5 @@
 ---
-description: "Compact Refactoring.Guru rules. You need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign."
+description: "Refactoring.Guru rules, compact form. Apply them when you need to diagnose smells, pick a safe treatment, and avoid uncontrolled redesign."
 alwaysApply: false
 ---
 # OBEY Refactoring.Guru

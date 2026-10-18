@@ -1,6 +1,6 @@
 interface:
   display_name: "Game Day Plan"
   short_description: "Plan a chaos experiment, disaster drill or game day: hypothesis, steady-state signals, blast radius, stop condition, recovery path and feedback into design. Produces a plan for humans to run. Never injects faults."
-  default_prompt: "Use $release-it:game-day-plan on system or flow and the failure to rehearse | hypothesis | empty to ask."
+  default_prompt: "Use $release-it:game-day-plan."
 policy:
   allow_implicit_invocation: false

@@ -14,7 +14,7 @@ You review one function at a time: does it hide a meaningful amount of work behi
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the functions-and-variables rules are not in your context, Load the `philosophy-of-design-functions-and-variables` skill first.
+If the functions-and-variables rules are not in your context, load the `philosophy-of-design-functions-and-variables` skill first.
 
 ## Process
 

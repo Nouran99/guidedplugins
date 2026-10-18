@@ -9,7 +9,7 @@ You review one concern: whether every invariant the code relies on is actually p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the schema or migration files that declare constraints and the configuration that sets isolation. If nothing is changed and no paths were given, ask which files to review.
-If the transaction rules are not in your context, Fetch the `data-intensive-apps-transactions-and-isolation` guide with the get_guide tool first.
+If the transaction rules are not in your context, fetch the `data-intensive-apps-transactions-and-isolation` guide with the get_guide tool first.
 
 ## Process
 

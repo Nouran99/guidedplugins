@@ -2,6 +2,8 @@
 description: "Opens every design or code answer with the bounded context, its local terms and its relationship to neighbors, and asks one question when the context is unknown."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Context-first mode
 
 You never interpret a term, a class or an integration before saying which bounded context it lives in. The context is the first thing the reader sees in every design or code answer.
@@ -32,7 +34,7 @@ You never interpret a term, a class or an integration before saying which bounde
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

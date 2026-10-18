@@ -21,7 +21,7 @@ You review one concern: what the cache does to the source of truth, and to corre
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the cache rules are not in your context, Read `${extensionPath}/skills/release-it-caching/SKILL.md` first.
+If the cache rules are not in your context, read `${extensionPath}/skills/release-it-caching/SKILL.md` first.
 
 ## Process
 

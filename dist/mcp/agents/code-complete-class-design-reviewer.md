@@ -9,7 +9,7 @@ You review one concern: whether each changed class or module has a focused respo
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed classes and modules. If nothing is changed and no paths were given, ask which files to review.
-If the class-design rules are not in your context, Fetch the `code-complete-class-design` guide with the get_guide tool first.
+If the class-design rules are not in your context, fetch the `code-complete-class-design` guide with the get_guide tool first.
 
 ## Process
 

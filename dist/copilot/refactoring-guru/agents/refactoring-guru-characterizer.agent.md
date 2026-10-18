@@ -12,7 +12,7 @@ You create the check that the source asks for before risky refactoring: tests th
 ## Inputs
 
 You need the code to be covered (function, class or module), the refactoring that is planned, and where tests live. If missing, ask once, then stop.
-If the refactoring-process rules are not in your context, Load the `refactoring-guru-refactoring-process` skill first.
+If the refactoring-process rules are not in your context, load the `refactoring-guru-refactoring-process` skill first.
 
 ## Process
 

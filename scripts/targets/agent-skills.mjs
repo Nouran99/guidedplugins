@@ -2,13 +2,18 @@
 // <plugin>-<name> with spec-clean frontmatter. Read by Codex, OpenCode, Gemini CLI, Copilot, Cursor and ~75 other agents
 // (directly, or through `npx skills add`). The other flat targets (OpenCode, Gemini, Cursor, Copilot) reuse this emitter.
 import {
-  DIST, MANUAL_SUFFIX, cleanDir, copyFile, flat, fs, frontmatter, modeName, path, rewrite, writeFile,
+  DIST, DESIGN_NOTE, MANUAL_SUFFIX, cleanDir, copyFile, flat, fs, frontmatter, modeName, path, referencesDesign, rewrite, rewriteDescription, withRolesNote, writeFile,
 } from './core.mjs';
 
 const bt = (s) => `\`${s}\``;
 
-// agentRead(plugin, name, backticked) lets a target override how an AGENT is told to load a skill.
-export function flatDialect({ agentRead } = {}) {
+// How a target lets an AGENT reach a skill or a rule file. Each hook is optional; the defaults say "the `x` skill".
+//   agentRead(plugin, name, backticked)   sentence that loads a skill ("Load the `x` skill")
+//   agentSkill(plugin, name)              { path } | { phrase } for a mention of a skill's SKILL.md
+//   agentSkillsDir(plugin)                the same for the skills folder
+//   agentRefFile(plugin, size)            the same for references/<size>.md of the hub
+//   agentDesignFile(plugin)               the same for the component map
+export function flatDialect({ agentRead, agentSkill, agentSkillsDir, agentRefFile, agentDesignFile } = {}) {
   const defaultAgentRead = (p, n) => `Load the ${bt(flat(p.slug, n))} skill`;
   const readFor = agentRead ?? defaultAgentRead;
   const hubRel = (p, ctx) => (ctx.skill === 'principles' ? '' : `../${flat(p.slug, 'principles')}/`);
@@ -25,23 +30,27 @@ export function flatDialect({ agentRead } = {}) {
       return backticked ? `Read ${bt(rel)}` : `Read ${rel}`;
     },
     skillFile: (p, n, ctx) => {
-      if (ctx.from === 'agent') return { phrase: `the ${bt(flat(p.slug, n))} skill` };
+      if (ctx.from === 'agent') return agentSkill ? agentSkill(p, n) : { phrase: `the ${bt(flat(p.slug, n))} skill` };
       return { path: ctx.from === 'doc' ? `../../${flat(p.slug, n)}/SKILL.md` : `../${flat(p.slug, n)}/SKILL.md` };
     },
-    skillsDir: (p, ctx) => (ctx.from === 'agent' ? { phrase: `the skill folders of the ${bt(p.slug)} plugin` } : { path: ctx.from === 'doc' ? '../../' : '../' }),
+    skillsDir: (p, ctx) => {
+      if (ctx.from === 'agent') return agentSkillsDir ? agentSkillsDir(p) : { phrase: `the skill folders of the ${bt(p.slug)} plugin` };
+      return { path: ctx.from === 'doc' ? '../../' : '../' };
+    },
     refFile: (p, r, ctx) => {
-      if (ctx.from === 'agent') return { phrase: `the ${bt(`references/${r}.md`)} file of the ${bt(flat(p.slug, 'principles'))} skill` };
+      if (ctx.from === 'agent') return agentRefFile ? agentRefFile(p, r) : { phrase: `the ${bt(`references/${r}.md`)} file of the ${bt(flat(p.slug, 'principles'))} skill` };
       if (ctx.from === 'doc') return { path: `${r}.md` };
       return { path: `${hubRel(p, ctx)}references/${r}.md` };
     },
     designFile: (p, ctx) => {
-      if (ctx.from === 'agent') return { phrase: `the ${bt('references/design.md')} file of the ${bt(flat(p.slug, 'principles'))} skill` };
+      if (ctx.from === 'agent') return agentDesignFile ? agentDesignFile(p) : { phrase: `the ${bt('references/design.md')} file of the ${bt(flat(p.slug, 'principles'))} skill` };
       if (ctx.from === 'doc') return { path: 'design.md' };
       return { path: `${hubRel(p, ctx)}references/design.md` };
     },
   };
 }
 
+const FLAT_ROLES = 'The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them.';
 const PERSONA_PREFACE = 'Adopt this mode for the rest of the session, until the user asks you to stop or to switch to another mode. It changes how you respond; it does not change what you are allowed to do.\n\n';
 
 export function skillDescription(text, manual) {
@@ -52,6 +61,7 @@ export function skillDescription(text, manual) {
 // Writes every skill and persona of one plugin as <root>/<plugin>-<name>/SKILL.md (+ references).
 export function emitFlatSkills(plugin, root, dialect = flatDialect()) {
   const rw = (text, ctx) => rewrite(text, plugin, dialect, ctx);
+  const rwd = (text, ctx) => rewriteDescription(text, plugin, dialect, ctx);
   const meta = (extra) => ({ plugin: plugin.slug, book: plugin.book.title, ...extra });
   const written = [];
 
@@ -60,24 +70,25 @@ export function emitFlatSkills(plugin, root, dialect = flatDialect()) {
     const ctx = { from: 'skill', skill: s.name };
     const fm = frontmatter({
       name: flat(plugin.slug, s.name),
-      description: skillDescription(rw(s.fm.description, ctx), s.manual),
+      description: skillDescription(rwd(s.fm.description, ctx), s.manual),
       license: 'MIT',
       metadata: meta({ invocation: s.manual ? 'manual' : 'auto', ...(s.fm['argument-hint'] ? { 'argument-hint': s.fm['argument-hint'] } : {}) }),
     });
-    writeFile(path.join(dir, 'SKILL.md'), fm + rw(s.body, ctx));
+    const body = rw(s.body, ctx);
+    writeFile(path.join(dir, 'SKILL.md'), fm + (s.name === 'principles' ? withRolesNote(body, plugin, FLAT_ROLES) : body));
     for (const f of s.files) copyFile(path.join(s.dir, f), path.join(dir, f)); // references/{full,mini,nano}.md, verbatim upstream
     written.push(flat(plugin.slug, s.name));
   }
 
-  // the maintainers' component map travels with the hub because one skill points at it
-  if (plugin.design) writeFile(path.join(root, flat(plugin.slug, 'principles'), 'references', 'design.md'), rw(plugin.design, { from: 'doc' }));
+  // the maintainers' component map travels with the hub only where a skill points at it
+  if (plugin.design && referencesDesign(plugin)) writeFile(path.join(root, flat(plugin.slug, 'principles'), 'references', 'design.md'), DESIGN_NOTE + rw(plugin.design, { from: 'doc' }));
 
   for (const m of plugin.styles) {
     const name = flat(plugin.slug, modeName(m.name));
     const ctx = { from: 'skill', skill: modeName(m.name) };
     const fm = frontmatter({
       name,
-      description: skillDescription(rw(m.fm.description, ctx), true),
+      description: skillDescription(rwd(m.fm.description, ctx), true),
       license: 'MIT',
       metadata: meta({ invocation: 'manual', kind: 'mode' }),
     });
@@ -104,6 +115,10 @@ ${'Generated by scripts/build-targets.mjs from plugins/ in this repository. Do n
 One folder per book plugin, each holding that plugin's skills in the open [Agent Skills](https://agentskills.io) layout:
 \`<plugin>/<plugin>-<name>/SKILL.md\`. Skill names are prefixed with the plugin so they never collide in agents that keep one flat list.
 Install a whole plugin (its skills reference each other and the \`${'<plugin>-principles'}\` hub by relative path, so keep them together).
+
+Skills name subagent roles too (for example \`<plugin>-lead\`, \`<plugin>-final-gate\` and the \`<plugin>-*-reviewer\` roles). This build does not
+include roles: they come from the OpenCode, Codex, Gemini CLI, Cursor and Copilot builds. When your agent has no role of that name, it should do that
+step itself, following the skill named beside it; each hub skill says so.
 
 See [docs/AGENTS_SUPPORT.md](../../docs/AGENTS_SUPPORT.md) for per-agent instructions.
 

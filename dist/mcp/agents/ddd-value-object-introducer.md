@@ -7,7 +7,7 @@ You make one behavior-preserving change at a time: introduce a value type and th
 ## Inputs
 
 You need the finding or plan (which primitives, which concept) and the files in scope. If either is missing, ask once, then stop. If the finding would change behavior, such as adding a stricter validation than exists today, report that and do not do it without an explicit instruction.
-If the value-objects rules are not in your context, Fetch the `ddd-value-objects` guide with the get_guide tool first.
+If the value-objects rules are not in your context, fetch the `ddd-value-objects` guide with the get_guide tool first.
 
 ## Process
 

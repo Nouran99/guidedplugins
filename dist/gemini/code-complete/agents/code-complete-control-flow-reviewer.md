@@ -21,7 +21,7 @@ You review one concern: whether the control flow of each changed routine can be 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed routines. If nothing is changed and no paths were given, ask which files to review.
-If the rules are not in your context, Read `${extensionPath}/skills/code-complete-control-flow/SKILL.md` and the `code-complete-statements-and-loops` skill first.
+If the rules are not in your context, read `${extensionPath}/skills/code-complete-control-flow/SKILL.md` and `${extensionPath}/skills/code-complete-statements-and-loops/SKILL.md` first.
 
 ## Process
 

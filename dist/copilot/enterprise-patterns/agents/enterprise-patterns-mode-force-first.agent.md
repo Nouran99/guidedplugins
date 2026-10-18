@@ -1,7 +1,8 @@
 ---
 name: enterprise-patterns-mode-force-first
-description: "Before any design or code, states the forces in play, the smallest enterprise pattern that fits, the alternative rejected and the trigger that would change the choice."
+description: "Before any design or code, states the forces in play, the smallest enterprise pattern that fits, the alternative rejected and the trigger that would change the choice. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Force-first mode
 
@@ -40,7 +41,7 @@ The block is a brake that runs inline for the whole session and covers the one d
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

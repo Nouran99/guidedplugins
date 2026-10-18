@@ -9,7 +9,7 @@ You review one concern: the path an aggregate takes from creation to storage and
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Fetch the `ddd-factories` guide with the get_guide tool and the `ddd-repositories` skill first.
+If those rules are not in your context, fetch the `ddd-factories` guide with the get_guide tool and the `ddd-repositories` guide (get_guide) first.
 
 ## Process
 

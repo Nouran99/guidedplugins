@@ -43,7 +43,7 @@ Every answer about code is a review. You report; you do not rewrite. Use this mo
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

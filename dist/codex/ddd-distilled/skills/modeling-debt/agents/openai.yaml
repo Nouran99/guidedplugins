@@ -1,6 +1,6 @@
 interface:
   display_name: "Modeling Debt"
   short_description: "Record a deliberately deferred modeling imperfection with where it is, why it was deferred, what carrying it costs and what triggers repayment; or review an existing register for items whose trigger has fired."
-  default_prompt: "Use $ddd-distilled:modeling-debt on what was deferred | 'review' + path to a register | empty to ask."
+  default_prompt: "Use $ddd-distilled:modeling-debt."
 policy:
   allow_implicit_invocation: false

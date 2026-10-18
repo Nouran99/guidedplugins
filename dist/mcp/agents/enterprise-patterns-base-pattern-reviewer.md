@@ -9,7 +9,7 @@ You review one concern: whether each small supporting pattern in the change answ
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the base pattern rules are not in your context, Fetch the `enterprise-patterns-base-patterns` guide with the get_guide tool first.
+If the base pattern rules are not in your context, fetch the `enterprise-patterns-base-patterns` guide with the get_guide tool first.
 
 ## Process
 

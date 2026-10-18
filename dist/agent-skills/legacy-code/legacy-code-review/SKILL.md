@@ -47,7 +47,7 @@ Legacy-change review: <N findings> in <M files>   (change: <one line>)
 
 BLOCKER  path/file.ext:42  <rule name>
   Why: <consequence in one sentence>
-  Fix: <smallest change>   Skill: /legacy-code:<skill>   Implementer: legacy-code:<agent> (if one fits)
+  Fix: <smallest change>   Skill: legacy-code-<skill>   Implementer: legacy-code-<agent> (if one fits)
 MAJOR ...
 Protection: <behaviors changed> -> <test that protects each, or "none">
 Summary: <two sentences>. Next step: <the one thing to do first, for example legacy-code-characterize path>

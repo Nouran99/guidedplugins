@@ -1,6 +1,6 @@
 interface:
   display_name: "Place Code"
   short_description: "Classify a function, class or snippet statement by statement as business policy, orchestration, translation or infrastructure, and say which layer each part belongs in. Read-only; it reports where code belongs and edits nothing."
-  default_prompt: "Use $clean-architecture:place-code on file:line | function or class name | pasted snippet | empty for the current diff."
+  default_prompt: "Use $clean-architecture:place-code."
 policy:
   allow_implicit_invocation: false

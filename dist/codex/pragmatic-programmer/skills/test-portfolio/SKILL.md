@@ -1,6 +1,6 @@
 ---
 name: "test-portfolio"
-description: "Use when deciding which tests a change needs (unit, integration, error and recovery, resource exhaustion, performance), when a person found a bug and it needs a regression test, or when tests mirror internals. Speed and flakiness are `$pragmatic-programmer:feedback-loops`; explaining the defect is `debugging`."
+description: "Use when deciding which tests a change needs (unit, integration, error and recovery, resource exhaustion, performance), when a person found a bug and it needs a regression test, or when tests mirror internals. Speed and flakiness are `$pragmatic-programmer:feedback-loops`; explaining the defect is `$pragmatic-programmer:debugging`."
 ---
 
 # Test portfolio

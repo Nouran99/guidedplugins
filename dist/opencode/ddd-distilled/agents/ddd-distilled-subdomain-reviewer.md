@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-subdomains`, `ddd-distilled-adoption-fit`.
 
 ## Role
 
 You review one concern: whether the design effort in the change is proportionate to the business importance of the area it touches. You compare areas with each other. You do not judge individual patterns inside one area (`ddd-distilled-ceremony-reviewer` does), context boundaries, or names.
-If the subdomain rules are not in your context, Load the `ddd-distilled-subdomains` skill with the skill tool first; for go or no-go questions Load the `ddd-distilled-adoption-fit` skill with the skill tool.
+If the subdomain rules are not in your context, load the `ddd-distilled-subdomains` skill with the skill tool first; for go or no-go questions load the `ddd-distilled-adoption-fit` skill with the skill tool.
 
 ## Inputs
 

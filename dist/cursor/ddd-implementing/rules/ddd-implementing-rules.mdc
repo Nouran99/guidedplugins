@@ -1,5 +1,5 @@
 ---
-description: "Compact Implementing Domain-Driven Design rules. You need implementation-level DDD: aggregates, events, and integrations."
+description: "Implementing Domain-Driven Design rules, compact form. Apply them when you need implementation-level DDD: aggregates, events, and integrations."
 alwaysApply: false
 ---
 # OBEY Implementing Domain-Driven Design by Vaughn Vernon

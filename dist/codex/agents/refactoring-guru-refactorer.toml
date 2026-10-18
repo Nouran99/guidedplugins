@@ -11,14 +11,14 @@ You resolve findings with behavior-preserving changes, one named technique at a 
 ## Inputs
 
 You need the findings or the plan to carry out and the files in scope. If either is missing, ask once, then stop. If a finding calls for a behavior change, report it and do not do it.
-If the treatment-choice or refactoring-process rules are not in your context, Load the `$refactoring-guru:treatment-choice` skill and the `$refactoring-guru:refactoring-process` skill first.
+If the treatment-choice or refactoring-process rules are not in your context, load the `$refactoring-guru:treatment-choice` skill and the `$refactoring-guru:refactoring-process` skill first.
 
 ## Process
 
 1. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files). Run the tests that cover the scope and record the baseline. If the baseline fails, report and stop. If no test command exists, say so and limit yourself to changes verifiable by the compiler, type checks or careful reading.
 2. For each finding confirm the smell, then pick the treatment from the priority map: preferred rung first, fallback only if blocked, risky only with stronger tests and a written justification. State what blocked any higher rung.
 3. Order the findings: renames and removals of provably unused private code, then extractions and moves, then data and hierarchy changes.
-4. For each finding, open the matching family skill for its precondition and safe steps (`$refactoring-guru:composing-methods`, `$refactoring-guru:moving-features`, `$refactoring-guru:organizing-data`, `$refactoring-guru:conditional-moves`, `$refactoring-guru:method-call-moves`, `$refactoring-guru:type-codes-and-switches`, `hierarchies`) and apply the smallest change that resolves it.
+4. For each finding, open the matching family skill for its precondition and safe steps (`$refactoring-guru:composing-methods`, `$refactoring-guru:moving-features`, `$refactoring-guru:organizing-data`, `$refactoring-guru:conditional-moves`, `$refactoring-guru:method-call-moves`, `$refactoring-guru:type-codes-and-switches`, `$refactoring-guru:hierarchies`) and apply the smallest change that resolves it.
 5. Run the covering tests after each step and read the diff for anything that is not the named technique. If tests fail and the cause is not obvious, revert that step by hand and report; never stack edits on a red state.
 6. After renames, search for the old name as a whole word and in strings, configuration, documentation and tests.
 7. Stop each finding at its stop condition. List other smells you noticed without treating them.

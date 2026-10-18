@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-safety-net`.
 
@@ -29,7 +46,7 @@ You review one concern: whether a check exists that would fail if the refactorin
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed production files (count untracked files listed by `git status` as changed, because `git diff` does not show new files), or ask what is about to change. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files); you do not run it.
-If the safety-net rules are not in your context, Load the `refactoring-safety-net` skill with the skill tool first.
+If the safety-net rules are not in your context, load the `refactoring-safety-net` skill with the skill tool first.
 
 ## Process
 

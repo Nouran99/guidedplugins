@@ -51,4 +51,4 @@ Do not let details become the architecture. Business policy stays independent, d
 
 ## Companion skills (if installed)
 
-The Clean Architecture rules above are backed by skills from the `clean-architecture` plugin. Use `clean-architecture-review` to review a change, `clean-architecture-plan` before a non-trivial change, `clean-architecture-explain-rule` to look up a rule, `clean-architecture-checklist` before finishing, and `clean-architecture-principles` for the full rule set and routing table.
+The Clean Architecture rules above are backed by skills from the `clean-architecture` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `clean-architecture-<skill>` (for example `clean-architecture-review`); Codex mentions them as `$clean-architecture:<skill>` (for example `$clean-architecture:review`).

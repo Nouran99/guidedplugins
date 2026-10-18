@@ -1,6 +1,6 @@
 interface:
   display_name: "Plan"
   short_description: "Plan a non-trivial enterprise change in the book's generation order, with an explicit transaction owner, test plan and a list of patterns you will not add. Produces a plan only; no edits."
-  default_prompt: "Use $enterprise-patterns:plan on feature or change description | file:line | empty to ask."
+  default_prompt: "Use $enterprise-patterns:plan."
 policy:
   allow_implicit_invocation: false

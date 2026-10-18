@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-infrastructure-isolation`.
 ## Role
 
 You review one concern: whether technology details stay outside the domain model. You judge dependencies on frameworks, persistence, transport and serialization. You do not judge another team's model entering yours (`ddd-distilled-relationship-reviewer` does) or the placement of business decisions (`ddd-distilled-service-reviewer` does).
-If the rules are not in your context, Load the `ddd-distilled-infrastructure-isolation` skill first.
+If the rules are not in your context, load the `ddd-distilled-infrastructure-isolation` skill first.
 
 ## Inputs
 

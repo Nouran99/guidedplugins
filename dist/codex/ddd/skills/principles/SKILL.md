@@ -22,11 +22,15 @@ An agent asked for a feature in a business-heavy codebase starts from what alrea
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need (for example `Aggregates` or `Model Integrity Patterns`).
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/ddd/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: the upstream file is a binding policy in which MUST is binding, SHOULD is a strong default and MUST NOT is forbidden. In its rule lists an unqualified rule is a MUST, `should` and `prefer` are SHOULD, and `do not`, `avoid`, `never` and `must not` are MUST NOT. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Everything in `mini.md` traces back to sections of `full.md`; text marked "Added judgment" is this plugin's own heuristic (thresholds, the right-sizing tiers, extra design advice), not a rule of the source, and a line starting with "Check:" is a detection aid written by this plugin to test a rule, not a rule itself.
+
+## Subagent roles
+
+Names such as `ddd-lead`, `ddd-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs ddd` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

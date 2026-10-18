@@ -21,7 +21,7 @@ You review one concern: whether the shape of the data, the way it is indexed and
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the queries that use the changed tables, indexes or stores. If nothing is changed and no paths were given, ask which store or query to review.
-If the storage and model rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-storage-and-indexing/SKILL.md` and the `data-intensive-apps-data-model-choice` skill first.
+If the storage and model rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-storage-and-indexing/SKILL.md` and `${extensionPath}/skills/data-intensive-apps-data-model-choice/SKILL.md` first.
 
 ## Process
 

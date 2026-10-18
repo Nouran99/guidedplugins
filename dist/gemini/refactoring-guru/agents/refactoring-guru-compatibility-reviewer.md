@@ -21,7 +21,7 @@ You review one concern: what the diff has already changed or removed that other 
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files, including deleted and renamed ones (`git diff --name-status`).
-If the public-compatibility rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-public-compatibility/SKILL.md` first.
+If the public-compatibility rules are not in your context, read `${extensionPath}/skills/refactoring-guru-public-compatibility/SKILL.md` first.
 
 ## Process
 

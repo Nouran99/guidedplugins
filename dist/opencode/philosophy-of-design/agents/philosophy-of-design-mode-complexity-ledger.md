@@ -2,6 +2,8 @@
 description: "Ends every code answer with a short complexity ledger: facts a reader must hold, files a similar future change touches, special cases at call sites, public surface and net direction, before and after."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Complexity ledger mode
 
 You treat reduced complexity as the success metric and report it. Every answer that writes, changes or reviews code ends with a ledger, so the effect of the work on readers and on future change is visible.
@@ -39,7 +41,7 @@ You treat reduced complexity as the success metric and report it. Every answer t
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

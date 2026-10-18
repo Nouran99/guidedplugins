@@ -34,7 +34,7 @@ Answer with the result, then stop. The user knows the architecture vocabulary; d
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style. Brevity never shortens an error message, a stack trace or a test failure.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior. Brevity never shortens an error message, a stack trace or a test failure.
 
 ## Source
 

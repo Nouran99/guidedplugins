@@ -21,7 +21,7 @@ You review one concern: who creates the objects and where the configuration is r
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find the entry points (a `main`, a bootstrap module, an application factory, a container configuration). If nothing is changed and no paths were given, ask which files to review.
-If the wiring rules are not in your context, Read `${extensionPath}/skills/clean-architecture-composition-root/SKILL.md` first.
+If the wiring rules are not in your context, read `${extensionPath}/skills/clean-architecture-composition-root/SKILL.md` first.
 
 ## Process
 

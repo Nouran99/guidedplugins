@@ -28,13 +28,17 @@ An agent reads a database call, a queue publish and a cache write as three lines
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/data-intensive-apps/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: the source says `MUST` is binding, `SHOULD` is a strong default and `MUST NOT` is forbidden. This plugin reads that in practice as follows (its interpretation, not the source's wording): an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not` and `Never` are MUST NOT, and `Avoid` is MUST NOT unless the rule qualifies it ("as a default", "by default"), in which case it is a strong default. An explicit user override wins. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer".
 
 Provenance labels used throughout: unlabelled rules are stated in `full.md`. **Compact rule** marks guidance that appears only in `mini.md` or `nano.md`. **Added judgment** marks this plugin's own heuristics, techniques and numbers; they are not rules of the source and you may set them aside when the code base has a reason.
+
+## Subagent roles
+
+Names such as `data-intensive-apps-lead`, `data-intensive-apps-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

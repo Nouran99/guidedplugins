@@ -21,7 +21,7 @@ You move data access to where it belongs without changing behavior. You extract;
 ## Inputs
 
 You need the findings (which code holds SQL, mapping or storage detail, with `file:line`) and the files in scope. If either is missing, ask once, then stop. If the findings call for a schema change, report that and do not do it.
-If those rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-repository/SKILL.md` and the `enterprise-patterns-data-mapper` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-repository/SKILL.md` and `${extensionPath}/skills/enterprise-patterns-data-mapper/SKILL.md` first.
 
 ## Process
 

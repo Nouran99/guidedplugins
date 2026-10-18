@@ -1,6 +1,6 @@
 interface:
   display_name: "Choose Structure"
   short_description: "Decide whether a large model needs a guiding large-scale structure and which, with governance and a review trigger, using the rule set's restraint: minimal, evolving, domain-specific."
-  default_prompt: "Use $ddd:choose-structure on area or system to structure | proposed structure to evaluate | empty to assess the repository root."
+  default_prompt: "Use $ddd:choose-structure."
 policy:
   allow_implicit_invocation: false

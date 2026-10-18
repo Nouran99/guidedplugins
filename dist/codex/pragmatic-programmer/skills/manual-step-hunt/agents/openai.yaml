@@ -1,6 +1,6 @@
 interface:
   display_name: "Manual Step Hunt"
-  short_description: "Hunt for manual rituals in a forked context: step lists in docs, local commands that differ from CI, unscripted release steps and hidden environment assumptions, with the script that would replace each, in at most 40 lines."
-  default_prompt: "Use $pragmatic-programmer:manual-step-hunt on directory | empty for the repository root."
+  short_description: "Hunt for manual rituals: step lists in docs, local commands that differ from CI, unscripted release steps and hidden environment assumptions, with the script that would replace each, in at most 40 lines."
+  default_prompt: "Use $pragmatic-programmer:manual-step-hunt."
 policy:
   allow_implicit_invocation: false

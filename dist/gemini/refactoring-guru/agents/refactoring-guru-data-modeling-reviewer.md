@@ -21,7 +21,7 @@ You review one concern: whether values that carry a concept are modeled as one, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files.
-If the data-smells or organizing-data rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-data-smells/SKILL.md` and the `refactoring-guru-organizing-data` skill first.
+If the data-smells or organizing-data rules are not in your context, read `${extensionPath}/skills/refactoring-guru-data-smells/SKILL.md` and `${extensionPath}/skills/refactoring-guru-organizing-data/SKILL.md` first.
 
 ## Process
 

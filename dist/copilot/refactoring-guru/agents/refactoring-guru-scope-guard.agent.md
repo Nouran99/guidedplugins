@@ -14,7 +14,7 @@ You review one concern: whether the refactoring in the diff stayed inside what w
 ## Inputs
 
 Use the request and plan you were given (the smell, the technique, the stop condition). If there is none, ask once for the request or infer it from the task text and mark it inferred. Take the diff from `git diff` and `git status` unless paths were given.
-If the stop-and-defer or treatment-choice rules are not in your context, Load the `refactoring-guru-stop-and-defer` skill and the `refactoring-guru-treatment-choice` skill first.
+If the stop-and-defer or treatment-choice rules are not in your context, load the `refactoring-guru-stop-and-defer` skill and the `refactoring-guru-treatment-choice` skill first.
 
 ## Process
 

@@ -10,7 +10,7 @@ You review one concern: whether the change stayed inside what was asked, with cl
 
 You need the request. Take it from the prompt you were given; otherwise from the branch name, the latest commit message or the issue text mentioned in them (`git log -n 5`, `git branch --show-current`). If you cannot establish the request, say so and ask for it; do not guess.
 The change is `git diff` plus `git diff --staged`, or the range you were given.
-If the refactoring rules are not in your context, Fetch the `clean-code-refactoring-steps` guide with the get_guide tool first.
+If the refactoring rules are not in your context, fetch the `clean-code-refactoring-steps` guide with the get_guide tool first.
 
 ## Process
 

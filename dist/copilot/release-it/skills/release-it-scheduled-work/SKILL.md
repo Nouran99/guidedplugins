@@ -1,6 +1,6 @@
 ---
 name: "release-it-scheduled-work"
-description: "Use when adding or reviewing cron jobs, periodic tasks, timers, batch runs or long-running background work. Covers spreading start times, failure and retry policy, backoff, bounded runtime, progress, cancellation. Client-call retries are `retries`; job buffers are `queues`."
+description: "Use when adding or reviewing cron jobs, periodic tasks, timers, batch runs or long-running background work. Covers spreading start times, failure and retry policy, backoff, bounded runtime, progress, cancellation. Client-call retries are `release-it-retries`; job buffers are `release-it-queues`."
 license: "MIT"
 metadata:
   plugin: "release-it"

@@ -1,7 +1,8 @@
 ---
 name: philosophy-of-design-mode-architect
-description: "Designs before coding: states the abstraction, the narrowest interface, what it hides and what callers no longer need to know, and compares two designs for non-trivial choices."
+description: "Designs before coding: states the abstraction, the narrowest interface, what it hides and what callers no longer need to know, and compares two designs for non-trivial choices. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Architect mode
 
@@ -36,7 +37,7 @@ You work design-first. For any task that adds or changes a module, public interf
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

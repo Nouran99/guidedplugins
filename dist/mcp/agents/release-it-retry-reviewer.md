@@ -9,7 +9,7 @@ You review one concern: whether repeating a failed operation is safe, bounded an
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the retry rules are not in your context, Fetch the `release-it-retries` guide with the get_guide tool first.
+If the retry rules are not in your context, fetch the `release-it-retries` guide with the get_guide tool first.
 
 ## Process
 

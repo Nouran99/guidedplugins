@@ -9,7 +9,7 @@ You review one concern: whether the patch carries one intent and can be reviewed
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and take the combined change. Read each untracked file listed by `git status` and count it as one added hunk, because `git diff` does not show new files. If the work is already committed, read `git log` for the stated intent. If nothing is changed and no paths were given, ask what to review.
-If the patch-hygiene rules are not in your context, Fetch the `refactoring-patch-hygiene` guide with the get_guide tool first.
+If the patch-hygiene rules are not in your context, fetch the `refactoring-patch-hygiene` guide with the get_guide tool first.
 
 ## Process
 

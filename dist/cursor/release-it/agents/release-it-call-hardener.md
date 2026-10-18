@@ -13,7 +13,7 @@ You change outbound call sites so they cannot wait forever or repeat unsafely: a
 ## Inputs
 
 You need the findings to resolve (from `release-it-timeout-reviewer`, `release-it-retry-reviewer`, `release-it-data-boundary-reviewer`, `release-it-review` or the proposal of `release-it-call-chain-budget`) and the call sites or files in scope. If either is missing, ask once, then stop.
-If the timeout and retry rules are not in your context, Load the `release-it-timeouts` skill and the `release-it-retries` skill first.
+If the timeout and retry rules are not in your context, load the `release-it-timeouts` skill and the `release-it-retries` skill first.
 
 ## Process
 

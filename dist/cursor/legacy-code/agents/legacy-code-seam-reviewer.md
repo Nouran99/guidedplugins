@@ -13,7 +13,7 @@ You review one concern: the seams this change introduces or relies on. Is each t
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the seam rules are not in your context, Load the `legacy-code-seams` skill first, and the `legacy-code-last-resort-seams` skill when a subclass, build, import or probe seam appears.
+If the seam rules are not in your context, load the `legacy-code-seams` skill first, and the `legacy-code-last-resort-seams` skill when a subclass, build, import or probe seam appears.
 
 ## Process
 

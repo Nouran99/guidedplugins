@@ -26,11 +26,15 @@ An agent writes the call, sees the test pass, and stops. The HTTP client keeps t
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/release-it/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: the source says `MUST` is binding, `SHOULD` is a strong default and `MUST NOT` is forbidden. An unqualified statement is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid`, `Never` and the anti-pattern lists are MUST NOT, and qualifiers such as "where practical" or "when appropriate" stay attached. Rules in this plugin's skills carry a tag: `[MUST]`, `[SHOULD]`, `[MUST NOT]` follow the source; `[Added judgment]` is this plugin's own heuristic or number (the source gives no timeout values, retry counts or pool sizes); `[Compact checklist]` is phrasing found only in `mini.md` or `nano.md`.
+
+## Subagent roles
+
+Names such as `release-it-lead`, `release-it-final-gate` and the `...-reviewer` roles in the routing table are subagents. The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

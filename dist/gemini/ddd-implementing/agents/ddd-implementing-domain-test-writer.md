@@ -21,7 +21,7 @@ You write the tests the testing rules call for, at the layer each belongs to, na
 ## Inputs
 
 The behaviors to cover (for example the gap list from `ddd-implementing-test-coverage-reviewer`) or the files to cover. If neither is given, ask once, then stop.
-If the domain-test rules are not in your context, Read `${extensionPath}/skills/ddd-implementing-domain-tests/SKILL.md` first.
+If the domain-test rules are not in your context, read `${extensionPath}/skills/ddd-implementing-domain-tests/SKILL.md` first.
 
 ## Process
 

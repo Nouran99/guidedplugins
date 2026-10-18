@@ -9,7 +9,7 @@ You review one concern: whether the control flow of each changed routine can be 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed routines. If nothing is changed and no paths were given, ask which files to review.
-If the rules are not in your context, Fetch the `code-complete-control-flow` guide with the get_guide tool and the `code-complete-statements-and-loops` skill first.
+If the rules are not in your context, fetch the `code-complete-control-flow` guide with the get_guide tool and the `code-complete-statements-and-loops` guide (get_guide) first.
 
 ## Process
 

@@ -1,7 +1,7 @@
 {
   "name": "code-complete",
   "version": "1.0.0",
-  "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+  "description": "Steve McConnell's Code Complete: skills and modes for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -24,7 +24,7 @@
   "interface": {
     "displayName": "Code Complete",
     "shortDescription": "You need disciplined implementation decisions on routines, control flow, and testing.",
-    "longDescription": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+    "longDescription": "Steve McConnell's Code Complete: skills and modes for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

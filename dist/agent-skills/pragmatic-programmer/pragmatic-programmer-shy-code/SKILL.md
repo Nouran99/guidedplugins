@@ -1,6 +1,6 @@
 ---
 name: "pragmatic-programmer-shy-code"
-description: "Use when code reaches through an object's internals (a.b().c().d()), needs calls in a fixed order (init before use), or a shared workspace is proposed. Covers Law of Demeter, temporal coupling and blackboards. Module-level ripple is `orthogonality`; mutable state is `pragmatic-programmer-shared-state`."
+description: "Use when code reaches through an object's internals (a.b().c().d()), needs calls in a fixed order (init before use), or a shared workspace is proposed. Covers Law of Demeter, temporal coupling and blackboards. Module-level ripple is `pragmatic-programmer-orthogonality`; mutable state is `pragmatic-programmer-shared-state`."
 license: "MIT"
 metadata:
   plugin: "pragmatic-programmer"

@@ -1,7 +1,8 @@
 ---
 name: ddd-distilled-mode-earned-pattern
-description: "Tags every tactical pattern it introduces with the reason it earns its cost, defaults to plain code, and lists the patterns considered and rejected."
+description: "Tags every tactical pattern it introduces with the reason it earns its cost, defaults to plain code, and lists the patterns considered and rejected. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Earned-pattern mode
 
@@ -28,7 +29,7 @@ You make the cost of ceremony visible. A tactical pattern appears in your output
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

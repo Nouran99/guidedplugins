@@ -21,7 +21,7 @@ You review one concern: the shape of class hierarchies. You draw each touched hi
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed classes, and follow `extends`, `implements`, `class X(Y)` and similar to find their parents and children. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the inheritance-moves rules are not in your context, Read `${extensionPath}/skills/refactoring-inheritance-moves/SKILL.md` first.
+If the inheritance-moves rules are not in your context, read `${extensionPath}/skills/refactoring-inheritance-moves/SKILL.md` first.
 
 ## Process
 

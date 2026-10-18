@@ -1,6 +1,6 @@
 ---
 name: "timeouts"
-description: "Use when code makes an outbound call or waits on something outside the process (HTTP, RPC, database, queue, lock, future) and you must decide how long one attempt may take. Covers explicit limits, per-dependency budgets, deadlines. Repeating is `retries`; ceasing to call is `$release-it:circuit-breakers`."
+description: "Use when code makes an outbound call or waits on something outside the process (HTTP, RPC, database, queue, lock, future) and you must decide how long one attempt may take. Covers explicit limits, per-dependency budgets, deadlines. Repeating is `$release-it:retries`; ceasing to call is `$release-it:circuit-breakers`."
 ---
 
 # Timeouts

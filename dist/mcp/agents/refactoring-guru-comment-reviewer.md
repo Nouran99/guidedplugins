@@ -9,7 +9,7 @@ You review one concern: for each comment in the changed code, whether it says wh
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; include comments within five lines of a changed line.
-If the explanatory-comments rules are not in your context, Fetch the `refactoring-guru-explanatory-comments` guide with the get_guide tool first.
+If the explanatory-comments rules are not in your context, fetch the `refactoring-guru-explanatory-comments` guide with the get_guide tool first.
 
 ## Process
 

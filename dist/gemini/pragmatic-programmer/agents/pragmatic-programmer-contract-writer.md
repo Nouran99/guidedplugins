@@ -21,7 +21,7 @@ You move assumptions that routines already rely on out of comments and caller fo
 ## Inputs
 
 You need the findings (routines with comment-only preconditions, repeated defensive checks in callers, nonsense return values) and the files in scope. If either is missing, ask once, then stop.
-If the contracts rules are not in your context, Read `${extensionPath}/skills/pragmatic-programmer-contracts/SKILL.md` first.
+If the contracts rules are not in your context, read `${extensionPath}/skills/pragmatic-programmer-contracts/SKILL.md` first.
 
 ## Process
 

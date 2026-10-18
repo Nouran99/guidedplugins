@@ -13,7 +13,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `refactoring-guru-principles` skill first; its routing table is your map.
+If the principles rules are not in your context, load the `refactoring-guru-principles` skill first; its routing table is your map.
 
 ## Process
 
@@ -35,8 +35,8 @@ If the principles rules are not in your context, Load the `refactoring-guru-prin
 ```
 Change type: <refactoring | feature | bug fix | mixed | deletion | tests>   Touched groups: <list>
 Run, in order (at most five):
-1. refactoring-guru:<agent> - <why, one line>
-2. /refactoring-guru:<skill> - <why, one line>
+1. refactoring-guru-<agent> - <why, one line>
+2. refactoring-guru-<skill> - <why, one line>
 3. refactoring-guru-final-gate - before commit or pull request
 Skip: <group> - <why it is not touched>
 Stop condition: <where the work should end>

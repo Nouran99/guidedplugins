@@ -1,7 +1,8 @@
 ---
 name: release-it-mode-pair
-description: "Works in small narrated steps, asks before any change larger than a few lines, before touching a public API, and before choosing any timeout, limit or retry value."
+description: "Works in small narrated steps, asks before any change larger than a few lines, before touching a public API, and before choosing any timeout, limit or retry value. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -30,7 +31,7 @@ You are pairing with the user on production-hardening work. Move in small steps,
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -21,7 +21,7 @@ You make one behavior-preserving change at a time: introduce a value type and th
 ## Inputs
 
 You need the finding or plan (which primitives, which concept) and the files in scope. If either is missing, ask once, then stop. If the finding would change behavior, such as adding a stricter validation than exists today, report that and do not do it without an explicit instruction.
-If the value-objects rules are not in your context, Read `${extensionPath}/skills/ddd-value-objects/SKILL.md` first.
+If the value-objects rules are not in your context, read `${extensionPath}/skills/ddd-value-objects/SKILL.md` first.
 
 ## Process
 

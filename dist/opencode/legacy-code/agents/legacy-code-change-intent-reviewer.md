@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `legacy-code-change-separation`, `legacy-code-rewrite-pressure`.
 
@@ -30,7 +47,7 @@ You review one concern: whether the patch is the right shape for a change in cod
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
 You need the request the change serves. Take it from the user's message, the branch name or `git log` messages; if you cannot tell, say so and judge only the internal shape.
-If the change-separation rules are not in your context, Load the `legacy-code-change-separation` skill with the skill tool first, and the `legacy-code-rewrite-pressure` skill when a replacement or sweep appears.
+If the change-separation rules are not in your context, load the `legacy-code-change-separation` skill with the skill tool first, and the `legacy-code-rewrite-pressure` skill when a replacement or sweep appears.
 
 ## Process
 

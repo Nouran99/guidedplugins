@@ -9,7 +9,7 @@ You review one concern: whether data and work are cut by the key that the common
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the code that issues the most frequent queries and transactions against the partitioned store. If nothing is changed and no paths were given, ask which store, topic or cluster to review.
-If the partitioning rules are not in your context, Fetch the `data-intensive-apps-partitioning-locality` guide with the get_guide tool first.
+If the partitioning rules are not in your context, fetch the `data-intensive-apps-partitioning-locality` guide with the get_guide tool first.
 
 ## Process
 

@@ -21,7 +21,7 @@ You review one concern: whether a change to a stored or transmitted contract sur
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then identify the contract files: migrations, schema definitions, ORM models mapped to stored columns, DTOs, message classes, enums and status constants, serializers and client generators. If nothing is changed and no paths were given, ask which contract to review.
-If the evolution rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-encoding-and-evolution/SKILL.md` first.
+If the evolution rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-encoding-and-evolution/SKILL.md` first.
 
 ## Process
 

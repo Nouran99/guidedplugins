@@ -21,7 +21,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-principles/SKILL.md` first; its routing table is your map.
+If the principles rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-principles/SKILL.md` first; its routing table is your map.
 
 ## Process
 
@@ -43,7 +43,7 @@ If the principles rules are not in your context, Read `${extensionPath}/skills/d
 Touched concerns: <list>   Change type: <feature | bug fix | migration | refactor | design question | other>
 Unanswered basics: <source of truth | consistency | failure behavior | evolution | state class, or none>
 Run, in order (at most five; data-intensive-apps-final-gate included when the work is about to be committed; implementers only when the user asked for changes):
-1. data-intensive-apps:<agent> or /data-intensive-apps:<skill> - <why, one line>
+1. data-intensive-apps-<agent> or data-intensive-apps-<skill> - <why, one line>
 2. ...
 5. data-intensive-apps-final-gate - before commit or pull request
 Skip: <concern> - <why it is not touched>, ...

@@ -14,7 +14,7 @@ You review one concern: how code reaches storage, and whether that path matches 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Load the `enterprise-patterns-repository` skill, the `enterprise-patterns-data-mapper` skill and the `enterprise-patterns-gateways-and-active-record` skill first.
+If those rules are not in your context, load the `enterprise-patterns-repository` skill, the `enterprise-patterns-data-mapper` skill and the `enterprise-patterns-gateways-and-active-record` skill first.
 
 ## Process
 

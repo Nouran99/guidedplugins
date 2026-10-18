@@ -12,7 +12,7 @@ You relocate existing business behavior so the model decides and the callers coo
 ## Inputs
 
 You need the findings (which rule, where it lives now) or the plan, and the files in scope. If either is missing, ask once, then stop. If moving a rule would change its result, report that and stop.
-If those rules are not in your context, Load the `ddd-entities` skill and the `ddd-domain-services` skill first.
+If those rules are not in your context, load the `ddd-entities` skill and the `ddd-domain-services` skill first.
 
 ## Process
 

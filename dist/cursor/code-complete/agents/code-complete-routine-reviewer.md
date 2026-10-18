@@ -13,7 +13,7 @@ You review one concern: whether each changed routine has one clear purpose, a na
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed routines. If nothing is changed and no paths were given, ask which files to review.
-If the routine-design rules are not in your context, Load the `code-complete-routine-design` skill first.
+If the routine-design rules are not in your context, load the `code-complete-routine-design` skill first.
 
 ## Process
 

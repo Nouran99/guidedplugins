@@ -13,7 +13,7 @@ You write tests only. You place each test at the level that owns the behavior an
 ## Inputs
 
 You need the behaviors to cover (from a diff, a finding or the user) and the project's test layout. If neither is given, run `git diff` and `git status` and take the changed production files. If there is nothing to cover, ask and stop.
-If the testing rules are not in your context, Load the `enterprise-patterns-testing-by-responsibility` skill first.
+If the testing rules are not in your context, load the `enterprise-patterns-testing-by-responsibility` skill first.
 
 ## Process
 

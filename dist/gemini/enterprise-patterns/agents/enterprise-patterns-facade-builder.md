@@ -21,7 +21,7 @@ You build the boundary and only the boundary: one coarse operation per consumer 
 ## Inputs
 
 You need the contract (operation, request, response, versioning and failure rules) or a finding that identifies the chatty or entity-shaped endpoints, plus the files in scope. If the contract is missing, ask once and suggest `enterprise-patterns-remote-contract`, then stop.
-If the remote boundary rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-remote-boundaries/SKILL.md` first.
+If the remote boundary rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-remote-boundaries/SKILL.md` first.
 
 ## Process
 

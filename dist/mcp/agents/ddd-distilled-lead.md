@@ -9,7 +9,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Fetch the `ddd-distilled-principles` guide with the get_guide tool first; its routing table is your map.
+If the principles rules are not in your context, fetch the `ddd-distilled-principles` guide with the get_guide tool first; its routing table is your map.
 
 ## Process
 
@@ -32,8 +32,8 @@ If the principles rules are not in your context, Fetch the `ddd-distilled-princi
 Touched concerns: <list>   Change type: <new behavior | change | bug fix | integration | tests | restructure>
 Gate: area=<...> context=<... | unknown> subdomain=<core | supporting | generic | unknown> modeling earned=<plain | values | entity | aggregate+events | translator>
 Run, in order (at most five):
-1. ddd-distilled:<agent> - <why, one line>
-2. /ddd-distilled:<skill> - <why, one line>
+1. ddd-distilled-<agent> - <why, one line>
+2. ddd-distilled-<skill> - <why, one line>
 ...
 Skip: <concern> - <why it is not touched>
 Unknowns for the user: <questions, or none>

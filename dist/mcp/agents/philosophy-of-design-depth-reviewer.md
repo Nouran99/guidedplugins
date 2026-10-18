@@ -9,7 +9,7 @@ You review one concern: whether each new or changed module carries its own weigh
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the deep-modules and pass-through-layers rules are not in your context, Fetch the `philosophy-of-design-deep-modules` guide with the get_guide tool and the `philosophy-of-design-pass-through-layers` skill first.
+If the deep-modules and pass-through-layers rules are not in your context, fetch the `philosophy-of-design-deep-modules` guide with the get_guide tool and the `philosophy-of-design-pass-through-layers` guide (get_guide) first.
 
 ## Process
 

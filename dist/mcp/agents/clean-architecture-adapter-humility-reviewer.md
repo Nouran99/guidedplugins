@@ -9,12 +9,12 @@ You review from the outside in: starting at each in-process adapter in scope, yo
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. Adapters are controllers, route handlers, endpoints, scheduled jobs that call the application, presenters, view models, mappers, serializers and gateway or repository implementations. If nothing is changed and no paths were given, ask which files to review.
-If the adapter rules are not in your context, Fetch the `clean-architecture-interface-adapters` guide with the get_guide tool first.
+If the adapter rules are not in your context, fetch the `clean-architecture-interface-adapters` guide with the get_guide tool first.
 
 ## Process
 
 1. List the adapters in scope and read each one completely.
-2. Split every adapter body into statements and classify each with the vocabulary of the `clean-architecture-place-code` skill, reduced to the three classes that occur in an adapter: translation (parse, map, serialize, choose a status code or screen), call (invoke a use case; the adapter's only share of orchestration), or decision (business policy: a branch whose condition a domain expert would call a rule: limits, tiers, eligibility, state, dates with business meaning). Detail mechanics that belong to the adapter, such as the SQL text or the driver call inside a gateway, are in place unless they encode a decision.
+2. Split every adapter body into statements and classify each with the vocabulary of the `clean-architecture-place-code` guide (get_guide), reduced to the three classes that occur in an adapter: translation (parse, map, serialize, choose a status code or screen), call (invoke a use case; the adapter's only share of orchestration), or decision (business policy: a branch whose condition a domain expert would call a rule: limits, tiers, eligibility, state, dates with business meaning). Detail mechanics that belong to the adapter, such as the SQL text or the driver call inside a gateway, are in place unless they encode a decision.
 3. Record every decision with `file:line` and what it compares. Structural validation (the field is present and numeric) is translation, not a decision.
 4. Check what each adapter holds: a controller whose constructor receives gateways or repositories instead of use cases is a layer bypass; a presenter with a store or database handle is reading persistence directly.
 5. Check gateway implementations. Their methods should be lookups and writes in domain terms. Methods named for a business decision, queries whose `where` clause encodes eligibility, and computed fields are decisions in persistence code.

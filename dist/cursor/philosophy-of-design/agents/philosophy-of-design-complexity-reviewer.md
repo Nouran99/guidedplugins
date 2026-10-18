@@ -13,7 +13,7 @@ You answer one question about a change: did it make the system easier or harder 
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status` and `git diff` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the complexity-symptoms rules are not in your context, Load the `philosophy-of-design-complexity-symptoms` skill first.
+If the complexity-symptoms rules are not in your context, load the `philosophy-of-design-complexity-symptoms` skill first.
 
 ## Process
 

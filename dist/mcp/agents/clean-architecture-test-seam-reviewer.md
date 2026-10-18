@@ -9,7 +9,7 @@ You review test placement, not test style. For each piece of policy in the chang
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed production and test files, and find the tests that import or exercise them. If nothing is changed and no paths were given, ask which files to review.
-If the testing rules are not in your context, Fetch the `clean-architecture-testing-seams` guide with the get_guide tool first.
+If the testing rules are not in your context, fetch the `clean-architecture-testing-seams` guide with the get_guide tool first.
 
 ## Process
 

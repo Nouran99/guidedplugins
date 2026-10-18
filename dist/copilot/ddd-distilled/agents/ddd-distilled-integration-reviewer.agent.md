@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-integration-styles`.
 ## Role
 
 You review one concern: whether each integration point uses a style that suits the business coupling and its failure semantics, and whether its contract is separate from the internal model. You judge the mechanism that crosses a boundary. You do not judge what is translated (`ddd-distilled-relationship-reviewer` does), event naming, payload shape or the carry-data versus query-back decision (`ddd-distilled-event-reviewer` does), or production resilience budgets such as timeouts and retry limits, which belong to the `release-it` plugin.
-If the rules are not in your context, Load the `ddd-distilled-integration-styles` skill first.
+If the rules are not in your context, load the `ddd-distilled-integration-styles` skill first.
 
 ## Inputs
 

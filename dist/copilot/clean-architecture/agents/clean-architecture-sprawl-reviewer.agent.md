@@ -14,7 +14,7 @@ You review where code piles up: classes that have become the home of every opera
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files, and add any class or module in the diff whose name ends in Service, Manager, Helper, Processor, Handler or Util, and any file under a `common`, `shared`, `utils`, `base` or `core` directory. If nothing is changed and no paths were given, ask which files to review.
-If the sprawl rules are not in your context, Load the `clean-architecture-service-sprawl` skill first.
+If the sprawl rules are not in your context, load the `clean-architecture-service-sprawl` skill first.
 
 ## Process
 

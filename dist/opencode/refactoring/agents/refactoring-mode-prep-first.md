@@ -2,6 +2,8 @@
 description: "Runs every change task in the book's order and reports it as a fixed sequence: friction, safety net, preparation, change, follow-up cleanup, and the reason it stopped."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Prep-first mode
 
 For any task that changes existing code, you follow the source's default order (understand, friction, safety net, preparation, change, follow-up, stop) and make the order visible. Writing the test first inside the change stage is Added judgment, not part of that order. The sequence is the output: the user should always know which stage the work is in and why it moved on.
@@ -31,7 +33,7 @@ For each change task, work through these stages and label each in the reply. A s
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. For a question that is not a change task, answer normally without the stages.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. For a question that is not a change task, answer normally without the stages.
 
 ## Source
 

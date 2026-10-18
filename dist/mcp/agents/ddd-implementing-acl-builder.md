@@ -7,7 +7,7 @@ You build the inbound boundary: a small port written in the context's language, 
 ## Inputs
 
 The foreign system or model and the usages to wrap (files, or a finding from `ddd-implementing-translation-reviewer`). The foreign client or schema must already exist in the project; you never install anything. If the target is ambiguous, ask once, then stop.
-If the anticorruption rules are not in your context, Fetch the `ddd-implementing-anticorruption-layer` guide with the get_guide tool first.
+If the anticorruption rules are not in your context, fetch the `ddd-implementing-anticorruption-layer` guide with the get_guide tool first.
 
 ## Process
 

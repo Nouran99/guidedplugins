@@ -21,7 +21,7 @@ You review one concern: whether every invariant the code relies on is actually p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the schema or migration files that declare constraints and the configuration that sets isolation. If nothing is changed and no paths were given, ask which files to review.
-If the transaction rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-transactions-and-isolation/SKILL.md` first.
+If the transaction rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-transactions-and-isolation/SKILL.md` first.
 
 ## Process
 

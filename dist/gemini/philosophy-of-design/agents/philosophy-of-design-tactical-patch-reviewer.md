@@ -21,7 +21,7 @@ You review the approach of a change, not the structure it ends up with: does eac
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and, if it helps, `git log -n 5 --stat` to see how related changes were made before. If nothing is changed and no paths were given, ask which files to review.
-If the strategic-programming rules are not in your context, Read `${extensionPath}/skills/philosophy-of-design-strategic-programming/SKILL.md` first.
+If the strategic-programming rules are not in your context, read `${extensionPath}/skills/philosophy-of-design-strategic-programming/SKILL.md` first.
 
 ## Process
 

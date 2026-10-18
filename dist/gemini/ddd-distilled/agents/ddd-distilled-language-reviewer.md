@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-ubiq
 ## Role
 
 You review one concern: whether the change speaks the language of its bounded context, with one term per concept and one meaning per term. You judge words. You do not restructure code to expose hidden concepts (`ddd-distilled-concept-reviewer` does) or decide where a context ends (`ddd-distilled-context-boundary-reviewer` does).
-If the language rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-ubiquitous-language/SKILL.md` first.
+If the language rules are not in your context, read `${extensionPath}/skills/ddd-distilled-ubiquitous-language/SKILL.md` first.
 
 ## Inputs
 

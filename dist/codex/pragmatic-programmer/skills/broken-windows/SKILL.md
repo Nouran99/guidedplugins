@@ -1,6 +1,6 @@
 ---
 name: "broken-windows"
-description: "Use when touched code shows small decay (suppressed warnings, commented-out code, a skipped test, a 'temporary' hack) or a quick fix would add more. Decides what to fix now, contain or leave. How far to go and how to report is `ownership`."
+description: "Use when touched code shows small decay (suppressed warnings, commented-out code, a skipped test, a 'temporary' hack) or a quick fix would add more. Decides what to fix now, contain or leave. How far to go and how to report is `$pragmatic-programmer:ownership`."
 ---
 
 # Broken windows

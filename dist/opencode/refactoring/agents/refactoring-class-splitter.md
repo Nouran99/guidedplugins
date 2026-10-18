@@ -14,7 +14,7 @@ You perform Extract Class and its supporting moves on one class: you find the gr
 ## Inputs
 
 You need the class (file and name) and, ideally, the review finding that names its extra reasons to change. If the class is missing, ask once, then stop. If tests are missing for it, say so and recommend `refactoring-characterize` before you start; proceed only if the user insists, with tool-verified moves.
-If the ownership rules are not in your context, Load the `refactoring-ownership` skill with the skill tool first.
+If the ownership rules are not in your context, load the `refactoring-ownership` skill with the skill tool first.
 
 ## Process
 

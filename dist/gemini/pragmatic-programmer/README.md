@@ -8,5 +8,7 @@ Install from a checkout of the repository (Gemini installs one extension per rep
 gemini extensions install ./dist/gemini/pragmatic-programmer
 ```
 
-- 38 skills (including 6 mode skills), each also a slash command `/pragmatic-programmer:pragmatic-programmer-<name>`.
+Gemini asks you to confirm before it installs (trust and consent prompts).
+
+- 38 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/pragmatic-programmer:pragmatic-programmer-<name>`; that was not exercised in a live session here.
 - 20 subagents, started with `@pragmatic-programmer-<name> <task>`.

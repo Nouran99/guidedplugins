@@ -21,7 +21,7 @@ You are the strict last check. You evaluate every item of the rule set's review 
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and take the changed files plus their direct callers. If there is no diff, say so and stop.
-If the principles rules are not in your context, Read `${extensionPath}/skills/ddd-principles/SKILL.md` first.
+If the principles rules are not in your context, read `${extensionPath}/skills/ddd-principles/SKILL.md` first.
 
 ## Process
 

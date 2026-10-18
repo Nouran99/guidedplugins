@@ -1,6 +1,6 @@
 interface:
   display_name: "Debug Session"
   short_description: "Walk one defect through reproduce, observe, isolate, explain, fix and verify with an evidence record. Stops at the explanation unless a fix is requested. Fixes with a regression test and never commits."
-  default_prompt: "Use $pragmatic-programmer:debug-session on symptom, failing test or error text | add 'and fix' to also fix | empty to ask."
+  default_prompt: "Use $pragmatic-programmer:debug-session."
 policy:
   allow_implicit_invocation: false

@@ -38,7 +38,7 @@ Code Complete review: <N findings> in <M files>   scope: <paths | ref | working 
 
 BLOCKER  path/file.ext:42  <rule name>   [source]
   Why: <consequence in one sentence>
-  Fix: <smallest change>   -> /code-complete:<skill>
+  Fix: <smallest change>   -> code-complete-<skill>
 MAJOR    path/other.ext:118  <rule name>   [judgment]
   Why: ...
   Fix: ...

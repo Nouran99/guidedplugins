@@ -1,6 +1,6 @@
 interface:
   display_name: "Plan"
   short_description: "Plan a change to existing DDD code: context, edit order, tests first, boundary and transaction decisions, hand-offs and stop conditions. Plans only."
-  default_prompt: "Use $ddd-implementing:plan on change request | issue text | empty to plan from the current diff."
+  default_prompt: "Use $ddd-implementing:plan."
 policy:
   allow_implicit_invocation: false

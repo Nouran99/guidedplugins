@@ -1,5 +1,5 @@
 ---
-description: "Compact Designing Data-Intensive Applications rules. Data ownership, event flows, or consistency semantics matter."
+description: "Designing Data-Intensive Applications rules, compact form. Apply them when data ownership, event flows, or consistency semantics matter."
 alwaysApply: false
 ---
 # OBEY Designing Data-Intensive Applications by Martin Kleppmann

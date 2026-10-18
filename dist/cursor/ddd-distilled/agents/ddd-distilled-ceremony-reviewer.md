@@ -9,7 +9,7 @@ Before you start, load these skills: `ddd-distilled-pattern-economy`.
 ## Role
 
 You review one concern: whether each tactical pattern in the change is earned, and whether any concept that needs a pattern lacks one. You judge patterns concept by concept inside an area, and you refer a primitive or flag that hides a rule to `ddd-distilled-concept-reviewer` instead of designing its replacement. You do not compare areas by importance (`ddd-distilled-subdomain-reviewer` does), and you do not review how well a pattern is implemented; sibling reviewers own that.
-If the pattern rules are not in your context, Load the `ddd-distilled-pattern-economy` skill first.
+If the pattern rules are not in your context, load the `ddd-distilled-pattern-economy` skill first.
 
 ## Inputs
 

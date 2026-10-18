@@ -38,7 +38,7 @@ Example:
   // before ...
   // after ...
 Exceptions: <what the book permits, plus any "Added judgment">
-Apply with: /legacy-code:<skill>   Verify with: legacy-code:<reviewer>
+Apply with: $legacy-code:<skill>   Verify with: legacy-code-<reviewer>
 ```
 
 ## Stop conditions

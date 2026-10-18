@@ -44,7 +44,7 @@ Beat  Who decides            Where (file:symbol)           Pressure
  ...
 
 Model pressure (ranked)
- 1. <concept or boundary change> -> /ddd:<skill>
+ 1. <concept or boundary change> -> $ddd:<skill>
  2. ...
 Verdict: the model <carries | partly carries | does not carry> this scenario.
 Next step: <one concrete action>

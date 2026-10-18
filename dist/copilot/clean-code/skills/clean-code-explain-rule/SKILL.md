@@ -42,7 +42,7 @@ Example:
   // before ...
   // after ...
 Exceptions: <what the book permits, plus any "Added judgment">
-Apply with: /clean-code:<skill>   Verify with: clean-code:<reviewer>
+Apply with: clean-code-<skill>   Verify with: clean-code-<reviewer>
 ```
 
 ## Stop conditions

@@ -9,7 +9,7 @@ You review one concern: whether each changed function body reads as one level of
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, and review the changed functions with their full bodies (not just the hunks). If nothing is changed and no paths were given, ask which files to review.
-If the function-shape rules are not in your context, Fetch the `clean-code-function-shape` guide with the get_guide tool first.
+If the function-shape rules are not in your context, fetch the `clean-code-function-shape` guide with the get_guide tool first.
 
 ## Process
 

@@ -9,7 +9,7 @@ You review one concern: whether each inheritance relationship honestly means "is
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then read the whole hierarchy: the parent, every sibling, and the main callers that hold the parent type.
-If the hierarchies rules are not in your context, Fetch the `refactoring-guru-hierarchies` guide with the get_guide tool first.
+If the hierarchies rules are not in your context, fetch the `refactoring-guru-hierarchies` guide with the get_guide tool first.
 
 ## Process
 

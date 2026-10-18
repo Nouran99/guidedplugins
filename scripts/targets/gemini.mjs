@@ -2,14 +2,21 @@
 // One extension per plugin: gemini-extension.json + skills/ (universal) + agents/ (strict Gemini schema).
 // Gemini installs one extension per repository from GitHub, so these install from a local path of a checkout.
 import {
-  DIST, agentBodyFor, bt, cleanDir, copyFile, flat, modeName, path, rewrite, writeFile, yaml,
+  DIST, agentBodyFor, bt, cleanDir, copyFile, flat, neutralText, path, rewriteDescription, writeFile, yaml,
 } from './core.mjs';
 import { emitFlatSkills, flatDialect } from './agent-skills.mjs';
 
 const TOOL = { Read: 'read_file', Grep: 'grep_search', Glob: 'glob', Bash: 'run_shell_command', Edit: 'replace', Write: 'write_file' };
 
-// Extension agents are hydrated, so ${extensionPath} resolves to the installed extension folder.
-const dialect = () => flatDialect({ agentRead: (p, n) => `Read ${bt(`\${extensionPath}/skills/${flat(p.slug, n)}/SKILL.md`)}` });
+// Extension agents are hydrated, so ${extensionPath} resolves to the installed extension folder. A Gemini subagent has no activate_skill
+// tool, so every mention of a skill or rule file must be a path it can read.
+const dialect = () => flatDialect({
+  agentRead: (p, n) => `Read ${bt(`\${extensionPath}/skills/${flat(p.slug, n)}/SKILL.md`)}`,
+  agentSkill: (p, n) => ({ path: `\${extensionPath}/skills/${flat(p.slug, n)}/SKILL.md` }),
+  agentSkillsDir: (p) => ({ path: '\${extensionPath}/skills/' }),
+  agentRefFile: (p, r) => ({ path: `\${extensionPath}/skills/${flat(p.slug, 'principles')}/references/${r}.md` }),
+  agentDesignFile: (p) => ({ path: `\${extensionPath}/skills/${flat(p.slug, 'principles')}/references/design.md` }),
+});
 
 export function geminiTools(tools) {
   const set = new Set(['list_directory']);
@@ -29,14 +36,14 @@ export function buildGemini(model) {
     const roNote = 'Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Gemini CLI cannot enforce this for a subagent that has a shell, so you are responsible for keeping to it.';
     for (const a of plugin.agents) {
       const body = agentBodyFor(plugin, a, d, { preloadLine, readOnlyNote: roNote });
-      const fm = ['---', 'kind: local', `name: ${flat(plugin.slug, a.name)}`, `description: ${yaml(rewrite(a.fm.description, plugin, d, { from: 'agent' }))}`,
+      const fm = ['---', 'kind: local', `name: ${flat(plugin.slug, a.name)}`, `description: ${yaml(rewriteDescription(a.fm.description, plugin, d, { from: 'agent' }))}`,
         'tools:', ...geminiTools(a.tools).map((t) => `  - ${t}`), `max_turns: ${a.fm.maxTurns}`, '---', ''].join('\n');
       writeFile(path.join(root, 'agents', `${flat(plugin.slug, a.name)}.md`), fm + body);
     }
     writeFile(path.join(root, 'gemini-extension.json'), JSON.stringify({
       name: plugin.slug,
       version: plugin.manifest.version,
-      description: plugin.manifest.description,
+      description: neutralText(plugin.manifest.description),
     }, null, 2));
     copyFile(path.join(plugin.dir, 'LICENSE'), path.join(root, 'LICENSE'));
     writeFile(path.join(root, 'NOTICE.md'), plugin.notice ?? '');
@@ -50,7 +57,9 @@ Install from a checkout of the repository (Gemini installs one extension per rep
 gemini extensions install ./dist/gemini/${plugin.slug}
 \`\`\`
 
-- ${plugin.skills.length + plugin.styles.length} skills (including ${plugin.styles.length} mode skills), each also a slash command \`/${plugin.slug}:${plugin.slug}-<name>\`.
+Gemini asks you to confirm before it installs (trust and consent prompts).
+
+- ${plugin.skills.length + plugin.styles.length} skills (including ${plugin.styles.length} mode skills). Gemini's documentation says each is also a slash command \`/${plugin.slug}:${plugin.slug}-<name>\`; that was not exercised in a live session here.
 - ${plugin.agents.length} subagents, started with \`@${plugin.slug}-<name> <task>\`.
 `);
   }

@@ -21,7 +21,7 @@ You turn one breaking contract change into a sequence of releases that are each 
 ## Inputs
 
 You need the contract change, the compatibility matrix or review that showed the break, and the files in scope. If any is missing, ask once, then stop. If the change touches a public API or an external consumer you cannot see, say so and stop for a decision.
-If the evolution rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-encoding-and-evolution/SKILL.md` first.
+If the evolution rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-encoding-and-evolution/SKILL.md` first.
 
 ## Process
 

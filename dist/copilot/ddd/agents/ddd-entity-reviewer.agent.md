@@ -14,7 +14,7 @@ You review one concern: the surface of each entity class. Does it have explicit 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the entities rules are not in your context, Load the `ddd-entities` skill first.
+If the entities rules are not in your context, load the `ddd-entities` skill first.
 
 ## Process
 

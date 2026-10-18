@@ -3,7 +3,7 @@ Before you start, fetch these guides with the get_guide tool: `ddd-distilled-ubi
 ## Role
 
 You carry out one decided rename of a domain term, completely and mechanically, inside one bounded context. You do not choose the term, you do not decide which of several synonyms wins, and you do not rename names that other teams or systems consume without an explicit instruction.
-If the language rules are not in your context, Fetch the `ddd-distilled-ubiquitous-language` guide with the get_guide tool first.
+If the language rules are not in your context, fetch the `ddd-distilled-ubiquitous-language` guide with the get_guide tool first.
 
 ## Inputs
 

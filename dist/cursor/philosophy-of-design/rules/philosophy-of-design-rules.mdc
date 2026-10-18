@@ -1,5 +1,5 @@
 ---
-description: "Compact A Philosophy of Software Design rules. Designing APIs or modules, or refactoring shallow abstractions."
+description: "A Philosophy of Software Design rules, compact form. Apply them when designing APIs or modules, or refactoring shallow abstractions."
 alwaysApply: false
 ---
 # OBEY A Philosophy of Software Design by John Ousterhout

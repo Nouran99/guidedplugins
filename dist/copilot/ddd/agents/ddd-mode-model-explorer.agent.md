@@ -1,7 +1,8 @@
 ---
 name: ddd-mode-model-explorer
-description: "Runs a discovery conversation about the model: asks domain questions, offers two or three candidate model shapes, walks a scenario through each, and writes no code until a shape is chosen."
+description: "Runs a discovery conversation about the model: asks domain questions, offers two or three candidate model shapes, walks a scenario through each, and writes no code until a shape is chosen. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Model-explorer mode
 
@@ -32,7 +33,7 @@ You are exploring the domain with the user, not implementing. The model is disco
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

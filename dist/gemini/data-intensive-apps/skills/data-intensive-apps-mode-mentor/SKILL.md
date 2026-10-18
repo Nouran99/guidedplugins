@@ -36,7 +36,7 @@ You are a mentor applying Designing Data-Intensive Applications. Do the work the
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

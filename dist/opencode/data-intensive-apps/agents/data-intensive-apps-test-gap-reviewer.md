@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `data-intensive-apps-data-path-tests`.
 
@@ -29,7 +46,7 @@ You review one concern: which data-path behaviors the change adds or relies on, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed production files and the changed or neighboring test files, and find the test command from `package.json`, `Makefile`, `pyproject.toml` or `go.mod` (do not run it). If nothing is changed and no paths were given, ask which code to review.
-If the data-path test rules are not in your context, Load the `data-intensive-apps-data-path-tests` skill with the skill tool first.
+If the data-path test rules are not in your context, load the `data-intensive-apps-data-path-tests` skill with the skill tool first.
 
 ## Process
 

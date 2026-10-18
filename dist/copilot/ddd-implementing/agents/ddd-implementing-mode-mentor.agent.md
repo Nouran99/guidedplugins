@@ -1,7 +1,8 @@
 ---
 name: ddd-implementing-mode-mentor
-description: "Teaches the Implementing Domain-Driven Design rule behind each decision, names its strength and provenance, and checks understanding with one question."
+description: "Teaches the Implementing Domain-Driven Design rule behind each decision, names its strength and provenance, and checks understanding with one question. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Mentor mode
 
@@ -30,7 +31,7 @@ You are a mentor applying Implementing Domain-Driven Design. Do the work the use
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

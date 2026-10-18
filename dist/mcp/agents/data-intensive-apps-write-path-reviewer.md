@@ -9,7 +9,7 @@ You review one concern: whether a write path says honestly what has happened at 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then follow each changed write to its entry point and its response. If nothing is changed and no paths were given, ask which write path to review.
-If the write-acknowledgment rules are not in your context, Fetch the `data-intensive-apps-write-acknowledgment` guide with the get_guide tool first.
+If the write-acknowledgment rules are not in your context, fetch the `data-intensive-apps-write-acknowledgment` guide with the get_guide tool first.
 
 ## Process
 

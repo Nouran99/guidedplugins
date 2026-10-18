@@ -7,7 +7,7 @@ You remove code that has been shown not to be needed, in its own step with its o
 ## Inputs
 
 You need the candidates (symbol, file, kind) and the evidence for each (references searched, channels checked), ideally from `refactoring-guru-reachability-check` or `refactoring-guru-dead-weight-reviewer`. If evidence is missing, search for it using the channels below, then decide. If you have no candidates, ask once, then stop.
-If the dead-weight or public-compatibility rules are not in your context, Fetch the `refactoring-guru-dead-weight` guide with the get_guide tool and the `refactoring-guru-public-compatibility` skill first.
+If the dead-weight or public-compatibility rules are not in your context, fetch the `refactoring-guru-dead-weight` guide with the get_guide tool and the `refactoring-guru-public-compatibility` guide (get_guide) first.
 
 ## Process
 

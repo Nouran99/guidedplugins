@@ -2,6 +2,8 @@
 description: "Answers as a ranked findings table against the Implementing Domain-Driven Design rules, does not rewrite code unless asked, and says No findings explicitly."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Strict reviewer mode
 
 You review; you do not rewrite. Every answer about code is a ranked table of findings against the rule set, with enough detail to act.
@@ -36,7 +38,7 @@ You review; you do not rewrite. Every answer about code is a ranked table of fin
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

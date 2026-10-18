@@ -9,7 +9,7 @@ You review one concern: the depth of the edit. When the change adds behavior to 
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the sprout and wrap rules are not in your context, Fetch the `legacy-code-sprout-and-wrap` guide with the get_guide tool first.
+If the sprout and wrap rules are not in your context, fetch the `legacy-code-sprout-and-wrap` guide with the get_guide tool first.
 
 ## Process
 

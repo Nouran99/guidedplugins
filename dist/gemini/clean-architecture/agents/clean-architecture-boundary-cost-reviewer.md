@@ -21,7 +21,7 @@ You are the reviewer who may say a boundary should not exist, and who may say on
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files; boundaries are visible as new interfaces, layers or directories, package or module splits, queues and services. If nothing is changed and no paths were given, ask which files to review.
-If the boundary rules are not in your context, Read `${extensionPath}/skills/clean-architecture-boundary-economics/SKILL.md` first.
+If the boundary rules are not in your context, read `${extensionPath}/skills/clean-architecture-boundary-economics/SKILL.md` first.
 
 ## Process
 

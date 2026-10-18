@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-explicit-concepts`, `ddd-distilled-value-objects`.
 
 ## Role
 
 You review one concern: business ideas that exist in the code only as primitives, flags, status codes, enums, booleans or helper methods. You propose the named concept that should carry each one. You look for missing structure. You do not judge existing entities (`ddd-distilled-entity-reviewer` does), existing words (`ddd-distilled-language-reviewer` does), or whether a pattern is worth its cost overall (`ddd-distilled-ceremony-reviewer` does).
-If the rules are not in your context, Load the `ddd-distilled-explicit-concepts` skill with the skill tool and the `ddd-distilled-value-objects` skill first.
+If the rules are not in your context, load the `ddd-distilled-explicit-concepts` skill with the skill tool and the `ddd-distilled-value-objects` skill first.
 
 ## Inputs
 

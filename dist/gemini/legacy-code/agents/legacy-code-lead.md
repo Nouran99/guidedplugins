@@ -21,7 +21,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text, paths or base ref (read as `git diff <base>...HEAD`) you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and work from the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`. If there is no diff, no base and no task, ask what to route and stop.
-If the principles rules are not in your context, Read `${extensionPath}/skills/legacy-code-principles/SKILL.md` first; its routing table is your map.
+If the principles rules are not in your context, read `${extensionPath}/skills/legacy-code-principles/SKILL.md` first; its routing table is your map.
 
 ## Process
 
@@ -43,9 +43,9 @@ If the principles rules are not in your context, Read `${extensionPath}/skills/l
 ```
 Obstacles touched: <list>   Change type: <behavior | bug fix | new capability | testability | review | rewrite proposal | understanding | cleanup>
 Run, in order (at most five in total, implementers and gate included):
-1. legacy-code:<agent> or /legacy-code:<skill> - <why, one line>
+1. legacy-code-<agent> or legacy-code-<skill> - <why, one line>
 2. ...
-N. <an implementer, only if changes were requested> legacy-code:<agent> - <which finding or barrier it takes>
+N. <an implementer, only if changes were requested> legacy-code-<agent> - <which finding or barrier it takes>
 Skip: <obstacle> - <why it is not touched>, ...
 Risk: low | medium | high - <one sentence on what a wrong edit costs here>
 ```

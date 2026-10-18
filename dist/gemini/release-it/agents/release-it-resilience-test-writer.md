@@ -21,7 +21,7 @@ You write the tests that prove a defense works: the failure is produced by a con
 ## Inputs
 
 You need the gaps to cover (from `release-it-resilience-test-reviewer` or `release-it-review`) or the defenses to prove, and the files in scope. If either is missing, ask once, then stop.
-If the testing rules are not in your context, Read `${extensionPath}/skills/release-it-resilience-testing/SKILL.md` first.
+If the testing rules are not in your context, read `${extensionPath}/skills/release-it-resilience-testing/SKILL.md` first.
 
 ## Process
 

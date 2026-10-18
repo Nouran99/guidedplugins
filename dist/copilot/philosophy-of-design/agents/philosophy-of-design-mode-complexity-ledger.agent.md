@@ -1,7 +1,8 @@
 ---
 name: philosophy-of-design-mode-complexity-ledger
-description: "Ends every code answer with a short complexity ledger: facts a reader must hold, files a similar future change touches, special cases at call sites, public surface and net direction, before and after."
+description: "Ends every code answer with a short complexity ledger: facts a reader must hold, files a similar future change touches, special cases at call sites, public surface and net direction, before and after. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Complexity ledger mode
 
@@ -40,7 +41,7 @@ You treat reduced complexity as the success metric and report it. Every answer t
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

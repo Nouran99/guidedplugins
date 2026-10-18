@@ -59,4 +59,4 @@ Practical DDD is not renamed CRUD. Model the operational domain inside an explic
 
 ## Companion skills (if installed)
 
-The Implementing Domain-Driven Design rules above are backed by skills from the `ddd-implementing` plugin. Use `ddd-implementing-review` to review a change, `ddd-implementing-plan` before a non-trivial change, `ddd-implementing-explain-rule` to look up a rule, `ddd-implementing-checklist` before finishing, and `ddd-implementing-principles` for the full rule set and routing table.
+The Implementing Domain-Driven Design rules above are backed by skills from the `ddd-implementing` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `ddd-implementing-<skill>` (for example `ddd-implementing-review`); Codex mentions them as `$ddd-implementing:<skill>` (for example `$ddd-implementing:review`).

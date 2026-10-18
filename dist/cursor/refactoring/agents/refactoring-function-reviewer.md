@@ -13,7 +13,7 @@ You review one concern: the inside of changed functions. You decide where a func
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and review the changed functions with their full bodies, not just the hunks. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the function-bodies rules are not in your context, Load the `refactoring-function-bodies` skill first.
+If the function-bodies rules are not in your context, load the `refactoring-function-bodies` skill first.
 
 ## Process
 

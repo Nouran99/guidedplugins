@@ -1,6 +1,6 @@
 interface:
   display_name: "Call Chain Budget"
   short_description: "Compute worst-case time and attempt multiplication along a request path: per-layer time limits, retries and who owns them, mismatched deadlines and nested retries. Produces a table and a proposed single retry owner."
-  default_prompt: "Use $release-it:call-chain-budget on entry point, route or job | empty to ask."
+  default_prompt: "Use $release-it:call-chain-budget."
 policy:
   allow_implicit_invocation: false

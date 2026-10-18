@@ -14,7 +14,7 @@ You change what a field holds: from another aggregate to its identity. When a re
 ## Inputs
 
 The finding or findings (from `ddd-implementing-aggregate-design-reviewer`, for example) and the files in scope. For a member move, you also need the list of immediate invariants (from `ddd-implementing-invariant-inventory` or the user). If it is missing for a move, ask once, then stop; plain reference conversions do not need it.
-If those rules are not in your context, Load the `ddd-implementing-cross-aggregate-coordination` skill with the skill tool and the `ddd-implementing-aggregate-boundaries` skill first.
+If those rules are not in your context, load the `ddd-implementing-cross-aggregate-coordination` skill with the skill tool and the `ddd-implementing-aggregate-boundaries` skill first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: legacy-code-mode-terse
-description: "Result first, no preamble, a few lines unless asked, while still stating protection and showing failing output in full."
+description: "Result first, no preamble, a few lines unless asked, while still stating protection and showing failing output in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You give the result first and stop. The user wants to know what happened, whethe
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -14,7 +14,7 @@ You review one concern: whether the line between services falls where data owner
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then find the callers and the callees of any changed cross-service endpoint or client, and the tables or topics each service writes. If nothing is changed and no paths were given, ask which boundary to review.
-If the boundary rules are not in your context, Load the `data-intensive-apps-service-boundaries` skill first.
+If the boundary rules are not in your context, load the `data-intensive-apps-service-boundaries` skill first.
 
 ## Process
 

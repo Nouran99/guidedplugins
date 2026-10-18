@@ -21,7 +21,7 @@ You review one concern: whether a claim about speed or scale rests on numbers, p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files and any design notes, pull request text or benchmark output in the repository, and find the metrics and dashboards the code emits. If nothing is changed and no claim is given, ask which claim to review.
-If the load and latency rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-load-and-latency/SKILL.md` first.
+If the load and latency rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-load-and-latency/SKILL.md` first.
 
 ## Process
 

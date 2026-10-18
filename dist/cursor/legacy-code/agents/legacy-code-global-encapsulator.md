@@ -13,7 +13,7 @@ You take a global access path that exists in many callers and shrink it step by 
 ## Inputs
 
 You need the finding (from `legacy-code-static-global-reviewer`, `legacy-code-find-seam` or `legacy-code-audit`) naming the global, and the area to migrate. They must be in your prompt: you cannot see the conversation that delegated to you. If either is missing, ask once, then stop.
-If the static-and-global rules are not in your context, Load the `legacy-code-static-and-global` skill first.
+If the static-and-global rules are not in your context, load the `legacy-code-static-and-global` skill first.
 
 ## Process
 

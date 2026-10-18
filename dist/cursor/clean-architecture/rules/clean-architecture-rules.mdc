@@ -1,5 +1,5 @@
 ---
-description: "Compact Clean Architecture rules. You need code that resists framework, database, and UI churn."
+description: "Clean Architecture rules, compact form. Apply them when you need code that resists framework, database, and UI churn."
 alwaysApply: false
 ---
 # OBEY Clean Architecture by Robert C. Martin

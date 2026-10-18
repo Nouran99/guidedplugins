@@ -14,7 +14,7 @@ You review one concern: whether a method, class or field set has outgrown the si
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then read the whole of each changed method or class, not only the changed lines.
-If the size-smells rules are not in your context, Load the `refactoring-guru-size-smells` skill first.
+If the size-smells rules are not in your context, load the `refactoring-guru-size-smells` skill first.
 
 ## Process
 

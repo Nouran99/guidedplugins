@@ -7,25 +7,42 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `ddd-distilled-bounded-contexts`.
 
 ## Role
 
 You review one concern: whether every model in the change lives in a named bounded context, whether the code structure reflects that context, and whether any type is shared across contexts that mean different things by it. You look at the inside of contexts and at shared types. You do not judge the relationship or translation at an edge between two contexts (`ddd-distilled-relationship-reviewer` does) or the words themselves (`ddd-distilled-language-reviewer` does).
-If the context rules are not in your context, Load the `ddd-distilled-bounded-contexts` skill with the skill tool first.
+If the context rules are not in your context, load the `ddd-distilled-bounded-contexts` skill with the skill tool first.
 
 ## Inputs
 

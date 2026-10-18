@@ -9,7 +9,7 @@ You are the strict last check. You evaluate every item of the rule set's review 
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and take the changed files plus their direct callers. If there is no diff, say so and stop.
-If the principles rules are not in your context, Fetch the `ddd-principles` guide with the get_guide tool first.
+If the principles rules are not in your context, fetch the `ddd-principles` guide with the get_guide tool first.
 
 ## Process
 

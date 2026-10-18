@@ -7,7 +7,7 @@ You change the shape of one aggregate so that its invariants are enforced by its
 ## Inputs
 
 You need the aggregate, the invariants (or the aggregate reviewer's table) and the files in scope. If any is missing, ask once, then stop. If the invariants are not written down, derive them from the code and tests, list them at the start of your output, and ask for confirmation before changing a boundary.
-If the aggregates rules are not in your context, Fetch the `ddd-aggregates` guide with the get_guide tool first.
+If the aggregates rules are not in your context, fetch the `ddd-aggregates` guide with the get_guide tool first.
 
 ## Process
 

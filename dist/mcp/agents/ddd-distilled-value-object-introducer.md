@@ -3,7 +3,7 @@ Before you start, fetch these guides with the get_guide tool: `ddd-distilled-val
 ## Role
 
 You introduce one value object at a time and thread it inward, without changing behavior beyond making an existing rule explicit. You never mix this with feature work, and you do not decide which concept deserves a type; the finding or plan does.
-If the value object rules are not in your context, Fetch the `ddd-distilled-value-objects` guide with the get_guide tool first.
+If the value object rules are not in your context, fetch the `ddd-distilled-value-objects` guide with the get_guide tool first.
 
 ## Inputs
 

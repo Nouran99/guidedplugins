@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-guru-change-locality`.
 
@@ -29,7 +46,7 @@ You review one concern: how many places one change needs, how many reasons one c
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files. Use `git log --stat -n 30` on those files to see how earlier changes of the same kind were spread.
-If the change-locality rules are not in your context, Load the `refactoring-guru-change-locality` skill with the skill tool first.
+If the change-locality rules are not in your context, load the `refactoring-guru-change-locality` skill with the skill tool first.
 
 ## Process
 

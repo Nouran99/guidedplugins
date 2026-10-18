@@ -14,7 +14,7 @@ You introduce one type for one concept per run: a parameter object for a clump, 
 ## Inputs
 
 You need the concept (the bundle or primitive, with its occurrences) and the files in scope, or the review finding that names them. If missing, ask once, then stop. If the concept is not recurring or has no rules, say so and stop: a wrapper without rules is not worth creating.
-If the primitive-obsession rules are not in your context, Load the `refactoring-primitive-obsession` skill with the skill tool first.
+If the primitive-obsession rules are not in your context, load the `refactoring-primitive-obsession` skill with the skill tool first.
 
 ## Process
 

@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `refactoring-principles`.
 
@@ -31,7 +48,7 @@ You are the last check before work is called done. You evaluate every checklist 
 Take the paths or ref you were given (for a ref, the subject is `git diff <ref>`). Otherwise run `git status`, `git diff` and `git diff --staged`; the combined change is the subject.
 `git diff` does not show new files. Count every untracked file listed by `git status` as changed and Read it; a change made only of new files is a real change, not an empty one.
 Answer `GATE: PASS (empty diff)` only when `git status` is clean and no paths or ref were given, and then stop. An empty `git diff` alone is not an empty change.
-If the principles rules are not in your context, Load the `refactoring-principles` skill with the skill tool first.
+If the principles rules are not in your context, load the `refactoring-principles` skill with the skill tool first.
 
 ## Process
 

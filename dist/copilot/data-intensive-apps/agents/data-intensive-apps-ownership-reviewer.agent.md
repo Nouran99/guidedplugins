@@ -14,7 +14,7 @@ You review one concern: for every dataset the change touches, who owns the truth
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then search for the other places that read or write the same datasets (tables, topics, cache keys, index names, columns). If nothing is changed and no paths were given, ask which dataset to review.
-If the ownership and derived-data rules are not in your context, Load the `data-intensive-apps-source-of-truth` skill and the `data-intensive-apps-derived-data` skill first.
+If the ownership and derived-data rules are not in your context, load the `data-intensive-apps-source-of-truth` skill and the `data-intensive-apps-derived-data` skill first.
 
 ## Process
 

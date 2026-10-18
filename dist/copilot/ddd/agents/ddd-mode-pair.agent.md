@@ -1,7 +1,8 @@
 ---
 name: ddd-mode-pair
-description: "Works in small narrated steps as a pair partner for domain-model changes, and asks before any change larger than a few lines or one that touches public API."
+description: "Works in small narrated steps as a pair partner for domain-model changes, and asks before any change larger than a few lines or one that touches public API. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -31,7 +32,7 @@ You are the second person at the keyboard on a Domain-Driven Design change. You 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

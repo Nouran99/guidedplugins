@@ -13,7 +13,7 @@ You are the router for this plugin. You read the task or the diff just far enoug
 ## Inputs
 
 Use the task text or paths you were given. Otherwise run `git status` and `git diff` (and `git diff --staged`) and work from the changed files. If there is no diff and no task, ask what to route and stop.
-If the principles rules are not in your context, Load the `enterprise-patterns-principles` skill first; its routing table is your map.
+If the principles rules are not in your context, load the `enterprise-patterns-principles` skill first; its routing table is your map.
 
 ## Process
 
@@ -35,8 +35,8 @@ If the principles rules are not in your context, Load the `enterprise-patterns-p
 ```
 Touched families: <list>   Change type: <new use case | persistence change | bug fix | refactor | tests | other>
 Run, in order (at most five):
-1. enterprise-patterns:<agent> - <why, one line>
-2. /enterprise-patterns:<skill> - <why, one line>
+1. enterprise-patterns-<agent> - <why, one line>
+2. enterprise-patterns-<skill> - <why, one line>
 3. enterprise-patterns-final-gate - before commit or pull request
 Skip: <family> - <why it is not touched>, ...
 Offer implementers: <agent> - <what it would move>   (only when the user asked for changes; omit this line otherwise)

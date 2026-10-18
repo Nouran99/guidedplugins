@@ -21,7 +21,7 @@ You make one behavior-preserving change at a time: take a rule that outside code
 ## Inputs
 
 The finding or findings to resolve (for example from `ddd-implementing-root-discipline-reviewer` or `ddd-implementing-rule-placement-reviewer`) and the files in scope. If either is missing, ask once, then stop.
-If those rules are not in your context, Read `${extensionPath}/skills/ddd-implementing-aggregate-root-discipline/SKILL.md` and the `ddd-implementing-application-services` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/ddd-implementing-aggregate-root-discipline/SKILL.md` and `${extensionPath}/skills/ddd-implementing-application-services/SKILL.md` first.
 
 ## Process
 

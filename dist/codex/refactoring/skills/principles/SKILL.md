@@ -21,11 +21,15 @@ Without it, an agent fails in one of two directions. Asked to add a feature to a
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need (for example `Refactoring Catalog Index`).
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/refactoring/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills here keep that strength. Text marked "Added judgment" is this plugin's own heuristic or mechanic, not a rule of the source; text marked "compact checklist" appears only in the short rule files. The catalog index in the source gives a trigger per move, not the mechanics; its names are mostly first-edition names, and the second edition renames some (Extract Method became Extract Function, for example).
+
+## Subagent roles
+
+Names such as `refactoring-lead`, `refactoring-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs refactoring` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

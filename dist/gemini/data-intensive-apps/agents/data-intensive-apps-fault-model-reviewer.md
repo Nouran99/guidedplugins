@@ -21,7 +21,7 @@ You review one concern: whether each place the code trusts a clock, a timeout, a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then search the neighbors for clock reads, timeouts, retry policies, lock and lease clients, leader election and coordination-service calls. If nothing is changed and no paths were given, ask which component to review.
-If the fault-model rules are not in your context, Read `${extensionPath}/skills/data-intensive-apps-faults-and-coordination/SKILL.md` first.
+If the fault-model rules are not in your context, read `${extensionPath}/skills/data-intensive-apps-faults-and-coordination/SKILL.md` first.
 
 ## Process
 

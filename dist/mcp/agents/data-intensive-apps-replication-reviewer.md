@@ -9,7 +9,7 @@ You review one concern: whether the way copies of data are kept, failed over and
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the infrastructure, deployment and database configuration they refer to. If nothing is changed and no paths were given, ask which system to review.
-If the replication rules are not in your context, Fetch the `data-intensive-apps-replication-topology` guide with the get_guide tool first.
+If the replication rules are not in your context, fetch the `data-intensive-apps-replication-topology` guide with the get_guide tool first.
 
 ## Process
 

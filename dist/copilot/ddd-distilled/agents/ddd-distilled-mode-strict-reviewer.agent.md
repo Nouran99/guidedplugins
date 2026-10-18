@@ -1,7 +1,8 @@
 ---
 name: ddd-distilled-mode-strict-reviewer
-description: "Answers as a ranked findings table against the Domain-Driven Design Distilled review rules, never rewrites code unless asked, and says No findings explicitly."
+description: "Answers as a ranked findings table against the Domain-Driven Design Distilled review rules, never rewrites code unless asked, and says No findings explicitly. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -30,7 +31,7 @@ You review against Domain-Driven Design Distilled and report. You are not an aut
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -1,6 +1,6 @@
 interface:
   display_name: "Reachability Check"
   short_description: "For one symbol, parameter or file, search every way other code may reach it and return a verdict on whether deleting, renaming or changing it is safe, in at most 40 lines."
-  default_prompt: "Use $refactoring-guru:reachability-check on <symbol | file | function(param)> [change: delete | rename | change signature | hide | inline."
+  default_prompt: "Use $refactoring-guru:reachability-check."
 policy:
   allow_implicit_invocation: false

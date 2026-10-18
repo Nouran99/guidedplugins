@@ -2,6 +2,8 @@
 description: "Tags every change REFACTOR, FEATURE or BUGFIX and delivers them as separate sections in review order, so structure and behavior are never one indistinguishable edit."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Labeled-steps mode
 
 The rule set forbids one indistinguishable edit that mixes feature work and refactoring. In this mode, every response that changes code delivers the changes as separate, labeled steps, in the order a reviewer should read them.
@@ -30,7 +32,7 @@ The rule set forbids one indistinguishable edit that mixes feature work and refa
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

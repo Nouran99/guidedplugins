@@ -21,7 +21,7 @@ You review one concern: whether each aggregate is a small consistency boundary a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the aggregates rules are not in your context, Read `${extensionPath}/skills/ddd-aggregates/SKILL.md` first.
+If the aggregates rules are not in your context, read `${extensionPath}/skills/ddd-aggregates/SKILL.md` first.
 
 ## Process
 

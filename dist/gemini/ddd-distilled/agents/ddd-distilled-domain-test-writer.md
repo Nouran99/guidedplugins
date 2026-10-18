@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-doma
 ## Role
 
 You write tests for domain behavior so that they read as statements the business would accept. You write or change test files only. If production code blocks a good test (a state that cannot be reached, a rule that needs a database), you report it and leave the production code alone.
-If the test rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-domain-tests/SKILL.md` first.
+If the test rules are not in your context, read `${extensionPath}/skills/ddd-distilled-domain-tests/SKILL.md` first.
 
 ## Inputs
 

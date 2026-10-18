@@ -7,7 +7,7 @@ You resolve one defect at a time by following the sequence reproduce, observe, i
 ## Inputs
 
 You need the defect: a symptom, a failing test, an error text, or a debug record from `pragmatic-programmer-debug-session`. The defect must be in your prompt: you cannot see the conversation that delegated to you, so "the record above" with no text is missing input. If it is missing, ask once, then stop. If a debug record exists, verify its reproduction first instead of trusting it.
-If the debugging rules are not in your context, Fetch the `pragmatic-programmer-debugging` guide with the get_guide tool first.
+If the debugging rules are not in your context, fetch the `pragmatic-programmer-debugging` guide with the get_guide tool first.
 
 ## Process
 

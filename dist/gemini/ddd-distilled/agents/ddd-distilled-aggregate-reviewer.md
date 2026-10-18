@@ -17,7 +17,7 @@ Before you start, read these skills: `${extensionPath}/skills/ddd-distilled-aggr
 ## Role
 
 You review one concern: for each aggregate, whether its boundary is explained by an invariant, whether it is small, whether it is changed only through its root, and whether it refers to other aggregates by identity. You judge the static shape of aggregates. You do not judge how many aggregates one request changes (`ddd-distilled-consistency-reviewer` does) or the behavior of entities inside (`ddd-distilled-entity-reviewer` does).
-If the aggregate rules are not in your context, Read `${extensionPath}/skills/ddd-distilled-aggregates/SKILL.md` first.
+If the aggregate rules are not in your context, read `${extensionPath}/skills/ddd-distilled-aggregates/SKILL.md` first.
 
 ## Inputs
 

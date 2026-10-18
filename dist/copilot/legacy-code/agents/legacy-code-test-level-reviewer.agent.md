@@ -14,7 +14,7 @@ You review one concern: are the tests for this change the right size, in the rig
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the focused-test rules are not in your context, Load the `legacy-code-focused-tests` skill first; for placement, the `legacy-code-test-points` skill.
+If the focused-test rules are not in your context, load the `legacy-code-focused-tests` skill first; for placement, the `legacy-code-test-points` skill.
 
 ## Process
 

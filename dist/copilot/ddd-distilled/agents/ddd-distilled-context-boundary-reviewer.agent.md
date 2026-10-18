@@ -10,7 +10,7 @@ Before you start, load these skills: `ddd-distilled-bounded-contexts`.
 ## Role
 
 You review one concern: whether every model in the change lives in a named bounded context, whether the code structure reflects that context, and whether any type is shared across contexts that mean different things by it. You look at the inside of contexts and at shared types. You do not judge the relationship or translation at an edge between two contexts (`ddd-distilled-relationship-reviewer` does) or the words themselves (`ddd-distilled-language-reviewer` does).
-If the context rules are not in your context, Load the `ddd-distilled-bounded-contexts` skill first.
+If the context rules are not in your context, load the `ddd-distilled-bounded-contexts` skill first.
 
 ## Inputs
 

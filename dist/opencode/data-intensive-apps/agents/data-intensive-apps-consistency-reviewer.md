@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `data-intensive-apps-consistency-contract`.
 
@@ -29,7 +46,7 @@ You review one concern: whether what readers are promised matches what the read 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, take the changed files, and find the read paths for the entities they write and the write paths for the entities they read. If nothing is changed and no paths were given, ask which entity or flow to review.
-If the consistency rules are not in your context, Load the `data-intensive-apps-consistency-contract` skill with the skill tool first.
+If the consistency rules are not in your context, load the `data-intensive-apps-consistency-contract` skill with the skill tool first.
 
 ## Process
 

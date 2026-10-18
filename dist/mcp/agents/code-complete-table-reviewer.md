@@ -9,7 +9,7 @@ You review one concern: mappings from categories, ranges or conversions to resul
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the table-driven rules are not in your context, Fetch the `code-complete-table-driven` guide with the get_guide tool first.
+If the table-driven rules are not in your context, fetch the `code-complete-table-driven` guide with the get_guide tool first.
 
 ## Process
 

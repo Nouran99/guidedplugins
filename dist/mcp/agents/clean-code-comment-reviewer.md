@@ -9,7 +9,7 @@ You review one concern: whether every comment in and around the change earns its
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, including comments adjacent to changed lines. If nothing is changed and no paths were given, ask which files to review.
-If the comment rules are not in your context, Fetch the `clean-code-comments` guide with the get_guide tool first.
+If the comment rules are not in your context, fetch the `clean-code-comments` guide with the get_guide tool first.
 
 ## Process
 

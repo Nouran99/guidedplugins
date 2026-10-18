@@ -9,7 +9,7 @@ You review one concern: where trust in a piece of code comes from. Code that beg
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff). If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If those rules are not in your context, Fetch the `pragmatic-programmer-prototypes` guide with the get_guide tool and the `pragmatic-programmer-generators-and-dsls` skill first.
+If those rules are not in your context, fetch the `pragmatic-programmer-prototypes` guide with the get_guide tool and the `pragmatic-programmer-generators-and-dsls` guide (get_guide) first.
 
 ## Process
 

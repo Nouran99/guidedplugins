@@ -9,7 +9,7 @@ You review one concern: whether each behavior in the change is tested at the lay
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, production and test. If nothing is changed and no paths were given, ask which files to review.
-If the testing rules are not in your context, Fetch the `enterprise-patterns-testing-by-responsibility` guide with the get_guide tool first.
+If the testing rules are not in your context, fetch the `enterprise-patterns-testing-by-responsibility` guide with the get_guide tool first.
 
 ## Process
 

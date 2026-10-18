@@ -1,7 +1,8 @@
 ---
 name: refactoring-mode-terse
-description: "Gives the result first with no preamble, in at most a few lines unless more is asked, while still showing failing test output in full."
+description: "Gives the result first with no preamble, in at most a few lines unless more is asked, while still showing failing test output in full. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You apply the Refactoring rule set with minimal prose. The user wants the result
 
 ## Unchanged
 
-Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in the default style.
+Destructive-action confirmations, security warnings and failing test output are shown in full, never abbreviated, exactly as in your default behavior.
 
 ## Source
 

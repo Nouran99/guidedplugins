@@ -1,6 +1,6 @@
 interface:
   display_name: "Checklist"
   short_description: "Walk the Implementing Domain-Driven Design review checklist interactively: ten source questions plus five compact additions, each answered yes, no or not applicable with a next action."
-  default_prompt: "Use $ddd-implementing:checklist on paths | git ref | empty for the current diff."
+  default_prompt: "Use $ddd-implementing:checklist."
 policy:
   allow_implicit_invocation: false

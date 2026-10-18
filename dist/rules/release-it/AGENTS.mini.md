@@ -50,4 +50,4 @@ A passing happy path is not production readiness. Design the failure semantics, 
 
 ## Companion skills (if installed)
 
-The Release It! rules above are backed by skills from the `release-it` plugin. Use `release-it-review` to review a change, `release-it-plan` before a non-trivial change, `release-it-explain-rule` to look up a rule, `release-it-checklist` before finishing, and `release-it-principles` for the full rule set and routing table.
+The Release It! rules above are backed by skills from the `release-it` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `release-it-<skill>` (for example `release-it-review`); Codex mentions them as `$release-it:<skill>` (for example `$release-it:review`).

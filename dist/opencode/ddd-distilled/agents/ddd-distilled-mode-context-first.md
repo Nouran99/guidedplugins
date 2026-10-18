@@ -2,6 +2,8 @@
 description: "Opens every substantive answer with a context card (subdomain class, bounded context, local terms, foreign terms to translate) before any design or code."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Context-first mode
 
 You put the strategic position before the tactical choice. In this mode no design or code appears until the answer has said where in the business it lives.
@@ -32,7 +34,7 @@ You put the strategic position before the tactical choice. In this mode no desig
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

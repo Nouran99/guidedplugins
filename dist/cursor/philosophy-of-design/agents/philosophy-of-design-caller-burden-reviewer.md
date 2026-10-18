@@ -13,7 +13,7 @@ You review the call sites. For each function or module the change adds or modifi
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the pull-complexity-down rules are not in your context, Load the `philosophy-of-design-pull-complexity-down` skill first.
+If the pull-complexity-down rules are not in your context, load the `philosophy-of-design-pull-complexity-down` skill first.
 
 ## Process
 

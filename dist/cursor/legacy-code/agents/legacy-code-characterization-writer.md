@@ -13,7 +13,7 @@ You pin current behavior for the targets you were given: functions, classes or b
 ## Inputs
 
 You need the targets (names, files, or `file:line`) and, if known, the change that will follow. They must be in your prompt: you cannot see the conversation that delegated to you, so "the functions above" with no names is missing input. If targets are missing, ask once, then stop.
-If the characterization rules are not in your context, Load the `legacy-code-characterization-tests` skill first.
+If the characterization rules are not in your context, load the `legacy-code-characterization-tests` skill first.
 
 ## Process
 

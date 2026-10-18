@@ -67,4 +67,4 @@ Do not optimize only for the local edit, requested feature, or familiar ritual. 
 
 ## Companion skills (if installed)
 
-The The Pragmatic Programmer rules above are backed by skills from the `pragmatic-programmer` plugin. Use `pragmatic-programmer-review` to review a change, `pragmatic-programmer-plan` before a non-trivial change, `pragmatic-programmer-explain-rule` to look up a rule, `pragmatic-programmer-checklist` before finishing, and `pragmatic-programmer-principles` for the full rule set and routing table.
+The The Pragmatic Programmer rules above are backed by skills from the `pragmatic-programmer` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `pragmatic-programmer-<skill>` (for example `pragmatic-programmer-review`); Codex mentions them as `$pragmatic-programmer:<skill>` (for example `$pragmatic-programmer:review`).

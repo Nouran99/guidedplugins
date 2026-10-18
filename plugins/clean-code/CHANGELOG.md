@@ -9,3 +9,6 @@ and the project uses [Semantic Versioning](https://semver.org/).
 - Initial release of the Clean Code plugin: skills, subagents and output styles built on the upstream rule set.
 - Opt-in SessionStart hook that injects the compact rules (`inject_rules` option, off by default).
 - Vendored upstream rule sets (full, mini, nano) with traceability from every component to the upstream sections.
+
+### Changed
+- Wording pass on 2026-10-17, after the 1.0.0 date and before the repository was published (it has no remote yet), so the version stays 1.0.0: the output style `boy-scout` was renamed `campsite` (the skill `boy-scout` keeps its name), and the `lead` agent now states its five-step cap.

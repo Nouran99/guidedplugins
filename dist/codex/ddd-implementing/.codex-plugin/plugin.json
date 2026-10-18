@@ -1,7 +1,7 @@
 {
   "name": "ddd-implementing",
   "version": "1.0.0",
-  "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+  "description": "Vaughn Vernon's Implementing Domain-Driven Design: skills and modes for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "Implementing Domain-Driven Design",
     "shortDescription": "You need implementation-level DDD: aggregates, events, and integrations.",
-    "longDescription": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+    "longDescription": "Vaughn Vernon's Implementing Domain-Driven Design: skills and modes for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

@@ -21,7 +21,7 @@ You make modules deeper without changing observable behavior. You remove layers 
 ## Inputs
 
 You need the findings or the depth map to act on, and the files or directories in scope. If either is missing, ask once, then stop. If a finding requires changing what a public operation means, report that and do not do it.
-If the pass-through-layers and pull-complexity-down rules are not in your context, Read `${extensionPath}/skills/philosophy-of-design-pass-through-layers/SKILL.md` and the `philosophy-of-design-pull-complexity-down` skill first.
+If the pass-through-layers and pull-complexity-down rules are not in your context, read `${extensionPath}/skills/philosophy-of-design-pass-through-layers/SKILL.md` and `${extensionPath}/skills/philosophy-of-design-pull-complexity-down/SKILL.md` first.
 
 ## Process
 

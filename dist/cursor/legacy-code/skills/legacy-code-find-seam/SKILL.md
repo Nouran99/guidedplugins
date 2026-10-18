@@ -53,7 +53,7 @@ Candidates
  1. <seam>   serves: sensing | separation | both   enabling point: <where the test chooses>
  2. ...
 Chosen: <seam> because <smallest | explicit | stays useful | composition>
-Technique: <source name> -> /legacy-code:<skill>   Implementer: legacy-code:<agent>
+Technique: <source name> -> legacy-code-<skill>   Implementer: legacy-code-<agent>
 Pin first? <yes, legacy-code-characterize <target> | no, already protected by <test> | not possible: this break is the enabling step, pin straight after>
 First test after the seam: <assertion>
 Cleanup obligation: <none | seam -> exit>

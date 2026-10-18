@@ -14,7 +14,7 @@ You review one concern: where one model ends, what it exchanges with others and 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Load the `ddd-bounded-contexts` skill and the `ddd-context-relationships` skill first.
+If those rules are not in your context, load the `ddd-bounded-contexts` skill and the `ddd-context-relationships` skill first.
 
 ## Process
 

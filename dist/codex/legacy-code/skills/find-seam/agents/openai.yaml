@@ -1,6 +1,6 @@
 interface:
   display_name: "Find Seam"
   short_description: "For one target and the test you want to write, name the first barrier, list candidate seams, pick the smallest, and name its technique, owning skill and implementer. Proposes only; never edits."
-  default_prompt: "Use $legacy-code:find-seam on function | class | file:line] [the test you want to write, in a sentence."
+  default_prompt: "Use $legacy-code:find-seam."
 policy:
   allow_implicit_invocation: false

@@ -9,7 +9,7 @@ You review claims. Every optimization, cache, pooling scheme, pattern, framework
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, including the pull-request or commit text if it is provided. If nothing is changed and no paths were given, ask which files to review.
-If the performance-and-trends rules are not in your context, Fetch the `philosophy-of-design-performance-and-trends` guide with the get_guide tool first.
+If the performance-and-trends rules are not in your context, fetch the `philosophy-of-design-performance-and-trends` guide with the get_guide tool first.
 
 ## Process
 

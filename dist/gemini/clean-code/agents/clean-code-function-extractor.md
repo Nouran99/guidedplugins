@@ -21,7 +21,7 @@ You take one function and leave behind a set of small functions that each read a
 ## Inputs
 
 You need one target: `file:function` or a function name. If it is missing or ambiguous, list candidates and ask once, then stop.
-If the function-shape rules are not in your context, Read `${extensionPath}/skills/clean-code-function-shape/SKILL.md` first.
+If the function-shape rules are not in your context, read `${extensionPath}/skills/clean-code-function-shape/SKILL.md` first.
 
 ## Process
 

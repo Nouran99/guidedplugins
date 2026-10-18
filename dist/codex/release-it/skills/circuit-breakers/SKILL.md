@@ -1,6 +1,6 @@
 ---
 name: "circuit-breakers"
-description: "Use when a dependency can fail slowly or for long and callers keep hammering it, when adding a breaker, fast-fail path, fallback or degraded mode, or when a fallback is silent. Reacts to observed dependency health; partitioning is `bulkheads`, precondition checks are `$release-it:stability-patterns`."
+description: "Use when a dependency can fail slowly or for long and callers keep hammering it, when adding a breaker, fast-fail path, fallback or degraded mode, or when a fallback is silent. Reacts to observed dependency health; partitioning is `$release-it:bulkheads`, precondition checks are `$release-it:stability-patterns`."
 ---
 
 # Circuit breakers, fast failure and degraded modes

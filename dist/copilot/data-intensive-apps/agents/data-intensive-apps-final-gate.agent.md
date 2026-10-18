@@ -14,7 +14,7 @@ You are a strict, binary gate. You evaluate the working change against the ten c
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git status`, `git diff` and `git diff --staged` and work from the changed files, plus the schema, migration, consumer and configuration files they depend on. If there is no change, say so and stop.
-If the principles rules are not in your context, Load the `data-intensive-apps-principles` skill first.
+If the principles rules are not in your context, load the `data-intensive-apps-principles` skill first.
 
 ## Process
 

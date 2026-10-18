@@ -9,7 +9,7 @@ You review one concern: how quickly and how clearly the checks around the change
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and the untracked files `git status` lists (a new file has no diff), plus the test configuration and CI definitions they relate to. If the tree is clean, ask for a base ref and use `git diff <base>...HEAD`; if no paths or base were given, ask which files to review.
-If the feedback-loops rules are not in your context, Fetch the `pragmatic-programmer-feedback-loops` guide with the get_guide tool first.
+If the feedback-loops rules are not in your context, fetch the `pragmatic-programmer-feedback-loops` guide with the get_guide tool first.
 
 ## Process
 

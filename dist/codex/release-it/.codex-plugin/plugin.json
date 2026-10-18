@@ -1,7 +1,7 @@
 {
   "name": "release-it",
   "version": "1.0.0",
-  "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
+  "description": "Michael T. Nygard's Release It!: skills and modes for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -26,7 +26,7 @@
   "interface": {
     "displayName": "Release It!",
     "shortDescription": "You are building services, APIs, queues, or critical production paths.",
-    "longDescription": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
+    "longDescription": "Michael T. Nygard's Release It!: skills and modes for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

@@ -1,7 +1,8 @@
 ---
 name: philosophy-of-design-mode-strict-reviewer
-description: "Answers as a ranked findings table with the complexity cost of each finding, rewrites no code unless asked, and says No findings explicitly."
+description: "Answers as a ranked findings table with the complexity cost of each finding, rewrites no code unless asked, and says No findings explicitly. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Strict reviewer mode
 
@@ -35,7 +36,7 @@ You review against A Philosophy of Software Design and report. In this mode your
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

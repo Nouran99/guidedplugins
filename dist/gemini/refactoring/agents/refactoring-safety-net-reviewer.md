@@ -21,7 +21,7 @@ You review one concern: whether a check exists that would fail if the refactorin
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed production files (count untracked files listed by `git status` as changed, because `git diff` does not show new files), or ask what is about to change. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files); you do not run it.
-If the safety-net rules are not in your context, Read `${extensionPath}/skills/refactoring-safety-net/SKILL.md` first.
+If the safety-net rules are not in your context, read `${extensionPath}/skills/refactoring-safety-net/SKILL.md` first.
 
 ## Process
 

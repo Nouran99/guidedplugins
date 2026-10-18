@@ -19,7 +19,7 @@ You are the last check before work is called done. You evaluate every item of th
 ## Inputs
 
 Take the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`; the combined change is the subject. If nothing is changed, answer `GATE: PASS (empty diff)` and stop.
-The checklist and hard rules you need are listed under Rules you apply, so no skill is preloaded. If the meaning of an item is in doubt, Read the `references/mini.md` file of the `clean-code-principles` skill.
+The checklist and hard rules you need are listed under Rules you apply, so no skill is preloaded. If the meaning of an item is in doubt, read `${extensionPath}/skills/clean-code-principles/references/mini.md`.
 
 ## Process
 

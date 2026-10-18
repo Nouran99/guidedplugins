@@ -1,5 +1,5 @@
 ---
-description: "Compact Domain-Driven Design rules. You want to model the business domain rather than tables, controllers, or DTOs."
+description: "Domain-Driven Design rules, compact form. Apply them when you want to model the business domain rather than tables, controllers, or DTOs."
 alwaysApply: false
 ---
 # OBEY Domain-Driven Design by Eric Evans

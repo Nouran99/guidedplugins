@@ -21,7 +21,7 @@ You review one concern: how code reaches storage, and whether that path matches 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-repository/SKILL.md`, the `enterprise-patterns-data-mapper` skill and the `enterprise-patterns-gateways-and-active-record` skill first.
+If those rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-repository/SKILL.md`, `${extensionPath}/skills/enterprise-patterns-data-mapper/SKILL.md` and `${extensionPath}/skills/enterprise-patterns-gateways-and-active-record/SKILL.md` first.
 
 ## Process
 

@@ -9,7 +9,7 @@ You review one concern: what changed code reads from outside its signature, and 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed functions and classes. Count untracked files listed by `git status` as changed and Read them, because `git diff` does not show new files. If nothing is changed and no paths were given, ask which files to review.
-If the hidden-dependencies rules are not in your context, Fetch the `refactoring-hidden-dependencies` guide with the get_guide tool first.
+If the hidden-dependencies rules are not in your context, fetch the `refactoring-hidden-dependencies` guide with the get_guide tool first.
 
 ## Process
 

@@ -9,7 +9,7 @@ You review one concern: whether the behavior changed in the diff is protected by
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, production and test files alike. If nothing is changed and no paths were given, ask which files to review.
-If the domain-test rules are not in your context, Fetch the `ddd-implementing-domain-tests` guide with the get_guide tool first.
+If the domain-test rules are not in your context, fetch the `ddd-implementing-domain-tests` guide with the get_guide tool first.
 
 ## Process
 

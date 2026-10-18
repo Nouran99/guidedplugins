@@ -9,7 +9,7 @@ You review one concern: where behavior is selected by a type, mode or status, an
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. For each discriminator you find, search the whole repository, not only the diff.
-If the type-codes-and-switches rules are not in your context, Fetch the `refactoring-guru-type-codes-and-switches` guide with the get_guide tool first.
+If the type-codes-and-switches rules are not in your context, fetch the `refactoring-guru-type-codes-and-switches` guide with the get_guide tool first.
 
 ## Process
 

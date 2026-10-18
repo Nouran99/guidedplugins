@@ -18,7 +18,7 @@ Arguments: the text the user wrote together with this request (empty if none)
 
 1. Read `../principles/references/mini.md`.
 2. Classify which rule clusters the change touches, using the routing table in `../principles/SKILL.md`. Typical clusters: names, function shape, function contracts, comments, error handling, boundaries, tests, concurrency, coupling.
-3. For each touched cluster, Read the matching skill (`../<cluster>/SKILL.md`) and check its rules against the changed lines. For a large diff, ask `clean-code-lead` for a routing plan and delegate to the named specialist reviewers, then merge their findings.
+3. For each touched cluster, read the matching skill (`../<cluster>/SKILL.md`) and check its rules against the changed lines. For a large diff, ask `clean-code-lead` for a routing plan and delegate to the named specialist reviewers, then merge their findings.
 4. Check the book's final checklist and hard rules once at the end: names, small focused functions, responsibilities, comments, error handling, duplication, tests, top-to-bottom reading, simplicity, conventions, scope.
 5. Drop anything the book permits in context: a comment in one of the five legitimate categories, a data carrier with public fields, an atomic command/query hybrid with a stated reason, a convention the repository already uses consistently.
 6. Rank what remains. Severity anchors:

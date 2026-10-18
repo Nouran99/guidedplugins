@@ -13,7 +13,7 @@ You review two linked questions: is each interface at a useful level of generali
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the generality-and-special-cases rules are not in your context, Load the `philosophy-of-design-generality-and-special-cases` skill first.
+If the generality-and-special-cases rules are not in your context, load the `philosophy-of-design-generality-and-special-cases` skill first.
 
 ## Process
 

@@ -21,9 +21,9 @@ Asked to "implement DDD", an agent produces renamed CRUD: classes shaped like ta
 
 ## Loading the rules
 
-1. For every design or code decision, Read `references/mini.md` first.
+1. For every design or code decision, read `references/mini.md` first.
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
-3. `references/nano.md` is the compact always-on form; the optional SessionStart hook injects it.
+3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/ddd-implementing/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
 When uncertain, the source orders its choices: identify the bounded context, use its language, draw the aggregate boundary conservatively, reference other aggregates by identity, keep infrastructure outside the model, integrate across contexts through explicit translation.
 
@@ -35,6 +35,10 @@ Modal convention. The upstream file says `MUST` is binding, `SHOULD` is a strong
 - `[MAY]`: permissions ("application services may own transaction boundaries").
 - `[Compact checklist]`: a rule or trigger that is stated only in `mini.md` or `nano.md`.
 - `[Added judgment]`: this plugin's own heuristic, detection recipe or numeric search aid. It is not a rule of the source and loses to the user's instruction and the repository's conventions.
+
+## Subagent roles
+
+Names such as `ddd-implementing-lead`, `ddd-implementing-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs ddd-implementing` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

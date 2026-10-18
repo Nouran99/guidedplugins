@@ -1,6 +1,6 @@
 interface:
   display_name: "Tune"
   short_description: "Run a measured tuning loop on one target: confirm the requirement, take a baseline, change one thing, remeasure, keep or revert, and record the clarity trade-off. Never commits."
-  default_prompt: "Use $code-complete:tune on routine or endpoint to speed up | requirement such as 'p95 under 200 ms' | empty to ask."
+  default_prompt: "Use $code-complete:tune."
 policy:
   allow_implicit_invocation: false

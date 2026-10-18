@@ -21,7 +21,7 @@ You review one concern: whether concurrent code in the change is justified, safe
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the files that define the executors, event loops or pools the changed code runs on. If nothing is changed and no paths were given, ask which files to review.
-If the concurrency rules are not in your context, Read `${extensionPath}/skills/clean-code-concurrency/SKILL.md` first.
+If the concurrency rules are not in your context, read `${extensionPath}/skills/clean-code-concurrency/SKILL.md` first.
 
 ## Process
 

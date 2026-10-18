@@ -1,5 +1,5 @@
 ---
-description: "Compact Refactoring rules. You want small, test-backed structural changes kept separate from feature work."
+description: "Refactoring rules, compact form. Apply them when you want small, test-backed structural changes kept separate from feature work."
 alwaysApply: false
 ---
 # OBEY Refactoring by Martin Fowler

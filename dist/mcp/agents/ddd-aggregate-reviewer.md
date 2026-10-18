@@ -9,7 +9,7 @@ You review one concern: whether each aggregate is a small consistency boundary a
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the aggregates rules are not in your context, Fetch the `ddd-aggregates` guide with the get_guide tool first.
+If the aggregates rules are not in your context, fetch the `ddd-aggregates` guide with the get_guide tool first.
 
 ## Process
 

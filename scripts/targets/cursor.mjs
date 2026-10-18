@@ -2,9 +2,13 @@
 //  dist/cursor/<plugin>/.cursor-plugin/plugin.json, skills/ (universal), agents/ (name, description, model: inherit, readonly), rules/<plugin>-rules.mdc
 //  .cursor-plugin/marketplace.json at the repository root lists them for Cursor team marketplaces.
 import {
-  DIST, REGISTRY, ROOT, agentBodyFor, bt, cleanDir, copyFile, flat, frontmatter, path, rewrite, writeFile,
+  DIST, REGISTRY, ROOT, VERSION, agentBodyFor, bt, cleanDir, copyFile, flat, frontmatter, neutralText, path, rewriteDescription, writeFile,
 } from './core.mjs';
 import { emitFlatSkills, flatDialect } from './agent-skills.mjs';
+
+// Cursor shows this text to the model to decide whether to apply the rule, so it must say WHEN.
+const lowerFirst = (s) => s.replace(/^[A-Z](?![A-Z])/, (c) => c.toLowerCase());
+const ruleDescription = (book) => `${book.title} rules, compact form. Apply them when ${lowerFirst(book.usefulWhen.replace(/\.$/, ''))}.`;
 
 const dialect = () => flatDialect({ agentRead: (p, n) => `Load the ${bt(flat(p.slug, n))} skill` });
 
@@ -22,18 +26,18 @@ export function buildCursor(model) {
       const body = agentBodyFor(plugin, a, d, { preloadLine });
       writeFile(path.join(root, 'agents', `${flat(plugin.slug, a.name)}.md`), frontmatter({
         name: flat(plugin.slug, a.name),
-        description: rewrite(a.fm.description, plugin, d, { from: 'agent' }),
+        description: rewriteDescription(a.fm.description, plugin, d, { from: 'agent' }),
         model: 'inherit',
         readonly: a.readOnly,
       }) + body);
     }
     writeFile(path.join(root, 'rules', `${plugin.slug}-rules.mdc`), frontmatter({
-      description: `Compact ${plugin.book.title} rules. ${plugin.book.usefulWhen}`,
+      description: ruleDescription(plugin.book),
       alwaysApply: false,
     }) + (plugin.refs.nano ?? ''));
     writeFile(path.join(root, '.cursor-plugin', 'plugin.json'), JSON.stringify({
       name: plugin.slug,
-      description: plugin.manifest.description,
+      description: neutralText(plugin.manifest.description),
       version: plugin.manifest.version,
       author: plugin.manifest.author,
       homepage: plugin.manifest.homepage,
@@ -43,12 +47,12 @@ export function buildCursor(model) {
     }, null, 2));
     copyFile(path.join(plugin.dir, 'LICENSE'), path.join(root, 'LICENSE'));
     writeFile(path.join(root, 'NOTICE.md'), plugin.notice ?? '');
-    entries.push({ name: plugin.slug, source: `./dist/cursor/${plugin.slug}`, description: plugin.manifest.description });
+    entries.push({ name: plugin.slug, source: `./dist/cursor/${plugin.slug}`, description: neutralText(plugin.manifest.description) });
   }
   writeFile(path.join(ROOT, '.cursor-plugin', 'marketplace.json'), JSON.stringify({
     name: mp.name,
     owner: { name: mp.owner },
-    metadata: { description: mp.description, version: '1.0.0' },
+    metadata: { description: neutralText(mp.description), version: VERSION },
     plugins: entries,
   }, null, 2));
   return model;

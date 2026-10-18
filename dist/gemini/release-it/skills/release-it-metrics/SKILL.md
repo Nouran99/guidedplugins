@@ -1,6 +1,6 @@
 ---
 name: "release-it-metrics"
-description: "Use when adding instrumentation, dashboards or alerts, or when a failure would be invisible: the minimum signal set of request rate, success and failure counts, dependency latency, timeouts, queue depth, retries, breaker state and saturation. Events with context are `logging`."
+description: "Use when adding instrumentation, dashboards or alerts, or when a failure would be invisible: the minimum signal set of request rate, success and failure counts, dependency latency, timeouts, queue depth, retries, breaker state and saturation. Events with context are `release-it-logging`."
 license: "MIT"
 metadata:
   plugin: "release-it"

@@ -13,7 +13,7 @@ You review one concern: whether the structure in the change earns its cost. You 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If those rules are not in your context, Load the `clean-code-emergent-design` skill and the `clean-code-smells-redundancy` skill first.
+If those rules are not in your context, load the `clean-code-emergent-design` skill and the `clean-code-smells-redundancy` skill first.
 
 ## Process
 

@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 export const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 export const PLUGINS_DIR = path.join(ROOT, 'plugins');
 export const REGISTRY = JSON.parse(fs.readFileSync(path.join(ROOT, 'scripts', 'books.json'), 'utf8'));
+// The repository version (package.json), used by the generated manifests and the MCP catalog so they never drift from it.
+export const VERSION = JSON.parse(fs.readFileSync(path.join(ROOT, 'package.json'), 'utf8')).version;
 
 // Hard floors from docs/PLUGIN_SPEC.md. Change them there and here together.
 export const LIMITS = {

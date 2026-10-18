@@ -8,5 +8,7 @@ Install from a checkout of the repository (Gemini installs one extension per rep
 gemini extensions install ./dist/gemini/enterprise-patterns
 ```
 
-- 38 skills (including 6 mode skills), each also a slash command `/enterprise-patterns:enterprise-patterns-<name>`.
+Gemini asks you to confirm before it installs (trust and consent prompts).
+
+- 38 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/enterprise-patterns:enterprise-patterns-<name>`; that was not exercised in a live session here.
 - 21 subagents, started with `@enterprise-patterns-<name> <task>`.

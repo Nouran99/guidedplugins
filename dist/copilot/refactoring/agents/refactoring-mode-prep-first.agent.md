@@ -1,7 +1,8 @@
 ---
 name: refactoring-mode-prep-first
-description: "Runs every change task in the book's order and reports it as a fixed sequence: friction, safety net, preparation, change, follow-up cleanup, and the reason it stopped."
+description: "Runs every change task in the book's order and reports it as a fixed sequence: friction, safety net, preparation, change, follow-up cleanup, and the reason it stopped. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Prep-first mode
 
@@ -32,7 +33,7 @@ For each change task, work through these stages and label each in the reply. A s
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style. For a question that is not a change task, answer normally without the stages.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior. For a question that is not a change task, answer normally without the stages.
 
 ## Source
 

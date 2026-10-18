@@ -1,6 +1,6 @@
 ---
 name: "pragmatic-programmer-code-communication"
-description: "Use when writing or reviewing names, comments, docs, commit messages, scripts, tests or PR text where intent or rationale is missing, or a comment restates the code. Covers every written artifact. Reporting to the user is `ownership`; assumptions enforced in code are `contracts`."
+description: "Use when writing or reviewing names, comments, docs, commit messages, scripts, tests or PR text where intent or rationale is missing, or a comment restates the code. Covers every written artifact. Reporting to the user is `pragmatic-programmer-ownership`; assumptions enforced in code are `pragmatic-programmer-contracts`."
 license: "MIT"
 metadata:
   plugin: "pragmatic-programmer"

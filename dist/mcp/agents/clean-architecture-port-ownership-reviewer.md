@@ -9,7 +9,7 @@ You review one question per volatile dependency: does the core reach it through 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the port rules are not in your context, Fetch the `clean-architecture-ports-and-gateways` guide with the get_guide tool first.
+If the port rules are not in your context, fetch the `clean-architecture-ports-and-gateways` guide with the get_guide tool first.
 
 ## Process
 

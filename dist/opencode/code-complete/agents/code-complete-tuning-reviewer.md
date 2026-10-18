@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `code-complete-performance-tuning`.
 
@@ -29,7 +46,7 @@ You review one concern: whether a change made for performance is justified and p
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status`, and read any commit message, pull request text or notes that accompany the change (`git log -n 5`). If nothing is changed and no paths were given, ask which change to review.
-If the tuning rules are not in your context, Load the `code-complete-performance-tuning` skill with the skill tool first.
+If the tuning rules are not in your context, load the `code-complete-performance-tuning` skill with the skill tool first.
 
 ## Process
 

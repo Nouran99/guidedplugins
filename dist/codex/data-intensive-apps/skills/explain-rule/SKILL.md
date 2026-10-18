@@ -35,7 +35,7 @@ How to check: <what to look for in code, config or tests>
 Example:
   <before and after, at most ten lines>
 Exceptions: <what the source permits; or "none stated">
-Go deeper: /data-intensive-apps:<skill>, data-intensive-apps:<reviewer>
+Go deeper: $data-intensive-apps:<skill>, data-intensive-apps-<reviewer>
 ```
 
 ## Stop conditions

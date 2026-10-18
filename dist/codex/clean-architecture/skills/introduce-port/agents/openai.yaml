@@ -1,6 +1,6 @@
 interface:
   display_name: "Introduce Port"
   short_description: "Replace one direct use of a volatile dependency in core code with a policy-owned port, an adapter and wiring in the composition root, plus a fake for tests. Runs the tests, never commits."
-  default_prompt: "Use $clean-architecture:introduce-port on file:line of the direct use | dependency name | empty to ask."
+  default_prompt: "Use $clean-architecture:introduce-port."
 policy:
   allow_implicit_invocation: false

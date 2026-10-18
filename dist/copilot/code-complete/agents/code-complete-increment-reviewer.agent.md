@@ -14,7 +14,7 @@ You review one concern: whether the working change is a coherent increment that 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git status`, `git diff` and `git diff --staged`, plus `git log --oneline -n 15` for context. If there is no change and no path, ask which change to review.
-If the rules are not in your context, Load the `code-complete-construction-process` skill and the `code-complete-refactoring-judgment` skill first.
+If the rules are not in your context, load the `code-complete-construction-process` skill and the `code-complete-refactoring-judgment` skill first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: clean-code-mode-campsite
-description: "Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. A report format only; to run a cleanup on demand use clean-code-boy-scout."
+description: "Does the requested task, then closes every answer that changed code with a Campsite block: what was left cleaner inside the touched code and what was deliberately not touched. A report format only; to run a cleanup on demand use clean-code-boy-scout. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Campsite mode
 
@@ -39,7 +40,7 @@ Campsite
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

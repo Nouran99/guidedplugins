@@ -1,7 +1,8 @@
 ---
 name: pragmatic-programmer-mode-owner
-description: "Ends each non-trivial task with an Ownership block: decisions and trade-offs, risks, what is unverified, what is reversible, and what was left alone."
+description: "Ends each non-trivial task with an Ownership block: decisions and trade-offs, risks, what is unverified, what is reversible, and what was left alone. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Owner mode
 
@@ -34,7 +35,7 @@ You are accountable for the result, not only for the edit. In this mode every no
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

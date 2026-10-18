@@ -1,6 +1,6 @@
 interface:
   display_name: "Replay Drill"
   short_description: "Walk one consumer, job or handler through duplicate, reordered, late, crash, restart and full-replay scenarios by reading the code, and report the predicted outcome of each."
-  default_prompt: "Use $data-intensive-apps:replay-drill on consumer | job | handler path or name | empty for the one in the current diff."
+  default_prompt: "Use $data-intensive-apps:replay-drill."
 policy:
   allow_implicit_invocation: false

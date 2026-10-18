@@ -3,7 +3,7 @@
 // Zero dependencies, stdio transport (newline-delimited JSON-RPC 2.0).
 //
 //   node scripts/mcp-server.mjs                          # everything
-//   node scripts/mcp-server.mjs --plugins clean-code,refactoring     # only these books (also GUIDED_PLUGINS=clean-code,refactoring)
+//   node scripts/mcp-server.mjs --plugins clean-code,refactoring     # only these books (also --plugins=a,b and GUIDED_PLUGINS=a,b)
 //   node scripts/mcp-server.mjs --kinds skill,agent                  # only these kinds (also GUIDED_KINDS)
 //
 // Tools work in every MCP client. Prompts (manual workflows, modes, subagent roles) show up as slash commands in clients that expose
@@ -15,28 +15,58 @@ import { fileURLToPath } from 'node:url';
 
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(HERE, '..', 'dist');
-const SERVER = { name: 'guided-plugins', version: '1.1.0' };
-const PROTOCOLS = ['2025-11-25', '2025-06-18', '2025-03-26', '2024-11-05'];
+const PROTOCOLS = ['2025-11-25', '2025-06-18', '2025-03-26', '2024-11-05']; // newest first: the answer to an unsupported request
+const KINDS = ['skill', 'mode', 'agent'];
+
+// ----------------------------------------------------------------------------------------------- options
+const USAGE = `usage: node scripts/mcp-server.mjs [--plugins a,b] [--kinds skill,mode,agent]
+  --plugins a,b          serve only these books (or GUIDED_PLUGINS=a,b); default: all 14
+  --kinds skill,agent    serve only these kinds (or GUIDED_KINDS=...); kinds are ${KINDS.join(', ')}
+Options also accept the form --plugins=a,b. A mistyped option is an error, not ignored.\n`;
+const fail = (msg) => { process.stderr.write(`guided-plugins: ${msg}\n${USAGE}`); process.exit(1); };
+
+const ENV = { plugins: 'GUIDED_PLUGINS', kinds: 'GUIDED_KINDS' };
+function parseOptions(argv) {
+  const given = {};
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--help' || a === '-h') { process.stdout.write(USAGE); process.exit(0); }
+    const m = a.match(/^--([a-z]+)(?:=(.*))?$/);
+    if (!m || !(m[1] in ENV)) fail(`unknown argument "${a}"`);
+    let v = m[2];
+    if (v === undefined) { v = argv[i + 1]; if (v === undefined || v.startsWith('--')) fail(`--${m[1]} needs a value`); i++; }
+    given[m[1]] = v;
+  }
+  const list = (name) => {
+    let v = given[name];
+    if (v === undefined && process.env[ENV[name]] !== undefined) {
+      v = process.env[ENV[name]];
+      if (!v.trim()) { process.stderr.write(`guided-plugins: ${ENV[name]} is set but empty; ignoring it\n`); return null; }
+    }
+    if (v === undefined) return null;
+    const items = v.split(',').map((x) => x.trim()).filter(Boolean);
+    if (!items.length) fail(`--${name} needs at least one name`);
+    return items;
+  };
+  return { plugins: list('plugins'), kinds: list('kinds') };
+}
+const { plugins: onlyPlugins, kinds: onlyKinds } = parseOptions(process.argv.slice(2));
 
 // ----------------------------------------------------------------------------------------------- catalog
-const args = process.argv.slice(2);
-const opt = (name, env) => {
-  const i = args.indexOf(`--${name}`);
-  const v = i >= 0 ? args[i + 1] : process.env[env];
-  return v ? v.split(',').map((s) => s.trim()).filter(Boolean) : null;
-};
-const onlyPlugins = opt('plugins', 'GUIDED_PLUGINS');
-const onlyKinds = opt('kinds', 'GUIDED_KINDS');
-
 let catalog;
 try { catalog = JSON.parse(fs.readFileSync(path.join(DIST, 'mcp', 'catalog.json'), 'utf8')); } catch (e) {
   process.stderr.write(`guided-plugins: cannot read dist/mcp/catalog.json (${e.message}). Run: node scripts/build-targets.mjs\n`);
   process.exit(1);
 }
+const SERVER = { name: 'guided-plugins', version: catalog.version ?? '0.0.0' };
 if (onlyPlugins) {
   const known = new Set(catalog.books.map((b) => b.slug));
   const unknown = onlyPlugins.filter((p) => !known.has(p));
   if (unknown.length) { process.stderr.write(`guided-plugins: unknown plugin(s): ${unknown.join(', ')}. Known: ${[...known].join(', ')}\n`); process.exit(1); }
+}
+if (onlyKinds) {
+  const unknown = onlyKinds.filter((k) => !KINDS.includes(k));
+  if (unknown.length) { process.stderr.write(`guided-plugins: unknown kind(s): ${unknown.join(', ')}. Known: ${KINDS.join(', ')}\n`); process.exit(1); }
 }
 const entries = catalog.entries.filter((e) => (!onlyPlugins || onlyPlugins.includes(e.plugin)) && (!onlyKinds || onlyKinds.includes(e.kind)));
 const books = catalog.books.filter((b) => !onlyPlugins || onlyPlugins.includes(b.slug));
@@ -58,15 +88,17 @@ function guideText(e) {
 function rulesText(slug, size) {
   const b = bookBySlug.get(slug);
   if (!b) throw new RpcError(-32602, `Unknown plugin "${slug}". Known: ${books.map((x) => x.slug).join(', ')}`);
-  const rel = b.rules[size];
-  if (!rel) throw new RpcError(-32602, `Unknown size "${size}". Use nano, mini, full or design.`);
+  if (!['nano', 'mini', 'full', 'design'].includes(size)) throw new RpcError(-32602, `Unknown size "${size}". Use nano, mini, full or design.`);
+  const rel = Object.hasOwn(b.rules, size) ? b.rules[size] : null;
+  if (!rel) throw new RpcError(-32602, `"${slug}" has no ${size} file. The component map exists only for plugins whose skills refer to it.`);
   return read(rel);
 }
 
 // ----------------------------------------------------------------------------------------------- tools
 class RpcError extends Error { constructor(code, message) { super(message); this.code = code; } }
 
-const kindEnum = ['skill', 'mode', 'agent'];
+const kindEnum = KINDS;
+const READ_ONLY = { readOnlyHint: true, openWorldHint: false }; // every tool only reads the packaged files
 const TOOLS = [
   {
     name: 'search_guides',
@@ -81,11 +113,13 @@ const TOOLS = [
       },
       required: ['query'],
     },
+    annotations: READ_ONLY,
   },
   {
     name: 'get_guide',
     description: 'Return the full text of one guide by id (a skill, mode or subagent prompt), e.g. "clean-code-review". Follow it as instructions for the task at hand.',
     inputSchema: { type: 'object', properties: { id: { type: 'string', description: 'Guide id from search_guides or list_guides.' } }, required: ['id'] },
+    annotations: READ_ONLY,
   },
   {
     name: 'list_guides',
@@ -98,10 +132,11 @@ const TOOLS = [
         manual: { type: 'boolean', description: 'true = only workflows to run on request (review, plan, fix, audit, ...).' },
       },
     },
+    annotations: READ_ONLY,
   },
   {
     name: 'get_rules',
-    description: 'Return a book\'s rule set as plain text: nano (smallest, always-on), mini (recommended working set), full (complete reference) or design (the plugin component map).',
+    description: 'Return a book\'s rule set as plain text: nano (smallest, always-on), mini (recommended working set), full (complete reference) or design (the component map; only plugins whose skills refer to it have one).',
     inputSchema: {
       type: 'object',
       properties: {
@@ -110,13 +145,15 @@ const TOOLS = [
       },
       required: ['plugin'],
     },
+    annotations: READ_ONLY,
   },
 ];
 
 const tokens = (s) => (s.toLowerCase().match(/[a-z0-9]+/g) || []).filter((w) => w.length > 2 && !STOP.has(w));
 const STOP = new Set(['the', 'and', 'for', 'with', 'that', 'this', 'when', 'use', 'how', 'into', 'from', 'are', 'you', 'your', 'can', 'what', 'need', 'want', 'make', 'have', 'has', 'not']);
 
-function search({ query, plugin, kind, limit = 8 }) {
+function search({ query, plugin, kind, limit }) {
+  limit = Number.isInteger(limit) ? Math.min(Math.max(limit, 1), 30) : 8;
   const words = [...new Set(tokens(String(query)))];
   if (!words.length) throw new RpcError(-32602, 'query needs at least one meaningful word');
   const scored = [];
@@ -139,7 +176,7 @@ function search({ query, plugin, kind, limit = 8 }) {
 
 const line = (e) => `- ${e.id} [${e.kind}${e.manual ? ', on request' : ''}] ${short(e.description, 150)}`;
 
-function callTool(name, a = {}) {
+function callTool(name, a) {
   switch (name) {
     case 'search_guides': {
       const hits = search(a);
@@ -155,7 +192,7 @@ function callTool(name, a = {}) {
       return `${rows.length} guide(s).\n${rows.map(line).join('\n')}`;
     }
     case 'get_rules': return rulesText(String(a.plugin ?? ''), a.size ?? 'mini');
-    default: throw new RpcError(-32602, `Unknown tool "${name}"`);
+    default: throw new RpcError(-32602, `Unknown tool: ${name}`);
   }
 }
 
@@ -169,7 +206,8 @@ function promptArgs(e) {
   return [{ name: 'arguments', description: e.argumentHint ?? 'Optional arguments for the workflow.', required: false }];
 }
 
-function getPrompt(name, a = {}) {
+function getPrompt(name, a) {
+  if (typeof name !== 'string') throw new RpcError(-32602, 'prompts/get needs a prompt name');
   const e = promptByName.get(name);
   if (!e) throw new RpcError(-32602, `Unknown prompt "${name}"`);
   let text = guideText(e);
@@ -196,13 +234,22 @@ function readResource(uri) {
 }
 
 // ----------------------------------------------------------------------------------------------- JSON-RPC
+const isObject = (v) => v !== null && typeof v === 'object' && !Array.isArray(v);
+// params and arguments may be absent or null; anything else that is not an object is a client error
+const objectOf = (v, what) => {
+  if (v === undefined || v === null) return {};
+  if (!isObject(v)) throw new RpcError(-32602, `${what} must be an object`);
+  return v;
+};
+
 function handle(req) {
-  const { method, params = {} } = req;
+  const { method } = req;
+  const params = objectOf(req.params, 'params');
   switch (method) {
     case 'initialize': {
       const wanted = params.protocolVersion;
       return {
-        protocolVersion: PROTOCOLS.includes(wanted) ? wanted : PROTOCOLS[1],
+        protocolVersion: PROTOCOLS.includes(wanted) ? wanted : PROTOCOLS[0],
         capabilities: { tools: {}, resources: {}, prompts: {} },
         serverInfo: SERVER,
         instructions: `Guides from classic software-engineering books (${books.map((b) => b.title).join('; ')}). For a task, call search_guides, then get_guide and follow the guide. get_rules returns a book's rule set.`,
@@ -212,26 +259,37 @@ function handle(req) {
     case 'logging/setLevel': return {};
     case 'tools/list': return { tools: TOOLS };
     case 'tools/call': {
-      try { return { content: [{ type: 'text', text: callTool(params.name, params.arguments) }] }; } catch (e) {
+      // an unknown tool is a protocol error (-32602); a failure inside a known tool is a tool result with isError
+      if (typeof params.name !== 'string') throw new RpcError(-32602, 'tools/call needs a tool name');
+      if (!TOOLS.some((t) => t.name === params.name)) throw new RpcError(-32602, `Unknown tool: ${params.name}`);
+      const args = objectOf(params.arguments, 'arguments');
+      try { return { content: [{ type: 'text', text: callTool(params.name, args) }] }; } catch (e) {
         if (e instanceof RpcError) return { content: [{ type: 'text', text: e.message }], isError: true };
         throw e;
       }
     }
     case 'resources/list': return { resources: resourceList() };
     case 'resources/templates/list': return { resourceTemplates: [] };
-    case 'resources/read': return { contents: [readResource(params.uri)] };
+    case 'resources/read':
+      if (typeof params.uri !== 'string') throw new RpcError(-32602, 'resources/read needs a uri');
+      return { contents: [readResource(params.uri)] };
     case 'prompts/list': return { prompts: promptEntries.map((e) => ({ name: e.id, description: short(e.description, 200), arguments: promptArgs(e) })) };
-    case 'prompts/get': return getPrompt(params.name, params.arguments);
+    case 'prompts/get': return getPrompt(params.name, objectOf(params.arguments, 'arguments'));
     default: throw new RpcError(-32601, `Method not found: ${method}`);
   }
 }
 
-function respond(msg) { process.stdout.write(`${JSON.stringify(msg)}\n`); }
+process.stdout.on('error', (e) => { if (e.code === 'EPIPE') process.exit(0); throw e; }); // the client went away
+function writeOut(msg) { process.stdout.write(`${JSON.stringify(msg)}\n`); }
+const invalid = (id) => ({ jsonrpc: '2.0', id, error: { code: -32600, message: 'Invalid Request' } });
 
-function process_(req) {
-  if (req === null || typeof req !== 'object' || req.jsonrpc !== '2.0' || typeof req.method !== 'string') {
-    return req && req.id !== undefined ? { jsonrpc: '2.0', id: req.id, error: { code: -32600, message: 'Invalid Request' } } : null;
+function processOne(req) {
+  if (!isObject(req)) return invalid(null);
+  if (typeof req.method !== 'string') {
+    // a response from the client (this server never sends requests) is ignored; anything else is malformed
+    return req.jsonrpc === '2.0' && ('result' in req || 'error' in req) ? null : invalid(req.id ?? null);
   }
+  if (req.jsonrpc !== '2.0') return invalid(req.id ?? null);
   const isNotification = req.id === undefined || req.id === null;
   try {
     const result = handle(req);
@@ -249,14 +307,15 @@ rl.on('line', (raw) => {
   const text = raw.trim();
   if (!text) return;
   let msg;
-  try { msg = JSON.parse(text); } catch { respond({ jsonrpc: '2.0', id: null, error: { code: -32700, message: 'Parse error' } }); return; }
+  try { msg = JSON.parse(text); } catch { writeOut({ jsonrpc: '2.0', id: null, error: { code: -32700, message: 'Parse error' } }); return; }
   if (Array.isArray(msg)) {
-    const out = msg.map(process_).filter(Boolean);
-    if (out.length) respond(out);
+    if (!msg.length) { writeOut(invalid(null)); return; } // an empty batch is one error, not an empty array
+    const out = msg.map(processOne).filter(Boolean);
+    if (out.length) writeOut(out);
   } else {
-    const out = process_(msg);
-    if (out) respond(out);
+    const out = processOne(msg);
+    if (out) writeOut(out);
   }
 });
-rl.on('close', () => process.exit(0));
+// No process.exit() here: exiting while stdout is a full pipe would cut the last response. Node leaves once stdout is flushed.
 process.stderr.write(`guided-plugins MCP server ready: ${entries.length} guides from ${books.length} book(s), ${promptEntries.length} prompts\n`);

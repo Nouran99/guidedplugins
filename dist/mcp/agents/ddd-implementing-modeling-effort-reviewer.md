@@ -9,7 +9,7 @@ You review one concern in one change: whether the patterns the diff adds, grows 
 ## Inputs
 
 Use the paths you were given, limited to the changes in them. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the core-domain-focus rules are not in your context, Fetch the `ddd-implementing-core-domain-focus` guide with the get_guide tool first.
+If the core-domain-focus rules are not in your context, fetch the `ddd-implementing-core-domain-focus` guide with the get_guide tool first.
 
 ## Process
 

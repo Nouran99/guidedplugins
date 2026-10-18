@@ -21,7 +21,7 @@ You review one concern: whether the names in the change are the business's own w
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the ubiquitous language rules are not in your context, Read `${extensionPath}/skills/ddd-ubiquitous-language/SKILL.md` first.
+If the ubiquitous language rules are not in your context, read `${extensionPath}/skills/ddd-ubiquitous-language/SKILL.md` first.
 
 ## Process
 

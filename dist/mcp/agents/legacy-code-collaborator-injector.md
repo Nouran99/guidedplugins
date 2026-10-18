@@ -7,7 +7,7 @@ You change how a class or method receives something it used to create or could n
 ## Inputs
 
 You need the finding or seam proposal (from `legacy-code-construction-reviewer`, `legacy-code-seam-reviewer` or `legacy-code-find-seam`) and the class or method in scope. They must be in your prompt: you cannot see the conversation that delegated to you. If either is missing, ask once, then stop.
-If the rules are not in your context, Fetch the `legacy-code-construction-barriers` guide with the get_guide tool and the `legacy-code-substitution-seams` skill first.
+If the rules are not in your context, fetch the `legacy-code-construction-barriers` guide with the get_guide tool and the `legacy-code-substitution-seams` guide (get_guide) first.
 
 ## Process
 

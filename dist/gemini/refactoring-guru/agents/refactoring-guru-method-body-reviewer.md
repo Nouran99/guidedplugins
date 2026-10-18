@@ -21,7 +21,7 @@ You review one concern: whether a rewritten method body still evaluates the same
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status`; use `git show HEAD:<path>` to read the original of each changed method. If nothing is changed and no paths were given, ask which files to review.
-If the composing-methods or conditional-moves rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-composing-methods/SKILL.md` and the `refactoring-guru-conditional-moves` skill first.
+If the composing-methods or conditional-moves rules are not in your context, read `${extensionPath}/skills/refactoring-guru-composing-methods/SKILL.md` and `${extensionPath}/skills/refactoring-guru-conditional-moves/SKILL.md` first.
 
 ## Process
 

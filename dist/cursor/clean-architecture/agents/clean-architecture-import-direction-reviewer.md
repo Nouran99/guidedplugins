@@ -13,7 +13,7 @@ You review one concern: whether every source dependency points inward, and wheth
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, then widen to the inner-layer files that the changed interfaces touch. If nothing is changed and no paths were given, ask which files to review.
-If the dependency rules are not in your context, Load the `clean-architecture-dependency-rule` skill first.
+If the dependency rules are not in your context, load the `clean-architecture-dependency-rule` skill first.
 
 ## Process
 

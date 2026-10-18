@@ -9,7 +9,7 @@ You review one concern: whether values that carry a concept are modeled as one, 
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files.
-If the data-smells or organizing-data rules are not in your context, Fetch the `refactoring-guru-data-smells` guide with the get_guide tool and the `refactoring-guru-organizing-data` skill first.
+If the data-smells or organizing-data rules are not in your context, fetch the `refactoring-guru-data-smells` guide with the get_guide tool and the `refactoring-guru-organizing-data` guide (get_guide) first.
 
 ## Process
 

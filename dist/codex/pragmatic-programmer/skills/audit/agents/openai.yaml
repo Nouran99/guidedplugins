@@ -1,6 +1,6 @@
 interface:
   display_name: "Audit"
-  short_description: "Scan a directory or repository against The Pragmatic Programmer in a forked context, rate each concern, and return the top hot spots with their owning skills in at most 40 lines."
-  default_prompt: "Use $pragmatic-programmer:audit on directory | glob | empty for the repository root."
+  short_description: "Scan a directory or repository against The Pragmatic Programmer, rate each concern, and return the top hot spots with their owning skills in at most 40 lines."
+  default_prompt: "Use $pragmatic-programmer:audit."
 policy:
   allow_implicit_invocation: false

@@ -1,7 +1,7 @@
 {
   "name": "ddd",
   "version": "1.0.0",
-  "description": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
+  "description": "Eric Evans' Domain-Driven Design: skills and modes for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
   "author": {
     "name": "Nouran Darwish"
   },
@@ -24,7 +24,7 @@
   "interface": {
     "displayName": "Domain-Driven Design",
     "shortDescription": "You want to model the business domain rather than tables, controllers, or DTOs.",
-    "longDescription": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
+    "longDescription": "Eric Evans' Domain-Driven Design: skills and modes for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
     "developerName": "Nouran Darwish",
     "category": "Developer Tools",
     "capabilities": [

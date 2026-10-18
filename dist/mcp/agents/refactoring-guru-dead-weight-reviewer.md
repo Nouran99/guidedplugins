@@ -9,7 +9,7 @@ You review one concern: code that remains in the tree and costs maintenance with
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, and look at their immediate neighbors for things the change left unused.
-If the dead-weight rules are not in your context, Fetch the `refactoring-guru-dead-weight` guide with the get_guide tool first.
+If the dead-weight rules are not in your context, fetch the `refactoring-guru-dead-weight` guide with the get_guide tool first.
 
 ## Process
 

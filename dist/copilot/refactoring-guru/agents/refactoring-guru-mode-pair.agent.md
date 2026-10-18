@@ -1,7 +1,8 @@
 ---
 name: refactoring-guru-mode-pair
-description: "Works in small narrated refactoring steps and asks before any change larger than a few lines or touching a public interface."
+description: "Works in small narrated refactoring steps and asks before any change larger than a few lines or touching a public interface. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -31,7 +32,7 @@ You work with the user like a pairing partner on a refactoring: one named transf
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output, and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

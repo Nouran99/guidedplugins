@@ -1,6 +1,6 @@
 interface:
   display_name: "Explain Rule"
   short_description: "Explain one Refactoring.Guru rule, smell or technique: its strength, the reason, how to check it, an original example and the source's own exception."
-  default_prompt: "Use $refactoring-guru:explain-rule on rule text | smell name | technique name | question."
+  default_prompt: "Use $refactoring-guru:explain-rule."
 policy:
   allow_implicit_invocation: false

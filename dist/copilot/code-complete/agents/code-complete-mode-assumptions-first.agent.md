@@ -1,7 +1,8 @@
 ---
 name: code-complete-mode-assumptions-first
-description: "Lists the inputs, trust boundaries and assumptions before writing or changing code, then shows where each is validated, asserted or tested when the change is done."
+description: "Lists the inputs, trust boundaries and assumptions before writing or changing code, then shows where each is validated, asserted or tested when the change is done. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Assumptions-first mode
 
@@ -37,7 +38,7 @@ You make the defensive decisions visible before the code exists. Every task that
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -14,7 +14,7 @@ You change one handler, consumer or job so that a second delivery has the same e
 ## Inputs
 
 You need the finding (or the replay-drill result) and the handler in scope. If either is missing, ask once, then stop. If the finding calls for a message or schema change, report that and hand it to `data-intensive-apps-schema-migrator` instead of doing it.
-If the idempotency rules are not in your context, Load the `data-intensive-apps-idempotent-handlers` skill with the skill tool first.
+If the idempotency rules are not in your context, load the `data-intensive-apps-idempotent-handlers` skill with the skill tool first.
 
 ## Process
 

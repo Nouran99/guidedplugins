@@ -36,4 +36,4 @@ Hidden data contracts are still contracts.
 
 ## Companion skills (if installed)
 
-The Designing Data-Intensive Applications rules above are backed by skills from the `data-intensive-apps` plugin. Use `data-intensive-apps-review` to review a change, `data-intensive-apps-plan` before a non-trivial change, `data-intensive-apps-explain-rule` to look up a rule, `data-intensive-apps-checklist` before finishing, and `data-intensive-apps-principles` for the full rule set and routing table.
+The Designing Data-Intensive Applications rules above are backed by skills from the `data-intensive-apps` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `data-intensive-apps-<skill>` (for example `data-intensive-apps-review`); Codex mentions them as `$data-intensive-apps:<skill>` (for example `$data-intensive-apps:review`).

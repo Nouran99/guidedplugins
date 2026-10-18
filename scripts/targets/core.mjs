@@ -2,7 +2,7 @@
 // target agent, and writes files. Nothing here is specific to one agent; each target module plugs in a "dialect".
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, REGISTRY, listDir, listPluginDirs, loadPlugin, readIf, toList } from '../lib.mjs';
+import { ROOT, REGISTRY, VERSION, listDir, listPluginDirs, loadPlugin, readIf, toList } from '../lib.mjs';
 import { isManual } from '../catalog-lib.mjs';
 
 export const DIST = path.join(ROOT, 'dist');
@@ -60,6 +60,79 @@ function pathOut(res, b1, b2) {
   return b1 && b2 ? `\`${res.path}\`` : `${b1}${res.path}${b2}`;
 }
 
+// Sentence-aware verbs: the dialects write "Load the ..." / "Read ...", which is right at the start of a sentence and wrong
+// after a comma or semicolon ("If the rules are not in your context, Load the ... skill first").
+function atSentenceStart(str, offset) {
+  const before = str.slice(Math.max(0, offset - 16), offset);
+  return /(?:^|\n)[ \t]*(?:(?:[-*>]|\d+[.)])[ \t]+)?$/.test(before) || /[.!?:][ \t]+$/.test(before) || /\*\*[ \t]*$/.test(before);
+}
+const lowerFirst = (s) => s.replace(/^[A-Z]/, (c) => c.toLowerCase());
+
+// Claude Code constructs that have no meaning elsewhere. Applied to every non-Claude target.
+function neutralize(t, plugin) {
+  return t
+    // a verb that opens a clause after a comma or semicolon is lower case ("..., read `references/mini.md`")
+    .replace(/([,;]) (Read|Load|Fetch) (?=the |`)/g, (m, p, v) => `${p} ${v.toLowerCase()} `)
+    // "context: fork" skills run in the main conversation outside Claude Code
+    .replace(/runs steps 1 to 4 in a forked context/g, 'runs steps 1 to 4 and returns a bounded report')
+    .replace(/, in a forked context and at most /g, ', in at most ')
+    .replace(/(^|[.!?]\s+)In a forked context, ([a-z])/g, (m, pre, c) => pre + c.toUpperCase())
+    .replace(/,? in a forked context(?=[ ,:.(]|$)/g, '')
+    .replace(/a bounded forked report/g, 'a bounded report')
+    .replace(/for the forked workflow/g, 'for the bounded report')
+    .replace(/You are running in an isolated context\. Everything you need is in this file\./g, 'Work in the current session, using this file and the files it names.')
+    // the SessionStart hook ships only for Claude Code
+    .replace(/; the optional SessionStart hook injects it/g, `; the same text ships as dist/rules/${plugin.slug}/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file`)
+    // output styles have no "default style" outside Claude Code
+    .replace(/\b(as in|as) the default style/g, '$1 your default behavior')
+    .replace(/<the owning skill as a slash command>/g, '<the owning skill>')
+    .replace(/is a manual command that you cannot run;/g, 'is a manual workflow that you do not run;');
+}
+
+// Plain backticked mentions of siblings, written without the plugin prefix ("is `test-gap-reviewer`").
+// Rules, because bare names are ambiguous ("use-cases" is a skill AND a directory name):
+//  - an agent name is always a reference;
+//  - a hyphenated skill name is a reference unless it sits in a list of backticked words that are mostly not components
+//    (a list of directory names such as `application`, `use-cases`, `usecases`);
+//  - a one-word skill name is a reference only when it is certain: in a description, in a list with another component,
+//    or alone in a table cell under a "Skill" / "Agent" column.
+function rewriteBareNames(t, kinds, plugin, d, ctx) {
+  const known = (n) => kinds.skill.has(n) || kinds.agent.has(n);
+  const ref = (n) => (kinds.agent.has(n) ? d.refAgent(plugin, n, ctx) : d.refSkill(plugin, n, ctx));
+  const tok = '`[a-z][a-z0-9]*(?:-[a-z0-9]+)*`';
+  const chain = new RegExp(`${tok}(?:(?:, and |, or |, | and | or | / )${tok})*`, 'g');
+  const convert = (text, forced) => text.replace(chain, (m) => {
+    const names = [...m.matchAll(/`([^`]+)`/g)].map((x) => x[1]);
+    const knownCount = names.filter(known).length;
+    const literalList = names.length >= 2 && knownCount <= 1;
+    return m.replace(/`([^`]+)`/g, (b, n) => {
+      if (kinds.agent.has(n)) return `\`${ref(n)}\``;
+      if (!kinds.skill.has(n)) return b;
+      if (n.includes('-')) return literalList && !forced ? b : `\`${ref(n)}\``;
+      return forced || (names.length >= 2 && knownCount >= 2) ? `\`${ref(n)}\`` : b;
+    });
+  });
+  if (ctx.desc) return convert(t, true);
+
+  const lines = t.split('\n');
+  let refCols = null;
+  for (let i = 0; i < lines.length; i++) {
+    const L = lines[i];
+    const isRow = /^\s*\|.*\|\s*$/.test(L);
+    if (!isRow) { refCols = null; lines[i] = convert(L, false); continue; }
+    if (refCols === null && /^\s*\|[\s:|-]+\|\s*$/.test(lines[i + 1] ?? '')) {
+      refCols = new Set();
+      L.trim().replace(/^\||\|$/g, '').split('|').forEach((c, j) => { if (/\b(skills?|agents?|reviewers?|components?|owners?)\b/i.test(c)) refCols.add(j); });
+      lines[i] = L; continue;
+    }
+    if (refCols && refCols.size && !/^\s*\|[\s:|-]+\|\s*$/.test(L)) {
+      const cells = L.trim().replace(/^\||\|$/g, '').split('|');
+      lines[i] = `|${cells.map((c, j) => (refCols.has(j) && new RegExp(`^\\s*${tok}(?:(?:, | and | or )${tok})*\\s*$`).test(c) ? convert(c, true) : convert(c, false))).join('|')}|`;
+    } else lines[i] = convert(L, false);
+  }
+  return lines.join('\n');
+}
+
 export function rewrite(text, plugin, d, ctx) {
   const slug = esc(plugin.slug);
   const kinds = {
@@ -75,7 +148,10 @@ export function rewrite(text, plugin, d, ctx) {
   }
 
   // "Read `<path to a skill>`" -> either "Read `<relative path>`" or "Load the `<skill>` skill"
-  t = t.replace(/Read (`?)\$\{CLAUDE_PLUGIN_ROOT\}\/skills\/([a-z0-9-]+)\/SKILL\.md(`?)/g, (m, b1, n, b2) => d.readSkill(plugin, n, ctx, b1 && b2));
+  t = t.replace(/Read (`?)\$\{CLAUDE_PLUGIN_ROOT\}\/skills\/([a-z0-9-]+)\/SKILL\.md(`?)/g, (m, b1, n, b2, offset, str) => {
+    const out = d.readSkill(plugin, n, ctx, b1 && b2);
+    return atSentenceStart(str, offset) ? out : lowerFirst(out);
+  });
   t = t.replace(/(`?)\$\{CLAUDE_PLUGIN_ROOT\}\/skills\/([a-z0-9-]+|<[a-z-]+>)\/SKILL\.md(`?)/g, (m, b1, n, b2) => pathOut(d.skillFile(plugin, n, ctx), b1, b2));
   t = t.replace(/(`?)\$\{CLAUDE_PLUGIN_ROOT\}\/skills\/principles\/references\/(full|mini|nano)\.md(`?)/g, (m, b1, r, b2) => pathOut(d.refFile(plugin, r, ctx), b1, b2));
   t = t.replace(/(`?)\$\{CLAUDE_SKILL_DIR\}\/references\/(full|mini|nano)\.md(`?)/g, (m, b1, r, b2) => pathOut(d.refFile(plugin, r, ctx), b1, b2));
@@ -93,13 +169,11 @@ export function rewrite(text, plugin, d, ctx) {
     return m;
   });
 
-  // plain backticked mentions of a sibling agent or hyphenated skill, written without the plugin prefix ("is `test-gap-reviewer`")
-  const hyphSkills = new Set([...kinds.skill].filter((n) => n.includes('-') && !kinds.agent.has(n)));
-  t = t.replace(/`([a-z][a-z0-9]*(?:-[a-z0-9]+)*)`/g, (m, n) => {
-    if (kinds.agent.has(n)) return `\`${d.refAgent(plugin, n, ctx)}\``;
-    if (hyphSkills.has(n)) return `\`${d.refSkill(plugin, n, ctx)}\``;
-    return m;
-  });
+  // placeholder references inside output templates ("/clean-code:<skill>", "clean-code:<agent>"): same dialect, placeholder kept
+  const ph = new RegExp(`(?<![\\w$-])(\\/)?${slug}:<(skill|agent|reviewer|other|name)>`, 'g');
+  t = t.replace(ph, (m, slash, kind) => (slash || kind === 'skill' || kind === 'other' ? d.refSkill(plugin, `<${kind}>`, ctx) : d.refAgent(plugin, `<${kind}>`, ctx)));
+
+  t = rewriteBareNames(t, kinds, plugin, d, ctx);
 
   // bare hyphenated agent names (in fenced output templates: "Not checked: missing tests (test-gap-reviewer)").
   // Agent names are distinctive; hyphenated skill names are not ("error-handling" is also plain English), so skills are left alone.
@@ -112,21 +186,43 @@ export function rewrite(text, plugin, d, ctx) {
   // arguments
   t = t.replace(/^Arguments: `\$ARGUMENTS`[ \t]*$/gm, `Arguments: ${d.argsLine}`);
   t = t.replace(/`\$ARGUMENTS`/g, d.argsInline).replace(/\$ARGUMENTS/g, d.argsInline);
-  return t;
+  return neutralize(t, plugin);
 }
+
+// Descriptions name sibling skills in plain backticks ("... is `queues`"); every such mention is a reference.
+export const rewriteDescription = (text, plugin, d, ctx) => rewrite(text, plugin, d, { ...ctx, desc: true });
+
+// A neutral form of the Claude plugin's marketplace text, for manifests of other agents.
+// { subagents: false } is for Codex, whose plugins cannot bundle subagents.
+export const neutralText = (s, { subagents = true } = {}) => {
+  const t = String(s).replace(/ as a Claude Code toolkit:/g, ':').replace(/Claude Code plugins/g, 'plugins').replace(/output styles/g, 'modes');
+  return subagents ? t : t.replace(/(skills), subagents and modes/gi, '$1 and modes');
+};
 
 // Constructs that must not survive in a non-Claude target.
 export function leftovers(text, slugs, { mentions = false } = {}) {
   const found = [];
-  if (mentions) text = text.replace(new RegExp(`\\$(?:${slugs.map(esc).join('|')}):[a-z][a-z0-9-]*`, 'g'), ''); // Codex "$plugin:skill" mentions are the intended syntax
+  const name = '(?:[a-z][a-z0-9-]*|<[a-z-]+>)'; // a real name or a placeholder such as <skill>
+  if (mentions) text = text.replace(new RegExp(`\\$(?:${slugs.map(esc).join('|')}):${name}`, 'g'), ''); // Codex "$plugin:skill" mentions are the intended syntax
   if (/\$\{CLAUDE_[A-Z_]+\}/.test(text)) found.push('${CLAUDE_*} variable');
   if (/\$ARGUMENTS/.test(text)) found.push('$ARGUMENTS');
   if (/\/output-style\b/.test(text)) found.push('/output-style');
-  const refs = new RegExp(`(?<![\\w-])\\/?(${slugs.map(esc).join('|')}):[a-z][a-z0-9-]*`, 'g');
+  const refs = new RegExp(`(?<![\\w-])\\/?(${slugs.map(esc).join('|')}):${name}`, 'g');
   const m = text.match(refs);
   if (m) found.push(`unrewritten reference ${m[0]}`);
+  for (const [re, what] of CLAUDE_ONLY_TEXT) if (re.test(text)) found.push(what);
   return found;
 }
+
+// Claude Code behavior that the rewrite must have removed or reworded (see neutralize()).
+const CLAUDE_ONLY_TEXT = [
+  [/forked (?:context|report|workflow)/i, 'claim about a forked context'],
+  [/isolated context/, 'claim about an isolated context'],
+  [/SessionStart/, 'SessionStart hook'],
+  [/the default style/, '"default style" (an output-style concept)'],
+  [/as a slash command>/, 'placeholder "as a slash command"'],
+  [/Claude Code (?:toolkit|plugin)/, 'description that calls the plugin a Claude Code toolkit'],
+];
 
 // ------------------------------------------------------------------ frontmatter / files
 export const q = (s) => JSON.stringify(String(s)); // JSON strings are valid YAML double-quoted scalars
@@ -165,7 +261,18 @@ export function descriptionFor(skill, suffix = '') {
 export const MANUAL_SUFFIX = 'Run only when the user asks for it by name.';
 
 export function allSlugs(model) { return model.map((p) => p.slug); }
-export { isManual, REGISTRY, ROOT, readIf, path, fs };
+
+// The routing table names subagent roles ("... (delegate)"). Outside Claude Code a role exists only where a build ships it, so the hub says
+// what to do when it does not. `where` describes the roles of the target.
+export function withRolesNote(body, plugin, where) {
+  const note = `## Subagent roles\n\nNames such as \`${plugin.slug}-lead\`, \`${plugin.slug}-final-gate\` and the \`...-reviewer\` roles in the routing table are subagents. ${where} When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.\n\n`;
+  return body.replace(/^## Routing table$/m, `${note}## Routing table`);
+}
+
+// The maintainers' component map (docs/DESIGN.md) is only shipped where a skill sends the reader to it.
+export const referencesDesign = (plugin) => [...plugin.skills, ...plugin.agents, ...plugin.styles].some((x) => /docs\/DESIGN\.md/.test(x.body));
+export const DESIGN_NOTE = '> This is the maintainers\' component map from the Claude Code build of this plugin. Use it for the ownership tables. Model names, tool lists, `context: fork`, hooks and the other frontmatter facts below describe the Claude Code build. Component names are written as in the plugin source; in this build each skill or agent carries the plugin prefix.\n\n';
+export { isManual, REGISTRY, ROOT, VERSION, readIf, path, fs };
 
 // ------------------------------------------------------------------ shared helpers for agent-like outputs
 // Rewrites an agent body for a target and prepends the skill-preload line and (optionally) a read-only note, because
@@ -178,6 +285,15 @@ export function agentBodyFor(plugin, agent, dialect, { preloadLine, readOnlyNote
   return body;
 }
 
-export const READ_ONLY_CMDS = ['git diff*', 'git log*', 'git show*', 'git status*', 'git blame*', 'git ls-files*', 'ls*', 'grep*', 'rg*', 'wc*', 'head*', 'tail*'];
+// Shell rules for read-only roles in OpenCode. The last matching rule wins, so the denies come after the allows. Each allow is the command
+// itself, never a bare prefix ("ls*" would also match "lsblk"). This is a guard rail, not a sandbox: see docs/AGENTS_SUPPORT.md.
+export const READ_ONLY_ALLOW = [
+  'git diff', 'git diff *', 'git log', 'git log *', 'git show', 'git show *', 'git status', 'git status *', 'git blame *',
+  'git ls-files', 'git ls-files *', 'git branch --show-current', 'ls', 'ls *', 'grep *', 'rg *', 'find *', 'wc *', 'head *', 'tail *',
+];
+// Flags and shell syntax that turn a read-only command into a write or an execution.
+export const READ_ONLY_DENY = [
+  '*>*', '*--output*', '*--ext-diff*', 'rg *--pre*', 'find *-exec*', 'find *-ok*', 'find *-delete*', 'find *-fprint*', 'find *-fls*',
+];
 export const bt = (s) => `\`${s}\``;
 export const yaml = (s) => JSON.stringify(String(s));

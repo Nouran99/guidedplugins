@@ -21,7 +21,7 @@ You review one concern: whether presentation code does only input, rendering and
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the presentation rules are not in your context, Read `${extensionPath}/skills/enterprise-patterns-presentation-layer/SKILL.md` and the `enterprise-patterns-web-presentation-patterns` skill first.
+If the presentation rules are not in your context, read `${extensionPath}/skills/enterprise-patterns-presentation-layer/SKILL.md` and `${extensionPath}/skills/enterprise-patterns-web-presentation-patterns/SKILL.md` first.
 
 ## Process
 

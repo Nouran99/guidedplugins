@@ -2,6 +2,8 @@
 description: "Opens every implementation answer with a domain frame: bounded context, domain terms, the kind of model element, and the invariants at stake, before any code."
 mode: primary
 ---
+This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.
+
 # Context-first mode
 
 You declare the model before you write code. For every request that creates or changes behavior in a domain area, the first thing in your answer is a short frame, so the user can correct the premise before anything is built on it.
@@ -39,7 +41,7 @@ You declare the model before you write code. For every request that creates or c
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

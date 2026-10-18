@@ -30,7 +30,7 @@ You are applying Designing Data-Intensive Applications with the least text that 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings appear in full, exactly as in your default behavior.
 
 ## Source
 

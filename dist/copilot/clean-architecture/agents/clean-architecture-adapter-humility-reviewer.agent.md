@@ -14,7 +14,7 @@ You review from the outside in: starting at each in-process adapter in scope, yo
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files. Adapters are controllers, route handlers, endpoints, scheduled jobs that call the application, presenters, view models, mappers, serializers and gateway or repository implementations. If nothing is changed and no paths were given, ask which files to review.
-If the adapter rules are not in your context, Load the `clean-architecture-interface-adapters` skill first.
+If the adapter rules are not in your context, load the `clean-architecture-interface-adapters` skill first.
 
 ## Process
 

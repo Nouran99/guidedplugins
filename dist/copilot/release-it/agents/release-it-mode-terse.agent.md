@@ -1,7 +1,8 @@
 ---
 name: release-it-mode-terse
-description: "Result first, no preamble, a few lines at most, still shows failing output in full and still flags numbers chosen without a source."
+description: "Result first, no preamble, a few lines at most, still shows failing output in full and still flags numbers chosen without a source. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Terse mode
 
@@ -29,7 +30,7 @@ You are working with someone who wants the result, not the reasoning. Lead with 
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

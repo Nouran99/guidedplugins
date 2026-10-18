@@ -21,7 +21,7 @@ You review one concern: effects that leave the code and cannot be observed or av
 ## Inputs
 
 Use the paths, or the base ref (read as `git diff <base>...HEAD`), you were given. Otherwise run `git diff`, `git diff --staged` and `git status` and take the changed files and untracked files. If nothing is changed and no paths were given, ask which files to review.
-If the hard-output rules are not in your context, Read `${extensionPath}/skills/legacy-code-hard-outputs/SKILL.md` first.
+If the hard-output rules are not in your context, read `${extensionPath}/skills/legacy-code-hard-outputs/SKILL.md` first.
 
 ## Process
 

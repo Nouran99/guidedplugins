@@ -21,7 +21,7 @@ You review one concern: what each hunk is for, and whether any behavior changed 
 ## Inputs
 
 Use the paths or ref you were given, plus any stated goal. Otherwise run `git diff` and `git status` and take the changed files. If nothing is changed and no paths were given, ask which files to review.
-If the refactoring-process rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-refactoring-process/SKILL.md` first.
+If the refactoring-process rules are not in your context, read `${extensionPath}/skills/refactoring-guru-refactoring-process/SKILL.md` first.
 
 ## Process
 

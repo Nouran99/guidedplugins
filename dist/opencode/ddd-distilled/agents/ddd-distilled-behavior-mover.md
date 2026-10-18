@@ -10,7 +10,7 @@ Before you start, load these skills with the skill tool: `ddd-distilled-entities
 ## Role
 
 You relocate existing business decisions so that the model carries the meaning and the service only coordinates. You move a decision without changing what it decides. You do not invent new rules, you do not introduce a pattern the finding did not call for, and you do not decide which concept owns a rule that is genuinely unclear.
-If the rules are not in your context, Load the `ddd-distilled-entities` skill with the skill tool and the `ddd-distilled-application-services` skill first.
+If the rules are not in your context, load the `ddd-distilled-entities` skill with the skill tool and the `ddd-distilled-application-services` skill first.
 
 ## Inputs
 

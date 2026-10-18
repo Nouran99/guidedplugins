@@ -1,6 +1,6 @@
 ---
 name: "test-points"
-description: "Use when the impact of a change is unclear and you must choose where to observe it: effect sketches, test points, interception points, pinch points. A seam's place is `seams`; restructuring to understand is `$legacy-code:scratch-refactoring`; the pin is `$legacy-code:characterization-tests`; test level is `$legacy-code:focused-tests`."
+description: "Use when the impact of a change is unclear and you must choose where to observe it: effect sketches, test points, interception points, pinch points. A seam's place is `$legacy-code:seams`; restructuring to understand is `$legacy-code:scratch-refactoring`; the pin is `$legacy-code:characterization-tests`; test level is `$legacy-code:focused-tests`."
 ---
 
 # Test points: where to observe the effects
@@ -35,7 +35,7 @@ Decide where tests should look before you write them. Start from the change poin
 2. List what the change point reads, writes, calls and returns. For each effect, search for other readers or callers.
 3. Draw the sketch as indented text. Mark where lines converge (pinch points) and where one downstream point sees effects from several changes (interception points).
 4. Choose the first test point. If it is broad, name the narrow follow-up and the seam it needs.
-5. Hand the chosen point to `$legacy-code:characterize` for pins or to `$legacy-code:find-seam` if the point cannot be reached. `$legacy-code:effect-sketch` runs steps 1 to 4 in a forked context.
+5. Hand the chosen point to `$legacy-code:characterize` for pins or to `$legacy-code:find-seam` if the point cannot be reached. `$legacy-code:effect-sketch` runs steps 1 to 4 and returns a bounded report.
 
 ## Example
 
@@ -93,7 +93,7 @@ Follow-up, recorded in the plan: expose `recalculateTotals()` as a unit and test
 
 ## Related
 
-`$legacy-code:effect-sketch` for the forked workflow; `$legacy-code:scratch-refactoring` when you cannot read the code well enough to sketch; `$legacy-code:characterization-tests` and `$legacy-code:focused-tests` for the tests; `legacy-code-test-level-reviewer` to review test placement; `$legacy-code:seams` once a barrier is named.
+`$legacy-code:effect-sketch` for the bounded report; `$legacy-code:scratch-refactoring` when you cannot read the code well enough to sketch; `$legacy-code:characterization-tests` and `$legacy-code:focused-tests` for the tests; `legacy-code-test-level-reviewer` to review test placement; `$legacy-code:seams` once a barrier is named.
 
 ## Source
 

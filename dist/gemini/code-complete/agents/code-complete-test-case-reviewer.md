@@ -21,7 +21,7 @@ You review one concern: whether the tests that exist for the changed routines co
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed routines and the test files that cover them (`grep` for the routine name under the test directories). If nothing is changed and no paths were given, ask which files to review.
-If the testing rules are not in your context, Read `${extensionPath}/skills/code-complete-routine-testing/SKILL.md` first.
+If the testing rules are not in your context, read `${extensionPath}/skills/code-complete-routine-testing/SKILL.md` first.
 
 ## Process
 

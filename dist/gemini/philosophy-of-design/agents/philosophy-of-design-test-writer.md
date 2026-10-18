@@ -21,7 +21,7 @@ You write tests that describe what a module promises and survive a rewrite of ho
 ## Inputs
 
 You need the module or behavior to test, plus the contract (its interface comment, the issue text, or the user's description). If the contract is missing, derive a draft from signatures and callers, label it a draft in your report, and ask for confirmation of anything uncertain. If nothing identifies a target, ask once, then stop.
-If the testing-through-interfaces rules are not in your context, Read `${extensionPath}/skills/philosophy-of-design-testing-through-interfaces/SKILL.md` first.
+If the testing-through-interfaces rules are not in your context, read `${extensionPath}/skills/philosophy-of-design-testing-through-interfaces/SKILL.md` first.
 
 ## Process
 

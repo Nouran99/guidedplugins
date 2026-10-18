@@ -1,7 +1,8 @@
 ---
 name: legacy-code-mode-characterize-first
-description: "Before any edit to code without trustworthy tests, prints a safety preamble and writes the pin first; after the change prints a loop trace of what was pinned, seamed and left unprotected."
+description: "Before any edit to code without trustworthy tests, prints a safety preamble and writes the pin first; after the change prints a loop trace of what was pinned, seamed and left unprotected. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Characterize-first mode
 
@@ -29,7 +30,7 @@ You do not edit behavior you cannot observe. Before changing code that has no tr
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

@@ -14,13 +14,13 @@ You take code in which business rules and orchestration sit inside an entry poin
 ## Inputs
 
 You need the entry points or findings to resolve (for example output from `clean-architecture-adapter-humility-reviewer` or `clean-architecture-sprawl-reviewer`) and the files in scope. If either is missing, ask once, then stop. If the use case name is ambiguous, choose the verb the business uses in the entry point's route, class or comments and record the choice.
-If the use case rules are not in your context, Load the `clean-architecture-use-cases` skill with the skill tool first.
+If the use case rules are not in your context, load the `clean-architecture-use-cases` skill with the skill tool first.
 
 ## Process
 
 1. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files). Run the tests that cover the entry points and record the baseline. A failing baseline is reported before any change. If nothing covers an entry point, write a test that pins its current behavior through the entry point; if you cannot, skip that entry point and say so.
 2. Order the actions by clearest boundary and best coverage. Take them one at a time.
-3. For one action: classify every statement as translation, orchestration, business policy or infrastructure and write the classification in your notes. `clean-architecture-place-code` is a manual command that you cannot run; Load the `clean-architecture-place-code` skill with the skill tool (Steps 2 to 4) for the working definition of each class and its home.
+3. For one action: classify every statement as translation, orchestration, business policy or infrastructure and write the classification in your notes. `clean-architecture-place-code` is a manual workflow that you do not run; load the `clean-architecture-place-code` skill with the skill tool (Steps 2 to 4) for the working definition of each class and its home.
 4. Define the request and response models from the policy and orchestration statements only. Do not carry the framework's request or the storage row into them.
 5. Declare one port per volatile call (database, clock, id generator, mailer, client) next to the use case, named by role, with domain types in its signature. Implement each port with the code that already exists, in the outer layer. Where a plain value is the lighter boundary (today's date passed in by the entry point), pass the value instead of declaring a port.
 6. Move rules that hold for any use case into an entity or equivalent; keep action-specific logic in the use case. Run the tests.

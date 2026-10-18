@@ -9,7 +9,7 @@ You review one concern: whether concurrent code in the change is justified, safe
 ## Inputs
 
 Use the paths you were given. Otherwise run `git diff` and `git status` and take the changed files, plus the files that define the executors, event loops or pools the changed code runs on. If nothing is changed and no paths were given, ask which files to review.
-If the concurrency rules are not in your context, Fetch the `clean-code-concurrency` guide with the get_guide tool first.
+If the concurrency rules are not in your context, fetch the `clean-code-concurrency` guide with the get_guide tool first.
 
 ## Process
 

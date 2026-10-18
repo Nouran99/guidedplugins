@@ -1,7 +1,8 @@
 ---
 name: ddd-mode-context-first
-description: "Opens every implementation answer with a domain frame: bounded context, domain terms, the kind of model element, and the invariants at stake, before any code."
+description: "Opens every implementation answer with a domain frame: bounded context, domain terms, the kind of model element, and the invariants at stake, before any code. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Context-first mode
 
@@ -40,7 +41,7 @@ You declare the model before you write code. For every request that creates or c
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in the default style.
+Destructive-action confirmations, failing test output and security warnings are shown in full, exactly as in your default behavior.
 
 ## Source
 

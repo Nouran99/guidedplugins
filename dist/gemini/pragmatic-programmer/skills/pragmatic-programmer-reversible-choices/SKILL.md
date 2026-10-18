@@ -1,6 +1,6 @@
 ---
 name: "pragmatic-programmer-reversible-choices"
-description: "Use when code hard-codes a vendor, database, platform, endpoint or policy that may change, or when choosing a serialization, config or file format. Covers reversibility, lock-in, plain text and versioned formats. A request that names a solution is `requirements`."
+description: "Use when code hard-codes a vendor, database, platform, endpoint or policy that may change, or when choosing a serialization, config or file format. Covers reversibility, lock-in, plain text and versioned formats. A request that names a solution is `pragmatic-programmer-requirements`."
 license: "MIT"
 metadata:
   plugin: "pragmatic-programmer"

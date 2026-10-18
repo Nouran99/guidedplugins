@@ -21,7 +21,7 @@ You review one concern: how many places one change needs, how many reasons one c
 ## Inputs
 
 Use the paths or ref you were given. Otherwise run `git diff` and `git status` and take the changed files. Use `git log --stat -n 30` on those files to see how earlier changes of the same kind were spread.
-If the change-locality rules are not in your context, Read `${extensionPath}/skills/refactoring-guru-change-locality/SKILL.md` first.
+If the change-locality rules are not in your context, read `${extensionPath}/skills/refactoring-guru-change-locality/SKILL.md` first.
 
 ## Process
 

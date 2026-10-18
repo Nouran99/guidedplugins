@@ -41,4 +41,4 @@ Generic plumbing and DDD terminology are not a domain model.
 
 ## Companion skills (if installed)
 
-The Domain-Driven Design rules above are backed by skills from the `ddd` plugin. Use `ddd-review` to review a change, `ddd-plan` before a non-trivial change, `ddd-explain-rule` to look up a rule, `ddd-checklist` before finishing, and `ddd-principles` for the full rule set and routing table.
+The Domain-Driven Design rules above are backed by skills from the `ddd` plugin. Use `review` to review a change, `plan` before a non-trivial change, `explain-rule` to look up a rule, `checklist` before finishing, and `principles` for the full rule set and routing table. Most agents name them `ddd-<skill>` (for example `ddd-review`); Codex mentions them as `$ddd:<skill>` (for example `$ddd:review`).

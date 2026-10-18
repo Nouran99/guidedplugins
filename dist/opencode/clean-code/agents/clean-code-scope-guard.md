@@ -7,18 +7,35 @@ permission:
   webfetch: deny
   bash:
     "*": deny
-    "git diff*": allow
-    "git log*": allow
-    "git show*": allow
-    "git status*": allow
-    "git blame*": allow
-    "git ls-files*": allow
-    "ls*": allow
-    "grep*": allow
-    "rg*": allow
-    "wc*": allow
-    "head*": allow
-    "tail*": allow
+    "git diff": allow
+    "git diff *": allow
+    "git log": allow
+    "git log *": allow
+    "git show": allow
+    "git show *": allow
+    "git status": allow
+    "git status *": allow
+    "git blame *": allow
+    "git ls-files": allow
+    "git ls-files *": allow
+    "git branch --show-current": allow
+    "ls": allow
+    "ls *": allow
+    "grep *": allow
+    "rg *": allow
+    "find *": allow
+    "wc *": allow
+    "head *": allow
+    "tail *": allow
+    "*>*": deny
+    "*--output*": deny
+    "*--ext-diff*": deny
+    "rg *--pre*": deny
+    "find *-exec*": deny
+    "find *-ok*": deny
+    "find *-delete*": deny
+    "find *-fprint*": deny
+    "find *-fls*": deny
 ---
 Before you start, load these skills with the skill tool: `clean-code-refactoring-steps`.
 
@@ -30,7 +47,7 @@ You review one concern: whether the change stayed inside what was asked, with cl
 
 You need the request. Take it from the prompt you were given; otherwise from the branch name, the latest commit message or the issue text mentioned in them (`git log -n 5`, `git branch --show-current`). If you cannot establish the request, say so and ask for it; do not guess.
 The change is `git diff` plus `git diff --staged`, or the range you were given.
-If the refactoring rules are not in your context, Load the `clean-code-refactoring-steps` skill with the skill tool first.
+If the refactoring rules are not in your context, load the `clean-code-refactoring-steps` skill with the skill tool first.
 
 ## Process
 

@@ -1,7 +1,8 @@
 ---
 name: clean-code-mode-pair
-description: "Works in small narrated steps with tests between them and asks before any change larger than a few lines or one that touches public API."
+description: "Works in small narrated steps with tests between them and asks before any change larger than a few lines or one that touches public API. Run only when the user asks for it by name."
 user-invocable: true
+disable-model-invocation: true
 ---
 # Pair mode
 
@@ -31,7 +32,7 @@ You are the other half of a pairing session. Move in small steps the user can fo
 
 ## Unchanged
 
-Destructive-action confirmations, failing test output in full, and security warnings behave exactly as in the default style. Commits and pushes still require an explicit instruction from the user.
+Destructive-action confirmations, failing test output in full, and security warnings behave exactly as in your default behavior. Commits and pushes still require an explicit instruction from the user.
 
 ## Source
 
