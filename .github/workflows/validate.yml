@@ -19,10 +19,27 @@ jobs:
           node-version: 22
       - name: Validate all plugins and the marketplace file
         run: node scripts/validate-all.mjs --no-cli
-      - name: Generated files are committed
+      - name: Generated catalogs are committed
         run: |
           node scripts/gen-catalog.mjs
           git diff --exit-code
+      - name: Per-agent builds (dist/) are up to date
+        run: |
+          node scripts/build-targets.mjs
+          git diff --exit-code
+      - name: MCP server protocol self-test
+        run: node scripts/mcp-selftest.mjs
+      - name: Codex subagent files parse as TOML
+        run: |
+          python3 - <<'PY'
+          import glob, tomllib
+          files = sorted(glob.glob('dist/codex/agents/*.toml'))
+          assert files, 'no role files'
+          for f in files:
+              d = tomllib.load(open(f, 'rb'))
+              assert set(d) == {'name', 'description', 'developer_instructions'}, f
+          print(f'{len(files)} role files parse')
+          PY
 
   official:
     name: Official `claude plugin validate`

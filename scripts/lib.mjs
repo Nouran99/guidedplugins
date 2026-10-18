@@ -68,7 +68,19 @@ export function parseFrontmatter(text) {
     if (key in data) problems.push(`line ${i + 2}: duplicate key "${key}"`);
     if (val === '') {
       const items = [];
+      const map = {};
       let j = i + 1;
+      if (j < lines.length && /^\s+[A-Za-z][A-Za-z0-9_-]*:\s+\S/.test(lines[j])) {
+        // one level of nested map, e.g. the Agent Skills "metadata:" block
+        while (j < lines.length && /^\s+[A-Za-z][A-Za-z0-9_-]*:\s+\S/.test(lines[j])) {
+          const mm = lines[j].match(/^\s+([A-Za-z][A-Za-z0-9_-]*):\s+(.*)$/);
+          map[mm[1]] = scalar(mm[2].trim(), problems, j + 2);
+          j++;
+        }
+        data[key] = map;
+        i = j - 1;
+        continue;
+      }
       while (j < lines.length && /^\s+-\s+\S/.test(lines[j])) {
         items.push(scalar(lines[j].replace(/^\s+-\s+/, '').trim(), problems, j + 2));
         j++;

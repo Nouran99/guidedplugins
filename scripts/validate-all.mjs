@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { ROOT, REGISTRY, listDir, listPluginDirs, loadPlugin, readIf } from './lib.mjs';
 import { buildMarketplace } from './catalog-lib.mjs';
 import { validatePlugin } from './validate-plugin.mjs';
+import { validateTargets } from './validate-targets.mjs';
 
 const args = process.argv.slice(2);
 const noCli = args.includes('--no-cli');
@@ -22,6 +23,12 @@ for (const dir of listPluginDirs()) {
   if (errors.length) failed++;
 }
 
+// generated per-agent builds (Codex, OpenCode, Gemini, Cursor, Copilot, Agent Skills, rules, MCP)
+const targetErrors = validateTargets();
+for (const e of targetErrors.slice(0, 40)) console.log(`ERROR dist/${e}`);
+if (targetErrors.length > 40) console.log(`ERROR dist/... and ${targetErrors.length - 40} more`);
+if (targetErrors.length) failed++;
+
 // repo-level docs: every <slug>:<name> reference and relative link must resolve
 const docErrors = [];
 {
@@ -29,7 +36,10 @@ const docErrors = [];
   const names = new Map();
   for (const dir of listPluginDirs()) {
     const pl = loadPlugin(dir);
-    names.set(pl.slug, new Set([...pl.skills, ...pl.agents, ...pl.styles].map((c) => c.data?.name ?? c.id)));
+    const comps = [...pl.skills, ...pl.agents, ...pl.styles].map((c) => c.data?.name ?? c.id);
+    const modes = pl.styles.map((c) => `mode-${c.data?.name ?? c.id}`);
+    // Claude names, plus the spellings other agents use: Codex "$plugin:mode-x", Gemini "/plugin:plugin-name", flat "plugin-name"
+    names.set(pl.slug, new Set([...comps, ...modes, ...comps.map((n) => `${pl.slug}-${n}`), ...modes.map((n) => `${pl.slug}-${n}`)]));
   }
   const refRe = new RegExp(`(?<![\\w-])(?:/|@agent-)?(${slugs.map((x) => x.replace(/-/g, '\\-')).join('|')}):([a-z][a-z0-9]*(?:-[a-z0-9]+)*)`, 'g');
   const files = ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', ...listDir(path.join(ROOT, 'docs')).filter((e) => e.isFile() && e.name.endsWith('.md')).map((e) => `docs/${e.name}`)];
