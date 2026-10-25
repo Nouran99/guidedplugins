@@ -1,7 +1,7 @@
 {
   "name": "guided-plugins",
-  "version": "1.1.0",
-  "description": "Fourteen book-guided toolkits for coding agents: Claude Code plugins plus Codex, OpenCode, Gemini CLI, Cursor and Copilot (both experimental), Agent Skills, AGENTS.md and MCP builds.",
+  "version": "1.2.0",
+  "description": "Fourteen book-guided toolkits for coding agents: Claude Code plugins plus Codex, OpenCode, Gemini CLI, GitHub Copilot, Cursor (experimental), Agent Skills, AGENTS.md and MCP builds.",
   "type": "module",
   "license": "MIT",
   "author": "Nouran Darwish",

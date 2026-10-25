@@ -1,14 +1,15 @@
 // OpenAI Codex CLI target (verified against codex-cli 0.162 in an isolated CODEX_HOME).
 //  - dist/codex/<plugin>/            a Codex plugin: .codex-plugin/plugin.json + skills/<name>/ (Codex namespaces them <plugin>:<name>)
-//  - dist/codex/agents/<plugin>-<name>.toml   custom subagents (Codex plugins cannot bundle agents; install with scripts/install-codex-agents.mjs)
+//    skills/install-roles/roles/*.toml   the plugin's subagent roles. Codex plugins cannot activate agents, so a hidden skill (`$<plugin>:install-roles`)
+//                                        copies them to ~/.codex/agents or <project>/.codex/agents; scripts/install-codex-agents.mjs does the same from a clone
 //  - .agents/plugins/marketplace.json         marketplace Codex prefers over .claude-plugin/marketplace.json
 import {
-  DESIGN_NOTE, DIST, REGISTRY, ROOT, cleanDir, copyFile, flat, frontmatter, modeName, neutralText, path, referencesDesign, rewrite,
-  rewriteDescription, withRolesNote, writeFile,
+  DESIGN_NOTE, DIST, REGISTRY, ROOT, briefDescription, cleanDir, copyFile, flat, frontmatter, modeName, neutralText, path, referencesDesign, rewrite,
+  rewriteDescription, tomlMultiline, tomlString, withRolesNote, writeFile,
 } from './core.mjs';
 import { skillDescription } from './agent-skills.mjs';
 
-const CODEX_ROLES = (p) => `In Codex they are custom roles that a plugin cannot bundle: install them with \`node scripts/install-codex-agents.mjs ${p.slug}\` from a clone of the repository, then ask for one by name.`;
+const CODEX_ROLES = (p) => `In Codex they are custom roles, which a plugin cannot switch on by itself: run \`$${p.slug}:install-roles\` once, restart Codex, then ask for one by name.`;
 const bt = (s) => `\`${s}\``;
 const mention = (p, n) => `$${p.slug}:${n}`; // explicit skill mention in Codex
 
@@ -44,22 +45,15 @@ export function codexDialect() {
   };
 }
 
-// TOML helpers --------------------------------------------------------------------------------------------
-const tomlString = (s) => JSON.stringify(String(s)); // JSON basic strings are valid TOML basic strings
-function tomlMultiline(s) {
-  const text = String(s).replace(/\r\n/g, '\n').replace(/\n+$/, '');
-  if (!text.includes("'''")) return `'''\n${text}\n'''`; // literal: no escaping needed
-  return `"""\n${text.replace(/\\/g, '\\\\').replace(/"""/g, '""\\"')}\n"""`;
-}
-
-const READ_ONLY_NOTE = 'Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Codex cannot enforce this for a subagent, so you are responsible for keeping to it.\n\n';
+const READ_ONLY_NOTE = 'Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Codex does not enforce this for a subagent unless the whole session runs read-only (`codex --sandbox read-only`), so you are responsible for keeping to it.\n\n';
 
 function agentToml(plugin, a, d) {
   const ctx = { from: 'agent' };
   const preload = (a.fm.skills ? [].concat(a.fm.skills) : []).map((n) => bt(mention(plugin, n)));
   let body = rewrite(a.body.replace(/^\s+/, ''), plugin, d, ctx);
   // Codex's root prompt forbids spawning a role unless the user asks for it, so "use proactively" would promise something it will not do
-  const description = rewriteDescription(a.fm.description, plugin, d, ctx).replace(/\bUse proactively /g, 'Use ');
+  // Codex lists the description of every installed role in each request, so it keeps only the first sentence or two
+  const description = briefDescription(rewriteDescription(a.fm.description, plugin, d, ctx).replace(/\bUse proactively /g, 'Use '));
   if (preload.length) body = `Before you start, load these skills: ${preload.join(', ')}.\n\n${body}`;
   if (a.readOnly) body = READ_ONLY_NOTE + body;
   return [
@@ -74,6 +68,35 @@ function agentToml(plugin, a, d) {
 function openaiYaml(display, short, prompt) {
   const y = (s) => JSON.stringify(s);
   return `interface:\n  display_name: ${y(display.slice(0, 64))}\n  short_description: ${y(short.slice(0, 1000))}\n  default_prompt: ${y(prompt.slice(0, 1000))}\npolicy:\n  allow_implicit_invocation: false\n`;
+}
+
+function installRolesSkill(plugin, listedKb) {
+  const n = plugin.agents.length;
+  return frontmatter({
+    name: 'install-roles',
+    description: skillDescription(`Install the ${n} subagent roles of ${plugin.book.title} into Codex, where a plugin cannot activate them by itself.`, true),
+  }) + `# Install the ${plugin.book.title} subagent roles
+
+A Codex plugin cannot activate subagent roles. This plugin ships its ${n} roles as files in the \`roles/\` folder next to this SKILL.md, and this skill copies them to where Codex reads custom roles.
+
+1. Ask where to install them, unless the user already said: for all projects (\`\${CODEX_HOME:-$HOME/.codex}/agents\`) or only for the current project (\`<project root>/.codex/agents\`, which Codex reads only in trusted projects). Default to all projects.
+2. Copy the files, never overwriting one that already exists, so nothing the user wrote is lost:
+
+   \`\`\`bash
+   dest="\${CODEX_HOME:-$HOME/.codex}/agents"   # or <project root>/.codex/agents
+   mkdir -p "$dest"
+   for f in <the roles folder next to this SKILL.md>/*.toml; do [ -e "$dest/$(basename "$f")" ] || cp "$f" "$dest/"; done
+   \`\`\`
+
+   The destination is outside what the Codex sandbox lets a session write (it keeps \`.codex\` read-only, even inside the project), so ask for approval to run the command and do not look for another way around the sandbox. If it cannot run (for example in \`codex exec\`, where nobody can approve), print the command with the real paths filled in and ask the user to run it.
+
+3. Tell the user which roles were installed and which were skipped because a file of that name was already there. Codex reads roles when a session starts, so they are available from the next session.
+4. Tell the user the cost: Codex lists every installed role in each request, about ${listedKb} KB for these ${n} roles, so install the books they actually use. To remove them, delete exactly the files that are in the \`roles/\` folder from the destination.
+
+A role is a prompt, not a sandbox: Codex does not let a role file restrict tools. The read-only roles keep to that only by their instructions. For enforcement, start Codex with \`codex --sandbox read-only\`.
+
+Do nothing else: do not edit \`config.toml\` and do not install roles of other plugins.
+`;
 }
 
 const title = (s) => s.split('-').map((w) => w[0].toUpperCase() + w.slice(1)).join(' ');
@@ -113,7 +136,18 @@ export function buildCodex(model) {
       writeFile(path.join(dir, 'agents', 'openai.yaml'), openaiYaml(`${title(m.name)} mode`, rwd(m.fm.description, ctx), `Use ${mention(plugin, name)}.`));
     }
 
-    for (const a of plugin.agents) writeFile(path.join(out, 'agents', `${flat(plugin.slug, a.name)}.toml`), agentToml(plugin, a, d));
+    // The roles ship as data inside a hidden skill whose only job is to copy them to where Codex reads custom roles.
+    const rolesDir = path.join(skillsRoot, 'install-roles');
+    const listed = [];
+    for (const a of plugin.agents) {
+      const toml = agentToml(plugin, a, d);
+      writeFile(path.join(rolesDir, 'roles', `${flat(plugin.slug, a.name)}.toml`), toml);
+      listed.push(flat(plugin.slug, a.name).length + toml.match(/^description = (".*")$/m)[1].length);
+    }
+    const listedKb = Math.max(1, Math.ceil(listed.reduce((n, x) => n + x + 25, 0) / 1024));
+    writeFile(path.join(rolesDir, 'SKILL.md'), installRolesSkill(plugin, listedKb));
+    writeFile(path.join(rolesDir, 'agents', 'openai.yaml'),
+      openaiYaml(`Install ${plugin.book.title} roles`, `Installs the ${plugin.agents.length} subagent roles of this plugin into Codex.`, `Use ${mention(plugin, 'install-roles')}.`));
 
     const man = plugin.manifest;
     writeFile(path.join(root, '.codex-plugin', 'plugin.json'), JSON.stringify({
@@ -148,7 +182,7 @@ export function buildCodex(model) {
 Generated by scripts/build-targets.mjs from plugins/${plugin.slug}/ in the guided-plugins repository (${man.repository}).
 
 - Skills: ${plugin.skills.length} workflow and rule skills plus ${plugin.styles.length} mode skills, invoked as \`$${plugin.slug}:<name>\` or from \`/skills\`.
-- Subagents: ${plugin.agents.length} roles. Codex plugins cannot bundle subagents, so they are not part of this plugin. They are in a clone of the repository, as \`dist/codex/agents/${plugin.slug}-*.toml\`; install them by running \`node scripts/install-codex-agents.mjs ${plugin.slug}\` inside that clone.
+- Subagents: ${plugin.agents.length} roles. A Codex plugin cannot activate subagents by itself, so the roles ship as files in \`skills/install-roles/roles/\`. Run \`$${plugin.slug}:install-roles\` once (it copies them to \`~/.codex/agents\` or the project's \`.codex/agents\`) and restart Codex. Codex lists every installed role in each request, so install the books you use. Roles are prompts, not a sandbox; start Codex with \`codex --sandbox read-only\` when you want reviews that cannot write.
 - Always-on rules: \`dist/rules/${plugin.slug}/\` in the repository (\`AGENTS.nano.md\` or \`AGENTS.mini.md\`), to copy into your \`AGENTS.md\`.
 
 Full instructions: docs/AGENTS_SUPPORT.md in the repository.

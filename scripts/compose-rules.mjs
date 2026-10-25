@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Composes an AGENTS.md from the always-on rule files of one or more books.
 //   node scripts/compose-rules.mjs clean-code refactoring --size nano --out AGENTS.md
+// Refuses to overwrite an existing --out file unless --force is given (an AGENTS.md usually holds your own rules).
 // The first book is the primary; the others are marked as secondary so the agent knows which one decides a conflict. The marking is visible
 // text (a blockquote), not only an HTML comment, because some agents strip comments from instruction files.
 // Warns above 32 KiB, the combined AGENTS.md cap in Codex.
@@ -19,4 +20,5 @@ const parts = slugs.map((slug, i) => {
 });
 const out = `${parts.join('\n\n---\n\n')}\n`;
 if (Buffer.byteLength(out) > 32 * 1024) console.error(`warning: ${Buffer.byteLength(out)} bytes exceeds Codex's 32 KiB AGENTS.md cap; use --size nano or fewer books`);
+if (flags.out && fs.existsSync(flags.out) && !flags.force) { console.error(`${flags.out} already exists; not overwriting it. Use --force to replace it, or a new file name and merge by hand.`); process.exit(2); }
 if (flags.out) { fs.writeFileSync(flags.out, out); console.error(`wrote ${flags.out} (${Buffer.byteLength(out)} bytes, ${slugs.length} book(s), ${size})`); } else process.stdout.write(out);

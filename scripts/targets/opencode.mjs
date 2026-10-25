@@ -7,8 +7,16 @@ import {
 } from './core.mjs';
 import { emitFlatSkills, flatDialect } from './agent-skills.mjs';
 
-// OpenCode replaces its own system prompt with a primary agent's prompt, so say that the mode only changes the style of the answer.
-const MODE_NOTE = 'This mode changes how you respond. It does not replace your normal coding, tool-use and safety conventions; keep following them.';
+// OpenCode REPLACES its provider system prompt (about 8.6 KB; measured) with the prompt of a primary agent, so a mode agent would lose the
+// everyday coding conventions. This paragraph restores the essentials in short, own words and says that the mode changes style only.
+const MODE_NOTE = `This mode changes how you respond; it does not change what you may do. Your baseline conventions stay in force, because this mode replaces your default system prompt:
+
+- Answer directly and concisely. Do not add preamble or a recap unless the mode asks for one.
+- Read a file before you edit it. Match the style, libraries and conventions already in the code, and never assume a library is available: check the project's dependencies first.
+- Prefer the dedicated read, search and edit tools to shell commands for working with files.
+- After a change, run the project's tests, linter and type checker when you can find the commands; say so when you could not.
+- Do not commit, push or create branches unless asked. Never write secrets into files or output.
+- Refer to code as \`path:line\`. Ask before any destructive or hard-to-reverse action.`;
 
 const dialect = () => flatDialect({ agentRead: (p, n) => `Load the ${bt(flat(p.slug, n))} skill with the skill tool` });
 
@@ -21,6 +29,9 @@ function agentFile({ description, mode, steps, readOnly, body }) {
       // OpenCode takes the LAST matching rule, so the catch-all comes first and the denies come after the allows
       l.push('  edit: deny', '  webfetch: deny', '  bash:', '    "*": deny', ...READ_ONLY_ALLOW.map((c) => `    ${yaml(c)}: allow`), ...READ_ONLY_DENY.map((c) => `    ${yaml(c)}: deny`));
     } else l.push('  webfetch: deny');
+  } else {
+    // a custom primary agent loses the question tool unless it is allowed (measured: the built-in build agent has it, a mode agent did not)
+    l.push('permission:', '  question: allow');
   }
   l.push('---', '');
   return `${l.join('\n')}${body}\n`;

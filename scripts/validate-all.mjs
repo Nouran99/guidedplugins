@@ -38,8 +38,8 @@ const docErrors = [];
     const pl = loadPlugin(dir);
     const comps = [...pl.skills, ...pl.agents, ...pl.styles].map((c) => c.data?.name ?? c.id);
     const modes = pl.styles.map((c) => `mode-${c.data?.name ?? c.id}`);
-    // Claude names, plus the spellings other agents use: Codex "$plugin:mode-x", Gemini "/plugin:plugin-name", flat "plugin-name"
-    names.set(pl.slug, new Set([...comps, ...modes, ...comps.map((n) => `${pl.slug}-${n}`), ...modes.map((n) => `${pl.slug}-${n}`)]));
+    // Claude names, plus the spellings other agents use: Codex "$plugin:mode-x" and the generated "$plugin:install-roles", Gemini "/plugin:plugin-name", flat "plugin-name"
+    names.set(pl.slug, new Set([...comps, ...modes, 'install-roles', ...comps.map((n) => `${pl.slug}-${n}`), ...modes.map((n) => `${pl.slug}-${n}`)]));
   }
   const refRe = new RegExp(`(?<![\\w-])(?:/|@agent-)?(${slugs.map((x) => x.replace(/-/g, '\\-')).join('|')}):([a-z][a-z0-9]*(?:-[a-z0-9]+)*)`, 'g');
   const files = ['README.md', 'CONTRIBUTING.md', 'CHANGELOG.md', ...listDir(path.join(ROOT, 'docs')).filter((e) => e.isFile() && e.name.endsWith('.md')).map((e) => `docs/${e.name}`)];

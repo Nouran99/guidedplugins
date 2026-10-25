@@ -22,23 +22,35 @@ jobs:
       - name: Generated catalogs are committed
         run: |
           node scripts/gen-catalog.mjs
+          git add --intent-to-add --all   # so that a generated file nobody committed fails too
           git diff --exit-code
       - name: Per-agent builds (dist/) are up to date
         run: |
           node scripts/build-targets.mjs
+          git add --intent-to-add --all
           git diff --exit-code
       - name: MCP server protocol self-test
         run: node scripts/mcp-selftest.mjs
-      - name: Codex subagent files parse as TOML
+      - name: Codex role files and Gemini command and policy files parse as TOML
         run: |
           python3 - <<'PY'
           import glob, tomllib
-          files = sorted(glob.glob('dist/codex/agents/*.toml'))
-          assert files, 'no role files'
-          for f in files:
+          roles = sorted(glob.glob('dist/codex/*/skills/install-roles/roles/*.toml'))
+          assert len(roles) == 300, f'{len(roles)} role files'
+          for f in roles:
               d = tomllib.load(open(f, 'rb'))
               assert set(d) == {'name', 'description', 'developer_instructions'}, f
-          print(f'{len(files)} role files parse')
+          commands = sorted(glob.glob('dist/gemini/*/commands/*/*.toml'))
+          assert commands, 'no Gemini commands'
+          for f in commands:
+              d = tomllib.load(open(f, 'rb'))
+              assert set(d) == {'description', 'prompt'}, f
+          policies = sorted(glob.glob('dist/gemini/*/policies/*.toml'))
+          assert len(policies) == 14, f'{len(policies)} policy files'
+          for f in policies:
+              rules = tomllib.load(open(f, 'rb'))['rule']
+              assert rules and all(r['decision'] == 'deny' and r.get('subagent') for r in rules), f
+          print(f'{len(roles)} Codex roles, {len(commands)} Gemini commands, {len(policies)} policy files parse')
           PY
 
   official:

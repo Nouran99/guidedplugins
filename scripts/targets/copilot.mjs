@@ -1,8 +1,9 @@
-// GitHub Copilot target (EXPERIMENTAL: written to Copilot's documented plugin format; Copilot CLI is not installed where this was built).
-// Copilot also reads this repository's Claude marketplace as-is; this build is the variant with rewritten text and Copilot agents.
-//   copilot plugin install Nouran99/guidedplugins:dist/copilot/<plugin>
+// GitHub Copilot target (verified with Copilot CLI 1.0.101 in an isolated COPILOT_HOME: marketplace add, browse, install, list; no model session).
+// Copilot looks for a marketplace file in this order: marketplace.json, .plugin/, .github/plugin/, .claude-plugin/. This repository's
+// .github/plugin/marketplace.json therefore wins over the Claude one and points at this build, whose text and agents are rewritten for Copilot.
+//   copilot plugin marketplace add Nouran99/guidedplugins   then   copilot plugin install clean-code@guided-plugins
 import {
-  DIST, agentBodyFor, bt, cleanDir, copyFile, flat, modeName, neutralText, path, rewrite, rewriteDescription, writeFile, yaml,
+  DIST, REGISTRY, ROOT, VERSION, agentBodyFor, bt, cleanDir, copyFile, flat, modeName, neutralText, path, rewrite, rewriteDescription, writeFile, yaml,
 } from './core.mjs';
 import { emitFlatSkills, flatDialect, skillDescription } from './agent-skills.mjs';
 
@@ -22,6 +23,7 @@ export function buildCopilot(model) {
   const out = path.join(DIST, 'copilot');
   cleanDir(out);
   const d = dialect();
+  const entries = [];
   for (const plugin of model) {
     const root = path.join(out, plugin.slug);
     emitFlatSkills(plugin, path.join(root, 'skills'));
@@ -54,6 +56,14 @@ export function buildCopilot(model) {
     }, null, 2));
     copyFile(path.join(plugin.dir, 'LICENSE'), path.join(root, 'LICENSE'));
     writeFile(path.join(root, 'NOTICE.md'), plugin.notice ?? '');
+    entries.push({ name: plugin.slug, source: `./dist/copilot/${plugin.slug}`, description: neutralText(plugin.manifest.description), version: plugin.manifest.version });
   }
+  const mp = REGISTRY.marketplace;
+  writeFile(path.join(ROOT, '.github', 'plugin', 'marketplace.json'), JSON.stringify({
+    name: mp.name,
+    owner: { name: mp.owner },
+    metadata: { description: neutralText(mp.description), version: VERSION },
+    plugins: entries,
+  }, null, 2));
   return model;
 }

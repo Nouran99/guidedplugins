@@ -13,17 +13,19 @@ const bt = (s) => `\`${s}\``;
 //   agentSkillsDir(plugin)                the same for the skills folder
 //   agentRefFile(plugin, size)            the same for references/<size>.md of the hub
 //   agentDesignFile(plugin)               the same for the component map
-export function flatDialect({ agentRead, agentSkill, agentSkillsDir, agentRefFile, agentDesignFile } = {}) {
+//   refManual(plugin, name) / refMode(plugin, name)   how a manual workflow / a mode is mentioned when the target ships it as a command, not a skill
+//   argsLine                                           what replaces the 'Arguments:' value (Gemini commands use {{args}})
+export function flatDialect({ agentRead, agentSkill, agentSkillsDir, agentRefFile, agentDesignFile, refManual, refMode, argsLine } = {}) {
   const defaultAgentRead = (p, n) => `Load the ${bt(flat(p.slug, n))} skill`;
   const readFor = agentRead ?? defaultAgentRead;
   const hubRel = (p, ctx) => (ctx.skill === 'principles' ? '' : `../${flat(p.slug, 'principles')}/`);
   return {
     id: 'flat',
-    argsLine: 'the text the user typed after the skill name (empty if none)',
+    argsLine: argsLine ?? 'the text the user typed after the skill name (empty if none)',
     argsInline: 'the argument text',
-    refSkill: (p, n) => flat(p.slug, n),
+    refSkill: (p, n) => (refManual && p.skills.find((x) => x.name === n)?.manual ? refManual(p, n) : flat(p.slug, n)),
     refAgent: (p, n) => flat(p.slug, n),
-    refStyle: (p, n) => flat(p.slug, modeName(n)),
+    refStyle: (p, n) => (refMode ? refMode(p, n) : flat(p.slug, modeName(n))),
     readSkill: (p, n, ctx, backticked) => {
       if (ctx.from === 'agent') return readFor(p, n, backticked);
       const rel = ctx.from === 'doc' ? `../../${flat(p.slug, n)}/SKILL.md` : `../${flat(p.slug, n)}/SKILL.md`;
@@ -51,7 +53,7 @@ export function flatDialect({ agentRead, agentSkill, agentSkillsDir, agentRefFil
 }
 
 const FLAT_ROLES = 'The OpenCode, Gemini CLI, Cursor and Copilot builds ship them as subagents, the MCP server serves them with get_guide, and in Codex they are installed separately; the plain Agent Skills build does not include them.';
-const PERSONA_PREFACE = 'Adopt this mode for the rest of the session, until the user asks you to stop or to switch to another mode. It changes how you respond; it does not change what you are allowed to do.\n\n';
+export const PERSONA_PREFACE = 'Adopt this mode for the rest of the session, until the user asks you to stop or to switch to another mode. It changes how you respond; it does not change what you are allowed to do.\n\n';
 
 export function skillDescription(text, manual) {
   const base = text.replace(/\s+/g, ' ').trim();
@@ -59,13 +61,13 @@ export function skillDescription(text, manual) {
 }
 
 // Writes every skill and persona of one plugin as <root>/<plugin>-<name>/SKILL.md (+ references).
-export function emitFlatSkills(plugin, root, dialect = flatDialect()) {
+export function emitFlatSkills(plugin, root, dialect = flatDialect(), { only = () => true, withModes = true } = {}) {
   const rw = (text, ctx) => rewrite(text, plugin, dialect, ctx);
   const rwd = (text, ctx) => rewriteDescription(text, plugin, dialect, ctx);
   const meta = (extra) => ({ plugin: plugin.slug, book: plugin.book.title, ...extra });
   const written = [];
 
-  for (const s of plugin.skills) {
+  for (const s of plugin.skills.filter(only)) {
     const dir = path.join(root, flat(plugin.slug, s.name));
     const ctx = { from: 'skill', skill: s.name };
     const fm = frontmatter({
@@ -83,7 +85,7 @@ export function emitFlatSkills(plugin, root, dialect = flatDialect()) {
   // the maintainers' component map travels with the hub only where a skill points at it
   if (plugin.design && referencesDesign(plugin)) writeFile(path.join(root, flat(plugin.slug, 'principles'), 'references', 'design.md'), DESIGN_NOTE + rw(plugin.design, { from: 'doc' }));
 
-  for (const m of plugin.styles) {
+  for (const m of withModes ? plugin.styles : []) {
     const name = flat(plugin.slug, modeName(m.name));
     const ctx = { from: 'skill', skill: modeName(m.name) };
     const fm = frontmatter({

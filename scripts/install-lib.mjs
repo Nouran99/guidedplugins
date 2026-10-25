@@ -32,14 +32,11 @@ export function pickPlugins(positional) {
 
 export const home = () => os.homedir();
 
-// The Codex roles (dist/codex/agents/*.toml) of one plugin. Ownership is read from the generated header of each file, never guessed from
-// the file name: "ddd" is a prefix of "ddd-distilled" and "ddd-implementing", and "refactoring" of "refactoring-guru".
+// The Codex roles of one plugin ship inside the plugin, in the hidden skill install-roles. One folder per plugin, so "ddd" never picks up the
+// roles of "ddd-distilled" or "ddd-implementing".
+export const codexRolesDir = (slug) => path.join(DIST, 'codex', slug, 'skills', 'install-roles', 'roles');
 export function codexRolesOf(slug) {
-  const dir = path.join(DIST, 'codex', 'agents');
-  return listDir(dir).filter((e) => e.isFile() && e.name.endsWith('.toml')).filter((e) => {
-    const first = fs.readFileSync(path.join(dir, e.name), 'utf8').split('\n', 1)[0];
-    return first.match(/ from plugins\/([a-z0-9-]+)\/agents\//)?.[1] === slug;
-  }).map((e) => e.name);
+  return listDir(codexRolesDir(slug)).filter((e) => e.isFile() && e.name.endsWith('.toml')).map((e) => e.name);
 }
 export function copyTree(src, dst, { link = false } = {}) {
   fs.rmSync(dst, { recursive: true, force: true });

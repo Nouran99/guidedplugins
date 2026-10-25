@@ -10,7 +10,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { REGISTRY, ROOT, VERSION, listDir, parseFrontmatter, readIf } from './lib.mjs';
 import { loadModel, leftovers, flat, modeName, referencesDesign, READ_ONLY_ALLOW, READ_ONLY_DENY } from './targets/core.mjs';
-import { codexRolesOf } from './install-lib.mjs';
+import { codexRolesDir, codexRolesOf } from './install-lib.mjs';
+import { DANGEROUS_REGEX, NOT_ALLOWED_REGEX, POLICY_MUST_ALLOW, POLICY_MUST_DENY } from './targets/gemini.mjs';
 
 // OpenCode's wildcard: "*" matches anything; a trailing " *" also matches the bare command; the LAST matching rule wins.
 function opencodeDecision(rules, command) {
@@ -99,8 +100,8 @@ export function validateTargets() {
   }
   if (universalCount !== totalSkills) err('dist/agent-skills', `${universalCount} skill folders, expected ${totalSkills}`);
 
-  // ---------------------------------------------------------------- flat targets reuse the universal skills byte for byte
-  for (const t of ['opencode', 'gemini', 'cursor', 'copilot']) {
+  // ---------------------------------------------------------------- flat targets reuse the universal skills byte for byte (Gemini has its own checks below)
+  for (const t of ['opencode', 'cursor', 'copilot']) {
     for (const slug of slugs) {
       const root = path.join(DIST, t, slug, 'skills');
       const dirs = listDir(root).filter((x) => x.isDirectory());
@@ -124,7 +125,8 @@ export function validateTargets() {
     if ((man.interface?.defaultPrompt ?? []).length > 3) err(rel(root), 'more than 3 defaultPrompt entries');
     const model1 = model.find((p) => p.slug === slug);
     const skillDirs = listDir(path.join(root, 'skills')).filter((x) => x.isDirectory());
-    if (skillDirs.length !== model1.skills.length + model1.styles.length) err(rel(root), `expected ${model1.skills.length + model1.styles.length} skills, found ${skillDirs.length}`);
+    if (skillDirs.length !== model1.skills.length + model1.styles.length + 1) err(rel(root), `expected ${model1.skills.length + model1.styles.length} skills plus install-roles, found ${skillDirs.length}`);
+    if (!skillDirs.some((x) => x.name === 'install-roles')) err(rel(root), 'the hidden install-roles skill is missing');
     for (const e of skillDirs) {
       const file = path.join(root, 'skills', e.name, 'SKILL.md');
       const text = readIf(file) ?? '';
@@ -141,31 +143,37 @@ export function validateTargets() {
       }
     }
   }
-  const agentDir = path.join(DIST, 'codex', 'agents');
-  const tomls = listDir(agentDir).filter((e) => e.name.endsWith('.toml'));
-  if (tomls.length !== totalAgents) err(rel(agentDir), `${tomls.length} role files, expected ${totalAgents}`);
-  for (const e of tomls) {
-    const text = readIf(path.join(agentDir, e.name));
-    const base = e.name.replace(/\.toml$/, '');
-    const name = text.match(/^name = "([^"]+)"$/m)?.[1];
-    if (name !== base) err(rel(path.join(agentDir, e.name)), `name "${name}" must equal the file name`);
-    if (codexRoles.has(name)) err(rel(path.join(agentDir, e.name)), 'duplicate role name');
-    codexRoles.add(name);
-    if (!/^description = "/m.test(text) || !/^developer_instructions = ('''|""")\n[\s\S]+\n\1$/m.test(text)) err(rel(path.join(agentDir, e.name)), 'needs description and a multi-line developer_instructions');
-    const keys = [...text.matchAll(/^([a-z_]+) = /gm)].map((m) => m[1]);
-    for (const k of keys) if (!['name', 'description', 'developer_instructions'].includes(k)) err(rel(path.join(agentDir, e.name)), `key "${k}" would make Codex reject the file`);
-    noLeftovers(path.join(agentDir, e.name), text, { mentions: true });
-  }
-  // A plugin's roles are selected by the plugin named in each file, never by a name prefix ("ddd" prefixes "ddd-distilled").
-  const claimed = new Set();
+  // The roles of a plugin ship inside it, in the hidden install-roles skill (a Codex plugin cannot activate agents itself).
+  let tomlCount = 0;
   for (const m of model) {
+    const dir = codexRolesDir(m.slug);
     const want = m.agents.map((a) => `${flat(m.slug, a.name)}.toml`).sort();
     const got = codexRolesOf(m.slug).sort();
-    if (JSON.stringify(want) !== JSON.stringify(got)) err('scripts/install-codex-agents.mjs', `selects ${got.length} role files for "${m.slug}", expected exactly its ${want.length}`);
-    got.forEach((f) => claimed.add(f));
+    if (JSON.stringify(want) !== JSON.stringify(got)) err(rel(dir), `holds ${got.length} role files for "${m.slug}", expected exactly its ${want.length}`);
+    const skillFile = path.join(path.dirname(dir), 'SKILL.md');
+    const skillText = readIf(skillFile) ?? '';
+    if (!skillText.includes(`its ${m.agents.length} roles`) || !/never overwriting/.test(skillText)) err(rel(skillFile), 'install-roles must state the role count and that existing files are never overwritten');
+    if (!/codex --sandbox read-only/.test(skillText)) err(rel(skillFile), 'install-roles must say how to get enforced read-only reviews');
+    if (!(readIf(path.join(path.dirname(dir), 'agents', 'openai.yaml')) ?? '').includes('allow_implicit_invocation: false')) err(rel(skillFile), 'install-roles must not be invoked implicitly');
+    for (const f of got) {
+      tomlCount++;
+      const file = path.join(dir, f);
+      const text = readIf(file);
+      const name = text.match(/^name = "([^"]+)"$/m)?.[1];
+      if (name !== f.replace(/\.toml$/, '')) err(rel(file), `name "${name}" must equal the file name`);
+      if (codexRoles.has(name)) err(rel(file), 'duplicate role name');
+      codexRoles.add(name);
+      if (!/^description = "/m.test(text) || !/^developer_instructions = ('''|""")\n[\s\S]+\n\1$/m.test(text)) err(rel(file), 'needs description and a multi-line developer_instructions');
+      const dsc = JSON.parse(text.match(/^description = (".*")$/m)?.[1] ?? '""');
+      if (dsc.length > 250) err(rel(file), `description is ${dsc.length} characters; Codex lists every role description in each request, keep it brief`);
+      if (!/[.!?]$/.test(dsc) || (dsc.match(/\(/g) ?? []).length !== (dsc.match(/\)/g) ?? []).length || (dsc.match(/`/g) ?? []).length % 2) err(rel(file), `description is cut mid-sentence or has unbalanced brackets: "${dsc}"`);
+      for (const k of [...text.matchAll(/^([a-z_]+) = /gm)].map((x) => x[1])) if (!['name', 'description', 'developer_instructions'].includes(k)) err(rel(file), `key "${k}" would make Codex reject the file`);
+      noLeftovers(file, text, { mentions: true });
+      if (/^description = ".*\bUse proactively\b/m.test(text)) err(rel(file), 'description promises proactive use, which Codex does not do');
+    }
   }
-  if (claimed.size !== tomls.length) err(rel(agentDir), `${claimed.size} of ${tomls.length} role files belong to exactly one plugin`);
-  for (const e of tomls) if (/^description = ".*\bUse proactively\b/m.test(readIf(path.join(agentDir, e.name)) ?? '')) err(rel(path.join(agentDir, e.name)), 'description promises proactive use, which Codex does not do');
+  if (tomlCount !== totalAgents) err('dist/codex', `${tomlCount} role files, expected ${totalAgents}`);
+  if (exists(path.join(DIST, 'codex', 'agents'))) err('dist/codex/agents', 'the central role folder is gone; the roles live in each plugin');
   for (const slug of slugs) {
     const man = readIf(path.join(DIST, 'codex', slug, '.codex-plugin', 'plugin.json')) ?? '';
     if (/Claude Code/.test(man)) err(`dist/codex/${slug}/.codex-plugin/plugin.json`, 'describes the plugin as a Claude Code toolkit');
@@ -189,7 +197,7 @@ export function validateTargets() {
   const SHOULD_ALLOW = ['git diff', 'git diff --stat', 'git diff HEAD~1 -- src', 'git log -n 5', 'git show HEAD', 'git status', 'git branch --show-current', 'git ls-files', 'ls', 'ls -la src',
     'grep -rn foo src', 'rg foo', 'wc -l a.txt', 'head -n 5 a.txt', 'tail -n 5 a.txt', 'find . -name "*.ts"', 'git blame a.txt'];
   const SHOULD_DENY = ['git diff --output=victim.txt', 'git diff --output victim.txt', 'git log -p --output=v.txt', 'git diff --ext-diff', 'ls > notes.txt', 'ls >> notes.txt', 'grep foo > f', 'git diff > src/app.ts',
-    'rg --pre ./evil.sh x', 'find . -delete', 'find . -exec rm {} ;', 'find . -fprint out.txt', 'lsblk', 'git push', 'git branch -D x', 'git checkout .', 'git -c core.pager=sh log', 'rm -rf x', 'cat a.txt', 'sed -i s/a/b/ f'];
+    'rg --pre ./evil.sh x', 'rg --hostname-bin ./evil.sh x', 'rg --search-zip x', 'git show --textconv HEAD:a', 'find . -delete', 'find . -exec rm {} ;', 'find . -fprint out.txt', 'lsblk', 'git push', 'git branch -D x', 'git checkout .', 'git -c core.pager=sh log', 'rm -rf x', 'cat a.txt', 'sed -i s/a/b/ f'];
   for (const c of SHOULD_ALLOW) if (opencodeDecision(expectedRules, c) !== 'allow') err('scripts/targets/core.mjs', `read-only shell rules must allow "${c}"`);
   for (const c of SHOULD_DENY) if (opencodeDecision(expectedRules, c) !== 'deny') err('scripts/targets/core.mjs', `read-only shell rules must deny "${c}"`);
   const FORBIDDEN_OC = ['tools', 'color', 'model', 'maxTurns', 'disallowedTools', 'skills', 'hooks', 'mcpServers', 'permissionMode'];
@@ -207,7 +215,7 @@ export function validateTargets() {
       if (!block) { err(rel(file), 'missing frontmatter'); continue; }
       const keys = [...block.matchAll(/^([A-Za-z][\w-]*):/gm)].map((m) => m[1]);
       const mode = block.match(/^mode: (\w+)\s*$/m)?.[1];
-      const data = { mode, ...Object.fromEntries(keys.map((k) => [k, true])) };
+      const data = { ...Object.fromEntries(keys.map((k) => [k, true])), mode }; // mode last: `keys` contains 'mode' too
       if (!keys.includes('description') || !['subagent', 'primary'].includes(mode)) err(rel(file), 'needs description and mode subagent|primary');
       for (const k of FORBIDDEN_OC) if (keys.includes(k)) err(rel(file), `"${k}" breaks OpenCode V1 config validation`);
       if (!/^[a-z0-9]+(-[a-z0-9]+)*\.md$/.test(e.name)) err(rel(file), 'agent id (file name) must be kebab-case');
@@ -221,18 +229,83 @@ export function validateTargets() {
         for (const c of commandsNamedIn(text)) if (opencodeDecision(rules, `${c} x`) !== 'allow') err(rel(file), `the text lets the role use \`${c}\` but its permission map denies it`);
       }
       if (data.mode === 'subagent' && !/webfetch: deny/.test(text)) err(rel(file), 'must deny webfetch');
+      if (data.mode === 'primary') { // OpenCode replaces its default system prompt with a primary agent's prompt (measured), so a mode restores the baseline and the question tool
+        if (!/Your baseline conventions stay in force/.test(text)) err(rel(file), 'a mode agent must restate the baseline conventions: it replaces the default system prompt');
+        if (!/^permission:\n  question: allow$/m.test(text)) err(rel(file), 'a mode agent needs `question: allow`; a custom primary agent otherwise loses the question tool');
+      }
     }
   }
 
   // ---------------------------------------------------------------- Gemini CLI
   const GEM_AGENT_KEYS = new Set(['kind', 'name', 'description', 'display_name', 'tools', 'mcp_servers', 'model', 'temperature', 'max_turns', 'timeout_mins']);
   const GEM_TOOLS = new Set(['read_file', 'read_many_files', 'list_directory', 'glob', 'grep_search', 'run_shell_command', 'write_file', 'replace', 'google_web_search', 'web_fetch', 'write_todos', 'activate_skill', 'ask_user']);
+  // Gemini's own heuristic (packages/core/src/policy/utils.ts isSafeRegExp): a policy rule with a pattern it rejects is dropped without a word.
+  const geminiSafeRegExp = (pattern) => {
+    try { new RegExp(pattern); } catch { return false; }
+    return pattern.length <= 2048 && !/\([^)]*[*+?{].*\)[*+?{]/.test(pattern);
+  };
+  // A rule's decision as Gemini's engine computes it for run_shell_command: commandRegex is matched against `"command":"<command>` inside the
+  // JSON of the arguments (only deny rules of an extension take effect).
+  const policyDenies = (rules, role, command) => rules.some((r) => r.subagent === role && r.tool === 'run_shell_command' && new RegExp(`"command":"${r.regex}`).test(JSON.stringify({ command })));
+  const parsePolicy = (text) => text.split(/^\[\[rule\]\]$/m).slice(1).map((chunk) => ({
+    tool: chunk.match(/^toolName = "([a-z_]+)"$/m)?.[1] ?? (/^toolName = \[/m.test(chunk) ? 'write_tools' : undefined),
+    subagent: chunk.match(/^subagent = "([^"]+)"$/m)?.[1],
+    regex: (() => { const q = chunk.match(/^commandRegex = ("(?:[^"\\]|\\.)*")$/m)?.[1]; return q ? JSON.parse(q) : undefined; })(),
+    decision: chunk.match(/^decision = "([a-z_]+)"$/m)?.[1],
+    priority: Number(chunk.match(/^priority = (\d+)$/m)?.[1]),
+    writes: /^toolName = \["write_file", "replace"\]$/m.test(chunk),
+  }));
   const geminiNames = new Set();
+  // Gemini has slash commands with the Claude spelling /<plugin>:<name>; they exist for the manual workflows and the modes only
+  const geminiCommands = new Set(model.flatMap((p) => [...p.skills.filter((x) => x.manual).map((x) => `${p.slug}:${x.name}`), ...p.styles.map((x) => `${p.slug}:${modeName(x.name)}`)]));
+  const noGeminiLeftovers = (file, text) => { for (const l of leftovers(text, slugs, { commands: geminiCommands })) err(rel(file), `Claude-specific construct survived: ${l}`); };
   for (const slug of slugs) {
     const root = path.join(DIST, 'gemini', slug);
+    const m1 = model.find((p) => p.slug === slug);
     let man;
     try { man = JSON.parse(readIf(path.join(root, 'gemini-extension.json'))); } catch (e) { err(rel(root), `gemini-extension.json: ${e.message}`); continue; }
     if (!/^[a-zA-Z0-9-]+$/.test(man.name) || !man.version) err(rel(root), 'extension name/version invalid');
+
+    // skills: only the ones the model activates by itself, byte-identical to the universal skill unless the text names a command
+    const wantSkills = new Set(m1.skills.filter((x) => !x.manual).map((x) => flat(slug, x.name)));
+    const haveSkills = listDir(path.join(root, 'skills')).filter((x) => x.isDirectory()).map((x) => x.name);
+    if (JSON.stringify([...wantSkills].sort()) !== JSON.stringify([...haveSkills].sort())) err(rel(path.join(root, 'skills')), `expected exactly the ${wantSkills.size} model-activated skills, found ${haveSkills.length}`);
+    for (const name of haveSkills) {
+      const file = path.join(root, 'skills', name, 'SKILL.md');
+      const text = readIf(file) ?? '';
+      const { data, problems } = parseFrontmatter(text);
+      for (const p of problems) err(rel(file), `frontmatter: ${p}`);
+      if (!data || data.name !== name || !data.description) err(rel(file), 'name must equal the folder and a description is required');
+      if (/Run only when the user asks for it by name\.\s*$/.test(data?.description ?? '')) err(rel(file), 'a manual workflow must be a command, not a skill: every skill is listed in every request');
+      noGeminiLeftovers(file, text);
+      for (const m of text.matchAll(/\$\{extensionPath\}\/([A-Za-z0-9_./-]+)/g)) if (!exists(path.join(root, m[1].replace(/[.,;:]+$/, '')))) err(rel(file), `names \${extensionPath}/${m[1]}, which is not in the extension`);
+      if (!universalHash.has(`${slug}/${name}`)) err(rel(file), 'has no counterpart in dist/agent-skills');
+    }
+
+    // commands: /<plugin>:<name> for every manual workflow and every mode
+    const wantCmds = new Map([...m1.skills.filter((x) => x.manual).map((x) => [x.name, x]), ...m1.styles.map((x) => [modeName(x.name), x])]);
+    const cmdDir = path.join(root, 'commands', slug);
+    const haveCmds = listDir(cmdDir).filter((x) => x.name.endsWith('.toml')).map((x) => x.name.replace(/\.toml$/, ''));
+    if (JSON.stringify([...wantCmds.keys()].sort()) !== JSON.stringify(haveCmds.sort())) err(rel(cmdDir), `expected the ${wantCmds.size} workflows and modes as commands, found ${haveCmds.length}`);
+    if (listDir(path.join(root, 'commands')).filter((x) => x.name !== slug).length) err(rel(path.join(root, 'commands')), 'commands must sit in the folder named after the plugin, so they are /<plugin>:<name>');
+    for (const [name, src] of wantCmds) {
+      const file = path.join(cmdDir, `${name}.toml`);
+      const text = readIf(file);
+      if (text == null) continue;
+      const keys = [...text.slice(0, text.indexOf('\nprompt = ') + 1).matchAll(/^([a-z_]+) = /gm)].map((x) => x[1]).concat('prompt'); // keys before the prompt body
+      if (JSON.stringify(keys.sort()) !== JSON.stringify(['description', 'prompt'])) err(rel(file), `a command has exactly description and prompt, found ${keys.join(', ')}`);
+      const prompt = text.match(/\nprompt = ('''|""")\n([\s\S]+)\n\1\n?$/)?.[2]; // the prompt is the end of the file: nothing may follow its closing quotes
+      if (!prompt) { err(rel(file), 'prompt must be a multi-line TOML string'); continue; }
+      // !{...} runs a shell command and @{...} injects a file when a command expands; neither may appear by accident in a rule text
+      if (/!\{|@\{/.test(prompt)) err(rel(file), 'contains !{ or @{, which Gemini executes or expands inside a command prompt');
+      for (const t of prompt.match(/\{\{[^}]*\}\}/g) ?? []) if (t !== '{{args}}') err(rel(file), `unexpected template ${t}`);
+      const takesArgs = /\$ARGUMENTS/.test(src.body) || /argument-hint/.test(JSON.stringify(src.fm ?? {}));
+      if (takesArgs && !prompt.includes('{{args}}')) err(rel(file), 'the workflow takes arguments but the command never uses {{args}}');
+      noGeminiLeftovers(file, text.replace(/\{\{args\}\}/g, ''));
+      if (/\$\{extensionPath\}/.test(prompt)) err(rel(file), 'command prompts are not hydrated; ${extensionPath} would reach the model as text');
+    }
+
+    // agents
     for (const e of listDir(path.join(root, 'agents')).filter((x) => x.name.endsWith('.md'))) {
       const file = path.join(root, 'agents', e.name);
       const text = readIf(file);
@@ -243,13 +316,39 @@ export function validateTargets() {
       if (!/^[a-z0-9_-]+$/.test(data.name ?? '') || `${data.name}.md` !== e.name) err(rel(file), 'agent name must be [a-z0-9_-]+ and equal the file name');
       if (geminiNames.has(data.name)) err(rel(file), 'duplicate agent name');
       geminiNames.add(data.name);
+      if ((data.description ?? '').length > 250) err(rel(file), `description is ${data.description.length} characters; Gemini lists every subagent description in each request`);
+      if (!/[.!?]$/.test(data.description ?? '') || ((data.description ?? '').match(/\(/g) ?? []).length !== ((data.description ?? '').match(/\)/g) ?? []).length || ((data.description ?? '').match(/`/g) ?? []).length % 2) err(rel(file), `description is cut mid-sentence or has unbalanced brackets: "${data.description}"`);
       if (!Array.isArray(data.tools) || !data.tools.every((t) => GEM_TOOLS.has(t))) err(rel(file), `tools must be a YAML array of valid Gemini tool names (got ${JSON.stringify(data.tools)})`);
-      const m1 = model.find((p) => p.slug === slug).agents.find((a) => `${slug}-${a.name}` === data.name);
-      if (m1?.readOnly && data.tools?.some((t) => ['write_file', 'replace'].includes(t))) err(rel(file), 'read-only role must not list write tools');
-      noLeftovers(file, text.replace(/\$\{extensionPath\}/g, ''));
+      const a1 = m1.agents.find((a) => `${slug}-${a.name}` === data.name);
+      if (a1?.readOnly && data.tools?.some((t) => ['write_file', 'replace'].includes(t))) err(rel(file), 'read-only role must not list write tools');
+      noGeminiLeftovers(file, text.replace(/\$\{extensionPath\}/g, ''));
+      // every path the role is told to read must exist in the extension: a manual workflow is a command, not a skill folder
+      for (const m of text.matchAll(/\$\{extensionPath\}\/([A-Za-z0-9_./-]+)/g)) {
+        const target = m[1].replace(/[.,;:]+$/, '');
+        if (!exists(path.join(root, target))) err(rel(file), `names \${extensionPath}/${target}, which is not in the extension`);
+      }
       if (/the `[a-z0-9-]+` skill\b/.test(text)) err(rel(file), 'names a skill without a path; a Gemini subagent cannot activate skills, so it needs the SKILL.md path');
     }
+
+    // policy: the read-only roles, checked with an offline re-implementation of Gemini's decision (the real engine is run by scripts/verify-gemini-policy.mjs)
+    const policyFile = path.join(root, 'policies', 'read-only-roles.toml');
+    const rules = parsePolicy(readIf(policyFile) ?? '');
+    const roRoles = m1.agents.filter((a) => a.readOnly).map((a) => flat(slug, a.name));
+    if (JSON.stringify([...new Set(rules.map((r) => r.subagent))].sort()) !== JSON.stringify([...roRoles].sort())) err(rel(policyFile), 'the policy must cover exactly the read-only roles');
+    if (rules.length !== roRoles.length * 3) err(rel(policyFile), `expected 3 deny rules per read-only role, found ${rules.length} for ${roRoles.length} roles`);
+    for (const r of rules) {
+      if (r.decision !== 'deny') err(rel(policyFile), `an extension policy can only deny; "${r.decision}" would be ignored`);
+      if (r.regex && !geminiSafeRegExp(`"command":"${r.regex}`)) err(rel(policyFile), `Gemini would drop the rule silently (ReDoS heuristic): ${r.regex.slice(0, 60)}`);
+      if (!r.subagent) err(rel(policyFile), 'every rule must be scoped to one subagent, or it would restrict the main agent');
+    }
+    for (const role of roRoles) {
+      for (const c of POLICY_MUST_ALLOW) if (policyDenies(rules, role, c)) err(rel(policyFile), `${role}: wrongly denies "${c}"`);
+      for (const c of POLICY_MUST_DENY) if (!policyDenies(rules, role, c)) err(rel(policyFile), `${role}: allows "${c.replace(/\n/g, '\\n')}"`);
+      if (policyDenies(rules, 'some-other-subagent', 'rm -rf build')) err(rel(policyFile), `${role}: the rule leaks to other agents`);
+      if (!rules.some((r) => r.subagent === role && r.writes && r.decision === 'deny')) err(rel(policyFile), `${role}: write_file and replace are not denied`);
+    }
   }
+  if (!geminiSafeRegExp(`"command":"${NOT_ALLOWED_REGEX}`) || !geminiSafeRegExp(`"command":"${DANGEROUS_REGEX}`)) err('scripts/targets/gemini.mjs', 'the generated command patterns are rejected by Gemini\'s ReDoS heuristic');
 
   // ---------------------------------------------------------------- Cursor and Copilot (experimental, structural checks)
   for (const slug of slugs) {
@@ -271,10 +370,12 @@ export function validateTargets() {
     const rule = readIf(path.join(DIST, 'cursor', slug, 'rules', `${slug}-rules.mdc`)) ?? '';
     if (!/^description: ".*Apply them when /m.test(rule)) err(`dist/cursor/${slug}/rules/${slug}-rules.mdc`, 'the rule description must say when to apply the rule');
   }
-  for (const f of ['.cursor-plugin/marketplace.json']) {
+  for (const f of ['.cursor-plugin/marketplace.json', '.github/plugin/marketplace.json']) {
     try {
       const m = JSON.parse(readIf(path.join(ROOT, f)));
+      if (m.plugins.length !== slugs.length) err(f, 'plugin count mismatch');
       for (const p of m.plugins) if (!exists(path.join(ROOT, p.source))) err(f, `missing source ${p.source}`);
+      if (f.startsWith('.github') && m.plugins.some((p) => !p.source.startsWith('./dist/copilot/'))) err(f, 'the Copilot marketplace must point at dist/copilot, which is found before the Claude marketplace');
       if (/Claude Code/.test(JSON.stringify(m))) err(f, 'describes the plugins as Claude Code plugins');
       if (m.metadata?.version !== VERSION) err(f, `metadata.version ${m.metadata?.version} must equal the repository version ${VERSION}`);
     } catch (e) { err(f, e.message); }
@@ -327,7 +428,7 @@ export function validateTargets() {
   for (const [f, needle, why] of mustInclude) if (!(readIf(path.join(ROOT, f)) ?? '').includes(needle)) err(f, `expected ${needle}: ${why}`);
   // "Load", "Fetch" and "Read" start a sentence; after a comma or semicolon they are lower case.
   const allAgentFiles = [
-    ...listDir(path.join(DIST, 'codex', 'agents')).map((e) => path.join(DIST, 'codex', 'agents', e.name)),
+    ...slugs.flatMap((slug) => codexRolesOf(slug).map((f) => path.join(codexRolesDir(slug), f))),
     ...['opencode', 'gemini', 'cursor', 'copilot'].flatMap((t) => slugs.flatMap((slug) => listDir(path.join(DIST, t, slug, 'agents')).map((e) => path.join(DIST, t, slug, 'agents', e.name)))),
     ...listDir(path.join(DIST, 'mcp', 'agents')).map((e) => path.join(DIST, 'mcp', 'agents', e.name)),
   ];
@@ -378,6 +479,9 @@ export function validateTargets() {
     r = run('compose-rules.mjs', ['clean-code', 'clean-code', 'refactoring']);
     if ((r.stdout.match(/OBEY Clean Code/g) ?? []).length !== 1 || !/Precedence: this is the PRIMARY rule set/.test(r.stdout)) err('scripts/compose-rules.mjs', 'a repeated book must appear once and the precedence must be visible text');
     if (run('compose-rules.mjs', ['clean-code', '--out']).status !== 2) err('scripts/compose-rules.mjs', '--out without a file name must be a usage error');
+    fs.writeFileSync(dir('mine.md'), 'my own rules');
+    if (run('compose-rules.mjs', ['clean-code', '--out', dir('mine.md')]).status !== 2 || fs.readFileSync(dir('mine.md'), 'utf8') !== 'my own rules') err('scripts/compose-rules.mjs', 'an existing --out file must not be overwritten without --force');
+    if (run('compose-rules.mjs', ['clean-code', '--out', dir('mine.md'), '--force']).status !== 0 || !fs.readFileSync(dir('mine.md'), 'utf8').includes('Precedence')) err('scripts/compose-rules.mjs', '--force must replace the file');
   } finally { fs.rmSync(tmp, { recursive: true, force: true }); }
 
   return errors;

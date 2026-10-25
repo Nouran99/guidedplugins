@@ -85,6 +85,9 @@ function neutralize(t, plugin) {
     .replace(/; the optional SessionStart hook injects it/g, `; the same text ships as dist/rules/${plugin.slug}/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file`)
     // output styles have no "default style" outside Claude Code
     .replace(/\b(as in|as) the default style/g, '$1 your default behavior')
+    // `allowed-tools` pre-approves nothing outside Claude Code; the sentence keeps its advice about which commands to use
+    .replace(/Use Glob and Grep for listing and searching and Read for files; the only Bash commands pre-approved here are the read-only/g,
+      'Use your search and file-reading tools for listing, searching and reading; in the shell use only these read-only commands:')
     .replace(/<the owning skill as a slash command>/g, '<the owning skill>')
     .replace(/is a manual command that you cannot run;/g, 'is a manual workflow that you do not run;');
 }
@@ -200,10 +203,12 @@ export const neutralText = (s, { subagents = true } = {}) => {
 };
 
 // Constructs that must not survive in a non-Claude target.
-export function leftovers(text, slugs, { mentions = false } = {}) {
+export function leftovers(text, slugs, { mentions = false, commands = null } = {}) {
   const found = [];
   const name = '(?:[a-z][a-z0-9-]*|<[a-z-]+>)'; // a real name or a placeholder such as <skill>
   if (mentions) text = text.replace(new RegExp(`\\$(?:${slugs.map(esc).join('|')}):${name}`, 'g'), ''); // Codex "$plugin:skill" mentions are the intended syntax
+  // `commands` (a Set of "plugin:name"): where a target has slash commands with the same spelling, those references are the intended syntax
+  if (commands) text = text.replace(new RegExp(`(?<![\\w-])\\/(${slugs.map(esc).join('|')}):(${name})`, 'g'), (all, sl, n) => (commands.has(`${sl}:${n}`) ? '' : all));
   if (/\$\{CLAUDE_[A-Z_]+\}/.test(text)) found.push('${CLAUDE_*} variable');
   if (/\$ARGUMENTS/.test(text)) found.push('$ARGUMENTS');
   if (/\/output-style\b/.test(text)) found.push('/output-style');
@@ -293,7 +298,39 @@ export const READ_ONLY_ALLOW = [
 ];
 // Flags and shell syntax that turn a read-only command into a write or an execution.
 export const READ_ONLY_DENY = [
-  '*>*', '*--output*', '*--ext-diff*', 'rg *--pre*', 'find *-exec*', 'find *-ok*', 'find *-delete*', 'find *-fprint*', 'find *-fls*',
+  '*>*', '*--output*', '*--ext-diff*', '*--textconv*', 'rg *--pre*', 'rg *--hostname-bin*', 'rg *--search-zip*', 'find *-exec*', 'find *-ok*', 'find *-delete*', 'find *-fprint*', 'find *-fls*',
 ];
 export const bt = (s) => `\`${s}\``;
 export const yaml = (s) => JSON.stringify(String(s));
+
+// ------------------------------------------------------------------ shared helpers added for per-agent budgets and TOML output
+// A short role description for agents that list every role in each request (Codex, Gemini): whole sentences up to `max` characters.
+export function briefDescription(text, max = 150) {
+  // Whole sentences only: a cut inside a sentence leaves a fragment ("... to decide which specialist reviewers."), and a split on every dot
+  // would cut "Refactoring.Guru" in two. The split is on a sentence end followed by white space.
+  const flatText = String(text).replace(/\s+/g, ' ').trim();
+  const sentences = flatText.split(/(?<=[.!?])\s+/).filter(Boolean);
+  let out = sentences[0] ?? flatText;
+  for (let i = 1; i < sentences.length; i++) {
+    const next = `${out} ${sentences[i]}`;
+    if (next.length > max) {
+      // A very short first sentence ("Reviewer of comments.") says what the role is but not when to ask for it: add the next sentence if it
+      // still fits a looser limit, otherwise its opening purpose clause ("Use first on any non-trivial change or review").
+      if (out.length < 70) {
+        const to = sentences[i].indexOf(' to ');
+        if (next.length <= max + 90) out = next;
+        else if (to >= 25 && out.length + 1 + to <= max) out = `${out} ${sentences[i].slice(0, to)}.`;
+      }
+      break;
+    }
+    out = next;
+  }
+  return out;
+}
+
+export const tomlString = (s) => JSON.stringify(String(s)); // JSON basic strings are valid TOML basic strings
+export function tomlMultiline(s) {
+  const text = String(s).replace(/\r\n/g, '\n').replace(/\n+$/, '');
+  if (!text.includes("'''")) return `'''\n${text}\n'''`; // literal: no escaping needed
+  return `"""\n${text.replace(/\\/g, '\\\\').replace(/"""/g, '""\\"')}\n"""`;
+}
