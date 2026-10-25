@@ -1,6 +1,6 @@
 # Guided Plugins: classic engineering books as toolkits for coding agents
 
-Fourteen toolkits, built as [Claude Code](https://code.claude.com) plugins and also generated for Codex, OpenCode, Gemini CLI, Cursor (experimental, not run), Copilot (experimental, not run), any agent that reads Agent Skills or `AGENTS.md`, and any MCP client. One toolkit for each of 13 software engineering books and one for the Refactoring.Guru website.
+Fourteen toolkits, built as [Claude Code](https://code.claude.com) plugins and also generated for Codex, OpenCode, Gemini CLI, GitHub Copilot, Cursor (experimental, not run), any agent that reads Agent Skills or `AGENTS.md`, and any MCP client. One toolkit for each of 13 software engineering books and one for the Refactoring.Guru website.
 Each plugin turns its source's working rules into 55 to 60 components (skills, subagents and output styles) that instruct Claude to apply those rules while it reviews, plans, changes, audits and teaches.
 
 They are built on the MIT-licensed rule sets in [ciembor/agent-rules-books](https://github.com/ciembor/agent-rules-books) by Maciej Ciemborowicz.
@@ -57,17 +57,18 @@ The Claude Code plugins in `plugins/` are the source. `dist/` holds committed bu
 
 | Agent | Install | Status |
 | --- | --- | --- |
-| Codex CLI | `codex plugin marketplace add /path/to/guidedplugins`, then `codex plugin add clean-code@guided-plugins` (the GitHub form `Nouran99/guidedplugins` works once the repository is published) | Verified with codex-cli 0.162 (local path) |
-| OpenCode | `node scripts/install-opencode.mjs clean-code` (run from a clone, installs into the current directory's `.opencode`) | Verified with OpenCode 1.19 and 2.0; see the guide for what was re-checked |
-| Gemini CLI | `gemini extensions install ./dist/gemini/clean-code` | Verified: installs and loads (no live session) |
+| Codex CLI | `codex plugin marketplace add /path/to/guidedplugins`, then `codex plugin add clean-code@guided-plugins` (the GitHub form `Nouran99/guidedplugins` works once the repository is published); subagents with `$clean-code:install-roles` | Verified with codex-cli 0.162.1, including seven live model runs on one plugin |
+| OpenCode | from your project's folder: `node /path/to/guidedplugins/scripts/install-opencode.mjs clean-code` (it installs into that folder's `.opencode`; run inside the clone it would install into the clone) | Verified with OpenCode 1.19 and 2.0 (loading, and the requests a model would get) |
+| Gemini CLI | `gemini extensions install ./dist/gemini/clean-code` (workflows and modes are slash commands: `/clean-code:review src/`) | Verified with gemini-cli 0.64: installs, loads, request measured, policy checked with Gemini's own engine (no live session) |
 | Any Agent Skills agent (about 75) | `npx skills add ./dist/agent-skills/clean-code` from a clone (`Nouran99/guidedplugins/dist/agent-skills/clean-code` once published) | Format and installer verified |
 | Any `AGENTS.md` agent | `node scripts/compose-rules.mjs clean-code --size nano --out AGENTS.md` | Verified |
 | Any MCP client | `node scripts/mcp-server.mjs --plugins clean-code` | Verified with the MCP Inspector, Claude Code and Codex |
-| GitHub Copilot, Cursor | see the guide (Cursor team marketplaces need a Teams or Enterprise plan) | Experimental, not run |
+| GitHub Copilot | `copilot plugin marketplace add /path/to/guidedplugins`, then `copilot plugin install clean-code@guided-plugins` | Verified with Copilot CLI 1.0.101: marketplace, install, skill list (no model session) |
+| Cursor | see the guide (team marketplaces need a Teams or Enterprise plan) | Experimental, not run |
 
-The `Nouran99/guidedplugins` forms need the repository to be published there; it has no remote yet, so use a clone and the local forms. The scripts need Node 20 or later and are run from the clone.
+The `Nouran99/guidedplugins` forms need the repository to be published there; it has no remote yet, so use a clone and the local forms. The scripts need Node 20 or later; they live in the clone, and the installers write into the folder you run them from.
 
-Codex subagents need a separate step (`node scripts/install-codex-agents.mjs clean-code`). Read-only reviewers are not a guarantee outside Claude Code: OpenCode denies them the edit tools and limits their shell to an allowlist (a guard rail, not a sandbox), Gemini applies a tool list but cannot restrict the shell, and Codex restricts neither; the guide explains.
+Codex subagents need a separate step: run `$clean-code:install-roles` in Codex (or `node scripts/install-codex-agents.mjs clean-code` from a clone). Read-only reviewers are not a guarantee outside Claude Code: OpenCode and Gemini deny them the write tools and limit their shell to an allowlist (guard rails that match command text, not sandboxes; in Gemini one "Allow for this session" click overrides them), Copilot gives them no edit tool but no shell allowlist, and Codex cannot restrict a role at all, so start it with `codex --sandbox read-only` when that matters (checked live); the guide explains.
 
 ## The plugins
 
@@ -213,7 +214,7 @@ Running a component costs more than having it installed. Using one adds its body
 **How do they relate to the upstream project?** They are built on [ciembor/agent-rules-books](https://github.com/ciembor/agent-rules-books). Each plugin copies that project's `full`, `mini` and `nano` rule files for its book unmodified and records the upstream commit in its `NOTICE.md`. The skills, subagents, output styles, hook and documentation around those files are this project's own work.
 This project is not affiliated with or endorsed by the upstream maintainer. If you only want the rule files, for use in other tools, use the upstream project directly.
 
-**Does it work with Codex, OpenCode or my other agent?** Yes, in different degrees; see [Other coding agents](#other-coding-agents) and [docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md). Skills travel everywhere. Subagents, modes and always-on rules need a per-agent build, which `dist/` provides, and some features have no equivalent elsewhere (Claude Code's output styles become persona skills). The Codex, OpenCode, Gemini and MCP builds were installed and loaded in the real tools; no live model session was run in any of them.
+**Does it work with Codex, OpenCode or my other agent?** Yes, in different degrees; see [Other coding agents](#other-coding-agents) and [docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md). Skills travel everywhere. Subagents, modes and always-on rules need a per-agent build, which `dist/` provides, and some features have no equivalent elsewhere (Claude Code's output styles become persona skills). The Codex, OpenCode, Gemini, Copilot and MCP builds were installed and loaded in the real tools. A live model session was run only in Codex (seven short runs on one plugin, recorded in [docs/verification](docs/verification/codex-live-2026-10-20.md)); the others were not run with a model.
 
 **Can I use just one plugin?** Yes. Each plugin is self-contained: it carries its own copy of its rule files, and no plugin calls another. Add the marketplace once and install the one you want. Plugins mention other books by name in their text but never invoke their components.
 
@@ -225,6 +226,7 @@ This project is not affiliated with or endorsed by the upstream maintainer. If y
 .claude-plugin/marketplace.json   Claude Code marketplace, generated from scripts/books.json and the plugin manifests
 .agents/plugins/marketplace.json   Codex marketplace (generated; points at dist/codex)
 .cursor-plugin/marketplace.json    Cursor marketplace (generated; experimental)
+.github/plugin/marketplace.json    Copilot marketplace (generated; points at dist/copilot)
 plugins/<slug>/                   one Claude Code plugin per book: the source of everything (see docs/PLUGIN_SPEC.md)
 dist/                             generated builds for other agents (never edit by hand): agent-skills, codex, opencode,
                                   gemini, cursor, copilot, rules, mcp

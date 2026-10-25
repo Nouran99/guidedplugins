@@ -28,6 +28,7 @@ guidedplugins/
 ├── .claude-plugin/marketplace.json   generated: marketplace "guided-plugins", one entry per plugin
 ├── .agents/plugins/marketplace.json  generated: the same plugins for Codex (section 12)
 ├── .cursor-plugin/marketplace.json   generated: the same plugins for Cursor team marketplaces
+├── .github/plugin/marketplace.json   generated: the same plugins for Copilot (points at dist/copilot, section 12)
 ├── plugins/<slug>/                   one plugin per book (14 today); anatomy in section 2
 ├── dist/                             generated builds for the other agents (section 12): agent-skills, codex, opencode, gemini, cursor, copilot, rules, mcp
 ├── docs/
@@ -63,7 +64,7 @@ Every file in the repository falls into one of three groups:
 
 | Group | Files | Who edits them |
 | --- | --- | --- |
-| Generated | `dist/` and the Codex and Cursor marketplace files (`.agents/plugins/marketplace.json`, `.cursor-plugin/marketplace.json`) via `node scripts/build-targets.mjs`; `.claude-plugin/marketplace.json`; the plugin table in the root `README.md` (between the `CATALOG` markers); in each plugin `docs/COMPONENTS.md`, `docs/TRACEABILITY.md` and the `COMPONENTS` block of `README.md` | `node scripts/gen-catalog.mjs`. Do not edit by hand. |
+| Generated | `dist/` and the Codex, Cursor and Copilot marketplace files (`.agents/plugins/marketplace.json`, `.cursor-plugin/marketplace.json`, `.github/plugin/marketplace.json`) via `node scripts/build-targets.mjs`; `.claude-plugin/marketplace.json`; the plugin table in the root `README.md` (between the `CATALOG` markers); in each plugin `docs/COMPONENTS.md`, `docs/TRACEABILITY.md` and the `COMPONENTS` block of `README.md` | `node scripts/gen-catalog.mjs`. Do not edit by hand. |
 | Scaffolded once | in each plugin `.claude-plugin/plugin.json`, `LICENSE`, `NOTICE.md`, `CHANGELOG.md`, `hooks/hooks.json`, `scripts/session-context.sh`, `skills/principles/references/{full,mini,nano}.md`, and a README stub | `node scripts/new-plugin.mjs`. After that, only `description` and `keywords` in `plugin.json`, `version`, and `CHANGELOG.md` are edited by hand, plus the commit hash in `NOTICE.md` when the vendored rules are refreshed (section 10). The vendored rule files stay byte-for-byte upstream. |
 | Hand-written | skills, agents, output styles, the README prose, `docs/DESIGN.md`, everything in `scripts/` and `docs/` at the repository root | Maintainers, within the rules in the spec. |
 
@@ -247,7 +248,7 @@ The validator also checks that `hooks.json` parses, that its `SessionStart` comm
 node scripts/validate-plugin.mjs plugins/<slug> [--no-cli] [--quiet]   # one plugin
 node scripts/validate-all.mjs [--no-cli] [--quiet]                     # everything
 node scripts/gen-catalog.mjs [plugins/<slug>]                          # regenerate derived files
-node scripts/build-targets.mjs [--target <id>]                         # regenerate dist/ and the Codex and Cursor marketplace files (section 12)
+node scripts/build-targets.mjs [--target <id>]                         # regenerate dist/ and the Codex, Cursor and Copilot marketplace files (section 12)
 node scripts/validate-targets.mjs                                      # check dist/ against each agent's constraints (also run by validate-all.mjs)
 node scripts/mcp-selftest.mjs                                          # protocol checks of the MCP server
 ```
@@ -453,20 +454,21 @@ that keep one flat list (the Agent Skills installer, OpenCode, Gemini, Copilot, 
 names and its roles, which are global, get the prefix. An output style becomes `<plugin>-mode-<name>` (Codex: `mode-<name>`) so that it can never collide with a skill of the same name; at the time of writing no plugin has such a pair.
 
 **Trees only where a format needs one.** The universal Agent Skills folders are spec-clean (`name`, `description`, `license`, `metadata` only; `skills-ref` accepts all 517).
-OpenCode, Gemini, Cursor and Copilot reuse those folders byte for byte, and the validator enforces that, so git stores one copy of each (at the time of writing `dist/` is about 30 MB of file content, and the committed history packs to about 6 MB).
-Codex gets its own tree because it namespaces by plugin, hides manual skills through `agents/openai.yaml`, and ships roles as TOML.
+OpenCode, Cursor and Copilot reuse those folders byte for byte, and the validator enforces that, so git stores one copy of each (at the time of writing `dist/` is about 30 MB of file content, and the committed history packs to about 6 MB).
+Codex gets its own tree because it namespaces by plugin, hides manual skills through `agents/openai.yaml`, and ships its roles as TOML inside a hidden `install-roles` skill (a Codex plugin cannot activate roles itself, so that skill copies them to where Codex reads them).
+Gemini gets its own tree too, for a cost reason: it lists every skill in every request and puts every skill name into one tool schema, so only the rule skills stay skills and the 242 manual workflows and modes become slash commands (`commands/<plugin>/<name>.toml`, `{{args}}` for the arguments), which cost nothing until run.
 
-**Features without an equivalent.** Output styles become persona skills, OpenCode primary agents or Copilot agents. The opt-in hook becomes `AGENTS.md` snippets (`dist/rules`),
-because only one book should be always on and a file every agent reads needs no hook. Per-agent tool lists, model names, colors, turn limits and skill preloading are dropped
+**Features without an equivalent.** Output styles become persona skills, Gemini commands, OpenCode primary agents or Copilot agents. An OpenCode primary agent replaces the provider's system prompt (measured at about 8.6 KB), so a mode agent restates a short baseline of everyday conventions and allows the `question` tool it would otherwise lose. The opt-in hook becomes `AGENTS.md` snippets (`dist/rules`),
+because only one book should be always on and a file every agent reads needs no hook. Per-agent tool lists, model names, colors and skill preloading are dropped (turn limits survive as OpenCode `steps` and Gemini `max_turns`)
 where the target rejects them (Codex rejects a role file with any unknown key; OpenCode 1.x refuses to start on a Claude-style `tools:` line) and replaced by what the target does have: OpenCode permission
-maps, Gemini tool lists, and plain instructions elsewhere.
+maps, Gemini tool lists and a deny-only policy file, and plain instructions elsewhere. Role descriptions are shortened (`briefDescription`) for Codex and Gemini, which list every role in every request.
 
 **MCP.** `dist/mcp/catalog.json` indexes all 817 guides and `scripts/mcp-server.mjs` serves them over stdio with no dependencies: four tools, every guide and rule file as a resource, and the
 workflows, modes and subagent roles as prompts. `--plugins` limits what it exposes, since a harness pays for what it lists.
 
-**Checks.** `validate-targets.mjs` enforces each agent's constraints (skill names and sizes, Codex role keys, OpenCode forbidden keys and the read-only shell rules (checked against probe commands, and against the commands each role's text allows), Gemini's strict agent schema and tool names,
-byte-identical flat targets, resolvable relative paths, catalog completeness, and that each plugin's Codex roles are selected by the plugin that owns them, not by a name prefix). CI rebuilds `dist/` and fails on any difference, parses all Codex roles with a real TOML parser and runs the MCP self-test.
-What is not checked in CI: the real agents themselves. They were run once by hand (versions and results in [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md#what-was-verified)), and a live model session was run in none of them.
+**Checks.** `validate-targets.mjs` enforces each agent's constraints (skill names and sizes, Codex role keys and the roles of each plugin, OpenCode forbidden keys and the read-only shell rules (checked against probe commands, and against the commands each role's text allows), the baseline and `question` permission of mode agents, Gemini's strict agent schema and tool names, its commands (only `description` and `prompt`, no `!{` or `@{`, `{{args}}` wherever a workflow takes arguments) and its policy files (an offline re-implementation of Gemini's decision against 66 probe commands, for every read-only role, plus Gemini's own ReDoS heuristic, because a rule it rejects is dropped silently),
+byte-identical flat targets, resolvable relative paths and catalog completeness). CI rebuilds `dist/` and fails on any difference, parses all Codex roles, Gemini commands and policies with a real TOML parser and runs the MCP self-test.
+What is not checked in CI: the real agents themselves. They were run by hand (versions and results in [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md#what-was-verified)); a live model session was run in Codex only, seven short runs on one plugin ([the record](verification/codex-live-2026-10-20.md)). `scripts/verify-gemini-policy.mjs` checks the Gemini policy files against Gemini's own policy engine, from an installed copy of the CLI.
 
-**Limits specific to this build.** Read-only roles are only as strong as each agent allows: OpenCode denies the edit tools and limits the shell to an allowlist (a guard rail that matches command text, not a sandbox), Gemini applies a tool list but not a shell restriction, and Codex relies on instructions. The Cursor and Copilot builds follow the vendors' documents but were not run.
-Gemini loads every skill name into one tool schema, and whether the API accepts all 517 at once was not tested. Codex's skill catalog and role list have a context budget that makes installing all 14 plugins impractical.
+**Limits specific to this build.** Read-only roles are only as strong as each agent allows: OpenCode denies the edit tools and limits the shell to an allowlist, and Gemini denies the write tools and any shell command outside an allowlist (both guard rails that match command text, not sandboxes). Codex relies on instructions unless the session itself runs read-only (`codex --sandbox read-only`, which a subagent inherits; checked live). The Cursor build follows the vendor's documents but was not run; the Copilot build was installed and listed by the real CLI but not used with a model.
+Gemini loads every skill name into one tool schema (277 names with all 14 extensions after the move to commands), and whether the API accepts that was not tested. Codex's skill catalog and role list have a context budget that makes installing all 14 plugins impractical.
