@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/pragmatic-programmer
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 38 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/pragmatic-programmer:pragmatic-programmer-<name>`; that was not exercised in a live session here.
-- 20 subagents, started with `@pragmatic-programmer-<name> <task>`.
+- 20 rule skills the model activates on its own (`pragmatic-programmer-<name>`).
+- 12 workflows and 6 modes as slash commands: `/pragmatic-programmer:review src/`, `/pragmatic-programmer:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 20 subagents, started with `@pragmatic-programmer-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/pragmatic-programmer:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

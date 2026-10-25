@@ -101,7 +101,7 @@ When SMS arrives, the function gains a parameter or a second function, and the t
 
 ## Related
 
-`clean-code-refactoring-steps` for moving safely; `clean-code-successive-refinement` for the draft-and-refine loop; `clean-code-smells-redundancy` for named wasteful structure; `clean-code-simplicity-reviewer` to review a diff.
+`clean-code-refactoring-steps` for moving safely; `/clean-code:successive-refinement` for the draft-and-refine loop; `clean-code-smells-redundancy` for named wasteful structure; `clean-code-simplicity-reviewer` to review a diff.
 
 ## Source
 

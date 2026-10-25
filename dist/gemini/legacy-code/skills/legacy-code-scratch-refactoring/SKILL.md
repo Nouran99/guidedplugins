@@ -40,7 +40,7 @@ Change a copy of the code to learn what it does, write down what you learned, an
 3. Write the responsibility table: tag, verb phrase, inputs, outputs and effects, dependency kind (pure policy, load, persist, notify, ambient input).
 4. Write the open questions, in particular behavior that looks odd.
 5. Discard the scratch edits (rule 6). Keep the notes.
-6. Choose the next safe move: test point (`legacy-code-effect-sketch`), characterization (`legacy-code-characterize`) or seam (`legacy-code-find-seam`).
+6. Choose the next safe move: test point (`/legacy-code:effect-sketch`), characterization (`/legacy-code:characterize`) or seam (`/legacy-code:find-seam`).
 
 ## Example
 
@@ -103,7 +103,7 @@ Nothing in the scratch copy is shipped; the table tells the next step which two 
 
 ## Related
 
-`legacy-code-test-points` and `legacy-code-effect-sketch` for choosing where to observe; `legacy-code-large-methods` for the real extraction; `legacy-code-mode-explorer` for a session-long understanding mode; `legacy-code-characterize` to pin what you learned.
+`legacy-code-test-points` and `/legacy-code:effect-sketch` for choosing where to observe; `legacy-code-large-methods` for the real extraction; `/legacy-code:mode-explorer` for a session-long understanding mode; `/legacy-code:characterize` to pin what you learned.
 
 ## Source
 

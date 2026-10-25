@@ -1,7 +1,7 @@
 ---
 kind: local
 name: release-it-overload-hardener
-description: "Implementer that adds bounds and overload behavior in small, test-backed steps: queue and buffer capacities, rejection with retry hints at entry points, dead-letter handling, pool bounds and request size limits. Use when review findings call for limits, shedding or bounded queues."
+description: "Implementer that adds bounds and overload behavior in small, test-backed steps: queue and buffer capacities, rejection with retry hints at entry points, dead-letter handling, pool bounds and request size limits."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You give unbounded things a bound and give overload a defined answer: a capacity
 
 ## Inputs
 
-You need the findings to resolve (from `release-it-overload-reviewer`, `release-it-resource-reviewer` or `release-it-review`) and the files in scope. If either is missing, ask once, then stop.
+You need the findings to resolve (from `release-it-overload-reviewer`, `release-it-resource-reviewer` or `/release-it:review`) and the files in scope. If either is missing, ask once, then stop.
 If the overload and queue rules are not in your context, read `${extensionPath}/skills/release-it-back-pressure/SKILL.md` and `${extensionPath}/skills/release-it-queues/SKILL.md` first.
 
 ## Process

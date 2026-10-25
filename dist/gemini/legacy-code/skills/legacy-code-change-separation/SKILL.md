@@ -10,7 +10,7 @@ metadata:
 
 # Change separation
 
-A legacy patch is safe to review and safe to revert when each step has one intent. This skill sorts a patch into behavior change, dependency break, structural refactoring, cleanup and tests, and keeps them apart where practical. The sequence of work before the patch exists is `legacy-code-legacy-loop`; the decision to go big instead is `legacy-code-rewrite-pressure`; splitting a patch that is already mixed is `legacy-code-split-patch`.
+A legacy patch is safe to review and safe to revert when each step has one intent. This skill sorts a patch into behavior change, dependency break, structural refactoring, cleanup and tests, and keeps them apart where practical. The sequence of work before the patch exists is `legacy-code-legacy-loop`; the decision to go big instead is `legacy-code-rewrite-pressure`; splitting a patch that is already mixed is `/legacy-code:split-patch`.
 
 ## When to use
 
@@ -40,7 +40,7 @@ A legacy patch is safe to review and safe to revert when each step has one inten
 1. Write the request in one sentence. Everything in the diff must serve it or serve its safety.
 2. Walk the diff hunk by hunk and label each (rule 12). Mark the scope: required, enabling or out of scope.
 3. List mixed hunks. For each, decide if it can be split; if not, write why.
-4. Propose the order (rule 11). `legacy-code-split-patch` produces it for a whole patch.
+4. Propose the order (rule 11). `/legacy-code:split-patch` produces it for a whole patch.
 5. Run the tests after each step on the way to the final state.
 6. Report out-of-scope hunks as "noticed, not changed" or remove them.
 
@@ -96,7 +96,7 @@ After (four steps)
 
 ## Related
 
-`legacy-code-change-intent-reviewer` to produce the ledger for a diff; `legacy-code-split-patch` to turn a mixed patch into ordered steps; `legacy-code-legacy-loop` for the earlier order; `legacy-code-rewrite-pressure` for scale; `legacy-code-scratch-refactoring` for learning edits that must not ship.
+`legacy-code-change-intent-reviewer` to produce the ledger for a diff; `/legacy-code:split-patch` to turn a mixed patch into ordered steps; `legacy-code-legacy-loop` for the earlier order; `legacy-code-rewrite-pressure` for scale; `legacy-code-scratch-refactoring` for learning edits that must not ship.
 
 ## Source
 

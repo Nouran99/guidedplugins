@@ -106,7 +106,7 @@ Plain `setUTCMonth` would roll 31 January into March, so the method clamps to th
 
 ## Related
 
-`ddd-ubiquitous-language` for the vocabulary itself; `ddd-domain-tests` for rule-level tests; `ddd-language-audit` for a tree-wide term table; `ddd-language-reviewer` to review a diff.
+`ddd-ubiquitous-language` for the vocabulary itself; `ddd-domain-tests` for rule-level tests; `/ddd:language-audit` for a tree-wide term table; `ddd-language-reviewer` to review a diff.
 
 ## Source
 

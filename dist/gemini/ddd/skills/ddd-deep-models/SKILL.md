@@ -10,7 +10,7 @@ metadata:
 
 # Deep models
 
-Owns the stance toward the whole model: it is discovered with domain experts and refined through code, and a shallow model that merely stores data is a defect to work on. It does not name individual hidden concepts (that is `ddd-explicit-concepts`) and it does not test a model with a story (that is `ddd-scenario-walkthrough`).
+Owns the stance toward the whole model: it is discovered with domain experts and refined through code, and a shallow model that merely stores data is a defect to work on. It does not name individual hidden concepts (that is `ddd-explicit-concepts`) and it does not test a model with a story (that is `/ddd:scenario-walkthrough`).
 
 ## When to use
 
@@ -39,9 +39,9 @@ Owns the stance toward the whole model: it is discovered with domain experts and
 
 1. Collect the evidence of shallowness: awkward signatures, repeated conditionals, contradictory statements, names nobody uses in conversation.
 2. Write the rule each awkward spot is trying to express, in a sentence of business words. If you cannot, list the questions for a domain expert and stop guessing.
-3. Propose two or three candidate cuts of the concepts. For each, list which special cases disappear and which new ones appear. `ddd-scenario-walkthrough` tests them against real situations.
+3. Propose two or three candidate cuts of the concepts. For each, list which special cases disappear and which new ones appear. `/ddd:scenario-walkthrough` tests them against real situations.
 4. Choose by explanatory power against migration cost. Added judgment: if the best candidate removes fewer than two existing special cases, keep the current model and record the idea.
-5. Plan the migration as behavior-preserving steps (`ddd-plan`), rename as you go, and keep tests green after each step.
+5. Plan the migration as behavior-preserving steps (`/ddd:plan`), rename as you go, and keep tests green after each step.
 6. Record the new term and what it replaced where the team keeps its language (`ddd-ubiquitous-language`).
 
 ## Example
@@ -114,7 +114,7 @@ class Claim:
 
 ## Related
 
-`ddd-explicit-concepts` for naming one hidden concept; `ddd-scenario-walkthrough` to test candidate models; `ddd-mode-model-explorer` for a discovery conversation; `ddd-concept-reviewer` to review a diff; `ddd-plan` for the migration.
+`ddd-explicit-concepts` for naming one hidden concept; `/ddd:scenario-walkthrough` to test candidate models; `/ddd:mode-model-explorer` for a discovery conversation; `ddd-concept-reviewer` to review a diff; `/ddd:plan` for the migration.
 
 ## Source
 

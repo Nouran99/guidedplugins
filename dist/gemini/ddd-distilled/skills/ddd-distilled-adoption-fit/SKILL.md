@@ -28,7 +28,7 @@ The go or no-go decision for an area, taken before any tactical pattern is chose
 5. **Use scenarios and acceptance tests to validate that the model expresses real business behavior.** A model nobody can exercise is a guess. Check: each modeled behavior has at least one scenario worded the way the business would say it. See `ddd-distilled-domain-tests`.
 6. **Reject both extremes.** No modeling in a complex domain and full ceremony in a simple one are both failures. Check: for the area, say in one sentence what is lost by modeling less and what is lost by modeling more.
 7. **When uncertain, run the five steps in order:** identify the business capability or subdomain; decide whether it is core, supporting or generic; define the bounded context; use the local ubiquitous language; apply only the tactical patterns that earn their cost. Check: the answer names a step you could not complete, rather than skipping to patterns.
-8. **Treat team skill and access to domain experts as limits on how much ceremony the project can sustain.** A model that no one on the team can maintain or validate will rot. Check: the chosen level matches who will own the code and whether an expert can be reached. Sizing is `ddd-distilled-estimate-work`.
+8. **Treat team skill and access to domain experts as limits on how much ceremony the project can sustain.** A model that no one on the team can maintain or validate will rot. Check: the chosen level matches who will own the code and whether an expert can be reached. Sizing is `/ddd-distilled:estimate-work`.
 9. **Do not dismiss DDD because not every module needs it, and do not over-model a generic subsystem.** Both are named anti-patterns. Check: the decision is made per area, not once for the repository.
 10. **Write the decision down in one short record per area.** (Added judgment) Area, drivers present, effort level, reassessment trigger. A record turns rule 4 from an intention into something a reviewer can check.
 
@@ -85,7 +85,7 @@ The first area is not under-modeled; the second would be under-modeled by a func
 
 ## Related
 
-`ddd-distilled-subdomains` to rank areas; `ddd-distilled-pattern-economy` to pick the pattern; `ddd-distilled-estimate-work` to size the effort; `ddd-distilled-subdomain-reviewer` and `ddd-distilled-ceremony-reviewer` to review a diff.
+`ddd-distilled-subdomains` to rank areas; `ddd-distilled-pattern-economy` to pick the pattern; `/ddd-distilled:estimate-work` to size the effort; `ddd-distilled-subdomain-reviewer` and `ddd-distilled-ceremony-reviewer` to review a diff.
 
 ## Source
 

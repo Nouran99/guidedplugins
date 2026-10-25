@@ -31,7 +31,7 @@ Judges one routine: its purpose, its name, whether its phases are separated and 
 8. **Keep routines reasonably small as a consequence of purpose, not as a target.** The source asks for focused routines that are "reasonably small" and gives no line count. Added judgment: a long routine with one purpose and straight-line structure can be correct, and a short routine that mixes phases is still bloated; judge purpose first, length second.
 9. **Make the routine hard to misuse by what it returns and requires.** Return and parameter design are in `code-complete-routine-interface`; here check that the routine does not demand a call order that its name does not reveal.
 10. Added judgment: split at the first line where a reader must switch from one level of detail to another (from "what the business step is" to "how bytes are parsed"); that line is usually a phase boundary.
-11. Added judgment: for a complex routine, write the steps as pseudocode first (`code-complete-pseudocode`); mixed phases show up in the sketch before any code exists.
+11. Added judgment: for a complex routine, write the steps as pseudocode first (`/code-complete:pseudocode`); mixed phases show up in the sketch before any code exists.
 
 ## Procedure
 
@@ -102,7 +102,7 @@ An empty cart is an expected business outcome, so the guard is a validation that
 
 ## Related
 
-`code-complete-routine-interface` for parameters and returns; `code-complete-control-flow` for nesting inside the body; `code-complete-complexity-management` for tangles across routines; `code-complete-pseudocode` to design a routine before writing it; `code-complete-routine-reviewer` to review a diff.
+`code-complete-routine-interface` for parameters and returns; `code-complete-control-flow` for nesting inside the body; `code-complete-complexity-management` for tangles across routines; `/code-complete:pseudocode` to design a routine before writing it; `code-complete-routine-reviewer` to review a diff.
 
 ## Source
 

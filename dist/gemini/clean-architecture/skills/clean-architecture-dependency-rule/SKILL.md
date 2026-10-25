@@ -31,13 +31,13 @@ Owns the direction of source-code dependencies between layers. Which framework o
 7. **Do not let infrastructure be both imported by and importing inward code.** `[MUST NOT]` That shape means the layers have collapsed into one. Check: no import path leads from a domain or application module to an infrastructure module.
 8. **Put four questions to every new import.** `[MUST]` Does it point inward? Does high-level policy end up relying on a low-level detail? Has a framework or vendor type slipped into a core layer? Is an adapter going around the boundary that should sit between it and the core? A yes to any of them means refactor.
 9. **Fix an outward import by inverting it.** `[MUST]` Define the interface in the inner layer and implement it in the outer one. Added judgment: moving the importing file outward is a legitimate cure when the file was misplaced adapter code (a mapper sitting in the application directory, say) and holds no policy. It does not cure a use case that really needs the detail; that case still needs an interface the inner layer declares. Moving a detail inward only hides the arrow. Check: after the change the inner module names an interface it declared itself, or the moved file holds no policy.
-10. **Make the direction checkable by a machine.** `[MUST]` Package structure, a test, a dependency rule or a build constraint should fail when an inner file imports an outer one (compact rules: a diagram or a folder name is not enough). See `clean-architecture-enforce-boundaries`.
+10. **Make the direction checkable by a machine.** `[MUST]` Package structure, a test, a dependency rule or a build constraint should fail when an inner file imports an outer one (compact rules: a diagram or a folder name is not enough). See `/clean-architecture:enforce-boundaries`.
 11. **Count indirect routes.** Added judgment: a barrel file, package initializer or facade that re-exports an outer module puts that module in the inner file's import graph. Check: follow each re-export one hop before accepting an import as inward.
-12. **Judge direction by the layer map, not by folder names alone.** Added judgment: a directory called `domain` that imports `adapters` is not a domain layer. Check: build the map from what the code actually does (`clean-architecture-layer-map`) when names and behavior disagree.
+12. **Judge direction by the layer map, not by folder names alone.** Added judgment: a directory called `domain` that imports `adapters` is not a domain layer. Check: build the map from what the code actually does (`/clean-architecture:layer-map`) when names and behavior disagree.
 
 ## Procedure
 
-1. Establish the layer map from directory and package names, or run `clean-architecture-layer-map`. Write down which directories are domain, application, adapters and infrastructure.
+1. Establish the layer map from directory and package names, or run `/clean-architecture:layer-map`. Write down which directories are domain, application, adapters and infrastructure.
 2. List the imports of every changed file (`git diff`, then a search of the import lines in those files).
 3. Classify each import as same-layer, inward or outward. Treat third-party packages as outermost unless rule 3's exception clearly applies.
 4. For each outward edge in an inner file choose one cure: pass the data in through a request model (`clean-architecture-boundary-models`), declare an interface in the inner layer and implement it outward (`clean-architecture-ports-and-gateways`), or, when the file is misplaced adapter code with no policy in it, move that file to an outer layer (rule 9).
@@ -143,7 +143,7 @@ The arrows now run `infrastructure -> application -> domain`. At run time contro
 
 ## Related
 
-`clean-architecture-ports-and-gateways` for shaping and naming the inverted interface; `clean-architecture-boundary-models` for data that must enter instead; `clean-architecture-enforce-boundaries` to make the rule executable; `clean-architecture-import-direction-reviewer` to review a diff; `clean-architecture-import-scanner` for a raw edge census.
+`clean-architecture-ports-and-gateways` for shaping and naming the inverted interface; `clean-architecture-boundary-models` for data that must enter instead; `/clean-architecture:enforce-boundaries` to make the rule executable; `clean-architecture-import-direction-reviewer` to review a diff; `clean-architecture-import-scanner` for a raw edge census.
 
 ## Source
 

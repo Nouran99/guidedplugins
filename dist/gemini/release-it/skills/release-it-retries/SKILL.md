@@ -112,7 +112,7 @@ def charge(order_id, card_token, cents, *, budget_s=6.0):
 
 ## Related
 
-`release-it-timeouts` for the per-attempt wait; `release-it-circuit-breakers` to stop flooding; `release-it-call-chain-budget` to compute amplification across layers; `release-it-scheduled-work` for jobs; `release-it-retry-reviewer` to review a diff; `release-it-call-hardener` to apply the change.
+`release-it-timeouts` for the per-attempt wait; `release-it-circuit-breakers` to stop flooding; `/release-it:call-chain-budget` to compute amplification across layers; `release-it-scheduled-work` for jobs; `release-it-retry-reviewer` to review a diff; `release-it-call-hardener` to apply the change.
 
 ## Source
 

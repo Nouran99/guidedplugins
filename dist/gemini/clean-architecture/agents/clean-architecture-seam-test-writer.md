@@ -1,7 +1,7 @@
 ---
 kind: local
 name: clean-architecture-seam-test-writer
-description: "Test author that writes core tests for entities and use cases with fakes for ports, plus separate adapter tests. Use when policy has no tests that run without a framework, database or network. Edits test files only."
+description: "Test author that writes core tests for entities and use cases with fakes for ports, plus separate adapter tests."
 tools:
   - list_directory
   - read_file

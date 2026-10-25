@@ -10,7 +10,7 @@ metadata:
 
 # Prototypes
 
-A prototype exists to answer a question, then to be discarded or deliberately hardened. This skill governs the experiment and its graduation. The path you intend to keep and extend is `pragmatic-programmer-tracer-bullets`; to write the charter or review a promotion, run `pragmatic-programmer-prototype-charter`.
+A prototype exists to answer a question, then to be discarded or deliberately hardened. This skill governs the experiment and its graduation. The path you intend to keep and extend is `pragmatic-programmer-tracer-bullets`; to write the charter or review a promotion, run `/pragmatic-programmer:prototype-charter`.
 
 ## When to use
 
@@ -89,7 +89,7 @@ Outcome note, written when the spike ends: "Fuzzy matching on name plus postcode
 
 ## Related
 
-`pragmatic-programmer-prototype-charter` to write or audit the charter; `pragmatic-programmer-provenance-reviewer` to review code of unclear origin; `pragmatic-programmer-tracer-bullets` for the kept path; `pragmatic-programmer-generators-and-dsls` for scaffolds and generated code.
+`/pragmatic-programmer:prototype-charter` to write or audit the charter; `pragmatic-programmer-provenance-reviewer` to review code of unclear origin; `pragmatic-programmer-tracer-bullets` for the kept path; `pragmatic-programmer-generators-and-dsls` for scaffolds and generated code.
 
 ## Source
 

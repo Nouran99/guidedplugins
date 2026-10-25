@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-conditional-refactorer
-description: "Implementer that replaces repeated type-based branching with a table, strategy or polymorphism only when the repetition justifies it, and removes modeling added for a single branch. Use when a conditional review names a repeated type or status switch and changes were requested."
+description: "Implementer that replaces repeated type-based branching with a table, strategy or polymorphism only when the repetition justifies it, and removes modeling added for a single branch."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You choose and carry out the right mechanism for branching that repeats by kind:
 
 ## Inputs
 
-You need the discriminator (type code, status, mode) and the files in scope, or the review finding that names them. If missing, ask once, then stop. If tests do not cover the branches, say so and recommend `refactoring-characterize` first.
+You need the discriminator (type code, status, mode) and the files in scope, or the review finding that names them. If missing, ask once, then stop. If tests do not cover the branches, say so and recommend `/refactoring:characterize` first.
 If the conditionals or variation-and-state rules are not in your context, read `${extensionPath}/skills/refactoring-conditionals/SKILL.md` and `${extensionPath}/skills/refactoring-variation-and-state/SKILL.md` first.
 
 ## Process

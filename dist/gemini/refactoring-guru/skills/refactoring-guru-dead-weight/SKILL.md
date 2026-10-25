@@ -10,7 +10,7 @@ metadata:
 
 # Dead weight
 
-Owns three Dispensables that cost maintenance without giving value: Lazy Class, Dead Code and Speculative Generality. It finds candidates and chooses delete, inline or keep. Whether a deletion is safe for outside users is `refactoring-guru-public-compatibility`; the symbol-level verdict is `refactoring-guru-reachability-check`.
+Owns three Dispensables that cost maintenance without giving value: Lazy Class, Dead Code and Speculative Generality. It finds candidates and chooses delete, inline or keep. Whether a deletion is safe for outside users is `refactoring-guru-public-compatibility`; the symbol-level verdict is `/refactoring-guru:reachability-check`.
 
 ## When to use
 
@@ -29,7 +29,7 @@ Owns three Dispensables that cost maintenance without giving value: Lazy Class, 
 6. **Do not delete public, serialized, reflected or plugin-facing code without checking external compatibility** (`MUST NOT`). That check is `refactoring-guru-public-compatibility`. Check: the deletion note lists the channels searched.
 7. **Inline or collapse empty classes or hierarchies before deletion when needed** (`SHOULD`), and remove unused parameters from methods (`SHOULD`). Check: after the step, no empty shell remains.
 8. **Treat abstractions, parameters, hooks, fields or classes that exist only for imagined future needs as Speculative Generality, and inline, remove or collapse them** (`SHOULD`). Check: for each, name the second user or the requested feature; if there is none, it goes.
-9. **Keep framework extension points only when real users need them** (`MAY`). Removing an extension point without checking its users is the risky rung. Check: users were searched for (see `refactoring-guru-reachability-check`).
+9. **Keep framework extension points only when real users need them** (`MAY`). Removing an extension point without checking its users is the risky rung. Check: users were searched for (see `/refactoring-guru:reachability-check`).
 10. **Check tests before deleting a member that exists only for test access** (`MUST`). Check: tests that use the member were read; they test either behavior reachable another way or nothing worth keeping.
 11. **Prefer deleting unused structure before extending it** (`SHOULD`). Adding a feature next to dead structure makes the dead part look alive. Check: the cleanup precedes the feature in the plan or is in its own commit.
 12. **Delete in its own step with its own test run,** so a failure points at the deletion. Added judgment. Check: the commit or step contains only the removals.
@@ -103,7 +103,7 @@ Decisions recorded: `opts` was Speculative Generality and is removed after searc
 
 ## Related
 
-`refactoring-guru-public-compatibility` and `refactoring-guru-reachability-check` for safety; `refactoring-guru-dead-weight-reviewer` to review candidates; `refactoring-guru-dead-code-remover` to act; `refactoring-guru-moving-features` for the mechanics of Inline Class; `refactoring-guru-hierarchies` for Collapse Hierarchy.
+`refactoring-guru-public-compatibility` and `/refactoring-guru:reachability-check` for safety; `refactoring-guru-dead-weight-reviewer` to review candidates; `refactoring-guru-dead-code-remover` to act; `refactoring-guru-moving-features` for the mechanics of Inline Class; `refactoring-guru-hierarchies` for Collapse Hierarchy.
 
 ## Source
 

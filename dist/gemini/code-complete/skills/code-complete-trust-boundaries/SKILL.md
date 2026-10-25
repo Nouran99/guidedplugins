@@ -120,7 +120,7 @@ func handleSetQty(w http.ResponseWriter, r *http.Request) {
 
 ## Related
 
-`code-complete-assertions-and-contracts` for assumptions inside the code; `code-complete-error-handling` for how a rejection travels; `code-complete-data-types` for making invalid values unrepresentable; `code-complete-trust-boundary-scan` to inventory a tree; `code-complete-trust-boundary-reviewer` to review a diff; `code-complete-boundary-hardener` to add the missing checks.
+`code-complete-assertions-and-contracts` for assumptions inside the code; `code-complete-error-handling` for how a rejection travels; `code-complete-data-types` for making invalid values unrepresentable; `/code-complete:trust-boundary-scan` to inventory a tree; `code-complete-trust-boundary-reviewer` to review a diff; `code-complete-boundary-hardener` to add the missing checks.
 
 ## Source
 

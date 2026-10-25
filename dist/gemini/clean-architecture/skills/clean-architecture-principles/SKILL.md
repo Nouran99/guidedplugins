@@ -42,18 +42,18 @@ Names such as `clean-architecture-lead`, `clean-architecture-final-gate` and the
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `clean-architecture-lead` (delegate) |
-| Review the working diff or named paths | `clean-architecture-review` |
-| Health picture of a directory or repository | `clean-architecture-audit` |
-| What layers does this repository really have, and which imports point outward | `clean-architecture-layer-map`, raw import census from `clean-architecture-import-scanner` |
-| Plan a non-trivial change before editing | `clean-architecture-plan` |
-| Resolve specific findings | `clean-architecture-fix` |
-| Build a new feature from a requirement | `clean-architecture-new-feature`, `clean-architecture-feature-builder` (delegate) |
-| A handler, controller, job or service method holds the business logic | `clean-architecture-extract-use-case`, `clean-architecture-use-case-extractor` (delegate) |
-| Core code calls or constructs a database, mailer, clock or client directly | `clean-architecture-introduce-port`, `clean-architecture-port-introducer` (delegate) |
-| Where does this piece of code belong | `clean-architecture-place-code` |
-| Make the layer rules fail a build or a test | `clean-architecture-enforce-boundaries`, `clean-architecture-architecture-test-writer` (delegate) |
-| Understand one rule or its exceptions | `clean-architecture-explain-rule` |
-| Walk the review checklist while working | `clean-architecture-checklist` |
+| Review the working diff or named paths | `/clean-architecture:review` |
+| Health picture of a directory or repository | `/clean-architecture:audit` |
+| What layers does this repository really have, and which imports point outward | `/clean-architecture:layer-map`, raw import census from `clean-architecture-import-scanner` |
+| Plan a non-trivial change before editing | `/clean-architecture:plan` |
+| Resolve specific findings | `/clean-architecture:fix` |
+| Build a new feature from a requirement | `/clean-architecture:new-feature`, `clean-architecture-feature-builder` (delegate) |
+| A handler, controller, job or service method holds the business logic | `/clean-architecture:extract-use-case`, `clean-architecture-use-case-extractor` (delegate) |
+| Core code calls or constructs a database, mailer, clock or client directly | `/clean-architecture:introduce-port`, `clean-architecture-port-introducer` (delegate) |
+| Where does this piece of code belong | `/clean-architecture:place-code` |
+| Make the layer rules fail a build or a test | `/clean-architecture:enforce-boundaries`, `clean-architecture-architecture-test-writer` (delegate) |
+| Understand one rule or its exceptions | `/clean-architecture:explain-rule` |
+| Walk the review checklist while working | `/clean-architecture:checklist` |
 | Strict pass or fail before commit or pull request | `clean-architecture-final-gate` (delegate) |
 | An import, a package dependency or an interface's home layer | `clean-architecture-dependency-rule`, `clean-architecture-import-direction-reviewer` |
 | Business rules in the wrong place, invalid entity states, I/O in the domain | `clean-architecture-entities-and-invariants`, `clean-architecture-domain-purity-reviewer` |
@@ -73,13 +73,13 @@ Names such as `clean-architecture-lead`, `clean-architecture-final-gate` and the
 | Is this boundary worth its cost, which kind, how to record a compromise | `clean-architecture-boundary-economics`, `clean-architecture-boundary-cost-reviewer` |
 | Message consumers, remote calls, services, firmware and device code | `clean-architecture-service-and-device-edges`, `clean-architecture-service-edge-reviewer` |
 | Where tests sit, tests that need a framework or database | `clean-architecture-testing-seams`, `clean-architecture-test-seam-reviewer`, `clean-architecture-seam-test-writer` (delegate) |
-| Reshaping existing code toward these rules without a rewrite | `clean-architecture-inward-refactoring`, then `clean-architecture-fix` |
-| Session-long behavior: teach the reasoning | `clean-architecture-mode-mentor` |
-| Session-long behavior: ranked findings only | `clean-architecture-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `clean-architecture-mode-pair` |
-| Session-long behavior: result first, few lines | `clean-architecture-mode-terse` |
-| Session-long behavior: state the use case, placement and arrows before code | `clean-architecture-mode-architect` |
-| Session-long behavior: justify every new boundary by cost | `clean-architecture-mode-boundary-budget` |
+| Reshaping existing code toward these rules without a rewrite | `clean-architecture-inward-refactoring`, then `/clean-architecture:fix` |
+| Session-long behavior: teach the reasoning | `/clean-architecture:mode-mentor` |
+| Session-long behavior: ranked findings only | `/clean-architecture:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/clean-architecture:mode-pair` |
+| Session-long behavior: result first, few lines | `/clean-architecture:mode-terse` |
+| Session-long behavior: state the use case, placement and arrows before code | `/clean-architecture:mode-architect` |
+| Session-long behavior: justify every new boundary by cost | `/clean-architecture:mode-boundary-budget` |
 
 ## Priority
 

@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Designing Data-Intensive Applications roles"
+  short_description: "Installs the 22 subagent roles of this plugin into Codex."
+  default_prompt: "Use $data-intensive-apps:install-roles."
+policy:
+  allow_implicit_invocation: false

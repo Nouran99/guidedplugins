@@ -38,7 +38,7 @@ Owns the places where the application meets another process, a network or a devi
 ## Procedure
 
 1. Find the edge: the consumer, client, trigger or driver. Read what it does between receiving and answering.
-2. Classify each statement as translation, orchestration, business policy or device mechanics (`clean-architecture-place-code`).
+2. Classify each statement as translation, orchestration, business policy or device mechanics (`/clean-architecture:place-code`).
 3. Move policy into a use case or entity; leave decoding, acknowledging and mapping in the listener.
 4. For remote calls and devices, declare a port in the application layer, named by role, with outcomes in domain words.
 5. Implement the port in an adapter that owns the client, the schema or the registers; build it in the composition root.

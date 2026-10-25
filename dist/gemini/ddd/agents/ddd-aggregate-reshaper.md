@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-aggregate-reshaper
-description: "Implementer that redraws one aggregate boundary: root-only mutation, encapsulated members, references to other aggregates by identity and a smaller transaction scope. Use when review findings report root bypass, live cross-root references or convenience transactions."
+description: "Implementer that redraws one aggregate boundary: root-only mutation, encapsulated members, references to other aggregates by identity and a smaller transaction scope."
 tools:
   - list_directory
   - read_file

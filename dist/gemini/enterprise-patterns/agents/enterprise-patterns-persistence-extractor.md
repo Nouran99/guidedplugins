@@ -1,7 +1,7 @@
 ---
 kind: local
 name: enterprise-patterns-persistence-extractor
-description: "Implementer that extracts SQL, row mapping or storage detail from handlers, services or domain classes behind a repository, mapper or gateway shaped by use-case questions, in small test-backed steps. Use when review findings name data access in the wrong place."
+description: "Implementer that extracts SQL, row mapping or storage detail from handlers, services or domain classes behind a repository, mapper or gateway shaped by use-case questions, in small test-backed steps."
 tools:
   - list_directory
   - read_file

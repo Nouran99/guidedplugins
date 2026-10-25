@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-translation-builder
-description: "Implementer that builds a translation layer at one boundary: a mapper or anticorruption layer from a foreign or legacy model to the local model, with boundary tests. Use when review findings report foreign terms, vendor codes or transport types leaking into the core."
+description: "Implementer that builds a translation layer at one boundary: a mapper or anticorruption layer from a foreign or legacy model to the local model, with boundary tests."
 tools:
   - list_directory
   - read_file

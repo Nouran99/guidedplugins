@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-value-object-introducer
-description: "Implementer that replaces primitive groups and repeated validation with value objects in small, test-backed steps. Use when review findings or a plan call for introducing value types for amounts, ranges, codes, measurements or identifiers."
+description: "Implementer that replaces primitive groups and repeated validation with value objects in small, test-backed steps."
 tools:
   - list_directory
   - read_file

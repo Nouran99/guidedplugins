@@ -44,7 +44,7 @@ Add the new behavior beside the old code instead of inside it. The new code is w
 2. Choose among the four by rule 14.
 3. Write the new unit test-first, with plain-value inputs.
 4. Add the insertion point (a call, or the wrapper), changing as little of the legacy code as possible.
-5. Pin the legacy flow around the insertion point if it is not protected (`legacy-code-characterize`), then run all tests.
+5. Pin the legacy flow around the insertion point if it is not protected (`/legacy-code:characterize`), then run all tests.
 6. Record what is temporary; plan the fold-in.
 
 ## Example

@@ -147,7 +147,7 @@ Swapping Postgres for another store means a new type implementing `PermitStore` 
 
 ## Related
 
-`clean-architecture-ports-and-gateways` for the interfaces being wired; `clean-architecture-introduce-port` to move one construction site out; `clean-architecture-framework-independence` for container annotations; `clean-architecture-wiring-reviewer` to review a diff.
+`clean-architecture-ports-and-gateways` for the interfaces being wired; `/clean-architecture:introduce-port` to move one construction site out; `clean-architecture-framework-independence` for container annotations; `clean-architecture-wiring-reviewer` to review a diff.
 
 ## Source
 

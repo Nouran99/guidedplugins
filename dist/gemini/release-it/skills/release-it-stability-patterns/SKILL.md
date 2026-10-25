@@ -120,7 +120,7 @@ The limit and window are examples; real values come from how quickly the fleet c
 
 ## Related
 
-`release-it-circuit-breakers`, `release-it-bulkheads`, `release-it-startup-and-health` for the patterns with their own skills; `release-it-queues` for the broker's buffer; `release-it-operational-controls` for overriding a governor; `release-it-failure-mode-scan` to find which failure mode applies.
+`release-it-circuit-breakers`, `release-it-bulkheads`, `release-it-startup-and-health` for the patterns with their own skills; `release-it-queues` for the broker's buffer; `release-it-operational-controls` for overriding a governor; `/release-it:failure-mode-scan` to find which failure mode applies.
 
 ## Source
 

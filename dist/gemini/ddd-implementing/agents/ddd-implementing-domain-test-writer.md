@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-implementing-domain-test-writer
-description: "Implementer that writes tests for domain code by layer: invariants, transitions, value objects, events as outcomes, translators, repositories and application-service orchestration, in the ubiquitous language. Writes tests only; never edits production code. Use when reviews find missing or misplaced tests."
+description: "Implementer that writes tests for domain code by layer: invariants, transitions, value objects, events as outcomes, translators, repositories and application-service orchestration, in the ubiquitous language."
 tools:
   - list_directory
   - read_file

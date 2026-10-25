@@ -84,7 +84,7 @@ Each step is buildable and reversible, and no step changes what an email contain
 
 ## Related
 
-`refactoring-preparatory-steps` for the moment before a feature; `refactoring-stopping-rules` for the end; `refactoring-plan` to produce a plan; `refactoring-fix` and `refactoring-refactorer` to carry one out; `refactoring-mode-pair` for a session of small narrated steps.
+`refactoring-preparatory-steps` for the moment before a feature; `refactoring-stopping-rules` for the end; `/refactoring:plan` to produce a plan; `/refactoring:fix` and `refactoring-refactorer` to carry one out; `/refactoring:mode-pair` for a session of small narrated steps.
 
 ## Source
 

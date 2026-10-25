@@ -1,7 +1,7 @@
 ---
 kind: local
 name: philosophy-of-design-special-case-isolator
-description: "Implementer that moves rare-case branches out of a core path into named, isolated places while keeping behavior identical, after pinning each moved case's current behavior. Use when review findings show special cases cluttering a general function."
+description: "Implementer that moves rare-case branches out of a core path into named, isolated places while keeping behavior identical, after pinning each moved case's current behavior."
 tools:
   - list_directory
   - read_file

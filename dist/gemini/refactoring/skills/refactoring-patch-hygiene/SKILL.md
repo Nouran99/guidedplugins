@@ -10,7 +10,7 @@ metadata:
 
 # Patch hygiene
 
-How a change is cut for review: one intent per patch, structure apart from behavior, code motion apart from edits. This skill is about the diff and the commit series, not about whether behavior changed (`refactoring-behavior-preservation`) or how big each edit step is while you work (`refactoring-small-steps`). Turning an existing mixed diff into a sequence is `refactoring-split-patch`.
+How a change is cut for review: one intent per patch, structure apart from behavior, code motion apart from edits. This skill is about the diff and the commit series, not about whether behavior changed (`refactoring-behavior-preservation`) or how big each edit step is while you work (`refactoring-small-steps`). Turning an existing mixed diff into a sequence is `/refactoring:split-patch`.
 
 ## When to use
 
@@ -83,7 +83,7 @@ Bullets marked Added judgment are this plugin's own; the others follow limits th
 
 ## Related
 
-`refactoring-split-patch` to produce the series; `refactoring-patch-intent-reviewer` to classify the hunks of an existing diff; `refactoring-behavior-preservation` for the meaning of the change; `refactoring-mode-two-hats` to label every edit while you work.
+`/refactoring:split-patch` to produce the series; `refactoring-patch-intent-reviewer` to classify the hunks of an existing diff; `refactoring-behavior-preservation` for the meaning of the change; `/refactoring:mode-two-hats` to label every edit while you work.
 
 ## Source
 

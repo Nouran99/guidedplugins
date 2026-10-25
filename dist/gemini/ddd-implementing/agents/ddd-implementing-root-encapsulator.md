@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-implementing-root-encapsulator
-description: "Implementer that moves invariant-changing logic behind aggregate root methods and closes setters and exposed collections, one finding at a time with tests. Use when reviews find outside code mutating aggregate internals, or services and controllers holding rules the root should own."
+description: "Implementer that moves invariant-changing logic behind aggregate root methods and closes setters and exposed collections, one finding at a time with tests."
 tools:
   - list_directory
   - read_file

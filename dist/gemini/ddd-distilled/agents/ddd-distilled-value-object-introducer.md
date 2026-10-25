@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-distilled-value-object-introducer
-description: "Implementer that replaces a repeated primitive group with a value object in small, test-backed steps. Use when review findings or a plan call for introducing a value object for one concept."
+description: "Implementer that replaces a repeated primitive group with a value object in small, test-backed steps."
 tools:
   - list_directory
   - read_file

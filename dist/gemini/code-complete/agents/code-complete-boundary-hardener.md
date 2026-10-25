@@ -1,7 +1,7 @@
 ---
 kind: local
 name: code-complete-boundary-hardener
-description: "Implementer that adds boundary validation and internal assertions where review found a defensive gap, converting raw input to a typed value at the entry and adding rejection tests. Use when trust-boundary or contract findings call for checks."
+description: "Implementer that adds boundary validation and internal assertions where review found a defensive gap, converting raw input to a typed value at the entry and adding rejection tests."
 tools:
   - list_directory
   - read_file

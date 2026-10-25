@@ -99,7 +99,7 @@ The names `RenewPermit` and `GenerateOccupancyReport` are the use cases; `Permit
 
 ## Related
 
-`clean-architecture-component-grouping` for what ships together; `clean-architecture-service-sprawl` for splitting a service; `clean-architecture-new-feature` to build a feature into this shape; `clean-architecture-structure-reviewer` to review a tree.
+`clean-architecture-component-grouping` for what ships together; `clean-architecture-service-sprawl` for splitting a service; `/clean-architecture:new-feature` to build a feature into this shape; `clean-architecture-structure-reviewer` to review a tree.
 
 ## Source
 

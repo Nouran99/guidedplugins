@@ -10,7 +10,7 @@ metadata:
 
 # DRY at the level of knowledge
 
-DRY means do not duplicate knowledge, not merely text. This skill decides which representation of a fact is authoritative and what every other representation becomes. Tools that produce or hide copies (code generators, macros, rule languages) are `pragmatic-programmer-generators-and-dsls`; a map of every fact across a tree is `pragmatic-programmer-knowledge-map`.
+DRY means do not duplicate knowledge, not merely text. This skill decides which representation of a fact is authoritative and what every other representation becomes. Tools that produce or hide copies (code generators, macros, rule languages) are `pragmatic-programmer-generators-and-dsls`; a map of every fact across a tree is `/pragmatic-programmer:knowledge-map`.
 
 ## When to use
 
@@ -105,7 +105,7 @@ The UI no longer holds the rule; it renders a field the server derived. Adding a
 
 ## Related
 
-`pragmatic-programmer-knowledge-map` for a tree-wide inventory; `pragmatic-programmer-knowledge-duplication-reviewer` to review a diff; `pragmatic-programmer-knowledge-consolidator` to carry out a consolidation; `pragmatic-programmer-generators-and-dsls` for generated copies; `pragmatic-programmer-automation` for duplicated process steps.
+`/pragmatic-programmer:knowledge-map` for a tree-wide inventory; `pragmatic-programmer-knowledge-duplication-reviewer` to review a diff; `pragmatic-programmer-knowledge-consolidator` to carry out a consolidation; `pragmatic-programmer-generators-and-dsls` for generated copies; `pragmatic-programmer-automation` for duplicated process steps.
 
 ## Source
 

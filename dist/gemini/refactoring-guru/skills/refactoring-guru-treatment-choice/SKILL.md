@@ -123,7 +123,7 @@ Each branch body moved unchanged, including the `couponCents > 0` guard, so no i
 
 ## Related
 
-The smell skills hold the rows: `refactoring-guru-size-smells`, `refactoring-guru-data-smells`, `refactoring-guru-change-locality`, `refactoring-guru-dead-weight`, `refactoring-guru-behavior-ownership`, `refactoring-guru-delegation-and-gaps`, `refactoring-guru-type-codes-and-switches`, `refactoring-guru-hierarchies`, `refactoring-guru-explanatory-comments`. `refactoring-guru-smell-to-treatment` produces the card; `refactoring-guru-scope-guard` audits a diff against it.
+The smell skills hold the rows: `refactoring-guru-size-smells`, `refactoring-guru-data-smells`, `refactoring-guru-change-locality`, `refactoring-guru-dead-weight`, `refactoring-guru-behavior-ownership`, `refactoring-guru-delegation-and-gaps`, `refactoring-guru-type-codes-and-switches`, `refactoring-guru-hierarchies`, `refactoring-guru-explanatory-comments`. `/refactoring-guru:smell-to-treatment` produces the card; `refactoring-guru-scope-guard` audits a diff against it.
 
 ## Source
 

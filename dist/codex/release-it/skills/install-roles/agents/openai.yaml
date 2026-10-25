@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Release It! roles"
+  short_description: "Installs the 21 subagent roles of this plugin into Codex."
+  default_prompt: "Use $release-it:install-roles."
+policy:
+  allow_implicit_invocation: false

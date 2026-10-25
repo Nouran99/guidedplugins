@@ -1,7 +1,7 @@
 ---
 kind: local
 name: enterprise-patterns-lock-adder
-description: "Implementer that adds an optimistic offline lock to one entity: version field, conditional update, named conflict error, conflict mapping at the edge and an interleaved-edit test. Use when a review finds last-write-wins updates on shared, user-edited data."
+description: "Implementer that adds an optimistic offline lock to one entity: version field, conditional update, named conflict error, conflict mapping at the edge and an interleaved-edit test."
 tools:
   - list_directory
   - read_file

@@ -23,7 +23,7 @@ Work in the current session, using this file and the files it names. Do not edit
 
 ## Method
 
-1. Inventory: list the directory tree and the main languages with Glob. Use Glob and Grep for listing and searching and Read for files; the only Bash commands pre-approved here are the read-only `git diff`, `git status`, `git log` and `git show`. Find the services, workers, scheduled jobs, deployment scripts and admin tooling. Find the project's test command (do not run it).
+1. Inventory: list the directory tree and the main languages with Glob. Use your search and file-reading tools for listing, searching and reading; in the shell use only these read-only commands: `git diff`, `git status`, `git log` and `git show`. Find the services, workers, scheduled jobs, deployment scripts and admin tooling. Find the project's test command (do not run it).
 2. Choose up to 15 files to read: entry points (routes, consumers, schedulers), files that create HTTP, RPC, database, cache or broker clients, deployment and migration scripts, health handlers, plus recently changed files (`git log --name-only -n 30`).
 3. Probe each domain with read-only searches and by reading. The patterns are search aids for finding candidates, not rules of the book; read the code before counting a hit.
    - Timeouts: client construction or calls with no time limit (`requests.get(` with no `timeout`, `http.Get(`, `fetch(` with no abort signal, `future.get()`, `join()`, `lock.acquire()` with no bound).

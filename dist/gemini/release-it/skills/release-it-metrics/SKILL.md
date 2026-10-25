@@ -105,7 +105,7 @@ def timed_call(dependency, fn):
 
 ## Related
 
-`release-it-logging` for the event record; `release-it-startup-and-health` for health signals; `release-it-queues` and `release-it-resource-budgets` for what to measure on buffers and pools; `release-it-incident-review` to check alerts against an incident; `release-it-observability-reviewer` to review a diff.
+`release-it-logging` for the event record; `release-it-startup-and-health` for health signals; `release-it-queues` and `release-it-resource-budgets` for what to measure on buffers and pools; `/release-it:incident-review` to check alerts against an incident; `release-it-observability-reviewer` to review a diff.
 
 ## Source
 

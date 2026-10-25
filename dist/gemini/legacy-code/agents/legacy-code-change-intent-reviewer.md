@@ -1,7 +1,7 @@
 ---
 kind: local
 name: legacy-code-change-intent-reviewer
-description: "Reviewer of patch shape in legacy changes: labels each hunk by intent and flags mixed behavior and structure, broad edits, rewrites as the first move, cosmetic-only refactoring and new hidden dependencies. Use proactively before committing or opening a pull request."
+description: "Reviewer of patch shape in legacy changes: labels each hunk by intent and flags mixed behavior and structure, broad edits, rewrites as the first move, cosmetic-only refactoring and new hidden dependencies."
 tools:
   - list_directory
   - read_file
@@ -10,7 +10,7 @@ tools:
   - run_shell_command
 max_turns: 20
 ---
-Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Gemini CLI cannot enforce this for a subagent that has a shell, so you are responsible for keeping to it.
+Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. The extension also ships policy rules that deny the write tools and any other shell command for this role.
 
 Before you start, read these skills: `${extensionPath}/skills/legacy-code-change-separation/SKILL.md`, `${extensionPath}/skills/legacy-code-rewrite-pressure/SKILL.md`.
 
@@ -58,7 +58,7 @@ Hunk ledger
 
 BLOCKER|MAJOR|MINOR|NIT  file:line  <rule name>
   Why: <consequence for review, revert or bisect>
-  Fix: <smallest change, or legacy-code-split-patch for the whole patch>
+  Fix: <smallest change, or /legacy-code:split-patch for the whole patch>
 Flags: <rewrite-first | cosmetic-only | hidden dependency | exploratory edits | none>
 Checked: <hunks>   Not checked: test adequacy (legacy-code-protection-reviewer)
 ```

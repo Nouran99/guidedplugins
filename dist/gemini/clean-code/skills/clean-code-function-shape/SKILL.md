@@ -111,7 +111,7 @@ def workshop_fee(workshop, attendee, today):
 
 ## Related
 
-`clean-code-function-contracts` for parameters and effects of the new functions; `clean-code-extract-till-you-drop` for the guided loop; `clean-code-function-extractor` to delegate large jobs; `clean-code-function-reviewer` to review a diff.
+`clean-code-function-contracts` for parameters and effects of the new functions; `/clean-code:extract-till-you-drop` for the guided loop; `clean-code-function-extractor` to delegate large jobs; `clean-code-function-reviewer` to review a diff.
 
 ## Source
 

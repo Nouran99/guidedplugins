@@ -42,18 +42,18 @@ Names such as `enterprise-patterns-lead`, `enterprise-patterns-final-gate` and t
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `enterprise-patterns-lead` (delegate) |
-| Review the working diff or named paths | `enterprise-patterns-review` |
-| Health picture of a directory, one rating per pattern family | `enterprise-patterns-audit` |
-| Hunt only the six forbidden patterns over a tree | `enterprise-patterns-blocker-scan` |
-| Who owns presentation, workflow, domain, data, transaction, concurrency and integration for a use case | `enterprise-patterns-responsibility-map` |
-| Which pattern fits this situation | `enterprise-patterns-choose-pattern` |
-| Plan a non-trivial change before editing | `enterprise-patterns-plan` |
-| Implement a new use case in the book's generation order | `enterprise-patterns-build-feature` |
-| Resolve specific findings | `enterprise-patterns-fix` |
-| Transaction Script has outgrown itself | `enterprise-patterns-escalate-pattern`, `enterprise-patterns-logic-mover` |
-| Design a coarse remote operation and its DTOs | `enterprise-patterns-remote-contract`, `enterprise-patterns-facade-builder` |
-| Understand one rule or its exceptions | `enterprise-patterns-explain-rule` |
-| Walk the review checklist while working | `enterprise-patterns-checklist` |
+| Review the working diff or named paths | `/enterprise-patterns:review` |
+| Health picture of a directory, one rating per pattern family | `/enterprise-patterns:audit` |
+| Hunt only the six forbidden patterns over a tree | `/enterprise-patterns:blocker-scan` |
+| Who owns presentation, workflow, domain, data, transaction, concurrency and integration for a use case | `/enterprise-patterns:responsibility-map` |
+| Which pattern fits this situation | `/enterprise-patterns:choose-pattern` |
+| Plan a non-trivial change before editing | `/enterprise-patterns:plan` |
+| Implement a new use case in the book's generation order | `/enterprise-patterns:build-feature` |
+| Resolve specific findings | `/enterprise-patterns:fix` |
+| Transaction Script has outgrown itself | `/enterprise-patterns:escalate-pattern`, `enterprise-patterns-logic-mover` |
+| Design a coarse remote operation and its DTOs | `/enterprise-patterns:remote-contract`, `enterprise-patterns-facade-builder` |
+| Understand one rule or its exceptions | `/enterprise-patterns:explain-rule` |
+| Walk the review checklist while working | `/enterprise-patterns:checklist` |
 | Strict pass or fail before commit or pull request | `enterprise-patterns-final-gate` (delegate) |
 | Layers, dependency direction, forwarding layers | `enterprise-patterns-layering`, `enterprise-patterns-layering-reviewer` |
 | Where a business decision lives; Transaction Script, Table Module, Domain Model | `enterprise-patterns-business-logic-patterns`, `enterprise-patterns-logic-placement-reviewer` |
@@ -72,12 +72,12 @@ Names such as `enterprise-patterns-lead`, `enterprise-patterns-final-gate` and t
 | Cookies, server sessions, session tables | `enterprise-patterns-session-state`, `enterprise-patterns-session-state-reviewer` |
 | Money, repeated null checks, registries, supertypes | `enterprise-patterns-base-patterns`, `enterprise-patterns-base-pattern-reviewer` |
 | Where each behavior should be tested | `enterprise-patterns-testing-by-responsibility`, `enterprise-patterns-test-alignment-reviewer`, `enterprise-patterns-test-writer` |
-| Session-long behavior: teach the reasoning | `enterprise-patterns-mode-mentor` |
-| Session-long behavior: ranked findings only | `enterprise-patterns-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `enterprise-patterns-mode-pair` |
-| Session-long behavior: result first, few lines | `enterprise-patterns-mode-terse` |
-| Session-long behavior: forces and smallest pattern before any design | `enterprise-patterns-mode-force-first` |
-| Session-long behavior: request path across layers before any change | `enterprise-patterns-mode-request-path` |
+| Session-long behavior: teach the reasoning | `/enterprise-patterns:mode-mentor` |
+| Session-long behavior: ranked findings only | `/enterprise-patterns:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/enterprise-patterns:mode-pair` |
+| Session-long behavior: result first, few lines | `/enterprise-patterns:mode-terse` |
+| Session-long behavior: forces and smallest pattern before any design | `/enterprise-patterns:mode-force-first` |
+| Session-long behavior: request path across layers before any change | `/enterprise-patterns:mode-request-path` |
 
 ## Priority
 

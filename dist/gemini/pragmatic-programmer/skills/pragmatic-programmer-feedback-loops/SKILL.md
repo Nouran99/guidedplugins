@@ -93,7 +93,7 @@ Day to day the fast command is `pytest -m "not integration"`; CI also runs `pyte
 
 ## Related
 
-`pragmatic-programmer-test-portfolio` for which tests exist; `pragmatic-programmer-feedback-loop-reviewer` to review a diff; `pragmatic-programmer-automation` to script the commands; `pragmatic-programmer-fix` for the run-tests-after-each-change loop.
+`pragmatic-programmer-test-portfolio` for which tests exist; `pragmatic-programmer-feedback-loop-reviewer` to review a diff; `pragmatic-programmer-automation` to script the commands; `/pragmatic-programmer:fix` for the run-tests-after-each-change loop.
 
 ## Source
 

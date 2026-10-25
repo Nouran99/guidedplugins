@@ -38,7 +38,7 @@ Owns the inside of one context: every substantial domain area belongs to an iden
 ## Procedure
 
 1. Name the context you are in. If the area has no name, propose one in the experts' words and record it as provisional.
-2. List the terms the context uses and note any that you also see elsewhere with a different meaning (`ddd-language-audit` does this over a tree).
+2. List the terms the context uses and note any that you also see elsewhere with a different meaning (`/ddd:language-audit` does this over a tree).
 3. List the types shared with other areas. For each, decide: split into two models, move behind a shared kernel with owners, or replace by an identifier plus translation.
 4. Make ownership visible: package names, a short context note beside the code, and the owning team.
 5. Where two models meet, hand off to `ddd-context-relationships` to choose the relationship.
@@ -108,7 +108,7 @@ class SupportCustomer {
 
 ## Related
 
-`ddd-context-relationships` for choosing how contexts relate; `ddd-map-contexts` for a repository-wide map; `ddd-ubiquitous-language` for terms inside the context; `ddd-modules-and-associations` for package layout; `ddd-context-boundary-reviewer` to review a diff.
+`ddd-context-relationships` for choosing how contexts relate; `/ddd:map-contexts` for a repository-wide map; `ddd-ubiquitous-language` for terms inside the context; `ddd-modules-and-associations` for package layout; `ddd-context-boundary-reviewer` to review a diff.
 
 ## Source
 

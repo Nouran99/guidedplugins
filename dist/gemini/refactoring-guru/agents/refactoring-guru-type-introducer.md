@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-type-introducer
-description: "Implementer that introduces a value type, parameter object or object replacing an array, after its semantics are written down. Use when a data-modeling finding was confirmed and the user asked for the new type."
+description: "Implementer that introduces a value type, parameter object or object replacing an array, after its semantics are written down."
 tools:
   - list_directory
   - read_file

@@ -18,7 +18,7 @@ Change the structure of code without changing what it does, in steps small enoug
 - You are cleaning up code, or reviewing a change that calls itself cleanup, a rename, a move or a refactoring.
 - You must decide how much to restructure, in what order, and when to stop.
 - Someone asks why a smell matters, which named move treats it, or whether a proposed abstraction is justified.
-- Not for: choosing a target architecture or domain model (use an architecture or domain-driven design plugin such as `clean-architecture` or `ddd`), taking untested legacy code under control with seams and dependency-breaking techniques (use `legacy-code`; this plugin's `refactoring-characterize` is the light version), or production failure behavior such as timeouts and overload.
+- Not for: choosing a target architecture or domain model (use an architecture or domain-driven design plugin such as `clean-architecture` or `ddd`), taking untested legacy code under control with seams and dependency-breaking techniques (use `legacy-code`; this plugin's `/refactoring:characterize` is the light version), or production failure behavior such as timeouts and overload.
 
 ## The bias this rule set corrects
 
@@ -41,16 +41,16 @@ Names such as `refactoring-lead`, `refactoring-final-gate` and the `...-reviewer
 | Situation | Use |
 | --- | --- |
 | Not sure which specialists apply to a task or diff | `refactoring-lead` (delegate) |
-| Review the working diff or named paths | `refactoring-review` |
-| Where is change expensive in this tree, and is it safe to touch | `refactoring-audit` |
-| Map confirmed smells to the smallest named move | `refactoring-smell-to-refactoring` |
-| Plan a change in the book's order (friction, net, prep, change, follow-up, stop) | `refactoring-plan` |
-| Do only the preparatory refactoring for a stated change | `refactoring-prepare` |
-| Resolve specific findings | `refactoring-fix`, or `refactoring-refactorer` for a long list |
-| Pin unclear behavior with tests before touching it | `refactoring-characterize` |
-| A diff mixes intents; split it into single-intent patches | `refactoring-split-patch` |
-| Understand one rule, smell or catalog move | `refactoring-explain-rule` |
-| Walk the final checklist while working | `refactoring-checklist` |
+| Review the working diff or named paths | `/refactoring:review` |
+| Where is change expensive in this tree, and is it safe to touch | `/refactoring:audit` |
+| Map confirmed smells to the smallest named move | `/refactoring:smell-to-refactoring` |
+| Plan a change in the book's order (friction, net, prep, change, follow-up, stop) | `/refactoring:plan` |
+| Do only the preparatory refactoring for a stated change | `/refactoring:prepare` |
+| Resolve specific findings | `/refactoring:fix`, or `refactoring-refactorer` for a long list |
+| Pin unclear behavior with tests before touching it | `/refactoring:characterize` |
+| A diff mixes intents; split it into single-intent patches | `/refactoring:split-patch` |
+| Understand one rule, smell or catalog move | `/refactoring:explain-rule` |
+| Walk the final checklist while working | `/refactoring:checklist` |
 | Strict PASS or FAIL before commit or pull request | `refactoring-final-gate` (delegate) |
 | Is this really a refactoring; did behavior change | `refactoring-behavior-preservation`, `refactoring-behavior-preservation-reviewer` |
 | Step size, rewrite urge, runnable states | `refactoring-small-steps` |
@@ -71,12 +71,12 @@ Names such as `refactoring-lead`, `refactoring-final-gate` and the `...-reviewer
 | Hierarchies that need reshaping | `refactoring-inheritance-moves`, `refactoring-hierarchy-reviewer` |
 | Error handling hides the main path | `refactoring-error-paths`, `refactoring-error-path-reviewer` |
 | Bad names block understanding | `refactoring-renaming` |
-| Session-long: explain the rule behind each choice | `refactoring-mode-mentor` |
-| Session-long: ranked findings only | `refactoring-mode-strict-reviewer` |
-| Session-long: small narrated steps, ask before bigger ones | `refactoring-mode-pair` |
-| Session-long: result first, few lines | `refactoring-mode-terse` |
-| Session-long: label every edit as structure or behavior | `refactoring-mode-two-hats` |
-| Session-long: friction, net, prep, change, follow-up, stop on every task | `refactoring-mode-prep-first` |
+| Session-long: explain the rule behind each choice | `/refactoring:mode-mentor` |
+| Session-long: ranked findings only | `/refactoring:mode-strict-reviewer` |
+| Session-long: small narrated steps, ask before bigger ones | `/refactoring:mode-pair` |
+| Session-long: result first, few lines | `/refactoring:mode-terse` |
+| Session-long: label every edit as structure or behavior | `/refactoring:mode-two-hats` |
+| Session-long: friction, net, prep, change, follow-up, stop on every task | `/refactoring:mode-prep-first` |
 
 ## Priority
 

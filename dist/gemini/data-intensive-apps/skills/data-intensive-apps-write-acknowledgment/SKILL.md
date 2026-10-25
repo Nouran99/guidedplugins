@@ -106,7 +106,7 @@ The example assumes the provider honors idempotency keys and offers a lookup by 
 
 ## Related
 
-`data-intensive-apps-idempotent-handlers` for the receiver; `data-intensive-apps-transactions-and-isolation` for atomicity of the writes; `data-intensive-apps-faults-and-coordination` for timeouts and clocks; `data-intensive-apps-write-path-trace` for the step-by-step walk; `data-intensive-apps-write-path-reviewer` to review a diff.
+`data-intensive-apps-idempotent-handlers` for the receiver; `data-intensive-apps-transactions-and-isolation` for atomicity of the writes; `data-intensive-apps-faults-and-coordination` for timeouts and clocks; `/data-intensive-apps:write-path-trace` for the step-by-step walk; `data-intensive-apps-write-path-reviewer` to review a diff.
 
 ## Source
 

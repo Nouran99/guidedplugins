@@ -1,7 +1,7 @@
 ---
 kind: local
 name: data-intensive-apps-schema-migrator
-description: "Implementer that carries out one contract change (rename, retype, split, enum or format change) as staged expand, migrate and contract steps with compatibility tests. Use when data-intensive-apps-evolution-reviewer or compat-matrix found a breaking change that must ship across releases."
+description: "Implementer that carries out one contract change (rename, retype, split, enum or format change) as staged expand, migrate and contract steps with compatibility tests."
 tools:
   - list_directory
   - read_file

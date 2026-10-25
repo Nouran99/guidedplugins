@@ -10,7 +10,7 @@ metadata:
 
 # Distillation
 
-Owns where the effort goes: identify the core domain, keep supporting and generic subdomains simpler, and separate mechanisms from policy so the core is easy to find and cleanly designed. Whether a particular change earns tactical machinery is `ddd-right-sizing`; guiding structures across a large model are `ddd-choose-structure`. A package whose problem is who owns its domain types, not what buries the core, is `ddd-bounded-contexts`; folder naming is `ddd-modules-and-associations`.
+Owns where the effort goes: identify the core domain, keep supporting and generic subdomains simpler, and separate mechanisms from policy so the core is easy to find and cleanly designed. Whether a particular change earns tactical machinery is `ddd-right-sizing`; guiding structures across a large model are `/ddd:choose-structure`. A package whose problem is who owns its domain types, not what buries the core, is `ddd-bounded-contexts`; folder naming is `ddd-modules-and-associations`.
 
 ## When to use
 
@@ -40,7 +40,7 @@ Owns where the effort goes: identify the core domain, keep supporting and generi
 2. Classify the areas in scope: core, supporting, generic. Mark uncertain ones as such.
 3. For the core, find what hides it: generic helpers, vendor types, shared packages, plumbing in the same files. List each tangle.
 4. Choose the treatment: extract a Cohesive Mechanism for technical machinery, create a Segregated Core when the tangle is pervasive, mark a Highlighted Core when the model is big and only a part matters.
-5. Move incrementally behind tests (`ddd-plan`). Keep behavior unchanged.
+5. Move incrementally behind tests (`/ddd:plan`). Keep behavior unchanged.
 6. For supporting and generic areas, decide the simplest acceptable design and say so, so effort does not drift back.
 
 ## Example
@@ -97,7 +97,7 @@ async function quoteRoute(source: RateSource, route: string, seatClass: SeatClas
 ## Trade-offs and exceptions
 
 - The rule set limits supporting areas' modeling effort unless their complexity is real. Complexity that is real (regulation, safety) earns real modeling even if it is not the core.
-- The core can move as the business changes; strategic decisions stay revisable (`ddd-choose-structure`).
+- The core can move as the business changes; strategic decisions stay revisable (`/ddd:choose-structure`).
 - Segregating a core is a larger move than extracting one mechanism; use the smaller pattern that resolves the tangle. Added judgment: do the smaller extraction first and re-assess.
 
 ## Verification
@@ -110,7 +110,7 @@ async function quoteRoute(source: RateSource, route: string, seatClass: SeatClas
 
 ## Related
 
-`ddd-right-sizing` for the per-change brake; `ddd-choose-structure` for overall guiding structure; `ddd-context-relationships` for foreign models around the core; `ddd-strategy-reviewer` to review a diff or tree.
+`ddd-right-sizing` for the per-change brake; `/ddd:choose-structure` for overall guiding structure; `ddd-context-relationships` for foreign models around the core; `ddd-strategy-reviewer` to review a diff or tree.
 
 ## Source
 

@@ -10,7 +10,7 @@ metadata:
 
 # Comments as design
 
-Decides which comments earn their place and what a comment is telling you about the design. Drafting a contract before the body exists is the workflow `philosophy-of-design-comments-first`; renaming identifiers is `philosophy-of-design-naming-and-obviousness`.
+Decides which comments earn their place and what a comment is telling you about the design. Drafting a contract before the body exists is the workflow `/philosophy-of-design:comments-first`; renaming identifiers is `philosophy-of-design-naming-and-obviousness`.
 
 ## When to use
 
@@ -108,7 +108,7 @@ Five narrating comments disappeared into names and structure; three comments rem
 
 ## Related
 
-`philosophy-of-design-comments-first` for the contract-before-code workflow; `philosophy-of-design-naming-and-obviousness`; `philosophy-of-design-interface-design`; `philosophy-of-design-comment-reviewer` to review; `philosophy-of-design-contract-writer` to write contracts.
+`/philosophy-of-design:comments-first` for the contract-before-code workflow; `philosophy-of-design-naming-and-obviousness`; `philosophy-of-design-interface-design`; `philosophy-of-design-comment-reviewer` to review; `philosophy-of-design-contract-writer` to write contracts.
 
 ## Source
 

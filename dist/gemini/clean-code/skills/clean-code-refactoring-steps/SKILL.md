@@ -106,7 +106,7 @@ Step 4 is a different kind of change and gets its own test before it is written.
 
 ## Related
 
-`clean-code-boy-scout` to choose the cleanup; `clean-code-extract-till-you-drop` for one function; `clean-code-successive-refinement` for rough drafts; `clean-code-refactorer` to delegate; `clean-code-scope-guard` to audit the budget.
+`/clean-code:boy-scout` to choose the cleanup; `/clean-code:extract-till-you-drop` for one function; `/clean-code:successive-refinement` for rough drafts; `clean-code-refactorer` to delegate; `clean-code-scope-guard` to audit the budget.
 
 ## Source
 

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-characterizer
-description: "Implementer that writes tests pinning current behavior before a risky refactoring, and never edits production code. Use when a planned move, extraction or substitution has no covering test and the user asked for a safety net first."
+description: "Implementer that writes tests pinning current behavior before a risky refactoring, and never edits production code."
 tools:
   - list_directory
   - read_file

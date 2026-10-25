@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Code Complete roles"
+  short_description: "Installs the 22 subagent roles of this plugin into Codex."
+  default_prompt: "Use $code-complete:install-roles."
+policy:
+  allow_implicit_invocation: false

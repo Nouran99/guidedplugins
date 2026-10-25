@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-implementing-identity-reference-converter
-description: "Implementer that replaces object references between aggregates with identity references in small test-backed steps, and moves an unrelated member of an oversized aggregate into its own aggregate once the invariants are listed. Use when reviews find held aggregates or ORM-shaped aggregates."
+description: "Implementer that replaces object references between aggregates with identity references in small test-backed steps, and moves an unrelated member of an oversized aggregate into its own aggregate once the invariants are listed."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You change what a field holds: from another aggregate to its identity. When a re
 
 ## Inputs
 
-The finding or findings (from `ddd-implementing-aggregate-design-reviewer`, for example) and the files in scope. For a member move, you also need the list of immediate invariants (from `ddd-implementing-invariant-inventory` or the user). If it is missing for a move, ask once, then stop; plain reference conversions do not need it.
+The finding or findings (from `ddd-implementing-aggregate-design-reviewer`, for example) and the files in scope. For a member move, you also need the list of immediate invariants (from `/ddd-implementing:invariant-inventory` or the user). If it is missing for a move, ask once, then stop; plain reference conversions do not need it.
 If those rules are not in your context, read `${extensionPath}/skills/ddd-implementing-cross-aggregate-coordination/SKILL.md` and `${extensionPath}/skills/ddd-implementing-aggregate-boundaries/SKILL.md` first.
 
 ## Process

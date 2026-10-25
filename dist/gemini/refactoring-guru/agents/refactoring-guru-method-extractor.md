@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-method-extractor
-description: "Implementer that extracts one fragment at a time into a purpose-named method with full variable accounting. Use when a long method or commented block has been diagnosed and the user asked for the extraction."
+description: "Implementer that extracts one fragment at a time into a purpose-named method with full variable accounting."
 tools:
   - list_directory
   - read_file

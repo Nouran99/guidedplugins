@@ -43,7 +43,7 @@ A characterization test records what the code does today, whether or not that is
 3. Write one test per recorded behavior. Mark suspicious results with a marker comment (for example `CHARACTERIZATION: unclear if intended`) and a one-line question.
 4. Confirm each pin reaches the path you meant. Added judgment: temporarily alter the line the pin should exercise, or add a probe, watch the pin fail, then undo the alteration by hand; leave nothing behind (rule 8).
 5. Run the pins; they must pass against unchanged code.
-6. If the code cannot be called in a test, stop and hand the barrier to `legacy-code-find-seam`. Do not change production code to make a pin possible inside this skill.
+6. If the code cannot be called in a test, stop and hand the barrier to `/legacy-code:find-seam`. Do not change production code to make a pin possible inside this skill.
 
 ## Example
 
@@ -114,7 +114,7 @@ Every expected value was obtained by running the function, not by reading the in
 
 ## Related
 
-`legacy-code-characterize` for the workflow on one target; `legacy-code-characterization-writer` for an unattended batch; `legacy-code-protection-reviewer` to check honesty; `legacy-code-hidden-inputs` when output is not repeatable; `legacy-code-find-seam` when the code cannot be called.
+`/legacy-code:characterize` for the workflow on one target; `legacy-code-characterization-writer` for an unattended batch; `legacy-code-protection-reviewer` to check honesty; `legacy-code-hidden-inputs` when output is not repeatable; `/legacy-code:find-seam` when the code cannot be called.
 
 ## Source
 

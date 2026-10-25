@@ -10,7 +10,7 @@ metadata:
 
 # Pass-through layers
 
-Recognises forwarding layers in existing code and refuses them in new code. Designing a module that is deep from the start is `philosophy-of-design-deep-modules`; the safe editing loop for removing one layer is `philosophy-of-design-collapse-layer`.
+Recognises forwarding layers in existing code and refuses them in new code. Designing a module that is deep from the start is `philosophy-of-design-deep-modules`; the safe editing loop for removing one layer is `/philosophy-of-design:collapse-layer`.
 
 ## When to use
 
@@ -103,7 +103,7 @@ The wrapper was removable because it simplified nothing; the replacement earns i
 
 ## Related
 
-`philosophy-of-design-deep-modules` for the target; `philosophy-of-design-split-or-merge` for boundaries between units; `philosophy-of-design-collapse-layer` to edit; `philosophy-of-design-depth-reviewer` to review; `philosophy-of-design-module-deepener` to delegate.
+`philosophy-of-design-deep-modules` for the target; `philosophy-of-design-split-or-merge` for boundaries between units; `/philosophy-of-design:collapse-layer` to edit; `philosophy-of-design-depth-reviewer` to review; `philosophy-of-design-module-deepener` to delegate.
 
 ## Source
 

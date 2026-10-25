@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-domain-test-writer
-description: "Implementer that writes tests of the domain model in the ubiquitous language: invariants, allowed and forbidden transitions, invalid construction and translations. Use when review findings report missing tests, or before a behavior-preserving move. Writes tests only."
+description: "Implementer that writes tests of the domain model in the ubiquitous language: invariants, allowed and forbidden transitions, invalid construction and translations."
 tools:
   - list_directory
   - read_file

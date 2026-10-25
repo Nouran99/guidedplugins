@@ -10,7 +10,7 @@ metadata:
 
 # Debugging from facts
 
-Do not guess. Find out why a defect happens before changing anything, then fix the cause and prove the fix. The source gives the sequence in one line (reproduce, observe, isolate, explain, fix, verify) and two triggers from the compact rules; the techniques below are labelled Added judgment. To run the sequence with an evidence record, use `pragmatic-programmer-debug-session`; designing how failures travel is `pragmatic-programmer-error-recovery`.
+Do not guess. Find out why a defect happens before changing anything, then fix the cause and prove the fix. The source gives the sequence in one line (reproduce, observe, isolate, explain, fix, verify) and two triggers from the compact rules; the techniques below are labelled Added judgment. To run the sequence with an evidence record, use `/pragmatic-programmer:debug-session`; designing how failures travel is `pragmatic-programmer-error-recovery`.
 
 ## When to use
 
@@ -108,7 +108,7 @@ def test_report_covers_given_day():
 
 ## Related
 
-`pragmatic-programmer-debug-session` for the guided record; `pragmatic-programmer-bug-fixer` to carry out the fix; `pragmatic-programmer-test-portfolio` for regression tests; `pragmatic-programmer-error-recovery` for failure design.
+`/pragmatic-programmer:debug-session` for the guided record; `pragmatic-programmer-bug-fixer` to carry out the fix; `pragmatic-programmer-test-portfolio` for regression tests; `pragmatic-programmer-error-recovery` for failure design.
 
 ## Source
 

@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/code-complete
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 36 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/code-complete:code-complete-<name>`; that was not exercised in a live session here.
-- 22 subagents, started with `@code-complete-<name> <task>`.
+- 20 rule skills the model activates on its own (`code-complete-<name>`).
+- 10 workflows and 6 modes as slash commands: `/code-complete:review src/`, `/code-complete:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 22 subagents, started with `@code-complete-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/code-complete:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

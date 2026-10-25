@@ -42,7 +42,7 @@ Owns the timing decision: which moments justify structural work, and how technic
 3. For a feature or bug, look at the code the change will touch and list what blocks it. Only blockers justify preparatory work.
 4. Decide order (before, after, separate) and write it in the plan or the pull request description.
 5. For review findings, sort into fix now, isolate and schedule, and ask the author. Do not widen the reviewed change.
-6. Record deferred items with the reason; hand them to `refactoring-guru-debt-triage` when there are several.
+6. Record deferred items with the reason; hand them to `/refactoring-guru:debt-triage` when there are several.
 
 ## Example
 
@@ -91,7 +91,7 @@ Not extracted: the three surrounding sentences. They have different owners (bill
 
 ## Related
 
-`refactoring-guru-change-locality` for treating duplication; `refactoring-guru-debt-triage` to rank several debt items; `refactoring-guru-plan` to order refactoring around a feature; `refactoring-guru-refactoring-process` to carry it out.
+`refactoring-guru-change-locality` for treating duplication; `/refactoring-guru:debt-triage` to rank several debt items; `/refactoring-guru:plan` to order refactoring around a feature; `refactoring-guru-refactoring-process` to carry it out.
 
 ## Source
 

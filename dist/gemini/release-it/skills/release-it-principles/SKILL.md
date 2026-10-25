@@ -41,18 +41,18 @@ Names such as `release-it-lead`, `release-it-final-gate` and the `...-reviewer` 
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `release-it-lead` (delegate) |
-| Review the working diff or named paths | `release-it-review` |
-| Rate each failure domain across a tree | `release-it-audit`, raw hit counts from `release-it-hazard-scanner` |
-| Enumerate what happens when each boundary of one flow fails | `release-it-failure-mode-scan` |
-| Compute worst-case time and attempt multiplication along a request path | `release-it-call-chain-budget` |
-| Plan a change that crosses a boundary | `release-it-plan` |
-| Resolve specific findings | `release-it-fix` |
-| Understand one rule or its exceptions | `release-it-explain-rule` |
-| Walk the final checklist while working | `release-it-checklist` |
+| Review the working diff or named paths | `/release-it:review` |
+| Rate each failure domain across a tree | `/release-it:audit`, raw hit counts from `release-it-hazard-scanner` |
+| Enumerate what happens when each boundary of one flow fails | `/release-it:failure-mode-scan` |
+| Compute worst-case time and attempt multiplication along a request path | `/release-it:call-chain-budget` |
+| Plan a change that crosses a boundary | `/release-it:plan` |
+| Resolve specific findings | `/release-it:fix` |
+| Understand one rule or its exceptions | `/release-it:explain-rule` |
+| Walk the final checklist while working | `/release-it:checklist` |
 | Strict pass or fail before commit or pull request | `release-it-final-gate` (delegate) |
-| Analyze an incident, outage or capacity problem | `release-it-incident-review` |
-| Plan a fault-injection experiment or game day | `release-it-game-day-plan` |
-| Go or no-go before a service goes live | `release-it-launch-check` |
+| Analyze an incident, outage or capacity problem | `/release-it:incident-review` |
+| Plan a fault-injection experiment or game day | `/release-it:game-day-plan` |
+| Go or no-go before a service goes live | `/release-it:launch-check` |
 | An outbound call or wait with no deliberate limit | `release-it-timeouts`, `release-it-timeout-reviewer`, `release-it-call-hardener` |
 | Retry loops, backoff, retries at several layers | `release-it-retries`, `release-it-retry-reviewer`, `release-it-call-hardener` |
 | Stop calling a failing dependency, fallback, degraded mode | `release-it-circuit-breakers`, `release-it-isolation-reviewer` |
@@ -72,12 +72,12 @@ Names such as `release-it-lead`, `release-it-final-gate` and the `...-reviewer` 
 | Cache misses, stampedes, stale data, cache outage | `release-it-caching`, `release-it-cache-reviewer` |
 | Cron, periodic or long-running background jobs | `release-it-scheduled-work`, `release-it-schedule-reviewer` |
 | Tests for timeouts, retries, degraded dependencies, saturation | `release-it-resilience-testing`, `release-it-resilience-test-reviewer`, `release-it-resilience-test-writer` |
-| Session-long behavior: teach the reasoning | `release-it-mode-mentor` |
-| Session-long behavior: ranked findings only | `release-it-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `release-it-mode-pair` |
-| Session-long behavior: result first, few lines | `release-it-mode-terse` |
-| Session-long behavior: failure ledger before every edit | `release-it-mode-failure-first` |
-| Session-long behavior: operations note after every change | `release-it-mode-operator` |
+| Session-long behavior: teach the reasoning | `/release-it:mode-mentor` |
+| Session-long behavior: ranked findings only | `/release-it:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/release-it:mode-pair` |
+| Session-long behavior: result first, few lines | `/release-it:mode-terse` |
+| Session-long behavior: failure ledger before every edit | `/release-it:mode-failure-first` |
+| Session-long behavior: operations note after every change | `/release-it:mode-operator` |
 
 ## Priority
 

@@ -42,7 +42,7 @@ Old code looks bad, so replacing it feels cheaper than understanding it. The sou
 1. Name the pressure: rewrite, replacement, new architecture, module-wide cleanup or cosmetic-only.
 2. Name today's actual request. Everything else is out of scope unless it makes that request safer.
 3. Write the decision memo (Example). If "rewrite" survives rules 3 and 13, say so and go to rule 14; otherwise choose the step from rule 12.
-4. Hand off: `legacy-code-plan` for the plan, `legacy-code-characterize` for the first pin, `legacy-code-find-seam` for the first seam.
+4. Hand off: `/legacy-code:plan` for the plan, `/legacy-code:characterize` for the first pin, `/legacy-code:find-seam` for the first seam.
 5. Report what you did not do and why.
 
 ## Example
@@ -93,7 +93,7 @@ Revisit when: the pins exist and a second change is blocked by structure the sea
 
 ## Related
 
-`legacy-code-legacy-loop` for the work that replaces the rewrite; `legacy-code-sprout-and-wrap` for adding beside; `legacy-code-change-separation` for patch shape; `legacy-code-change-intent-reviewer` to catch cosmetic-only or rewrite-first diffs; `legacy-code-plan` to write the alternative.
+`legacy-code-legacy-loop` for the work that replaces the rewrite; `legacy-code-sprout-and-wrap` for adding beside; `legacy-code-change-separation` for patch shape; `legacy-code-change-intent-reviewer` to catch cosmetic-only or rewrite-first diffs; `/legacy-code:plan` to write the alternative.
 
 ## Source
 

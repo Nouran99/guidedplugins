@@ -42,23 +42,23 @@ Names such as `ddd-lead`, `ddd-final-gate` and the `...-reviewer` roles in the r
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `ddd-lead` (delegate) |
-| Review the working diff or named paths | `ddd-review` |
-| Health picture of a directory or repository | `ddd-audit` |
-| List forbidden patterns and map each to its treatment | `ddd-smell-hunt` |
-| Plan a feature or model change before editing | `ddd-plan` |
-| Resolve specific findings in the session | `ddd-fix` |
-| Understand one rule, pattern or exception | `ddd-explain-rule` |
-| Walk the review checklist while working | `ddd-checklist` |
+| Review the working diff or named paths | `/ddd:review` |
+| Health picture of a directory or repository | `/ddd:audit` |
+| List forbidden patterns and map each to its treatment | `/ddd:smell-hunt` |
+| Plan a feature or model change before editing | `/ddd:plan` |
+| Resolve specific findings in the session | `/ddd:fix` |
+| Understand one rule, pattern or exception | `/ddd:explain-rule` |
+| Walk the review checklist while working | `/ddd:checklist` |
 | Strict pass or fail before commit or pull request | `ddd-final-gate` (delegate) |
-| The model feels shallow, table-shaped, contradictory; a breakthrough may be due | `ddd-deep-models`, `ddd-scenario-walkthrough`, `ddd-mode-model-explorer` |
-| Code, tests, wiki and diagrams use different words or drift apart | `ddd-model-driven-design`, `ddd-ubiquitous-language`, `ddd-language-reviewer`, `ddd-language-audit` |
+| The model feels shallow, table-shaped, contradictory; a breakthrough may be due | `ddd-deep-models`, `/ddd:scenario-walkthrough`, `/ddd:mode-model-explorer` |
+| Code, tests, wiki and diagrams use different words or drift apart | `ddd-model-driven-design`, `ddd-ubiquitous-language`, `ddd-language-reviewer`, `/ddd:language-audit` |
 | A flag, status field, repeated condition or rule in a comment hides a concept | `ddd-explicit-concepts`, `ddd-concept-reviewer` |
 | Business decisions in controllers, jobs, application services; is Smart UI enough | `ddd-layers`, `ddd-layer-reviewer` |
 | ORM, serializer, framework or table shapes, and table-derived class or field names, leak into the model | `ddd-infrastructure`, `ddd-infrastructure-reviewer` |
 | Where does a model start and stop; terms that mean different things in different places; domain types shared by several contexts | `ddd-bounded-contexts`, `ddd-context-boundary-reviewer` |
-| Choosing how two models relate; foreign or legacy model pressure | `ddd-context-relationships`, `ddd-map-contexts`, `ddd-translation-builder` |
+| Choosing how two models relate; foreign or legacy model pressure | `ddd-context-relationships`, `/ddd:map-contexts`, `ddd-translation-builder` |
 | Where to spend modeling effort; core buried under generic mechanisms or generic shared code | `ddd-distillation`, `ddd-strategy-reviewer` |
-| An overall guiding structure for a large model | `ddd-choose-structure` |
+| An overall guiding structure for a large model | `/ddd:choose-structure` |
 | Entity design, setters, transitions | `ddd-entities`, `ddd-entity-reviewer`, `ddd-behavior-mover` |
 | Raw strings and numbers for domain quantities | `ddd-value-objects`, `ddd-value-object-reviewer`, `ddd-value-object-introducer` |
 | Consistency boundaries, transactions across objects, references between aggregates | `ddd-aggregates`, `ddd-aggregate-reviewer`, `ddd-aggregate-reshaper` |
@@ -66,15 +66,15 @@ Names such as `ddd-lead`, `ddd-final-gate` and the `...-reviewer` roles in the r
 | An operation that fits no entity or value; `*Service` classes growing | `ddd-domain-services`, `ddd-service-reviewer` |
 | Package layout, associations, `models`/`services`/`utils` folders | `ddd-modules-and-associations`, `ddd-module-reviewer` |
 | How the API reads; side effects in queries; combinable rules | `ddd-supple-design`, `ddd-supple-design-reviewer` |
-| Importing an analysis pattern, design pattern or formalism | `ddd-pattern-fit` |
+| Importing an analysis pattern, design pattern or formalism | `/ddd:pattern-fit` |
 | Writing or judging tests of the model | `ddd-domain-tests`, `ddd-domain-test-reviewer`, `ddd-domain-test-writer` |
 | The change feels like too much DDD, or fake DDD | `ddd-right-sizing`, `ddd-ceremony-reviewer` |
-| Session-long: declare context, terms and concept kind before code | `ddd-mode-context-first` |
-| Session-long: explore options and ask domain questions before code | `ddd-mode-model-explorer` |
-| Session-long: teach the rule behind each choice | `ddd-mode-mentor` |
-| Session-long: ranked findings only | `ddd-mode-strict-reviewer` |
-| Session-long: small narrated steps | `ddd-mode-pair` |
-| Session-long: result first, few lines | `ddd-mode-terse` |
+| Session-long: declare context, terms and concept kind before code | `/ddd:mode-context-first` |
+| Session-long: explore options and ask domain questions before code | `/ddd:mode-model-explorer` |
+| Session-long: teach the rule behind each choice | `/ddd:mode-mentor` |
+| Session-long: ranked findings only | `/ddd:mode-strict-reviewer` |
+| Session-long: small narrated steps | `/ddd:mode-pair` |
+| Session-long: result first, few lines | `/ddd:mode-terse` |
 
 ## Priority
 

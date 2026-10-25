@@ -99,7 +99,7 @@ The old formula was right for most inputs and wrong exactly on the boundary, whi
 
 ## Related
 
-`clean-code-clean-tests` for test quality; `clean-code-smells-surprise` for boundary behavior bugs; `clean-code-plan` to sequence the work; `clean-code-test-gap-reviewer` to find unprotected behavior; `clean-code-test-writer` to delegate writing.
+`clean-code-clean-tests` for test quality; `clean-code-smells-surprise` for boundary behavior bugs; `/clean-code:plan` to sequence the work; `clean-code-test-gap-reviewer` to find unprotected behavior; `clean-code-test-writer` to delegate writing.
 
 ## Source
 

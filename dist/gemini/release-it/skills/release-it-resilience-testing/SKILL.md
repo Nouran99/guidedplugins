@@ -1,6 +1,6 @@
 ---
 name: "release-it-resilience-testing"
-description: "Use when writing or reviewing automated tests for failure behavior: timeouts, retries and backoff, degraded dependencies, overload and queue saturation, restartable scripts, startup and health failures. Tests that prove a defense works. Experiments on a running system are `release-it-game-day-plan`."
+description: "Use when writing or reviewing automated tests for failure behavior: timeouts, retries and backoff, degraded dependencies, overload and queue saturation, restartable scripts, startup and health failures. Tests that prove a defense works. Experiments on a running system are `/release-it:game-day-plan`."
 license: "MIT"
 metadata:
   plugin: "release-it"
@@ -10,7 +10,7 @@ metadata:
 
 # Resilience testing
 
-A defense that was never exercised is a guess. These tests make the failure happen, in the normal suite where that is cheap, and check the bound, the behavior and the signal. Experiments against a running system are `release-it-game-day-plan`; the design of the defenses is in their own skills, linked below.
+A defense that was never exercised is a guess. These tests make the failure happen, in the normal suite where that is cheap, and check the bound, the behavior and the signal. Experiments against a running system are `/release-it:game-day-plan`; the design of the defenses is in their own skills, linked below.
 
 ## When to use
 
@@ -113,7 +113,7 @@ def test_validation_errors_are_not_retried(fake_gateway):
 - Timing tests are the usual source of flakiness. Prefer injected clocks, and when real time is unavoidable keep limits short and margins wide.
 - The source asks for saturation and automation tests "where practical"; a one-off script may be covered by a manual rehearsal recorded in the change.
 - Fault injection at the network layer (proxies, containers) is heavier than in-process doubles; use it for the cases doubles cannot reproduce.
-- Production experiments and game days are a different activity with a blast radius; see `release-it-game-day-plan`.
+- Production experiments and game days are a different activity with a blast radius; see `/release-it:game-day-plan`.
 
 ## Verification
 
@@ -125,7 +125,7 @@ def test_validation_errors_are_not_retried(fake_gateway):
 
 ## Related
 
-`release-it-timeouts`, `release-it-retries`, `release-it-circuit-breakers`, `release-it-queues`, `release-it-restartable-automation`, `release-it-startup-and-health` for the defenses under test; `release-it-game-day-plan` for experiments; `release-it-resilience-test-reviewer` to find missing tests; `release-it-resilience-test-writer` to write them.
+`release-it-timeouts`, `release-it-retries`, `release-it-circuit-breakers`, `release-it-queues`, `release-it-restartable-automation`, `release-it-startup-and-health` for the defenses under test; `/release-it:game-day-plan` for experiments; `release-it-resilience-test-reviewer` to find missing tests; `release-it-resilience-test-writer` to write them.
 
 ## Source
 

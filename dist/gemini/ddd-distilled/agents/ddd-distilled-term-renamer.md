@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-distilled-term-renamer
-description: "Implementer that applies an already decided domain term rename across code, tests, events and documentation. Use when a language review or the business has settled a term and changes were requested; public names are listed, not changed."
+description: "Implementer that applies an already decided domain term rename across code, tests, events and documentation."
 tools:
   - list_directory
   - read_file

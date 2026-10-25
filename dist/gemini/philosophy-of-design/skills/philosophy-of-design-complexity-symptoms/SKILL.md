@@ -10,7 +10,7 @@ metadata:
 
 # Complexity symptoms
 
-Diagnoses why a design is hard to understand or hard to change, and names the symptom precisely enough to choose a treatment. It treats nothing itself: the sibling skills linked at the end do that. Gathering the evidence with history commands is `philosophy-of-design-symptom-trace`.
+Diagnoses why a design is hard to understand or hard to change, and names the symptom precisely enough to choose a treatment. It treats nothing itself: the sibling skills linked at the end do that. Gathering the evidence with history commands is `/philosophy-of-design:symptom-trace`.
 
 ## When to use
 
@@ -98,7 +98,7 @@ The symptom was change amplification; the cause was one decision (how money is w
 
 ## Related
 
-`philosophy-of-design-symptom-trace` for gathering evidence; `philosophy-of-design-complexity-reviewer` for a net-complexity ledger of a diff; `philosophy-of-design-information-hiding`, `philosophy-of-design-pull-complexity-down` and `philosophy-of-design-temporal-decomposition` for the usual treatments.
+`/philosophy-of-design:symptom-trace` for gathering evidence; `philosophy-of-design-complexity-reviewer` for a net-complexity ledger of a diff; `philosophy-of-design-information-hiding`, `philosophy-of-design-pull-complexity-down` and `philosophy-of-design-temporal-decomposition` for the usual treatments.
 
 ## Source
 

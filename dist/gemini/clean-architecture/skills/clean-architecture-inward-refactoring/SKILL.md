@@ -10,7 +10,7 @@ metadata:
 
 # Inward refactoring
 
-Owns the sequence of moves that turn existing code toward the rules, one safe step at a time. The shape each move aims at is in the cluster skills (`clean-architecture-entities-and-invariants`, `clean-architecture-ports-and-gateways`, `clean-architecture-service-sprawl` and the others); a specific move can be run with `clean-architecture-extract-use-case` or `clean-architecture-introduce-port`.
+Owns the sequence of moves that turn existing code toward the rules, one safe step at a time. The shape each move aims at is in the cluster skills (`clean-architecture-entities-and-invariants`, `clean-architecture-ports-and-gateways`, `clean-architecture-service-sprawl` and the others); a specific move can be run with `/clean-architecture:extract-use-case` or `/clean-architecture:introduce-port`.
 
 ## When to use
 
@@ -143,7 +143,7 @@ After step 2 the handler parses the event, calls `Withdraw(accounts).execute(...
 
 ## Related
 
-`clean-architecture-extract-use-case` and `clean-architecture-introduce-port` for the two most common moves; `clean-architecture-fix` to carry out review findings; `clean-architecture-use-case-extractor` and `clean-architecture-port-introducer` to delegate; `legacy-code` (a separate plugin) for code without tests.
+`/clean-architecture:extract-use-case` and `/clean-architecture:introduce-port` for the two most common moves; `/clean-architecture:fix` to carry out review findings; `clean-architecture-use-case-extractor` and `clean-architecture-port-introducer` to delegate; `legacy-code` (a separate plugin) for code without tests.
 
 ## Source
 

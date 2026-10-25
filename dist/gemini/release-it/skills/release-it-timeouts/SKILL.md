@@ -27,7 +27,7 @@ Every wait on something you do not control needs a deliberate upper bound. This 
 4. **Give different dependencies different budgets when their behavior differs.** [SHOULD] The source says they "may need" different budgets. A cache lookup and a report generator should not share one number. Check: limits are per dependency or per operation, not one global constant.
 5. **Derive the number from evidence.** [Added judgment] Start from the dependency's observed latency distribution (above its normal tail, below what the caller can afford) or from the caller's service target; if neither exists, put the value in configuration with a named default and flag it as unconfirmed. Check: the review note says where the number came from.
 6. **Separate connection, response and total limits where the client distinguishes them.** [Added judgment] A connect limit bounds an unreachable host; a total limit bounds a peer that trickles bytes. Check: the total deadline includes reading the body, not only receiving headers.
-7. **Never give a callee more time than the caller has left.** [Added judgment, following from "every timeout can cascade"] Pass the caller's remaining deadline down and take the smaller value. Check: no inner limit is larger than the outer limit that wraps it (`release-it-call-chain-budget` does this arithmetic).
+7. **Never give a callee more time than the caller has left.** [Added judgment, following from "every timeout can cascade"] Pass the caller's remaining deadline down and take the smaller value. Check: no inner limit is larger than the outer limit that wraps it (`/release-it:call-chain-budget` does this arithmetic).
 8. **Stop the work when the limit fires.** [Added judgment] A timeout that only abandons the wait leaves the work running and holding its resources. Check: cancellation reaches the thread, request or query, and the connection returns to its pool.
 9. **Decide the failure behavior of a fired timeout.** [SHOULD] Prefer visible failure over silent hanging: return a contextual error, a labelled fallback, or queue the work, and never a fabricated success. Check: the caller's handling of the timeout error is written and tested.
 
@@ -102,7 +102,7 @@ The 800 ms is an example. In real code it comes from the dependency's measured l
 
 ## Related
 
-`release-it-retries` for repeating a failed attempt; `release-it-circuit-breakers` for stopping calls; `release-it-call-chain-budget` for arithmetic across layers; `release-it-timeout-reviewer` to review a diff; `release-it-call-hardener` to apply the change.
+`release-it-retries` for repeating a failed attempt; `release-it-circuit-breakers` for stopping calls; `/release-it:call-chain-budget` for arithmetic across layers; `release-it-timeout-reviewer` to review a diff; `release-it-call-hardener` to apply the change.
 
 ## Source
 

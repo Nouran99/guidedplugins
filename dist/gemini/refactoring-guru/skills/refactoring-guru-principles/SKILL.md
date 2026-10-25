@@ -46,17 +46,17 @@ Names such as `refactoring-guru-lead`, `refactoring-guru-final-gate` and the `..
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `refactoring-guru-lead` (delegate) |
-| Review the working diff or named paths | `refactoring-guru-review` |
-| Where to look: smell hot spots in a directory or repository | `refactoring-guru-audit` |
-| One smell: what to do, in what order, when to stop | `refactoring-guru-smell-to-treatment` |
-| Plan a non-trivial change before editing | `refactoring-guru-plan` |
-| Resolve specific findings | `refactoring-guru-fix`, or `refactoring-guru-refactorer` for a longer list |
-| Understand one rule, smell or technique | `refactoring-guru-explain-rule` |
-| Walk the review checklist while working | `refactoring-guru-checklist` |
+| Review the working diff or named paths | `/refactoring-guru:review` |
+| Where to look: smell hot spots in a directory or repository | `/refactoring-guru:audit` |
+| One smell: what to do, in what order, when to stop | `/refactoring-guru:smell-to-treatment` |
+| Plan a non-trivial change before editing | `/refactoring-guru:plan` |
+| Resolve specific findings | `/refactoring-guru:fix`, or `refactoring-guru-refactorer` for a longer list |
+| Understand one rule, smell or technique | `/refactoring-guru:explain-rule` |
+| Walk the review checklist while working | `/refactoring-guru:checklist` |
 | Strict pass or fail before commit or pull request | `refactoring-guru-final-gate` (delegate) |
-| Is this hunk a refactoring, a feature or a bug fix; how to split a mixed patch | `refactoring-guru-classify-change`, `refactoring-guru-intent-reviewer`, `refactoring-guru-mode-labeled-steps` |
+| Is this hunk a refactoring, a feature or a bug fix; how to split a mixed patch | `/refactoring-guru:classify-change`, `refactoring-guru-intent-reviewer`, `/refactoring-guru:mode-labeled-steps` |
 | How to carry a refactoring out; separation, small steps, checks | `refactoring-guru-refactoring-process` |
-| Whether or when to refactor; third occurrence; technical debt | `refactoring-guru-when-to-refactor`, `refactoring-guru-debt-triage` |
+| Whether or when to refactor; third occurrence; technical debt | `refactoring-guru-when-to-refactor`, `/refactoring-guru:debt-triage` |
 | Which technique among several; reject a mechanical pattern choice | `refactoring-guru-treatment-choice` |
 | Another smell appeared; cleanup keeps growing; leave a smell on purpose | `refactoring-guru-stop-and-defer`, `refactoring-guru-scope-guard` |
 | Do the checks protect each step; no net exists yet | `refactoring-guru-safety-net-reviewer`, `refactoring-guru-characterizer` |
@@ -73,14 +73,14 @@ Names such as `refactoring-guru-lead`, `refactoring-guru-final-gate` and the `..
 | Call chains, pass-through classes, workarounds for a library gap | `refactoring-guru-delegation-and-gaps`, `refactoring-guru-coupling-reviewer` |
 | Inheritance that refuses, mirrors or duplicates; pull up, push down, delegation | `refactoring-guru-hierarchies`, `refactoring-guru-hierarchy-reviewer` |
 | Unused or speculative code, near-empty classes | `refactoring-guru-dead-weight`, `refactoring-guru-dead-weight-reviewer`, `refactoring-guru-dead-code-remover` |
-| Before deleting, renaming or changing something others may reach | `refactoring-guru-public-compatibility`, `refactoring-guru-reachability-check`, `refactoring-guru-compatibility-reviewer` |
+| Before deleting, renaming or changing something others may reach | `refactoring-guru-public-compatibility`, `/refactoring-guru:reachability-check`, `refactoring-guru-compatibility-reviewer` |
 | Comments that explain confusing code | `refactoring-guru-explanatory-comments`, `refactoring-guru-comment-reviewer` |
-| Session-long behavior: teach the reasoning | `refactoring-guru-mode-mentor` |
-| Session-long behavior: ranked findings only | `refactoring-guru-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `refactoring-guru-mode-pair` |
-| Session-long behavior: result first, few lines | `refactoring-guru-mode-terse` |
-| Session-long behavior: a smell, technique, check and stop card before every edit | `refactoring-guru-mode-treatment-card` |
-| Session-long behavior: every change tagged refactor, feature or bug fix | `refactoring-guru-mode-labeled-steps` |
+| Session-long behavior: teach the reasoning | `/refactoring-guru:mode-mentor` |
+| Session-long behavior: ranked findings only | `/refactoring-guru:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/refactoring-guru:mode-pair` |
+| Session-long behavior: result first, few lines | `/refactoring-guru:mode-terse` |
+| Session-long behavior: a smell, technique, check and stop card before every edit | `/refactoring-guru:mode-treatment-card` |
+| Session-long behavior: every change tagged refactor, feature or bug fix | `/refactoring-guru:mode-labeled-steps` |
 
 ## Priority
 

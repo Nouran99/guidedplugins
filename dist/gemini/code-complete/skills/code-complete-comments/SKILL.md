@@ -17,7 +17,7 @@ Decides what a comment may say and when it must go: intent, rationale, contracts
 - You are about to write a comment that explains what the next line does.
 - A comment sits above a block that would be clear with a better name or a smaller routine.
 - Code changed and a nearby comment may no longer be true.
-- A routine was drafted as pseudocode comments (`code-complete-pseudocode`) and now needs pruning.
+- A routine was drafted as pseudocode comments (`/code-complete:pseudocode`) and now needs pruning.
 - A public routine or a tricky decision has no explanation of its contract or reason.
 
 ## Rules
@@ -78,7 +78,7 @@ The surviving comment gives a reason and a pointer. It does not say what the lin
 ## Trade-offs and exceptions
 
 - Public API documentation (doc comments that tools extract) is a different job from inline comments; the source asks for documentation where code cannot express usage, so keep it even when the routine name is clear.
-- Pseudocode comments are fine while the routine is being designed; they are scaffolding to prune, not a style to keep (`code-complete-pseudocode`).
+- Pseudocode comments are fine while the routine is being designed; they are scaffolding to prune, not a style to keep (`/code-complete:pseudocode`).
 - Comments in languages or domains where the repository requires headers or license text follow the repository (`code-complete-coding-standards`).
 - Added judgment, a caution rather than an exception to the accuracy rule: before deleting a comment you cannot verify, check it against the history or ask, because it may record a reason. A comment that stays unverified and unexplained is deleted or rewritten.
 
@@ -92,7 +92,7 @@ The surviving comment gives a reason and a pointer. It does not say what the lin
 
 ## Related
 
-`code-complete-coding-standards` for form and layout; `code-complete-routine-design` and `code-complete-data-types` for the names that replace comments; `code-complete-pseudocode` for pruning sketch comments; `code-complete-comment-reviewer` to review a diff.
+`code-complete-coding-standards` for form and layout; `code-complete-routine-design` and `code-complete-data-types` for the names that replace comments; `/code-complete:pseudocode` for pruning sketch comments; `code-complete-comment-reviewer` to review a diff.
 
 ## Source
 

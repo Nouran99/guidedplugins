@@ -40,7 +40,7 @@ Decisions are cheap to test when they are plain functions of plain data, and exp
 ## Procedure
 
 1. List what the entry point decides, in plain sentences ("refund only if paid, under the age limit, within the total").
-2. Pin the current responses through the entry point if possible (`legacy-code-characterize`).
+2. Pin the current responses through the entry point if possible (`/legacy-code:characterize`).
 3. Extract each decision as a function of plain data; pass time and other ambient values in.
 4. Make the entry point call the function and translate its result. Keep response bodies and status codes unchanged.
 5. Test the decision directly; keep one test through the entry point.

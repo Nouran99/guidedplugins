@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/clean-code
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 37 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/clean-code:clean-code-<name>`; that was not exercised in a live session here.
-- 22 subagents, started with `@clean-code-<name> <task>`.
+- 19 rule skills the model activates on its own (`clean-code-<name>`).
+- 12 workflows and 6 modes as slash commands: `/clean-code:review src/`, `/clean-code:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 22 subagents, started with `@clean-code-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/clean-code:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

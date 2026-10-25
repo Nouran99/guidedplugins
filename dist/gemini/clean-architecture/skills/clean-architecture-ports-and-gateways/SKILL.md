@@ -134,7 +134,7 @@ A test passes a fixed clock and a delivery fake that records calls; no mail serv
 
 ## Related
 
-`clean-architecture-composition-root` for wiring; `clean-architecture-introduce-port` to apply this to one dependency; `clean-architecture-solid-design` for the form of the interface; `clean-architecture-port-ownership-reviewer` to review a diff; `clean-architecture-port-introducer` to delegate the change.
+`clean-architecture-composition-root` for wiring; `/clean-architecture:introduce-port` to apply this to one dependency; `clean-architecture-solid-design` for the form of the interface; `clean-architecture-port-ownership-reviewer` to review a diff; `clean-architecture-port-introducer` to delegate the change.
 
 ## Source
 

@@ -36,9 +36,9 @@ Owns the layer that translates between the outside world and the use cases: cont
 
 ## Procedure
 
-1. List the statements in the controller, presenter or gateway under review. Classify each as translation, orchestration, business policy or infrastructure (`clean-architecture-place-code`).
+1. List the statements in the controller, presenter or gateway under review. Classify each as translation, orchestration, business policy or infrastructure (`/clean-architecture:place-code`).
 2. Move policy statements into an entity or the use case; leave translation behind.
-3. If the controller skips the use case, introduce or call the use case that represents the action (`clean-architecture-extract-use-case`).
+3. If the controller skips the use case, introduce or call the use case that represents the action (`/clean-architecture:extract-use-case`).
 4. Make the use case return an outcome type the presenter can switch over; remove transport concepts from the use case.
 5. Put the outcome-to-transport mapping in the presenter or a mapper function.
 6. Run the tests; add a controller test that uses a fake use case, and a presenter test that feeds each outcome.
@@ -128,7 +128,7 @@ The 5000-point limit is no longer in the route; replacing Express with another t
 
 ## Related
 
-`clean-architecture-boundary-models` for request and response models; `clean-architecture-service-and-device-edges` for listeners and device adapters; `clean-architecture-extract-use-case` to empty a fat controller; `clean-architecture-adapter-humility-reviewer` to review a diff.
+`clean-architecture-boundary-models` for request and response models; `clean-architecture-service-and-device-edges` for listeners and device adapters; `/clean-architecture:extract-use-case` to empty a fat controller; `clean-architecture-adapter-humility-reviewer` to review a diff.
 
 ## Source
 

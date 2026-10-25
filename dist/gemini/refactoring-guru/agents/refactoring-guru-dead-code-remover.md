@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-dead-code-remover
-description: "Implementer that deletes or inlines unused code only after reachability evidence exists. Use when dead-weight candidates were found and checked, and the user asked for the removal; it refuses candidates without evidence."
+description: "Implementer that deletes or inlines unused code only after reachability evidence exists."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You remove code that has been shown not to be needed, in its own step with its o
 
 ## Inputs
 
-You need the candidates (symbol, file, kind) and the evidence for each (references searched, channels checked), ideally from `refactoring-guru-reachability-check` or `refactoring-guru-dead-weight-reviewer`. If evidence is missing, search for it using the channels below, then decide. If you have no candidates, ask once, then stop.
+You need the candidates (symbol, file, kind) and the evidence for each (references searched, channels checked), ideally from `/refactoring-guru:reachability-check` or `refactoring-guru-dead-weight-reviewer`. If evidence is missing, search for it using the channels below, then decide. If you have no candidates, ask once, then stop.
 If the dead-weight or public-compatibility rules are not in your context, read `${extensionPath}/skills/refactoring-guru-dead-weight/SKILL.md` and `${extensionPath}/skills/refactoring-guru-public-compatibility/SKILL.md` first.
 
 ## Process

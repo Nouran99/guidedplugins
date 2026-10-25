@@ -89,7 +89,7 @@ The report separates what was done from what was noticed, so the reviewer can ac
 
 ## Related
 
-`refactoring-guru-treatment-choice` for choosing; `refactoring-guru-smell-to-treatment` for a card that includes a stop line; `refactoring-guru-scope-guard` to audit a finished diff against the stop condition; `refactoring-guru-debt-triage` for ranking the deferred list.
+`refactoring-guru-treatment-choice` for choosing; `/refactoring-guru:smell-to-treatment` for a card that includes a stop line; `refactoring-guru-scope-guard` to audit a finished diff against the stop condition; `/refactoring-guru:debt-triage` for ranking the deferred list.
 
 ## Source
 

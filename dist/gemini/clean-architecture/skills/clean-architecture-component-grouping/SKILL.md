@@ -40,7 +40,7 @@ Owns which classes belong inside one component. Arrows between components, cycle
 3. Draw the grouping that would put co-changing files in one component and unrelated policy in different ones (rules 1 and 2).
 4. For each proposed split, state the reason it needs a separate boundary at all (rule 4); if the only reason is tidiness, keep one component with an internal boundary.
 5. Name each component for its capability, and decide how its boundary is enforced (rule 5).
-6. Move code in small steps, running the tests after each, and update the dependency checks (`clean-architecture-enforce-boundaries`).
+6. Move code in small steps, running the tests after each, and update the dependency checks (`/clean-architecture:enforce-boundaries`).
 
 ## Example
 

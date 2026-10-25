@@ -98,7 +98,7 @@ This is the at-least-once-plus-idempotence design: the broker may deliver twice,
 
 ## Related
 
-`data-intensive-apps-ordering-scope` for reordering; `data-intensive-apps-write-acknowledgment` for callers; `data-intensive-apps-transactions-and-isolation` for outbox and atomicity; `data-intensive-apps-replay-drill` to walk a consumer through duplicate and replay scenarios; `data-intensive-apps-idempotency-reviewer` to review a diff; `data-intensive-apps-idempotency-hardener` to implement the fix.
+`data-intensive-apps-ordering-scope` for reordering; `data-intensive-apps-write-acknowledgment` for callers; `data-intensive-apps-transactions-and-isolation` for outbox and atomicity; `/data-intensive-apps:replay-drill` to walk a consumer through duplicate and replay scenarios; `data-intensive-apps-idempotency-reviewer` to review a diff; `data-intensive-apps-idempotency-hardener` to implement the fix.
 
 ## Source
 

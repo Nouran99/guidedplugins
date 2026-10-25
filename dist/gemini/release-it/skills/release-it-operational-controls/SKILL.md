@@ -109,7 +109,7 @@ The caps and rate are examples; real values come from what the downstream can ab
 
 ## Related
 
-`release-it-restartable-automation` for resumability; `release-it-release-risk` for how a change is staged and rolled back; `release-it-game-day-plan` for experiments that need these controls; `release-it-stability-patterns` for governors; `release-it-logging` for keeping secrets out of logs; `release-it-control-plane-reviewer` to review a diff.
+`release-it-restartable-automation` for resumability; `release-it-release-risk` for how a change is staged and rolled back; `/release-it:game-day-plan` for experiments that need these controls; `release-it-stability-patterns` for governors; `release-it-logging` for keeping secrets out of logs; `release-it-control-plane-reviewer` to review a diff.
 
 ## Source
 

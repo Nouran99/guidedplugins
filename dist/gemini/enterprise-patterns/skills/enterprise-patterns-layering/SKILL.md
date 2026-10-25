@@ -29,7 +29,7 @@ Decides which layer owns a piece of code, which way dependencies may point, and 
 6. **Do not let controllers reach into SQL and transaction details.** A handler that owns them cannot be reused by a second entry point or tested without the web stack. Check: no connection handle, SQL string, `begin` or `commit` in a controller or handler.
 7. **Do not embed domain logic in views or handlers.** A rule in a handler is invisible to the job or second endpoint that needs it, and it gets copied. Check: conditionals about business concepts (eligibility, pricing, status transitions) in templates or request handlers.
 8. **Do not let repositories return HTTP-shaped DTOs.** Every other caller of the repository would inherit display decisions. Check: repository return types are domain objects (or plain records for table-oriented code), never response bodies with display strings.
-9. **Do not let one class or layer own presentation and transport, application workflow, domain logic, data source interaction, transaction management, concurrency control and integration together.** A class that owns all of them changes for every reason and can be tested for none of them alone. Check: list the responsibilities a class touches; more than one layer's worth is a finding (`enterprise-patterns-responsibility-map` tabulates it).
+9. **Do not let one class or layer own presentation and transport, application workflow, domain logic, data source interaction, transaction management, concurrency control and integration together.** A class that owns all of them changes for every reason and can be tested for none of them alone. Check: list the responsibilities a class touches; more than one layer's worth is a finding (`/enterprise-patterns:responsibility-map` tabulates it).
 10. **When unsure, choose the shape that makes those responsibilities explicit.** Added judgment: if two candidate designs are otherwise equal, choose the one with fewer layers.
 
 ## Procedure
@@ -94,7 +94,7 @@ The display strings moved to the only layer that knows about display. Callers of
 
 ## Related
 
-`enterprise-patterns-service-layer` for application operations; `enterprise-patterns-presentation-layer` for what handlers may hold; `enterprise-patterns-repository` for the data-access interface; `enterprise-patterns-responsibility-map` to tabulate ownership; `enterprise-patterns-layering-reviewer` to review a diff.
+`enterprise-patterns-service-layer` for application operations; `enterprise-patterns-presentation-layer` for what handlers may hold; `enterprise-patterns-repository` for the data-access interface; `/enterprise-patterns:responsibility-map` to tabulate ownership; `enterprise-patterns-layering-reviewer` to review a diff.
 
 ## Source
 

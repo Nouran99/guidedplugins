@@ -114,7 +114,7 @@ Bullets marked Added judgment are this plugin's own; the others follow limits th
 
 ## Related
 
-`refactoring-call-signatures` for the extracted functions' parameters; `refactoring-conditionals` for branching; `refactoring-hidden-dependencies` for side effects; `refactoring-function-reviewer` to review a diff; `refactoring-smell-to-refactoring` to map a long function to its move.
+`refactoring-call-signatures` for the extracted functions' parameters; `refactoring-conditionals` for branching; `refactoring-hidden-dependencies` for side effects; `refactoring-function-reviewer` to review a diff; `/refactoring:smell-to-refactoring` to map a long function to its move.
 
 ## Source
 

@@ -10,7 +10,7 @@ metadata:
 
 # Ubiquitous language
 
-The words of one bounded context, used the same way in conversation, code, tests, commands and events. This skill governs vocabulary. When a vague word hides a decision (a flag, a status code, a helper), the structural fix is `ddd-distilled-explicit-concepts`; scanning a whole tree for drift is `ddd-distilled-glossary`. The same word carrying different rules in different modules is a context question, `ddd-distilled-bounded-contexts`.
+The words of one bounded context, used the same way in conversation, code, tests, commands and events. This skill governs vocabulary. When a vague word hides a decision (a flag, a status code, a helper), the structural fix is `ddd-distilled-explicit-concepts`; scanning a whole tree for drift is `/ddd-distilled:glossary`. The same word carrying different rules in different modules is a context question, `ddd-distilled-bounded-contexts`.
 
 ## When to use
 
@@ -24,7 +24,7 @@ The words of one bounded context, used the same way in conversation, code, tests
 1. **Use the domain terms of the current bounded context in code, tests, commands, events and conversations.** The model is only shared if the words are shared. Check: take five nouns and five verbs from a conversation with the business; each appears in code, tests or events under the same name.
 2. **Give one concept one term.** Synonyms make readers wonder whether two things differ. Check: grep for the synonym set (`reservation`, `booking`, `order`); each concept resolves to one word.
 3. **Do not let one term carry several meanings inside one context.** Check: all uses of the word share one definition; if two definitions exist, split the word.
-4. **Rename code when understanding improves.** Stale names preserve the old, wrong model. Check: when a conversation corrects a term, code, tests and event names change in the same piece of work, or a recorded debt item says why not (`ddd-distilled-modeling-debt`).
+4. **Rename code when understanding improves.** Stale names preserve the old, wrong model. Check: when a conversation corrects a term, code, tests and event names change in the same piece of work, or a recorded debt item says why not (`/ddd-distilled:modeling-debt`).
 5. **Prefer domain names over technical placeholders.** Check: no `Data`, `Info`, `Item`, `Record`, `Manager`, `Processor` or `Handler` stands for a business concept that has its own name.
 6. **Avoid technical placeholders that conceal a business concept.** `processData()` hides which business act occurs. Check: each method name reads as a business act or query.
 7. **Avoid names imported from another bounded context without translation.** Check: a foreign DTO or schema term appears in domain code only after translation (`ddd-distilled-context-translation`).
@@ -90,7 +90,7 @@ The tests and event names follow: `ReservationConfirmed`, not `BookingApproved`.
 
 ## Related
 
-`ddd-distilled-explicit-concepts`; `ddd-distilled-glossary`; `ddd-distilled-bounded-contexts`; `ddd-distilled-language-reviewer` to review a diff; `ddd-distilled-term-renamer` to apply a decided rename.
+`ddd-distilled-explicit-concepts`; `/ddd-distilled:glossary`; `ddd-distilled-bounded-contexts`; `ddd-distilled-language-reviewer` to review a diff; `ddd-distilled-term-renamer` to apply a decided rename.
 
 ## Source
 

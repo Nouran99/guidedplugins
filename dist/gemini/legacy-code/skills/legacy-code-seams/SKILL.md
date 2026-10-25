@@ -122,7 +122,7 @@ public class InvoicePrinter {
 
 ## Related
 
-`legacy-code-find-seam` to produce a proposal for one target; `legacy-code-substitution-seams`, `legacy-code-construction-barriers`, `legacy-code-static-and-global`, `legacy-code-hidden-inputs`, `legacy-code-hard-outputs` for the techniques; `legacy-code-last-resort-seams` for forced kinds; `legacy-code-seam-reviewer` to review a diff; `legacy-code-seam-ledger` for existing structure.
+`/legacy-code:find-seam` to produce a proposal for one target; `legacy-code-substitution-seams`, `legacy-code-construction-barriers`, `legacy-code-static-and-global`, `legacy-code-hidden-inputs`, `legacy-code-hard-outputs` for the techniques; `legacy-code-last-resort-seams` for forced kinds; `legacy-code-seam-reviewer` to review a diff; `/legacy-code:seam-ledger` for existing structure.
 
 ## Source
 

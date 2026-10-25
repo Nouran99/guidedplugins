@@ -1,7 +1,7 @@
 ---
 kind: local
 name: clean-code-test-writer
-description: "Implementer that writes clean tests first for behavior changes and bug fixes, shows each failing for the right reason, and edits test files only. Use when test-gap findings call for tests or before implementing specified behavior."
+description: "Implementer that writes clean tests first for behavior changes and bug fixes, shows each failing for the right reason, and edits test files only."
 tools:
   - list_directory
   - read_file

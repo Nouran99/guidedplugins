@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-distilled-translation-builder
-description: "Implementer that builds a translator and its tests at one context boundary and moves foreign types behind it. Use when findings show a foreign model, payload or schema leaking into local code and changes were requested."
+description: "Implementer that builds a translator and its tests at one context boundary and moves foreign types behind it."
 tools:
   - list_directory
   - read_file

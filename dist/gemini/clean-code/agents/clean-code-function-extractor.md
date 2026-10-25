@@ -1,7 +1,7 @@
 ---
 kind: local
 name: clean-code-function-extractor
-description: "Implementer that decomposes one long function into single-level functions, extracting step by step with tests after each and stopping before the pieces become named fragments. Use when a function review finds an oversized or mixed-level function."
+description: "Implementer that decomposes one long function into single-level functions, extracting step by step with tests after each and stopping before the pieces become named fragments."
 tools:
   - list_directory
   - read_file

@@ -38,7 +38,7 @@ Owns the brake and the accelerator: richest modeling where the business really i
 
 1. Name the area and its context (`ddd-implementing-bounded-context`).
 2. Apply the three signals from rule 10 by reading the code and the requirements: list the state-dependent rules, the cross-field invariants and the terms people argue about.
-3. Decide per part: plain, or modeled. Write the decision and the evidence in one line each. For several areas at once, run `ddd-implementing-ceremony-check`.
+3. Decide per part: plain, or modeled. Write the decision and the evidence in one line each. For several areas at once, run `/ddd-implementing:ceremony-check`.
 4. If the area is over-modeled, remove the pattern that carries no invariant (an event nobody uses, a repository over a table, an aggregate with no behavior) one at a time, with tests green.
 5. If the area is under-modeled, extract the state-dependent rules into an entity or value object first (`ddd-implementing-entities`, `ddd-implementing-value-objects`) before adding any other pattern.
 6. Keep the ubiquitous language in both modes; plain code still uses the business's words.
@@ -100,7 +100,7 @@ No rule depends on the country's state and no invariant spans objects, so nothin
 
 ## Related
 
-`ddd-implementing-ceremony-check` for a keep, trim or extract plan per area; `ddd-implementing-application-services` for thin orchestration in modeled areas; `ddd-implementing-modeling-effort-reviewer` to review the changed code of a diff; `ddd-implementing-aggregate-boundaries` once an aggregate is justified.
+`/ddd-implementing:ceremony-check` for a keep, trim or extract plan per area; `ddd-implementing-application-services` for thin orchestration in modeled areas; `ddd-implementing-modeling-effort-reviewer` to review the changed code of a diff; `ddd-implementing-aggregate-boundaries` once an aggregate is justified.
 
 ## Source
 

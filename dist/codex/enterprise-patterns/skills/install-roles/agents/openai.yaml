@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Patterns of Enterprise Application Architecture roles"
+  short_description: "Installs the 21 subagent roles of this plugin into Codex."
+  default_prompt: "Use $enterprise-patterns:install-roles."
+policy:
+  allow_implicit_invocation: false

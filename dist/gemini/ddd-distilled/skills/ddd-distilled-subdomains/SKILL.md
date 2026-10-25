@@ -95,7 +95,7 @@ export class SlotPlan {
 
 ## Related
 
-`ddd-distilled-adoption-fit`; `ddd-distilled-classify-subdomains` to scan a codebase; `ddd-distilled-bounded-contexts`; `ddd-distilled-subdomain-reviewer` to review a diff.
+`ddd-distilled-adoption-fit`; `/ddd-distilled:classify-subdomains` to scan a codebase; `ddd-distilled-bounded-contexts`; `ddd-distilled-subdomain-reviewer` to review a diff.
 
 ## Source
 

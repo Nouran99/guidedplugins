@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-behavior-mover
-description: "Implementer that moves business rules out of controllers, jobs, application services and repositories into the entity, value object or domain service that owns them. Use when review findings report passive entities or rules in the wrong layer."
+description: "Implementer that moves business rules out of controllers, jobs, application services and repositories into the entity, value object or domain service that owns them."
 tools:
   - list_directory
   - read_file

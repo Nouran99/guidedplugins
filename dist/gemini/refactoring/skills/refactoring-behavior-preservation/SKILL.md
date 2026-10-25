@@ -37,7 +37,7 @@ The test that separates refactoring from everything else: after the change, does
 1. State the intent of the change in one sentence: structure only, or behavior.
 2. For each touched unit, list the observable surface (rule 6) and the check that covers it (existing test, new characterization test, type checker, manual read).
 3. Walk each edit and mark it same, changed or unknown. Unknown is treated as changed until checked.
-4. If anything is changed, split it out into its own step (`refactoring-split-patch` when the patch already exists), and write its test first (test first is Added judgment; the source asks only that the behavior change be isolated).
+4. If anything is changed, split it out into its own step (`/refactoring:split-patch` when the patch already exists), and write its test first (test first is Added judgment; the source asks only that the behavior change be isolated).
 5. Report: observable surface, what was verified and how, what remains unverified.
 
 ## Example

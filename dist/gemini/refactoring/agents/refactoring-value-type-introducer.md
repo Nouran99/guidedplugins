@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-value-type-introducer
-description: "Implementer that introduces one named type for a recurring primitive bundle or loaded primitive and threads it inward from the boundary, keeping accepted input unchanged. Use when a primitive review names a concept and changes were requested."
+description: "Implementer that introduces one named type for a recurring primitive bundle or loaded primitive and threads it inward from the boundary, keeping accepted input unchanged."
 tools:
   - list_directory
   - read_file

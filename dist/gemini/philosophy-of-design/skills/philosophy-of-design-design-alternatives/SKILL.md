@@ -10,7 +10,7 @@ metadata:
 
 # Design alternatives
 
-The rules for comparing designs before building one. Producing the written comparison is the workflow `philosophy-of-design-design-twice`; testing a single design by writing its contract first is `philosophy-of-design-comments-first`.
+The rules for comparing designs before building one. Producing the written comparison is the workflow `/philosophy-of-design:design-twice`; testing a single design by writing its contract first is `/philosophy-of-design:comments-first`.
 
 ## When to use
 
@@ -86,7 +86,7 @@ reminders.send(user, reminder);
 
 ## Related
 
-`philosophy-of-design-design-twice` to produce the comparison; `philosophy-of-design-comments-first`; `philosophy-of-design-comments-as-design`; `philosophy-of-design-plan` to sequence the work after the choice.
+`/philosophy-of-design:design-twice` to produce the comparison; `/philosophy-of-design:comments-first`; `philosophy-of-design-comments-as-design`; `/philosophy-of-design:plan` to sequence the work after the choice.
 
 ## Source
 

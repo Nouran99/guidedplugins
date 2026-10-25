@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Implementing Domain-Driven Design roles"
+  short_description: "Installs the 21 subagent roles of this plugin into Codex."
+  default_prompt: "Use $ddd-implementing:install-roles."
+policy:
+  allow_implicit_invocation: false

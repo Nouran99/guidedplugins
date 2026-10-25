@@ -45,44 +45,44 @@ Names such as `data-intensive-apps-lead`, `data-intensive-apps-final-gate` and t
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `data-intensive-apps-lead` (delegate) |
-| Review the working diff or named paths | `data-intensive-apps-review` |
-| Health picture of a repository across all concerns | `data-intensive-apps-audit` |
-| Plan a non-trivial data change before editing | `data-intensive-apps-plan` |
-| Resolve specific findings with the smallest change | `data-intensive-apps-fix` |
-| Understand one rule, its strength and its exceptions | `data-intensive-apps-explain-rule` |
-| Walk the final checklist while working | `data-intensive-apps-checklist` |
+| Review the working diff or named paths | `/data-intensive-apps:review` |
+| Health picture of a repository across all concerns | `/data-intensive-apps:audit` |
+| Plan a non-trivial data change before editing | `/data-intensive-apps:plan` |
+| Resolve specific findings with the smallest change | `/data-intensive-apps:fix` |
+| Understand one rule, its strength and its exceptions | `/data-intensive-apps:explain-rule` |
+| Walk the final checklist while working | `/data-intensive-apps:checklist` |
 | Strict PASS or FAIL before commit or pull request | `data-intensive-apps-final-gate` (delegate) |
-| A write returns success, timeout or error and you must say what happened | `data-intensive-apps-write-acknowledgment`, `data-intensive-apps-write-path-trace`, `data-intensive-apps-write-path-reviewer` |
+| A write returns success, timeout or error and you must say what happened | `data-intensive-apps-write-acknowledgment`, `/data-intensive-apps:write-path-trace`, `data-intensive-apps-write-path-reviewer` |
 | A claim that something scales, a slow endpoint, a proposal to add nodes or caches | `data-intensive-apps-load-and-latency`, `data-intensive-apps-capacity-reviewer` |
-| The same data lives in several places, or nobody owns a dataset | `data-intensive-apps-source-of-truth`, `data-intensive-apps-ownership-map`, `data-intensive-apps-ownership-reviewer` |
+| The same data lives in several places, or nobody owns a dataset | `data-intensive-apps-source-of-truth`, `/data-intensive-apps:ownership-map`, `data-intensive-apps-ownership-reviewer` |
 | Choosing relational, document, graph or key-value; SQL versus application-side joins | `data-intensive-apps-data-model-choice`, `data-intensive-apps-storage-reviewer` |
 | Adding an index, choosing an engine, separating analytics from transactions | `data-intensive-apps-storage-and-indexing`, `data-intensive-apps-storage-reviewer` |
-| Stale reads, read-your-writes, conflicting concurrent updates | `data-intensive-apps-consistency-contract`, `data-intensive-apps-consistency-check`, `data-intensive-apps-consistency-reviewer` |
-| A handler, consumer, job or webhook that can run twice | `data-intensive-apps-idempotent-handlers`, `data-intensive-apps-replay-drill`, `data-intensive-apps-idempotency-reviewer`, `data-intensive-apps-idempotency-hardener` |
+| Stale reads, read-your-writes, conflicting concurrent updates | `data-intensive-apps-consistency-contract`, `/data-intensive-apps:consistency-check`, `data-intensive-apps-consistency-reviewer` |
+| A handler, consumer, job or webhook that can run twice | `data-intensive-apps-idempotent-handlers`, `/data-intensive-apps:replay-drill`, `data-intensive-apps-idempotency-reviewer`, `data-intensive-apps-idempotency-hardener` |
 | Events or updates that can arrive out of order, parallel consumers on one key | `data-intensive-apps-ordering-scope`, `data-intensive-apps-ordering-reviewer` |
 | Defining a command, event, log topic or view contract | `data-intensive-apps-event-design`, `data-intensive-apps-stream-reviewer` |
-| Changing a schema, API, message, enum or status; planning a rolling upgrade | `data-intensive-apps-encoding-and-evolution`, `data-intensive-apps-compat-matrix`, `data-intensive-apps-evolution-reviewer`, `data-intensive-apps-schema-migrator` |
+| Changing a schema, API, message, enum or status; planning a rolling upgrade | `data-intensive-apps-encoding-and-evolution`, `/data-intensive-apps:compat-matrix`, `data-intensive-apps-evolution-reviewer`, `data-intensive-apps-schema-migrator` |
 | Choosing a partition or routing key, hot keys, cross-partition work | `data-intensive-apps-partitioning-locality`, `data-intensive-apps-partitioning-reviewer` |
 | Leader-follower, multi-leader, leaderless, failover, quorums, replica reads | `data-intensive-apps-replication-topology`, `data-intensive-apps-replication-reviewer` |
-| Atomicity, isolation level, check-then-write, writes to several stores | `data-intensive-apps-transactions-and-isolation`, `data-intensive-apps-invariant-map`, `data-intensive-apps-transaction-reviewer` |
+| Atomicity, isolation level, check-then-write, writes to several stores | `data-intensive-apps-transactions-and-isolation`, `/data-intensive-apps:invariant-map`, `data-intensive-apps-transaction-reviewer` |
 | A cache, index, projection or read model that drifts or cannot be rebuilt | `data-intensive-apps-derived-data`, `data-intensive-apps-derived-view-builder`, `data-intensive-apps-ownership-reviewer` |
 | Locks, leases, timestamps, leader election, consensus, linearizability claims | `data-intensive-apps-faults-and-coordination`, `data-intensive-apps-fault-model-reviewer` |
 | A batch job, ETL, nightly report, backfill | `data-intensive-apps-batch-jobs`, `data-intensive-apps-batch-reviewer` |
 | A stream processor, window, stream join, change data capture, event sourcing | `data-intensive-apps-stream-processing`, `data-intensive-apps-stream-reviewer` |
 | Splitting or merging services, cross-service calls on a hot path | `data-intensive-apps-service-boundaries`, `data-intensive-apps-service-boundary-reviewer` |
 | Tests for consumers, jobs, projections, migrations or schema changes | `data-intensive-apps-data-path-tests`, `data-intensive-apps-test-gap-reviewer`, `data-intensive-apps-data-test-writer` |
-| Session-long behavior: teach the reasoning | `data-intensive-apps-mode-mentor` |
-| Session-long behavior: ranked findings only | `data-intensive-apps-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `data-intensive-apps-mode-pair` |
-| Session-long behavior: result first, few lines | `data-intensive-apps-mode-terse` |
-| Session-long behavior: a data contract card before any data code | `data-intensive-apps-mode-contract-first` |
-| Session-long behavior: a failure walk after every proposal | `data-intensive-apps-mode-failure-first` |
+| Session-long behavior: teach the reasoning | `/data-intensive-apps:mode-mentor` |
+| Session-long behavior: ranked findings only | `/data-intensive-apps:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/data-intensive-apps:mode-pair` |
+| Session-long behavior: result first, few lines | `/data-intensive-apps:mode-terse` |
+| Session-long behavior: a data contract card before any data code | `/data-intensive-apps:mode-contract-first` |
+| Session-long behavior: a failure walk after every proposal | `/data-intensive-apps:mode-failure-first` |
 
 ### Where the cross-cutting rules are owned
 
-- The ten look-fors of the source's review rules each have one owning skill: ordering assumptions and missing versions by `data-intensive-apps-ordering-scope`; exactly-once assumptions and missing idempotency by `data-intensive-apps-idempotent-handlers`; missing ownership by `data-intensive-apps-source-of-truth`; broken schema evolution by `data-intensive-apps-encoding-and-evolution`; unrepairable side effects and writes to several stores by `data-intensive-apps-transactions-and-isolation`; projections that cannot be rebuilt by `data-intensive-apps-derived-data`; partitioning blind to locality by `data-intensive-apps-partitioning-locality`. `data-intensive-apps-review` and `data-intensive-apps-audit` check all ten.
+- The ten look-fors of the source's review rules each have one owning skill: ordering assumptions and missing versions by `data-intensive-apps-ordering-scope`; exactly-once assumptions and missing idempotency by `data-intensive-apps-idempotent-handlers`; missing ownership by `data-intensive-apps-source-of-truth`; broken schema evolution by `data-intensive-apps-encoding-and-evolution`; unrepairable side effects and writes to several stores by `data-intensive-apps-transactions-and-isolation`; projections that cannot be rebuilt by `data-intensive-apps-derived-data`; partitioning blind to locality by `data-intensive-apps-partitioning-locality`. `/data-intensive-apps:review` and `/data-intensive-apps:audit` check all ten.
 - The four forbidden patterns: exactly-once wishful thinking (`data-intensive-apps-idempotent-handlers`), a hidden consistency contract (`data-intensive-apps-consistency-contract`), uncoordinated multi-writes (`data-intensive-apps-transactions-and-isolation`), schema drift by accident (`data-intensive-apps-encoding-and-evolution`).
-- The code generation defaults (explicit identifiers and ownership, explicit idempotency, explicit versioning or conflict strategy, authoritative versus derived data, rebuildable downstream state, compatibility-aware schema changes, observability of lag, retries and failures) are applied to a design by `data-intensive-apps-plan`, to code by `data-intensive-apps-fix` and the implementers, and stated up front by `data-intensive-apps-mode-contract-first`.
+- The code generation defaults (explicit identifiers and ownership, explicit idempotency, explicit versioning or conflict strategy, authoritative versus derived data, rebuildable downstream state, compatibility-aware schema changes, observability of lag, retries and failures) are applied to a design by `/data-intensive-apps:plan`, to code by `/data-intensive-apps:fix` and the implementers, and stated up front by `/data-intensive-apps:mode-contract-first`.
 - The six test classes (duplicate delivery, out-of-order handling, replay, conflict resolution, schema compatibility, rebuild or repair) are owned by `data-intensive-apps-data-path-tests`.
 
 ## Priority

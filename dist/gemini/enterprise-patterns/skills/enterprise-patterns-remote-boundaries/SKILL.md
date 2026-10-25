@@ -128,7 +128,7 @@ The DTO can change on its own schedule: adding a field is compatible, and the `v
 
 ## Related
 
-`enterprise-patterns-remote-contract` to design an operation; `enterprise-patterns-integration-boundaries` for foreign systems; `enterprise-patterns-service-layer` for what the facade calls; `enterprise-patterns-remote-api-reviewer` to review a diff; `enterprise-patterns-facade-builder` to build a facade.
+`/enterprise-patterns:remote-contract` to design an operation; `enterprise-patterns-integration-boundaries` for foreign systems; `enterprise-patterns-service-layer` for what the facade calls; `enterprise-patterns-remote-api-reviewer` to review a diff; `enterprise-patterns-facade-builder` to build a facade.
 
 ## Source
 

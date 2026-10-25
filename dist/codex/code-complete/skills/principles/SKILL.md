@@ -34,7 +34,7 @@ Tie-breaker. When two options both satisfy the request and you are uncertain, ch
 
 ## Subagent roles
 
-Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs code-complete` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
+Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles, which a plugin cannot switch on by itself: run `$code-complete:install-roles` once, restart Codex, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

@@ -97,7 +97,7 @@ Eight calls and an ordering rule became one call; delimiter and encoding stopped
 
 ## Related
 
-`philosophy-of-design-flags-and-knobs`; `philosophy-of-design-temporal-decomposition`; `philosophy-of-design-information-hiding`; `philosophy-of-design-comments-first` to test a signature by writing its contract; `philosophy-of-design-interface-reviewer` to review; `philosophy-of-design-interface-simplifier` to rework a signature.
+`philosophy-of-design-flags-and-knobs`; `philosophy-of-design-temporal-decomposition`; `philosophy-of-design-information-hiding`; `/philosophy-of-design:comments-first` to test a signature by writing its contract; `philosophy-of-design-interface-reviewer` to review; `philosophy-of-design-interface-simplifier` to rework a signature.
 
 ## Source
 

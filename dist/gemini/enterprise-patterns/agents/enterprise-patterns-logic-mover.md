@@ -1,7 +1,7 @@
 ---
 kind: local
 name: enterprise-patterns-logic-mover
-description: "Implementer that moves a business decision out of a handler, script, SQL, DTO or serializer into the object, function or layer that owns it, in small test-backed steps. Use when review findings or a plan name misplaced or duplicated business rules."
+description: "Implementer that moves a business decision out of a handler, script, SQL, DTO or serializer into the object, function or layer that owns it, in small test-backed steps."
 tools:
   - list_directory
   - read_file

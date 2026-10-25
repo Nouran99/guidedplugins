@@ -10,7 +10,7 @@ metadata:
 
 # Performance tuning
 
-The gate in front of every optimization: is there a requirement, is there evidence it is missed, and will the result be measured and kept readable? The measured loop itself is `code-complete-tune`; auditing someone else's tuning change is `code-complete-tuning-reviewer`.
+The gate in front of every optimization: is there a requirement, is there evidence it is missed, and will the result be measured and kept readable? The measured loop itself is `/code-complete:tune`; auditing someone else's tuning change is `code-complete-tuning-reviewer`.
 
 ## When to use
 
@@ -39,7 +39,7 @@ The gate in front of every optimization: is there a requirement, is there eviden
 1. Ask for or find the requirement. If there is none, stop and report that no tuning is justified yet.
 2. Find or define how to measure it (existing benchmark, timing around the call, production metric). Do not install tools.
 3. Take the baseline; repeat to see the spread.
-4. Run the loop of rule 4 once per change: locate the cost with a profile or targeted timing, make one change, run the tests, remeasure under the same conditions, keep the change if the number moved toward the target and revert it otherwise (rules 5, 10 and 11). Stop when the target is met. `code-complete-tune` runs this loop with a written log.
+4. Run the loop of rule 4 once per change: locate the cost with a profile or targeted timing, make one change, run the tests, remeasure under the same conditions, keep the change if the number moved toward the target and revert it otherwise (rules 5, 10 and 11). Stop when the target is met. `/code-complete:tune` runs this loop with a written log.
 5. Document the trade-off where a future reader will find it.
 
 ## Example
@@ -85,7 +85,7 @@ The change description records the requirement, the baseline, the result, the wo
 
 ## Related
 
-`code-complete-tune` to run the loop; `code-complete-tuning-reviewer` to audit the evidence; `code-complete-complexity-management` when speed code is becoming hard to read; `code-complete-refactoring-judgment` for restructuring with no speed goal.
+`/code-complete:tune` to run the loop; `code-complete-tuning-reviewer` to audit the evidence; `code-complete-complexity-management` when speed code is becoming hard to read; `code-complete-refactoring-judgment` for restructuring with no speed goal.
 
 ## Source
 

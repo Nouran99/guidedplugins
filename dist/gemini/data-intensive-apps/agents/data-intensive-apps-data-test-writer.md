@@ -1,7 +1,7 @@
 ---
 kind: local
 name: data-intensive-apps-data-test-writer
-description: "Implementer of tests only: writes duplicate-delivery, out-of-order, replay, conflict, schema-compatibility and rebuild tests for existing data-path behavior. Use when data-intensive-apps-test-gap-reviewer reports missing tests. Never edits production code."
+description: "Implementer of tests only: writes duplicate-delivery, out-of-order, replay, conflict, schema-compatibility and rebuild tests for existing data-path behavior."
 tools:
   - list_directory
   - read_file

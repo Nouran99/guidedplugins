@@ -50,22 +50,22 @@ Names such as `ddd-implementing-lead`, `ddd-implementing-final-gate` and the `..
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `ddd-implementing-lead` (delegate) |
-| Review the working diff or named paths | `ddd-implementing-review` |
-| Health picture of a directory or repository | `ddd-implementing-audit` |
-| Plan a change to existing code | `ddd-implementing-plan` |
-| Design a new concept before any code | `ddd-implementing-model-walk` |
-| Resolve specific findings in the session | `ddd-implementing-fix` |
-| Understand one rule, its strength or its exceptions | `ddd-implementing-explain-rule` |
-| Walk the review checklist while working | `ddd-implementing-checklist` |
+| Review the working diff or named paths | `/ddd-implementing:review` |
+| Health picture of a directory or repository | `/ddd-implementing:audit` |
+| Plan a change to existing code | `/ddd-implementing:plan` |
+| Design a new concept before any code | `/ddd-implementing:model-walk` |
+| Resolve specific findings in the session | `/ddd-implementing:fix` |
+| Understand one rule, its strength or its exceptions | `/ddd-implementing:explain-rule` |
+| Walk the review checklist while working | `/ddd-implementing:checklist` |
 | Strict pass or fail before commit or pull request | `ddd-implementing-final-gate` (delegate) |
-| Which context owns a class, or a model is shared across contexts | `ddd-implementing-bounded-context`, `ddd-implementing-context-boundary-reviewer`; a whole tree: `ddd-implementing-context-map` |
+| Which context owns a class, or a model is shared across contexts | `ddd-implementing-bounded-context`, `ddd-implementing-context-boundary-reviewer`; a whole tree: `/ddd-implementing:context-map` |
 | Folder and package layout, `shared` or `common` packages | `ddd-implementing-module-structure`, `ddd-implementing-context-boundary-reviewer` |
 | How two contexts relate, who is upstream, who translates | `ddd-implementing-context-mapping` |
 | A legacy, vendor or partner model is entering local code | `ddd-implementing-anticorruption-layer`, `ddd-implementing-translation-reviewer`, `ddd-implementing-acl-builder` |
 | A message, event or identifier leaves the context | `ddd-implementing-integration-contracts`, `ddd-implementing-translation-reviewer` |
 | One term with two meanings, two terms for one concept, technical placeholders | `ddd-implementing-ubiquitous-language`, `ddd-implementing-language-reviewer` |
-| How much DDD an area deserves, CRUD versus real complexity | `ddd-implementing-core-domain-focus`, `ddd-implementing-ceremony-check`, `ddd-implementing-modeling-effort-reviewer` |
-| What belongs inside an aggregate, aggregate too big | `ddd-implementing-aggregate-boundaries`, `ddd-implementing-invariant-inventory`, `ddd-implementing-aggregate-design-reviewer` |
+| How much DDD an area deserves, CRUD versus real complexity | `ddd-implementing-core-domain-focus`, `/ddd-implementing:ceremony-check`, `ddd-implementing-modeling-effort-reviewer` |
+| What belongs inside an aggregate, aggregate too big | `ddd-implementing-aggregate-boundaries`, `/ddd-implementing:invariant-inventory`, `ddd-implementing-aggregate-design-reviewer` |
 | Outside code mutates aggregate internals, setters, exposed child collections | `ddd-implementing-aggregate-root-discipline`, `ddd-implementing-root-discipline-reviewer`, `ddd-implementing-root-encapsulator` |
 | An aggregate holds another aggregate, or one use case saves several aggregates | `ddd-implementing-cross-aggregate-coordination`, `ddd-implementing-transaction-reviewer`, `ddd-implementing-identity-reference-converter`, `ddd-implementing-transaction-splitter` |
 | A class with identity and a life cycle, state transitions | `ddd-implementing-entities` |
@@ -77,12 +77,12 @@ Names such as `ddd-implementing-lead`, `ddd-implementing-final-gate` and the `..
 | Persisting an aggregate as its events | `ddd-implementing-event-sourcing`, `ddd-implementing-event-sourcing-reviewer` |
 | What a UI, REST client or report receives, read models, scope identifiers | `ddd-implementing-client-representations`, `ddd-implementing-representation-reviewer` |
 | Writing or judging tests of the domain | `ddd-implementing-domain-tests`, `ddd-implementing-test-coverage-reviewer`, `ddd-implementing-domain-test-writer` |
-| Session-long behavior: teach the reasoning | `ddd-implementing-mode-mentor` |
-| Session-long behavior: ranked findings only | `ddd-implementing-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `ddd-implementing-mode-pair` |
-| Session-long behavior: result first, few lines | `ddd-implementing-mode-terse` |
-| Session-long behavior: open every answer with the context and its terms | `ddd-implementing-mode-context-first` |
-| Session-long behavior: state invariants and transaction scope before every model change | `ddd-implementing-mode-invariant-first` |
+| Session-long behavior: teach the reasoning | `/ddd-implementing:mode-mentor` |
+| Session-long behavior: ranked findings only | `/ddd-implementing:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/ddd-implementing:mode-pair` |
+| Session-long behavior: result first, few lines | `/ddd-implementing:mode-terse` |
+| Session-long behavior: open every answer with the context and its terms | `/ddd-implementing:mode-context-first` |
+| Session-long behavior: state invariants and transaction scope before every model change | `/ddd-implementing:mode-invariant-first` |
 
 ## Priority
 

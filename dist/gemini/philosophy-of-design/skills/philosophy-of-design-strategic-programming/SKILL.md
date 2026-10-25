@@ -90,7 +90,7 @@ The change touches the three files that already carried the knowledge and nothin
 
 ## Related
 
-`philosophy-of-design-flags-and-knobs`; `philosophy-of-design-information-hiding`; `philosophy-of-design-plan` to sequence the change; `philosophy-of-design-tactical-patch-reviewer` to review; `philosophy-of-design-mode-pair` for small narrated steps.
+`philosophy-of-design-flags-and-knobs`; `philosophy-of-design-information-hiding`; `/philosophy-of-design:plan` to sequence the change; `philosophy-of-design-tactical-patch-reviewer` to review; `/philosophy-of-design:mode-pair` for small narrated steps.
 
 ## Source
 

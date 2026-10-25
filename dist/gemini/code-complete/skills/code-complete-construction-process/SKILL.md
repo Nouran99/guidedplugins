@@ -1,6 +1,6 @@
 ---
 name: "code-complete-construction-process"
-description: "Use before a non-trivial change: work starting from a proposed solution, unsettled decisions, or slicing into verifiable increments with early integration. Written plan: code-complete-plan. One routine: code-complete-routine-design."
+description: "Use before a non-trivial change: work starting from a proposed solution, unsettled decisions, or slicing into verifiable increments with early integration. Written plan: /code-complete:plan. One routine: code-complete-routine-design."
 license: "MIT"
 metadata:
   plugin: "code-complete"
@@ -10,7 +10,7 @@ metadata:
 
 # Construction process
 
-Decides what must be clear before large implementation work starts, how to proceed when it is not, and how to cut the work into increments that stay verifiable and integrated. The plan artifact is produced by `code-complete-plan`; reviewing the shape of a finished diff is `code-complete-increment-reviewer`.
+Decides what must be clear before large implementation work starts, how to proceed when it is not, and how to cut the work into increments that stay verifiable and integrated. The plan artifact is produced by `/code-complete:plan`; reviewing the shape of a finished diff is `code-complete-increment-reviewer`.
 
 ## When to use
 
@@ -88,7 +88,7 @@ Increment 3: real cache client, wired through the switch, integrated to main aft
 
 ## Related
 
-`code-complete-plan` for the written plan; `code-complete-pseudocode` for one complex routine; `code-complete-increment-reviewer` to review the shape of the finished diff; `code-complete-refactoring-judgment` when the increment is a refactor.
+`/code-complete:plan` for the written plan; `/code-complete:pseudocode` for one complex routine; `code-complete-increment-reviewer` to review the shape of the finished diff; `code-complete-refactoring-judgment` when the increment is a refactor.
 
 ## Source
 

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: philosophy-of-design-test-writer
-description: "Implementer that writes tests from a stated contract, one per guarantee and edge behavior, through the public interface only. Use when a module's promises are unpinned, before or after a structural change by someone else. Writes test files only; never edits or restructures production code."
+description: "Implementer that writes tests from a stated contract, one per guarantee and edge behavior, through the public interface only."
 tools:
   - list_directory
   - read_file

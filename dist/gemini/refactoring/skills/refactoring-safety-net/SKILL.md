@@ -10,7 +10,7 @@ metadata:
 
 # Safety net
 
-A refactoring is only as safe as the check that would catch a mistake. This skill decides what that check is, what to do when there is none, and how tests may and may not change while code is restructured. Writing the characterization tests step by step is `refactoring-characterize`; deciding whether the change preserved meaning is `refactoring-behavior-preservation`.
+A refactoring is only as safe as the check that would catch a mistake. This skill decides what that check is, what to do when there is none, and how tests may and may not change while code is restructured. Writing the characterization tests step by step is `/refactoring:characterize`; deciding whether the change preserved meaning is `refactoring-behavior-preservation`.
 
 ## When to use
 
@@ -38,7 +38,7 @@ A refactoring is only as safe as the check that would catch a mistake. This skil
 
 1. Find the project's test command (`package.json`, `Makefile`, `pyproject.toml`, `go.mod`, build files). Run the covering tests and record the baseline.
 2. Map the code you will touch to the tests that exercise it. Mark touched behaviors with no covering assertion.
-3. For each gap: write a characterization test if the area is risky (`refactoring-characterize`), or limit the step to a tool-verified move, or record the gap.
+3. For each gap: write a characterization test if the area is risky (`/refactoring:characterize`), or limit the step to a tool-verified move, or record the gap.
 4. Restructure in small steps, running the net after each. Never edit an expectation in these steps.
 5. If a test breaks, treat it as evidence that behavior changed, and revert the step before deciding anything.
 
@@ -94,7 +94,7 @@ Bullets marked Added judgment are this plugin's own; the others follow limits th
 
 ## Related
 
-`refactoring-characterize` to write the tests; `refactoring-safety-net-reviewer` to map coverage; `refactoring-test-change-reviewer` to audit test edits in a diff; `refactoring-behavior-preservation` for what must stay the same.
+`/refactoring:characterize` to write the tests; `refactoring-safety-net-reviewer` to map coverage; `refactoring-test-change-reviewer` to audit test edits in a diff; `refactoring-behavior-preservation` for what must stay the same.
 
 ## Source
 

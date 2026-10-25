@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Working Effectively with Legacy Code roles"
+  short_description: "Installs the 20 subagent roles of this plugin into Codex."
+  default_prompt: "Use $legacy-code:install-roles."
+policy:
+  allow_implicit_invocation: false

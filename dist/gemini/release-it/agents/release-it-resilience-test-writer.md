@@ -1,7 +1,7 @@
 ---
 kind: local
 name: release-it-resilience-test-writer
-description: "Implementer that writes tests for failure behavior: stalled peers, retry attempt bounds, degraded dependencies, queue saturation, interrupted scripts and startup failures. Writes tests only and never edits production code. Use when test gaps are reported."
+description: "Implementer that writes tests for failure behavior: stalled peers, retry attempt bounds, degraded dependencies, queue saturation, interrupted scripts and startup failures."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You write the tests that prove a defense works: the failure is produced by a con
 
 ## Inputs
 
-You need the gaps to cover (from `release-it-resilience-test-reviewer` or `release-it-review`) or the defenses to prove, and the files in scope. If either is missing, ask once, then stop.
+You need the gaps to cover (from `release-it-resilience-test-reviewer` or `/release-it:review`) or the defenses to prove, and the files in scope. If either is missing, ask once, then stop.
 If the testing rules are not in your context, read `${extensionPath}/skills/release-it-resilience-testing/SKILL.md` first.
 
 ## Process

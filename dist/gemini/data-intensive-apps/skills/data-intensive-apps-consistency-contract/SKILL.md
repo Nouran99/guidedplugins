@@ -96,7 +96,7 @@ Tracking a log position is one way to provide read-your-writes; it is Added judg
 
 ## Related
 
-`data-intensive-apps-replication-topology` for the mechanism; `data-intensive-apps-transactions-and-isolation` for anomalies within transactions; `data-intensive-apps-derived-data` for cached and projected reads; `data-intensive-apps-consistency-check` to map every read path in a scope; `data-intensive-apps-consistency-reviewer` to review a diff.
+`data-intensive-apps-replication-topology` for the mechanism; `data-intensive-apps-transactions-and-isolation` for anomalies within transactions; `data-intensive-apps-derived-data` for cached and projected reads; `/data-intensive-apps:consistency-check` to map every read path in a scope; `data-intensive-apps-consistency-reviewer` to review a diff.
 
 ## Source
 

@@ -99,7 +99,7 @@ The split looked tidy and was wrong: the quote state is shared knowledge, so sep
 
 ## Related
 
-`philosophy-of-design-pass-through-layers`; `philosophy-of-design-functions-and-variables`; `philosophy-of-design-deep-modules`; `philosophy-of-design-split-merge-reviewer` to review; `philosophy-of-design-collapse-layer` to merge a layer.
+`philosophy-of-design-pass-through-layers`; `philosophy-of-design-functions-and-variables`; `philosophy-of-design-deep-modules`; `philosophy-of-design-split-merge-reviewer` to review; `/philosophy-of-design:collapse-layer` to merge a layer.
 
 ## Source
 

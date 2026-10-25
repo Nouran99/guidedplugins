@@ -25,7 +25,7 @@ The sequence for one change in code you cannot yet trust: understand, protect, m
 2. **State the requested behavior change and the current behavior that must remain, before you edit.** [Compact checklist] Check: a delta list and a preserve list exist before the first production edit, and the preserve list names observable behavior (outputs, effects, error cases), not code structure.
 3. **Understand what the code does now before changing it.** [MUST] Check: you can predict its result for the inputs the change touches, and a run or a test confirmed the prediction.
 4. **Determine whether trusted tests already protect the behavior, and add characterization tests around current behavior where possible when they do not.** [MUST] Characterize the gap, not the whole module. Check: every item on the preserve list maps to an existing trusted test or a new characterization test.
-5. **Identify the dependency that makes the change difficult, introduce or exploit a seam, then break the blocking dependency.** [MUST] Check: you can name the barrier, the seam and the dependency you broke in one line each (`legacy-code-find-seam` produces exactly that).
+5. **Identify the dependency that makes the change difficult, introduce or exploit a seam, then break the blocking dependency.** [MUST] Check: you can name the barrier, the seam and the dependency you broke in one line each (`/legacy-code:find-seam` produces exactly that).
 6. **Make the functional change only after the earlier steps, and as its own step.** [MUST] Check: the behavior change has its own test and its own diff, with no unrelated structure change in it.
 7. **Refactor for clarity afterwards, locally, and keep the seam or new structure only if it still pays for itself.** [MUST] Check: every seam you added is either used by a test you kept, or has a stated cleanup path.
 8. **Use the short form as a summary of rules 3 to 7: identify change points, find test points, break dependencies, write tests, make changes, then refactor.** [SHOULD] The source gives it as a one-line summary of the workflow, not as a separate imperative. Its literal order (dependencies before tests) differs from the long form's characterize-first (rule 4); rule 15 reconciles the two. Check: the plan names change points and test points before any dependency break, the change comes after both, and where a pin is possible it comes before the break.
@@ -41,8 +41,8 @@ The sequence for one change in code you cannot yet trust: understand, protect, m
 
 1. Write the loop card (below) for the change point. Name the change point first; if you cannot, read until you can.
 2. Protection check: search the test directories for callers of the change point, run those tests if the project's test command is known, and judge trust. Added judgment: tests that assert nothing, are skipped, only check that the call did not throw, or restate the implementation do not count as protection.
-3. If the preserve list has unprotected items, pin them with `legacy-code-characterize` or delegate to `legacy-code-characterization-writer`.
-4. If you cannot write a pin because the code cannot be run, use `legacy-code-find-seam` to name the barrier, then use the implementer for that barrier (`legacy-code-boundary-wrapper`, `legacy-code-collaborator-injector`, `legacy-code-global-encapsulator`, `legacy-code-method-extractor`). This first break is the one production edit allowed before a pin (rule 15), and the pin follows at once.
+3. If the preserve list has unprotected items, pin them with `/legacy-code:characterize` or delegate to `legacy-code-characterization-writer`.
+4. If you cannot write a pin because the code cannot be run, use `/legacy-code:find-seam` to name the barrier, then use the implementer for that barrier (`legacy-code-boundary-wrapper`, `legacy-code-collaborator-injector`, `legacy-code-global-encapsulator`, `legacy-code-method-extractor`). This first break is the one production edit allowed before a pin (rule 15), and the pin follows at once.
 5. Make the behavior change with its own test. For new behavior in fragile code, `legacy-code-sprout-and-wrap` and `legacy-code-sprouter`.
 6. Refactor locally, then stop. Report what changed, which tests ran, what remains unprotected and which temporary seams carry a cleanup path.
 
@@ -92,7 +92,7 @@ Cleanup obligations: none if both seams stay as explicit parameters
 
 ## Related
 
-`legacy-code-plan` writes the card for a requested change; `legacy-code-characterize` and `legacy-code-find-seam` perform steps 3 and 4; `legacy-code-change-separation` judges the finished patch; `legacy-code-protection-reviewer` checks the protection claim; `legacy-code-lead` routes.
+`/legacy-code:plan` writes the card for a requested change; `/legacy-code:characterize` and `/legacy-code:find-seam` perform steps 3 and 4; `legacy-code-change-separation` judges the finished patch; `legacy-code-protection-reviewer` checks the protection claim; `legacy-code-lead` routes.
 
 ## Source
 

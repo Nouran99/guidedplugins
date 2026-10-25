@@ -107,7 +107,7 @@ Because applying a change is an upsert keyed by product id, repeating changes af
 
 ## Related
 
-`data-intensive-apps-source-of-truth` for ownership; `data-intensive-apps-stream-processing` for processors and CDC; `data-intensive-apps-ownership-map` for an inventory; `data-intensive-apps-ownership-reviewer` to review a diff; `data-intensive-apps-derived-view-builder` to implement the rebuild.
+`data-intensive-apps-source-of-truth` for ownership; `data-intensive-apps-stream-processing` for processors and CDC; `/data-intensive-apps:ownership-map` for an inventory; `data-intensive-apps-ownership-reviewer` to review a diff; `data-intensive-apps-derived-view-builder` to implement the rebuild.
 
 ## Source
 

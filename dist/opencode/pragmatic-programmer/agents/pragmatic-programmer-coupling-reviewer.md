@@ -30,7 +30,10 @@ permission:
     "*>*": deny
     "*--output*": deny
     "*--ext-diff*": deny
+    "*--textconv*": deny
     "rg *--pre*": deny
+    "rg *--hostname-bin*": deny
+    "rg *--search-zip*": deny
     "find *-exec*": deny
     "find *-ok*": deny
     "find *-delete*": deny

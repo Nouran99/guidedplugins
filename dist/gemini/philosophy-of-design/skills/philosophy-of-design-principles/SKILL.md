@@ -42,19 +42,19 @@ Names such as `philosophy-of-design-lead`, `philosophy-of-design-final-gate` and
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `philosophy-of-design-lead` (delegate) |
-| Review the working diff or named paths | `philosophy-of-design-review` |
-| Complexity health of a directory or repository | `philosophy-of-design-audit` |
-| Which modules are shallow, ranked | `philosophy-of-design-depth-map` |
-| A change felt awkward, touched many files, or was hard to follow | `philosophy-of-design-symptom-trace`, `philosophy-of-design-complexity-symptoms`, `philosophy-of-design-complexity-reviewer` |
-| Plan a non-trivial change before editing | `philosophy-of-design-plan` |
-| Choosing between two designs for an interface or module | `philosophy-of-design-design-twice`, `philosophy-of-design-design-alternatives` |
-| Pin down a module's contract before writing the body | `philosophy-of-design-comments-first`, `philosophy-of-design-contract-writer` |
-| Resolve named findings | `philosophy-of-design-fix` |
-| Understand one rule or its exceptions | `philosophy-of-design-explain-rule` |
-| Walk the final checklist while working | `philosophy-of-design-checklist` |
+| Review the working diff or named paths | `/philosophy-of-design:review` |
+| Complexity health of a directory or repository | `/philosophy-of-design:audit` |
+| Which modules are shallow, ranked | `/philosophy-of-design:depth-map` |
+| A change felt awkward, touched many files, or was hard to follow | `/philosophy-of-design:symptom-trace`, `philosophy-of-design-complexity-symptoms`, `philosophy-of-design-complexity-reviewer` |
+| Plan a non-trivial change before editing | `/philosophy-of-design:plan` |
+| Choosing between two designs for an interface or module | `/philosophy-of-design:design-twice`, `philosophy-of-design-design-alternatives` |
+| Pin down a module's contract before writing the body | `/philosophy-of-design:comments-first`, `philosophy-of-design-contract-writer` |
+| Resolve named findings | `/philosophy-of-design:fix` |
+| Understand one rule or its exceptions | `/philosophy-of-design:explain-rule` |
+| Walk the final checklist while working | `/philosophy-of-design:checklist` |
 | Strict pass or fail before commit or pull request | `philosophy-of-design-final-gate` (delegate) |
 | Designing a module so its interface is small and the work behind it is real | `philosophy-of-design-deep-modules`, `philosophy-of-design-depth-reviewer` |
-| A service, wrapper, facade or helper only forwards calls | `philosophy-of-design-pass-through-layers`, `philosophy-of-design-collapse-layer`, `philosophy-of-design-module-deepener` |
+| A service, wrapper, facade or helper only forwards calls | `philosophy-of-design-pass-through-layers`, `/philosophy-of-design:collapse-layer`, `philosophy-of-design-module-deepener` |
 | Format, storage shape, protocol or representation known by several modules | `philosophy-of-design-information-hiding`, `philosophy-of-design-leakage-reviewer` |
 | Shape of a public function, method or API | `philosophy-of-design-interface-design`, `philosophy-of-design-interface-reviewer`, `philosophy-of-design-interface-simplifier` |
 | Boolean or mode parameters, configuration knobs, callbacks added to avoid a decision | `philosophy-of-design-flags-and-knobs` |
@@ -69,12 +69,12 @@ Names such as `philosophy-of-design-lead`, `philosophy-of-design-final-gate` and
 | Naming, conventions across related operations, surprising behavior | `philosophy-of-design-naming-and-obviousness`, `philosophy-of-design-naming-reviewer` |
 | Optimization, caching, or adopting a pattern, framework or paradigm | `philosophy-of-design-performance-and-trends`, `philosophy-of-design-evidence-reviewer` |
 | Tests that reach into internals or force exposure | `philosophy-of-design-testing-through-interfaces`, `philosophy-of-design-test-contract-reviewer`, `philosophy-of-design-test-writer` |
-| Session-long behavior: teach the reasoning | `philosophy-of-design-mode-mentor` |
-| Session-long behavior: ranked findings only | `philosophy-of-design-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `philosophy-of-design-mode-pair` |
-| Session-long behavior: result first, few lines | `philosophy-of-design-mode-terse` |
-| Session-long behavior: design before code, two designs for non-trivial choices | `philosophy-of-design-mode-architect` |
-| Session-long behavior: end every code answer with a complexity ledger | `philosophy-of-design-mode-complexity-ledger` |
+| Session-long behavior: teach the reasoning | `/philosophy-of-design:mode-mentor` |
+| Session-long behavior: ranked findings only | `/philosophy-of-design:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/philosophy-of-design:mode-pair` |
+| Session-long behavior: result first, few lines | `/philosophy-of-design:mode-terse` |
+| Session-long behavior: design before code, two designs for non-trivial choices | `/philosophy-of-design:mode-architect` |
+| Session-long behavior: end every code answer with a complexity ledger | `/philosophy-of-design:mode-complexity-ledger` |
 
 ## Priority
 
@@ -101,7 +101,7 @@ The first eight are the source's review checklist; the last two come from its co
 
 Added judgment: items 4 and 5 ask for a reduction or a removal. Read them as "not worse" when the change touches no call sites or no public surface, or mark them n/a with the reason. Treating an item without evidence as a failure is this plugin's own gate rule; the source only says that any no means revise.
 
-If any answer is no, revise before shipping. `philosophy-of-design-checklist` walks this list with evidence, and `philosophy-of-design-final-gate` returns PASS or FAIL on the first eight. When you report the work, say briefly what changed, which tests or checks ran, and any unresolved trade-off.
+If any answer is no, revise before shipping. `/philosophy-of-design:checklist` walks this list with evidence, and `philosophy-of-design-final-gate` returns PASS or FAIL on the first eight. When you report the work, say briefly what changed, which tests or checks ran, and any unresolved trade-off.
 
 ## Source
 

@@ -41,18 +41,18 @@ Names such as `pragmatic-programmer-lead`, `pragmatic-programmer-final-gate` and
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `pragmatic-programmer-lead` (delegate) |
-| Review the working diff or named paths | `pragmatic-programmer-review` |
-| Rate each concern across a tree | `pragmatic-programmer-audit` |
-| Plan a non-trivial change before editing | `pragmatic-programmer-plan` |
-| Plan one new capability as a thin end-to-end slice | `pragmatic-programmer-tracer-plan`, `pragmatic-programmer-tracer-bullets`, `pragmatic-programmer-slice-reviewer` |
-| Resolve specific findings | `pragmatic-programmer-fix` |
-| Understand one rule or its strength | `pragmatic-programmer-explain-rule` |
-| Walk the review checklist while working | `pragmatic-programmer-checklist` |
+| Review the working diff or named paths | `/pragmatic-programmer:review` |
+| Rate each concern across a tree | `/pragmatic-programmer:audit` |
+| Plan a non-trivial change before editing | `/pragmatic-programmer:plan` |
+| Plan one new capability as a thin end-to-end slice | `/pragmatic-programmer:tracer-plan`, `pragmatic-programmer-tracer-bullets`, `pragmatic-programmer-slice-reviewer` |
+| Resolve specific findings | `/pragmatic-programmer:fix` |
+| Understand one rule or its strength | `/pragmatic-programmer:explain-rule` |
+| Walk the review checklist while working | `/pragmatic-programmer:checklist` |
 | Strict pass or fail before commit or pull request | `pragmatic-programmer-final-gate` (delegate) |
 | How far to take a change, what to report, when to stop | `pragmatic-programmer-ownership` |
-| Small decay in the code you touched | `pragmatic-programmer-broken-windows`, `pragmatic-programmer-decay-reviewer`, `pragmatic-programmer-tidy-touched` |
+| Small decay in the code you touched | `pragmatic-programmer-broken-windows`, `pragmatic-programmer-decay-reviewer`, `/pragmatic-programmer:tidy-touched` |
 | The same rule, mapping or validation in more than one place | `pragmatic-programmer-dry-knowledge`, `pragmatic-programmer-knowledge-duplication-reviewer`, `pragmatic-programmer-knowledge-consolidator` |
-| Map every place each fact lives across a tree | `pragmatic-programmer-knowledge-map` |
+| Map every place each fact lives across a tree | `/pragmatic-programmer:knowledge-map` |
 | One change needs edits in many places, overlapping responsibilities | `pragmatic-programmer-orthogonality`, `pragmatic-programmer-coupling-reviewer` |
 | Reach-through call chains, fixed call order | `pragmatic-programmer-shy-code`, `pragmatic-programmer-coupling-reviewer` |
 | Globals, caches, ambient context, threads, async, locks | `pragmatic-programmer-shared-state`, `pragmatic-programmer-shared-state-reviewer` |
@@ -61,21 +61,21 @@ Names such as `pragmatic-programmer-lead`, `pragmatic-programmer-final-gate` and
 | How failures travel: context, retryable or permanent, containment | `pragmatic-programmer-error-recovery`, `pragmatic-programmer-failure-path-reviewer` |
 | Vendor, database, platform, format or policy that may change | `pragmatic-programmer-reversible-choices`, `pragmatic-programmer-reversibility-reviewer` |
 | A request that names a solution, a spec that keeps growing | `pragmatic-programmer-requirements` |
-| Throwaway experiment, spike, proof of concept | `pragmatic-programmer-prototypes`, `pragmatic-programmer-prototype-charter` |
-| Prototype, scaffold or generated code about to become production | `pragmatic-programmer-provenance-reviewer`, `pragmatic-programmer-prototype-charter` |
+| Throwaway experiment, spike, proof of concept | `pragmatic-programmer-prototypes`, `/pragmatic-programmer:prototype-charter` |
+| Prototype, scaffold or generated code about to become production | `pragmatic-programmer-provenance-reviewer`, `/pragmatic-programmer:prototype-charter` |
 | Generated code, scaffolds, rule files, metaprogramming | `pragmatic-programmer-generators-and-dsls`, `pragmatic-programmer-provenance-reviewer` |
 | Manual steps, release rituals, README step lists | `pragmatic-programmer-automation`, `pragmatic-programmer-automation-reviewer`, `pragmatic-programmer-automation-scripter` |
-| Scan docs, scripts and CI for manual rituals | `pragmatic-programmer-manual-step-hunt` |
+| Scan docs, scripts and CI for manual rituals | `/pragmatic-programmer:manual-step-hunt` |
 | Slow, flaky or late checks, failures that are hard to see | `pragmatic-programmer-feedback-loops`, `pragmatic-programmer-feedback-loop-reviewer` |
 | Which tests a change needs, a bug found by a person | `pragmatic-programmer-test-portfolio`, `pragmatic-programmer-test-portfolio-reviewer` |
-| A defect, intermittent failure or behavior nobody can explain | `pragmatic-programmer-debugging`, `pragmatic-programmer-debug-session`, `pragmatic-programmer-bug-fixer` |
+| A defect, intermittent failure or behavior nobody can explain | `pragmatic-programmer-debugging`, `/pragmatic-programmer:debug-session`, `pragmatic-programmer-bug-fixer` |
 | Names, comments, docs, commit messages, scripts that must carry intent | `pragmatic-programmer-code-communication`, `pragmatic-programmer-communication-reviewer` |
-| Session-long behavior: teach the reasoning | `pragmatic-programmer-mode-mentor` |
-| Session-long behavior: ranked findings only | `pragmatic-programmer-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `pragmatic-programmer-mode-pair` |
-| Session-long behavior: result first, few lines | `pragmatic-programmer-mode-terse` |
-| Session-long behavior: thinnest real path first | `pragmatic-programmer-mode-tracer-first` |
-| Session-long behavior: ownership block after every task | `pragmatic-programmer-mode-owner` |
+| Session-long behavior: teach the reasoning | `/pragmatic-programmer:mode-mentor` |
+| Session-long behavior: ranked findings only | `/pragmatic-programmer:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/pragmatic-programmer:mode-pair` |
+| Session-long behavior: result first, few lines | `/pragmatic-programmer:mode-terse` |
+| Session-long behavior: thinnest real path first | `/pragmatic-programmer:mode-tracer-first` |
+| Session-long behavior: ownership block after every task | `/pragmatic-programmer:mode-owner` |
 
 ## Priority
 

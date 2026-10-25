@@ -30,7 +30,7 @@ An agent asked to add behavior tends to stop when the test passes. The names it 
 2. Read `references/full.md` only when the mini rules do not settle a trade-off. Name the section you need.
 3. `references/nano.md` is the compact always-on form; the same text ships as dist/rules/clean-code/AGENTS.nano.md in the guided-plugins repository, for an AGENTS.md file.
 
-Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source. Text marked "compact checklist" comes from `mini.md` only and is not in `full.md`. Examples are splitting a function by phase (`clean-code-function-shape`), modelling a grab-bag argument list as a concept (`clean-code-function-contracts`), enforcing call order through types (`clean-code-class-design`) and the ranking rule: when touching code, remove the smell that most increases the cost of the next change. `clean-code-boy-scout`, `clean-code-smell-hunt`, `clean-code-audit` and `clean-code-mode-smell-first` use the ranking rule to choose and order work.
+Modal convention: an unqualified rule is a MUST, `Prefer` is a SHOULD, `Do not`, `Avoid` and `Never` are MUST NOT, unless the user explicitly overrides it. Skills in this plugin keep that strength: where a rule says "Prefer", the skill says "Prefer". Text marked "Added judgment" is this plugin's own heuristic, not a rule of the source. Text marked "compact checklist" comes from `mini.md` only and is not in `full.md`. Examples are splitting a function by phase (`clean-code-function-shape`), modelling a grab-bag argument list as a concept (`clean-code-function-contracts`), enforcing call order through types (`clean-code-class-design`) and the ranking rule: when touching code, remove the smell that most increases the cost of the next change. `/clean-code:boy-scout`, `/clean-code:smell-hunt`, `/clean-code:audit` and `/clean-code:mode-smell-first` use the ranking rule to choose and order work.
 
 ## Subagent roles
 
@@ -41,40 +41,40 @@ Names such as `clean-code-lead`, `clean-code-final-gate` and the `...-reviewer` 
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `clean-code-lead` (delegate) |
-| Review the working diff or named paths | `clean-code-review` |
-| Health picture of a directory or repository | `clean-code-audit` |
-| Find smells and map each to its treatment | `clean-code-smell-hunt`, `clean-code-smell-scanner` for raw metrics |
-| Plan a non-trivial change before editing | `clean-code-plan` |
-| Resolve specific findings | `clean-code-fix` |
-| Clean only the code you touched | `clean-code-boy-scout`, audited by `clean-code-scope-guard` |
-| Understand one rule or its exceptions | `clean-code-explain-rule` |
-| Walk the final checklist while working | `clean-code-checklist` |
+| Review the working diff or named paths | `/clean-code:review` |
+| Health picture of a directory or repository | `/clean-code:audit` |
+| Find smells and map each to its treatment | `/clean-code:smell-hunt`, `clean-code-smell-scanner` for raw metrics |
+| Plan a non-trivial change before editing | `/clean-code:plan` |
+| Resolve specific findings | `/clean-code:fix` |
+| Clean only the code you touched | `/clean-code:boy-scout`, audited by `clean-code-scope-guard` |
+| Understand one rule or its exceptions | `/clean-code:explain-rule` |
+| Walk the final checklist while working | `/clean-code:checklist` |
 | Strict pass or fail before commit or pull request | `clean-code-final-gate` (delegate) |
-| Choosing or fixing identifiers | `clean-code-naming`, `clean-code-naming-reviewer`, `clean-code-vocabulary-audit` for synonym drift across a tree |
-| A function is long, nested or mixes levels | `clean-code-function-shape`, `clean-code-function-reviewer`, `clean-code-extract-till-you-drop`, `clean-code-function-extractor` |
+| Choosing or fixing identifiers | `clean-code-naming`, `clean-code-naming-reviewer`, `/clean-code:vocabulary-audit` for synonym drift across a tree |
+| A function is long, nested or mixes levels | `clean-code-function-shape`, `clean-code-function-reviewer`, `/clean-code:extract-till-you-drop`, `clean-code-function-extractor` |
 | Parameters, flags, side effects, query that mutates | `clean-code-function-contracts`, `clean-code-contract-reviewer` |
 | Comments that narrate, lie or substitute for names | `clean-code-comments`, `clean-code-comment-reviewer` |
 | File layout, ordering, line length, alignment | `clean-code-formatting`, `clean-code-layout-reviewer` |
 | Getter chains, exposed fields, data carrier versus object | `clean-code-data-and-objects`, `clean-code-object-design-reviewer` |
 | A class does too much or changes for many reasons | `clean-code-class-design`, `clean-code-class-design-reviewer` |
 | Exceptions, null returns, cleanup paths | `clean-code-error-handling`, `clean-code-error-handling-reviewer` |
-| Third-party library or service used directly | `clean-code-boundaries`, `clean-code-boundary-reviewer`, `clean-code-learning-tests`, `clean-code-adapter-builder` |
+| Third-party library or service used directly | `clean-code-boundaries`, `clean-code-boundary-reviewer`, `/clean-code:learning-tests`, `clean-code-adapter-builder` |
 | Objects created inside business code, wiring, cross-cutting clutter | `clean-code-system-construction`, `clean-code-construction-reviewer` |
 | Writing or judging a test | `clean-code-clean-tests`, `clean-code-test-quality-reviewer`, `clean-code-test-writer` |
 | Changed behavior without a test, bug fix, skipped tests | `clean-code-tdd-discipline`, `clean-code-test-gap-reviewer` |
 | Threads, async tasks, locks, shutdown, flaky timing | `clean-code-concurrency`, `clean-code-concurrency-reviewer` |
 | Restructuring existing code safely | `clean-code-refactoring-steps`, `clean-code-refactorer` |
-| Rough draft that works and needs shaping | `clean-code-successive-refinement` |
+| Rough draft that works and needs shaping | `/clean-code:successive-refinement` |
 | Choosing between designs, deciding whether an abstraction earns its place | `clean-code-emergent-design`, `clean-code-simplicity-reviewer` |
 | Duplication, dead code, wrappers that only delegate | `clean-code-smells-redundancy` |
 | One change that touches many files, base class that knows its subclasses, repeated type switches | `clean-code-smells-coupling` |
 | Code that does not do the obvious thing, wrong edge behavior, disabled checks | `clean-code-smells-surprise` |
-| Session-long behavior: teach the reasoning | `clean-code-mode-mentor` |
-| Session-long behavior: ranked findings only | `clean-code-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `clean-code-mode-pair` |
-| Session-long behavior: result first, few lines | `clean-code-mode-terse` |
-| Session-long behavior: name the smell before every edit | `clean-code-mode-smell-first` |
-| Session-long behavior: report what was left cleaner and what was not touched | `clean-code-mode-campsite` |
+| Session-long behavior: teach the reasoning | `/clean-code:mode-mentor` |
+| Session-long behavior: ranked findings only | `/clean-code:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/clean-code:mode-pair` |
+| Session-long behavior: result first, few lines | `/clean-code:mode-terse` |
+| Session-long behavior: name the smell before every edit | `/clean-code:mode-smell-first` |
+| Session-long behavior: report what was left cleaner and what was not touched | `/clean-code:mode-campsite` |
 
 ## Priority
 

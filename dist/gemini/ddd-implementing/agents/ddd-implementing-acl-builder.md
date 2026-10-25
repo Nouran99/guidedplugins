@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-implementing-acl-builder
-description: "Implementer that wraps a legacy, vendor, partner or other-context model behind a narrow port in local language with a translator and its tests, then migrates callers one at a time. Use when reviews find foreign types, status codes or schemas inside domain or application code."
+description: "Implementer that wraps a legacy, vendor, partner or other-context model behind a narrow port in local language with a translator and its tests, then migrates callers one at a time."
 tools:
   - list_directory
   - read_file

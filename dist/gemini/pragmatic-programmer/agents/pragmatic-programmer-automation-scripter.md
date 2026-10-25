@@ -1,7 +1,7 @@
 ---
 kind: local
 name: pragmatic-programmer-automation-scripter
-description: "Implementer that replaces a manual ritual with a versioned, inspectable script or build target that checks its prerequisites and defaults to safe. Use when a review or manual-step-hunt names a ritual to automate."
+description: "Implementer that replaces a manual ritual with a versioned, inspectable script or build target that checks its prerequisites and defaults to safe."
 tools:
   - list_directory
   - read_file

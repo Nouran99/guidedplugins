@@ -29,7 +29,7 @@ Owns the link between aggregates: how one points at another (by identity), what 
 5. **[MUST NOT] Stretch transactions across many aggregates out of convenience, and do not update many aggregates in one transaction by default.** "It is easier in one commit" is not a reason. Check: no transaction wraps a loop over aggregates, and transaction scope is reviewed whenever a use case touches more than one repository.
 6. **[MUST] Use events, policies or process coordination when consistency can be eventual.** The rule applies where the business accepts the delay (rule 9); where an immediate invariant spans the aggregates, rules 4 and 8 govern instead. Check: the reaction is a named policy ("when an order ships, remove stock") rather than inline code in the first use case.
 7. **[MUST NOT] Bake direct cross-aggregate navigation into the model.** `order.customer().address().city()` ties three aggregates together. Check: a model method does not call methods of another aggregate it holds; it receives the data it needs as arguments.
-8. **[Compact checklist] When one transaction wants several aggregates, list the immediate invariants that require it; otherwise coordinate by identity, events, policies, processes or application services.** Check: the list exists (run `ddd-implementing-invariant-inventory`), and it names the data each invariant spans.
+8. **[Compact checklist] When one transaction wants several aggregates, list the immediate invariants that require it; otherwise coordinate by identity, events, policies, processes or application services.** Check: the list exists (run `/ddd-implementing:invariant-inventory`), and it names the data each invariant spans.
 9. **[Added judgment] Ask whose job it is to make the two consistent.** If the business accepts that the second aggregate is updated seconds later, the invariant is eventual. Check: the domain expert confirmed the acceptable delay in the change description.
 10. **[Added judgment] Make the second step safe to repeat.** Delivery may duplicate or reorder events; a handler keyed by the event's identity, or a naturally idempotent operation, makes redelivery harmless. Check: running the handler twice with the same event changes the second aggregate once. See the sibling plugin `data-intensive-apps` for delivery mechanics.
 
@@ -121,7 +121,7 @@ If publication can fail after the commit, a transactional outbox is the usual re
 
 ## Related
 
-`ddd-implementing-aggregate-boundaries` for the inside; `ddd-implementing-domain-events` for the event design; `ddd-implementing-application-services` for where the transaction is owned; `ddd-implementing-invariant-inventory` for the proof; `ddd-implementing-transaction-reviewer` to review a diff; `ddd-implementing-identity-reference-converter` and `ddd-implementing-transaction-splitter` to make the changes.
+`ddd-implementing-aggregate-boundaries` for the inside; `ddd-implementing-domain-events` for the event design; `ddd-implementing-application-services` for where the transaction is owned; `/ddd-implementing:invariant-inventory` for the proof; `ddd-implementing-transaction-reviewer` to review a diff; `ddd-implementing-identity-reference-converter` and `ddd-implementing-transaction-splitter` to make the changes.
 
 ## Source
 

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: code-complete-bug-fixer
-description: "Implementer that fixes one reproduced defect by diagnosis: reproduce, isolate, explain, fix the root cause with the smallest change, add the regression test, verify. Use when a failure has an unknown cause and a fix is wanted, not just an opinion."
+description: "Implementer that fixes one reproduced defect by diagnosis: reproduce, isolate, explain, fix the root cause with the smallest change, add the regression test, verify."
 tools:
   - list_directory
   - read_file

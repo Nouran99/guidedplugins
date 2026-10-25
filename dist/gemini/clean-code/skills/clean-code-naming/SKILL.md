@@ -10,7 +10,7 @@ metadata:
 
 # Naming
 
-Owns the names family of the smell catalog: vague or misleading names, functions whose name cannot be trusted without reading the algorithm, and magic numbers. Comments that exist only because a name is weak belong to `clean-code-comments`; synonym drift across a whole tree belongs to `clean-code-vocabulary-audit`.
+Owns the names family of the smell catalog: vague or misleading names, functions whose name cannot be trusted without reading the algorithm, and magic numbers. Comments that exist only because a name is weak belong to `clean-code-comments`; synonym drift across a whole tree belongs to `/clean-code:vocabulary-audit`.
 
 ## When to use
 
@@ -96,7 +96,7 @@ The comment is gone because the name now carries it, and the unit is part of the
 
 ## Related
 
-`clean-code-comments` for text that remains after names are fixed; `clean-code-function-contracts` when a name hides an effect; `clean-code-vocabulary-audit` for tree-wide synonym drift; `clean-code-naming-reviewer` to review a diff.
+`clean-code-comments` for text that remains after names are fixed; `clean-code-function-contracts` when a name hides an effect; `/clean-code:vocabulary-audit` for tree-wide synonym drift; `clean-code-naming-reviewer` to review a diff.
 
 ## Source
 

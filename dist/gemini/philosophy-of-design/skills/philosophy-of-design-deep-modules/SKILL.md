@@ -96,7 +96,7 @@ Callers now make one call and cannot get the check-then-insert race wrong, becau
 
 ## Related
 
-`philosophy-of-design-pass-through-layers` for the opposite case; `philosophy-of-design-interface-design` for the shape of each element; `philosophy-of-design-information-hiding` for what to hide; `philosophy-of-design-depth-reviewer` to review a diff; `philosophy-of-design-depth-map` for an inventory.
+`philosophy-of-design-pass-through-layers` for the opposite case; `philosophy-of-design-interface-design` for the shape of each element; `philosophy-of-design-information-hiding` for what to hide; `philosophy-of-design-depth-reviewer` to review a diff; `/philosophy-of-design:depth-map` for an inventory.
 
 ## Source
 

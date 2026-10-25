@@ -96,7 +96,7 @@ ALTER TABLE orders DROP COLUMN shipping_fee;
 
 ## Related
 
-`release-it-restartable-automation` for the scripts; `release-it-startup-and-health` for the new process; `release-it-api-contracts` for interface compatibility; `release-it-operational-controls` for who may run the pipeline and how it is stopped; `release-it-plan` to sequence the change; `release-it-launch-check` for a go or no-go; `release-it-deployment-reviewer` to review a diff.
+`release-it-restartable-automation` for the scripts; `release-it-startup-and-health` for the new process; `release-it-api-contracts` for interface compatibility; `release-it-operational-controls` for who may run the pipeline and how it is stopped; `/release-it:plan` to sequence the change; `/release-it:launch-check` for a go or no-go; `release-it-deployment-reviewer` to review a diff.
 
 ## Source
 

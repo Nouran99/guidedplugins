@@ -17,7 +17,7 @@ Work in the current session, using this file and the files it names. Do not edit
 
 ## Method
 
-Use Glob and Grep for listing and searching and Read for files; the only Bash commands pre-approved here are the read-only `git diff`, `git status`, `git log` and `git show`. For each item, look for evidence and classify it **evidenced** (name the `file:line` or document), **not evidenced** (you looked and found nothing), or **n/a** (with a reason). You cannot observe a running system from a repository, so an item that needs a result (a capacity test run, a game day held) is evidenced only if an artifact records it. The source says QA success is not proof of production readiness, so a passing functional test suite alone does not evidence any item here; the code, configuration or document that implements the item does.
+Use your search and file-reading tools for listing, searching and reading; in the shell use only these read-only commands: `git diff`, `git status`, `git log` and `git show`. For each item, look for evidence and classify it **evidenced** (name the `file:line` or document), **not evidenced** (you looked and found nothing), or **n/a** (with a reason). You cannot observe a running system from a repository, so an item that needs a result (a capacity test run, a game day held) is evidenced only if an artifact records it. The source says QA success is not proof of production readiness, so a passing functional test suite alone does not evidence any item here; the code, configuration or document that implements the item does.
 
 A. Release
 1. A rollback or roll-forward path for this release exists and covers data changes. (`$release-it:release-risk`)

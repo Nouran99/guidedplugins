@@ -95,7 +95,7 @@ The restatement keeps the cache as an option, asks the one question that changes
 
 ## Related
 
-`pragmatic-programmer-tracer-bullets` and `pragmatic-programmer-tracer-plan` for the slice; `pragmatic-programmer-prototypes` for experiments; `pragmatic-programmer-reversible-choices` for choices that may change; `pragmatic-programmer-plan` to carry the restated need into a plan.
+`pragmatic-programmer-tracer-bullets` and `/pragmatic-programmer:tracer-plan` for the slice; `pragmatic-programmer-prototypes` for experiments; `pragmatic-programmer-reversible-choices` for choices that may change; `/pragmatic-programmer:plan` to carry the restated need into a plan.
 
 ## Source
 

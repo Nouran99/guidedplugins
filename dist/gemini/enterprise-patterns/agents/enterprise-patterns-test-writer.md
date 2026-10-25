@@ -1,7 +1,7 @@
 ---
 kind: local
 name: enterprise-patterns-test-writer
-description: "Implementer that writes tests at the layer that owns each behavior: domain rules without a database, data-access round trips, workflow commit and rollback, interleaved edits, boundary mapping and gateway stubs. Use when a change adds behavior or a review shows misplaced or missing tests."
+description: "Implementer that writes tests at the layer that owns each behavior: domain rules without a database, data-access round trips, workflow commit and rollback, interleaved edits, boundary mapping and gateway stubs."
 tools:
   - list_directory
   - read_file

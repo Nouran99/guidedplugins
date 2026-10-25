@@ -1,7 +1,7 @@
 ---
 kind: local
 name: release-it-call-hardener
-description: "Implementer that gives named outbound call sites explicit time limits, a single safe and bounded retry owner, and response checks, in small test-backed steps. Use when review findings call for timeouts, retry fixes or response validation at specific call sites."
+description: "Implementer that gives named outbound call sites explicit time limits, a single safe and bounded retry owner, and response checks, in small test-backed steps."
 tools:
   - list_directory
   - read_file
@@ -20,7 +20,7 @@ You change outbound call sites so they cannot wait forever or repeat unsafely: a
 
 ## Inputs
 
-You need the findings to resolve (from `release-it-timeout-reviewer`, `release-it-retry-reviewer`, `release-it-data-boundary-reviewer`, `release-it-review` or the proposal of `release-it-call-chain-budget`) and the call sites or files in scope. If either is missing, ask once, then stop.
+You need the findings to resolve (from `release-it-timeout-reviewer`, `release-it-retry-reviewer`, `release-it-data-boundary-reviewer`, `/release-it:review` or the proposal of `/release-it:call-chain-budget`) and the call sites or files in scope. If either is missing, ask once, then stop.
 If the timeout and retry rules are not in your context, read `${extensionPath}/skills/release-it-timeouts/SKILL.md` and `${extensionPath}/skills/release-it-retries/SKILL.md` first.
 
 ## Process

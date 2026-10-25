@@ -42,7 +42,7 @@ Some code cannot be reached through a parameter, a constructor or an interface: 
 2. Choose the least intrusive last-resort kind the language offers; prefer subclass over build-level if both work, since the subclass is visible in code.
 3. Create the seam as narrowly as rule 12 says and add the exit marker.
 4. Write the test through it and run all tests.
-5. Record the seam in the report with its exit; `legacy-code-seam-ledger` will list it later.
+5. Record the seam in the report with its exit; `/legacy-code:seam-ledger` will list it later.
 6. When a cleaner route appears, retire the seam (`legacy-code-seam-cleaner`).
 
 ## Example
@@ -115,7 +115,7 @@ The exit, once callers can pass a collaborator: a `RateSource` interface with on
 
 ## Related
 
-`legacy-code-seams` for the default order; `legacy-code-construction-barriers` for the factory-method technique; `legacy-code-seam-reviewer` to review a diff; `legacy-code-seam-ledger` and `legacy-code-seam-cleaner` for existing seams; `legacy-code-characterization-tests` for probes.
+`legacy-code-seams` for the default order; `legacy-code-construction-barriers` for the factory-method technique; `legacy-code-seam-reviewer` to review a diff; `/legacy-code:seam-ledger` and `legacy-code-seam-cleaner` for existing seams; `legacy-code-characterization-tests` for probes.
 
 ## Source
 

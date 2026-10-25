@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-distilled-behavior-mover
-description: "Implementer that moves a business decision from a service, controller or helper into the entity, value object or policy that should own it. Use when findings show an anemic model or a service holding business rules and changes were requested."
+description: "Implementer that moves a business decision from a service, controller or helper into the entity, value object or policy that should own it."
 tools:
   - list_directory
   - read_file

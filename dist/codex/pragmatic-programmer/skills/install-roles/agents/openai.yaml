@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install The Pragmatic Programmer roles"
+  short_description: "Installs the 20 subagent roles of this plugin into Codex."
+  default_prompt: "Use $pragmatic-programmer:install-roles."
+policy:
+  allow_implicit_invocation: false

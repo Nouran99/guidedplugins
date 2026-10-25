@@ -33,7 +33,7 @@ Provenance labels used throughout: unlabelled rules are stated in `full.md`. **C
 
 ## Subagent roles
 
-Names such as `data-intensive-apps-lead`, `data-intensive-apps-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs data-intensive-apps` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
+Names such as `data-intensive-apps-lead`, `data-intensive-apps-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles, which a plugin cannot switch on by itself: run `$data-intensive-apps:install-roles` once, restart Codex, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

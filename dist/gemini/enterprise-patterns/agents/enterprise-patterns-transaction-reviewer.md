@@ -1,7 +1,7 @@
 ---
 kind: local
 name: enterprise-patterns-transaction-reviewer
-description: "Reviewer of transaction ownership and write coordination: commits in helpers, ad hoc saves, remote calls inside a transaction, surprising ORM flush timing, and workflows held in one transaction. Use proactively after edits that save, commit, open sessions or call other systems."
+description: "Reviewer of transaction ownership and write coordination: commits in helpers, ad hoc saves, remote calls inside a transaction, surprising ORM flush timing, and workflows held in one transaction."
 tools:
   - list_directory
   - read_file
@@ -10,7 +10,7 @@ tools:
   - run_shell_command
 max_turns: 20
 ---
-Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Gemini CLI cannot enforce this for a subagent that has a shell, so you are responsible for keeping to it.
+Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. The extension also ships policy rules that deny the write tools and any other shell command for this role.
 
 Before you start, read these skills: `${extensionPath}/skills/enterprise-patterns-transactions-and-unit-of-work/SKILL.md`.
 

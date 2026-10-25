@@ -100,7 +100,7 @@ The caller wanted "draft is not in the set"; that was already true, so the failu
 
 ## Related
 
-`philosophy-of-design-generality-and-special-cases`; `philosophy-of-design-pull-complexity-down`; `philosophy-of-design-comments-as-design` for stating the contract; `philosophy-of-design-exception-reviewer` to review; `philosophy-of-design-fix` to apply a confirmed change.
+`philosophy-of-design-generality-and-special-cases`; `philosophy-of-design-pull-complexity-down`; `philosophy-of-design-comments-as-design` for stating the contract; `philosophy-of-design-exception-reviewer` to review; `/philosophy-of-design:fix` to apply a confirmed change.
 
 ## Source
 

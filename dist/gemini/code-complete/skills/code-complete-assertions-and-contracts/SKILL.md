@@ -103,7 +103,7 @@ Python removes `assert` statements when run with `-O`; that is why `parse_percen
 
 ## Related
 
-`code-complete-trust-boundaries` for external input; `code-complete-error-handling` for expected failures; `code-complete-data-types` for types that make invalid states unrepresentable; `code-complete-test-matrix` to derive contract-based cases; `code-complete-contract-reviewer` to review a diff; `code-complete-boundary-hardener` to add missing checks.
+`code-complete-trust-boundaries` for external input; `code-complete-error-handling` for expected failures; `code-complete-data-types` for types that make invalid states unrepresentable; `/code-complete:test-matrix` to derive contract-based cases; `code-complete-contract-reviewer` to review a diff; `code-complete-boundary-hardener` to add missing checks.
 
 ## Source
 

@@ -44,36 +44,36 @@ Names such as `legacy-code-lead`, `legacy-code-final-gate` and the `...-reviewer
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `legacy-code-lead` (delegate) |
-| Review the working diff or named paths | `legacy-code-review` |
-| Rate legacy risk across a directory or repository | `legacy-code-audit` |
-| Plan a change in untested code before editing | `legacy-code-plan`, `legacy-code-legacy-loop` |
-| Resolve specific findings | `legacy-code-fix` |
-| Understand one rule or its strength | `legacy-code-explain-rule` |
-| Walk the nine review questions while working | `legacy-code-checklist` |
+| Review the working diff or named paths | `/legacy-code:review` |
+| Rate legacy risk across a directory or repository | `/legacy-code:audit` |
+| Plan a change in untested code before editing | `/legacy-code:plan`, `legacy-code-legacy-loop` |
+| Resolve specific findings | `/legacy-code:fix` |
+| Understand one rule or its strength | `/legacy-code:explain-rule` |
+| Walk the nine review questions while working | `/legacy-code:checklist` |
 | Strict pass or fail before commit or pull request | `legacy-code-final-gate` (delegate) |
-| Current behavior is uncertain and must be pinned | `legacy-code-characterization-tests`, `legacy-code-characterize`, `legacy-code-characterization-writer`, `legacy-code-protection-reviewer` |
+| Current behavior is uncertain and must be pinned | `legacy-code-characterization-tests`, `/legacy-code:characterize`, `legacy-code-characterization-writer`, `legacy-code-protection-reviewer` |
 | Choosing test level, writing tests for the requested change, testing through a seam | `legacy-code-focused-tests`, `legacy-code-test-level-reviewer` |
-| Where a seam should go and what it is for | `legacy-code-seams`, `legacy-code-find-seam`, `legacy-code-seam-reviewer` |
-| Impact of a change is unclear, choose what to test | `legacy-code-test-points`, `legacy-code-effect-sketch` |
-| Code is too tangled to understand | `legacy-code-scratch-refactoring`, `legacy-code-mode-explorer` |
+| Where a seam should go and what it is for | `legacy-code-seams`, `/legacy-code:find-seam`, `legacy-code-seam-reviewer` |
+| Impact of a change is unclear, choose what to test | `legacy-code-test-points`, `/legacy-code:effect-sketch` |
+| Code is too tangled to understand | `legacy-code-scratch-refactoring`, `/legacy-code:mode-explorer` |
 | Clock, randomness, environment variables, thread-local state, current user or request | `legacy-code-hidden-inputs`, `legacy-code-hidden-input-reviewer`, `legacy-code-boundary-wrapper` |
 | File writes, network calls, process exits, database writes, messages, logging as control flow | `legacy-code-hard-outputs`, `legacy-code-hard-output-reviewer`, `legacy-code-boundary-wrapper` |
 | Constructor does real work, collaborators created inside methods, class cannot be built in a test | `legacy-code-construction-barriers`, `legacy-code-construction-reviewer`, `legacy-code-collaborator-injector` |
 | Static calls, singletons, global configuration | `legacy-code-static-and-global`, `legacy-code-static-global-reviewer`, `legacy-code-global-encapsulator` |
 | Concrete or oversized dependency blocks substitution | `legacy-code-substitution-seams`, `legacy-code-collaborator-injector` |
 | Considering subclass-and-override, link, preprocessing, import, template or text redefinition seams | `legacy-code-last-resort-seams`, `legacy-code-seam-reviewer` |
-| Test-only structure is already in the tree | `legacy-code-seam-ledger`, `legacy-code-seam-cleaner` |
+| Test-only structure is already in the tree | `/legacy-code:seam-ledger`, `legacy-code-seam-cleaner` |
 | New behavior must go into fragile code | `legacy-code-sprout-and-wrap`, `legacy-code-sprouter`, `legacy-code-sprout-opportunity-reviewer` |
 | Long method, large class, tangled branches | `legacy-code-large-methods`, `legacy-code-large-method-reviewer`, `legacy-code-method-extractor` |
 | Decisions trapped in handlers, callbacks, framework entry points or database-heavy code | `legacy-code-policy-vs-mechanism`, `legacy-code-policy-mechanism-reviewer`, `legacy-code-method-extractor` |
 | A rewrite, wholesale replacement or cosmetic cleanup is proposed | `legacy-code-rewrite-pressure` |
-| A patch mixes behavior change, structure and cleanup | `legacy-code-change-separation`, `legacy-code-change-intent-reviewer`, `legacy-code-split-patch` |
-| Session-long behavior: teach the reasoning | `legacy-code-mode-mentor` |
-| Session-long behavior: ranked findings only | `legacy-code-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `legacy-code-mode-pair` |
-| Session-long behavior: result first, few lines | `legacy-code-mode-terse` |
-| Session-long behavior: pin before every change | `legacy-code-mode-characterize-first` |
-| Session-long behavior: read-only understanding, no patch | `legacy-code-mode-explorer` |
+| A patch mixes behavior change, structure and cleanup | `legacy-code-change-separation`, `legacy-code-change-intent-reviewer`, `/legacy-code:split-patch` |
+| Session-long behavior: teach the reasoning | `/legacy-code:mode-mentor` |
+| Session-long behavior: ranked findings only | `/legacy-code:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/legacy-code:mode-pair` |
+| Session-long behavior: result first, few lines | `/legacy-code:mode-terse` |
+| Session-long behavior: pin before every change | `/legacy-code:mode-characterize-first` |
+| Session-long behavior: read-only understanding, no patch | `/legacy-code:mode-explorer` |
 
 ## Priority
 

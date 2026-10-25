@@ -31,7 +31,7 @@ Owns the arrows between components: cycles, stability and abstractness. Directio
 7. **Measure instability as a search aid.** Added judgment (the book's metric, not in the vendored rule set): `I = Ce / (Ca + Ce)`, where `Ce` counts dependencies from the component to classes in other components and `Ca` counts dependencies from other components to classes in it. `0` is maximally stable, `1` maximally unstable. Dependencies should lead toward lower `I`. Check: for each edge from A to B, `I(B) <= I(A)`. A component with no dependencies in either direction has no defined value; skip it.
 8. **Measure abstractness as a second aid.** Added judgment (the book's metric): `A = abstract classes or interfaces / all classes` in the component. A stable component with `A` near zero is hard to change safely, because many depend on it and nothing in it can be extended; an unstable component with `A` near one is abstraction nobody uses. A rough check is `D = |A + I - 1|`; a component with a large `D` deserves a look.
 9. **Use the numbers to find components to read, not to grade them.** Added judgment: a stable, concrete component that never changes (a vetted value type) is harmless. The risk is a component that is both depended upon and changing. Check: for each flagged component, ask how often it changed in the recent history.
-10. **Make the component boundaries enforceable, so a new cycle fails a build.** `[MUST]` Use package structure, tests, dependency rules or build constraints. Added judgment: add the stable-direction check only where the team has chosen to enforce it, since that rule is `SHOULD NOT`. Check: a new cycle makes a check fail (`clean-architecture-enforce-boundaries`).
+10. **Make the component boundaries enforceable, so a new cycle fails a build.** `[MUST]` Use package structure, tests, dependency rules or build constraints. Added judgment: add the stable-direction check only where the team has chosen to enforce it, since that rule is `SHOULD NOT`. Check: a new cycle makes a check fail (`/clean-architecture:enforce-boundaries`).
 11. **Count at component granularity.** Added judgment: class-level cycles inside one component are a design smell for that component's author, not a violation of this rule. Count only imports that cross a component boundary, and leave test code out of the metrics. Check: the graph's nodes are components, not files.
 
 ## Procedure
@@ -41,7 +41,7 @@ Owns the arrows between components: cycles, stability and abstractness. Directio
 3. For each cycle, choose the cure: invert one edge with an interface owned by the needier side (rule 5), or, after checking rule 6, extract the shared piece.
 4. Compute `Ca`, `Ce` and `I` for each component; flag edges that lead toward higher instability (rule 7).
 5. Compute `A` for the flagged components and read them (rules 8 and 9). Decide for each whether to add an abstraction, remove one, or leave it.
-6. Add the check that keeps the graph acyclic (`clean-architecture-enforce-boundaries`) and run the tests.
+6. Add the check that keeps the graph acyclic (`/clean-architecture:enforce-boundaries`) and run the tests.
 
 ## Example
 

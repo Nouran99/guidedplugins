@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/legacy-code
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 35 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/legacy-code:legacy-code-<name>`; that was not exercised in a live session here.
-- 20 subagents, started with `@legacy-code-<name> <task>`.
+- 18 rule skills the model activates on its own (`legacy-code-<name>`).
+- 11 workflows and 6 modes as slash commands: `/legacy-code:review src/`, `/legacy-code:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 20 subagents, started with `@legacy-code-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/legacy-code:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

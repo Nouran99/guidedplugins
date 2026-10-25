@@ -120,7 +120,7 @@ The controller now builds a `BookAppointmentRequest`, calls `execute`, and maps 
 
 ## Related
 
-`clean-architecture-boundary-models` for the request and response types; `clean-architecture-ports-and-gateways` for the ports; `clean-architecture-new-feature` to build a feature end to end; `clean-architecture-extract-use-case` to pull an action out of existing code; `clean-architecture-use-case-reviewer` to review a diff.
+`clean-architecture-boundary-models` for the request and response types; `clean-architecture-ports-and-gateways` for the ports; `/clean-architecture:new-feature` to build a feature end to end; `/clean-architecture:extract-use-case` to pull an action out of existing code; `clean-architecture-use-case-reviewer` to review a diff.
 
 ## Source
 

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: data-intensive-apps-idempotency-hardener
-description: "Implementer that makes one retry-unsafe handler, consumer or job safe to run twice, with a dedup key or idempotent transition and its duplicate-delivery test. Use when data-intensive-apps-idempotency-reviewer or a replay drill found a duplicate-effect finding in a defined scope."
+description: "Implementer that makes one retry-unsafe handler, consumer or job safe to run twice, with a dedup key or idempotent transition and its duplicate-delivery test."
 tools:
   - list_directory
   - read_file

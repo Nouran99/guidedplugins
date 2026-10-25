@@ -101,7 +101,7 @@ A rental with pickup, return and fee rules earns something different: an entity 
 
 ## Related
 
-`ddd-distillation` for where effort belongs; `ddd-layers` for Smart UI and the application layer; `ddd-pattern-fit` for imported patterns; `ddd-ceremony-reviewer` to review a diff; `ddd-mode-terse` when the answer must stay short.
+`ddd-distillation` for where effort belongs; `ddd-layers` for Smart UI and the application layer; `/ddd:pattern-fit` for imported patterns; `ddd-ceremony-reviewer` to review a diff; `/ddd:mode-terse` when the answer must stay short.
 
 ## Source
 

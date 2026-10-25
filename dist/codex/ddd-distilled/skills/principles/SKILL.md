@@ -31,7 +31,7 @@ Provenance labels. A numbered rule with no label comes from `references/full.md`
 
 ## Subagent roles
 
-Names such as `ddd-distilled-lead`, `ddd-distilled-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles that a plugin cannot bundle: install them with `node scripts/install-codex-agents.mjs ddd-distilled` from a clone of the repository, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
+Names such as `ddd-distilled-lead`, `ddd-distilled-final-gate` and the `...-reviewer` roles in the routing table are subagents. In Codex they are custom roles, which a plugin cannot switch on by itself: run `$ddd-distilled:install-roles` once, restart Codex, then ask for one by name. When your agent has no role of that name, do that step yourself: follow the skill named beside it, or the rules in this skill.
 
 ## Routing table
 

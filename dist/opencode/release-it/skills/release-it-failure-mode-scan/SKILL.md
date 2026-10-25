@@ -34,7 +34,7 @@ The source asks you to assume six things. Use them as the questions, applied to 
 
 Steps:
 
-1. Trace the flow by reading code. Use Glob and Grep for listing and searching and Read for files; the only Bash commands pre-approved here are the read-only `git diff`, `git status`, `git log` and `git show`. List each boundary: outbound calls, database access, cache reads and writes, queue publishes and consumes, file or object storage, locks and pools, scheduled triggers, configuration reads. Keep the list to the boundaries on this flow; do not wander.
+1. Trace the flow by reading code. Use your search and file-reading tools for listing, searching and reading; in the shell use only these read-only commands: `git diff`, `git status`, `git log` and `git show`. List each boundary: outbound calls, database access, cache reads and writes, queue publishes and consumes, file or object storage, locks and pools, scheduled triggers, configuration reads. Keep the list to the boundaries on this flow; do not wander.
 2. For each boundary, find by reading what the code does under each assumption that applies. Evidence is a `file:line`. Write `unprotected` when nothing handles it, and `unknown` when you cannot tell. Do not infer protection from a library name.
    - Slow: is there a time limit, and what does the caller do when it fires?
    - Unavailable: is there a fast failure, a fallback, a visible degraded mode?

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: philosophy-of-design-interface-simplifier
-description: "Implementer that replaces boolean and mode parameters, option bags and mechanism-revealing arguments with caller-oriented operations and updates the callers. Collapses a setup sequence only when a finding names it. Use when findings call for simpler signatures in a defined scope."
+description: "Implementer that replaces boolean and mode parameters, option bags and mechanism-revealing arguments with caller-oriented operations and updates the callers."
 tools:
   - list_directory
   - read_file

@@ -108,7 +108,7 @@ The failure on an unknown code is a choice: it makes new legacy values visible a
 
 ## Related
 
-`ddd-bounded-contexts` for the inside of a context; `ddd-infrastructure` for the system's own technical shapes; `ddd-map-contexts` for a repository-wide map; `ddd-context-boundary-reviewer` to review a diff; `ddd-translation-builder` to build a translation.
+`ddd-bounded-contexts` for the inside of a context; `ddd-infrastructure` for the system's own technical shapes; `/ddd:map-contexts` for a repository-wide map; `ddd-context-boundary-reviewer` to review a diff; `ddd-translation-builder` to build a translation.
 
 ## Source
 

@@ -1,0 +1,96 @@
+{
+  "name": "guided-plugins",
+  "owner": {
+    "name": "Nouran Darwish"
+  },
+  "metadata": {
+    "description": "Fourteen plugins, one per classic software engineering book. Each ships 50+ skills, subagents and modes built on the MIT-licensed rule sets from ciembor/agent-rules-books.",
+    "version": "1.2.0"
+  },
+  "plugins": [
+    {
+      "name": "clean-code",
+      "source": "./dist/copilot/clean-code",
+      "description": "Robert C. Martin's Clean Code: skills, subagents and modes for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "philosophy-of-design",
+      "source": "./dist/copilot/philosophy-of-design",
+      "description": "John Ousterhout's A Philosophy of Software Design: skills, subagents and modes for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "clean-architecture",
+      "source": "./dist/copilot/clean-architecture",
+      "description": "Robert C. Martin's Clean Architecture: skills, subagents and modes for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "code-complete",
+      "source": "./dist/copilot/code-complete",
+      "description": "Steve McConnell's Code Complete: skills, subagents and modes for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "data-intensive-apps",
+      "source": "./dist/copilot/data-intensive-apps",
+      "description": "Designing Data-Intensive Applications by Martin Kleppmann: skills, subagents and modes for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ddd",
+      "source": "./dist/copilot/ddd",
+      "description": "Eric Evans' Domain-Driven Design: skills, subagents and modes for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ddd-distilled",
+      "source": "./dist/copilot/ddd-distilled",
+      "description": "Vaughn Vernon's Domain-Driven Design Distilled: skills, subagents and modes for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "ddd-implementing",
+      "source": "./dist/copilot/ddd-implementing",
+      "description": "Vaughn Vernon's Implementing Domain-Driven Design: skills, subagents and modes for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "enterprise-patterns",
+      "source": "./dist/copilot/enterprise-patterns",
+      "description": "Martin Fowler's enterprise application patterns: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "refactoring",
+      "source": "./dist/copilot/refactoring",
+      "description": "Refactoring by Martin Fowler: skills, subagents and modes for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "refactoring-guru",
+      "source": "./dist/copilot/refactoring-guru",
+      "description": "Refactoring.Guru's smell and technique catalog: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and modes built on a paraphrased rule set for coding agents.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "release-it",
+      "source": "./dist/copilot/release-it",
+      "description": "Michael T. Nygard's Release It!: skills, subagents and modes for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "pragmatic-programmer",
+      "source": "./dist/copilot/pragmatic-programmer",
+      "description": "Hunt and Thomas's The Pragmatic Programmer: skills, subagents and modes for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
+      "version": "1.0.0"
+    },
+    {
+      "name": "legacy-code",
+      "source": "./dist/copilot/legacy-code",
+      "description": "Michael Feathers's Working Effectively with Legacy Code: skills, subagents and modes for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
+      "version": "1.0.0"
+    }
+  ]
+}

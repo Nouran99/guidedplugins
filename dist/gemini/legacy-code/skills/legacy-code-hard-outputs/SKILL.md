@@ -37,7 +37,7 @@ A hard output is an effect that leaves the code and cannot be avoided or inspect
 ## Procedure
 
 1. Search the code under test: file writes, HTTP or RPC clients, `exit`, database drivers and query calls, publishers, loggers that carry decisions. List each with its location.
-2. Pin current behavior first if it is unclear (`legacy-code-characterize`); outputs are behavior.
+2. Pin current behavior first if it is unclear (`/legacy-code:characterize`); outputs are behavior.
 3. For each effect worth testing, define a narrow collaborator named for intent and pass it in; default it to the real implementation at the edge.
 4. Turn exits into results; move the exit to the entry point.
 5. Write the recording test for the decision; keep or add the real-boundary test for the writer.

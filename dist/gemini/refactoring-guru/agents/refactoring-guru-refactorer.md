@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-refactorer
-description: "Implementer that carries out a list of refactoring findings, one named technique per step, with tests after each. Use when a review, audit or smell card has produced findings and the user asked for changes within a defined scope."
+description: "Implementer that carries out a list of refactoring findings, one named technique per step, with tests after each."
 tools:
   - list_directory
   - read_file

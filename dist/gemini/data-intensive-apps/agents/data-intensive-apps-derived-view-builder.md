@@ -1,7 +1,7 @@
 ---
 kind: local
 name: data-intensive-apps-derived-view-builder
-description: "Implementer that makes one cache, index, projection or read model rebuildable, with a checkpoint, a lag metric and a rebuild entry point. Use when data-intensive-apps-ownership-reviewer or ownership-map flagged a derived copy with no rebuild path, no lag visibility or an inline best-effort write."
+description: "Implementer that makes one cache, index, projection or read model rebuildable, with a checkpoint, a lag metric and a rebuild entry point."
 tools:
   - list_directory
   - read_file

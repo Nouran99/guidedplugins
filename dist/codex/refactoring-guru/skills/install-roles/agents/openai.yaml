@@ -1,0 +1,6 @@
+interface:
+  display_name: "Install Refactoring.Guru roles"
+  short_description: "Installs the 22 subagent roles of this plugin into Codex."
+  default_prompt: "Use $refactoring-guru:install-roles."
+policy:
+  allow_implicit_invocation: false

@@ -10,7 +10,7 @@ metadata:
 
 # Automation
 
-Turn repeated, error-prone or easy-to-forget work into a script that lives with the code. This skill covers setup, build, test, lint, format, package, deploy and release steps, and bulk mechanical edits. How fast and how clearly checks report is `pragmatic-programmer-feedback-loops`; deriving code from a specification is `pragmatic-programmer-generators-and-dsls`; to scan a repository for rituals, run `pragmatic-programmer-manual-step-hunt`.
+Turn repeated, error-prone or easy-to-forget work into a script that lives with the code. This skill covers setup, build, test, lint, format, package, deploy and release steps, and bulk mechanical edits. How fast and how clearly checks report is `pragmatic-programmer-feedback-loops`; deriving code from a specification is `pragmatic-programmer-generators-and-dsls`; to scan a repository for rituals, run `/pragmatic-programmer:manual-step-hunt`.
 
 ## When to use
 
@@ -104,7 +104,7 @@ Local runs and CI cannot drift because they share the script, a missing tool fai
 
 ## Related
 
-`pragmatic-programmer-manual-step-hunt` to scan a repository; `pragmatic-programmer-automation-reviewer` to review a diff; `pragmatic-programmer-automation-scripter` to write the script; `pragmatic-programmer-feedback-loops` for check speed; `pragmatic-programmer-dry-knowledge` for duplicated process steps.
+`/pragmatic-programmer:manual-step-hunt` to scan a repository; `pragmatic-programmer-automation-reviewer` to review a diff; `pragmatic-programmer-automation-scripter` to write the script; `pragmatic-programmer-feedback-loops` for check speed; `pragmatic-programmer-dry-knowledge` for duplicated process steps.
 
 ## Source
 

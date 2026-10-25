@@ -93,7 +93,7 @@ async function onStockLevelChanged(e: StockLevelChanged) {
 
 ## Related
 
-`data-intensive-apps-derived-data` for lag, rebuild and repair; `data-intensive-apps-service-boundaries` for owner-aligned cuts; `data-intensive-apps-ownership-map` for a repository-wide inventory; `data-intensive-apps-ownership-reviewer` to review a diff.
+`data-intensive-apps-derived-data` for lag, rebuild and repair; `data-intensive-apps-service-boundaries` for owner-aligned cuts; `/data-intensive-apps:ownership-map` for a repository-wide inventory; `data-intensive-apps-ownership-reviewer` to review a diff.
 
 ## Source
 

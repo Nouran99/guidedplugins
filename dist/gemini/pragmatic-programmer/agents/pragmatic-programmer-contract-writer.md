@@ -1,7 +1,7 @@
 ---
 kind: local
 name: pragmatic-programmer-contract-writer
-description: "Implementer that encodes assumptions a routine already makes as checks, types and tests, without adding new business rules. Use when review findings name comment-only preconditions, scattered defensive checks or nonsense return values."
+description: "Implementer that encodes assumptions a routine already makes as checks, types and tests, without adding new business rules."
 tools:
   - list_directory
   - read_file

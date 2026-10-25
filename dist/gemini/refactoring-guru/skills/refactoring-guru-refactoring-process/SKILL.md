@@ -101,7 +101,7 @@ Step 1 carries the names and the extraction; a reviewer can accept it by reading
 
 ## Related
 
-`refactoring-guru-when-to-refactor` for timing; `refactoring-guru-stop-and-defer` for stopping; `refactoring-guru-classify-change` to split a mixed patch; `refactoring-guru-intent-reviewer` and `refactoring-guru-safety-net-reviewer` to review the result; `refactoring-guru-fix` to act on findings.
+`refactoring-guru-when-to-refactor` for timing; `refactoring-guru-stop-and-defer` for stopping; `/refactoring-guru:classify-change` to split a mixed patch; `refactoring-guru-intent-reviewer` and `refactoring-guru-safety-net-reviewer` to review the result; `/refactoring-guru:fix` to act on findings.
 
 ## Source
 

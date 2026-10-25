@@ -10,7 +10,7 @@ metadata:
 
 # Preparatory steps
 
-Refactor before and after a behavior change, around one specific change: make the change easy, then make the easy change, then tidy what it left. This skill is about that one moment; general step size and the rewrite brake are `refactoring-small-steps`, and executing the preparation is `refactoring-prepare`.
+Refactor before and after a behavior change, around one specific change: make the change easy, then make the easy change, then tidy what it left. This skill is about that one moment; general step size and the rewrite brake are `refactoring-small-steps`, and executing the preparation is `/refactoring:prepare`.
 
 ## When to use
 
@@ -99,7 +99,7 @@ Bullets marked Added judgment are this plugin's own; the others follow limits th
 
 ## Related
 
-`refactoring-plan` to sequence the whole change; `refactoring-prepare` to carry out the preparation; `refactoring-safety-net` when tests are missing; `refactoring-stopping-rules` to end cleanly; `refactoring-mode-prep-first` for a session that works this way.
+`/refactoring:plan` to sequence the whole change; `/refactoring:prepare` to carry out the preparation; `refactoring-safety-net` when tests are missing; `refactoring-stopping-rules` to end cleanly; `/refactoring:mode-prep-first` for a session that works this way.
 
 ## Source
 

@@ -10,7 +10,7 @@ metadata:
 
 # Routine testing
 
-Designs and judges tests at the level of a routine: which inputs, which boundaries, which invalid cases, which defensive checks, and whether the tests verify the contract rather than the implementation. Diagnosing a failing test or a reported bug is `code-complete-debugging`; deriving the case list as a table is `code-complete-test-matrix`.
+Designs and judges tests at the level of a routine: which inputs, which boundaries, which invalid cases, which defensive checks, and whether the tests verify the contract rather than the implementation. Diagnosing a failing test or a reported bug is `code-complete-debugging`; deriving the case list as a table is `/code-complete:test-matrix`.
 
 ## When to use
 
@@ -122,7 +122,7 @@ The cases cover both sides of every tier boundary and every excluded input; none
 
 ## Related
 
-`code-complete-test-matrix` to derive the cases first; `code-complete-test-writer` to write them; `code-complete-test-case-reviewer` to review existing tests; `code-complete-debugging` for failing tests; `code-complete-assertions-and-contracts` for the contract itself.
+`/code-complete:test-matrix` to derive the cases first; `code-complete-test-writer` to write them; `code-complete-test-case-reviewer` to review existing tests; `code-complete-debugging` for failing tests; `code-complete-assertions-and-contracts` for the contract itself.
 
 ## Source
 

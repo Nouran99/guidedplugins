@@ -102,7 +102,7 @@ export class Requester {
 
 ## Related
 
-`ddd-distilled-context-mapping` for the relationship between contexts; `ddd-distilled-ubiquitous-language` for words inside one context; `ddd-distilled-map-contexts` to discover the as-found map; `ddd-distilled-context-boundary-reviewer` to review a diff.
+`ddd-distilled-context-mapping` for the relationship between contexts; `ddd-distilled-ubiquitous-language` for words inside one context; `/ddd-distilled:map-contexts` to discover the as-found map; `ddd-distilled-context-boundary-reviewer` to review a diff.
 
 ## Source
 

@@ -119,7 +119,7 @@ with db.transaction() as tx:
 
 ## Related
 
-`data-intensive-apps-invariant-map` to list invariants and their mechanisms; `data-intensive-apps-write-acknowledgment` for the caller's view; `data-intensive-apps-idempotent-handlers` for outbox consumers; `data-intensive-apps-derived-data` for derived stores; `data-intensive-apps-transaction-reviewer` to review a diff.
+`/data-intensive-apps:invariant-map` to list invariants and their mechanisms; `data-intensive-apps-write-acknowledgment` for the caller's view; `data-intensive-apps-idempotent-handlers` for outbox consumers; `data-intensive-apps-derived-data` for derived stores; `data-intensive-apps-transaction-reviewer` to review a diff.
 
 ## Source
 

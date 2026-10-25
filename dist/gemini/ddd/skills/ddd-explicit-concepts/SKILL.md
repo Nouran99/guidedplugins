@@ -33,7 +33,7 @@ Owns the local move: find the hidden constraint, policy, process or rule in one 
 9. **Keep specifications in domain language, not query language.** Keep persistence querying separate from domain specifications unless the project deliberately provides a translation. Check: the specification imports no query builder or ORM type.
 10. **Model a domain process as a domain object when the process has business meaning.** Check: the business has a word for it and the code has a type with that word.
 11. **Do not treat a contradiction as an edge case, and do not keep a vague technical flag after the real concept is known.** Check: no flag remains whose true values the code cannot name in business words.
-12. **Reach for established formalisms and analysis patterns when the domain already has mature concepts, but adapt them to the context and validate them against local language** (the rule set's Analysis Patterns slice; `ddd-pattern-fit` runs the full fit test). Check: the imported structure uses the local term for every part.
+12. **Reach for established formalisms and analysis patterns when the domain already has mature concepts, but adapt them to the context and validate them against local language** (the rule set's Analysis Patterns slice; `/ddd:pattern-fit` runs the full fit test). Check: the imported structure uses the local term for every part.
 
 ## Procedure
 
@@ -101,7 +101,7 @@ if (new QualifiesForFreeShipping(500).isSatisfiedBy(order)) {
 
 ## Related
 
-`ddd-deep-models` for the whole-model stance; `ddd-supple-design` for combining and reading specifications; `ddd-pattern-fit` before importing a pattern; `ddd-concept-reviewer` to review a diff; `ddd-behavior-mover` to relocate rules that already have an owner.
+`ddd-deep-models` for the whole-model stance; `ddd-supple-design` for combining and reading specifications; `/ddd:pattern-fit` before importing a pattern; `ddd-concept-reviewer` to review a diff; `ddd-behavior-mover` to relocate rules that already have an owner.
 
 ## Source
 

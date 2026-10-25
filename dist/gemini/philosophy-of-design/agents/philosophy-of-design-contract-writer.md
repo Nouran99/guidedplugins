@@ -1,7 +1,7 @@
 ---
 kind: local
 name: philosophy-of-design-contract-writer
-description: "Implementer that edits comments only: writes interface contracts, invariants and decision notes, deletes narration, and reports where a contract cannot be written briefly. Use when public elements lack contracts or comments mislead."
+description: "Implementer that edits comments only: writes interface contracts, invariants and decision notes, deletes narration, and reports where a contract cannot be written briefly."
 tools:
   - list_directory
   - read_file

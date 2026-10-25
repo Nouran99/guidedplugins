@@ -122,7 +122,7 @@ public final class RefundOrder {
 
 ## Related
 
-`clean-architecture-use-cases` for the target shape; `clean-architecture-extract-use-case` to perform one extraction; `clean-architecture-shared-code-coupling` for shared modules; `clean-architecture-sprawl-reviewer` to review a tree.
+`clean-architecture-use-cases` for the target shape; `/clean-architecture:extract-use-case` to perform one extraction; `clean-architecture-shared-code-coupling` for shared modules; `clean-architecture-sprawl-reviewer` to review a tree.
 
 ## Source
 

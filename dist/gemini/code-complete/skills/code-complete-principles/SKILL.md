@@ -46,15 +46,15 @@ Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-revi
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `code-complete-lead` (delegate) |
-| Review the working diff or named paths | `code-complete-review` |
-| Health picture of a directory or repository | `code-complete-audit`; raw numbers only: `code-complete-construction-scanner` |
-| Plan a non-trivial change before editing | `code-complete-plan`, rules in `code-complete-construction-process` |
+| Review the working diff or named paths | `/code-complete:review` |
+| Health picture of a directory or repository | `/code-complete:audit`; raw numbers only: `code-complete-construction-scanner` |
+| Plan a non-trivial change before editing | `/code-complete:plan`, rules in `code-complete-construction-process` |
 | Is this change one verifiable increment, or mixed with a refactor or half-done work | `code-complete-increment-reviewer` |
-| Understand one rule or its exceptions | `code-complete-explain-rule` |
-| Walk the review checklist while working | `code-complete-checklist` |
+| Understand one rule or its exceptions | `/code-complete:explain-rule` |
+| Walk the review checklist while working | `/code-complete:checklist` |
 | Strict pass or fail before commit or pull request | `code-complete-final-gate` (delegate) |
-| Resolve specific findings | `code-complete-fix` |
-| A complex routine is about to be written | `code-complete-pseudocode` |
+| Resolve specific findings | `/code-complete:fix` |
+| A complex routine is about to be written | `/code-complete:pseudocode` |
 | A routine mixes phases, has a vague name or hidden effects | `code-complete-routine-design`, `code-complete-routine-reviewer` |
 | Long parameter lists, boolean mode flags, return values that are easy to misuse | `code-complete-routine-interface`, `code-complete-interface-reviewer` |
 | A variable is vague, wide in scope, reused or uninitialized | `code-complete-variables`, `code-complete-data-reviewer` |
@@ -62,7 +62,7 @@ Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-revi
 | Nested or compound conditions, switch, multiple exits, dead branches | `code-complete-control-flow`, `code-complete-control-flow-reviewer` |
 | Loops, statement order, negated conditions, normal-path placement | `code-complete-statements-and-loops`, `code-complete-control-flow-reviewer` |
 | Repeated branching that maps categories or ranges to results | `code-complete-table-driven`, `code-complete-table-reviewer` |
-| Input from users, files, networks or other services | `code-complete-trust-boundaries`, `code-complete-trust-boundary-reviewer`, scan a tree with `code-complete-trust-boundary-scan`, add checks with `code-complete-boundary-hardener` |
+| Input from users, files, networks or other services | `code-complete-trust-boundaries`, `code-complete-trust-boundary-reviewer`, scan a tree with `/code-complete:trust-boundary-scan`, add checks with `code-complete-boundary-hardener` |
 | Preconditions, postconditions, invariants, assertion versus validation | `code-complete-assertions-and-contracts`, `code-complete-contract-reviewer` |
 | Exceptions, error codes, catch blocks, messages, fallbacks | `code-complete-error-handling`, `code-complete-error-flow-reviewer` |
 | A class or module does too much or exposes its internals | `code-complete-class-design`, `code-complete-class-design-reviewer` |
@@ -70,15 +70,15 @@ Names such as `code-complete-lead`, `code-complete-final-gate` and the `...-revi
 | Comments that narrate, lie or prop up unclear code | `code-complete-comments`, `code-complete-comment-reviewer` |
 | New code does not match the codebase's style or idioms | `code-complete-coding-standards`, `code-complete-consistency-reviewer` |
 | Something fails and the cause is unknown | `code-complete-debugging`, `code-complete-bug-fixer` |
-| Writing or judging tests for a routine | `code-complete-routine-testing`, `code-complete-test-matrix`, `code-complete-test-case-reviewer`, `code-complete-test-writer` |
+| Writing or judging tests for a routine | `code-complete-routine-testing`, `/code-complete:test-matrix`, `code-complete-test-case-reviewer`, `code-complete-test-writer` |
 | Restructuring existing code | `code-complete-refactoring-judgment`, `code-complete-refactorer` |
-| Asked to make something faster | `code-complete-performance-tuning`, then `code-complete-tune`, audited by `code-complete-tuning-reviewer` |
-| Session-long behavior: teach the reasoning | `code-complete-mode-mentor` |
-| Session-long behavior: ranked findings only | `code-complete-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `code-complete-mode-pair` |
-| Session-long behavior: result first, few lines | `code-complete-mode-terse` |
-| Session-long behavior: assumptions listed before every change | `code-complete-mode-assumptions-first` |
-| Session-long behavior: no cause, fix or speedup without evidence | `code-complete-mode-evidence-first` |
+| Asked to make something faster | `code-complete-performance-tuning`, then `/code-complete:tune`, audited by `code-complete-tuning-reviewer` |
+| Session-long behavior: teach the reasoning | `/code-complete:mode-mentor` |
+| Session-long behavior: ranked findings only | `/code-complete:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/code-complete:mode-pair` |
+| Session-long behavior: result first, few lines | `/code-complete:mode-terse` |
+| Session-long behavior: assumptions listed before every change | `/code-complete:mode-assumptions-first` |
+| Session-long behavior: no cause, fix or speedup without evidence | `/code-complete:mode-evidence-first` |
 
 ## Priority
 

@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Fourteen plugins, one per classic software engineering book. Each ships 50+ skills, subagents and modes built on the MIT-licensed rule sets from ciembor/agent-rules-books.",
-    "version": "1.1.0"
+    "version": "1.2.0"
   },
   "plugins": [
     {

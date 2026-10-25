@@ -10,7 +10,7 @@ tools:
   - run_shell_command
 max_turns: 20
 ---
-Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. Gemini CLI cannot enforce this for a subagent that has a shell, so you are responsible for keeping to it.
+Operating constraint: this is a read-only role. Never create, edit, move or delete files and never run commands that change the repository or the system; inspect with read-only commands (git diff, git log, git show, git status, ls, grep) and report. The extension also ships policy rules that deny the write tools and any other shell command for this role.
 
 Before you start, read these skills: `${extensionPath}/skills/release-it-timeouts/SKILL.md`.
 
@@ -50,7 +50,7 @@ Timeout ledger
 BLOCKER|MAJOR|MINOR|NIT  file:line  <rule name>
   Why: <what holds, for how long, and who waits behind it>
   Fix: <smallest change; numbers you propose are marked "needs confirmation">
-Checked: <call sites and waits>   Not checked: retry behavior (release-it-retry-reviewer), breakers (release-it-isolation-reviewer), the full per-layer table (release-it-call-chain-budget)
+Checked: <call sites and waits>   Not checked: retry behavior (release-it-retry-reviewer), breakers (release-it-isolation-reviewer), the full per-layer table (/release-it:call-chain-budget)
 ```
 
 Use `No findings` when clean, keeping the ledger.

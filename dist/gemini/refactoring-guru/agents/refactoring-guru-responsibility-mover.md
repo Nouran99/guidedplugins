@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-guru-responsibility-mover
-description: "Implementer that moves members between classes: Move Method, Move Field, Extract Class, Inline Class, with temporary delegation. Use when a data-ownership or class-size finding has been confirmed and the user asked for the move."
+description: "Implementer that moves members between classes: Move Method, Move Field, Extract Class, Inline Class, with temporary delegation."
 tools:
   - list_directory
   - read_file

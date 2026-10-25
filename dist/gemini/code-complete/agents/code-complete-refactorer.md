@@ -1,7 +1,7 @@
 ---
 kind: local
 name: code-complete-refactorer
-description: "Implementer that carries out behavior-preserving structural changes in small, test-backed steps against named findings. Use when review findings or a plan call for renames, extractions, guard clauses, named predicates, tables or class splits in a defined scope."
+description: "Implementer that carries out behavior-preserving structural changes in small, test-backed steps against named findings."
 tools:
   - list_directory
   - read_file

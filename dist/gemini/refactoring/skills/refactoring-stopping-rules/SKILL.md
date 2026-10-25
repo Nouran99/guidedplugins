@@ -84,7 +84,7 @@ Bullets marked Added judgment are this plugin's own; the others follow limits th
 
 ## Related
 
-`refactoring-needless-abstraction` to remove existing weight; `refactoring-friction-reviewer` to judge a finished change against its friction; `refactoring-checklist` for the full final questions; `refactoring-mode-prep-first` for a session that ends every task with a stop reason.
+`refactoring-needless-abstraction` to remove existing weight; `refactoring-friction-reviewer` to judge a finished change against its friction; `/refactoring:checklist` for the full final questions; `/refactoring:mode-prep-first` for a session that ends every task with a stop reason.
 
 ## Source
 

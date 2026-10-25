@@ -124,7 +124,7 @@ Construction validates, and the only way to change the count is `extend`, so no 
 
 ## Related
 
-`clean-architecture-use-cases` for orchestration around the entity; `clean-architecture-place-code` to classify a piece of code; `clean-architecture-persistence-independence` for table-shaped models; `clean-architecture-domain-purity-reviewer` to review a diff.
+`clean-architecture-use-cases` for orchestration around the entity; `/clean-architecture:place-code` to classify a piece of code; `clean-architecture-persistence-independence` for table-shaped models; `clean-architecture-domain-purity-reviewer` to review a diff.
 
 ## Source
 

@@ -37,7 +37,7 @@ Owns the vocabulary inside one bounded context: the business terms experts use a
 
 1. List the concepts in the touched code and the term currently used for each.
 2. Look for the expert's term in tickets, specs, regulations, UI copy and test names. Where none exists, write the question and use the best current candidate, marked provisional.
-3. Build or update the concept-to-term table for the context (`ddd-language-audit` does this for a tree).
+3. Build or update the concept-to-term table for the context (`/ddd:language-audit` does this for a tree).
 4. Rename with the language tooling or whole-word search; then check strings, serialized names, SQL, configuration, docs and tests for the old term.
 5. Treat renames of public API, wire formats, events and database columns as decisions, not edits: propose them or keep the old name behind a translation.
 6. Run the tests after each batch of renames.
@@ -99,7 +99,7 @@ The two distinct actions are an assumption about this example's domain; in a rea
 
 ## Related
 
-`ddd-language-audit` for a tree-wide term table; `ddd-language-reviewer` to review a diff; `ddd-model-driven-design` for documents and diagrams; `ddd-bounded-contexts` for where a term stops being valid; `ddd-infrastructure` for table-shaped classes and column-named fields; `ddd-supple-design` for how the named operations behave.
+`/ddd:language-audit` for a tree-wide term table; `ddd-language-reviewer` to review a diff; `ddd-model-driven-design` for documents and diagrams; `ddd-bounded-contexts` for where a term stops being valid; `ddd-infrastructure` for table-shaped classes and column-named fields; `ddd-supple-design` for how the named operations behave.
 
 ## Source
 

@@ -10,7 +10,7 @@ metadata:
 
 # Broken windows
 
-Decide what to do about small decay in the code a change touches: fix it now when that is cheap, contain it visibly when it is not, and never treat it as normal. The stopping rule and the reporting rule are `pragmatic-programmer-ownership`; hunting decay across a whole tree is `pragmatic-programmer-audit`.
+Decide what to do about small decay in the code a change touches: fix it now when that is cheap, contain it visibly when it is not, and never treat it as normal. The stopping rule and the reporting rule are `pragmatic-programmer-ownership`; hunting decay across a whole tree is `/pragmatic-programmer:audit`.
 
 ## When to use
 
@@ -97,7 +97,7 @@ The commented-out promo is deleted (version control keeps it). The blanket `exce
 
 ## Related
 
-`pragmatic-programmer-tidy-touched` to run the fix-or-contain pass with a budget; `pragmatic-programmer-decay-reviewer` to review a diff for decay; `pragmatic-programmer-ownership` for the stopping rule; `pragmatic-programmer-dry-knowledge` when the decay is a copied rule.
+`/pragmatic-programmer:tidy-touched` to run the fix-or-contain pass with a budget; `pragmatic-programmer-decay-reviewer` to review a diff for decay; `pragmatic-programmer-ownership` for the stopping rule; `pragmatic-programmer-dry-knowledge` when the decay is a copied rule.
 
 ## Source
 

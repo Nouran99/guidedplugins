@@ -101,7 +101,7 @@ The rerun is only equal to the first run if the day's orders are no longer chang
 
 ## Related
 
-`data-intensive-apps-stream-processing` for unbounded input; `data-intensive-apps-idempotent-handlers` for keyed effects; `data-intensive-apps-derived-data` for output copies; `data-intensive-apps-replay-drill` to walk a job through reruns; `data-intensive-apps-batch-reviewer` to review a diff.
+`data-intensive-apps-stream-processing` for unbounded input; `data-intensive-apps-idempotent-handlers` for keyed effects; `data-intensive-apps-derived-data` for output copies; `/data-intensive-apps:replay-drill` to walk a job through reruns; `data-intensive-apps-batch-reviewer` to review a diff.
 
 ## Source
 

@@ -1,7 +1,7 @@
 ---
 kind: local
 name: clean-code-refactorer
-description: "Implementer that carries out behavior-preserving structural changes in small, test-backed steps. Use when review findings or a plan call for renames, extractions, inlining, flag removal or dead-code deletion in a defined scope."
+description: "Implementer that carries out behavior-preserving structural changes in small, test-backed steps."
 tools:
   - list_directory
   - read_file

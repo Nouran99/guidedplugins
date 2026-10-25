@@ -1,6 +1,6 @@
 ---
 name: "ddd-distilled-accelerated-modeling"
-description: "Use when workflow, events, commands, policies or team language are unclear, when modeling risks turning into detached analysis, or when delivery pressure tempts skipping design. Covers event storming, timeboxes, spikes, scenarios and expert involvement. Procedure: ddd-distilled-event-storm."
+description: "Use when workflow, events, commands, policies or team language are unclear, when modeling risks turning into detached analysis, or when delivery pressure tempts skipping design. Covers event storming, timeboxes, spikes, scenarios and expert involvement. Procedure: /ddd-distilled:event-storm."
 license: "MIT"
 metadata:
   plugin: "ddd-distilled"
@@ -10,7 +10,7 @@ metadata:
 
 # Accelerated modeling
 
-How to learn the domain quickly without either skipping the learning or disappearing into analysis. The book's tools are event storming (or a similar collaborative technique), timeboxes, modeling spikes, expert walkthroughs, scenarios and acceptance tests, plus a record of what was deferred. The interactive procedure is `ddd-distilled-event-storm`; sizing is `ddd-distilled-estimate-work`; the debt register is `ddd-distilled-modeling-debt`.
+How to learn the domain quickly without either skipping the learning or disappearing into analysis. The book's tools are event storming (or a similar collaborative technique), timeboxes, modeling spikes, expert walkthroughs, scenarios and acceptance tests, plus a record of what was deferred. The interactive procedure is `/ddd-distilled:event-storm`; sizing is `/ddd-distilled:estimate-work`; the debt register is `/ddd-distilled:modeling-debt`.
 
 ## When to use
 
@@ -26,8 +26,8 @@ How to learn the domain quickly without either skipping the learning or disappea
 3. **Use modeling spikes to reduce uncertainty before committing to a model shape.** Check: each spike has one question, a time limit and an exit decision.
 4. **Involve domain experts in scenario walkthroughs, terminology decisions and acceptance criteria.** The code cannot be more correct than the facts. Check: the output says who confirmed each business statement.
 5. **Use scenarios and acceptance tests to validate that the model expresses real business behavior.** Check: each modeled behavior has a scenario in business language that the expert accepted.
-6. **Track modeling debt when code and language are known to be imperfect but deliberately deferred.** Check: deferred items are in a register with a repayment trigger (`ddd-distilled-modeling-debt`).
-7. **Estimate DDD work from modeling uncertainty, integration risk and implementation cost, not from feature count alone, and treat team skill and expert access as constraints.** Check: an estimate states these inputs (`ddd-distilled-estimate-work`).
+6. **Track modeling debt when code and language are known to be imperfect but deliberately deferred.** Check: deferred items are in a register with a repayment trigger (`/ddd-distilled:modeling-debt`).
+7. **Estimate DDD work from modeling uncertainty, integration risk and implementation cost, not from feature count alone, and treat team skill and expert access as constraints.** Check: an estimate states these inputs (`/ddd-distilled:estimate-work`).
 8. **When delivery pressure would skip design, run a short spike, scenario or acceptance test and record the known modeling debt.** (Compact checklist) Check: skipping is never silent; the shortcut and its cost are written down.
 9. **An agent is not the domain expert.** (Added judgment) Ask the user for the missing business facts, mark assumptions as provisional, and do not fill gaps with invented rules. Check: every business rule in the output traces to the user, existing code, tests or documents, or carries an "assumed" label.
 10. **Turn every session into artifacts the code can use.** (Added judgment) Glossary entries, scenarios, candidate contexts, spike results and debt items. Check: nothing valuable lives only in a conversation.
@@ -68,7 +68,7 @@ The spike ends with a decision the code can use and one explicit loose end, rath
 ## Trade-offs and exceptions
 
 - The rule says "event storming or similar": any collaborative technique that surfaces events, commands and policies fits. Obvious, small changes need none.
-- The rule set does not prescribe a step-by-step event storming method; the steps in `ddd-distilled-event-storm` are this plugin's judgment (Added judgment).
+- The rule set does not prescribe a step-by-step event storming method; the steps in `/ddd-distilled:event-storm` are this plugin's judgment (Added judgment).
 - Timeboxing does not mean skipping hard questions; it means deciding how much certainty is needed before the next slice.
 - When no expert is reachable, continue with labeled assumptions and a scheduled confirmation, not with silent guesses.
 
@@ -82,7 +82,7 @@ The spike ends with a decision the code can use and one explicit loose end, rath
 
 ## Related
 
-`ddd-distilled-event-storm`; `ddd-distilled-estimate-work`; `ddd-distilled-modeling-debt`; `ddd-distilled-domain-tests`; `ddd-distilled-adoption-fit`.
+`/ddd-distilled:event-storm`; `/ddd-distilled:estimate-work`; `/ddd-distilled:modeling-debt`; `ddd-distilled-domain-tests`; `ddd-distilled-adoption-fit`.
 
 ## Source
 

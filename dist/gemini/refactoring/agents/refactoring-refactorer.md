@@ -1,7 +1,7 @@
 ---
 kind: local
 name: refactoring-refactorer
-description: "Implementer that carries out a list of refactoring findings or a plan as named behavior-preserving moves, running the tests between steps. Use when review findings or a plan span several functions or files and changes were requested."
+description: "Implementer that carries out a list of refactoring findings or a plan as named behavior-preserving moves, running the tests between steps."
 tools:
   - list_directory
   - read_file

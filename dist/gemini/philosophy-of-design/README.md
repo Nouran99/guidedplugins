@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/philosophy-of-design
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 36 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/philosophy-of-design:philosophy-of-design-<name>`; that was not exercised in a live session here.
-- 22 subagents, started with `@philosophy-of-design-<name> <task>`.
+- 19 rule skills the model activates on its own (`philosophy-of-design-<name>`).
+- 11 workflows and 6 modes as slash commands: `/philosophy-of-design:review src/`, `/philosophy-of-design:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 22 subagents, started with `@philosophy-of-design-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/philosophy-of-design:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

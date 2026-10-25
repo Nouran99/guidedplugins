@@ -101,7 +101,7 @@ The last finding is the useful part: the map is only worth having if it is compa
 
 ## Related
 
-`ddd-distilled-context-translation` for the translator; `ddd-distilled-integration-styles` for the mechanism; `ddd-distilled-map-contexts` to discover the as-found map; `ddd-distilled-relationship-reviewer` to review a diff.
+`ddd-distilled-context-translation` for the translator; `ddd-distilled-integration-styles` for the mechanism; `/ddd-distilled:map-contexts` to discover the as-found map; `ddd-distilled-relationship-reviewer` to review a diff.
 
 ## Source
 

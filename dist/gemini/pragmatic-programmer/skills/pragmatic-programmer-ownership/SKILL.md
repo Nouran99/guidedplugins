@@ -88,7 +88,7 @@ Left alone: the upload form re-validates the same rows with its own rule (see pr
 
 ## Related
 
-`pragmatic-programmer-broken-windows` for decay in touched code; `pragmatic-programmer-code-communication` for repository artifacts; `pragmatic-programmer-plan` to write done-criteria into a plan; `pragmatic-programmer-mode-owner` to get the report block after every task.
+`pragmatic-programmer-broken-windows` for decay in touched code; `pragmatic-programmer-code-communication` for repository artifacts; `/pragmatic-programmer:plan` to write done-criteria into a plan; `/pragmatic-programmer:mode-owner` to get the report block after every task.
 
 ## Source
 

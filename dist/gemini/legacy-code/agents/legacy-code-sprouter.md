@@ -1,7 +1,7 @@
 ---
 kind: local
 name: legacy-code-sprouter
-description: "Implementer that adds requested behavior beside fragile code as a sprouted method or class or as a wrap, with tests for the new unit and a one-call insertion point. Use when a rule, step or condition must enter a long or untested function without deep edits."
+description: "Implementer that adds requested behavior beside fragile code as a sprouted method or class or as a wrap, with tests for the new unit and a one-call insertion point."
 tools:
   - list_directory
   - read_file
@@ -25,7 +25,7 @@ If the sprout and wrap rules are not in your context, read `${extensionPath}/ski
 
 ## Process
 
-1. Protection check: find a test that exercises the legacy flow around the insertion point and would fail if its behavior broke, and run it. If none exists and the flow can already be called in a test, stop and report that `legacy-code-characterize` or `legacy-code-characterization-writer` must pin it first. If the flow cannot be called in a test, a sprout is still the right tool, because the new unit is tested on its own and the old code gets one call; make the insertion as small as possible, check it by reading and by the compiler or type checker, and report the flow as unprotected.
+1. Protection check: find a test that exercises the legacy flow around the insertion point and would fail if its behavior broke, and run it. If none exists and the flow can already be called in a test, stop and report that `/legacy-code:characterize` or `legacy-code-characterization-writer` must pin it first. If the flow cannot be called in a test, a sprout is still the right tool, because the new unit is tested on its own and the old code gets one call; make the insertion as small as possible, check it by reading and by the compiler or type checker, and report the flow as unprotected.
 2. Find the project's test command and run the covering tests for a baseline. A failing baseline is reported first. If no test command can be found, say so, verify by reading and by the compiler or type checker, and never report a pass you did not see.
 3. Choose the form: the new behavior is a computation from values available at one spot, sprout method; a new responsibility with its own collaborators, sprout class; behavior that must run before or after an existing call, wrap method; a whole class to mediate, wrap class. If the new behavior must change several branches inside the legacy flow, stop and say a sprout does not fit; recommend `legacy-code-legacy-loop` instead.
 4. Write the tests for the new unit first, with plain-value inputs, and see them fail for the right reason.

@@ -41,7 +41,7 @@ Chooses how the business decisions of a feature are organized (Transaction Scrip
 1. List the business decisions in the use case: every branch whose condition is a business rule, not input parsing or flow control.
 2. Mark the forces present: duplicated decisions across use cases, a lifecycle with allowed transitions, invariants across fields or objects, set-oriented calculation, or none of these.
 3. Pick the lightest pattern the forces allow using rule 13's defaults. Written per area of the system: Added judgment, mixed patterns in one codebase are fine when the boundary between areas is clear.
-4. If a script already exists, move only the repeated or invariant-bearing decision into a model object or table module, and leave the script as the sequence that calls it (`enterprise-patterns-escalate-pattern` does this stepwise).
+4. If a script already exists, move only the repeated or invariant-bearing decision into a model object or table module, and leave the script as the sequence that calls it (`/enterprise-patterns:escalate-pattern` does this stepwise).
 5. Choose the persistence follow-up together with the pattern: a domain model usually pulls in `enterprise-patterns-repository` and `enterprise-patterns-data-mapper`; a table module pairs with a table data gateway (`enterprise-patterns-gateways-and-active-record`).
 6. Run the tests after each move.
 
@@ -119,7 +119,7 @@ Only the decision moved. Nothing else was converted to a model, which is the poi
 
 ## Related
 
-`enterprise-patterns-service-layer` for coordination; `enterprise-patterns-escalate-pattern` to move up stepwise; `enterprise-patterns-choose-pattern` for a full recommendation; `enterprise-patterns-logic-placement-reviewer` to review a diff; `enterprise-patterns-logic-mover` to carry out moves.
+`enterprise-patterns-service-layer` for coordination; `/enterprise-patterns:escalate-pattern` to move up stepwise; `/enterprise-patterns:choose-pattern` for a full recommendation; `enterprise-patterns-logic-placement-reviewer` to review a diff; `enterprise-patterns-logic-mover` to carry out moves.
 
 ## Source
 

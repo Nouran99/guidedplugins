@@ -113,7 +113,7 @@ A fake `TextSender` makes the reminder logic testable with no network, and a ven
 
 ## Related
 
-`clean-code-learning-tests` for the exploratory test workflow; `clean-code-system-construction` for wiring the adapter in; `clean-code-error-handling` for failure design; `clean-code-boundary-reviewer` to review a diff; `clean-code-adapter-builder` to delegate the build.
+`/clean-code:learning-tests` for the exploratory test workflow; `clean-code-system-construction` for wiring the adapter in; `clean-code-error-handling` for failure design; `clean-code-boundary-reviewer` to review a diff; `clean-code-adapter-builder` to delegate the build.
 
 ## Source
 

@@ -85,7 +85,7 @@ Step 1 can be reviewed by confirming that nothing observable changed. Step 2 cha
 - Mixing is acceptable when separating would make the diff harder to review (a rename that must travel with the code that uses the new name); the source says to separate "when that improves reviewability". Say so in the description.
 - Preparatory refactoring before a feature is justified when the existing structure hides the place where the feature belongs; keep it small and finished before the feature step.
 - If the area has no tests and the change is urgent, the source still asks for tests or analysis first; the smallest acceptable analysis is a written statement of current behavior you verified by reading and, where possible, running.
-- Large restructurings belong to planning (`code-complete-plan`), not to an opportunistic cleanup.
+- Large restructurings belong to planning (`/code-complete:plan`), not to an opportunistic cleanup.
 
 ## Verification
 
@@ -97,7 +97,7 @@ Step 1 can be reviewed by confirming that nothing observable changed. Step 2 cha
 
 ## Related
 
-`code-complete-complexity-management` for symptoms; `code-complete-construction-process` for increments; `code-complete-fix` to resolve named findings; `code-complete-refactorer` to carry out the steps; `code-complete-increment-reviewer` to check the finished diff.
+`code-complete-complexity-management` for symptoms; `code-complete-construction-process` for increments; `/code-complete:fix` to resolve named findings; `code-complete-refactorer` to carry out the steps; `code-complete-increment-reviewer` to check the finished diff.
 
 ## Source
 

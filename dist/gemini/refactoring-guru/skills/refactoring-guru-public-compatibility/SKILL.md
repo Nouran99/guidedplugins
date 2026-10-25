@@ -10,7 +10,7 @@ metadata:
 
 # Public compatibility
 
-Owns the question "is it safe to touch this?" for every technique that removes, renames, hides or reshapes something with outside users. Finding candidates is `refactoring-guru-dead-weight`; answering the question for one symbol is `refactoring-guru-reachability-check`.
+Owns the question "is it safe to touch this?" for every technique that removes, renames, hides or reshapes something with outside users. Finding candidates is `refactoring-guru-dead-weight`; answering the question for one symbol is `/refactoring-guru:reachability-check`.
 
 ## When to use
 
@@ -100,7 +100,7 @@ Behavior is unchanged for every existing call; callers learn about the removal b
 
 ## Related
 
-`refactoring-guru-dead-weight` to find candidates; `refactoring-guru-reachability-check` for a single-symbol verdict; `refactoring-guru-compatibility-reviewer` to review a diff; `refactoring-guru-dead-code-remover` to delete after proof; `refactoring-guru-method-call-moves` for signature techniques.
+`refactoring-guru-dead-weight` to find candidates; `/refactoring-guru:reachability-check` for a single-symbol verdict; `refactoring-guru-compatibility-reviewer` to review a diff; `refactoring-guru-dead-code-remover` to delete after proof; `refactoring-guru-method-call-moves` for signature techniques.
 
 ## Source
 

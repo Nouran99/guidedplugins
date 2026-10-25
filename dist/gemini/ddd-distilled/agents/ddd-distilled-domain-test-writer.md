@@ -1,7 +1,7 @@
 ---
 kind: local
 name: ddd-distilled-domain-test-writer
-description: "Implementer that writes tests in the ubiquitous language for value objects, transitions, orchestration and translation. Use when existing domain code has test gaps or new behavior needs tests; edits tests only. Not for a value object or translator introduced in the same task (their builders write those tests)."
+description: "Implementer that writes tests in the ubiquitous language for value objects, transitions, orchestration and translation."
 tools:
   - list_directory
   - read_file

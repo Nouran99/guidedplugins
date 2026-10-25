@@ -39,7 +39,7 @@ Treats the context map as a design artifact that decides code: for each pair of 
 3. Decide who translates: normally the downstream context, in its own adapter, so the upstream vocabulary stops at the edge. If the upstream team publishes a contract for consumers, say so and let the downstream map from it.
 4. Choose the mechanism and name the contract model that crosses. Hand inbound translation to `ddd-implementing-anticorruption-layer` and outbound messages to `ddd-implementing-integration-contracts`.
 5. Write the entry in the map next to the code and link the adapter.
-6. Reconstruct the whole map from an unfamiliar repository with `ddd-implementing-context-map` before changing several integrations at once.
+6. Reconstruct the whole map from an unfamiliar repository with `/ddd-implementing:context-map` before changing several integrations at once.
 
 ## Example
 
@@ -93,7 +93,7 @@ Shipping now depends on a published status contract and its own port; Billing ca
 
 ## Related
 
-`ddd-implementing-bounded-context` for ownership; `ddd-implementing-anticorruption-layer` for inbound translation; `ddd-implementing-integration-contracts` for outbound messages; `ddd-implementing-context-map` to reconstruct a map; `ddd-implementing-translation-reviewer` to review a diff.
+`ddd-implementing-bounded-context` for ownership; `ddd-implementing-anticorruption-layer` for inbound translation; `ddd-implementing-integration-contracts` for outbound messages; `/ddd-implementing:context-map` to reconstruct a map; `ddd-implementing-translation-reviewer` to review a diff.
 
 ## Source
 

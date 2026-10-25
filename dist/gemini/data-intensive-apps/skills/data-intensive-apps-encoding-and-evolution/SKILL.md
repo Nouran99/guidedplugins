@@ -10,7 +10,7 @@ metadata:
 
 # Encoding, schema evolution and rolling upgrades
 
-Treats every schema, encoding, API and message as a contract that outlives one deployment: old and new code run side by side, old data stays on disk, and old messages are still in flight. The identity and meaning of events is `data-intensive-apps-event-design`; where service lines are drawn is `data-intensive-apps-service-boundaries`; building the compatibility matrix for one change is `data-intensive-apps-compat-matrix`.
+Treats every schema, encoding, API and message as a contract that outlives one deployment: old and new code run side by side, old data stays on disk, and old messages are still in flight. The identity and meaning of events is `data-intensive-apps-event-design`; where service lines are drawn is `data-intensive-apps-service-boundaries`; building the compatibility matrix for one change is `/data-intensive-apps:compat-matrix`.
 
 ## When to use
 
@@ -97,7 +97,7 @@ An unknown enum value follows the same discipline: the reader maps a status it d
 
 ## Related
 
-`data-intensive-apps-compat-matrix` for the old-by-new matrix and rollout order; `data-intensive-apps-event-design` for event identity; `data-intensive-apps-service-boundaries` for contracts between services; `data-intensive-apps-evolution-reviewer` to review a diff; `data-intensive-apps-schema-migrator` to carry out a staged change.
+`/data-intensive-apps:compat-matrix` for the old-by-new matrix and rollout order; `data-intensive-apps-event-design` for event identity; `data-intensive-apps-service-boundaries` for contracts between services; `data-intensive-apps-evolution-reviewer` to review a diff; `data-intensive-apps-schema-migrator` to carry out a staged change.
 
 ## Source
 

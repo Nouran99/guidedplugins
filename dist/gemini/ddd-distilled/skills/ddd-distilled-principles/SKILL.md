@@ -43,22 +43,22 @@ Names such as `ddd-distilled-lead`, `ddd-distilled-final-gate` and the `...-revi
 | Situation | Use |
 | --- | --- |
 | Not sure which specialist applies to a task or diff | `ddd-distilled-lead` (delegate) |
-| Review the working diff or named paths | `ddd-distilled-review` |
-| Health picture of a directory or repository | `ddd-distilled-audit` |
-| Plan a change to existing code in increments | `ddd-distilled-plan` |
-| Write new domain behavior and need the model brief first | `ddd-distilled-model-first` |
-| Resolve specific findings | `ddd-distilled-fix` |
-| Understand one rule, its strength or its exception | `ddd-distilled-explain-rule` |
-| Walk the nine final questions while working | `ddd-distilled-checklist` |
+| Review the working diff or named paths | `/ddd-distilled:review` |
+| Health picture of a directory or repository | `/ddd-distilled:audit` |
+| Plan a change to existing code in increments | `/ddd-distilled:plan` |
+| Write new domain behavior and need the model brief first | `/ddd-distilled:model-first` |
+| Resolve specific findings | `/ddd-distilled:fix` |
+| Understand one rule, its strength or its exception | `/ddd-distilled:explain-rule` |
+| Walk the nine final questions while working | `/ddd-distilled:checklist` |
 | Strict pass or fail before commit or pull request | `ddd-distilled-final-gate` (delegate) |
 | Should this area use DDD at all, how much | `ddd-distilled-adoption-fit` |
-| Rank areas as core, supporting, generic | `ddd-distilled-subdomains`, `ddd-distilled-classify-subdomains` for a codebase scan, `ddd-distilled-subdomain-reviewer` to review a diff |
+| Rank areas as core, supporting, generic | `ddd-distilled-subdomains`, `/ddd-distilled:classify-subdomains` for a codebase scan, `ddd-distilled-subdomain-reviewer` to review a diff |
 | Which tactical pattern for this concept (value object or entity?), or too much ceremony | `ddd-distilled-pattern-economy`, `ddd-distilled-ceremony-reviewer` |
 | One model shared across concerns, same word with different rules in different modules | `ddd-distilled-bounded-contexts`, `ddd-distilled-context-boundary-reviewer` |
-| How two contexts relate, which of the nine relationships | `ddd-distilled-context-mapping`, `ddd-distilled-map-contexts` for the as-found map of a whole tree, `ddd-distilled-relationship-reviewer` for a diff |
+| How two contexts relate, which of the nine relationships | `ddd-distilled-context-mapping`, `/ddd-distilled:map-contexts` for the as-found map of a whole tree, `ddd-distilled-relationship-reviewer` for a diff |
 | Foreign model, upstream payload or schema entering local code | `ddd-distilled-context-translation`, `ddd-distilled-translation-builder` to build the translator |
 | RPC, REST or messaging between contexts | `ddd-distilled-integration-styles`, `ddd-distilled-integration-reviewer` |
-| Names, synonyms, one word with two meanings inside one context | `ddd-distilled-ubiquitous-language`, `ddd-distilled-glossary` for a tree, `ddd-distilled-language-reviewer`, `ddd-distilled-term-renamer` to apply a decided rename |
+| Names, synonyms, one word with two meanings inside one context | `ddd-distilled-ubiquitous-language`, `/ddd-distilled:glossary` for a tree, `ddd-distilled-language-reviewer`, `ddd-distilled-term-renamer` to apply a decided rename |
 | Flag, status code, enum, boolean or helper carries a decision | `ddd-distilled-explicit-concepts`, `ddd-distilled-concept-reviewer` |
 | Identity, lifecycle, setters, anemic classes | `ddd-distilled-entities`, `ddd-distilled-entity-reviewer` |
 | Primitive pair or group repeated with rules | `ddd-distilled-value-objects`, `ddd-distilled-value-object-introducer` |
@@ -68,14 +68,14 @@ Names such as `ddd-distilled-lead`, `ddd-distilled-final-gate` and the `...-revi
 | Service or controller with business decisions | `ddd-distilled-application-services`, `ddd-distilled-service-reviewer`, `ddd-distilled-behavior-mover` to relocate decisions |
 | Framework, ORM or transport types in the model | `ddd-distilled-infrastructure-isolation`, `ddd-distilled-infrastructure-reviewer` |
 | Tests of the model | `ddd-distilled-domain-tests`, `ddd-distilled-domain-test-reviewer`, `ddd-distilled-domain-test-writer` |
-| Workflow, events or language unclear; delivery pressure | `ddd-distilled-accelerated-modeling`, `ddd-distilled-event-storm` |
-| Size DDD work, record known modeling imperfections | `ddd-distilled-estimate-work`, `ddd-distilled-modeling-debt` |
-| Session-long behavior: teach the reasoning | `ddd-distilled-mode-mentor` |
-| Session-long behavior: ranked findings only | `ddd-distilled-mode-strict-reviewer` |
-| Session-long behavior: small narrated steps | `ddd-distilled-mode-pair` |
-| Session-long behavior: result first, few lines | `ddd-distilled-mode-terse` |
-| Session-long behavior: context card before every design answer | `ddd-distilled-mode-context-first` |
-| Session-long behavior: every pattern tagged with why it earns its cost | `ddd-distilled-mode-earned-pattern` |
+| Workflow, events or language unclear; delivery pressure | `ddd-distilled-accelerated-modeling`, `/ddd-distilled:event-storm` |
+| Size DDD work, record known modeling imperfections | `/ddd-distilled:estimate-work`, `/ddd-distilled:modeling-debt` |
+| Session-long behavior: teach the reasoning | `/ddd-distilled:mode-mentor` |
+| Session-long behavior: ranked findings only | `/ddd-distilled:mode-strict-reviewer` |
+| Session-long behavior: small narrated steps | `/ddd-distilled:mode-pair` |
+| Session-long behavior: result first, few lines | `/ddd-distilled:mode-terse` |
+| Session-long behavior: context card before every design answer | `/ddd-distilled:mode-context-first` |
+| Session-long behavior: every pattern tagged with why it earns its cost | `/ddd-distilled:mode-earned-pattern` |
 
 ## Priority
 

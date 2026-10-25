@@ -94,7 +94,7 @@ export class AccountHolder {
 
 ## Related
 
-`ddd-implementing-module-structure` for layout inside and across contexts; `ddd-implementing-context-mapping` for the relationship between two contexts; `ddd-implementing-ubiquitous-language` for the words inside one; `ddd-implementing-context-boundary-reviewer` to review a diff; `ddd-implementing-context-map` to reconstruct the map of a whole tree.
+`ddd-implementing-module-structure` for layout inside and across contexts; `ddd-implementing-context-mapping` for the relationship between two contexts; `ddd-implementing-ubiquitous-language` for the words inside one; `ddd-implementing-context-boundary-reviewer` to review a diff; `/ddd-implementing:context-map` to reconstruct the map of a whole tree.
 
 ## Source
 

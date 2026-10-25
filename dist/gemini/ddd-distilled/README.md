@@ -10,5 +10,8 @@ gemini extensions install ./dist/gemini/ddd-distilled
 
 Gemini asks you to confirm before it installs (trust and consent prompts).
 
-- 38 skills (including 6 mode skills). Gemini's documentation says each is also a slash command `/ddd-distilled:ddd-distilled-<name>`; that was not exercised in a live session here.
-- 21 subagents, started with `@ddd-distilled-<name> <task>`.
+- 19 rule skills the model activates on its own (`ddd-distilled-<name>`).
+- 13 workflows and 6 modes as slash commands: `/ddd-distilled:review src/`, `/ddd-distilled:mode-mentor`. They are commands, not skills, so they add nothing to every request.
+- 21 subagents, started with `@ddd-distilled-<name> <task>`. The read-only ones are constrained by `policies/read-only-roles.toml` (deny rules on the text of a shell command: a guard rail, not a sandbox).
+
+Gemini loads extension commands only in a trusted folder; if `/ddd-distilled:review` is missing and the footer says `untrusted`, run `/permissions trust`. Answering a shell prompt with "Allow for this session" creates an allow rule that outranks the policy's deny rules for that command word; see docs/AGENTS_SUPPORT.md.

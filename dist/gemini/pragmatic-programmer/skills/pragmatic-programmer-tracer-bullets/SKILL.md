@@ -10,7 +10,7 @@ metadata:
 
 # Tracer bullets
 
-Sequence and size delivery so that a thin, real, end-to-end path runs first and everything else is refined from working feedback. A throwaway experiment is `pragmatic-programmer-prototypes`; deciding what is actually being asked is `pragmatic-programmer-requirements`. To write a slice down, run `pragmatic-programmer-tracer-plan`.
+Sequence and size delivery so that a thin, real, end-to-end path runs first and everything else is refined from working feedback. A throwaway experiment is `pragmatic-programmer-prototypes`; deciding what is actually being asked is `pragmatic-programmer-requirements`. To write a slice down, run `/pragmatic-programmer:tracer-plan`.
 
 ## When to use
 
@@ -41,7 +41,7 @@ Sequence and size delivery so that a thin, real, end-to-end path runs first and 
 3. Decide what may be trivial (logic) and what must be real (storage, interfaces, deployment).
 4. Build it, run it, and record what surprised you.
 5. Choose the next increments from the evidence and order them by risk.
-6. Update the estimates with what you learned. `pragmatic-programmer-tracer-plan` writes this down as a plan.
+6. Update the estimates with what you learned. `/pragmatic-programmer:tracer-plan` writes this down as a plan.
 
 ## Example
 
@@ -98,7 +98,7 @@ The slice proves integration points with three or four lines of logic, and the e
 
 ## Related
 
-`pragmatic-programmer-tracer-plan` to write the slice; `pragmatic-programmer-slice-reviewer` to review a plan or change; `pragmatic-programmer-prototypes` for disposable experiments; `pragmatic-programmer-requirements` for what is being asked; `pragmatic-programmer-mode-tracer-first` for a session that works this way.
+`/pragmatic-programmer:tracer-plan` to write the slice; `pragmatic-programmer-slice-reviewer` to review a plan or change; `pragmatic-programmer-prototypes` for disposable experiments; `pragmatic-programmer-requirements` for what is being asked; `/pragmatic-programmer:mode-tracer-first` for a session that works this way.
 
 ## Source
 

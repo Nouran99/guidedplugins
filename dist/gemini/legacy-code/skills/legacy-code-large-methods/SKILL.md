@@ -39,7 +39,7 @@ A long method cannot be reasoned about locally and cannot be tested in pieces. T
 
 ## Procedure
 
-1. Pin the method through its public entry point (`legacy-code-characterize`) if it is not already protected.
+1. Pin the method through its public entry point (`/legacy-code:characterize`) if it is not already protected.
 2. Mark the branch the change touches and list its inputs and outputs.
 3. Extract the pure computation first. Run the tests. Add direct tests for the extracted unit.
 4. Isolate effects second (`legacy-code-hard-outputs` for the collaborator).
