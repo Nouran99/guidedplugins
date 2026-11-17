@@ -1,6 +1,6 @@
 {
   "name": "clean-architecture",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Robert C. Martin's Clean Architecture: skills and modes for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
   "author": {
     "name": "Nouran Darwish"

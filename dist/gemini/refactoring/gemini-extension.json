@@ -1,5 +1,5 @@
 {
   "name": "refactoring",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Refactoring by Martin Fowler: skills, subagents and modes for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy."
 }

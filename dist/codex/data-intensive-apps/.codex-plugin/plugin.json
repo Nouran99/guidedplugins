@@ -1,6 +1,6 @@
 {
   "name": "data-intensive-apps",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Designing Data-Intensive Applications by Martin Kleppmann: skills and modes for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
   "author": {
     "name": "Nouran Darwish"

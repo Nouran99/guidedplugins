@@ -7,6 +7,8 @@ description: "Plan a non-trivial change with the Clean Code change process: inte
 
 Arguments: the text the user wrote together with this request (empty if none)
 
+Project settings: if `.guided-plugins.json` exists at the repository root, apply it first, as the *Project settings* section of `../principles/SKILL.md` describes: skip ignored files, report at the set strictness, cap the report at `maxFindings`, and treat a secondary book's disagreement with the primary book as a note. <!-- project-settings -->
+
 ## Scope
 
 1. If the argument text describes a task, plan that task.

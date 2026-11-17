@@ -13,6 +13,8 @@ metadata:
 
 Arguments: the text the user typed after the skill name (empty if none)
 
+Project settings: if `.guided-plugins.json` exists at the repository root, apply it first, as the *Project settings* section of `../philosophy-of-design-principles/SKILL.md` describes: skip ignored files, report at the set strictness, cap the report at `maxFindings`, and treat a secondary book's disagreement with the primary book as a note. <!-- project-settings -->
+
 ## Scope
 
 1. If the argument text names paths, review exactly those files.
@@ -46,6 +48,22 @@ Summary: <two sentences>. Next step: <the one thing to do first>.
 Severity (Added judgment, not from the source): blocker means the change makes misuse easy or pushes new knowledge onto many callers; major means a shallow layer, a behavior flag or a duplicated decision; minor means a narrating comment or a near-miss name; nit means taste.
 
 If there are no findings, print `No findings` and list the clusters you checked.
+
+<!-- json-output:start -->
+## JSON output
+
+If the argument text contains `--json`, or the caller supplied a JSON schema, return exactly one JSON object and nothing else, and ignore the `--json` flag when you read the scope. Same ranking, same limits, same rules about what to report; only the shape changes:
+
+```json
+{"schemaVersion": 1, "tool": "philosophy-of-design", "books": ["philosophy-of-design"], "scope": "<what was reviewed>",
+ "findings": [{"severity": "blocker|major|minor|nit", "path": "<repository-relative path>", "line": 42, "rule": "<rule name>", "book": "philosophy-of-design",
+               "why": "<consequence, one or two sentences>", "fix": "<smallest change>", "confidence": "sure|unsure"}],
+ "checked": ["<clusters>"], "notChecked": ["<clusters or files out of scope>"],
+ "summary": "<two sentences>", "doFirst": "<the one finding to fix first>"}
+```
+
+With no findings, return an empty `findings` array. `line` is a whole number of at least 1 and may be left out for a finding about a whole file.
+<!-- json-output:end -->
 
 ## Stop conditions
 

@@ -1,6 +1,6 @@
 {
   "name": "pragmatic-programmer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Hunt and Thomas's The Pragmatic Programmer: skills and modes for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
   "author": {
     "name": "Nouran Darwish"

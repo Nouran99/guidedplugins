@@ -1,7 +1,7 @@
 {
   "name": "ddd-implementing",
   "description": "Vaughn Vernon's Implementing Domain-Driven Design: skills, subagents and modes for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Nouran Darwish"
   },

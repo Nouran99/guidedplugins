@@ -1,7 +1,7 @@
 {
   "name": "philosophy-of-design",
   "description": "John Ousterhout's A Philosophy of Software Design: skills, subagents and modes for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": {
     "name": "Nouran Darwish"
   },

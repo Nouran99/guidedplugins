@@ -13,6 +13,8 @@ metadata:
 
 Arguments: the text the user typed after the skill name (empty if none)
 
+Project settings: if `.guided-plugins.json` exists at the repository root, apply it first, as the *Project settings* section of `../philosophy-of-design-principles/SKILL.md` describes: skip ignored files, report at the set strictness, cap the report at `maxFindings`, and treat a secondary book's disagreement with the primary book as a note. <!-- project-settings -->
+
 An interactive pass at the end of a piece of work. It answers each item with evidence and tells you what to do about every no. For an isolated PASS or FAIL before a commit or pull request, delegate to `philosophy-of-design-final-gate` instead.
 
 ## Scope

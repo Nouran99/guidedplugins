@@ -1,5 +1,5 @@
 {
   "name": "ddd",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Eric Evans' Domain-Driven Design: skills, subagents and modes for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus."
 }

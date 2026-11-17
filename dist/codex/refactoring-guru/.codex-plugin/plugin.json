@@ -1,6 +1,6 @@
 {
   "name": "refactoring-guru",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Refactoring.Guru's smell and technique catalog: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills and modes built on a paraphrased rule set for coding agents.",
   "author": {
     "name": "Nouran Darwish"

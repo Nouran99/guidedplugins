@@ -1,5 +1,5 @@
 {
   "name": "legacy-code",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Michael Feathers's Working Effectively with Legacy Code: skills, subagents and modes for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps."
 }

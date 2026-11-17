@@ -60,6 +60,12 @@ If the change is trivial (a log line, a rename inside one function), say so and 
 - Do not summarize the code or restate the rules; the output is a plan, nothing else.
 - The output ends after the Risk line. Do not add a list of implementers, a "useful skills" paragraph or any closing note unless the user asked for changes.
 
+<!-- project-settings:agent:start -->
+## Project settings
+
+Read `.guided-plugins.json` at the repository root if it exists, and apply it as the *Project settings* section of `${extensionPath}/skills/data-intensive-apps-principles/SKILL.md` describes (Read that section if it is not already in your context): leave ignored files out, report at the set strictness and cap the report at `maxFindings`.
+<!-- project-settings:agent:end -->
+
 ## Source
 
 - `Primary Directive`

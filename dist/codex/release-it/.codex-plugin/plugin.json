@@ -1,6 +1,6 @@
 {
   "name": "release-it",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Michael T. Nygard's Release It!: skills and modes for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
   "author": {
     "name": "Nouran Darwish"
