@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: reminders-ts
+description: "A reminders module with a service that only forwards to its store, boolean mode flags, a collect-render-send call order, a storage encoding parsed by two modules, repeated caller preparation and a not-found error every caller swallows."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

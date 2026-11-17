@@ -1,0 +1,1 @@
+Review src/ before I merge it. The receipt mailer is in src/main/java/shop/receipts/ and its test is in src/test/java/shop/receipts/. List the problems you find, most serious first, with the file and line and the smallest fix for each. Do not edit any file.

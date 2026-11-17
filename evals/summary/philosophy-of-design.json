@@ -1,0 +1,108 @@
+{
+  "plugin": "philosophy-of-design",
+  "date": "2026-11-06",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.7468853999999998,
+      "partial": false,
+      "cases": [
+        {
+          "name": "invoice-export-py",
+          "defectWith": 0.667,
+          "defectWithout": 0.5,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.6666666666666666
+        },
+        {
+          "name": "notify-go",
+          "defectWith": 0.667,
+          "defectWithout": 0.5,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.6666666666666666
+        },
+        {
+          "name": "rate-limiter-control-cs",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "reminders-ts",
+          "defectWith": 1,
+          "defectWithout": 0.286,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "stock-ledger-java",
+          "defectWith": 0.857,
+          "defectWithout": 0.714,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.0792537,
+      "partial": false,
+      "cases": [
+        {
+          "name": "invoice-export-py--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": null,
+          "skillFired": null,
+          "scoreAllGraders": 0.875
+        },
+        {
+          "name": "notify-go--slash",
+          "defectWith": 0.833,
+          "defectWithout": null,
+          "formatOk": null,
+          "skillFired": null,
+          "scoreAllGraders": 0.75
+        },
+        {
+          "name": "rate-limiter-control-cs--slash",
+          "defectWith": 0.4,
+          "defectWithout": null,
+          "formatOk": null,
+          "skillFired": null,
+          "scoreAllGraders": 0.5
+        },
+        {
+          "name": "reminders-ts--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": null,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "stock-ledger-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": null,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}

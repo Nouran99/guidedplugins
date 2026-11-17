@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: refund-route-ts
+description: "A refund route handler that decides the refund rules itself next to parsing, a payment call and an audit file write, reads the current user and the clock from ambient state, keeps a test-only variable in production code and is covered by tests that need a real database and assert next to nothing."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

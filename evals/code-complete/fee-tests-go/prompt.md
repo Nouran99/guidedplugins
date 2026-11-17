@@ -1,0 +1,1 @@
+Review src/fee_test.go before I merge it (the code under test is in src/fee.go). List the problems you find in the tests, most serious first, with the line and the smallest fix for each. Do not edit any file.

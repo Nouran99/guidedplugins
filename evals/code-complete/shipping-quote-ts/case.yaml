@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: shipping-quote-ts
+description: "A quote routine with boolean mode flags, a -1 sentinel, magic numbers, a mixed and/or condition, a range chain, hidden writes and one variable that changes meaning."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: rental-service-ts
+description: "A car rental service that holds every rule over a data-only class, with a free status string, money as number and currency, Express request types, noisy update events and a boolean that switches fee rules."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

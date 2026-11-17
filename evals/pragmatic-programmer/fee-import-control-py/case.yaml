@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: fee-import-control-py
+description: "A late-fee rule with one owner, named contract constants, an explicit precondition, a with-block, rejected rows that keep their cause, an injected date and behavior-named tests including a regression test: a review should find nothing to restructure."
+tags: [control]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

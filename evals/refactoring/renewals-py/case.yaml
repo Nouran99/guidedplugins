@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: renewals-py
+description: "A renewal job where the due check reads the clock and a settings global, a get-named quote writes to the database, flags switch behavior, the price rule is copied, amounts travel as loose cents and currency, one loop does everything and its only test passes an empty list."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

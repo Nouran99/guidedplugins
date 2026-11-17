@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: carrier-tracking-java
+description: "A carrier tracking integration with a name-only anticorruption layer, silent default for unknown codes, a webhook that assumes once-and-in-order delivery, an entity serialized as the partner payload and an unguarded status setter."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

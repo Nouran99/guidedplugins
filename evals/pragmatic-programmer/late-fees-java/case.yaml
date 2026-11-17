@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: late-fees-java
+description: "A nightly job that imports a spike from an experiments package, reaches through call chains, hard-codes the fee policy inside its DB and mail loop, depends on a mailer call order and a TEMP skip with no exit, and states the grace period twice."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

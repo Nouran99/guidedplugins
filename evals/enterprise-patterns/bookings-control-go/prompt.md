@@ -1,0 +1,1 @@
+Review src/bookings/ before I merge it (its tests sit next to the code; the mail adapter and the wiring come in a separate change). Tell me whether anything needs to change, most serious first, with the file and line and the smallest fix for each. If nothing needs to change, say so plainly. Do not edit any file.

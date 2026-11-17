@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: savings-pots-ts
+description: "An event-sourced savings pot whose apply reads the clock and can throw, appends without a stream version, an event-sourced settings record, aggregates returned as JSON, an ambient tenant and an overview that replays every stream."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

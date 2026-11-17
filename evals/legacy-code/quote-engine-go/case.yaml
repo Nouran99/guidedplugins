@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: quote-engine-go
+description: "A shipping quote function where the new weekend surcharge is written inline in the middle of a nested pricing body that reads the clock, posts metrics, exits the process on an unknown zone and relies on a package init that reads a file, with two thin tests."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

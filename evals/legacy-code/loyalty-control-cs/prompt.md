@@ -1,0 +1,1 @@
+Review src/Loyalty/ before I merge it (its tests are in tests/Loyalty/; the SQL ledger, the queue announcer and the wiring come in a separate change). Tell me whether anything needs to change, most serious first, with the file and line and the smallest fix for each. If nothing needs to change, say so plainly. Do not edit any file.

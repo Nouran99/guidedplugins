@@ -1,0 +1,108 @@
+{
+  "plugin": "clean-code",
+  "date": "2026-10-26",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.1058979,
+      "partial": false,
+      "cases": [
+        {
+          "name": "cache-py",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "clean-control-go",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-processing-ts",
+          "defectWith": 0.857,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "report-service-java",
+          "defectWith": 0.857,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "tests-py",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.0236236,
+      "partial": false,
+      "cases": [
+        {
+          "name": "cache-py--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "clean-control-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-processing-ts--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "report-service-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "tests-py--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}

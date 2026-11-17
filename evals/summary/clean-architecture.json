@@ -1,0 +1,108 @@
+{
+  "plugin": "clean-architecture",
+  "date": "2026-11-06",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 2.0164292999999995,
+      "partial": false,
+      "cases": [
+        {
+          "name": "architecture-control-ts",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "loan-renewal-java",
+          "defectWith": 0.857,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "quote-listener-go",
+          "defectWith": 0.857,
+          "defectWithout": 0.143,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "reminders-cs",
+          "defectWith": 0.571,
+          "defectWithout": 0,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.5714285714285714
+        },
+        {
+          "name": "shop-orders-py",
+          "defectWith": 0.429,
+          "defectWithout": 0.286,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.42857142857142855
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.4104195000000002,
+      "partial": false,
+      "cases": [
+        {
+          "name": "architecture-control-ts--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "loan-renewal-java--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "quote-listener-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "reminders-cs--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "shop-orders-py--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}

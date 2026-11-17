@@ -1,0 +1,1 @@
+Review src/invoice.go before I merge it (its tests are in src/invoice_test.go). Tell me whether anything needs to change, most serious first, with the line and the smallest fix for each. If nothing needs to change, say so plainly. Do not edit any file.

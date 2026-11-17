@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: invoice-payments-java
+description: "A payment endpoint where the controller runs the whole workflow inside one transaction around the payment, the mail and a tax call per line, returns the JPA entity, leaks the payment SDK type, keeps money in doubles and formats display text in the entity."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

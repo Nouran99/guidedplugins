@@ -1,0 +1,108 @@
+{
+  "plugin": "data-intensive-apps",
+  "date": "2026-11-06",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.8707135,
+      "partial": false,
+      "cases": [
+        {
+          "name": "catalog-index-java",
+          "defectWith": 0.857,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "kv-cluster-go",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-events-ts",
+          "defectWith": 0.625,
+          "defectWithout": 0.625,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.625
+        },
+        {
+          "name": "payments-consumer-py",
+          "defectWith": 0.75,
+          "defectWithout": 0.75,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.75
+        },
+        {
+          "name": "shipment-view-control-kt",
+          "defectWith": 1,
+          "defectWithout": 0.4,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.308",
+      "costUsd": 1.3186622,
+      "partial": false,
+      "cases": [
+        {
+          "name": "catalog-index-java--slash",
+          "defectWith": 0.714,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.7777777777777778
+        },
+        {
+          "name": "kv-cluster-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-events-ts--slash",
+          "defectWith": 0.875,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.9
+        },
+        {
+          "name": "payments-consumer-py--slash",
+          "defectWith": 0.875,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.9
+        },
+        {
+          "name": "shipment-view-control-kt--slash",
+          "defectWith": 0.4,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.5
+        }
+      ]
+    }
+  ]
+}

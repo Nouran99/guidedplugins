@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: order-processing-ts
+description: "One function mixes validation, pricing, payment and email, with flag parameters, a swallowed error, magic numbers, a leaked vendor type and noise comments."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

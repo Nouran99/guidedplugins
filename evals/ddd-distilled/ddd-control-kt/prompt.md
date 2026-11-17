@@ -1,0 +1,1 @@
+Review src/stays/ before I merge it (its tests are in the *Test.kt files in the same folder). Tell me whether anything needs to change, most serious first, with the file and line and the smallest fix for each. If nothing needs to change, say so plainly. Do not edit any file.

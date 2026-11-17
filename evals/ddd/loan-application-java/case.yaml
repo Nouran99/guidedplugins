@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: loan-application-java
+description: "A model with guarded transitions whose tests only cover the happy path, test names that describe code effects, getter tests while the affordability rule is untested, a Spring and Postgres container for plain model tests, an unknown bureau band silently graded, and a question that stamps state."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

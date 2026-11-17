@@ -1,0 +1,1 @@
+Review src/orders/ before I merge it (it changes the order events and the orders table; the inventory consumer, its test and the migration are in the same folder). List the problems you find, most serious first, with the file and line and the smallest fix for each. Do not edit any file.

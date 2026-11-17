@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: timesheet-approval-cs
+description: "A timesheet is a bag of setters with its rules in the service, rate and currency travel as raw primitives, approval changes the project budget in the same transaction, a child table has its own repository, table-shaped names and flags sit in the model, and the controller assembles the timesheet field by field."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

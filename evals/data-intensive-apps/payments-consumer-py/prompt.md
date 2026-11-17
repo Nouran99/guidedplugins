@@ -1,0 +1,1 @@
+Review src/payments/ before I merge it (it is the consumer for our payment events; its tests are in the same folder, and db and bus are our shared wrappers around the database and the message bus). List the problems you find, most serious first, with the file and line and the smallest fix for each. Do not edit any file.

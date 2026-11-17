@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: invoice-export-go
+description: "An exporter that leaks handles on its error paths, shares an unguarded rates map with a refresh goroutine, reads the environment and clock inside, queries per row, discards error causes, retries by searching the error text and exports zero for an unknown currency."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

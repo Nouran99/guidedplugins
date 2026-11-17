@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: checkout-web-cs
+description: "A checkout flow where the client supplies the unit prices, carts live in a static in-process dictionary, a manager only forwards to the service, the service takes the form collection and a service locator, and the view computes the discount and shipping."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

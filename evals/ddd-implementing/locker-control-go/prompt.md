@@ -1,0 +1,1 @@
+Review src/lockers/ before I merge it (its tests are the *_test.go files in that folder). Tell me whether anything needs to change, most serious first, with the file and line and the smallest fix for each. If nothing needs to change, say so plainly. Do not edit any file.

@@ -1,0 +1,1 @@
+Review src/catalog/ before I merge it (the product service, plus the stock and report classes that sit beside it; Database, Cache, SearchIndex and PricingClient are our shared clients). List the problems you find, most serious first, with the file and line and the smallest fix for each. Do not edit any file.

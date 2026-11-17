@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: alerts-cs
+description: "An alerts package where the SMS channel refuses inherited members, both channels repeat one retry loop, every channel has a matching formatter subclass, push is a separate class with another interface, a service only forwards and a private helper is never called."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

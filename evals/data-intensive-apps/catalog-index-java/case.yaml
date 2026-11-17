@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: catalog-index-java
+description: "A product catalog that writes the search index and cache inline and swallows the failure, keeps stock only in the cache, returns a replica read right after a write, overwrites concurrent edits, calls the pricing service once per product and runs dashboard aggregates on the primary."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh

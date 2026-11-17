@@ -1,0 +1,10 @@
+schema_version: "1.1"
+name: invoice-service-cs
+description: "One class mixes SQL, tax, HTML and mail, exposes its bookkeeping, reaches through a customer chain, repeats a tax factor, keeps a stale comment and commented-out code, and compares integer statuses."
+tags: [detect]
+execution:
+  max_turns: 14
+  timeout_seconds: 360
+  allowed_tools: [Read, Glob, Grep, Skill]
+context:
+  scaffold_script: scaffold.sh
