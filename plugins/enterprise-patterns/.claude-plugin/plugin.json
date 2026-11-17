@@ -1,7 +1,7 @@
 {
   "name": "enterprise-patterns",
   "displayName": "Patterns of Enterprise Application Architecture",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Martin Fowler's enterprise application patterns as a Claude Code toolkit: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial.",
   "author": {
     "name": "Nouran Darwish"

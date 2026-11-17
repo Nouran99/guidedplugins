@@ -1,7 +1,7 @@
 {
   "name": "pragmatic-programmer",
   "displayName": "The Pragmatic Programmer",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
   "author": {
     "name": "Nouran Darwish"

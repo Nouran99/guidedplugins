@@ -4,6 +4,26 @@ A rule set derived from Andrew Hunt and David Thomas's *The Pragmatic Programmer
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), eight usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `pragmatic-programmer:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/pragmatic-programmer:review` |
+| Plan a non-trivial change before you edit | `/pragmatic-programmer:plan` |
+| Walk the book's final checklist against your change | `/pragmatic-programmer:checklist` |
+| Act on review findings, one at a time | `/pragmatic-programmer:fix` |
+| Define the thinnest real end-to-end slice for a new capability | `/pragmatic-programmer:tracer-plan` |
+| When starting a new capability, sizing or sequencing work, or when many layers are being built before anything runs end to end | `/pragmatic-programmer:tracer-bullets` |
+| When asked whether a change is good enough or finished, when a trade-off, risk or uncertainty must be reported | `/pragmatic-programmer:ownership` |
+| Not sure which specialist applies? Route the task | ask Claude to use `pragmatic-programmer:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `pragmatic-programmer:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *The Pragmatic Programmer* is about the habits that separate a developer who delivers a change from one who owns an outcome. It asks you to treat knowledge as the thing worth keeping in one place, to keep components independent so that one change touches one place, to get a thin working path running before the layers around it exist, to keep decisions reversible until evidence arrives, to learn from throwaway experiments without letting them ship, to automate what repeats, to shorten the time between a change and its feedback, to make assumptions explicit in code, to debug by finding facts instead of guessing, and to fix small decay before it becomes normal. Above all it asks you to be pragmatic rather than dogmatic: practices are justified by what they do for real users and risks, not by ritual. This plugin works from a compact rule set derived from that thinking; it paraphrases the ideas as working rules and does not reproduce the book.

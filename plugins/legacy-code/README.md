@@ -4,6 +4,26 @@ A Claude Code toolkit that makes an agent change code it cannot yet trust the wa
 
 This plugin is unofficial and is not affiliated with the book's author or publisher. See [Attribution and license](#attribution-and-license).
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `legacy-code:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/legacy-code:review` |
+| Plan a non-trivial change before you edit | `/legacy-code:plan` |
+| Walk the book's final checklist against your change | `/legacy-code:checklist` |
+| Act on review findings, one at a time | `/legacy-code:fix` |
+| When starting a change in untested code and you need the order of work | `/legacy-code:legacy-loop` |
+| When current behavior is uncertain and must be captured before a change | `/legacy-code:characterization-tests` |
+| Pin the current behavior of one function, class or branch with characterization tests, mark suspicious results, | `/legacy-code:characterize` |
+| Not sure which specialist applies? Route the task | ask Claude to use `legacy-code:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `legacy-code:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in short.** Code that nobody can change with confidence is expensive no matter how it looks. The way out is not a rewrite; it is control. Treat any area without trustworthy tests as legacy code. State what the change must alter and what must stay the same. When current behavior is unclear, record what the code does today in characterization tests, even where the result is ugly. To get the code under test, find a seam: a place where behavior can be changed without editing the surrounding code, used to observe what the code does, to substitute a dependency, or both. Break the one dependency that blocks the test: a clock, a random source, an environment read, a file or network call, a constructor that does real work, a static or global, a framework callback. Make the change as its own step. When editing fragile code is too risky, add the new behavior beside it with a sprout or a wrap. Refactor locally afterwards, and keep a temporary seam only while it still pays for itself.
@@ -281,7 +301,7 @@ The upstream compatibility notes compare every pair of books. All thirteen pairi
 
 The remaining books (`ddd`, `ddd-distilled`, `ddd-implementing`, `enterprise-patterns`, `data-intensive-apps`, `philosophy-of-design`, `code-complete`, `pragmatic-programmer`) are rated complementary at the same 12% conflict and 38% overlap: use them when their trigger is actually present, after control exists.
 
-**Recommended pairing.** In a repository where most of the work is on weakly tested code, keep this plugin as the primary rule set (turn `inject_rules` on) and add `refactoring` on demand for the behavior-preserving structural steps once the pins exist. In a well-tested repository, keep another plugin primary and bring this one in per task for the areas without protection. **Avoid loading together** `refactoring` and `refactoring-guru` with this plugin at equal weight and `inject_rules` on in all of them: the overlap is about 58 percent and their sequencing rules compete. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** In a repository where most of the work is on weakly tested code, keep this plugin as the primary rule set (turn `inject_rules` on) and add `refactoring` on demand for the behavior-preserving structural steps once the pins exist. In a well-tested repository, keep another plugin primary and bring this one in per task for the areas without protection. **Avoid loading together** `refactoring` and `refactoring-guru` with this plugin at equal weight and `inject_rules` on in all of them: the overlap is about 58 percent and their sequencing rules compete. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

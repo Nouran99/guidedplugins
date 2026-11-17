@@ -4,6 +4,26 @@ John Ousterhout's argument that the central job of software design is fighting c
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), nine usage walkthroughs with exact commands, a map from the book's rule sections to the components, how it sits next to the other book plugins, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `philosophy-of-design:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/philosophy-of-design:review` |
+| Plan a non-trivial change before you edit | `/philosophy-of-design:plan` |
+| Walk the book's final checklist against your change | `/philosophy-of-design:checklist` |
+| Act on review findings, one at a time | `/philosophy-of-design:fix` |
+| Inventory the modules in a scope by interface weight and hidden work in a forked context, and return the shallow | `/philosophy-of-design:depth-map` |
+| Trace a complaint such as 'this change touched too many files' | `/philosophy-of-design:symptom-trace` |
+| When a change feels awkward, one edit touches many files, a reader must reconstruct hidden dependencies, | `/philosophy-of-design:complexity-symptoms` |
+| Not sure which specialist applies? Route the task | ask Claude to use `philosophy-of-design:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `philosophy-of-design:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *A Philosophy of Software Design* starts from a plain definition: complexity is anything that makes software hard to understand or hard to change. It shows up as change amplification (a small change needs edits in many places), cognitive load (a reader must hold too many facts), and unknown unknowns (it is unclear what must change or what matters), and it grows a little with every shortcut. The book's answer is to treat design as continuous investment rather than a phase. Build deep modules whose simple interfaces hide a lot of real work; keep each design decision known by one module; shape interfaces around what callers need, not how the code works; pull complexity downward so callers do less; define errors and special cases away where the design allows it; write comments that carry contracts and reasons instead of narrating code; keep names, conventions and behavior obvious; and spend effort on performance or fashionable techniques only when evidence says it pays.
@@ -306,7 +326,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The other books are generally complementary when their trigger is actually present: `release-it` (production failure behavior; reliability mechanisms add complexity and must be scoped to real failure modes), `data-intensive-apps` (source of truth, consistency and schema evolution come before abstractions that hide them; complementarity 80%), `enterprise-patterns` (persistence, workflow and remoting patterns, chosen by force and not by habit) and `refactoring-guru` (smell diagnosis and stop conditions). `code-complete` and `pragmatic-programmer` are complementary but share the most general guidance (overlap 50%): choose a primary rule set when both try to govern the same local code-shape decision.
 
-**Recommended pairing.** Keep this plugin as the one always-on rule set (`inject_rules` on) when your work is mostly module and API design, and bring in `refactoring` for behavior-preserving restructuring or `legacy-code` for weakly tested code, on demand and per task. **Avoid loading together:** `clean-code` or `code-complete` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep this plugin as the one always-on rule set (`inject_rules` on) when your work is mostly module and API design, and bring in `refactoring` for behavior-preserving restructuring or `legacy-code` for weakly tested code, on demand and per task. **Avoid loading together:** `clean-code` or `code-complete` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

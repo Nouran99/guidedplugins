@@ -4,6 +4,26 @@ Martin Fowler's catalog of enterprise application patterns, turned into a Claude
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), eight usage walkthroughs with exact commands, a map from the book's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `enterprise-patterns:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/enterprise-patterns:review` |
+| Plan a non-trivial change before you edit | `/enterprise-patterns:plan` |
+| Walk the book's final checklist against your change | `/enterprise-patterns:checklist` |
+| Act on review findings, one at a time | `/enterprise-patterns:fix` |
+| Hunt the six forbidden patterns (layering theater, generic repository, ORM-driven everything, controller-centric app | `/enterprise-patterns:blocker-scan` |
+| Map who owns each of the seven enterprise responsibilities (presentation, workflow, domain, data access, transactions | `/enterprise-patterns:responsibility-map` |
+| Turn a feature or code situation into forces | `/enterprise-patterns:choose-pattern` |
+| Not sure which specialist applies? Route the task | ask Claude to use `enterprise-patterns:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `enterprise-patterns:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Patterns of Enterprise Application Architecture* starts from an observation: business applications that handle data for many users keep facing the same few problems. Where should the business rules live? How do objects map to relational tables? Who commits, and what happens when two people edit the same record? How are pages built and navigated? What changes when a boundary is remote, and where does per-user state live? The book answers each with a family of named patterns and, importantly, with the trade-offs between them, so that the choice follows from the problem instead of from fashion. The upstream rule set condenses that into a working policy for an agent: make responsibilities explicit, pick the smallest set of well-understood patterns that fits, escalate only when the code shows the pressure, and reject accidental coupling and fashionable complexity alike.
@@ -317,7 +337,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 `ddd-distilled` is rated as overlap (conflict 50%, overlap 66%): let it decide first whether domain-driven design is justified at all, and then use this plugin for the specific enterprise pattern decision. The remaining books (`release-it`, `clean-code`, `code-complete`, `philosophy-of-design`, `pragmatic-programmer`, `refactoring-guru`) are rated complementary, with the usual condition that you load a second rule set only when its trigger is present.
 
-**Recommended pairing.** Keep this plugin as the one always-on rule set (`inject_rules` on) for server-side business application work, and bring in `refactoring` or `legacy-code` on demand when you are changing existing code. **Avoid loading together:** `ddd` or `ddd-implementing` as equal active guidance alongside this plugin, and `clean-architecture` at equal weight, each with `inject_rules` on. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep this plugin as the one always-on rule set (`inject_rules` on) for server-side business application work, and bring in `refactoring` or `legacy-code` on demand when you are changing existing code. **Avoid loading together:** `ddd` or `ddd-implementing` as equal active guidance alongside this plugin, and `clean-architecture` at equal weight, each with `inject_rules` on. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

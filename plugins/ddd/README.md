@@ -4,6 +4,26 @@ Eric Evans' approach to software for complicated business domains, turned into a
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), eight usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `ddd:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/ddd:review` |
+| Plan a non-trivial change before you edit | `/ddd:plan` |
+| Walk the book's final checklist against your change | `/ddd:checklist` |
+| Act on review findings, one at a time | `/ddd:fix` |
+| Walk the forbidden-pattern families over a scope and map every hit to a treatment skill and an order of treatment | `/ddd:smell-hunt` |
+| When a model feels shallow, table-shaped or contradictory, when requirements keep adding special cases, | `/ddd:deep-models` |
+| Walk a real business scenario through the model and code and report where it turns procedural, awkward or leaky | `/ddd:scenario-walkthrough` |
+| Not sure which specialist applies? Route the task | ask Claude to use `ddd:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `ddd:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Domain-Driven Design* argues that in software for complex business areas the hard part is understanding the domain, not choosing technology. The code should be a model of that domain, built together with the people who know it, expressed in one shared language, and kept honest by refactoring toward deeper insight. The book works at two levels. At the building-block level it asks for entities, value objects, aggregates, services, repositories and factories that carry business meaning and protect their rules, inside a domain layer that infrastructure and user interfaces serve rather than shape. At the strategic level it asks for explicit bounded contexts, deliberate relationships between them, a clearly distilled core domain that gets the best design effort, and, only when a model is too large to grasp, a light guiding structure.

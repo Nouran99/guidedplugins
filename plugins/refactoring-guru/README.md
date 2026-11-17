@@ -4,6 +4,26 @@ The refactoring material of the Refactoring.Guru website (what refactoring is, w
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), seven usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `refactoring-guru:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/refactoring-guru:review` |
+| Plan a non-trivial change before you edit | `/refactoring-guru:plan` |
+| Walk the book's final checklist against your change | `/refactoring-guru:checklist` |
+| Act on review findings, one at a time | `/refactoring-guru:fix` |
+| Turn one smell (named, or found in the diff or paths) into a diagnose, treat, verify, stop card with preferred, fallback | `/refactoring-guru:smell-to-treatment` |
+| Label each hunk of a diff as refactoring, feature, bug fix or mixed, and propose an order and a split so structure | `/refactoring-guru:classify-change` |
+| When carrying out a refactoring | `/refactoring-guru:refactoring-process` |
+| Not sure which specialist applies? Route the task | ask Claude to use `refactoring-guru:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `refactoring-guru:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The material in one paragraph.** Refactoring.Guru presents refactoring as a controlled change to the structure of code that adds no functionality, motivated by technical debt that compounds by slowing every later change. Its pages cover what refactoring is, how debt builds up, when to refactor (the rule of three, while adding a feature, while fixing a bug, during review), how to do it safely, a catalog of code smells in groups, and a catalog of refactoring techniques in groups. The rule set this plugin is built on is a paraphrase of those pages written for coding agents. It leaves out the site's example code, images, course pages and design pattern pages, and keeps the process, the smells, the treatments, and the many places where the advice says "not here".

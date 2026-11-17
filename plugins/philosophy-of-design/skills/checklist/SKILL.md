@@ -10,6 +10,8 @@ allowed-tools: Bash(git diff *) Bash(git status *) Bash(git log *) Bash(git show
 
 Arguments: `$ARGUMENTS`
 
+Project settings: if `.guided-plugins.json` exists at the repository root, apply it first, as the *Project settings* section of `${CLAUDE_PLUGIN_ROOT}/skills/principles/SKILL.md` describes: skip ignored files, report at the set strictness, cap the report at `maxFindings`, and treat a secondary book's disagreement with the primary book as a note. <!-- project-settings -->
+
 An interactive pass at the end of a piece of work. It answers each item with evidence and tells you what to do about every no. For an isolated PASS or FAIL before a commit or pull request, delegate to `philosophy-of-design:final-gate` instead.
 
 ## Scope

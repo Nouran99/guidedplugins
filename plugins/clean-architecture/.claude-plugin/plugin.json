@@ -1,7 +1,7 @@
 {
   "name": "clean-architecture",
   "displayName": "Clean Architecture",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
   "author": {
     "name": "Nouran Darwish"

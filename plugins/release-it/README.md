@@ -4,6 +4,26 @@ A rule set derived from Michael T. Nygard's *Release It!*, turned into a Claude 
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), eight usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `release-it:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/release-it:review` |
+| Plan a non-trivial change before you edit | `/release-it:plan` |
+| Walk the book's final checklist against your change | `/release-it:checklist` |
+| Act on review findings, one at a time | `/release-it:fix` |
+| Walk one flow's boundaries through the source's six stability assumptions in a forked context | `/release-it:failure-mode-scan` |
+| Compute worst-case time and attempt multiplication along a request path | `/release-it:call-chain-budget` |
+| Turn an incident, outage or capacity problem into a failure chain, missing defenses, detection gaps and ranked design changes | `/release-it:incident-review` |
+| Not sure which specialist applies? Route the task | ask Claude to use `release-it:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `release-it:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Release It!* is about the distance between software that passes its tests and software that survives production. Production brings slow dependencies rather than clean outages, bursts of load, callers that retry at the worst moment, bad data, hostile traffic, deployments that stop halfway and operators who need to see what the system is doing. The book's answer is a way of designing in which every integration point is assumed to fail, failures are kept from spreading, overload is met with a decision instead of a collapse, and the system is built so that people can deploy it, watch it and fix it. This plugin works from a compact rule set derived from that thinking; it paraphrases the ideas as working rules and does not reproduce the book.

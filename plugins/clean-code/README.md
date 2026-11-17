@@ -4,6 +4,26 @@ Robert C. Martin's working rules for code that the next person can read, change 
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), eight usage walkthroughs with exact commands, a map from the book's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `clean-code:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/clean-code:review` |
+| Plan a non-trivial change before you edit | `/clean-code:plan` |
+| Walk the book's final checklist against your change | `/clean-code:checklist` |
+| Act on review findings, one at a time | `/clean-code:fix` |
+| Hunt the Clean Code smell catalog by family (names, functions, comments, design, tests) in a forked context | `/clean-code:smell-hunt` |
+| Leave the code you touched cleaner than you found it | `/clean-code:boy-scout` |
+| When naming or renaming variables, functions, types or constants, or when a reader cannot tell what an identifier means | `/clean-code:naming` |
+| Not sure which specialist applies? Route the task | ask Claude to use `clean-code:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `clean-code:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Clean Code* argues that code is read far more often than it is written, so the cost of a change is mostly the cost of understanding what is already there. Its answer is a set of habits: names that say what things are, functions that do one thing at one level, no hidden effects, comments only for what code cannot say, errors handled deliberately, tests treated as production code, third-party code kept behind boundaries of your own, and a refusal to leave a mess behind because the schedule is tight. The mantra that ties it together is the Boy Scout Rule: leave the code you touch cleaner than you found it.
@@ -291,7 +311,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The other books are generally complementary when their trigger is actually present: Release It! (production failure behavior), Designing Data-Intensive Applications (consistency and schemas), the three Domain-Driven Design books (model language and contexts), Patterns of Enterprise Application Architecture (persistence, workflow, remoting) and Refactoring.Guru (smell-driven treatment). The Pragmatic Programmer is an overlap: choose one general operating style.
 
-**Recommended pairing.** Keep Clean Code as the one always-on rule set (`inject_rules` on) for everyday work, and bring in `refactoring` for behavior-preserving restructuring or `legacy-code` for weakly tested code on demand, per task. **Avoid loading together:** `philosophy-of-design`, `code-complete` and `pragmatic-programmer` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep Clean Code as the one always-on rule set (`inject_rules` on) for everyday work, and bring in `refactoring` for behavior-preserving restructuring or `legacy-code` for weakly tested code on demand, per task. **Avoid loading together:** `philosophy-of-design`, `code-complete` and `pragmatic-programmer` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

@@ -1,7 +1,7 @@
 {
   "name": "ddd-implementing",
   "displayName": "Implementing Domain-Driven Design",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
   "author": {
     "name": "Nouran Darwish"

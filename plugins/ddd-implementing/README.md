@@ -4,6 +4,26 @@ Vaughn Vernon's practical, implementation-level take on Domain-Driven Design, tu
 
 Below the overview you will find the full component list (generated from the files themselves), eight usage walkthroughs with exact commands, a map from the rule set's sections to the components, how this plugin sits next to the other DDD and architecture plugins, and an honest section on what it cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `ddd-implementing:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/ddd-implementing:review` |
+| Plan a non-trivial change before you edit | `/ddd-implementing:plan` |
+| Walk the book's final checklist against your change | `/ddd-implementing:checklist` |
+| Act on review findings, one at a time | `/ddd-implementing:fix` |
+| Walk a new domain concept through the nine code-generation steps and produce a model sheet before any code | `/ddd-implementing:model-walk` |
+| When deciding which bounded context code belongs to, when one class or enum is used by several contexts, | `/ddd-implementing:bounded-context` |
+| Reconstruct the context map of a codebase as found in a forked context | `/ddd-implementing:context-map` |
+| Not sure which specialist applies? Route the task | ask Claude to use `ddd-implementing:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `ddd-implementing:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Implementing Domain-Driven Design* is about doing DDD in real code rather than admiring it on a whiteboard. It asks for explicit bounded contexts with their own language, aggregates designed as small consistency boundaries around rules that must hold at once, identities instead of object graphs between aggregates, consistency across aggregates that is usually eventual, and integration across contexts through deliberate translation instead of a shared model. It adds the implementation vocabulary around those ideas: entities and value objects that carry behavior, domain services, repositories for aggregate roots, domain events as business facts, event sourcing only where history is the right storage, thin application services, modules that show the model, and representations for clients that do not expose aggregates. The rule set this plugin is built on states its aim as practical DDD instead of theory theater: reject designs that sound like DDD but behave like generic CRUD with renamed classes.
@@ -332,7 +352,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The compatibility notes rate `refactoring`, `refactoring-guru`, `legacy-code` and `release-it` as complementary (conflict 12%, overlap 34 to 38%, complementarity 78%) and `clean-code`, `philosophy-of-design`, `code-complete` and `pragmatic-programmer` as complementary (conflict 14%, overlap 38%, complementarity 74%). The useful sequencing: `legacy-code` first when behavior is unclear or tests are weak, then this plugin inside the controlled area; `refactoring` when behavior must stay identical while code is reshaped toward these rules; `release-it` when timeouts, retries and overload behavior dominate an integration; `clean-code` for local readability of the classes you write.
 
-**Recommended pairing.** For a system that is already committed to DDD, keep this plugin as the one always-on DDD rule set (`inject_rules` on) and bring in `data-intensive-apps` on demand for events and consistency mechanics and `legacy-code` for weakly tested areas. For a team still deciding how much DDD to apply, start with `ddd-distilled` as primary and add this plugin when an area is chosen for full tactical modeling. **Avoid loading together:** `ddd`, `ddd-distilled` or `enterprise-patterns` alongside this plugin with equal weight and `inject_rules` on in all of them, because the rule sets re-open each other's decisions. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** For a system that is already committed to DDD, keep this plugin as the one always-on DDD rule set (`inject_rules` on) and bring in `data-intensive-apps` on demand for events and consistency mechanics and `legacy-code` for weakly tested areas. For a team still deciding how much DDD to apply, start with `ddd-distilled` as primary and add this plugin when an area is chosen for full tactical modeling. **Avoid loading together:** `ddd`, `ddd-distilled` or `enterprise-patterns` alongside this plugin with equal weight and `inject_rules` on in all of them, because the rule sets re-open each other's decisions. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

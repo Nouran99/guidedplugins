@@ -86,6 +86,20 @@ Keep changes proportionate. Prefer an incremental move toward the better model; 
 
 When you report the work: say which context and domain terms you used, what became explicit that was implicit before, which tests ran, and any unresolved assumption about the domain.
 
+<!-- project-settings:start -->
+## Project settings
+
+If the repository has a `.guided-plugins.json` file at its root, read it before you review, audit, plan or check anything, and apply it. If it is missing or unreadable, use the defaults and say nothing about it.
+
+- `ignore` (globs): do not review or edit files that match, and say how many were left out. A pattern without a slash matches at any depth; a trailing slash means a folder.
+- `strictness`: `relaxed` reports blockers and majors only; `normal` (the default) adds minors; `strict` adds nits.
+- `maxFindings` (default 15): report at most this many, most serious first, and say how many were left out.
+- `primary` and `secondary`: if Domain-Driven Design is not the `primary` book, apply it as a secondary book. Where its advice contradicts the primary book, report that as a note ("Domain-Driven Design would ..., the primary book decides: ..."), not as a finding.
+- `failOn` is for CI and git hooks; ignore it here.
+
+The user's instruction and the repository's established conventions still outrank all of this.
+<!-- project-settings:end -->
+
 ## Source
 
 - `Purpose`

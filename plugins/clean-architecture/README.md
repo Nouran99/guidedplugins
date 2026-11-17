@@ -4,6 +4,26 @@ Robert C. Martin's rules for keeping business policy independent of frameworks, 
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), nine usage walkthroughs with exact commands, a map from the book's sections to the components, how it combines with the sibling plugins, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `clean-architecture:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/clean-architecture:review` |
+| Plan a non-trivial change before you edit | `/clean-architecture:plan` |
+| Walk the book's final checklist against your change | `/clean-architecture:checklist` |
+| Act on review findings, one at a time | `/clean-architecture:fix` |
+| Discover the layers a repository really has and the direction of the imports between them, in a forked context | `/clean-architecture:layer-map` |
+| Build a new feature in the order Clean Architecture gives | `/clean-architecture:new-feature` |
+| Move the rules and orchestration out of one handler, controller, job or service method into a use case with request | `/clean-architecture:extract-use-case` |
+| Not sure which specialist applies? Route the task | ask Claude to use `clean-architecture:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `clean-architecture:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Clean Architecture* argues that the part of a system worth protecting is its business policy: the rules and the application's use cases. Everything else (the web framework, the database, the user interface, the message broker, the device, the vendor SDK) is a detail that plugs into that policy, and a detail should be replaceable without rewriting the policy. The mechanism is the dependency rule: source-code dependencies point inward, toward higher-level policy, so inner code never names outer code, and control flows outward only through interfaces the inner layer owns. Around that sit design principles for classes (the five usually called SOLID), principles for grouping and linking components, a view of services and deployment boundaries as one kind of boundary among several, not automatically an architectural one, the idea that a project's structure should announce what it does rather than which framework it uses, and a strong warning that a boundary is an investment with a price.
@@ -316,7 +336,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The remaining books are complementary when their trigger is actually present: `clean-code` (local readability, names and function shape), `code-complete` (construction-level defects and defensive checks), `data-intensive-apps` (source of truth, consistency and schema evolution), `release-it` (timeouts, retries, isolation and observability), `refactoring-guru` (smell-driven treatment), `ddd-distilled` (selective DDD) and `pragmatic-programmer` (general habits). The usual tension is boundary cost: this plugin may add ports and adapters where the other would prefer a smaller local change, unless policy independence is really at risk.
 
-**Recommended pairing.** Keep Clean Architecture as the one always-on rule set (`inject_rules` on) for architecture-heavy services, and bring in `clean-code` for local readability, `legacy-code` or `refactoring` for existing code, or `philosophy-of-design` as the check on ceremony, on demand per task. **Avoid loading together:** `ddd-implementing` or `enterprise-patterns` at equal weight alongside this plugin with `inject_rules` on in all of them, because they compete for the same architecture layer and invite stacked ports, repositories, mappers and application services. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep Clean Architecture as the one always-on rule set (`inject_rules` on) for architecture-heavy services, and bring in `clean-code` for local readability, `legacy-code` or `refactoring` for existing code, or `philosophy-of-design` as the check on ceremony, on demand per task. **Avoid loading together:** `ddd-implementing` or `enterprise-patterns` at equal weight alongside this plugin with `inject_rules` on in all of them, because they compete for the same architecture layer and invite stacked ports, repositories, mappers and application services. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

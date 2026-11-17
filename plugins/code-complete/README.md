@@ -4,6 +4,26 @@ Steve McConnell's working rules for software construction, turned into a Claude 
 
 Below the overview you will find the generated component list (skills, subagents and output styles), nine usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `code-complete:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/code-complete:review` |
+| Plan a non-trivial change before you edit | `/code-complete:plan` |
+| Walk the book's final checklist against your change | `/code-complete:checklist` |
+| Act on review findings, one at a time | `/code-complete:fix` |
+| Before a non-trivial change | `/code-complete:construction-process` |
+| Design one complex routine with the Pseudocode Programming Process | `/code-complete:pseudocode` |
+| When writing or reviewing a routine's body and name | `/code-complete:routine-design` |
+| Not sure which specialist applies? Route the task | ask Claude to use `code-complete:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `code-complete:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Code Complete* is a long, practical handbook on software construction: the design, coding, debugging and testing work that turns a design into working code. The rule set this toolkit applies says that disciplined construction practices reduce defects, improve readability and keep code robust under real-world constraints, and that what you settle before coding (requirements, architecture, major risks, conventions) matters as much as the coding itself. Prepare before large changes. Design routines with one purpose. Make data say what it means. Keep control flow simple enough to verify. Defend the program against bad input and wrong assumptions. Review, test and debug on purpose. Tune only with measurements. Write for the human who reads it next.
@@ -323,7 +343,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The other books are generally complementary when their trigger is actually present: `clean-architecture` (policy independence; the tension is boundary cost), `data-intensive-apps` (consistency, schemas and replay; the tension is over-modeling before data semantics are explicit), the three Domain-Driven Design plugins `ddd`, `ddd-distilled` and `ddd-implementing` (model language and contexts; the tension is ceremony), `enterprise-patterns` (persistence, workflow and remoting; the tension is pattern pressure) and `refactoring-guru` (smell-driven treatment).
 
-**Recommended pairing.** Keep Code Complete as the one always-on rule set (`inject_rules` on) when the work is mostly production construction, and bring in `refactoring` or `legacy-code` on demand for changes to existing code, and `release-it` for production boundaries. **Avoid loading together:** `clean-code` and `pragmatic-programmer` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep Code Complete as the one always-on rule set (`inject_rules` on) when the work is mostly production construction, and bring in `refactoring` or `legacy-code` on demand for changes to existing code, and `release-it` for production boundaries. **Avoid loading together:** `clean-code` and `pragmatic-programmer` alongside this plugin with equal weight and `inject_rules` on in all of them; their general guidance competes on the same decisions. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

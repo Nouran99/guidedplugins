@@ -4,6 +4,26 @@ Vaughn Vernon's short guide to domain-driven design, turned into a Claude Code t
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), seven usage walkthroughs with exact commands, a map from the book's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `ddd-distilled:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/ddd-distilled:review` |
+| Plan a non-trivial change before you edit | `/ddd-distilled:plan` |
+| Walk the book's final checklist against your change | `/ddd-distilled:checklist` |
+| Act on review findings, one at a time | `/ddd-distilled:fix` |
+| Produce a short model brief before writing new domain behavior | `/ddd-distilled:model-first` |
+| When deciding whether an area of business software deserves DDD modeling at all, how much effort it earns, | `/ddd-distilled:adoption-fit` |
+| When ranking areas of a business system as core, supporting or generic, | `/ddd-distilled:subdomains` |
+| Not sure which specialist applies? Route the task | ask Claude to use `ddd-distilled:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `ddd-distilled:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Domain-Driven Design Distilled* argues that most teams do not need all of DDD; they need the parts that pay for themselves. Strategic design comes first and gives most of the value: sort the business into core, supporting and generic subdomains and spend the best effort on the core, give each model one bounded context that owns its language, make the relationships between contexts explicit, and translate where meanings differ. Only then choose a few tactical tools (entities with guarded state, value objects that carry their own rules, small aggregates built around invariants, domain events that record real facts) and keep application services thin. Around all of it sit practical accelerators: event storming, timeboxed modeling, spikes, scenarios agreed with domain experts, and an honest record of what was deferred.
@@ -308,7 +328,7 @@ The upstream compatibility notes compare every pair of books and rate them as co
 
 The compatibility notes also rate `refactoring`, `refactoring-guru`, `legacy-code`, `clean-code`, `philosophy-of-design`, `code-complete`, `release-it` and `pragmatic-programmer` as complementary with this book (complementarity 74 to 78%, conflict 12 to 14%). The useful sequencing: `legacy-code` first when behavior is unclear or tests are weak, then this plugin inside the controlled area; `refactoring` when behavior must stay identical while the code is reshaped toward these rules; `release-it` when timeouts, retries and overload behavior dominate an integration.
 
-**Recommended pairing.** Keep this plugin as the one always-on DDD rule set (`inject_rules` on) for business-software work, and bring in `ddd-implementing` on demand once the gate says an area is modeled and the work is aggregate and repository implementation, and `clean-code` or `legacy-code` per task. **Avoid loading together:** `ddd` or `ddd-implementing` alongside this plugin with equal weight and `inject_rules` on in all of them, because the fuller rule sets re-open decisions this plugin's gate has closed. Do not run several books' `lead` agents at once; choose one router.
+**Recommended pairing.** Keep this plugin as the one always-on DDD rule set (`inject_rules` on) for business-software work, and bring in `ddd-implementing` on demand once the gate says an area is modeled and the work is aggregate and repository implementation, and `clean-code` or `legacy-code` per task. **Avoid loading together:** `ddd` or `ddd-implementing` alongside this plugin with equal weight and `inject_rules` on in all of them, because the fuller rule sets re-open decisions this plugin's gate has closed. Do not run several books' `lead` agents at once to plan one task by hand: they give overlapping plans, so choose one router. (`/guided:review` is the exception: it asks each book's lead only to pick that book's reviewers and merges the findings itself.)
 
 ## Limitations
 

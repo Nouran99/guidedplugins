@@ -1,7 +1,7 @@
 {
   "name": "ddd",
   "displayName": "Domain-Driven Design",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
   "author": {
     "name": "Nouran Darwish"

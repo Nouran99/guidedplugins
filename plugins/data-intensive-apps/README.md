@@ -4,6 +4,26 @@ Martin Kleppmann's data-system trade-offs, turned into a Claude Code toolkit. It
 
 Below the overview you will find the generated component list (skills, subagents and output styles), eight usage walkthroughs with exact commands, a map from the rule set's sections to the components, how the plugin pairs with its siblings, and an honest section on what it cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `data-intensive-apps:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/data-intensive-apps:review` |
+| Plan a non-trivial change before you edit | `/data-intensive-apps:plan` |
+| Walk the book's final checklist against your change | `/data-intensive-apps:checklist` |
+| Act on review findings, one at a time | `/data-intensive-apps:fix` |
+| When a write, command or request ends in success, timeout or error and you must say what happened | `/data-intensive-apps:write-acknowledgment` |
+| Follow one write step by step and record what is durable and visible after each step, what a crash | `/data-intensive-apps:write-path-trace` |
+| When someone claims a design will scale, proposes more nodes, caches or sharding for speed, or reports slowness | `/data-intensive-apps:load-and-latency` |
+| Not sure which specialist applies? Route the task | ask Claude to use `data-intensive-apps:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `data-intensive-apps:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Designing Data-Intensive Applications* argues that the hard part of most modern systems is the data: how much of it there is, how fast it changes, how many places hold a copy, and how many things can fail between a write and the moment someone relies on it. It walks from the foundations (reliability, scalability, maintainability; data models and query languages; storage engines and indexes; encodings and schema evolution) through distributed data (replication, partitioning, transactions, the trouble with networks and clocks, consistency and consensus) to derived data (batch processing, stream processing and the idea of building systems from logs and the views derived from them). Its method is to name the trade-off in every choice instead of hiding it behind a product name.

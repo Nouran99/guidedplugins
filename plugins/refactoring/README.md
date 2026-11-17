@@ -4,6 +4,26 @@ Martin Fowler's discipline of changing the structure of code without changing wh
 
 Below the overview you will find the full component list (skills, subagents and output styles, generated from the files themselves), seven usage walkthroughs with exact commands, a map from the rule set's sections to the components, and an honest section on what this cannot do.
 
+<!-- START-HERE:START -->
+## Start here
+
+9 components cover most uses; everything else is reachable from the `refactoring:principles` skill's routing table.
+
+| To | Run |
+| --- | --- |
+| Review your current change | `/refactoring:review` |
+| Plan a non-trivial change before you edit | `/refactoring:plan` |
+| Walk the book's final checklist against your change | `/refactoring:checklist` |
+| Act on review findings, one at a time | `/refactoring:fix` |
+| In a forked context, confirm smells in a scope and map each to the smallest named catalog move, its precondition, safety net | `/refactoring:smell-to-refactoring` |
+| Do only the preparatory refactoring for a stated change | `/refactoring:prepare` |
+| Pin the current behavior of unclear code with characterization tests before refactoring it | `/refactoring:characterize` |
+| Not sure which specialist applies? Route the task | ask Claude to use `refactoring:lead` |
+| Strict pass or fail before you commit or open a pull request | ask Claude to use `refactoring:final-gate` |
+
+Using this book next to others? `/plugin install guided-<preset>@guided-plugins` installs a primary book with complementary ones, and `/guided:review` reviews with all of them at once. Project settings (ignored paths, strictness, the primary book): [`.guided-plugins.json`](https://github.com/Nouran99/guidedplugins/blob/main/docs/PROJECT_CONFIG.md).
+<!-- START-HERE:END -->
+
 ## Overview
 
 **The book in one paragraph.** *Refactoring* treats improving the design of existing code as ordinary daily work with one hard constraint: observable behavior stays the same. The method is a loop of small, named transformations, each checked by tests before the next one starts, so that a long journey from tangled code to a clear design is made of steps that are individually boring and individually safe. Smells in the code are prompts to look, not verdicts. A catalog of named moves (extract, inline, move, split, encapsulate, replace a conditional, pull up) gives the steps a shared vocabulary. Refactoring happens around feature work: reshape first so the change is easy, make the change, then clean up what it left.
