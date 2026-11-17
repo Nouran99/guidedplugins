@@ -1,0 +1,13 @@
+#!/usr/bin/env node
+// A stand-in for the GitHub CLI used by scripts/selftest-ci.mjs.
+import fs from 'node:fs';
+const a = process.argv.slice(2);
+if (process.env.FAKE_GH_LOG) fs.appendFileSync(process.env.FAKE_GH_LOG, `${JSON.stringify(a)}\n`);
+if (a[0] === 'api' && a.includes('--paginate')) {
+  const p = a[a.length - 1];
+  if (p.endsWith('/comments')) console.log(process.env.FAKE_GH_COMMENTS ?? '[]'); else console.log(process.env.FAKE_GH_REVIEWS ?? '[]');
+} else if (a[0] === 'api' && a.includes('POST')) {
+  const body = fs.readFileSync(0, 'utf8');
+  if (process.env.FAKE_GH_POSTED) fs.writeFileSync(process.env.FAKE_GH_POSTED, body);
+  console.log('{}');
+} else { console.error(`unexpected gh call ${a.join(' ')}`); process.exit(1); }

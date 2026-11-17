@@ -8,6 +8,8 @@ import { ROOT, REGISTRY, listDir, listPluginDirs, loadPlugin, readIf } from './l
 import { buildMarketplace } from './catalog-lib.mjs';
 import { validatePlugin } from './validate-plugin.mjs';
 import { validateTargets } from './validate-targets.mjs';
+import { validateMeta } from './validate-meta.mjs';
+import { validateEvals } from './validate-evals.mjs';
 
 const args = process.argv.slice(2);
 const noCli = args.includes('--no-cli');
@@ -28,6 +30,15 @@ const targetErrors = validateTargets();
 for (const e of targetErrors.slice(0, 40)) console.log(`ERROR dist/${e}`);
 if (targetErrors.length > 40) console.log(`ERROR dist/... and ${targetErrors.length - 40} more`);
 if (targetErrors.length) failed++;
+
+// the guided companion plugin, preset bundles, project-settings text, CI files, and the eval suites that exist
+const metaErrors = validateMeta();
+for (const e of metaErrors.slice(0, 40)) console.log(`ERROR meta/${e}`);
+if (metaErrors.length > 40) console.log(`ERROR meta/... and ${metaErrors.length - 40} more`);
+if (metaErrors.length) failed++;
+const evalResult = validateEvals({ requireAll: args.includes('--require-evals') });
+for (const e of evalResult.errors.slice(0, 40)) console.log(`ERROR evals/${e}`);
+if (evalResult.errors.length) failed++;
 
 // repo-level docs: every <slug>:<name> reference and relative link must resolve
 const docErrors = [];

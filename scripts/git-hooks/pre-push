@@ -1,0 +1,35 @@
+#!/bin/sh
+# Guided Plugins pre-push hook (installed by scripts/install-git-hook.mjs). Reviews what you are about to push and blocks the push when a
+# finding is at or above GUIDED_FAIL_ON (default: blocker). The diff is sent to the Anthropic API.
+#   GUIDED_SKIP=1 git push      skip once
+#   GUIDED_FAIL_ON=major        stricter gate (blocker | major | minor | nit | never; default blocker; failOn of .guided-plugins.json is for CI and is not read here)
+#   GUIDED_BUDGET=3             dollars per review (default 2, the same as the CI runner; a review stopped by the ceiling counts as "could not run")
+# guided-plugins-hook
+[ -n "$GUIDED_SKIP" ] && exit 0
+command -v claude >/dev/null 2>&1 || { echo "guided-plugins: claude is not installed; skipping the review" >&2; exit 0; }
+root=$(git rev-parse --show-toplevel) || exit 0
+script="${GUIDED_REVIEW_SCRIPT:-__SCRIPT__}"
+[ -f "$script" ] || { echo "guided-plugins: $script is missing; skipping the review" >&2; exit 0; }
+case "${GUIDED_FAIL_ON:-blocker}" in
+  blocker|major|minor|nit|never) fail_on="${GUIDED_FAIL_ON:-blocker}" ;;
+  *) echo "guided-plugins: GUIDED_FAIL_ON=$GUIDED_FAIL_ON is not blocker, major, minor, nit or never; using blocker" >&2; fail_on=blocker ;;
+esac
+zero=0000000000000000000000000000000000000000
+blocked=0
+failed=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue                       # deleting a branch
+  if [ "$remote_sha" = "$zero" ]; then
+    base=$(git merge-base "$local_sha" origin/HEAD 2>/dev/null || git merge-base "$local_sha" origin/main 2>/dev/null || true)
+  else
+    base="$remote_sha"
+  fi
+  [ -n "$base" ] || { echo "guided-plugins: no base to compare with for $local_ref; skipping" >&2; continue; }
+  echo "guided-plugins: reviewing $local_ref ($(git rev-parse --short "$base")..$(git rev-parse --short "$local_sha"))" >&2
+  node "$script" --base "$base" --head "$local_sha" --fail-on "$fail_on" --max-budget-usd "${GUIDED_BUDGET:-2}" --out "$root/.guided-review" >&2
+  code=$?
+  if [ "$code" -eq 1 ]; then blocked=1; elif [ "$code" -ne 0 ]; then failed=$code; fi   # a blocked ref wins over a ref whose review could not run
+done
+if [ "$blocked" -eq 1 ]; then echo "guided-plugins: push blocked. See .guided-review/summary.md. Override once with GUIDED_SKIP=1 git push" >&2; exit 1; fi
+if [ "$failed" -ne 0 ]; then echo "guided-plugins: the review could not run (exit $failed); pushing anyway" >&2; fi
+exit 0

@@ -4,3 +4,8 @@ node_modules/
 .env
 .claude/
 .upstream/
+
+# eval runs: full transcripts and judge votes (the committed summaries are in evals/summary/)
+evals/results/
+# output of scripts/guided-review-ci.mjs
+.guided-review/

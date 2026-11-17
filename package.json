@@ -1,6 +1,6 @@
 {
   "name": "guided-plugins",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Fourteen book-guided toolkits for coding agents: Claude Code plugins plus Codex, OpenCode, Gemini CLI, GitHub Copilot, Cursor (experimental), Agent Skills, AGENTS.md and MCP builds.",
   "type": "module",
   "license": "MIT",
@@ -8,11 +8,20 @@
   "repository": { "type": "git", "url": "git+https://github.com/Nouran99/guidedplugins.git" },
   "homepage": "https://github.com/Nouran99/guidedplugins#readme",
   "keywords": ["claude-code", "codex", "opencode", "gemini-cli", "mcp", "agent-skills", "agents-md", "clean-code", "refactoring", "ddd"],
-  "bin": { "guided-plugins-mcp": "scripts/mcp-server.mjs" },
+  "bin": {
+    "guided-plugins-mcp": "scripts/mcp-server.mjs",
+    "guided-config": "scripts/guided-config.mjs",
+    "guided-review": "scripts/guided-review-ci.mjs",
+    "guided-findings": "scripts/findings-convert.mjs",
+    "guided-install-hook": "scripts/install-git-hook.mjs",
+    "guided-preset": "scripts/install-preset.mjs"
+  },
   "engines": { "node": ">=20" },
   "scripts": {
     "build": "node scripts/build-targets.mjs",
     "validate": "node scripts/validate-all.mjs",
-    "test": "node scripts/mcp-selftest.mjs"
+    "test": "node scripts/mcp-selftest.mjs && node scripts/selftest-ci.mjs",
+    "evals:validate": "node scripts/validate-evals.mjs",
+    "evals:run": "node scripts/run-evals.mjs"
   }
 }

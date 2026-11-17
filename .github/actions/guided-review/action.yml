@@ -1,0 +1,170 @@
+name: Guided review
+description: >-
+  Reviews a pull request with the Guided Plugins book toolkits (Claude Code), writes SARIF for code scanning, posts the findings as one
+  pull request review, and fails the check when a finding reaches the level you set. Needs an Anthropic API key. The diff is sent to the
+  Anthropic API.
+author: Nouran Darwish
+branding:
+  icon: check-circle
+  color: blue
+inputs:
+  anthropic-api-key:
+    description: Anthropic API key (a repository secret). Without it the action does nothing and says so; fork pull requests have no secrets.
+    required: false
+    default: ''
+  books:
+    description: >-
+      Space- or comma-separated book plugins, for example "clean-code refactoring". Empty: use primary and secondary from .guided-plugins.json.
+    required: false
+    default: ''
+  base:
+    description: "Branch or commit to compare with. Empty: the pull request base (origin/<base_ref>)."
+    required: false
+    default: ''
+  fail-on:
+    description: "blocker, major, minor, nit or never. Empty: failOn from .guided-plugins.json, else major."
+    required: false
+    default: ''
+  max-budget-usd:
+    description: Spending ceiling for one review, in US dollars.
+    required: false
+    default: '2'
+  model:
+    description: "Model alias or name for the review. Empty: the Claude Code default."
+    required: false
+    default: ''
+  marketplace:
+    description: "Where the plugins come from. Empty (the default): the plugins in the same checkout as this action, so the plugins match the ref the action is pinned to. Set a GitHub owner/repo or a path to override."
+    required: false
+    default: ''
+  claude-code-version:
+    description: "Version of @anthropic-ai/claude-code to install. The default is the version this action was last tested with; set latest to follow the newest release."
+    required: false
+    default: '2.1.311'
+  post-review:
+    description: Post the findings on the pull request as one review (needs pull-requests write permission).
+    required: false
+    default: 'true'
+  upload-sarif:
+    description: Upload SARIF to GitHub code scanning (needs security-events write permission; private repositories need code scanning enabled).
+    required: false
+    default: 'true'
+outputs:
+  findings:
+    description: Number of findings in the report.
+    value: ${{ steps.review.outputs.findings }}
+  gate:
+    description: pass, fail or error.
+    value: ${{ steps.review.outputs.gate }}
+runs:
+  using: composite
+  steps:
+    - name: Check for an API key
+      id: key
+      shell: bash
+      env:
+        KEY: ${{ inputs.anthropic-api-key }}
+      run: |
+        if [ -z "$KEY" ]; then
+          echo "::notice title=Guided review skipped::No anthropic-api-key was provided (pull requests from forks have no secrets)."
+          echo "present=false" >> "$GITHUB_OUTPUT"
+        else
+          echo "present=true" >> "$GITHUB_OUTPUT"
+        fi
+
+    - uses: actions/setup-node@v4
+      if: steps.key.outputs.present == 'true'
+      with:
+        node-version: '22'
+
+    - name: Install Claude Code and the book plugins
+      if: steps.key.outputs.present == 'true'
+      shell: bash
+      env:
+        BOOKS: ${{ inputs.books }}
+        MARKETPLACE: ${{ inputs.marketplace }}
+        CLAUDE_CODE_VERSION: ${{ inputs.claude-code-version }}
+        ACTION_ROOT: ${{ github.action_path }}/../../..
+      run: |
+        set -euo pipefail
+        ACTION_ROOT="$(cd "$ACTION_ROOT" && pwd)"
+        npm install --global "@anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}"
+        books=$(node "$ACTION_ROOT/scripts/guided-review-ci.mjs" --print-books ${BOOKS:+--books "$(echo "$BOOKS" | tr ' ' ',')"})
+        echo "plugins: $books"
+        claude plugin marketplace add "${MARKETPLACE:-$ACTION_ROOT}"
+        for b in $books; do claude plugin install "$b@guided-plugins"; done
+
+    - name: Review
+      id: review
+      if: steps.key.outputs.present == 'true'
+      shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        BOOKS: ${{ inputs.books }}
+        BASE: ${{ inputs.base }}
+        FAIL_ON: ${{ inputs.fail-on }}
+        BUDGET: ${{ inputs.max-budget-usd }}
+        MODEL: ${{ inputs.model }}
+        PR_BASE: ${{ github.base_ref }}
+        PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        ACTION_ROOT: ${{ github.action_path }}/../../..
+      run: |
+        set +e
+        ACTION_ROOT="$(cd "$ACTION_ROOT" && pwd)"
+        OUT="$RUNNER_TEMP/guided-review"
+        # A pull_request run checks out a merge commit. Comments are posted against the head commit and line numbers must match its diff, so
+        # review the head: the diff against the merge base is then exactly the pull request's diff.
+        if [ -n "$PR_HEAD_SHA" ] && [ "$(git rev-parse HEAD)" != "$PR_HEAD_SHA" ]; then
+          git checkout --quiet --detach "$PR_HEAD_SHA" || echo "::warning::Could not check out the pull request head $PR_HEAD_SHA; reviewing the merge commit (comment lines may not match the pull request diff)."
+        fi
+        args=(--out "$OUT" --max-budget-usd "$BUDGET")
+        [ -n "$BOOKS" ] && args+=(--books "$(echo "$BOOKS" | tr ' ' ',')")
+        [ -n "$FAIL_ON" ] && args+=(--fail-on "$FAIL_ON")
+        [ -n "$MODEL" ] && args+=(--model "$MODEL")
+        if [ -n "$BASE" ]; then args+=(--base "$BASE"); elif [ -n "$PR_BASE" ]; then args+=(--base "origin/$PR_BASE"); fi
+        node "$ACTION_ROOT/scripts/guided-review-ci.mjs" "${args[@]}" > "$RUNNER_TEMP/guided-summary.md"
+        code=$?
+        cat "$RUNNER_TEMP/guided-summary.md" >> "$GITHUB_STEP_SUMMARY"
+        case $code in 0) gate=pass;; 1) gate=fail;; *) gate=error;; esac
+        echo "gate=$gate" >> "$GITHUB_OUTPUT"
+        if [ -f "$OUT/report.json" ]; then
+          echo "findings=$(node -e "console.log(JSON.parse(require('fs').readFileSync(process.argv[1],'utf8')).findings.length)" "$OUT/report.json")" >> "$GITHUB_OUTPUT"
+        fi
+        # files under RUNNER_TEMP are outside the workspace, where hashFiles() ignores them: pass their existence on as outputs
+        [ -f "$OUT/report.sarif" ] && echo "has_sarif=true" >> "$GITHUB_OUTPUT"
+        [ -f "$OUT/review.json" ] && echo "has_review=true" >> "$GITHUB_OUTPUT"
+        echo "exit=$code" >> "$GITHUB_OUTPUT"
+        exit 0
+
+    - name: Upload SARIF
+      if: steps.key.outputs.present == 'true' && inputs.upload-sarif == 'true' && steps.review.outputs.has_sarif == 'true'
+      uses: github/codeql-action/upload-sarif@v3
+      continue-on-error: true
+      with:
+        sarif_file: ${{ runner.temp }}/guided-review/report.sarif
+        category: guided-plugins
+
+    - name: Post the review on the pull request
+      if: steps.key.outputs.present == 'true' && inputs.post-review == 'true' && github.event_name == 'pull_request' && steps.review.outputs.has_review == 'true'
+      shell: bash
+      continue-on-error: true
+      env:
+        GH_TOKEN: ${{ github.token }}
+        REPO: ${{ github.repository }}
+        PR: ${{ github.event.pull_request.number }}
+        SHA: ${{ github.event.pull_request.head.sha }}
+        ACTION_ROOT: ${{ github.action_path }}/../../..
+      run: |
+        node "$ACTION_ROOT/scripts/github-post-review.mjs" --repo "$REPO" --pr "$PR" --commit "$SHA" --review "$RUNNER_TEMP/guided-review/review.json"
+
+    - name: Gate
+      if: steps.key.outputs.present == 'true'
+      shell: bash
+      env:
+        CODE: ${{ steps.review.outputs.exit }}
+      run: |
+        case "$CODE" in
+          0) echo "Guided review passed." ;;
+          1) echo "::error title=Guided review::A finding reached the failure level. See the job summary and the pull request review."; exit 1 ;;
+          *) echo "::error title=Guided review::The review could not run (exit $CODE). See the log."; exit 1 ;;
+        esac

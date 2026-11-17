@@ -31,6 +31,8 @@ jobs:
           git diff --exit-code
       - name: MCP server protocol self-test
         run: node scripts/mcp-selftest.mjs
+      - name: Review plumbing self-test (findings, CI runner, hook, PR poster, Action steps)
+        run: node scripts/selftest-ci.mjs
       - name: Codex role files and Gemini command and policy files parse as TOML
         run: |
           python3 - <<'PY'

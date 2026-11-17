@@ -1,0 +1,44 @@
+{
+  "presets": [
+    {
+      "name": "everyday-code",
+      "title": "Everyday code",
+      "forWho": "Teams writing and reviewing ordinary application code every day.",
+      "primary": "clean-code",
+      "secondary": ["refactoring"],
+      "why": "Clean Code decides readability questions; Refactoring adds the safe, small-step way to act on them."
+    },
+    {
+      "name": "legacy-rescue",
+      "title": "Legacy rescue",
+      "forWho": "Changing code that has no tests, in a codebase you did not write.",
+      "primary": "legacy-code",
+      "secondary": ["refactoring", "clean-code"],
+      "why": "Working Effectively with Legacy Code gets the change under test first; Refactoring then restructures in small steps; Clean Code names what better looks like."
+    },
+    {
+      "name": "backend-service",
+      "title": "Backend service",
+      "forWho": "Services and APIs that must survive production: structure, data and failure.",
+      "primary": "clean-architecture",
+      "secondary": ["release-it", "data-intensive-apps"],
+      "why": "Clean Architecture keeps the dependency direction; Release It! covers timeouts, retries and overload; Designing Data-Intensive Applications covers consistency and data flow."
+    },
+    {
+      "name": "domain-model",
+      "title": "Domain model",
+      "forWho": "Business-rule-heavy code where the model of the domain is the hard part.",
+      "primary": "ddd-distilled",
+      "secondary": ["clean-architecture", "refactoring"],
+      "why": "DDD Distilled gives the pragmatic core of domain-driven design; Clean Architecture protects the model from frameworks; Refactoring evolves it safely."
+    },
+    {
+      "name": "system-design",
+      "title": "System design",
+      "forWho": "Designing modules, APIs and boundaries before or while building them.",
+      "primary": "philosophy-of-design",
+      "secondary": ["clean-architecture", "code-complete"],
+      "why": "A Philosophy of Software Design judges module depth and interfaces; Clean Architecture sets boundaries; Code Complete covers construction detail."
+    }
+  ]
+}

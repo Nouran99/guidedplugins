@@ -1,0 +1,240 @@
+{
+  "clean-code": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "smell-hunt",
+      "boy-scout",
+      "naming"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "philosophy-of-design": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "depth-map",
+      "symptom-trace",
+      "complexity-symptoms"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "clean-architecture": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "layer-map",
+      "new-feature",
+      "extract-use-case"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "code-complete": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "construction-process",
+      "pseudocode",
+      "routine-design"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "data-intensive-apps": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "write-acknowledgment",
+      "write-path-trace",
+      "load-and-latency"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "ddd": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "smell-hunt",
+      "deep-models",
+      "scenario-walkthrough"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "ddd-distilled": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "model-first",
+      "adoption-fit",
+      "subdomains"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "ddd-implementing": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "model-walk",
+      "bounded-context",
+      "context-map"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "enterprise-patterns": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "blocker-scan",
+      "responsibility-map",
+      "choose-pattern"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "refactoring": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "smell-to-refactoring",
+      "prepare",
+      "characterize"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "refactoring-guru": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "smell-to-treatment",
+      "classify-change",
+      "refactoring-process"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "release-it": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "failure-mode-scan",
+      "call-chain-budget",
+      "incident-review"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "pragmatic-programmer": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "tracer-plan",
+      "tracer-bullets",
+      "ownership"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  },
+  "legacy-code": {
+    "workflows": [
+      "review",
+      "plan",
+      "checklist",
+      "fix"
+    ],
+    "skills": [
+      "legacy-loop",
+      "characterization-tests",
+      "characterize"
+    ],
+    "agents": [
+      "lead",
+      "final-gate"
+    ]
+  }
+}

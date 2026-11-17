@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "tool": "clean-code",
+  "books": ["clean-code"],
+  "scope": "HEAD~1..HEAD",
+  "findings": [
+    { "severity": "minor", "path": "src/a.ts", "line": 12, "rule": "Intention-revealing names", "why": "`d` does not say it is a delay.", "fix": "Rename it to `delayMs`." },
+    { "severity": "blocker", "path": "src/order-manager.ts", "line": 31, "rule": "Swallowed failure", "book": "clean-code", "why": "The empty catch hides a failed payment and returns null.", "fix": "Rethrow with context or return a typed failure.", "confidence": "sure" },
+    { "severity": "major", "path": "src/order-manager.ts", "line": 6, "rule": "Boolean flag parameter", "why": "Callers cannot read what `true` selects.", "fix": "Split into two functions." },
+    { "severity": "nit", "path": "README.md", "rule": "Narrating comment", "why": "The comment repeats the code.", "fix": "Delete it." }
+  ],
+  "summary": "One blocker: payment failures are swallowed.",
+  "doFirst": "Fix the empty catch in src/order-manager.ts.",
+  "checked": ["names", "error handling"],
+  "notChecked": ["tests"]
+}
