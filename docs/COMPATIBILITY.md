@@ -87,7 +87,7 @@ Upstream's usage guide gives one rule for combining books: use the smallest mech
 | [`inject_rules`](USAGE.md#2-turn-on-the-always-on-rules-inject_rules) plugin option | Off by default. When on, a session-start hook adds the plugin's compact rule file (`nano.md`) to every new, cleared or compacted session. | Turn it on for **at most one** plugin: the primary. In a session: `/plugin configure <plugin>@guided-plugins`. |
 | Skills Claude loads on its own | Rule clusters with a trigger description. Claude picks them up when the task matches. Their descriptions sit in context on every turn: 18 to 20 per installed plugin. | Not a mechanism for secondary books. It is the reason to install few plugins. |
 | Skills you run by name | Workflows such as `review`, `plan`, `audit`, `explain-rule`, `checklist` and `fix`, plus book-specific ones. Run as `/<plugin>:<name>`. | The main way to bring a second book into one task. |
-| Subagents | A `lead` router, read-only specialist reviewers, implementers and a `final-gate`. Claude delegates, or you ask for `@agent-<plugin>:<name>`. | A second opinion from another book on one diff, for example its `final-gate`. Run one `lead` at a time. |
+| Subagents | A `lead` router, read-only specialist reviewers, implementers and a `final-gate`. Claude delegates, or you ask for `@agent-<plugin>:<name>`. | A second opinion from another book on one diff, for example its `final-gate`. Run one `lead` at a time when you plan by hand; `/guided:review` is the exception. |
 | Output styles | `/output-style <plugin>:<mode>` changes how the whole session behaves (`mentor`, `strict-reviewer`, `pair`, `terse` and one book-specific mode). | Switching the working mode for a session. |
 
 Upstream recommends the `mini` rule files as the working layer, and for an always-on rule it suggests one carefully chosen `mini`, with `nano` if `mini` is too large for the tool or project. These plugins make a different choice for the hook: it injects `nano` (1.2 to 2.8 KB) rather than `mini` (3.8 to 8.1 KB) to keep the always-on cost small. Each plugin's `principles` skill then reads `mini` on demand for design decisions and `full` only when `mini` does not settle a trade-off.
@@ -97,7 +97,7 @@ In practice:
 1. Choose as primary the plugin whose risk shows up in most of your tasks. The starting points in the [README](../README.md#choosing-plugins) help.
 2. Turn `inject_rules` on for that plugin only.
 3. Bring a second book in for one task by running one of its commands, for example `/refactoring:review` on the working diff, or by asking for `@agent-release-it:final-gate` before you merge.
-4. Do not run the `lead` agents of several books at once. Pick one as the router.
+4. Do not run the `lead` agents of several books at once to plan one task by hand; pick one as the router. The exception is `/guided:review` (the `guided` plugin), which asks each book's lead only to choose that book's reviewers and merges the findings itself.
 5. For complementary pairs, load the second book only when its trigger is present. Most of the upstream pair documents say the same: load only the rule set whose trigger is actually present.
 6. For a pair that is not complementary, say who arbitrates. A prompt such as this one is enough:
 

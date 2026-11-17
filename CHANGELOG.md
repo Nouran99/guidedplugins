@@ -3,6 +3,36 @@
 All notable changes are documented here. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/);
 each plugin also keeps its own `CHANGELOG.md` and is versioned independently with [Semantic Versioning](https://semver.org/).
 
+## [1.3.0] - 2026-11-17
+
+Makes the toolkits measurable, easier to pick, adjustable per project and usable without a person at the keyboard. The 14 book plugins move to 1.1.0; what they say about their books is unchanged.
+
+### Added
+
+- **Evals.** An eval suite for every plugin in `evals/<slug>/` (69 cases: planted-violation fixtures with one judge-graded criterion per violation, and a clean control), a runner (`scripts/run-evals.mjs`, built on `claude plugin eval`) that compares the model with and without the plugin and runs the plugin's own `/<plugin>:review` on the same fixtures, a validator (`scripts/validate-evals.mjs`) and a generated results page, [docs/EVALS.md](docs/EVALS.md). **Results exist for 5 of 14 plugins** (one run per case): the plugin's workflow found 13 to 68 points more of the planted problems than the model alone (scored on the same graders; 2 of the 5 differences are within the noise of one run); on a natural prompt the plugin's skills were never called. The other nine suites have not been run: the `claude` login expired during the run, and the runner records nothing for failed runs.
+- **Presets and the `guided` companion plugin** (`meta/`). Five presets (`everyday-code`, `legacy-rescue`, `backend-service`, `domain-model`, `system-design`), each one primary book plus up to two books rated Complementary, installable in one step in Claude Code (`/plugin install guided-<preset>@guided-plugins`: a bundle plugin whose dependencies are the books; checked with the real CLI). `guided` has six skills: `start`, `which-book`, `config`, `review` (across books), `conflicts` and `ci-setup`. `scripts/install-preset.mjs` prints the equivalent commands for the other agents. A core set of nine components per book (`scripts/core.json`) and a *Start here* table at the top of every plugin README.
+- **Project settings.** `.guided-plugins.json` (primary and secondary books, strictness, ignored paths, report size, CI failure level): schema, `scripts/guided-config.mjs`, [docs/PROJECT_CONFIG.md](docs/PROJECT_CONFIG.md). Every book's hub, `review`, `audit`, `checklist`, `fix` and `plan` workflows and `lead` and `final-gate` agents read it (text inserted by `scripts/apply-project-settings.mjs`).
+- **`/guided:review`.** One review across the chosen books: each book's lead routes, read-only reviewers run in parallel, duplicates merge, and where a secondary book contradicts the primary one it is reported as a disagreement. A live run (`clean-code` + `refactoring`, a small diff) cost about $1.1 and returned a schema-valid report.
+- **Review in CI.** `--json` output from every `review` workflow ([docs/findings.schema.json](docs/findings.schema.json)); converters to SARIF 2.1.0, GitHub pull request review comments (inline on changed lines only; a finding with the same book, rule, path and cited line text is not posted twice) and Markdown; `scripts/guided-review-ci.mjs` (read-only tools and a budget ceiling; exit 0 pass, 1 gate, 2 could not run); a pre-push hook (`scripts/install-git-hook.mjs`); a composite GitHub Action (`.github/actions/guided-review`) and an example workflow. [docs/CI.md](docs/CI.md). All of it is tested with stand-ins for `claude` and `gh` (`scripts/selftest-ci.mjs`) and the runner was exercised once against the real CLI; **the Action itself has not run on GitHub** (the repository has no remote).
+- **Validation.** `scripts/validate-meta.mjs` (guided plugin, bundles, settings text, core sets, CI files, generated references) and the eval validator run in `validate-all`; CI runs the plumbing self-test.
+
+### Fixed in the independent review of 1.3.0
+
+Three reviewers (the scripts, the plugin text, the documentation and evals) and a skeptical second look at each finding. 32 were confirmed; what changed:
+
+- **The Action could not upload SARIF or post the review** on GitHub: the steps were gated on `hashFiles()` of files outside the workspace, which it ignores. They are gated on step outputs now; the Action reviews the pull request head (not the merge commit), installs the plugins from its own checkout and a pinned Claude Code version. It still has not run on GitHub.
+- **The runner could pass silently:** it parsed git's patch text, so a quoted (non-ASCII) file name or `diff.noprefix`, `diff.mnemonicPrefix` or `color.diff` made it report "no changes". It now pins git's output format, takes the file list from NUL-separated names and fails loudly when it sees a diff but no names. Also: unknown flags are refused, paths are relative to where you ran it, findings outside the repository are dropped, ref arguments are validated.
+- **Re-runs repeated findings:** a fingerprint hashed the model's wording and the review body was reposted whenever the summary changed. It now hashes the book, rule, path and the text of the cited line; each body bullet carries its own marker.
+- **`--books` was ignored** by `/guided:review` in CI; the lead-plan parsing, the paths scope and the disagreement fields of that skill were underspecified. Fixed, with `primaryRule` and `secondaryRule` added to the schema.
+- **Pre-push hook:** a mistyped `GUIDED_FAIL_ON` silently disabled it, a later "could not run" hid an earlier "blocked", its budget default was half the runner's, and `failOn` of the settings file was documented as applying to it (it does not; docs corrected). The installer wrote into the parent folder when run from a subfolder.
+- **`ignore` globs** claimed `.gitignore` semantics but a leading slash and several other constructs differed; the supported syntax is now stated and `validate` rejects the rest.
+- **Evals were not like for like:** the slash variants carry extra format graders that counted in the score. Scores are now defect-only (the format check is a separate column), the format check reads each plugin's own template (philosophy-of-design says `Cost:`, not `Why:`), and the "control" wording no longer calls a debatable fixture a false alarm. The numbers above are the corrected ones.
+- **Documentation:** the claims that the reviewer has "nothing that writes" (git `--output` can write), the cost figures, the contradictory "nobody has measured it" lines, the one-router rule (with the `/guided:review` exception), counts and several smaller ones.
+
+### Found while building it
+
+- `claude --json-schema` rejects the draft 2020-12 `$schema` keyword (a schema must omit it); a failed eval run scores 0 and must never be recorded as a result (the first full run recorded 13 plugins as zero because of a usage limit); one obvious planted defect does not separate the model from the model with the plugin, so fixtures plant five to seven violations from different rule clusters; a control file must be clean by the book's own rules or an honest correctness remark counts as a false alarm.
+
 ## [1.2.0] - 2026-10-21
 
 Fixes for the limitations reported after 1.1.0, each re-checked with the real tool. The Claude Code plugins are unchanged.

@@ -394,6 +394,14 @@ For code that already exists, `/philosophy-of-design:depth-map src` ranks shallo
 - `dead-code-remover` (edits files) deletes or inlines unused code only after reachability evidence exists, and refuses candidates without it.
 - `final-gate` runs the ten review questions against the working diff.
 
+## 5b. Presets, project settings, combined reviews and CI
+
+- **Presets.** `/plugin install guided-everyday-code@guided-plugins` (or `guided-legacy-rescue`, `guided-backend-service`, `guided-domain-model`, `guided-system-design`) installs a primary book, up to two complementary books and the `guided` companion in one step. `/guided:which-book` recommends one for your repository.
+- **Project settings.** `/guided:config` writes `.guided-plugins.json` (primary and secondary books, strictness, ignored paths, report size). Every book reads it. [PROJECT_CONFIG.md](PROJECT_CONFIG.md).
+- **A review across books.** `/guided:review` runs each chosen book's lead and specialists on your diff, merges duplicates and reports where the books disagree (the primary book decides). It costs several single-book reviews; `/<book>:review` is the cheap, single-book form. Add `--json` for the machine-readable form.
+- **Reviews without you.** `/guided:ci-setup` writes a GitHub workflow for pull requests; a pre-push hook is one command. [CI.md](CI.md).
+- **Does it work?** [EVALS.md](EVALS.md) says what the eval suites measured, with the model, the run count and the caveats.
+
 ## 6. Combine plugins safely
 
 Plugins do not call each other. A plugin names other books in backticks and never invokes their components, because the other plugin may not be installed. So the hand-off between plugins is done by you: run the first plugin's command, then pass its output to the next one as the scope.
@@ -402,7 +410,7 @@ Rules that keep a combination coherent:
 
 1. **One primary, the rest on demand.** At most one plugin should have `inject_rules` on. Bring the others in by running their workflows for a single task.
 2. **One arbiter per question.** When two books answer the same question differently, say which decides: "`philosophy-of-design` decides module boundaries; `clean-code` decides local naming and readability of the code I touch." Every plugin's hub already ranks your explicit instruction first, then the repository's conventions, then the book.
-3. **One router.** Use one plugin's `lead` per task. Several leads give several plans.
+3. **One router.** Use one plugin's `lead` per task when you plan by hand: several leads give several plans. `/guided:review` is the exception: it asks each book's lead only to choose that book's reviewers and merges the findings.
 4. **One output style at a time.** Styles cannot be stacked.
 5. **Know which pairs overlap or conflict.** [COMPATIBILITY.md](COMPATIBILITY.md) has the verdict for every pair. In short: the three DDD plugins are substitutes for each other, and `ddd` and `ddd-implementing` are rated conflicting with `enterprise-patterns`; `clean-code`, `philosophy-of-design`, `code-complete` and `pragmatic-programmer` compete on everyday code; `refactoring` and `refactoring-guru` give largely the same advice. Some names repeat across plugins with similar jobs, for example `characterize` exists in `legacy-code` and in `refactoring`. Pick one for the task and stay with it.
 6. **Mind the cost.** Every installed plugin adds its idle cost (section 7).
@@ -503,7 +511,7 @@ The complete list of checks is in [ARCHITECTURE.md](ARCHITECTURE.md#7-validation
 
 **Can I use these in Codex, OpenCode, Gemini CLI or another agent?** Yes: see [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md) for installs, differences and costs.
 
-**Do the plugins make my code better?** Nobody has measured it, and this project does not claim it. The plugins apply a book's rules consistently and every piece of advice cites the upstream section it comes from, so you can check it. Treat the findings as informed review comments.
+**Do the plugins make my code better?** Not shown on real projects. On small planted-problem fixtures, for 5 of the 14 plugins, the plugin's review workflow found more of the planted problems than the model alone ([EVALS.md](EVALS.md): one run per case, so differences of 15 points or less are noise). The plugins apply a book's rules consistently and every piece of advice cites the upstream section it comes from; treat the output as structured review comments.
 
 **Are they official?** No. They are not affiliated with or endorsed by the books' authors or publishers, or by the upstream rule-set maintainer. See [NOTICE.md](../NOTICE.md).
 

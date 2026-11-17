@@ -8,7 +8,7 @@ The plugins are **unofficial**: not affiliated with or endorsed by the books' au
 The names Claude Code, Codex, OpenCode, Gemini CLI, Cursor and GitHub Copilot belong to their owners; this project is independent and is not affiliated with or endorsed by any of them.
 
 What they do and do not claim: each plugin applies one book's upstream rules consistently, and every component cites the upstream section it comes from.
-Nobody has measured whether that improves code quality, and the upstream project says the same about its rule sets, so this project does not claim it.
+How much that helps is measured only on small planted-problem fixtures, not on real projects, and so far for 5 of the 14 plugins: [docs/EVALS.md](docs/EVALS.md). On those, the plugin's own `/<plugin>:review` workflow found 13 to 68 points more of the planted problems than the same model without the plugin (2 of the 5 differences are 15 points or less, within the noise of one run) (one run per case, fixtures and graders written by this project: a smoke test, not proof), while the plugin's skills did not fire on their own on a natural prompt. The upstream project makes no quality claim for its rule sets either, and neither does this one.
 
 **At a glance:** 14 plugins with 817 components in total: 433 skills (275 that Claude can load on its own and 158 that you run by name), 300 subagents and 84 output styles.
 A skill is a Markdown instruction set; a subagent is a specialist that works in its own context window; an output style changes how a whole session behaves.
@@ -49,6 +49,38 @@ Then open Claude Code in your own project and try the plugin on your current cha
 
 Try a plugin without installing it by pointing Claude Code at its folder in a clone of this repository, run from the clone's root: `claude --plugin-dir ./plugins/clean-code`.
 Installing, updating, the `inject_rules` option and troubleshooting are covered in [docs/USAGE.md](docs/USAGE.md).
+
+## Start here
+
+Fourteen books are a lot. Do not install them all. Pick a **preset**: one primary book, which decides when books disagree, and up to two books that complement it
+(every pair is rated *Complementary* in [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md)). In Claude Code one command installs the books together with
+the [`guided`](meta/guided/README.md) companion plugin:
+
+<!-- PRESETS:START -->
+
+| Preset | For | Primary | Secondary | Install (Claude Code) |
+| --- | --- | --- | --- | --- |
+| `everyday-code` | Teams writing and reviewing ordinary application code every day. | `clean-code` | `refactoring` | `/plugin install guided-everyday-code@guided-plugins` |
+| `legacy-rescue` | Changing code that has no tests, in a codebase you did not write. | `legacy-code` | `refactoring`, `clean-code` | `/plugin install guided-legacy-rescue@guided-plugins` |
+| `backend-service` | Services and APIs that must survive production: structure, data and failure. | `clean-architecture` | `release-it`, `data-intensive-apps` | `/plugin install guided-backend-service@guided-plugins` |
+| `domain-model` | Business-rule-heavy code where the model of the domain is the hard part. | `ddd-distilled` | `clean-architecture`, `refactoring` | `/plugin install guided-domain-model@guided-plugins` |
+| `system-design` | Designing modules, APIs and boundaries before or while building them. | `philosophy-of-design` | `clean-architecture`, `code-complete` | `/plugin install guided-system-design@guided-plugins` |
+
+<!-- PRESETS:END -->
+
+Then, in your project:
+
+```text
+/guided:start                    # what is installed, the first command to run, what to set up next
+/guided:config                   # writes .guided-plugins.json: primary book, strictness, ignored paths (docs/PROJECT_CONFIG.md)
+/clean-code:review               # a review of your current diff against the primary book   (use the primary book of your preset)
+/guided:review                   # one review across your books: duplicates merged, disagreements reported, the primary book decides
+/guided:ci-setup                 # the same review on every pull request or before every push (docs/CI.md)
+/guided:which-book               # not sure which books fit? it looks at your repository and recommends
+```
+
+Each plugin's README starts with a *Start here* table: the nine components that cover most uses. Everything else is reachable from the plugin's `principles` skill.
+Other agents: `node scripts/install-preset.mjs <preset>` prints the commands for Codex, OpenCode, Gemini CLI, Copilot and Agent Skills agents.
 
 ## Other coding agents
 
@@ -127,7 +159,7 @@ The upstream project rated every pair of its rule sets as complementary, overlap
 
 - Keep at most one plugin's `inject_rules` on. That plugin is the primary.
 - Use `/<plugin>:review`, an agent or an output style to bring another book in for a single task.
-- Do not run `lead` agents from several books at once; pick one as the router.
+- Do not run `lead` agents from several books at once to plan one task by hand (they give overlapping plans); pick one as the router. The exception is `/guided:review`, which asks each book's lead only to choose that book's reviewers (at most three) and merges the findings itself.
 - When two books answer the same question differently, say which one decides. For example: "Use ddd as the primary rule set for this change. Use enterprise-patterns only to choose the persistence pattern for the order repository."
 
 The ratings are qualitative and come from the upstream notes. They say whether two rule sets are likely to give an agent competing instructions; they do not show that any combination improves code.
@@ -167,6 +199,9 @@ Turn `inject_rules` on for `clean-code` only (in a session: `/plugin configure c
 | [docs/USAGE.md](docs/USAGE.md) | Installing, updating and removing plugins; turning on `inject_rules`; invoking skills, agents and styles; ten recipes with real commands; context cost; troubleshooting; FAQ |
 | [docs/COMPATIBILITY.md](docs/COMPATIBILITY.md) | All 91 pairs with verdicts and scores, the groups that compete, the pairs to be careful with, seven bundles |
 | [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | How the repository and each plugin are put together, the cost model, the opt-in hook, validation and CI, how the plugins were built and reviewed, known limitations |
+| [docs/PROJECT_CONFIG.md](docs/PROJECT_CONFIG.md) | `.guided-plugins.json`: primary and secondary books, strictness, ignored paths, report size, the CI failure level |
+| [docs/CI.md](docs/CI.md) | Reviews on every pull request (GitHub Action), before a push (git hook) or from a script; SARIF, inline review comments, the findings format |
+| [docs/EVALS.md](docs/EVALS.md), [evals/README.md](evals/README.md) | Eval suites for every plugin and what they measured: does the plugin find more of the book's problems than the same model without it |
 | [docs/PLUGIN_SPEC.md](docs/PLUGIN_SPEC.md) | The contract every plugin is built and validated against |
 | [docs/templates/](docs/templates/README.md) | Annotated skeletons for each component type |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Changing a component, adding a book, reporting an inaccuracy |
@@ -189,7 +224,7 @@ Each plugin went through the same steps. Models did the writing and most of the 
 
 What this does not show:
 
-- **No effect on code quality was measured.** No task was run with and without a plugin, and there is no data on defects, review time or whether the agents follow their templates. The upstream project lists missing measurement as its strongest open criticism.
+- **No effect on real projects was measured.** The only measurement is a set of small planted-problem fixtures for 5 of the 14 plugins ([docs/EVALS.md](docs/EVALS.md): one run per case, fixtures and graders written by this project, so a smoke test and not proof). There is no data on defects in real code, review time or whether the agents follow their templates. The upstream project lists missing measurement as its strongest open criticism.
 - **The builders and reviewers were models** of the kind the plugins are meant to steer, so they can share blind spots. The definition of done includes a person reading three components at random, but the repository does not record that this was done for each plugin.
 - **The validator checks structure, not truth.** It proves that a citation names a real section, not that the section supports what the component says. A wrong paraphrase that cites a real heading passes. Nothing in the repository tests that a skill triggers on its description, that Claude delegates to an agent, or that output follows its template.
 - **Faithfulness to the books rests on the upstream rule sets,** which this project did not audit. The 42 vendored rule files (three per plugin) were byte-identical to the upstream files at the recorded commit when this README was finalized, but no script in the repository repeats that check.
@@ -200,7 +235,7 @@ More detail, including the full list of checks and known limitations, is in [doc
 
 ## FAQ
 
-**Do the plugins make my code better?** Nobody has measured it, and this project does not claim it. The plugins apply a book's rules consistently and cite the upstream section behind each component, so you can check the advice against its source. Treat the output as structured review comments.
+**Do the plugins make my code better?** Not shown on real projects. On small planted-problem fixtures, for 5 of the 14 plugins, the plugin's review workflow found more of the planted problems than the model alone ([docs/EVALS.md](docs/EVALS.md): one run per case, so differences of 15 points or less are noise). The plugins apply a book's rules consistently and cite the upstream section behind each component, so you can check any piece of advice against the source; treat the output as structured review comments, not as proof of better code.
 
 **What do they cost?** The plugins are free under the MIT license. They use your Claude Code session, so the cost is context and tokens. Skills that Claude loads on its own and subagents put their descriptions in context on every turn. According to the Claude Code docs, skills you run by name cost nothing while idle; an output style costs nothing until you select it, and the hook prints nothing unless you turn it on. A component's full text loads only when it is used.
 The idle estimates are in [Choosing plugins](#choosing-plugins). Keep the cost down by installing only what you use, turning `inject_rules` on for at most one plugin, and trying others with `--plugin-dir`. [docs/USAGE.md](docs/USAGE.md#7-context-cost-and-how-to-keep-it-small) lists more ways.
@@ -233,7 +268,11 @@ dist/                             generated builds for other agents (never edit 
 docs/                             usage, agents support, compatibility, architecture, spec and component templates
 scripts/                          validators, generators, installers, the MCP server, plugin scaffolder, book registry
 package.json                      lets `npx github:Nouran99/guidedplugins` run the MCP server
-.github/                          CI and issue/PR templates
+meta/guided/                      the companion plugin: start, which-book, config, review across books, conflicts, ci-setup
+meta/bundles/                     one bundle plugin per preset (dependencies on the books and on guided; generated)
+evals/                            an eval suite per plugin (not shipped with the plugins) and the summaries of the last runs
+tests/                            fixtures and stand-ins for the review plumbing self-test
+.github/                          CI, the reusable guided-review action (.github/actions/guided-review), issue and PR templates
 ```
 
 ## Developing
@@ -248,6 +287,10 @@ node scripts/new-plugin.mjs <slug> --upstream <clone of agent-rules-books>   # s
 node scripts/build-targets.mjs         # regenerate dist/ for the other agents after any change to plugins/
 node scripts/validate-targets.mjs      # check dist/ against each agent's constraints (validate-all runs it too)
 node scripts/mcp-selftest.mjs          # MCP server protocol checks
+node scripts/selftest-ci.mjs           # the review plumbing: findings converters, CI runner, git hook, PR poster, Action steps (no network, no model)
+node scripts/gen-guided.mjs            # regenerate meta/ (references, bundles) and the presets table above
+node scripts/apply-project-settings.mjs   # (re)apply the project-settings and JSON-output text to every book plugin
+node scripts/validate-evals.mjs        # structure of the eval suites; scripts/run-evals.mjs <plugin> runs one (spends model usage)
 ```
 
 The contract for a plugin is [docs/PLUGIN_SPEC.md](docs/PLUGIN_SPEC.md). Contributions are welcome; see [CONTRIBUTING.md](CONTRIBUTING.md).

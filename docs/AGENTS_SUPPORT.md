@@ -7,7 +7,7 @@ you get on each agent, how to install it, what is different, and what was verifi
 The names Claude Code, Codex, OpenCode, Gemini CLI, Cursor, GitHub Copilot and the other agents mentioned here belong to their owners. This project is independent
 and is not affiliated with or endorsed by any of them, or by the authors of the books (see [NOTICE.md](../NOTICE.md)).
 
-Contents: [Support matrix](#support-matrix) · [What maps to what](#what-maps-to-what) · [Codex](#codex-cli) · [OpenCode](#opencode) ·
+Contents: [Support matrix](#support-matrix) · [Presets, settings, CI](#presets-project-settings-and-review-in-ci-on-other-agents) · [What maps to what](#what-maps-to-what) · [Codex](#codex-cli) · [OpenCode](#opencode) ·
 [Gemini CLI](#gemini-cli) · [Copilot and Cursor](#github-copilot-and-cursor) · [Any other agent](#any-other-agent-agent-skills-agentsmd-mcp) ·
 [Cost and limits](#cost-and-limits) · [Differences to expect](#differences-to-expect) · [What was verified](#what-was-verified) · [For maintainers](#for-maintainers)
 
@@ -29,6 +29,12 @@ The scripts in `scripts/` run on Node 20 or later. They live in a clone of this 
 
 The GitHub paths (`Nouran99/guidedplugins`) work once the repository is published there; at the time of writing it has no remote. Until then use a local clone and the local forms shown.
 The local forms were run: `codex plugin marketplace add <clone>`, `copilot plugin marketplace add <clone>`, `gemini extensions install <path>`, `npx skills add <clone>/dist/agent-skills`, and `npm exec --package=git+file://<clone> -- guided-plugins-mcp` (the same mechanism as `npx github:Nouran99/guidedplugins`, with a local git repository instead of GitHub).
+
+## Presets, project settings and review in CI on other agents
+
+- **Project settings** (`.guided-plugins.json`, [PROJECT_CONFIG.md](PROJECT_CONFIG.md)) travel with the skills: every build carries the *Project settings* text of the hub, `review`, `audit`, `checklist`, `fix` and `plan`, so any agent that loads those skills is told to read the file. It is an instruction to a model, as the rest of a skill is.
+- **Presets as one command** exist for Claude Code only (a bundle plugin lists the books as dependencies). For the other agents `node scripts/install-preset.mjs <preset>` prints one command per book. The `guided` companion plugin (`/guided:review` across books, `/guided:config`, `/guided:ci-setup`) is Claude Code only.
+- **`--json` output** from the `review` workflow works wherever the skill is loaded; the converters (`scripts/findings-convert.mjs`) do not care which agent produced the report. The CI runner and the GitHub Action drive Claude Code (`claude -p`); [CI.md](CI.md) says what a different agent would have to provide.
 
 ## What maps to what
 

@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Guided Plugins findings",
+  "description": "What a review returns when it is asked for JSON (the text --json in the arguments, or a JSON schema supplied by the caller). One object per review; scripts/findings-convert.mjs turns it into SARIF, GitHub pull request review comments or a Markdown summary.",
+  "type": "object",
+  "required": ["schemaVersion", "tool", "scope", "findings", "summary"],
+  "properties": {
+    "schemaVersion": { "type": "integer", "enum": [1] },
+    "tool": { "type": "string", "description": "The plugin that produced the review, for example clean-code, or guided for a combined review." },
+    "books": { "type": "array", "items": { "type": "string" }, "description": "Plugin slugs whose rules were applied." },
+    "scope": { "type": "string", "description": "What was reviewed: a git range, paths, or the working diff." },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["severity", "path", "rule", "why", "fix"],
+        "properties": {
+          "severity": { "type": "string", "enum": ["blocker", "major", "minor", "nit"] },
+          "path": { "type": "string", "description": "Repository-relative path with forward slashes." },
+          "line": { "type": "integer", "minimum": 1 },
+          "endLine": { "type": "integer", "minimum": 1 },
+          "rule": { "type": "string", "description": "The rule or smell, in the book's words." },
+          "book": { "type": "string", "description": "Plugin slug the rule comes from." },
+          "why": { "type": "string", "description": "The consequence, in one or two sentences." },
+          "fix": { "type": "string", "description": "The smallest change that removes the problem." },
+          "confidence": { "type": "string", "enum": ["sure", "unsure"] },
+          "anchor": { "type": "string", "description": "Added by scripts/guided-review-ci.mjs: the text of the cited line, so a fingerprint survives a shifted line number. Reviewers leave it out." }
+        }
+      }
+    },
+    "disagreements": {
+      "type": "array",
+      "description": "Combined review only: places where a secondary book disagrees with the primary one. Not scored as findings.",
+      "items": {
+        "type": "object",
+        "required": ["path", "primary", "secondary", "resolution"],
+        "properties": {
+          "path": { "type": "string" },
+          "line": { "type": "integer", "minimum": 1 },
+          "primary": { "type": "string", "description": "Slug of the primary book, for example clean-code." },
+          "secondary": { "type": "string", "description": "Slug of the secondary book that disagrees." },
+          "primaryRule": { "type": "string", "description": "What the primary book says or asks for here." },
+          "secondaryRule": { "type": "string", "description": "What the secondary book says or asks for." },
+          "resolution": { "type": "string", "description": "The decision, for example: the primary book decides: split the function." }
+        }
+      }
+    },
+    "checked": { "type": "array", "items": { "type": "string" } },
+    "notChecked": { "type": "array", "items": { "type": "string" } },
+    "skippedByConfig": { "type": "integer", "minimum": 0, "description": "Files left out because of the ignore list in .guided-plugins.json." },
+    "truncated": { "type": "integer", "minimum": 0, "description": "Findings left out because of maxFindings." },
+    "summary": { "type": "string" },
+    "doFirst": { "type": "string" }
+  }
+}

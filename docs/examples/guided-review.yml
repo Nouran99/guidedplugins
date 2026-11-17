@@ -1,0 +1,36 @@
+# Copy to .github/workflows/guided-review.yml in your repository, add a repository secret ANTHROPIC_API_KEY, and (optionally) a
+# .guided-plugins.json at the repository root (node scripts/guided-config.mjs init --preset everyday-code).
+# Pin the action to a release tag or a commit SHA once the repository publishes one; @main moves. The action installs the plugins from its own
+# checkout, so pinning the action pins the plugins too; claude-code-version pins Claude Code.
+name: guided-review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+  pull-requests: write      # to post the review
+  security-events: write    # to upload SARIF to code scanning; drop this and set upload-sarif: 'false' if you do not use it
+
+concurrency:
+  group: guided-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    # Pull requests from forks have no secrets; the action would only print a notice.
+    if: github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}   # review the pull request head, so line numbers match GitHub's diff
+          fetch-depth: 0                                   # the review compares with the base branch
+          persist-credentials: false                       # the review needs no git push rights
+      - uses: Nouran99/guidedplugins/.github/actions/guided-review@main
+        with:
+          anthropic-api-key: ${{ secrets.ANTHROPIC_API_KEY }}
+          # books: clean-code refactoring     # default: primary and secondary from .guided-plugins.json
+          # fail-on: major                    # blocker | major | minor | nit | never
+          # max-budget-usd: '2'

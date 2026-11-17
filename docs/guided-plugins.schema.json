@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": ".guided-plugins.json",
+  "description": "Project settings read by the Guided Plugins skills and by scripts/guided-review-ci.mjs. Every key is optional. See docs/PROJECT_CONFIG.md.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": { "type": "integer", "enum": [1] },
+    "primary": { "type": ["string", "null"], "description": "The book that decides when books disagree, for example clean-code." },
+    "secondary": { "type": "array", "items": { "type": "string" }, "maxItems": 3, "uniqueItems": true, "description": "Books applied for the decisions they cover; they defer to the primary book." },
+    "strictness": { "type": "string", "enum": ["relaxed", "normal", "strict"], "default": "normal", "description": "relaxed reports blockers and majors only; normal adds minors; strict adds nits." },
+    "ignore": { "type": "array", "items": { "type": "string" }, "description": "Globs of files not to review or edit. Like .gitignore: a pattern without a slash matches at any depth, a trailing slash means a folder." },
+    "maxFindings": { "type": "integer", "minimum": 1, "maximum": 100, "default": 15, "description": "At most this many findings in a report; the report says how many were left out." },
+    "failOn": { "type": "string", "enum": ["blocker", "major", "minor", "nit", "never"], "default": "major", "description": "For CI (guided-review-ci.mjs and the GitHub Action): fail when a finding at this level or above remains. The pre-push hook does not read it; it uses GUIDED_FAIL_ON." }
+  }
+}

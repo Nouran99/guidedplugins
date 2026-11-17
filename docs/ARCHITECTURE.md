@@ -20,6 +20,7 @@ Statements about Claude Code come from the official documentation at code.claude
 10. [Adding a book and updating the upstream rule sets](#10-adding-a-book-and-updating-the-upstream-rule-sets)
 11. [Known limitations](#11-known-limitations)
 12. [Builds for other coding agents](#12-builds-for-other-coding-agents)
+13. [The layer around the books: evals, presets, project settings, review in CI](#13-the-layer-around-the-books-evals-presets-project-settings-review-in-ci)
 
 ## 1. Repository anatomy
 
@@ -349,7 +350,7 @@ The process also changed the spec. Findings from the first reviews became rules:
 
 ### Limits
 
-- **Verification is by model reviewers plus mechanical checks.** No outcome was measured: no task was run with and without a plugin, and there is no data on defects, review time or whether the agents follow the templates. The definition of done includes a human reading three components at random (spec section 1); nothing in the repository records that this was done for each plugin and no tool enforces it.
+- **Verification is by model reviewers plus mechanical checks.** The only outcome measured is the eval suites ([EVALS.md](EVALS.md): small planted-problem fixtures, 5 of 14 plugins, one run per case); no real project was measured, and there is no data on defects in shipped code, review time or whether the agents follow their templates. The definition of done includes a human reading three components at random (spec section 1); nothing in the repository records that this was done for each plugin and no tool enforces it.
 - **Builders and reviewers are models of the kind the plugins are meant to steer.** Shared blind spots are possible. "Faithful to the book" also rests on the upstream rule sets being faithful to the books, which this project did not audit. The upstream project lists measurement and legal review among its unresolved criticisms.
 - **The mechanical checks cover structure.** Section 7 lists what they do not cover.
 - **Small rule sets reach the 50-component floor by separating role and situation.** A short rule set gets a rules skill, a workflow skill, a reviewer and an implementer for the same cluster, and components for distinct situations (a plan, a scan, a gate). The spec forbids reaching the floor by rewording one idea (quality bar, rule 13). That is a judgment, and the floor itself invites padding: the size floors and the near-duplicate check are a tripwire, not proof that every component earns its place.
@@ -423,7 +424,7 @@ There is no update script. The procedure is manual, and the validator does the d
 
 ## 11. Known limitations
 
-- **No measured effect.** Nothing here shows that the plugins improve code. The upstream project says the same about its rule sets. Treat the output as structured review comments.
+- **No measured effect on real projects.** The eval suites show that a plugin's review workflow finds more planted problems than the model alone (5 of 14 plugins measured, one run per case); nothing shows that the plugins improve real code. The upstream project says the same about its rule sets. Treat the output as structured review comments.
 - **Context cost is real.** Section 3 has the numbers. A plugin is affordable; several are not cheap. Plugin skills cannot be turned off one at a time: the skills docs say `skillOverrides` does not apply to plugin skills and point to enabling or disabling the whole plugin.
 - **Model-written, model-reviewed.** See section 8. A human reading is the strongest check that has not been done systematically.
 - **Instructions, not guarantees.** A skill, a style and an agent prompt are instructions the model may not follow. What is enforced is the agent tool lists (reviewers have no `Write` or `Edit`, but they do have `Bash`) and Claude Code's permission system.
@@ -472,3 +473,42 @@ What is not checked in CI: the real agents themselves. They were run by hand (ve
 
 **Limits specific to this build.** Read-only roles are only as strong as each agent allows: OpenCode denies the edit tools and limits the shell to an allowlist, and Gemini denies the write tools and any shell command outside an allowlist (both guard rails that match command text, not sandboxes). Codex relies on instructions unless the session itself runs read-only (`codex --sandbox read-only`, which a subagent inherits; checked live). The Cursor build follows the vendor's documents but was not run; the Copilot build was installed and listed by the real CLI but not used with a model.
 Gemini loads every skill name into one tool schema (277 names with all 14 extensions after the move to commands), and whether the API accepts that was not tested. Codex's skill catalog and role list have a context budget that makes installing all 14 plugins impractical.
+
+## 13. The layer around the books: evals, presets, project settings, review in CI
+
+The 14 plugins are the content. Four things sit around them so that the content is measurable, easy to pick, adjustable per project and usable without a
+person at the keyboard. None of them changes what a book says.
+
+**Evals (`evals/`, `scripts/run-evals.mjs`).** One suite per plugin, outside `plugins/` so it is not shipped. A case is a small fixture with five to seven planted
+violations of the book's rules (the scaffold writes the files into the empty workspace of `claude plugin eval`) and one `llm` grader per violation; a control case is
+code that follows the book and is graded for false alarms. The runner copies the plugin and its suite into a temporary folder, generates for every case a slash variant
+(`/<plugin>:review <path>`, the same graders plus checks on the report format) and runs two passes: the natural prompt with and without the plugin (the harness's
+ablation arm), and the slash variants plugin-only. `docs/EVALS.md` is generated from the committed summaries. What the pilot taught, and why the cases look the way
+they do: one obvious defect does not separate the arms because a capable model finds it anyway; a control must be clean by the book's own rules or the judge
+punishes honest correctness remarks; and a natural review prompt barely makes the model call the plugin's skills, so the suites record whether it did.
+Limits: one run per case is noise-prone, the fixtures and graders are written by the same project that wrote the plugins, and a model judges a model.
+
+**Presets and the `guided` companion (`meta/`, `scripts/presets.json`, `scripts/core.json`).** A preset is one primary book plus up to two books rated Complementary
+with it and with each other (the validator enforces that from the pair table in `docs/COMPATIBILITY.md`). Claude Code plugins can list `dependencies`, so each preset
+is a bundle plugin without components whose manifest depends on its books and on `guided`; installing it installs them all (checked with the real CLI). `guided` holds
+six skills: `start`, `which-book`, `config`, `review` (across books), `conflicts` and `ci-setup`. Everything under `meta/` that is derived is generated by
+`scripts/gen-guided.mjs` (the book catalog, the 91 pair verdicts, copies of the schemas and guides the skills read, the bundles, the presets table in the README) and
+checked in CI, so it cannot drift. `core.json` names the nine components to start with in each book (the four universal workflows, `lead`, `final-gate` and the first
+three specialist skills of the book's routing table); it is derived by `scripts/gen-core.mjs` and may be edited by hand. The bundles and `guided` exist for Claude Code
+only: the other agents have no plugin dependencies, so `scripts/install-preset.mjs` prints one command per book instead.
+
+**Project settings (`.guided-plugins.json`).** An optional file in the user's repository: `primary`, `secondary`, `strictness`, `ignore`, `maxFindings`, `failOn`. The text that makes the books read it
+is inserted by `scripts/apply-project-settings.mjs` into the hub, five workflows and two agents of every book (idempotent, marked, checked by `validate-meta.mjs`), so it is
+identical everywhere and flows to every target build. These are instructions to a model; the CI runner applies `ignore`, `strictness` and `maxFindings` a second time in code.
+The combined review (`/guided:review`) cannot call a book's own `review` workflow (workflows are manual skills, which a model cannot invoke), so it uses the books' subagents:
+one `lead` per book routes, at most three read-only reviewers per book run in parallel, the main thread merges duplicates, moves a secondary book's contradiction of the
+primary book into `disagreements` and applies the settings. It costs several single-book reviews.
+
+**Review in CI (`scripts/guided-review-ci.mjs` and friends).** `claude -p` with `--json-schema` returns a validated object (`structured_output`); `docs/findings.schema.json` is
+that schema (the runner drops its `$schema` keyword before passing it, because the CLI rejects the draft 2020-12 URI; anyone calling `claude --json-schema` directly must do the same). `findings-lib.mjs` validates, sorts and converts it to SARIF 2.1.0, GitHub review comments (inline
+only on changed lines, the rest in the body, a marker per finding, a hash of the book, the rule, the path and the text of the cited line, so a re-run does not repeat a finding that is worded differently but is the same; a finding the model reports for different text or under a different rule name is posted as new) and Markdown. The runner builds the diff, applies the settings, runs
+the review with read tools and read-only `git` only and a budget ceiling, writes the files and exits 0, 1 (gate) or 2 (could not run, which a hook treats as "let the
+push through" and the Action treats as a failure). The composite action in `.github/actions/guided-review` wraps it; `scripts/git-hooks/pre-push` and `install-git-hook.mjs`
+are the local form. `scripts/selftest-ci.mjs` tests all of it with stand-ins for `claude` and `gh`; one real run of the combined review through the runner (2026-10-25,
+`clean-code` + `refactoring` on a small diff) returned a schema-valid report for about $1.1. The Action itself has not run on GitHub: the repository has no remote.
+
