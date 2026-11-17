@@ -1,0 +1,25 @@
+{
+  "name": "guided-domain-model",
+  "displayName": "Guided Plugins preset: Domain model",
+  "version": "1.0.0",
+  "description": "Domain model: installs Domain-Driven Design Distilled, Clean Architecture, Refactoring and the guided companion in one step. Business-rule-heavy code where the model of the domain is the hard part.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/bundles/guided-domain-model",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "preset",
+    "bundle",
+    "ddd-distilled",
+    "clean-architecture",
+    "refactoring"
+  ],
+  "dependencies": [
+    "ddd-distilled",
+    "clean-architecture",
+    "refactoring",
+    "guided"
+  ]
+}

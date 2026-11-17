@@ -1,0 +1,25 @@
+{
+  "name": "guided-legacy-rescue",
+  "displayName": "Guided Plugins preset: Legacy rescue",
+  "version": "1.0.0",
+  "description": "Legacy rescue: installs Working Effectively with Legacy Code, Refactoring, Clean Code and the guided companion in one step. Changing code that has no tests, in a codebase you did not write.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/bundles/guided-legacy-rescue",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "preset",
+    "bundle",
+    "legacy-code",
+    "refactoring",
+    "clean-code"
+  ],
+  "dependencies": [
+    "legacy-code",
+    "refactoring",
+    "clean-code",
+    "guided"
+  ]
+}

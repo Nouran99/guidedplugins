@@ -12,7 +12,7 @@
       "name": "clean-code",
       "source": "./plugins/clean-code",
       "description": "Robert C. Martin's Clean Code as a Claude Code toolkit: skills, subagents and output styles for naming, small functions, comments, error handling, tests, concurrency and scoped cleanup of touched code.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "code-quality",
       "tags": [
         "clean-code",
@@ -31,7 +31,7 @@
       "name": "philosophy-of-design",
       "source": "./plugins/philosophy-of-design",
       "description": "John Ousterhout's A Philosophy of Software Design as a Claude Code toolkit: skills, subagents and output styles for deep modules, information hiding, narrow interfaces, defining errors away and strategic design.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "code-quality",
       "tags": [
         "software-design",
@@ -50,7 +50,7 @@
       "name": "clean-architecture",
       "source": "./plugins/clean-architecture",
       "description": "Robert C. Martin's Clean Architecture as a Claude Code toolkit: skills, subagents and output styles for dependency direction, use cases, ports and adapters, component design and boundaries that keep business rules independent of frameworks and databases.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "architecture",
       "tags": [
         "clean-architecture",
@@ -68,7 +68,7 @@
       "name": "code-complete",
       "source": "./plugins/code-complete",
       "description": "Steve McConnell's Code Complete as a Claude Code toolkit: skills, subagents and output styles for routine design, data meaning, control flow, defensive programming, testing, debugging and measured tuning.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "code-quality",
       "tags": [
         "code-complete",
@@ -87,7 +87,7 @@
       "name": "data-intensive-apps",
       "source": "./plugins/data-intensive-apps",
       "description": "Designing Data-Intensive Applications by Martin Kleppmann as a Claude Code toolkit: skills, subagents and output styles for data ownership, consistency, retries and replay, schema evolution, replication, partitioning and streams.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "architecture",
       "tags": [
         "ddia",
@@ -107,7 +107,7 @@
       "name": "ddd",
       "source": "./plugins/ddd",
       "description": "Eric Evans' Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for ubiquitous language, bounded contexts, context maps, aggregates, supple design and core-domain focus.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "domain-modeling",
       "tags": [
         "ddd",
@@ -126,7 +126,7 @@
       "name": "ddd-distilled",
       "source": "./plugins/ddd-distilled",
       "description": "Vaughn Vernon's Domain-Driven Design Distilled as a Claude Code toolkit: skills, subagents and output styles for subdomains, bounded contexts, context maps, small aggregates, event storming and DDD without ceremony.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "domain-modeling",
       "tags": [
         "ddd",
@@ -146,7 +146,7 @@
       "name": "ddd-implementing",
       "source": "./plugins/ddd-implementing",
       "description": "Vaughn Vernon's Implementing Domain-Driven Design as a Claude Code toolkit: skills, subagents and output styles for bounded contexts in code, small aggregates, repositories, domain events, application services and anticorruption layers.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "domain-modeling",
       "tags": [
         "ddd",
@@ -163,7 +163,7 @@
       "name": "enterprise-patterns",
       "source": "./plugins/enterprise-patterns",
       "description": "Martin Fowler's enterprise application patterns as a Claude Code toolkit: choose business logic, persistence, transaction, locking, presentation and remoting patterns by force, keep responsibilities separate, and review for the book's forbidden patterns. Unofficial.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "architecture",
       "tags": [
         "poeaa",
@@ -184,7 +184,7 @@
       "name": "refactoring",
       "source": "./plugins/refactoring",
       "description": "Refactoring by Martin Fowler as a Claude Code toolkit: skills, subagents and output styles for behavior-preserving change in small, tested steps, with structure kept separate from feature work and cleanup that stops when the change is easy.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "refactoring",
       "tags": [
         "refactoring",
@@ -199,7 +199,7 @@
       "name": "refactoring-guru",
       "source": "./plugins/refactoring-guru",
       "description": "Refactoring.Guru's smell and technique catalog as a Claude Code toolkit: diagnose a named smell, apply the smallest safe treatment, verify, and stop before redesign. Skills, subagents and output styles built on a paraphrased rule set for coding agents.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "refactoring",
       "tags": [
         "refactoring-guru",
@@ -214,7 +214,7 @@
       "name": "release-it",
       "source": "./plugins/release-it",
       "description": "Michael T. Nygard's Release It! as a Claude Code toolkit: skills, subagents and output styles for timeouts, retries, circuit breakers, bulkheads, overload control, safe deployment and observability in services, APIs and queues.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "reliability",
       "tags": [
         "release-it",
@@ -235,7 +235,7 @@
       "name": "pragmatic-programmer",
       "source": "./plugins/pragmatic-programmer",
       "description": "Hunt and Thomas's The Pragmatic Programmer as a Claude Code toolkit: skills, subagents and output styles for DRY knowledge, orthogonality, tracer bullets, contracts, debugging, automation and owning the result.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "engineering-practice",
       "tags": [
         "pragmatic-programmer",
@@ -255,7 +255,7 @@
       "name": "legacy-code",
       "source": "./plugins/legacy-code",
       "description": "Michael Feathers's Working Effectively with Legacy Code as a Claude Code toolkit: skills, subagents and output styles for characterization tests, seams, dependency breaking, sprout and wrap, and changing untested code in small, verified steps.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "category": "refactoring",
       "tags": [
         "legacy-code",
@@ -265,6 +265,80 @@
         "sprout-and-wrap",
         "test-harness",
         "feathers"
+      ]
+    },
+    {
+      "name": "guided",
+      "source": "./meta/guided",
+      "description": "The companion of the fourteen book plugins. Finds the right books for a project, applies project settings, runs one combined review across the books you chose and sets up reviews in CI.",
+      "version": "1.0.0",
+      "category": "workflow",
+      "tags": [
+        "guided"
+      ]
+    },
+    {
+      "name": "guided-everyday-code",
+      "source": "./meta/bundles/guided-everyday-code",
+      "description": "Everyday code: installs Clean Code, Refactoring and the guided companion in one step. Teams writing and reviewing ordinary application code every day.",
+      "version": "1.0.0",
+      "category": "preset",
+      "tags": [
+        "preset",
+        "clean-code",
+        "refactoring"
+      ]
+    },
+    {
+      "name": "guided-legacy-rescue",
+      "source": "./meta/bundles/guided-legacy-rescue",
+      "description": "Legacy rescue: installs Working Effectively with Legacy Code, Refactoring, Clean Code and the guided companion in one step. Changing code that has no tests, in a codebase you did not write.",
+      "version": "1.0.0",
+      "category": "preset",
+      "tags": [
+        "preset",
+        "legacy-code",
+        "refactoring",
+        "clean-code"
+      ]
+    },
+    {
+      "name": "guided-backend-service",
+      "source": "./meta/bundles/guided-backend-service",
+      "description": "Backend service: installs Clean Architecture, Release It!, Designing Data-Intensive Applications and the guided companion in one step. Services and APIs that must survive production: structure, data and failure.",
+      "version": "1.0.0",
+      "category": "preset",
+      "tags": [
+        "preset",
+        "clean-architecture",
+        "release-it",
+        "data-intensive-apps"
+      ]
+    },
+    {
+      "name": "guided-domain-model",
+      "source": "./meta/bundles/guided-domain-model",
+      "description": "Domain model: installs Domain-Driven Design Distilled, Clean Architecture, Refactoring and the guided companion in one step. Business-rule-heavy code where the model of the domain is the hard part.",
+      "version": "1.0.0",
+      "category": "preset",
+      "tags": [
+        "preset",
+        "ddd-distilled",
+        "clean-architecture",
+        "refactoring"
+      ]
+    },
+    {
+      "name": "guided-system-design",
+      "source": "./meta/bundles/guided-system-design",
+      "description": "System design: installs A Philosophy of Software Design, Clean Architecture, Code Complete and the guided companion in one step. Designing modules, APIs and boundaries before or while building them.",
+      "version": "1.0.0",
+      "category": "preset",
+      "tags": [
+        "preset",
+        "philosophy-of-design",
+        "clean-architecture",
+        "code-complete"
       ]
     }
   ]

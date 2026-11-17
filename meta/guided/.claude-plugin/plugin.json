@@ -1,0 +1,19 @@
+{
+  "name": "guided",
+  "displayName": "Guided Plugins: start, review across books, settings, CI",
+  "version": "1.0.0",
+  "description": "The companion of the fourteen book plugins. Finds the right books for a project, applies project settings, runs one combined review across the books you chose and sets up reviews in CI.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/guided",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "code-review",
+    "ci",
+    "presets",
+    "project-settings",
+    "guided-plugins"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "guided-backend-service",
+  "displayName": "Guided Plugins preset: Backend service",
+  "version": "1.0.0",
+  "description": "Backend service: installs Clean Architecture, Release It!, Designing Data-Intensive Applications and the guided companion in one step. Services and APIs that must survive production: structure, data and failure.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/bundles/guided-backend-service",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "preset",
+    "bundle",
+    "clean-architecture",
+    "release-it",
+    "data-intensive-apps"
+  ],
+  "dependencies": [
+    "clean-architecture",
+    "release-it",
+    "data-intensive-apps",
+    "guided"
+  ]
+}

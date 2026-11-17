@@ -1,0 +1,23 @@
+{
+  "name": "guided-everyday-code",
+  "displayName": "Guided Plugins preset: Everyday code",
+  "version": "1.0.0",
+  "description": "Everyday code: installs Clean Code, Refactoring and the guided companion in one step. Teams writing and reviewing ordinary application code every day.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/bundles/guided-everyday-code",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "preset",
+    "bundle",
+    "clean-code",
+    "refactoring"
+  ],
+  "dependencies": [
+    "clean-code",
+    "refactoring",
+    "guided"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "guided-system-design",
+  "displayName": "Guided Plugins preset: System design",
+  "version": "1.0.0",
+  "description": "System design: installs A Philosophy of Software Design, Clean Architecture, Code Complete and the guided companion in one step. Designing modules, APIs and boundaries before or while building them.",
+  "author": {
+    "name": "Nouran Darwish"
+  },
+  "homepage": "https://github.com/Nouran99/guidedplugins/tree/main/meta/bundles/guided-system-design",
+  "repository": "https://github.com/Nouran99/guidedplugins",
+  "license": "MIT",
+  "keywords": [
+    "preset",
+    "bundle",
+    "philosophy-of-design",
+    "clean-architecture",
+    "code-complete"
+  ],
+  "dependencies": [
+    "philosophy-of-design",
+    "clean-architecture",
+    "code-complete",
+    "guided"
+  ]
+}
