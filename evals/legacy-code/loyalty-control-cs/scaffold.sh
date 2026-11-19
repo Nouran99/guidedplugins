@@ -18,7 +18,8 @@ public sealed record Award(long Points, string Reason);
 
 /// <summary>
 /// The rules for loyalty points. Everything the rules need arrives as an argument,
-/// including the time of the purchase, so they can be called with literals.
+/// including the time of the purchase, so they can be called with literals. The weekend is the
+/// shop's weekend: the caller passes the time in the shop's time zone.
 /// </summary>
 public static class PointsPolicy
 {
@@ -81,12 +82,13 @@ public sealed class LoyaltyService
     public async Task<Award> OnPurchaseAsync(string customerId, long totalCents, CancellationToken ct)
     {
         var tier = await _ledger.TierOfAsync(customerId, ct);
-        var award = PointsPolicy.Evaluate(new Purchase(customerId, totalCents, _time.GetUtcNow()), tier);
+        var award = PointsPolicy.Evaluate(new Purchase(customerId, totalCents, _time.GetLocalNow()), tier);
         if (award.Points == 0)
             return award;
 
         await _ledger.RecordAwardAsync(customerId, award, ct);
-        await _announcer.AnnounceAsync(customerId, award, ct);
+        // The award is saved: announcing it must not be cancelled along with the request.
+        await _announcer.AnnounceAsync(customerId, award, CancellationToken.None);
         return award;
     }
 }
@@ -107,6 +109,7 @@ public sealed class PurchaseController : ControllerBase
 
     public sealed record PurchaseDto(string CustomerId, long TotalCents);
 
+    // A purchase with no value (a voucher, a refund line) is accepted and earns no points.
     [HttpPost]
     public async Task<IActionResult> Post(PurchaseDto dto, CancellationToken ct)
     {
@@ -192,11 +195,15 @@ internal sealed class FakeLedger : IPointsLedger
 
     public Tier Tier { get; set; } = Tier.Standard;
 
+    /// <summary>Runs right after an award is saved, for example to cancel the request.</summary>
+    public Action AfterSave { get; set; } = () => { };
+
     public Task<Tier> TierOfAsync(string customerId, CancellationToken ct) => Task.FromResult(Tier);
 
     public Task RecordAwardAsync(string customerId, Award award, CancellationToken ct)
     {
         _calls.Add($"save {customerId} {award.Points}");
+        AfterSave();
         return Task.CompletedTask;
     }
 }
@@ -209,6 +216,7 @@ internal sealed class RecordingAnnouncer : IPointsAnnouncer
 
     public Task AnnounceAsync(string customerId, Award award, CancellationToken ct)
     {
+        ct.ThrowIfCancellationRequested();
         _calls.Add($"announce {customerId} {award.Points}");
         return Task.CompletedTask;
     }
@@ -254,6 +262,48 @@ public class LoyaltyServiceTests
 
         Assert.Equal(0, award.Points);
         Assert.Empty(calls);
+    }
+
+    [Fact]
+    public async Task A_saved_award_is_announced_even_when_the_request_is_cancelled_afterwards()
+    {
+        using var requestCancelled = new CancellationTokenSource();
+        var calls = new List<string>();
+        var service = new LoyaltyService(
+            new FakeLedger(calls) { AfterSave = requestCancelled.Cancel },
+            new RecordingAnnouncer(calls),
+            new FakeTimeProvider(Wednesday));
+
+        await service.OnPurchaseAsync("c-7", 4_000, requestCancelled.Token);
+
+        Assert.Equal(new[] { "save c-7 40", "announce c-7 40" }, calls);
+    }
+
+    [Fact]
+    public async Task Saturday_in_UTC_is_still_Friday_in_a_shop_five_hours_behind_and_earns_no_bonus()
+    {
+        var award = await AwardAt(new DateTimeOffset(2025, 3, 8, 2, 0, 0, TimeSpan.Zero));
+
+        Assert.Equal(40, award.Points);
+    }
+
+    [Fact]
+    public async Task Sunday_in_UTC_is_still_Saturday_in_a_shop_five_hours_behind_and_earns_the_bonus()
+    {
+        var award = await AwardAt(new DateTimeOffset(2025, 3, 9, 3, 0, 0, TimeSpan.Zero));
+
+        Assert.Equal(48, award.Points);
+    }
+
+    private static Task<Award> AwardAt(DateTimeOffset utcNow)
+    {
+        var shopFiveHoursBehind = TimeZoneInfo.CreateCustomTimeZone("shop", TimeSpan.FromHours(-5), "shop", "shop");
+        var time = new FakeTimeProvider(utcNow);
+        time.SetLocalTimeZone(shopFiveHoursBehind);
+        var calls = new List<string>();
+        var service = new LoyaltyService(new FakeLedger(calls), new RecordingAnnouncer(calls), time);
+
+        return service.OnPurchaseAsync("c-7", 4_000, CancellationToken.None);
     }
 }
 CS

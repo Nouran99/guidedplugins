@@ -8,6 +8,8 @@ Bounded context for reservations: a guest asks for a room type for some nights, 
 
 - Subdomain: core. How we hold and confirm rooms is why hotels choose us, so this is where the modeling effort goes.
 - A reservation is confirmed at most once, never after it was cancelled and never on or after its arrival day. A stay has at least one night.
+- A new reservation starts as requested. A repository rebuilds a stored one by passing the stored status to the constructor.
+- The arrival day is a UTC calendar date: every hotel in this context books against UTC.
 - Room types are reference data from the revenue team: plain data, no rules.
 - Neighbour: billing is downstream and conforms to our events as published. ReservationConfirmed carries the deposit due, so billing never asks back. ReservationCancelled carries ids only, and billing voids the deposit invoice when it arrives. Stays never calls billing.
 - EventPublisher is a port. The messaging adapter, outside this folder, maps the events to the versioned messages billing reads.
@@ -122,8 +124,9 @@ class Reservation(
     val roomType: RoomTypeCode,
     val stay: StayPeriod,
     val nightlyRate: Money,
+    status: ReservationStatus = ReservationStatus.REQUESTED,
 ) {
-    var status: ReservationStatus = ReservationStatus.REQUESTED
+    var status: ReservationStatus = status
         private set
 
     /** Stays of a week or more need a deposit, as agreed with revenue management. */
@@ -207,12 +210,16 @@ private val arrival = LocalDate.of(2026, 3, 10)
 private val aWeekBefore = Instant.parse("2026-03-03T09:00:00Z")
 private val arrivalMorning = Instant.parse("2026-03-10T08:00:00Z")
 
-private fun reservationFor(nights: Long): Reservation = Reservation(
+private fun reservationFor(
+    nights: Long,
+    status: ReservationStatus = ReservationStatus.REQUESTED,
+): Reservation = Reservation(
     id = ReservationId("r-1"),
     guestId = GuestId("g-1"),
     roomType = RoomTypeCode("STD"),
     stay = StayPeriod(arrival, arrival.plusDays(nights)),
     nightlyRate = Money(12_000, "EUR"),
+    status = status,
 )
 
 class ReservationTest {
@@ -255,6 +262,18 @@ class ReservationTest {
         val reservation = reservationFor(3)
         reservation.cancel(aWeekBefore)
         assertThrows(InvalidTransition::class.java) { reservation.cancel(aWeekBefore) }
+    }
+
+    @Test
+    fun `a reservation rebuilt as confirmed cannot be confirmed again`() {
+        val reservation = reservationFor(3, ReservationStatus.CONFIRMED)
+        assertThrows(InvalidTransition::class.java) { reservation.confirm(aWeekBefore) }
+    }
+
+    @Test
+    fun `a reservation rebuilt as cancelled cannot be confirmed`() {
+        val reservation = reservationFor(3, ReservationStatus.CANCELLED)
+        assertThrows(InvalidTransition::class.java) { reservation.confirm(aWeekBefore) }
     }
 
     @Test

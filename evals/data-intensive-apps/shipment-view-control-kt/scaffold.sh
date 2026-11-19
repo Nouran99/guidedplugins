@@ -66,8 +66,10 @@ import java.time.Duration
  *
  * Atomic together: the view row and, for a delivery, the notification row in `outbox`. Not atomic
  * with them: the customer notification itself, which the relay sends at least once under the key
- * stored on the outbox row. Outbox rows are kept as long as the topic keeps its events, so a rebuild
- * that replays a delivery queues no second notification.
+ * stored on the outbox row: the shipment id and the version of the event, so a second delivery after
+ * a return is its own notification, while a duplicate or a replay of the same event is not. Outbox
+ * rows are kept as long as the topic keeps its events, so a rebuild that replays a delivery queues no
+ * second notification.
  *
  * Events of one shipment arrive in order because the topic is keyed by shipment id and a partition
  * has one consumer thread. The version check still decides, because a rebalance or a replay can
@@ -75,7 +77,7 @@ import java.time.Duration
  *
  * While the view lags, the tracking page shows the last status it has; a delay of a few minutes is
  * acceptable. Metrics: `unknown_status`, `stale_or_duplicate_event` and `lag_ms` (event age when
- * handled, alerted at 5 minutes).
+ * handled, alerted at 5 minutes; the alert is muted while a rebuild replays old events).
  */
 class ShipmentViewConsumer(
     private val db: Database,
@@ -96,7 +98,7 @@ class ShipmentViewConsumer(
             if (changed == 1 && status == ShipmentStatus.DELIVERED) {
                 tx.update(
                     INSERT_OUTBOX,
-                    "shipment-delivered:${event.shipmentId}",
+                    "shipment-delivered:${event.shipmentId}:${event.version}",
                     "shipment.delivered",
                     event.shipmentId,
                 )
@@ -198,6 +200,23 @@ class ShipmentViewConsumerTest {
 
         assertEquals(live, view().getString("status") to view().getLong("source_version"))
         assertEquals(1, db.count("outbox"))
+    }
+
+    @Test
+    fun `a second delivery after a return is its own notification and a replay adds none`() {
+        val history = listOf(
+            event("e-3", 3, "DELIVERED"),
+            event("e-4", 4, "RETURNED"),
+            event("e-5", 5, "DELIVERED"),
+        )
+        history.forEach(consumer::handle)
+        assertEquals(2, db.count("outbox"))
+
+        db.truncate("shipment_view")
+        history.forEach(consumer::handle)
+
+        assertEquals("DELIVERED", view().getString("status"))
+        assertEquals(2, db.count("outbox"))
     }
 
     @Test
