@@ -25,7 +25,7 @@ Add the marketplace once, then install only the books you want. Inside a Claude 
 /plugin install clean-code@guided-plugins
 ```
 
-The path `Nouran99/guidedplugins` is valid once the repository is published at github.com/Nouran99/guidedplugins. Until then, add a local checkout instead. Clone the repository (that URL also works only once it is published) or use the folder you already have, and run this from its root:
+The repository is published at github.com/Nouran99/guidedplugins, so the path `Nouran99/guidedplugins` resolves. The GitHub install forms have not yet been run end to end with each agent's own CLI ([docs/AGENTS_SUPPORT.md](docs/AGENTS_SUPPORT.md#what-was-verified) says what was checked); if one fails, add a local checkout instead. Clone the repository or use the folder you already have, and run this from its root:
 
 ```bash
 git clone https://github.com/Nouran99/guidedplugins
@@ -89,16 +89,16 @@ The Claude Code plugins in `plugins/` are the source. `dist/` holds committed bu
 
 | Agent | Install | Status |
 | --- | --- | --- |
-| Codex CLI | `codex plugin marketplace add /path/to/guidedplugins`, then `codex plugin add clean-code@guided-plugins` (the GitHub form `Nouran99/guidedplugins` works once the repository is published); subagents with `$clean-code:install-roles` | Verified with codex-cli 0.162.1, including seven live model runs on one plugin |
+| Codex CLI | `codex plugin marketplace add /path/to/guidedplugins`, then `codex plugin add clean-code@guided-plugins` (the GitHub form `Nouran99/guidedplugins` is published but not yet tested); subagents with `$clean-code:install-roles` | Verified with codex-cli 0.162.1, including seven live model runs on one plugin |
 | OpenCode | from your project's folder: `node /path/to/guidedplugins/scripts/install-opencode.mjs clean-code` (it installs into that folder's `.opencode`; run inside the clone it would install into the clone) | Verified with OpenCode 1.19 and 2.0 (loading, and the requests a model would get) |
 | Gemini CLI | `gemini extensions install ./dist/gemini/clean-code` (workflows and modes are slash commands: `/clean-code:review src/`) | Verified with gemini-cli 0.64: installs, loads, request measured, policy checked with Gemini's own engine (no live session) |
-| Any Agent Skills agent (about 75) | `npx skills add ./dist/agent-skills/clean-code` from a clone (`Nouran99/guidedplugins/dist/agent-skills/clean-code` once published) | Format and installer verified |
+| Any Agent Skills agent (about 75) | `npx skills add ./dist/agent-skills/clean-code` from a clone (`Nouran99/guidedplugins/dist/agent-skills/clean-code` from GitHub, not yet tested) | Format and installer verified |
 | Any `AGENTS.md` agent | `node scripts/compose-rules.mjs clean-code --size nano --out AGENTS.md` | Verified |
 | Any MCP client | `node scripts/mcp-server.mjs --plugins clean-code` | Verified with the MCP Inspector, Claude Code and Codex |
 | GitHub Copilot | `copilot plugin marketplace add /path/to/guidedplugins`, then `copilot plugin install clean-code@guided-plugins` | Verified with Copilot CLI 1.0.101: marketplace, install, skill list (no model session) |
 | Cursor | see the guide (team marketplaces need a Teams or Enterprise plan) | Experimental, not run |
 
-The `Nouran99/guidedplugins` forms need the repository to be published there; it has no remote yet, so use a clone and the local forms. The scripts need Node 20 or later; they live in the clone, and the installers write into the folder you run them from.
+The `Nouran99/guidedplugins` forms install from the published repository and have not yet been tested with each agent's CLI; the local forms, from a clone, are the ones that were verified. The scripts need Node 20 or later; they live in the clone, and the installers write into the folder you run them from.
 
 Codex subagents need a separate step: run `$clean-code:install-roles` in Codex (or `node scripts/install-codex-agents.mjs clean-code` from a clone). Read-only reviewers are not a guarantee outside Claude Code: OpenCode and Gemini deny them the write tools and limit their shell to an allowlist (guard rails that match command text, not sandboxes; in Gemini one "Allow for this session" click overrides them), Copilot gives them no edit tool but no shell allowlist, and Codex cannot restrict a role at all, so start it with `codex --sandbox read-only` when that matters (checked live); the guide explains.
 

@@ -510,5 +510,5 @@ only on changed lines, the rest in the body, a marker per finding, a hash of the
 the review with read tools and read-only `git` only and a budget ceiling, writes the files and exits 0, 1 (gate) or 2 (could not run, which a hook treats as "let the
 push through" and the Action treats as a failure). The composite action in `.github/actions/guided-review` wraps it; `scripts/git-hooks/pre-push` and `install-git-hook.mjs`
 are the local form. `scripts/selftest-ci.mjs` tests all of it with stand-ins for `claude` and `gh`; one real run of the combined review through the runner (2026-10-25,
-`clean-code` + `refactoring` on a small diff) returned a schema-valid report for about $1.1. The Action itself has not run on GitHub: the repository has no remote.
+`clean-code` + `refactoring` on a small diff) returned a schema-valid report for about $1.1. The Action itself has not run on GitHub: the repository is published now and its own validation workflow passes there, but no pull request has exercised the Action yet.
 

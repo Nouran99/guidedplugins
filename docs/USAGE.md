@@ -20,9 +20,9 @@ Claude Code commands in this guide come from the official documentation at code.
 
 ## 1. Install, update, uninstall
 
-There are three ways to get a plugin: from the GitHub marketplace (once it is published), straight from a local folder for one session, or from a local folder registered as a marketplace.
+There are three ways to get a plugin: from the GitHub marketplace, straight from a local folder for one session, or from a local folder registered as a marketplace.
 
-The second and third ways need a clone of this repository. Clone it once and work from its root; the URL works once the repository is published at github.com/Nouran99/guidedplugins, and until then you can use any copy of the folder you already have:
+The second and third ways need a clone of this repository. Clone it once and work from its root; the repository is at github.com/Nouran99/guidedplugins, or you can use any copy of the folder you already have:
 
 ```bash
 git clone https://github.com/Nouran99/guidedplugins
@@ -33,7 +33,7 @@ A plugin loaded with `--plugin-dir` is read from that folder for one session. A 
 
 ### From GitHub
 
-Once the repository is published, the marketplace path is `Nouran99/guidedplugins`. The marketplace is named `guided-plugins`.
+The marketplace path on GitHub is `Nouran99/guidedplugins` (this form has not yet been run end to end with the real CLI; the local forms below have). The marketplace is named `guided-plugins`.
 
 ```text
 /plugin marketplace add Nouran99/guidedplugins
@@ -91,7 +91,7 @@ Point the flag at a plugin folder, the one that contains `.claude-plugin/plugin.
 
 ### Add a local checkout as a marketplace
 
-This installs from your own copy of the repository, for example before it is published or while you test changes.
+This installs from your own copy of the repository, for example while you test changes.
 
 ```bash
 cd "/path/to/guidedplugins"

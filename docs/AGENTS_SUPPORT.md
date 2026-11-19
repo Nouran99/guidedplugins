@@ -23,11 +23,11 @@ The scripts in `scripts/` run on Node 20 or later. They live in a clone of this 
 | **Gemini CLI** | One extension per plugin: rule skills, the workflows and modes as slash commands, subagents, and a policy that denies writes to the read-only roles | `gemini extensions install ./dist/gemini/<plugin>` | Verified with gemini-cli 0.64: install, load, the request the model would receive, and Gemini's own policy engine; no real model session |
 | **GitHub Copilot** | Plugin with skills and agents | `copilot plugin marketplace add /path/to/guidedplugins`, then `copilot plugin install <plugin>@guided-plugins` | Verified with Copilot CLI 1.0.101: marketplace, install and the skill list; no model session |
 | **Cursor** | Plugin with skills, subagents and an on-demand rules file | Teams or Enterprise plan: an admin imports the repository as a team marketplace. Otherwise copy `dist/cursor/<plugin>` to `~/.cursor/plugins/local/` | **Experimental**, not run here |
-| **Any agent that reads Agent Skills** (about 75, including Amp, Goose, Junie, Kiro, Warp, Zed, Antigravity, Qwen Code, Droid) | The skills and modes (no subagent roles) | `npx skills add ./dist/agent-skills/<plugin>` from a clone (or `Nouran99/guidedplugins/dist/agent-skills/<plugin>` once published) | Installer and format verified; the individual agents were not run |
+| **Any agent that reads Agent Skills** (about 75, including Amp, Goose, Junie, Kiro, Warp, Zed, Antigravity, Qwen Code, Droid) | The skills and modes (no subagent roles) | `npx skills add ./dist/agent-skills/<plugin>` from a clone (or `Nouran99/guidedplugins/dist/agent-skills/<plugin>` from GitHub, not yet tested) | Installer and format verified; the individual agents were not run |
 | **Any agent that reads `AGENTS.md`** | The book's compact rules, always on | `node scripts/compose-rules.mjs <plugin>... --size nano --out AGENTS.md` | Verified (file generation, size checks) |
 | **Any agent that speaks MCP** | Search and fetch every guide, subagent roles included; prompts become slash commands where the client supports them | `node scripts/mcp-server.mjs --plugins <plugin>` | Verified with the MCP Inspector, Claude Code and Codex; the `npm exec` form from a git URL ran |
 
-The GitHub paths (`Nouran99/guidedplugins`) work once the repository is published there; at the time of writing it has no remote. Until then use a local clone and the local forms shown.
+The repository is published at github.com/Nouran99/guidedplugins, so the GitHub paths (`Nouran99/guidedplugins`) resolve. They have not yet been run with each agent's own CLI (see [What was verified](#what-was-verified)); the local forms from a clone are the ones that were.
 The local forms were run: `codex plugin marketplace add <clone>`, `copilot plugin marketplace add <clone>`, `gemini extensions install <path>`, `npx skills add <clone>/dist/agent-skills`, and `npm exec --package=git+file://<clone> -- guided-plugins-mcp` (the same mechanism as `npx github:Nouran99/guidedplugins`, with a local git repository instead of GitHub).
 
 ## Presets, project settings and review in CI on other agents
@@ -58,7 +58,7 @@ Codex reads this repository's `.agents/plugins/marketplace.json` in preference t
 
 ```bash
 codex plugin marketplace add /path/to/guidedplugins      # a local clone: this form was tested
-codex plugin marketplace add Nouran99/guidedplugins      # works once the repository is published there; not tested
+codex plugin marketplace add Nouran99/guidedplugins      # published; not yet tested
 codex plugin add clean-code@guided-plugins
 ```
 
@@ -114,7 +114,7 @@ You can also skip the copy for skills and point OpenCode at `dist/opencode/<plug
 Gemini installs one extension per GitHub repository, so the 14 extensions install from a local path of a checkout (they cannot come from this repository's URL).
 
 ```bash
-git clone https://github.com/Nouran99/guidedplugins && cd guidedplugins      # once published; or use your own checkout
+git clone https://github.com/Nouran99/guidedplugins && cd guidedplugins      # or use your own checkout
 gemini extensions install ./dist/gemini/clean-code
 gemini extensions link ./dist/gemini/clean-code     # alternative while developing: symlink
 ```
@@ -136,7 +136,7 @@ Installing asks for confirmation (trust and consent prompts in gemini-cli 0.64; 
 - **Copilot.** Copilot looks for a marketplace file in this order: `marketplace.json`, `.plugin/marketplace.json`, `.github/plugin/marketplace.json`, `.claude-plugin/marketplace.json`. This repository's `.github/plugin/marketplace.json` therefore wins over the Claude one and points at `dist/copilot/<plugin>`, the build with rewritten text and Copilot agents.
 
   ```bash
-  copilot plugin marketplace add /path/to/guidedplugins       # or Nouran99/guidedplugins once published
+  copilot plugin marketplace add /path/to/guidedplugins       # or Nouran99/guidedplugins from GitHub (not yet tested)
   copilot plugin install clean-code@guided-plugins
   copilot plugin enable ddd@guided-plugins                    # installed plugins from a local marketplace are listed and can be switched on
   copilot skill list                                          # shows what Copilot found
@@ -155,7 +155,7 @@ Installing asks for confirmation (trust and consent prompts in gemini-cli 0.64; 
 ```bash
 npx skills add ./dist/agent-skills/clean-code --list                                  # from a clone; shows what it found
 npx skills add ./dist/agent-skills/clean-code -a codex -a amp -y                      # from a clone, for two agents
-npx skills add Nouran99/guidedplugins/dist/agent-skills/clean-code                    # once published; choose agents interactively
+npx skills add Nouran99/guidedplugins/dist/agent-skills/clean-code                    # from GitHub, not yet tested; choose agents interactively
 ```
 
 Install a whole plugin: its skills point at each other and at the `principles` skill by relative path.
@@ -176,7 +176,7 @@ The first book is marked, in visible text, as the primary rule set that decides 
 ```bash
 claude mcp add -s user guided-plugins -- node /path/to/guidedplugins/scripts/mcp-server.mjs --plugins clean-code,refactoring
 codex mcp add guided-plugins -- node /path/to/guidedplugins/scripts/mcp-server.mjs --plugins clean-code,refactoring
-npx -y github:Nouran99/guidedplugins --plugins clean-code      # once published; same server, no checkout
+npx -y github:Nouran99/guidedplugins --plugins clean-code      # from GitHub, not yet tested; same server, no checkout
 ```
 
 `claude mcp add` registers the server for the current project only unless you pass `-s user` (all your projects) or `-s project` (a shared `.mcp.json`).
