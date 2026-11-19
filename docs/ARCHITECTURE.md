@@ -350,7 +350,7 @@ The process also changed the spec. Findings from the first reviews became rules:
 
 ### Limits
 
-- **Verification is by model reviewers plus mechanical checks.** The only outcome measured is the eval suites ([EVALS.md](EVALS.md): small planted-problem fixtures, 5 of 14 plugins, one run per case); no real project was measured, and there is no data on defects in shipped code, review time or whether the agents follow their templates. The definition of done includes a human reading three components at random (spec section 1); nothing in the repository records that this was done for each plugin and no tool enforces it.
+- **Verification is by model reviewers plus mechanical checks.** The only outcome measured is the eval suites ([EVALS.md](EVALS.md): small planted-problem fixtures, all 14 plugins, one run per case); no real project was measured, and there is no data on defects in shipped code, review time or whether the agents follow their templates. The definition of done includes a human reading three components at random (spec section 1); nothing in the repository records that this was done for each plugin and no tool enforces it.
 - **Builders and reviewers are models of the kind the plugins are meant to steer.** Shared blind spots are possible. "Faithful to the book" also rests on the upstream rule sets being faithful to the books, which this project did not audit. The upstream project lists measurement and legal review among its unresolved criticisms.
 - **The mechanical checks cover structure.** Section 7 lists what they do not cover.
 - **Small rule sets reach the 50-component floor by separating role and situation.** A short rule set gets a rules skill, a workflow skill, a reviewer and an implementer for the same cluster, and components for distinct situations (a plan, a scan, a gate). The spec forbids reaching the floor by rewording one idea (quality bar, rule 13). That is a judgment, and the floor itself invites padding: the size floors and the near-duplicate check are a tripwire, not proof that every component earns its place.
@@ -424,7 +424,7 @@ There is no update script. The procedure is manual, and the validator does the d
 
 ## 11. Known limitations
 
-- **No measured effect on real projects.** The eval suites show that a plugin's review workflow finds more planted problems than the model alone (5 of 14 plugins measured, one run per case); nothing shows that the plugins improve real code. The upstream project says the same about its rule sets. Treat the output as structured review comments.
+- **No measured effect on real projects.** The eval suites show that a plugin's review workflow finds more planted problems than the model alone (all 14 plugins measured, one run per case); nothing shows that the plugins improve real code. The upstream project says the same about its rule sets. Treat the output as structured review comments.
 - **Context cost is real.** Section 3 has the numbers. A plugin is affordable; several are not cheap. Plugin skills cannot be turned off one at a time: the skills docs say `skillOverrides` does not apply to plugin skills and point to enabling or disabling the whole plugin.
 - **Model-written, model-reviewed.** See section 8. A human reading is the strongest check that has not been done systematically.
 - **Instructions, not guarantees.** A skill, a style and an agent prompt are instructions the model may not follow. What is enforced is the agent tool lists (reviewers have no `Write` or `Edit`, but they do have `Bash`) and Claude Code's permission system.

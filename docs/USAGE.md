@@ -511,7 +511,7 @@ The complete list of checks is in [ARCHITECTURE.md](ARCHITECTURE.md#7-validation
 
 **Can I use these in Codex, OpenCode, Gemini CLI or another agent?** Yes: see [AGENTS_SUPPORT.md](AGENTS_SUPPORT.md) for installs, differences and costs.
 
-**Do the plugins make my code better?** Not shown on real projects. On small planted-problem fixtures, for 5 of the 14 plugins, the plugin's review workflow found more of the planted problems than the model alone ([EVALS.md](EVALS.md): one run per case, so differences of 15 points or less are noise). The plugins apply a book's rules consistently and every piece of advice cites the upstream section it comes from; treat the output as structured review comments.
+**Do the plugins make my code better?** Not shown on real projects. On small planted-problem fixtures, for all 14 plugins, the plugin's review workflow found more of the planted problems than the model alone ([EVALS.md](EVALS.md): one run per case, so differences of 15 points or less are noise). The plugins apply a book's rules consistently and every piece of advice cites the upstream section it comes from; treat the output as structured review comments.
 
 **Are they official?** No. They are not affiliated with or endorsed by the books' authors or publishers, or by the upstream rule-set maintainer. See [NOTICE.md](../NOTICE.md).
 
