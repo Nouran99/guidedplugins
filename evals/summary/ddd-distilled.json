@@ -1,0 +1,108 @@
+{
+  "plugin": "ddd-distilled",
+  "date": "2026-11-18",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.8068156000000002,
+      "partial": false,
+      "cases": [
+        {
+          "name": "carrier-tracking-java",
+          "defectWith": 0.833,
+          "defectWithout": 0.833,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8333333333333334
+        },
+        {
+          "name": "ddd-control-kt",
+          "defectWith": 1,
+          "defectWithout": 0.4,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-placement-cs",
+          "defectWith": 0.286,
+          "defectWithout": 0,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.2857142857142857
+        },
+        {
+          "name": "rental-service-ts",
+          "defectWith": 0.714,
+          "defectWithout": 0.286,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.7142857142857143
+        },
+        {
+          "name": "shared-customer-py",
+          "defectWith": 0.5,
+          "defectWithout": 0.167,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.5
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.1837556999999999,
+      "partial": false,
+      "cases": [
+        {
+          "name": "carrier-tracking-java--slash",
+          "defectWith": 0.667,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.75
+        },
+        {
+          "name": "ddd-control-kt--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "order-placement-cs--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "rental-service-ts--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "shared-customer-py--slash",
+          "defectWith": 0.833,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.875
+        }
+      ]
+    }
+  ]
+}

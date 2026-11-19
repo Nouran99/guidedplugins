@@ -1,0 +1,108 @@
+{
+  "plugin": "refactoring-guru",
+  "date": "2026-11-19",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.6031246000000003,
+      "partial": false,
+      "cases": [
+        {
+          "name": "alerts-cs",
+          "defectWith": 0.714,
+          "defectWithout": 0.714,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.7142857142857143
+        },
+        {
+          "name": "invoicing-java",
+          "defectWith": 0.143,
+          "defectWithout": 0.143,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.14285714285714285
+        },
+        {
+          "name": "parcel-fees-ts",
+          "defectWith": 0.429,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.42857142857142855
+        },
+        {
+          "name": "refunds-control-kt",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "statements-py",
+          "defectWith": 0.571,
+          "defectWithout": 0.429,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.5714285714285714
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.1786554999999999,
+      "partial": false,
+      "cases": [
+        {
+          "name": "alerts-cs--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "invoicing-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "parcel-fees-ts--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "refunds-control-kt--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "statements-py--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        }
+      ]
+    }
+  ]
+}

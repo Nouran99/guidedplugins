@@ -1,0 +1,92 @@
+{
+  "plugin": "refactoring",
+  "date": "2026-11-18",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.2758567,
+      "partial": false,
+      "cases": [
+        {
+          "name": "delivery-java",
+          "defectWith": 0.625,
+          "defectWithout": 0.5,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.625
+        },
+        {
+          "name": "parking-control-go",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "refund-cleanup-ts",
+          "defectWith": 0.75,
+          "defectWithout": 0.875,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.75
+        },
+        {
+          "name": "renewals-py",
+          "defectWith": 0.375,
+          "defectWithout": 0.375,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.375
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 0.9790416999999999,
+      "partial": false,
+      "cases": [
+        {
+          "name": "delivery-java--slash",
+          "defectWith": 0.875,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.9
+        },
+        {
+          "name": "parking-control-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "refund-cleanup-ts--slash",
+          "defectWith": 0.75,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8
+        },
+        {
+          "name": "renewals-py--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        }
+      ]
+    }
+  ]
+}

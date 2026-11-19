@@ -1,0 +1,108 @@
+{
+  "plugin": "ddd",
+  "date": "2026-11-18",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.8449358,
+      "partial": false,
+      "cases": [
+        {
+          "name": "clinic-control-ts",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "loan-application-java",
+          "defectWith": 1,
+          "defectWithout": 0.714,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "policy-renewal-py",
+          "defectWith": 0.286,
+          "defectWithout": 0,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.2857142857142857
+        },
+        {
+          "name": "shipment-booking-go",
+          "defectWith": 0,
+          "defectWithout": 0.125,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0
+        },
+        {
+          "name": "timesheet-approval-cs",
+          "defectWith": 0.143,
+          "defectWithout": 0,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.14285714285714285
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.2755422000000003,
+      "partial": false,
+      "cases": [
+        {
+          "name": "clinic-control-ts--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "loan-application-java--slash",
+          "defectWith": 0.429,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.5555555555555556
+        },
+        {
+          "name": "policy-renewal-py--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "shipment-booking-go--slash",
+          "defectWith": 0.75,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8
+        },
+        {
+          "name": "timesheet-approval-cs--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}

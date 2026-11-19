@@ -1,0 +1,108 @@
+{
+  "plugin": "ddd-implementing",
+  "date": "2026-11-18",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 2.2058383000000004,
+      "partial": false,
+      "cases": [
+        {
+          "name": "billing-crm-java",
+          "defectWith": 0.714,
+          "defectWithout": 0,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.7142857142857143
+        },
+        {
+          "name": "class-booking-py",
+          "defectWith": 0.429,
+          "defectWithout": 0.286,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.42857142857142855
+        },
+        {
+          "name": "locker-control-go",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "paper-review-cs",
+          "defectWith": 0.286,
+          "defectWithout": 0.143,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.2857142857142857
+        },
+        {
+          "name": "savings-pots-ts",
+          "defectWith": 0.857,
+          "defectWithout": 0.714,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.4099063000000003,
+      "partial": false,
+      "cases": [
+        {
+          "name": "billing-crm-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "class-booking-py--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "locker-control-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "paper-review-cs--slash",
+          "defectWith": 0.714,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.7777777777777778
+        },
+        {
+          "name": "savings-pots-ts--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}

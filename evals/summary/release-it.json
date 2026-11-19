@@ -1,0 +1,108 @@
+{
+  "plugin": "release-it",
+  "date": "2026-11-19",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.8512679999999997,
+      "partial": false,
+      "cases": [
+        {
+          "name": "inventory-control-ts",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "orders-release-sh",
+          "defectWith": 0.75,
+          "defectWithout": 0.5,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.75
+        },
+        {
+          "name": "orders-service-go",
+          "defectWith": 0.875,
+          "defectWithout": 0.5,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.875
+        },
+        {
+          "name": "rates-quote-py",
+          "defectWith": 0.857,
+          "defectWithout": 0.857,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        },
+        {
+          "name": "shipment-dispatch-java",
+          "defectWith": 1,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.3304102,
+      "partial": false,
+      "cases": [
+        {
+          "name": "inventory-control-ts--slash",
+          "defectWith": 0.4,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.5
+        },
+        {
+          "name": "orders-release-sh--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "orders-service-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "rates-quote-py--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        },
+        {
+          "name": "shipment-dispatch-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        }
+      ]
+    }
+  ]
+}

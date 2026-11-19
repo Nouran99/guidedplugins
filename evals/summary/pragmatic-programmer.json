@@ -1,0 +1,108 @@
+{
+  "plugin": "pragmatic-programmer",
+  "date": "2026-11-19",
+  "passes": [
+    {
+      "id": "compare",
+      "ablation": "with-without",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.7145929999999998,
+      "partial": false,
+      "cases": [
+        {
+          "name": "fee-import-control-py",
+          "defectWith": 1,
+          "defectWithout": 1,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "invoice-export-go",
+          "defectWith": 1,
+          "defectWithout": 0.875,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "late-fees-java",
+          "defectWith": 0.714,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.7142857142857143
+        },
+        {
+          "name": "release-tooling-sh",
+          "defectWith": 0.429,
+          "defectWithout": 0.143,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.42857142857142855
+        },
+        {
+          "name": "seat-limits-ts",
+          "defectWith": 0.857,
+          "defectWithout": 0.571,
+          "formatOk": null,
+          "skillFired": 0,
+          "scoreAllGraders": 0.8571428571428571
+        }
+      ]
+    },
+    {
+      "id": "slash",
+      "ablation": "none",
+      "model": "default of the Claude Code session",
+      "runsPerCase": 1,
+      "claudeVersion": "2.1.311",
+      "costUsd": 1.2592611999999999,
+      "partial": false,
+      "cases": [
+        {
+          "name": "fee-import-control-py--slash",
+          "defectWith": 0.75,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8
+        },
+        {
+          "name": "invoice-export-go--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "late-fees-java--slash",
+          "defectWith": 1,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 1
+        },
+        {
+          "name": "release-tooling-sh--slash",
+          "defectWith": 0.571,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.6666666666666666
+        },
+        {
+          "name": "seat-limits-ts--slash",
+          "defectWith": 0.857,
+          "defectWithout": null,
+          "formatOk": 1,
+          "skillFired": null,
+          "scoreAllGraders": 0.8888888888888888
+        }
+      ]
+    }
+  ]
+}
